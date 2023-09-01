@@ -30,7 +30,7 @@ Processor SDK RTOS NDK - Texas Instruments Wiki
 
    <div id="localNotice" lang="en" dir="ltr">
 
-| 
+|
 
 .. raw:: html
 
@@ -104,7 +104,7 @@ Jump to: `navigation <#mw-head>`__, `search <#p-search>`__
 
    </div>
 
-| 
+|
 
 +-----------------------+-----------------------+-----------------------+
 | `RTOS Software        | →                     | Networking            |
@@ -115,9 +115,9 @@ Jump to: `navigation <#mw-head>`__, `search <#p-search>`__
 | __                    |                       |                       |
 +-----------------------+-----------------------+-----------------------+
 
-| 
+|
 
-| 
+|
 
 +-------------------------------------------------+-----------------------------------+
 | .. rubric:: **Overview**                        | .. rubric:: **User Interface**    |
@@ -234,7 +234,7 @@ $(NDK_INSTALL_DIR)\packages\ti\ndk
 | ${NDK_INSTALL_DIR}\packages\ti\ndk\inc
 | ${NDK_INSTALL_DIR}\packages\ti\ndk\inc\tools
 
-| 
+|
 
 NIMU Transport
 ==============
@@ -290,7 +290,7 @@ $(TI_PDK_INSTALL_DIR)\packages\ti\transport\ndk\nimu\lib
 
 None
 
-| 
+|
 
 NIMU for ICSS
 -------------
@@ -339,7 +339,7 @@ $(TI_PDK_INSTALL_DIR)\packages\ti\transport\ndk\nimu_icss\lib
 
 None
 
-| 
+|
 
 Examples
 ========
@@ -452,7 +452,7 @@ to modify the following configuration parameters
 |                 |                 | same subnet.    |                 |
 +-----------------+-----------------+-----------------+-----------------+
 
-| 
+|
 
 Running NDK example on ARM core of Keystone II devices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -469,7 +469,7 @@ devices(K2H/L/E/G), the following steps need to be performed.
 -  Rebuild the NDK
 -  Rebuild NIMU driver
 
-| 
+|
 
 CCLink Example
 --------------
@@ -603,10 +603,10 @@ Additional Documentation References
        <http://www.ti.com/lsds/ti/analog/switches_and_multiplexers.page>`__
 
      -
-     
+
         - `Temperature Sensors & Control ICs
           <http://www.ti.com/lsds/ti/analog/temperature_sensor.page>`__
-        
+
         - `Wireless Connectivity
           <http://focus.ti.com/wireless/docs/wirelessoverview.tsp?familyId=2003&sectionId=646&tabId=2735>`__
 

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Flashing_Bootable_Images 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Flashing_Bootable_Images
 
 Overview
 ^^^^^^^^

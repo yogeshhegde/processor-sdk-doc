@@ -72,7 +72,7 @@ EDMA3
 .. _device-driver-icss-emac:
 
 *********************************
-ICSS-EMAC 
+ICSS-EMAC
 *********************************
 .. include:: PDK_Platform_Software/Device_Drivers/_ICSS_EMAC_LLD_FW.rst
 
@@ -273,7 +273,7 @@ OSAL
 ***********
 Profiling
 ***********
-.. include:: PDK_Platform_Software/Device_Driver_Utilities/Profiling.rst.inc 
+.. include:: PDK_Platform_Software/Device_Driver_Utilities/Profiling.rst.inc
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+
 | .. Image:: /images/E2e.jpg     | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |

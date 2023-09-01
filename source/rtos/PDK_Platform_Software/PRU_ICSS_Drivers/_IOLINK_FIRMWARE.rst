@@ -1,13 +1,13 @@
-.. http://ap-fpdsp-swapps.dal.design.ti.com/index.php/Processor_SDK_RTOS_IOLINK_FIRMWARE 
+.. http://ap-fpdsp-swapps.dal.design.ti.com/index.php/Processor_SDK_RTOS_IOLINK_FIRMWARE
 
 Introduction
 ============
 
 | PRU-ICSS IOLINK serves as an example for firmware-based IOLINK Master
-  Frame Handler support. The Processor SDK package includes 
+  Frame Handler support. The Processor SDK package includes
   full source code for IOLINK FW.
 
-| 
+|
 
 FIRMWARE FEATURES
 =================
@@ -75,7 +75,7 @@ Firmware Organization
 | Firmware binaries       | <PDK>/packages/ti/drv/iolink/firmware/icss_iolink/bin  |
 +-------------------------+--------------------------------------------------------+
 
-| 
+|
 
 Firmware Build Instruction
 ==========================
@@ -108,7 +108,7 @@ Firmware binaries at the end of the build will be located at:
 -  <REVISION> indicates the revision of the firmware binary based on
    core (there are 2 revision of PRU-ICSS core), e.g. REV1.
 
-| 
+|
 
 Build instruction for GIT
 -------------------------
@@ -149,7 +149,7 @@ environment outside Processor SDK RTOS package.
    -  the firmware binaries which will be located in
       <WORK_DIR/ti/drv/iolink/firmware/<FIRMWARE_TYPE>/bin/<SOC>/<HOST_CORE>/<REVISION>>
 
-| 
+|
 
 Supported EVMs
 ==============
@@ -164,10 +164,10 @@ Supported EVMs are listed below.
 
 
 
-| 
+|
 
 
-.. rubric::  Firmware Design Guide 
+.. rubric::  Firmware Design Guide
    :name: firmware-design-guide
 
 +-----------------------------------+--------------------------------------------------------------------------+
@@ -177,8 +177,8 @@ Supported EVMs are listed below.
 +-----------------------------------+--------------------------------------------------------------------------+
 
 **NOTE: For normal use of IOLINK FW, there is no need to refer to the design guide.
-This document can be cosulted in case of interest in details of internal firmware 
+This document can be cosulted in case of interest in details of internal firmware
 operation, or a desire to modify the firmware.**
 
-| 
+|
 

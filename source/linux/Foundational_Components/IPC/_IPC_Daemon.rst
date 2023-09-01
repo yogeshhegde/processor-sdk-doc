@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_Daemon 
+.. http://processors.wiki.ti.com/index.php/IPC_Daemon
 
 IPC Daemon (aka LAD)
 -----------------------

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_FATFS 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_FATFS
 
 Overview
 --------
@@ -81,11 +81,11 @@ Below sequence indicates the calling sequence of FATFS driver APIs:
 .. code-block:: c
 
      FATFS_Handle FATFS;
-     FATFS_Params FATFSParams; 
-     FATFS_Params_init(&FATFSParams); 
+     FATFS_Params FATFSParams;
+     FATFS_Params_init(&FATFSParams);
      FATFS = FATFS_open(peripheralNum, &FATFSParams);
-     
-     
+
+
 
 At this point application can invoke additional FAT File system API
 eg: f_open(), f_write(), f_read() etc to perform file operations on
@@ -151,7 +151,7 @@ Examples
 Building CCS projects based examples
 ------------------------------------
 
-CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in 
+CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in
 `PDK Example and Test Project Creation <index_overview.html#pdk-example-and-test-project-creation>`__
 
 
@@ -160,21 +160,21 @@ Building FATFS Test applications via makefiles
 
 - FATFSD Test applications and dependent libraries are built from the top level fatfs makefile
 - Refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details
-  of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
+  of how to setup the build environment. Once you have setup the build environment, issue the following commands:
 
     -  cd <pdk>/packages/
-    -  To build: make fatfs 
-    -  To clean: make fatfs_clean 
+    -  To build: make fatfs
+    -  To clean: make fatfs_clean
 
 - Similarly, to build at the module level, issue the following commands for rebuilding :
-	
+
     - cd <pdk>/packages/ti/fs/fatfs
     - To build: make all
     - To clean: make clean
 
 
 
-  
+
 Additional References
 ---------------------
 

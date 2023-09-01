@@ -30,7 +30,7 @@ In addition driver supports following modes of operation:
    supported.
 
 .. note::
-   
+
    If I2C peripheral is in reset during a transfer, it can cause the I2C
    bus to hang. I2C V0 IP (Keystone SoCs) does not have hardware support to
    recover the I2C bus from hanging, user needs to power cycle the board as
@@ -47,7 +47,7 @@ personalities. Processor SDK package includes I2C Firmware support.
 Refer `I2C FW <index_pru_icss_fw.html#pru-icss-i2c>`__ for
 additional details.
 
-| 
+|
 
 User Interface
 --------------
@@ -68,7 +68,7 @@ details.
 Once the board specific configuration is complete driver API I2C_init()
 can be called to initialize driver
 
-.. rubric::  **I2C Configuration Structure** 
+.. rubric::  **I2C Configuration Structure**
    :name: i2c-configuration-structure
 
 I2C_soc.c file binds driver with hardware attributes on the board
@@ -251,7 +251,7 @@ Refer Release Note for I2C support across different EVMs
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
 
 .. note::
-   
+
    I2C_Test Application supports write test on Keystone II EVMs, by default
    write test is disabled, user can enable the write test by defining
    I2C_EEPROM_WRITE_ENABLE in test/eeprom_read/src/I2C_board.h.
@@ -260,7 +260,7 @@ Refer Release Note for I2C support across different EVMs
 Building I2C examples
 ----------------------
 
--  Makefile based examples and dependent libraries can be built from the top level or module level I2C makefile, refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
+-  Makefile based examples and dependent libraries can be built from the top level or module level I2C makefile, refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details of how to setup the build environment. Once you have setup the build environment, issue the following commands:
 ::
 
    To build and clean libs/apps from top-level makefile:
@@ -297,4 +297,4 @@ Additional References
 |                       | D.pdf                                    |
 +-----------------------+------------------------------------------+
 
-| 
+|

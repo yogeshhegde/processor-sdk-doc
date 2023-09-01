@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/CCSv6_Getting_Started_Guide 
+.. http://processors.wiki.ti.com/index.php/CCSv6_Getting_Started_Guide
 
 .. rubric:: Introduction
    :name: introduction
@@ -60,7 +60,7 @@ source, include and configuration files.
 
 `Device_Specific_Workshops_with_CCS <http://processors.wiki.ti.com/index.php/Device_Specific_Workshops_with_CCS>`__
 `CCS_Fundamentals_Workshop <http://processors.wiki.ti.com/index.php/CCS_Fundamentals_Workshop>`__
- 
+
 | **Important!** The modules above require software libraries and
   components that are not installed with CCSv6 by default: MSP430Ware,
   Tivaware, ControlSUITE, Starterware, SYSBIOS, MCSDK, etc. These

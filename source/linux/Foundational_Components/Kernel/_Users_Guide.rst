@@ -150,7 +150,7 @@ as a starting point).
 
         make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig ti_arm64_prune.config
 
-The config fragments found in <path-to-ti-linux-kernel>/kernel/configs can be used to trim/add 
+The config fragments found in <path-to-ti-linux-kernel>/kernel/configs can be used to trim/add
 features when building a kernel that targets only TI EVMs. Append a config fragment to the end
 of "make" command like above to add/remove features.
 

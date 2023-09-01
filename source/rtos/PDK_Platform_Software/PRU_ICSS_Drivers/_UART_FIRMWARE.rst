@@ -1,14 +1,14 @@
-.. http://ap-fpdsp-swapps.dal.design.ti.com/index.php/Processor_SDK_RTOS_UART_FIRMWARE 
+.. http://ap-fpdsp-swapps.dal.design.ti.com/index.php/Processor_SDK_RTOS_UART_FIRMWARE
 
 Introduction
 ============
 
 | PRU-ICSS UART serves as an example for PRU firmware-based UART peripheral
-  support. The UART firmware (UART FW) allows additional UART instances for SOCs 
-  beyond those supported by SOC hardware. The Processor SDK package includes 
+  support. The UART firmware (UART FW) allows additional UART instances for SOCs
+  beyond those supported by SOC hardware. The Processor SDK package includes
   full source code for UART FW.
 
-| 
+|
 
 FIRMWARE FEATURES
 =================
@@ -22,18 +22,18 @@ The following UART specifications are supported by the PRU UART firmware:
     - Parity: even, odd, none
     - Flow control: HW, none (SW flow control currently unsupported)
     - Full-duplex communication
-    
+
 - Each UART can simultaneously support different configurations
-    - UART0 can have a different baud rate, number of stop bits, etc. when 
+    - UART0 can have a different baud rate, number of stop bits, etc. when
       compared to UART1 or UART2 in the same PRU
-      
+
 - The firmware is self-contained in a single PRU
     - The firmware does not use shared resources within an ICSS including IEP Timer and Scratchpad
     - In case 3 or less UART instances are required, only one PRU core is required for the UART firmware
 
-The table below shows a comparison of the features supported by the UART 
+The table below shows a comparison of the features supported by the UART
 firmware with those available on hardware IP.
-    
+
 +------------------------------+-------------------------------+----------------------------+
 | **UART Supported Feature**   | **Hardware IP**               | **Software IP (Firmware)** |
 +------------------------------+-------------------------------+----------------------------+
@@ -62,7 +62,7 @@ Firmware Organization
 | Design Guide            | <PDK>/packages/ti/drv/uart/docs                   |
 +-------------------------+---------------------------------------------------+
 
-| 
+|
 
 Firmware Build Instructions
 ===========================
@@ -108,7 +108,7 @@ Firmware binaries at the end of the firmware build will be located at:
 -  <REVISION> indicates the revision of the firmware binary based on
    core (there are 2 revision of PRU-ICSS core), e.g. REV1.
 
-| 
+|
 
 Supported EVMs
 ==============
@@ -121,7 +121,7 @@ Supported EVMs and pin configurations for these EVMs are listed below. See the d
 | bbbAM335x   | 6                   | REV1              |
 +-------------+---------------------+-------------------+
 
-| 
+|
 
 .. rubric::  bbbAM335x
    :name: bbbAM335x
@@ -178,26 +178,26 @@ Supported EVMs and pin configurations for these EVMs are listed below. See the d
 |         |       |          | RTS          |pr1_pru1_pru_r30_11  | P8     | 30    |
 +---------+-------+----------+--------------+---------------------+--------+-------+
 
-| 
+|
 
 UART Firmware Example & Test
 ============================
-Example are test applications are available in the package for reference purpose 
-and starting point. 
+Example are test applications are available in the package for reference purpose
+and starting point.
 
 The example application uses the UART stdio API to repeatedly read characters
-transmitted from a PC UART. The acquired characters are then written (echoed) 
+transmitted from a PC UART. The acquired characters are then written (echoed)
 back to the PC UART.
 
-The test applications are more complex than the example application, and 
-perform many more types of UART transfers than the example application. The 
-test applications performs transfers using UART software IP (implemented  
-in PRU firmware) and hardware IPs with different combinations of UART 
-settings. Both the UART and UART stdio APIs are exercised (note the UART 
-software and hardware IPs use the same UART-LLD API). The test applications 
+The test applications are more complex than the example application, and
+perform many more types of UART transfers than the example application. The
+test applications performs transfers using UART software IP (implemented
+in PRU firmware) and hardware IPs with different combinations of UART
+settings. Both the UART and UART stdio APIs are exercised (note the UART
+software and hardware IPs use the same UART-LLD API). The test applications
 are further described in the Firmware Design Guide.
 
-| 
+|
 
 Sample code for UART write & read:
 
@@ -205,13 +205,13 @@ Sample code for UART write & read:
 
     /* Refer to UART FW example & tests for details */
     ...
-    
+
     /* Initialize the UART FW configuration */
     UART_socInitFwCfg();
 
-    Board_init(boardCfg);   
+    Board_init(boardCfg);
     ...
-    
+
     UART_init();
 
     /* Get the default UART init configuration */
@@ -220,7 +220,7 @@ Sample code for UART write & read:
     /* Set the default UART init configurations */
     UART_socSetFwCfg(uartInst, &uart_cfg);
     ...
-    
+
     UART_Params_init(&uartParams);
     uartParams.readCallback = UART_callback;
     uartParams.readMode = UART_MODE_CALLBACK;
@@ -238,7 +238,7 @@ Sample code for UART write & read:
         /* UART write failed */
     }
     ...
-    
+
     /* Initiate UART read */
     UART_transactionInit(&rdCbTransaction);
     rdCbTransaction.buf = (void *)rdBuff;
@@ -246,7 +246,7 @@ Sample code for UART write & read:
     if (UART_read2(handle, &callbackTransaction) == UART_ERROR) {
         /* UART read failed */
     }
-| 
+|
 
 .. rubric::  List of Examples & Tests
    :name: examples-tests-list
@@ -286,9 +286,9 @@ Refer to the Release Notes for details concerning UART support across different 
 |                       |                         | passed.                |
 +-----------------------+-------------------------+------------------------+
 
-| 
+|
 
-.. rubric::  Firmware Design Guide 
+.. rubric::  Firmware Design Guide
    :name: firmware-design-guide
 
 +-----------------------------------+----------------------------------------------------------+
@@ -297,9 +297,9 @@ Refer to the Release Notes for details concerning UART support across different 
 | UART Firmware Design Guide        | <PDK>/packages/ti/drv/uart/docs/UART_FW_DESIGN_GUIDE.pdf |
 +-----------------------------------+----------------------------------------------------------+
 
-**NOTE: Design document includes details for internal firmware implementation and 
+**NOTE: Design document includes details for internal firmware implementation and
 can be used in case of modification required for firmware.**
 
 
-| 
+|
 

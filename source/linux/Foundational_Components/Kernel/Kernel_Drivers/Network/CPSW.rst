@@ -20,7 +20,7 @@ The driver supports the following features:
 #. Ethertool (Supports only Slave 0 decided in cpsw DT node)
 #. Dual Standalone EMAC mode
 
-| 
+|
 
 .. rubric:: **Driver Configuration**
    :name: driver-configuration-cpsw
@@ -32,7 +32,7 @@ tool:
 
     $ make menuconfig
 
-| 
+|
 
 Select *Device Drivers* from the main menu.
 
@@ -48,7 +48,7 @@ Select *Device Drivers* from the main menu.
        ...
        ...
 
-| 
+|
 
 Select *Network device support* as shown below:
 
@@ -64,7 +64,7 @@ Select *Network device support* as shown below:
        ...
        ...
 
-| 
+|
 
 Select *Ethernet driver support* as shown below:
 
@@ -81,7 +81,7 @@ Select *Ethernet driver support* as shown below:
        ...
        ...
 
-| 
+|
 
 Select ** as shown here:
 
@@ -96,7 +96,7 @@ Select ** as shown here:
        <*>     TI CPSW Switch Support
        [ ]       TI Common Platform Time Sync (CPTS) Support
 
-| 
+|
 
 .. rubric:: **Module Build**
    :name: module-build
@@ -105,7 +105,7 @@ Module build for the cpsw driver is supported. To do this, at all the
 places mentioned in the section above select module build (short-cut key
 **M**).
 
-| 
+|
 
 Select ** as shown here:
 
@@ -120,7 +120,7 @@ Select ** as shown here:
        <M>     TI CPSW Switch Support
        [ ]       TI Common Platform Time Sync (CPTS) Support
 
-| 
+|
 
 .. rubric:: **Interrupt Pacing**
    :name: interrupt-pacing
@@ -138,17 +138,17 @@ ethtool utility:
 
        ethtool -C eth0 rx-usecs <delayperiod>
 
-| 
+|
 
 To achieve maximum performance set <delayperiod> to 500/250 depends on
 your platform
 
-| 
+|
 
 .. rubric:: **Configure number of TX/RX descriptors**
    :name: configure-number-of-txrx-descriptors
 
-| 
+|
 
 By default CPSW allocates and uses as much CPPI Buffer Descriptors
 descriptors as can fit into the internal CPSW SRAM, which is usually
@@ -167,7 +167,7 @@ To configure descs\_pool\_size from kernel boot cmdline:
 
        ti_cpsw.descs_pool_size=4096
 
-| 
+|
 
 To configure descs\_pool\_size from cmdline:
 
@@ -175,7 +175,7 @@ To configure descs\_pool\_size from cmdline:
 
        insmod ti_cpsw descs_pool_size=4096
 
-| 
+|
 
 Hence, the CPSW uses one pool of descriptors for both RX and TX which
 by default split between all channels proportionally depending on
@@ -187,7 +187,7 @@ customized via ethtool '-G' command:
 
          ethtool -G <devname> rx <number of descriptors>
 
-| 
+|
 
 ethtool '-G' command will accept only number of RX entries and rest of
 descriptors will be arranged for TX automatically.
@@ -196,13 +196,13 @@ Defaults and limitations:
 
 ::
 
-       - minimum number of rx descriptors is max number of CPDMA channels (8) 
+       - minimum number of rx descriptors is max number of CPDMA channels (8)
          to be able to set at least one CPPI Buffer Descriptor per channel
        - maximum number of rx descriptors is (descs_pool_size - max number of CPDMA channels (8))
        - by default, descriptors will be split equally between RX/TX path
        - any values passed in "tx" parameter will be ignored
 
-| 
+|
 
 Examples:
 
@@ -219,7 +219,7 @@ Examples:
                RX Mini:        0
                RX Jumbo:       0
                TX:             4096
-       
+
         # ethtool -G eth0 rx 7372
         # ethtool -g eth0
                Ring parameters for eth0:
@@ -234,7 +234,7 @@ Examples:
                RX Jumbo:       0
                TX:             820
 
-| 
+|
 
 .. rubric:: **VLAN Config**
    :name: vlan-config
@@ -297,7 +297,7 @@ To Send or receive packets with the VLAN tag, bind the socket to the
 proper ethernet interface shown above and can send/receive via that
 socket-fd.
 
-| 
+|
 
 .. rubric:: **Multicast Add/Delete**
    :name: multicast-adddelete
@@ -340,18 +340,18 @@ Delete Multicast address
 .. note::
    This interface does not support VLANs.
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
 .. rubric:: **Dual Standalone EMAC mode**
    :name: dual-standalone-emac-mode
 
-| 
+|
 
 .. rubric:: Introduction
    :name: introduction-1
@@ -441,7 +441,7 @@ device tree node as the reference patch below
             pinctrl-1 = <&cpsw_sleep>;
     +       dual_emac;
      };
-     
+
      &davinci_mdio {
     @@ -484,11 +485,13 @@
      &cpsw_emac0 {
@@ -480,7 +480,7 @@ The network interface IP address can be configured automatically (DHCP) dependin
     ifconfig eth0 <ip> netmask <mask> up
 
 
-| 
+|
 
 .. rubric::  **Primary Interface on Second External Port**
    :name: primary-interface-on-second-external-port
@@ -524,13 +524,13 @@ respective PHY modes.
            phy-mode = "rgmii-txid";
     };
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
 .. rubric:: **Switch Configuration Interface**
    :name: switch-configuration-interface
@@ -581,7 +581,7 @@ Userspace binary formats --->
        < > ANSI/IEEE 802.2 LLC type 2 Support
        < > The IPX protocol
 
-| 
+|
 
 .. rubric:: Switch Config Commands
    :name: switch-config-commands
@@ -718,7 +718,7 @@ CONFIG\_SWITCH\_ADD\_VLAN is used to add VLAN ID.
 
 ioctl call returns success or failure.
 
-| 
+|
 
 .. rubric:: CONFIG\_SWITCH\_DEL\_VLAN
    :name: config_switch_del_vlan
@@ -739,7 +739,7 @@ CONFIG\_SWITCH\_DEL\_VLAN is used to delete VLAN ID.
 
 ioctl call returns success or failure.
 
-| 
+|
 
 .. rubric:: CONFIG\_SWITCH\_ADD\_UNKNOWN\_VLAN\_INFO
    :name: config_switch_add_unknown_vlan_info
@@ -805,7 +805,7 @@ CONFIG\_SWITCH\_SET\_PORT\_CONFIG is used to set Phy Config.
 
 ioctl call returns success or failure.
 
-| 
+|
 
 .. rubric:: CONFIG\_SWITCH\_GET\_PORT\_CONFIG
    :name: config_switch_get_port_config
@@ -828,7 +828,7 @@ ioctl call returns success or failure.
 
 On success "cmd\_struct.ecmd" holds port phy settings
 
-| 
+|
 
 .. rubric:: CONFIG\_SWITCH\_SET\_PORT\_STATE
    :name: config_switch_set_port_state
@@ -854,7 +854,7 @@ CONFIG\_SWITCH\_SET\_PORT\_STATE is used to set port status.
 
 ioctl call returns success or failure.
 
-| 
+|
 
 .. rubric:: CONFIG\_SWITCH\_GET\_PORT\_STATE
    :name: config_switch_get_port_state
@@ -877,7 +877,7 @@ ioctl call returns success or failure.
 
 On success "cmd\_struct.port\_state" holds port state
 
-| 
+|
 
 .. rubric:: CONFIG\_SWITCH\_RATELIMIT
    :name: config_switch_ratelimit
@@ -936,13 +936,13 @@ is calculated as:
 
 ioctl call returns success or failure.
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Switch config ioctl mapping with v3.2
    :name: switch-config-ioctl-mapping-with-v3.2
@@ -1005,7 +1005,7 @@ for am335x.
 | CONFIG\_SWITCH\_RESET                      | Deprecated                                 | Close the interface and open the interface again which will reset the switch by default.                |
 +--------------------------------------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------+
 
-| 
+|
 
 .. rubric:: ethtool - Display or change ethernet card settings
    :name: ethtool---display-or-change-ethernet-card-settings
@@ -1018,19 +1018,19 @@ for am335x.
            # ethtool eth0
            Settings for eth0:
            Supported ports: [ TP MII ]
-           Supported link modes:   10baseT/Half 10baseT/Full 
-                                   100baseT/Half 100baseT/Full 
-                                   1000baseT/Half 1000baseT/Full 
+           Supported link modes:   10baseT/Half 10baseT/Full
+                                   100baseT/Half 100baseT/Full
+                                   1000baseT/Half 1000baseT/Full
            Supported pause frame use: Symmetric
            Supports auto-negotiation: Yes
-           Advertised link modes:  10baseT/Half 10baseT/Full 
-                                   100baseT/Half 100baseT/Full 
-                                   1000baseT/Half 1000baseT/Full 
+           Advertised link modes:  10baseT/Half 10baseT/Full
+                                   100baseT/Half 100baseT/Full
+                                   1000baseT/Half 1000baseT/Full
            Advertised pause frame use: Symmetric
            Advertised auto-negotiation: Yes
-           Link partner advertised link modes:  10baseT/Half 10baseT/Full 
-                                                100baseT/Half 100baseT/Full 
-                                                1000baseT/Full 
+           Link partner advertised link modes:  10baseT/Half 10baseT/Full
+                                                100baseT/Half 100baseT/Full
+                                                1000baseT/Full
            Link partner advertised pause frame use: Symmetric
            Link partner advertised auto-negotiation: Yes
            Speed: 1000Mb/s
@@ -1053,7 +1053,7 @@ for am335x.
            driver: cpsw
            version: 1.0
            firmware-version:
-           expansion-rom-version: 
+           expansion-rom-version:
            bus-info: 48484000.ethernet
            supports-statistics: yes
            supports-test: no
@@ -1101,7 +1101,7 @@ Sets the driver message type flags by name or number
            [ msglvl %d | msglvl type on|off ... ]
            # ethtool -s eth0 msglvl drv off
            # ethtool -s eth0 msglvl ifdown off
-           # ethtool -s eth0 msglvl ifup off 
+           # ethtool -s eth0 msglvl ifup off
            # ethtool eth0
            Current message level: 0x00000031 (49)
                                   drv ifdown ifup
@@ -1217,7 +1217,7 @@ section for more information
 
 ::
 
-           # ethtool -g eth0 
+           # ethtool -g eth0
            Ring parameters for eth0:
            Pre-set maximums:
            RX:             8184
@@ -1240,11 +1240,11 @@ This command will dump current ALE table
            # ethtool -d eth0
            Offset          Values
            ------          ------
-           0x0000:         00 00 00 00 00 00 02 20 05 00 05 05 14 00 00 00 
-           0x0010:         ff ff 02 30 ff ff ff ff 01 00 00 00 da 74 02 30 
-           0x0020:         b9 83 48 ea 00 00 00 00 00 00 00 20 07 00 00 07 
-           0x0030:         14 00 00 00 00 01 02 30 01 00 00 5e 0c 00 00 00 
-           0x0040:         33 33 01 30 01 00 00 00 00 00 00 00 00 00 01 20 
+           0x0000:         00 00 00 00 00 00 02 20 05 00 05 05 14 00 00 00
+           0x0010:         ff ff 02 30 ff ff ff ff 01 00 00 00 da 74 02 30
+           0x0020:         b9 83 48 ea 00 00 00 00 00 00 00 20 07 00 00 07
+           0x0030:         14 00 00 00 00 01 02 30 01 00 00 5e 0c 00 00 00
+           0x0040:         33 33 01 30 01 00 00 00 00 00 00 00 00 00 01 20
            0x0050:         03 00 03 03 0c 00 00 00 ff ff 01 30 ff ff ff ff
 
 | …
@@ -1413,7 +1413,7 @@ affinity settings:
 
 ::
 
-      am57xx-evm:~# cat /proc/interrupts 
+      am57xx-evm:~# cat /proc/interrupts
       353:     518675          0      CBAR 335 Level     48484000.ethernet
       354:    1468516          0      CBAR 336 Level     48484000.ethernet
 
@@ -1428,7 +1428,7 @@ before:
 
 ::
 
-    am57xx-evm:~# iperf -c 192.168.1.1 -w128K -d -i5 -t120 & cyclictest -n -m -Sp97 -q -D2m 
+    am57xx-evm:~# iperf -c 192.168.1.1 -w128K -d -i5 -t120 & cyclictest -n -m -Sp97 -q -D2m
         ------------------------------------------------------------
         Server listening on TCP port 5001
         TCP window size:  256 KByte (WARNING: requested  128 KByte)
@@ -1446,7 +1446,7 @@ after:
 
 ::
 
-    am57xx-evm:~# iperf -c 192.168.1.1 -w128K -d -i5 -t120 & cyclictest -n -m -Sp97 -q -D2m 
+    am57xx-evm:~# iperf -c 192.168.1.1 -w128K -d -i5 -t120 & cyclictest -n -m -Sp97 -q -D2m
         ------------------------------------------------------------
         Server listening on TCP port 5001
         TCP window size:  256 KByte (WARNING: requested  128 KByte)
@@ -1480,7 +1480,7 @@ after:
 
 ::
 
-    am57xx-evm:~# iperf -c 192.168.1.1 -w128K -d -i5 -t120 & cyclictest -n -m -Sp97 -q - D2m                                                                                                                                        
+    am57xx-evm:~# iperf -c 192.168.1.1 -w128K -d -i5 -t120 & cyclictest -n -m -Sp97 -q - D2m
         ------------------------------------------------------------
         Server listening on TCP port 5001
         TCP window size:  256 KByte (WARNING: requested  128 KByte)
@@ -1497,7 +1497,7 @@ after:
         T: 0 ( 1083) P:97 I:1000 C: 120000 Min:      8 Act:    9 Avg:   15 Max:      39
         T: 1 ( 1084) P:97 I:1500 C:  79978 Min:      8 Act:   10 Avg:   17 Max:      39
 
-| 
+|
 
 .. _PLSDK_CPTS_Module-label:
 
@@ -1552,7 +1552,7 @@ Supported parameters for SIOCSHWTSTAMP and SIOCGHWTSTAMP:
 
     SIOCGHWTSTAMP
        hwtstamp_config.flags = 0
-       hwtstamp_config.tx_type 
+       hwtstamp_config.tx_type
            HWTSTAMP_TX_ON
            HWTSTAMP_TX_OFF
        hwtstamp_config.rx_filter
@@ -1563,7 +1563,7 @@ Supported parameters for SIOCSHWTSTAMP and SIOCGHWTSTAMP:
 
     SIOCSHWTSTAMP
        hwtstamp_config.flags = 0
-       hwtstamp_config.tx_type 
+       hwtstamp_config.tx_type
            HWTSTAMP_TX_ON - enables hardware time stamping for outgoing packets
            HWTSTAMP_TX_OFF - no outgoing packet will need hardware time stamping
        hwtstamp_config.rx_filter
@@ -1615,8 +1615,8 @@ Port registers: Pn\_CONTROL Register:
                        address number 131 (decimal) is enabled.
        Pn_TS_130 Port n Time Sync Destination IP Address 130 enable
                        1 - Annex D (UDP/IPv4) time sync packet destination IP
-                       address number 130 (decimal) is enabled. 
-       Pn_TS_129 Port n Time Sync Destination IP Address 129 enable 
+                       address number 130 (decimal) is enabled.
+       Pn_TS_129 Port n Time Sync Destination IP Address 129 enable
                        1 - Annex D (UDP/IPv4) time sync packet destination IP
                        address number 129 (decimal) is enabled.
        Pn_TS_TTL_NONZERO Port n Time Sync Time To Live Non-zero enable.
@@ -1712,7 +1712,7 @@ starts a ptp4l-over-L2 master on an EVM using hardware timestamping,
 
 ::
 
-       ./ptp4l -E -2 -H -i eth0 -l 7 -m -q -p /dev/ptp0 
+       ./ptp4l -E -2 -H -i eth0 -l 7 -m -q -p /dev/ptp0
 
 On a Linux PC which does not supoort hardware timestamping, the
 following command starts a ptp4l-over-L2 master using software

@@ -55,7 +55,7 @@ Processor SDK 06.xx Releases
 
 Processor SDK 06.03
 --------------------
-- This is a quarterly update release on 2019 LTS stream and final release on that stream. 
+- This is a quarterly update release on 2019 LTS stream and final release on that stream.
 - ICSSM PRUETH: Network storm prevention enhancements. Please check 4.2.4.7 Network Storm Prevention section of user guide, for changes in user interface for configuring storm prevention.
 
 Processor SDK 06.02
@@ -66,7 +66,7 @@ Processor SDK 06.02
 
 Processor SDK 06.01
 ---------------------
-- This is a quarterly update release on 2019 LTS stream. 
+- This is a quarterly update release on 2019 LTS stream.
 - EMAC firmware
   - PRP Firmware in EMAC mode can be obsolete, as EMAC firmware has been made to be feature parity for SAN
 
@@ -205,7 +205,7 @@ supported through debugfs files at the prueth device.
 Processor SDK 05.00
 ---------------------
 - This is the first release for 2018 LTS (Kernel: 4.14, U-boot: 2018.01, gcc: 7.2.1 and Yocto: 2.4 (rocko)).
-- With Yocto migration, several open source components (Qt, Wayland, Weston, GStreamer, iPerf, etc.) are all upgraded. For the exact versions of the new components, please refer to the 
+- With Yocto migration, several open source components (Qt, Wayland, Weston, GStreamer, iPerf, etc.) are all upgraded. For the exact versions of the new components, please refer to the
   Software Manifest., and for any migration issues, refer to the corresponding component's release notes, and Processor SDK Known Issues list.
 - Following are major compatability changes for TI drivers, components.
 - IPC
@@ -236,7 +236,7 @@ Processor SDK 05.00
 - PCIe: The way in which PCIe endpoint is configured has changed. More details can be found from :ref:`PCIe End Point Driver <pcie-end-point-4-14-kernel>`.
 - AM335x ICE v2: A new DT file (am335x-ice-v2-prueth.dts) is added to support PRUSS Ethernet ports. The following configurations are supported.
 
-:: 
+::
 
    am335x-ice-v2.dts: Both ports are CPSW controlled (Board jumpers J18 and J19 at RMII).
    am335x-ice-v2-prueth.dts: Both ports are PRUSS controlled (Board jumpers J18 and J19 at MII).
@@ -254,17 +254,17 @@ Processor SDK 04.xx Releases
 
 Processor SDK 04.03
 ----------------------
--  Added am572x-idk-pps.dts and am571x-idk-pps.dts which are extensions of the 
-   am572x-idk.dts abd an571x-idk.dts respectively. The new DTS enables the PPS 
-   IO pins (sync/latch) and PTP BC bindings at the modified AM572x-idk and 
+-  Added am572x-idk-pps.dts and am571x-idk-pps.dts which are extensions of the
+   am572x-idk.dts abd an571x-idk.dts respectively. The new DTS enables the PPS
+   IO pins (sync/latch) and PTP BC bindings at the modified AM572x-idk and
    AM571x-idks, where the USB/LCD Display are disabled
 -  Camera support for AM572x GPEVM is not in the default DTB.Use
    am57xx-evm*-cam-mt9t111.dtb for mt9t111 camera, and am57xx-evm*-cam-ov10635.dtb
    for ov10635 camera
 -  Processor SDK documentation is now created from reStructuredText sources using
    Sphinx, and hosted on software-dl.ti.com instead of processors wiki
--  For AM57xx, with the addition of new components in the filesystem, the minimum 
-   SD-card size is 8 GB (4 GB SD cards no longer work). 
+-  For AM57xx, with the addition of new components in the filesystem, the minimum
+   SD-card size is 8 GB (4 GB SD cards no longer work).
 -  For am57xx devices, the location of the saved U-Boot environment has moved
    from the external SD card to eMMC. Because of this change, the state of the
    U-Boot environment can no longer be guaranteed on a newly created SD card.
@@ -312,7 +312,7 @@ Processor SDK 04.01
    PRU client drivers using a specific PRU, and set their firmware using
    sysfs before starting and using a PRU
 
-| 
+|
 
 Processor SDK 04.00
 ----------------------
@@ -418,7 +418,7 @@ The following features are not ported to 2017 LTS
 -  IPSec sideband and inflow mode
 -  QoS
 
-| 
+|
 
 Processor SDK 03.xx Releases
 ============================
@@ -432,7 +432,7 @@ Processor SDK 03.03
    Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes>`__
    for full list of modifications.
 
-| 
+|
 
 Processor SDK 03.02
 -------------------
@@ -457,7 +457,7 @@ Processor SDK 03.02
 -  HDMI-connected monitor no longer takes precedence over built-in LCD
    as a default graphics display for e.g. Matrix
 
-| 
+|
 
 Processor SDK 03.01
 -------------------
@@ -475,7 +475,7 @@ Processor SDK 03.01
    same is not backward compatible with the firmware in the previous SDK
    release (03.00.00)
 
-| 
+|
 
 Processor SDK 03.00
 -------------------
@@ -496,7 +496,7 @@ Processor SDK 03.00
    .config and build.
 -  See the Release Notes for full list of modifications.
 
-| 
+|
 
 Processor SDK 02.xx Releases
 ============================
@@ -514,7 +514,7 @@ Processor SDK 02.00.02
    Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes#Release_02.00.02>`__
    for full list of modifications.
 
-| 
+|
 
 Processor SDK 02.00.01
 ----------------------
@@ -530,7 +530,7 @@ Processor SDK 02.00.01
    Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes#Release_02.00.01>`__
    for full list of modifications.
 
-| 
+|
 
 Processor SDK 02.00.00
 ----------------------

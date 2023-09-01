@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Audio_Pre-Processing 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Audio_Pre-Processing
 
 Introduction
 ============
@@ -40,7 +40,7 @@ Currently, the following devices and EVMs are supported:
 -  OMAP-L137, on the OMAP-L137 EVM. See TIDEP-0099
    (http://www.ti.com/tool/TIDEP-0099) for details
 
-| 
+|
 
 Requirements
 ============
@@ -61,7 +61,7 @@ Software
 -  VOLIB 2.1.0.1(C64P for OMAP-L137, C66 for K2G and AM572x)
    (http://www.ti.com/tool/telecomlib)
 
-| 
+|
 
 Software Design
 ===============
@@ -97,7 +97,7 @@ overall steps:
 -  After completed the audio frame processing, the main thread will wait
    on semaphore for next audio frames to come
 
-| 
+|
 
 File Based Demo
 ===============
@@ -124,7 +124,7 @@ AM572x GP EVM
       source ./setupenv.sh
       make audio_preproc_clean
       make audio_preproc
-      the OUT files for DSP1 will be built at 
+      the OUT files for DSP1 will be built at
          processor_sdk_rtos_am57xx_4_xx_xx_xx/demos/audio-preprocessing/file_demo_bios/am572x/build
 
 **For Windows:**
@@ -137,7 +137,7 @@ AM572x GP EVM
       setupenv.bat
       gmake audio_preproc_clean
       gmake audio_preproc
-      the OUT files for DSP1 will be built at 
+      the OUT files for DSP1 will be built at
          processor_sdk_rtos_am57xx_4_xx_xx_xx\demos\audio-preprocessing\file_demo_bios\am572x\build
 
 K2G EVM
@@ -153,7 +153,7 @@ K2G EVM
       source ./setupenv.sh
       make audio_preproc_clean
       make audio_preproc
-      the OUT files for DSP will be built at 
+      the OUT files for DSP will be built at
          processor_sdk_rtos_k2g_4_xx_xx_xx/demos/audio-preprocessing/file_demo_bios/k2g/build
 
 **For Windows:**
@@ -166,7 +166,7 @@ K2G EVM
       setupenv.bat
       gmake audio_preproc_clean
       gmake audio_preproc
-      the OUT files for DSP will be built at 
+      the OUT files for DSP will be built at
          processor_sdk_rtos_k2g_4_xx_xx_xx\demos\audio-preprocessing\file_demo_bios\k2g\build
 
 OMAP-L137 EVM
@@ -182,7 +182,7 @@ OMAP-L137 EVM
       source ./setupenv.sh
       make audio_preproc_clean
       make audio_preproc
-      the OUT files for DSP will be built at 
+      the OUT files for DSP will be built at
          processor_sdk_rtos_omapl137_4_xx_xx_xx/demos/audio-preprocessing/file_demo_bios/omapl137/build
 
 **For Windows:**
@@ -195,7 +195,7 @@ OMAP-L137 EVM
       setupenv.bat
       gmake audio_preproc_clean
       gmake audio_preproc
-      the OUT files for DSP will be built at 
+      the OUT files for DSP will be built at
          processor_sdk_rtos_omapl137_4_xx_xx_xx\demos\audio-preprocessing\file_demo_bios\omapl137\build
 
 How to Run the Demo
@@ -289,9 +289,9 @@ OMAP-L137 EVM
    external memory buffer to a file
    (audio-preprocessing\\common\\t8\\fileOutput7.bin)
 
-| 
+|
 
-| 
+|
 
 Circular Microphone Board Demo
 ==============================
@@ -317,7 +317,7 @@ K2G EVM
       source ./setupenv.sh
       make audio_preproc_clean
       make audio_preproc
-      the OUT files for DSP will be built at 
+      the OUT files for DSP will be built at
          processor_sdk_rtos_k2g_4_xx_xx_xx/demos/audio-preprocessing/realtime_demo_bios/k2g/build
 
 **For Windows:**
@@ -330,7 +330,7 @@ K2G EVM
       setupenv.bat
       gmake audio_preproc_clean
       gmake audio_preproc
-      the OUT files for DSP will be built at 
+      the OUT files for DSP will be built at
          processor_sdk_rtos_k2g_4_xx_xx_xx\demos\audio-preprocessing\realtime_demo_bios\k2g\build
 
 OMAP-L137 EVM
@@ -346,7 +346,7 @@ OMAP-L137 EVM
       source ./setupenv.sh
       make audio_preproc_clean
       make audio_preproc
-      the OUT files for DSP will be built at 
+      the OUT files for DSP will be built at
          processor_sdk_rtos_omapl137_4_xx_xx_xx/demos/audio-preprocessing/realtime_demo_bios/omapl137/make
 
 **For Windows:**
@@ -359,7 +359,7 @@ OMAP-L137 EVM
       setupenv.bat
       gmake audio_preproc_clean
       gmake audio_preproc
-      the OUT files for DSP will be built at 
+      the OUT files for DSP will be built at
          processor_sdk_rtos_omapl137_4_xx_xx_xx\demos\audio-preprocessing\realtime_demo_bios\omapl137\make
 
 How to Run the Demo
@@ -424,7 +424,7 @@ K2G EVM (Boot from SD card)
 -  The program will run the real time demo forever, taking the input
    from CMB and output to the on-board line-out
 
-| 
+|
 
 How to Read the Input/output Audio Files
 ========================================
@@ -456,5 +456,5 @@ Before and After Comparison
 
 .. Image:: ../images/Aud_pre_processing_after.png
 
-| 
+|
 

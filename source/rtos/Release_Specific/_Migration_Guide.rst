@@ -32,13 +32,13 @@ Building of libraries of individual PDK components
 **Migration:** Building individual drivers' librabries/apps of PDK from PDK's top level makefile is not supported
 
 **Impact Scope:** Applicable for PDK top level makefile
- 
+
 **Additional Details**:
 Prior to this release, libraries/applications of drivers included in pdk (pdk_xx/packages/ti) could be built from
 the top level makefile (pdk_xx/packages/makefile) using commands like "make uart_lib/uart_apps". This is no longer supported.
 Instead, the libraries and applications could either be built using "make all" from the top level makefile or issuing "make libs/apps" from within the module's directory.
 
- 
+
 Processor SDK 06.01
 -------------------
 
@@ -48,12 +48,12 @@ NIMU
 **Migration:** Udma init sequence call has been moved from NIMU library to NIMU example for AM65xx
 
 **Impact Scope:** Applicable for all NIMU applications using NIMU tranport library for AM65xx
- 
+
 **Additional Details**:
 Applications will need to implement the following function to provide UDMA drive handle which will be called by the NIMU driver at startup
 
  Udma_DrvHandle nimu_app_get_udma_handle(void)
- 
+
 Processor SDK 06.00
 -------------------
 
@@ -65,7 +65,7 @@ calls will now pass ``PRUICCSS_INSTANCE_THREE`` instead.
 
 **Impact Scope:**
 Applicable for all AM65xx applications using PRUSS driver for ICSSG use case.
- 
+
 **Additional Details:**
 The following new enumeration, ``PRUICCSS_INSTANCE_THREE``, for PRU-ICSS
 instance 3 has been added to ``PRUICSS_MaxInstances`` enumeration list as
@@ -80,7 +80,7 @@ MMU configuration is needed to enable NBO CFG registers access on A53 core.
 **Impact Scope:**
 Applicable for all AM65xx RTOS applications calling ``Board_init()`` with
 ``BOARD_INIT_ICSS_ETH_PHY`` flag.
- 
+
 **Additional Details:**
 Board library is setting ``NAVSS THREADMAP`` register to give higher priority
 for MSMC access from ICSSG which requires access to ``NBO CFG`` registers.
@@ -100,7 +100,7 @@ ICSS-G EMAC firmware binary directory location update for future extension.
 **Impact Scope:**
 Applicable for all applications using EMAC driver with ICSS-G dual EMAC
 firmware.
- 
+
 **Additional Details:**
 Applications will need to update the include path to location of firmware header
 files for ICSSG use case:
@@ -124,10 +124,10 @@ Firmware configuration has been moved to firmware specific configuration files,
 firmware configuration was specified in the test application. It is not expected
 that applicatons will need to modify these files as the are closely tied to the
 firmware.
-   
+
 - **Previous location:** firmware specific configuration was specified in the
   text application (``ti/drv/emac/test/EmacLoopbackTest/test_utils_k3.c``)
-  
+
 - **New location:** ``ti/drv/emac/firmware/icss_dualmac/config/``
 
 Applications will need to update their makefiles to include c source file
@@ -138,9 +138,9 @@ parameters to pass get firmware configuration pointer :
 
 .. code-block:: c
 
-   EMAC_HwAttrs_V5 emac_cfg;   
-   EMAC_socGetInitCfg(0, &emac_cfg);   
-   emac_cfg.portCfg[port_num].getFwCfg = &emacGetDualMacFwConfig;   
+   EMAC_HwAttrs_V5 emac_cfg;
+   EMAC_socGetInitCfg(0, &emac_cfg);
+   emac_cfg.portCfg[port_num].getFwCfg = &emacGetDualMacFwConfig;
    EMAC_socSetInitCfg(0, &emac_cfg);
 
 CSL
@@ -225,7 +225,7 @@ AM65xx PDK component dependency on sciclient module.
 Applications will need to link to sciclient module library. No migration impact
 if application is already linking the library.
 
-**Additional Details**: 
+**Additional Details**:
 All application using PDK components on AM65xx platform will need to link
 sciclient library  as components internally will be using sciclient API for PLL
 and interrupt configuration. In this release, requirement for application will
@@ -244,25 +244,25 @@ New APIs for EEPROM Board ID Information
 Applications using Board ID info APIs on AM65xx platform. No migration impact
 for existing applications and boards using version 1 API.
 
-**Additional Details**: 
+**Additional Details**:
 TI Board ID information format has been updated to new version on AM65xx. New
 board library APIs ``Board_getIDInfo_v2()`` and ``Board_writeIDInfo_v2()`` are
 added to support new Board ID information format. Old Board ID info APIs are
 still avaialble to retain the backward build compatibility but returns error
 when used on AM65xx platform.
-  
+
 FATFS
 ^^^^^
 **Migration:**
 FATFS module in this release includes multipartition support and capability of
-detecting single vs multiple partitions run time. 
+detecting single vs multiple partitions run time.
 
 **Impact Scope:**
 Limited to the case if user had used MS-DOS Floppy disk format for formatting
 the SD/eMMC memory. No impact if the SD/eMMC is formatted using the steps
 provided by `Windows SD Card Creation Guide
 <index_overview.html#windows-sd-card-creation-guide>`_/ `Linux SD Card Creation
-Guide <index_overview.html#tools-create-sd-card-linux-label>`_ 
+Guide <index_overview.html#tools-create-sd-card-linux-label>`_
 
 **Additional Details**:
 Partition entry information may be wrongly detected for the storage media
@@ -286,7 +286,7 @@ with updated DMA infrastructure. Additional UDMA driver support is available in
 package to support enhanced DMA infrastrcuture for AM65x Drivers for AM65x SOC
 is extended to support UDMA LLD abstracting changes needed by
 application. Limited change will be required for application using drivers
-included in Processor SDK.  
+included in Processor SDK.
 
 **Additional Details**:
 Modifications needed at application will be limited to initialization of UDMA
@@ -390,7 +390,7 @@ sample code sets SemaphoreP/HwiP to be used from external memory block:
    {
        return (false);
    }
-   
+
    /* This API should set to use external memory block */
    hwAttrs.extSemaphorePBlock.base = (uintptr_t) &semPMemBlock[0];
    hwAttrs.extSemaphorePBlock.size = SEMP_BLOCK_SIZE;
@@ -456,24 +456,24 @@ chain. This includes updates to SysBIOS, compiler and linker options. Following
 migration changes required for applications:
 
 - Compiler options: Add nano libs to Include path
-  
+
   - Example:
     ``gcc-arm-none-eabi-6-2017-q1-update/arm-none-eabi/include/newlib-nano``
 
 - Linker Options: Replace fpu lib paths with hard lib and enable nano specs
-  
+
   - Example: ``"<SYS/BIOS Root>/packages/gnu/targets/arm/libs/install-native/arm-none-eabi/lib/fpu"``
      with ``"<SYS/BIOS
      Root>/packages/gnu/targets/arm/libs/install-native/arm-none-eabi/lib/hard --specs=nano.specs”``
 
-**Additional References:** 
+**Additional References:**
 
 - PDK Project Creation Scipt:
   ``<pdk_soc_x_x_x/packages/pdkProjectCreate.[bat/sh]>``
 
 **Note:** For baremetal applications, stack section needs to be aligned to 8
-bytes. Updated GCC toolchain is more stringent on memory alignment requirement. 
-Misalignment can result in unexpected run time failures. 
+bytes. Updated GCC toolchain is more stringent on memory alignment requirement.
+Misalignment can result in unexpected run time failures.
 
 EMAC Library
 ^^^^^^^^^^^^
@@ -489,16 +489,16 @@ change the default interrupt mapping in HW attributes if required.
 Example:
 
 .. code-block:: c
-		
+
    EMAC_HwAttrs_V0             emac_hwattr;  /* Local instance for HW attributes */
    EMAC_OPEN_CONFIG_INFO_T     open_cfg;
-   
+
    EMAC_socGetInitCfg(port_num, &emac_hwattr);  /* Get default SOC HW attributes */
    emac_hwattr.txIntrNum = <Int Num>  /* Change default interrupt mapping Optional: if needed */
    EMAC_socSetInitCfg(port_num, &emac_hwattr); /* Change the default HW attributes */
    open_cfg.hwAttrs = &emac_hwattr;  /* Assign HW attributes to configuration parameters */
    emac_open(port_num, &open_cfg);
-   
+
 
 Processor SDK 04.01
 -------------------
@@ -645,7 +645,7 @@ PDK I2C LLD
 ^^^^^^^^^^^
 To support I2C target mode, added ``I2C_transactionInit()`` API. Applications
 need to call ``I2C_transactionInit()`` API before calling ``I2C_transfer()``
-API. 
+API.
 
 **Example:**
 
@@ -693,10 +693,10 @@ categories:
 
 - *Static configuration*: Tied directly to the firmware. For example, location and
   size of statistics, port status and conrol address offsets.
-  
+
 - *Dynamic configuration*: Tuneable parameters based on application. For
   example, sizes of TX/RX queues, port specific buffer/buffer descriptor
-  offsets. 
+  offsets.
 
 A complete list of these parameters can be found in
 ``ti/drv/icss_emac/icss_emacDrv.h``. Refer to ``ICSS_EmacFwStaticMmap`` and
@@ -713,7 +713,7 @@ application can then use the following 2 newly introduced API's to "get" and
 - ``icss_emacGetFwMMapInitConfig()``: Allows for retrieval of default firmware
   memory map configuration. User application may call this if they wish to
   update dynamic firmware memory map configuration paremeters. Static
-  configuration parameters MUST not be updated. 
+  configuration parameters MUST not be updated.
 
 - ``icss_emacSetFwMMapInitConfig()``: Allows for static and dynamic firmware
   memory map configuration parameters to be configured into the the LLD and
@@ -740,7 +740,7 @@ PDK CSL
 - ``csl_a15init`` module is renamed to ``csl_init`` to support portability. The
   impact of this change is limited to bare metal application using PDK makefile
   infrastructure. As part of migration, the module name need to be updated.
-  
+
 - ``csl_a15Aux.h`` is removed as it is duplicate of ``csl_a15.h``. The impact of
   this change is limited to applications that include ``csl_a15Aux.h``. As part
   of migration, the modification required is to include ``csl_a15.h`` instead.
@@ -750,7 +750,7 @@ PDK SA LLD (K2x, C66x)
 Added a feature to select Air Cipher Engine over the default Encryption engine
 for algorithms such as AES_CTR part of ``Sa_DataModeConfigParams_t`` API. There
 is no migration impact if application is initializing the structure to zero
-using memset. 
+using memset.
 
 Processor SDK 03.00
 -------------------
@@ -788,7 +788,7 @@ Device Drivers
    /*use CSL package*/
    var socType = "am571x";
    var Csl     = xdc.loadPackage('ti.csl');
-   
+
    Csl.Settings.deviceType = socType;
 
 - The driver I2C has an API change for I2C_transfer, a new timeout field is
@@ -801,14 +801,14 @@ Device Drivers
 .. code-block:: c
 
    int16_t status;
-   
+
    i2cTransaction.targetAddress = I2C_EEPROM_ADDR;
    i2cTransaction.writeBuf = (uint8_t *)&txBuf[0];
    i2cTransaction.writeCount = I2C_EEPROM_TEST_LENGTH + I2C_EEPROM_ADDR_SIZE;
    i2cTransaction.readBuf = NULL;
    i2cTransaction.readCount = 0;
    i2cTransaction.timeout   = I2C_TRANSACTION_TIMEOUT;
-   
+
    status = I2C_transfer(handle, &i2cTransaction);
 
 Processor SDK 02.xx Releases
@@ -818,7 +818,7 @@ Processor SDK 02.00.02
 ----------------------
 This release primarily adds support for K2G device. There is no migration impact
 to customers using devices supported in the previous release (AM3, AM4, AM5,
-C665x, C667x, K2E, K2H, K2K, K2L). 
+C665x, C667x, K2E, K2H, K2K, K2L).
 
 Processor SDK 02.00.01
 ----------------------
@@ -839,10 +839,10 @@ The strategy for forward/backwards compatibility is as follows:
 - `Device Drivers <Device_Drivers_>`__
 
   - All new development efforts should use Device Drivers because:
-  
+
     - Device Drivers will maintain common APIs for all supported SoCs
     - Customer applications can be easily ported to new and additional SoCs
-      hence providing scalable software platform 
+      hence providing scalable software platform
     - All new features and development will occur only in the Device Drivers.
 
 - StarterWare is included for AM335x and AM437x for backwards compatibility with
@@ -851,7 +851,7 @@ The strategy for forward/backwards compatibility is as follows:
   - This will be maintenance only (bugs will be fixed, no new features)
 
 For applications that already depend on StarterWare from Industrial SDK
-02.01.00.01 on AM335x/AM437x, those APIs remain in Processor SDK in: 
+02.01.00.01 on AM335x/AM437x, those APIs remain in Processor SDK in:
 
 - **AM335x SOC:** ``pdk_am335x_1_0_0/ti/starterware``
 - **AM437x SOC:** ``pdk_am437x_1_0_0/ti/starterware``

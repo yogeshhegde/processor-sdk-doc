@@ -1,7 +1,7 @@
 Update environment when installing to a custom path
 -----------------------------------------------------
 
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Install_In_Custom_Path 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Install_In_Custom_Path
 
 Overview
 ^^^^^^^^

@@ -57,7 +57,7 @@ Where <hash> is the OPTEE commit shown here: :ref:`tf-a-release-notes`.
 .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX', 'J721S2', 'J784S4')
 
     .. code-block:: console
-        
+
         $ make CROSS_COMPILE=aarch64-linux-gnu- PLAT=k3 TARGET_BOARD=generic SPD=opteed
 
 |

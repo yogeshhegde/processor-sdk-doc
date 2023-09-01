@@ -25,7 +25,7 @@ TI microprocessor.
     The SDK consists of a development filesystem, a
     target filesystem, example applications, toolchain and board support
     package, ease of use scripts and documentation.
-	
+
 The |__SDK_FULL_NAME__| now includes the ARM GCC toolchain.
 The |__SDK_FULL_NAME__| was built and tested against a specific Linux
 Distribution name and version, Ubuntu |__LINUX_UBUNTU_VERSION_SHORT__|.
@@ -49,9 +49,9 @@ distributions.
 
     2. From the SD Card included with a TI EVM. This may not be the latest
        version of the SDK. We recommend checking the above site and using the
-       latest version if at all possible. Before running the SDK Installer from 
-       the SD card, the SD Card from the EVM box needs to be mounted to your 
-       Linux Host PC (using a USB SD Card reader).  The SDK Installer is found 
+       latest version if at all possible. Before running the SDK Installer from
+       the SD card, the SD Card from the EVM box needs to be mounted to your
+       Linux Host PC (using a USB SD Card reader).  The SDK Installer is found
        in the START\_HERE partition of the SD card.
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')

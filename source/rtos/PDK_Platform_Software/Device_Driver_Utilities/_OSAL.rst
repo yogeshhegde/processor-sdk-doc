@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_OSAL 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_OSAL
 
 Overview
 --------
@@ -44,7 +44,7 @@ Reference library path to be included in application build environment:
 ::
 
      <ti/osal/lib/nonos/[soc]/[[cpu]/>
-      
+
 
 **SysBIOS based application**
 
@@ -55,13 +55,13 @@ RTSC configuration lines before any other processor sdk components
 ::
 
 
-     /* set the operating system type, 
-      * supported types are "tirtos" and "nonos" 
+     /* set the operating system type,
+      * supported types are "tirtos" and "nonos"
       */
      var osType           = "tirtos";
 
      /* set the soc type
-      * (applicable only when osTYpe 
+      * (applicable only when osTYpe
       *  is "nonos" only)
      */
      var socType           = "am572x";
@@ -71,9 +71,9 @@ RTSC configuration lines before any other processor sdk components
      Osal.Settings.osType  = osType;
      Osal.Settings.socType = socType;
 
-       
 
-| 
+
+|
 
 Application
 ------------
@@ -98,11 +98,11 @@ This sysbios based example tests Hwi, Timer, Semaphores etc.
 
 ::
 
-    evmAM335x 
-    evmAM437x 
-    idkAM571x 
-    idkAM574x 
-    evmAM572x 
+    evmAM335x
+    evmAM437x
+    idkAM571x
+    idkAM574x
+    evmAM572x
     evmK2G
     evmK2H
     evmOMAPL137
@@ -143,16 +143,16 @@ Semaphores etc and prints output on UART console.
 
 ::
 
-    evmAM572x 
-    evmAM335x 
-    evmAM437x 
-    evmDRA72x 
-    evmDRA75x 
-    evmDRA78x 
-    iceK2G 
-    idkAM574x 
-    idkAM572x 
-    idkAM571x 
+    evmAM572x
+    evmAM335x
+    evmAM437x
+    evmDRA72x
+    evmDRA75x
+    evmDRA78x
+    iceK2G
+    idkAM574x
+    idkAM572x
+    idkAM571x
     idkAM437x
     am65xx_evm
     am65xx_idk
@@ -167,7 +167,7 @@ the baremetal test binaries.
 ::
 
     cd pdk_<ver>/packages/
-    Run pdksetupenv.bat 
+    Run pdksetupenv.bat
     Run "make osal"
     Find the executable at ti/<pdk>/packages/ti/binary/osal_baremetal_test/bin
     Load the executable on the board
@@ -267,5 +267,5 @@ Additional References
 
 .. _Eclipse RTSC: http://www.eclipse.org/rtsc/
 
-| 
+|
 

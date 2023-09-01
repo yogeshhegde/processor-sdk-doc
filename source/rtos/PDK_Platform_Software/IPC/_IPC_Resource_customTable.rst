@@ -1,10 +1,10 @@
-.. http://processors.wiki.ti.com/index.php/IPC_Resource_customTable 
+.. http://processors.wiki.ti.com/index.php/IPC_Resource_customTable
 
 Introduction
 ^^^^^^^^^^^^^^
 
 The IPC 3.x product introduced support for loading target images which
-include a `Linux-defined resource table <http://lwn.net/Articles/489009/>`__. 
+include a `Linux-defined resource table <http://lwn.net/Articles/489009/>`__.
 In IPC 3.00.01, `IPC added the ability <http://git.ti.com/cgit/cgit.cgi/ipc/ipcdev.git/commit/?h=ipc-next&id=44169db6cd6f02193acf7ee97c13f956f599431d>`__
 for users to override the default resource table with their own. This
 article describes the mechanics involved to do that.
@@ -23,7 +23,7 @@ To indicate you want to provide your own resource table, you need to set
 the ``Resource.customTable`` config parameter ``true``.
 
 ::
-  
+
     /* Override the default resource table with my own */
     var Resource = xdc.useModule('ti.ipc.remoteproc.Resource');
     Resource.customTable = true;
@@ -59,7 +59,7 @@ is a reference design only, and it is subject to enhancements,
 improvements and other changes without notifications).
 
 .. code-block:: c
-  
+
     #include "rsc_types.h"
      
     /* IPU Memory Map */
@@ -222,10 +222,10 @@ improvements and other changes without notifications).
         struct fw_rsc_devmem devmem12;
      
         /* devmem entry */
-        struct fw_rsc_devmem devmem13; 
+        struct fw_rsc_devmem devmem13;
      
         /* devmem entry */
-        struct fw_rsc_devmem devmem14; 
+        struct fw_rsc_devmem devmem14;
      
         /* devmem entry */
         struct fw_rsc_devmem devmem15;
@@ -385,13 +385,13 @@ improvements and other changes without notifications).
             TYPE_DEVMEM,
             IPU_OCMC_RAM, L3_OCMC_RAM,
             SZ_4M, 0, 0, "IPU_OCMC_RAM",
-        },    
+        },
      
         {
             TYPE_DEVMEM,
             IPU_EMIF_SDRAM, L3_EMIF_SDRAM,
             SZ_256M, 0, 0, "IPU_EMIF_SDRAM",
-        },    
+        },
     };
 
 
@@ -409,7 +409,7 @@ entries.
 The virtual addresses #defined are:
 
 .. code-block:: c
-  
+
     #define IPU_MEM_TEXT            0x0
     #define IPU_MEM_DATA            0x80000000
      
@@ -422,7 +422,7 @@ The followings are fixed physical address to facilitate a fixed MMU
 table.
 
 .. code-block:: c
-  
+
     #if defined(VAYU_IPU_1)
     #define PHYS_MEM_IPC_VRING      0x9D000000
     #elif defined (VAYU_IPU_2)
@@ -433,7 +433,7 @@ These PHYS_MEM values match exactly the physical address specified in
 the remoteproc CMA area in Linux DTS file:
 
 ::
-   
+
                     ipu2_cma_pool: ipu2_cma@95800000 {
                             compatible = "shared-dma-pool";
                             reg = <0x95800000 0x3800000>;
@@ -452,7 +452,7 @@ the remoteproc CMA area in Linux DTS file:
 The 1st entry in the resource table is:
 
 .. code-block:: c
-   
+
         /* rpmsg vdev entry */
         {
             TYPE_VDEV, VIRTIO_ID_RPMSG, 0,
@@ -469,7 +469,7 @@ remoteproc CMA area is used for this.
 The 2nd-4th entries are:
 
 .. code-block:: c
-   
+
         {
             TYPE_CARVEOUT,
             IPU_MEM_TEXT, 0,
@@ -501,7 +501,7 @@ corresponds to the vrings and creates the IPU MMU mapping needed to
 access them from the IPU core:
 
 .. code-block:: c
-  
+
         {
             TYPE_DEVMEM,
             IPU_MEM_IPC_VRING, PHYS_MEM_IPC_VRING,
@@ -516,7 +516,7 @@ To add a new TYPE_DEVMEM entry, for example, to access PRU-ICSS from IPU
 -  1. specify the physical address of PRU-ICSS and its virutal address.
 
 ::
-  
+
         #define L3_PERIPHERAL_PRUSS     0x4B200000
         #define IPU_PERIPHERAL_PRUSS    0x6B200000
 
@@ -529,7 +529,7 @@ To add a new TYPE_DEVMEM entry, for example, to access PRU-ICSS from IPU
 -  6. add actual entry in ti_ipc_remoteproc_ResourceTable.
 
 .. code-block:: c
-  
+
         {
             TYPE_DEVMEM,
             IPU_PERIPHERAL_PRUSS, L3_PERIPHERAL_PRUSS,
@@ -542,7 +542,7 @@ PRU-ICSS from DSP, you must add the following entry in
 **rsc_table_vayu_dsp.h**
 
 ::
-  
+
     #define L3_PRU_ICSS             0x4B200000
     #define DSP_PRU_ICSS            0x4B200000
 

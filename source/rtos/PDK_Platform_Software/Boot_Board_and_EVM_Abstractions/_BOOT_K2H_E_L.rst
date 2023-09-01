@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_K2H/E/L 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_K2H/E/L
 
 Overview
 ^^^^^^^^^
@@ -167,7 +167,7 @@ Usage
    Path]/pdk_<platform>_<version>/packages/ti/boot/sbl/tools/flashWriter/spi/bin/<platform>/spi_flash_writer.out
 #. You should see the flash progress output on UART terminal
 
-| 
+|
 
 Boot Example
 ^^^^^^^^^^^^^^

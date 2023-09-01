@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/The_ti.sdo.utils_Package 
+.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/The_ti.sdo.utils_Package
 
 This page introduces the modules in the ti.sdo.utils package.
 

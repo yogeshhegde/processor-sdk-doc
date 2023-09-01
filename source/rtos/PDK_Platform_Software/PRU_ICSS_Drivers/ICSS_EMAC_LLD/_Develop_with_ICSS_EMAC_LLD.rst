@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide 
+.. http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide
 
 Terms and Glossary
 ^^^^^^^^^^^^^^^^^^^
@@ -40,7 +40,7 @@ Terms and Glossary
    |                 |                 |                 | Processor       |
    +-----------------+-----------------+-----------------+-----------------+
 
-| 
+|
 
 -  **Bold** typeface refers to name of function/API/variable/structure.
 -  Code snippets are shown as below
@@ -215,7 +215,7 @@ how to remove the EtherNet/IP part of it are given
 
 There are some important differences between an EMAC and Switch
 
-| 
+|
 
 .. table::  Differences between EMAC and Switch
 
@@ -372,19 +372,19 @@ refer to
 
 ::
 
-    #define HOST_QUEUE_1_SIZE      194 
-    #define HOST_QUEUE_2_SIZE       194 
-    #define HOST_QUEUE_3_SIZE       194 
+    #define HOST_QUEUE_1_SIZE      194
+    #define HOST_QUEUE_2_SIZE       194
+    #define HOST_QUEUE_3_SIZE       194
     #define HOST_QUEUE_4_SIZE       194
 
 The transmit queues sizes are denoted separately
 
 ::
 
-    #define QUEUE_1_SIZE       97  
-    #define QUEUE_2_SIZE        97  
-    #define QUEUE_3_SIZE        97  
-    #define QUEUE_4_SIZE        97  
+    #define QUEUE_1_SIZE       97
+    #define QUEUE_2_SIZE        97
+    #define QUEUE_3_SIZE        97
+    #define QUEUE_4_SIZE        97
 
 So in total there are 15 queues (12 queues in EMAC), 4 receive queues
 for Host and 4 transmit queues for each of the two physical ports. In
@@ -501,7 +501,7 @@ detailed description is given below.
                    else
                    {
                         /* just dump the packet here so we do no stall the queues*/
-                        ICSS_EmacRxPktGet(icssEmacHandle,(uint32_t)dest_address, queue_number, &port_number, &more);   
+                        ICSS_EmacRxPktGet(icssEmacHandle,(uint32_t)dest_address, queue_number, &port_number, &more);
                    }
               }
               ...
@@ -565,7 +565,7 @@ given below
     uint8_t *dstMacId = tempFrame;
     ICSSEMAC_Handle eipIcssEmacHandle = (ICSSEMAC_Handle)userArg;
     /*Fetch the packet*/
-    size = ICSS_EmacRxPktGet(eipIcssEmacHandle,(uint32_t)tempFrame, *queue_number, &port, &more); 
+    size = ICSS_EmacRxPktGet(eipIcssEmacHandle,(uint32_t)tempFrame, *queue_number, &port, &more);
     ...
     /*Compare Destination MAC ID and determine if this is a DLR packet*/
     if(COMPARE_MAC(dstMacId, dlrMAC)) {
@@ -620,10 +620,10 @@ guide <http://www.ti.com/lit/ug/spru524i/spru524i.pdf>`__.
     #define DST_IP "192.168.1.64"
     #define DST_PORT 7
     /*Open file session*/
-    fdOpenSession( (HANDLE)Task_self() );       
+    fdOpenSession( (HANDLE)Task_self() );
     SOCKET s = INVALID_SOCKET;
     struct sockaddr_in sin1;
-    struct timeval timeout; 
+    struct timeval timeout;
     /*Create UDP socket*/
     s = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
     /*Prepare address for connect*/
@@ -632,7 +632,7 @@ guide <http://www.ti.com/lit/ug/spru524i/spru524i.pdf>`__.
     bzero( &sin1, sizeof(struct sockaddr_in) );
     sin1.sin_family = AF_INET;
     sin1.sin_addr.s_addr = IPAddr;
-    sin1.sin_port = htons(DST_PORT); 
+    sin1.sin_port = htons(DST_PORT);
      /*Configure our Tx and Rx timeout*/
     timeout.tv_sec = 0;
     timeout.tv_usec = 1;
@@ -660,7 +660,7 @@ in main function.
       /*Send packet in a loop every 500ms*/
       Task_sleep(5000);
       while(1) {
-        /*Send packet on PORT 1*. Size is known previously/     
+        /*Send packet on PORT 1*. Size is known previously/
         ICSS_EmacTxPacket(emachandle,dummyPkt, ICSS_EMAC_PORT_1, 1, ETHERNET_FRAME_SIZE_60);
         Task_sleep(500);
       }
@@ -696,7 +696,7 @@ apply to switch.
    an Rx interrupt is asserted to copy the data. This is the only mode
    available for an EMAC.
 
-| 
+|
 
 .. table::  **Forwarding Rules**
 
@@ -714,7 +714,7 @@ apply to switch.
    | Unicast (to Host)                 | Forward to Host                   |
    +-----------------------------------+-----------------------------------+
 
-| 
+|
 
 Interrupts and Tasks
 """"""""""""""""""""""
@@ -803,9 +803,9 @@ The interrupt mapping consists of 3 parts:
    a screenshot from AM335x TRM showing the 8 interrupts mapped to the
    PRU.
 
-| 
+|
 
-| 
+|
 | The complete mapping follows the pattern
 
 ::
@@ -835,7 +835,7 @@ in the following line (defined in *main.c*)
 
 ::
 
-    switchEmacCfg->rxIntNum = 20; 
+    switchEmacCfg->rxIntNum = 20;
 
 This mapping alone determines which ARM interrupt number will be
 associated with a particular PRU user interrupt. For example the line
@@ -889,7 +889,7 @@ of the reasons for exporting these configurations to application so that
 a single driver can handle multiple SoC's others being ease of use,
 porting other operating systems etc.
 
-| 
+|
 
 .. table::  PRU Interrupt Mapping in EMAC
 
@@ -934,7 +934,7 @@ porting other operating systems etc.
    | Interrupt       |                 |                 |                 |
    +-----------------+-----------------+-----------------+-----------------+
 
-| 
+|
 
 -  ***Host Interrupts*** : Host interrupts are interrupts that are not
    coming via ICSS Interrupt controller. These include peripherals,
@@ -1064,11 +1064,11 @@ A learning table has the following structure
 .. code-block:: c
 
     typedef struct HashTable_t{
-           
+
      uint32_t totalNumEntries;        /**Total number of entries in the hash table*/
      portState state;             /**State of the hash table, see enum portState above*/
      HashBucket_t  entries[NUMBUCKETS];  /**Number of bucket entries*/
-           
+
     } HashTable_t;
 
 The individual bucket which makes up the learning table has the
@@ -1077,11 +1077,11 @@ following structure
 .. code-block:: c
 
     typedef struct {
-     
+
      MAC mac[MAX_NUM_ENTRIES];            /**Four MAC Id per bucket*/
      uint8_t timerCount[MAX_NUM_ENTRIES]; /**Timer count used for ageing and conflict resolution*/
      uint8_t numEntries;                  /**Number of MAC entries in the bucket, 4 means it is full*/
-      
+
     } HashBucket_t;
 
 The default values are
@@ -1227,10 +1227,10 @@ The main parent structure for Storm Prevention is
 .. code-block:: c
 
     typedef struct {
-             
+
      uint8_t suppressionEnabled;   /** enable/disable storm prevention*/
      uint16_t credits;             /** Number of packets allowed in a time interval*/
-      
+
     } stormPrevention_t;
 
 There is an instance of this structure for each port
@@ -1637,7 +1637,7 @@ statistics are listed in the memory map.
 .. code-block:: c
 
     typedef struct {
-     
+
      volatile uint32_t txUcast;         /**Number of unicast packets sent*/
      volatile uint32_t txBcast;         /**Number of broadcast packets sent*/
      volatile uint32_t txMcast;         /**Number of multicast packets sent*/
@@ -1648,7 +1648,7 @@ statistics are listed in the memory map.
      volatile uint32_t rxOctets;            /**Number of Rx packets*/
      volatile uint32_t rxUnknownProtocol;           /**Number of packets with unknown protocol*/
      volatile uint32_t linkBreak;           /**Number of link breaks*/
-     
+
     }hostStatistics_t;
 
 As one can see most of the members are identical to that of PRU
@@ -1873,9 +1873,9 @@ example application) is shown below
 .. code-block:: c
 
     /*Declare the EMAC Handle*/
-    ICSSEMAC_Handle emachandle; 
+    ICSSEMAC_Handle emachandle;
     /*Declare the PRUSS Handle*/
-    PRUICSS_Handle handle; 
+    PRUICSS_Handle handle;
     /*Allocate memory for EMAC and PRUSS Handle*/
     handle = (PRUICSS_Handle)malloc(sizeof(PRUICSS_Config));
     handle->object = (PRUICSS_V1_Object*)malloc(sizeof(PRUICSS_V1_Object));
@@ -1926,7 +1926,7 @@ receive is disabled when PHY detects a link down.
 
     ioctlvalue = ICSS_EMAC_IOCTL_PORT_CTRL_DISABLE;
     ioctlParams.ioctlVal = &ioctlvalue;
-    ICSS_EmacIoctl(icssEmacHandle, ICSS_EMAC_IOCTL_PORT_CTRL, ICSS_EMAC_PORT_1, (void*)&ioctlParams); 
+    ICSS_EmacIoctl(icssEmacHandle, ICSS_EMAC_IOCTL_PORT_CTRL, ICSS_EMAC_PORT_1, (void*)&ioctlParams);
 
 Here *ICSS_EMAC_IOCTL_PORT_CTRL* refers to the ***ioctlCommand*** while
 *ICSS_EMAC_IOCTL_PORT_CTRL_DISABLE* is the ***command*** part of

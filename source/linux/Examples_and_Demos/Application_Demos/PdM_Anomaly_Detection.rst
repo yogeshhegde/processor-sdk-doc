@@ -41,7 +41,7 @@ Some of the examples of predictive maintenance from real-life scenario includes:
 * Tell when an electrical connection needs to be tightened
 * Alert when oil is contaminated or in need of replacement
 
-An overview video for predictive maintenance can be found from 
+An overview video for predictive maintenance can be found from
 `predictive maintenance overview training <https://training.ti.com/using-deep-learning-predictive-maintenance>`__.
 
 Processor SDK Linux now provides a predictive maintenance demo which leverages Recurrent Neural Network (RNN)
@@ -53,7 +53,7 @@ instructions, the benchmarking results, and the PdM demo deliverables from Proce
 Anomaly detection system model with RNN
 -----------------------------------------
 In addition to Convolutional Neural Network (CNN), recently RNN emerged as high-quality
-universal approximation method for time series. It is becoming more effective with 
+universal approximation method for time series. It is becoming more effective with
 many desktop tools supported by GPU acceleration.
 
 For anomaly detection, a system model is established to predict the output from the input
@@ -78,7 +78,7 @@ some pre-processing, such as down-sampling to reduce the data dimension. After t
 of developing the model. For PdM, the model can be either a detection model for condition monitoring (e.g.,
 anomaly detection) or a prediction model for prognostics (e.g., estimating the remaining useful life).
 The model development requires identifying appropriate condition indicators and then training a model to
-interpret these condition indicators. This is likely an iterative process, as you try different models 
+interpret these condition indicators. This is likely an iterative process, as you try different models
 and indicators and tune the model parameters such as the number of RNN layers and nodes. The last step is
 to deploy the model and integrate the solution into a system for machine monitoring and maintenance
 at the edge devices.
@@ -133,7 +133,7 @@ Offline training to establish the model
 
 To establish the RNN model, offline desktop training in MATLAB is done with the two
 down-sampled phase currents. The RNN topology contains a single Long Short-Term Memory (LSTM) layer, and a
-Fully Connected (FC) layer. There are 31 hidden nodes for the LSTM layer, and 
+Fully Connected (FC) layer. There are 31 hidden nodes for the LSTM layer, and
 31 inputs and 2 outputs for the FC layer. This is a simple RNN model, which is
 specified to avoid overfitting and control the computation load. The trained
 model is in Open Neural Network Exchange (ONNX) format. The last layer, regression layer, is the
@@ -169,7 +169,7 @@ To establish the RNN inference library implementing the LSTM and FC layers, our 
 solution is using python scripts to convert the ONNX model into CPP header file, which
 contains the initialized data structures with all the weights information.
 The python scripts supports N stacked LSTM layers, plus one FC layer. The generated
-CPP header is then compiled with the LSTM library to create the ARMv7 object file with 
+CPP header is then compiled with the LSTM library to create the ARMv7 object file with
 the initialization and processing APIs.
 
 .. figure:: ../../../images/rnn-inference-lib.png
@@ -245,7 +245,7 @@ draws the time period of the detected anomaly.
 
 
 Filesystem of Processor SDK Linux also packages two more pre-recorded testing sequences
-(under /usr/share/ti/examples/pdm/), for some other anomalies. 
+(under /usr/share/ti/examples/pdm/), for some other anomalies.
 
 * normal270-anomaly170-normal270.log: motor moving from 45 degree to a different (170 instead of 270) degree.
 * normal45-270-v100-with-friction2-iter10-15.log: hand-pressing the coupler between the motor and the encoder to add more friction.
@@ -254,7 +254,7 @@ Filesystem of Processor SDK Linux also packages two more pre-recorded testing se
 Support rebuilding the demo from top-level Makefile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The source of the PdM demo for real-time inference is available at 
+The source of the PdM demo for real-time inference is available at
 `pdm-anomaly-detection git rep <http://git.ti.com/apps/pdm-anomaly-detection>`__.
 The source is also bundled with Processor SDK Linux installer, under the example-applications
 directory:
@@ -267,19 +267,19 @@ directory:
 Rebuilding of the demo can be done via the top-level Makefile of Processor SDK Linux:
 
 ::
-  
+
   cd [plsdk_install_dir]
   make pdm-anomaly-detection
 
 
-After the compilation is completed, the demo binary can be found at 
+After the compilation is completed, the demo binary can be found at
 [plsdk_install_dir]/example-applications/pdm-anomaly-detection-1.0/RnnPdmAnomalyDetection.
 
- 
+
 ONNX model conversion tool
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Python scripts are provided in the PdM demo source under the model folder 
+Python scripts are provided in the PdM demo source under the model folder
 to convert ONNX model to CPP header file with initialized data structures.
 It supports N stacked LSTM layers plus on fully connected layer as the last layer.
 

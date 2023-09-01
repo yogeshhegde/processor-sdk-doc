@@ -16,7 +16,7 @@ The goal is to provides information for users to get familiar with IPC
 and its build environment, in turn, to help users in developing their
 projects quickly.
 
-| 
+|
 
 .. rubric:: Linux out of box demos
    :name: linux-out-of-box-demos
@@ -48,7 +48,7 @@ The out of box demo is only available on Keystone-2 EVMs.
 
 
    The result from running IPC Demo
-   
+
    .. Image:: /images/IPC_Demo_Result.jpg
       :scale: 60
 
@@ -68,7 +68,7 @@ The source code are located in:
 
 **Rebuilding the demo:**
 
-| 
+|
 | **ARM Linux:**
 
 **1.** Install Linux Proc SDK at the default location
@@ -101,7 +101,7 @@ The source code are located in:
     <Foundational_Components_Kernel_Users_Guide.html>`__
     to set up the build environment.
 
-| 
+|
 | **DSP RTOS :**
 
 **1.** Install RTOS Proc SDK at the default location
@@ -130,7 +130,7 @@ The source code are located in:
 
 ::
 
-    $ cd <RTOS_SDK_INSTALL_DIR>/processor_sdk_rtos_<platform>_x_xx_xx_xx 
+    $ cd <RTOS_SDK_INSTALL_DIR>/processor_sdk_rtos_<platform>_x_xx_xx_xx
     $ source ./setupenv.sh
 
 **4.** Start the top level build:
@@ -146,7 +146,7 @@ The source code are located in:
 
     <RTOS_SDK_INSTALL_DIR>/ipc_x_xx_xx_xx/packages/ti/ipc/tests
 
-| 
+|
 
 .. rubric:: Build IPC Linux examples
    :name: build-ipc-linux-examples
@@ -157,8 +157,8 @@ RTOS processor SDKs need to be installed. They can be downloaded from
 `SDK download
 page <http://www.ti.com/lsds/ti/tools-software/processor_sw.page>`__
 
-To install Linux Proc SDK, please follow the instruction in `Download 
-and Install the SDK 
+To install Linux Proc SDK, please follow the instruction in `Download
+and Install the SDK
 <Overview/Download_and_Install_the_SDK.html>`__
 
 To Install RTOS Proc SDK, please see `Processor SDK for RTOS
@@ -296,7 +296,7 @@ The console output:
       <-- main:
       root@am57xx-evm:~#
 
-| 
+|
 
 .. rubric:: Build IPC RTOS examples
    :name: build-ipc-rtos-examples
@@ -324,7 +324,7 @@ IPC examples can be built with the following commands:
 
        1. Configure the build environment in
           <RTOS_SDK_INSTALL_DIR>/processor_sdk_rtos_<platform>_x_xx_xx_xx directory
-            $ cd <RTOS_SDK_INSTALL_DIR>/processor_sdk_rtos_<platform>_x_xx_xx_xx 
+            $ cd <RTOS_SDK_INSTALL_DIR>/processor_sdk_rtos_<platform>_x_xx_xx_xx
             $ source ./setupenv.sh
        2. Start the top level build:
             $ make ipc_examples
@@ -335,7 +335,7 @@ IPC examples can be built with the following commands:
     default location, then the environment variables, SDK\_INSTALL\_PATH and
     TOOLS\_INSTALL\_PATH need to be exported with their installed locations.
 
-| 
+|
 
 .. rubric:: Run IPC RTOS examples
    :name: run-ipc-rtos-examples

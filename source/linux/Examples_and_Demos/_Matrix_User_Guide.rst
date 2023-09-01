@@ -402,7 +402,7 @@ Fill the contents of the file with the text shown below:
 
 ::
 
-    #!/usr/bin/env xdg-open 
+    #!/usr/bin/env xdg-open
     [Desktop Entry]
     Name=Ex Demo
     Icon=/usr/share/matrix-gui-2.0/apps/ex_directory/example-icon.png

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_K2G 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_K2G
 
 Overview
 ^^^^^^^^^^

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-EMAC_FIRMWARES 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-EMAC_FIRMWARES
 
 Introduction
 =============
@@ -7,7 +7,7 @@ Introduction
   functionalities. Package includes source release for Dual_emac and
   basic switch firmwares.
 
-| 
+|
 
 DUAL_EMAC
 =========
@@ -52,7 +52,7 @@ are high level features:
 | PTP Handling                      | Supported                         |
 +-----------------------------------+-----------------------------------+
 
-| 
+|
 
 SWITCH
 ======
@@ -97,7 +97,7 @@ single SOC. The following are the high level features it supports.
 | Error Handling                    | Supported                         |
 +-----------------------------------+-----------------------------------+
 
-| 
+|
 
 Code Organization
 =================
@@ -115,7 +115,7 @@ Code Organization
 |                       | /icss_emac/firmware/icss_switch   | specific code         |
 +-----------------------+-----------------------------------+-----------------------+
 
-| 
+|
 
 Firmware Build Instruction
 ==========================
@@ -128,7 +128,7 @@ Build instruction from Processor SDK Release package
 
 ::
 
-    Refer to the Processor SDK RTOS Building page for information on setting up build environment. 
+    Refer to the Processor SDK RTOS Building page for information on setting up build environment.
 
 .. rubric:: Compiling ICSS-EMAC FIRMWARES
    :name: compiling-icss-emac-firmwares
@@ -151,7 +151,7 @@ Firmware binaries at the end of the build will be located at:
 -  <REVISION> indicates the revision of the firmware binary based on
    core. (There are 2 revision of PRU ICSS core)
 
-| 
+|
 
 Build instruction from GIT
 --------------------------
@@ -192,7 +192,7 @@ environment outside PROC SDK RTOS.
    -  the firmware binaries which will be located in
       <WORK_DIR/ti/drv/icss_emac/firmware/<FIRMWARE_TYPE>/bin/<SOC>/<HOST_CORE>/<REVISION>>
 
-| 
+|
 
 Supported EVMs
 ==============
@@ -219,7 +219,7 @@ ports to be used:
 | iceK2G                | PRU-ICSS instance 2   | REV2                  |
 +-----------------------+-----------------------+-----------------------+
 
-| 
+|
 
 Running ICSS-EMAC FIRMWARES Example
 ===================================
@@ -228,7 +228,7 @@ Please go through the following page for example demonstrating the use
 of the firmware via icss-emac driver.
 `[1] <index_device_drv.html#icss-emac>`__
 
-| 
+|
 
 .. rubric:: Firmware Design Guide
    :name: firmware-design-guide
@@ -250,5 +250,5 @@ of the firmware via icss-emac driver.
 Unless you wish to go through the internal working for firmware and/or
 wanted to modify it.**
 
-| 
+|
 

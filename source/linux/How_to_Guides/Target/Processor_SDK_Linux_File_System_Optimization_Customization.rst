@@ -22,7 +22,7 @@ SDK File System Optimization/Customization
     in this article are installed by default in the |__SDK_FULL_NAME__| file
     system for your convenience.
 
-| 
+|
 
 .. rubric:: Pre-built File Systems
    :name: pre-built-file-systems
@@ -59,7 +59,7 @@ SDK File System Optimization/Customization
     be used as a starting point for system optimization as discussed in the
     next sections.
 
-| 
+|
 
 .. rubric:: The Basics of OPKG
    :name: the-basics-of-opkg

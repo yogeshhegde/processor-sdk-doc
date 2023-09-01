@@ -3,7 +3,7 @@
 PRU Hands-on Labs
 -----------------
 
-.. contents:: :local: 
+.. contents:: :local:
 
 The labs provided on this page will give you a hands on tutorial of the
 PRU, C-compiler, and Linux driver. Each of the following sections below
@@ -65,7 +65,7 @@ Software
    Tools <http://software-dl.ti.com/codegen/non-esd/downloads/download.htm#PRU>`__
    (also available through the CCS App Center)
 
-| 
+|
 
 Supported Platforms
 """""""""""""""""""
@@ -76,7 +76,7 @@ as access to the PRU pins externally. However, the concept of
 loading/running firmwares described here will translate to any Sitara device
 that supports general development with a PRU-ICSS or PRU_ICSSG.
 
-| 
+|
 
 .. _pru_hands_on_labs_lab_1:
 
@@ -174,7 +174,7 @@ Create & Build the PRU Project
 
           void main(){
 
-             volatile uint32_t gpo; 
+             volatile uint32_t gpo;
              /* GPI Mode 0, GPO Mode 0 */
              CT_CFG.GPCFG0 = 0;
 

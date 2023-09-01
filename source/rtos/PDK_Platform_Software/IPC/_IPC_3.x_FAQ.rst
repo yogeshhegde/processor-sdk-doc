@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_3.x_FAQ 
+.. http://processors.wiki.ti.com/index.php/IPC_3.x_FAQ
 
 
 I have a question that's not answered here, what now?
@@ -404,7 +404,7 @@ not find it. On the DRA7xx, verify
 #. Ipc_start() is called on DSP1. This ensures the default GateMP
    instance is created.
 
-| 
+|
 
 HLOS loading failures
 -----------------------
@@ -446,7 +446,7 @@ of IPC you are looking at, but the idea is the same):
 .. code-block:: c
 
     // Timeout duration is SETUP_TIMEOUT * polling interval
-    #define SETUP_TIMEOUT         2 
+    #define SETUP_TIMEOUT         2
 
     Int GateMP_setup(Int32 * sr0ProcId)
     {
@@ -457,7 +457,7 @@ of IPC you are looking at, but the idea is the same):
            /* The default gate creator is the owner of SR0 */
            while (((status = GateMP_openDefaultGate(&GateMP_module->defaultGate,
                &procId)) == GateMP_E_NOTFOUND) && (timeout > 0)) {
-               sleep(1);  // polling interval 
+               sleep(1);  // polling interval
                timeout--;
            }
     ...
@@ -480,7 +480,7 @@ cores with gate lookup requests, counterproductively slowing down the
 loading process. As a rule of thumb, it is recommended to keep the
 polling interval above 1 ms in modern platforms at the time of writing.
 
-| 
+|
 
 Disabling runtime auto-suspend
 --------------------------------
@@ -534,6 +534,6 @@ QNX
 
 Runtime auto-suspend is not supported in QNX.
 
-| 
+|
 
 

@@ -12,7 +12,7 @@ The SD card has to be partitioned using fdisk and the layout should look like as
 ::
 
     Disk /dev/sda: 30,2 GiB, 32227983360 bytes, 62945280 sectors
-    Disk model: Storage Device  
+    Disk model: Storage Device
     Units: sectors of 1 * 512 = 512 bytes
     Sector size (logical/physical): 512 bytes / 512 bytes
     I/O size (minimum/optimal): 512 bytes / 512 bytes
@@ -36,7 +36,7 @@ Assuming the SD card is /dev/sda:
 Copying the required bootloaders
 --------------------------------
 
-Once the SD card has been partitioned and formatted, copy the required binaries onto the newly formatted SD partition, either the pre-built ones located 
+Once the SD card has been partitioned and formatted, copy the required binaries onto the newly formatted SD partition, either the pre-built ones located
 in your Android source folder in ``vendor/ti/am62x/bootloader`` or the ones you generated following the build instructions step in the next section.
 
 These binaries are also present in the pre-built binaries tarball on the SDK download page.

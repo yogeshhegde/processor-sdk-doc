@@ -10,13 +10,13 @@ this initialization method.
    RSTP functionality over PRU Ethernet is neither tested nor supported
    on AM335x and AM437x.
 
-| 
+|
 | If you need a background in the bridge utility that Linux supports
   please refer to this link.
 
 https://wiki.linuxfoundation.org/networking/bridge
 
-| 
+|
 | The link above documents the kernel brctl utility that creates network
   bridges and the spanning tree protocol (STP) support provided by the
   kernel. To go beyond STP requires a user level daemon that will manage
@@ -29,7 +29,7 @@ https://wiki.linuxfoundation.org/networking/bridge
   class IDK boards. This diagram shows one of the topologies used to
   test the setup.
 
-| 
+|
 
 .. raw:: html
 
@@ -59,12 +59,12 @@ https://wiki.linuxfoundation.org/networking/bridge
 
    </div>
 
-| 
+|
 
 Please note that the topology was tested across CPSW only ports,
 PRU-ICSS Ethernet only ports and a one CPSW and one PRU-ICSS port.
 
-| 
+|
 | To set up the environment shown above, first on each board bring up
   the interfaces that will be used for the bridge with the ifconfig
   command. Next on each board a bridge must be created and then add in
@@ -72,20 +72,20 @@ PRU-ICSS Ethernet only ports and a one CPSW and one PRU-ICSS port.
   mode. Then as a last configuration step use the mstpctl utility to
   transition the bridge from STP to RSTP mode.
 
-| 
+|
 
 Setup the ports, IP addresses are not used for the Ethernet ports in a
 bridge.
 
-| 
+|
 | ifconfig eth0 up
 
 ifconfig eth1 up
 
-| 
+|
 | Now create and setup bridge br0 using the brctl application.
 
-| 
+|
 | brctl create br0
 
 brctl addif br0 eth0
@@ -94,17 +94,17 @@ brctl addif br0 eth1
 
 ifconfig br0 up
 
-| 
+|
 | Now switch the bridge mode from stp to rstp using the mstpctl
   application
 
-| 
+|
 | mstpctl setforcevers br0 rstp
 
-| 
+|
 | Now look on each platform to verify where the root node is with these
   commands
 
-| 
+|
 | mstpctl showbridge
 

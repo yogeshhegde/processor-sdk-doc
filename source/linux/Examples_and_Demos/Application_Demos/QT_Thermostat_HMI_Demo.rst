@@ -5,14 +5,14 @@ Qt5 Thermostat HMI Demo
    :name: qt-thermostat-demo
 
 The morphing of devices like the basic thermostat into a breed of power smart
-thermostats has shown how the appliances in residences today must adapt, 
-re-imagine and, in some cases, reinvent their role in the connected home of 
-the future or risk being left behind. Thermostats in particular have come a 
-long way since they were first created. There was a time when the mechanical 
-dial thermostat was the only option. It was simple and intuitive to operate 
-because what you saw was what you got. The user simply set the temperature 
-and walked away. Unfortunately, it was not efficient. Energy and money could 
-be wasted since its settings would only change when someone manually turned 
+thermostats has shown how the appliances in residences today must adapt,
+re-imagine and, in some cases, reinvent their role in the connected home of
+the future or risk being left behind. Thermostats in particular have come a
+long way since they were first created. There was a time when the mechanical
+dial thermostat was the only option. It was simple and intuitive to operate
+because what you saw was what you got. The user simply set the temperature
+and walked away. Unfortunately, it was not efficient. Energy and money could
+be wasted since its settings would only change when someone manually turned
 the dial to a new temperature. Modern thermostats provide a much richer Graphical
 Interface, with several features. Processor SDK now includes a Qt5 based
 thermostat with the following key features - that should easily enable customers

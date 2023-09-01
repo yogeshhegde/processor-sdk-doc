@@ -114,7 +114,7 @@ First, identify the remotproc node associated with the remote core:
 
 ::
 
-	root@am62axx-evm:~# head /sys/class/remoteproc/remoteproc*/name   
+	root@am62axx-evm:~# head /sys/class/remoteproc/remoteproc*/name
 	==> /sys/class/remoteproc/remoteproc0/name <==
 	7e000000.dsp
 
@@ -129,7 +129,7 @@ Then, use the sysfs interface to stop the remote core. For example, to stop the 
 
 ::
 
-	root@am62axx-evm:~# echo stop > /sys/class/remoteproc/remoteproc0/state 
+	root@am62axx-evm:~# echo stop > /sys/class/remoteproc/remoteproc0/state
 	[   61.497327] remoteproc remoteproc0: stopped remote processor 7e000000.dsp
 
 If needed, update the firmware symbolic link to point to a new firmware:
@@ -142,7 +142,7 @@ Finally, use the sysfs interface to start the remote core:
 
 ::
 
-	root@am62axx-evm:~# echo start > /sys/class/remoteproc/remoteproc0/state                                                           
+	root@am62axx-evm:~# echo start > /sys/class/remoteproc/remoteproc0/state
 	[   66.768814] remoteproc remoteproc0: powering up 7e000000.dsp
 	[   66.776893] remoteproc remoteproc0: Booting fw image am62a-c71_0-fw, size 2100144
 	[   66.785144] k3-dsp-rproc 7e000000.dsp: booting DSP core using boot addr = 0x9a000000
@@ -201,7 +201,7 @@ See the devicetree bindings documentation for more details: `Documentation/devic
           'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts?h=ti-linux-5.10.y'
 
 By default the first 1MB of each pool is used for the Virtio and Vring buffers
-used to communicate with the remote processor core. The remaining carveout is 
+used to communicate with the remote processor core. The remaining carveout is
 used for the remote core external memory (program code, data, etc).
 
 .. note::

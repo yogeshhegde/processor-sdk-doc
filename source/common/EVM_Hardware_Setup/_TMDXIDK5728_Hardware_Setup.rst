@@ -33,7 +33,7 @@ This section talks about how to quickly setup the AM572x Industrial
 Development Kit (IDK) EVM. This guide is a Beta version and it is
 designed to help you through the initial setup of the EVM.
 
-| 
+|
 
 +--------------------------------------------------------------------------+
 | **1. Once you have received the TI-RTOS or Linux™ software from your TI  |
@@ -90,7 +90,7 @@ max 6.5 Amp as well as the applicable regional product regulatory/safety
 certification requirements requirements such as (by example) UL, CSA,
 VDE, CCC, PSE, etc.
 
-| 
+|
 
 +--------------------------------------------------------------------------+
 | **3. Connect the microUSB cable to USB JTAG/Console port on the EVM and  |
@@ -215,7 +215,7 @@ the Sitara Device support version 1.3.x package correctly
 
 .. Image:: ../../../images/Target_configuration.png
 
-| 
+|
 | **Step4:** In advance settings, Make sure that the corresponding IDK
   GEL file are populated for all the cores. The following GEL files and
   their corresponding cores are provided below:
@@ -231,14 +231,14 @@ Note: GEL files are located under
 ccsv6\\ccs\_base\\emulation\\boards\\am572x\\gel after the CSP package
 is installed
 
-| 
+|
 | **Step5**: Launch Target configuration you just created. AM572x is an
   ARM master boot device so connect to the A15\_0 first. It is also
   recommended that you do a CPU reset from (Run->Reset->CPU Reset) Menu
   on the A15 to put it in a clean state as the IDK is designed to come
   up in SD boot mode.
 
-| 
+|
 | Complete GEL log from A15 connect is provided below:
 
 ::
@@ -250,15 +250,15 @@ is installed
     CortexA15_0: GEL Output: --->>> I2C Init <<<---
     CortexA15_0: GEL Output: --->>> PRCM Clock Configuration for OPPNOM in progress... <<<---
     CortexA15_0: GEL Output:    Cortex A15 DPLL OPP 0 clock config is in progress...
-    CortexA15_0: GEL Output:    Cortex A15 DPLL is already locked, now unlocking...  
+    CortexA15_0: GEL Output:    Cortex A15 DPLL is already locked, now unlocking...
     CortexA15_0: GEL Output:    Cortex A15 DPLL OPP 0 is DONE!
     CortexA15_0: GEL Output:    IVA DPLL OPP 0 clock config is in progress...
     CortexA15_0: GEL Output:    IVA DPLL OPP 0 is DONE!
     CortexA15_0: GEL Output:    PER DPLL OPP 0 clock config in progress...
-    CortexA15_0: GEL Output:    PER DPLL already locked, now unlocking  
+    CortexA15_0: GEL Output:    PER DPLL already locked, now unlocking
     CortexA15_0: GEL Output:    PER DPLL OPP 0 is DONE!
     CortexA15_0: GEL Output:    CORE DPLL OPP 0 clock config is in progress...
-    CortexA15_0: GEL Output:    CORE DPLL OPP  already locked, now unlocking....  
+    CortexA15_0: GEL Output:    CORE DPLL OPP  already locked, now unlocking....
     CortexA15_0: GEL Output:    CORE DPLL OPP 0 is DONE!
     CortexA15_0: GEL Output:    ABE DPLL OPP 0 clock config in progress...
     CortexA15_0: GEL Output:    ABE DPLL OPP 0 is DONE!
@@ -283,11 +283,11 @@ is installed
     CortexA15_0: GEL Output: DEBUG: EMIF1 channel - Launch full levelling
     CortexA15_0: GEL Output: DEBUG: EMIF2 ctrl + associated DDR PHYs initial config (EMIF2 module)
     CortexA15_0: GEL Output: DEBUG: EMIF1 channel - Launch full levelling
-    CortexA15_0: GEL Output: DEBUG: Setting LISA maps in non-interleaved dual-EMIF mode 
+    CortexA15_0: GEL Output: DEBUG: Setting LISA maps in non-interleaved dual-EMIF mode
     CortexA15_0: GEL Output: --->>> DDR3 Initialization is DONE! <<<---
     CortexA15_0: GEL Output: --->>> AM572x Target Connect Sequence DONE !!!!!  <<<
 
-| 
+|
 
 **Step6** : To connect to the DSP, M4,PRUSS or to IVAHD go to Scripts
 menu and under AM572x MULTICORE Initialization enable the corresponding
@@ -295,7 +295,7 @@ Sub system clock Enable API.For Eg. FOr DSP1 select
 DSP11SSClkEnable\_API. After running the clock enable option, you can
 connect to the core.
 
-| 
+|
 
 .. Image:: ../../../images/Multicore-Enable.jpg
 

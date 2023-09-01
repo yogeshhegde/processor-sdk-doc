@@ -9,7 +9,7 @@ Overview
 
 The Simple Open Real-time Ethernet protocol (SORTE) is a
 TI-developed industrial Ethernet protocol that
-supports 4-µs cycle time. The SORTE protocol operates exclusively on 
+supports 4-µs cycle time. The SORTE protocol operates exclusively on
 TI's PRU-ICSS (Programmable Real-Time Unit Subsystem and Industrial
 Communication SubSystem), and therefore, the ARM Cortex-A8, A9 or A15 processors
 (depending on the device family) are available for industrial applications.

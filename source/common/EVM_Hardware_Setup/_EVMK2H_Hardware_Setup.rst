@@ -56,9 +56,9 @@ versions, and update them accordingly.
 
 .. note:: BMC versions 1.0.1.3a and earlier will not work properly with the **Get Versions** feature of the Update Tool. Upgrade to a more recent version of the BMC to use this functionality.
 
-| 
+|
 
-| 
+|
 
 Attach the Ethernet cable
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -90,7 +90,7 @@ For **Rev 0B EVM**, the setting is as follows
 
 ::
 
-      SW1 - 4(ON) 3(ON) 2(ON) 1(OFF) 
+      SW1 - 4(ON) 3(ON) 2(ON) 1(OFF)
 
 For **Rev 1.0 EVM**, the setting is as follows:
 
@@ -98,7 +98,7 @@ For **Rev 1.0 EVM**, the setting is as follows:
 
       SW1 - 1(OFF) 2(OFF) 3(OFF) 4(ON)
 
-| 
+|
 
 .. rubric:: K2H SPI Little Endian Boot mode
    :name: k2h-spi-le-boot-mode
@@ -107,7 +107,7 @@ For **Rev 0B EVM**, the setting is as follows:
 
 ::
 
-      SW1 - 4(ON) 3(ON) 2(OFF) 1(ON) 
+      SW1 - 4(ON) 3(ON) 2(OFF) 1(ON)
 
 For **Rev 1.0 EVM**, the setting is as follows:
 
@@ -196,15 +196,15 @@ application.**
 .. image:: ../../../images/Bmc_ver_screenshot.JPG
 
 
-| 
-| 
+|
+|
 
 If an in-field update is needed, downloaded the latest version
 `here <http://www.advantech.com/Support/TI-EVM/EVMK2HX_sd.aspx>`__
 (labeled **Board Management Controller Binaries (BMC)**) and continue
 with the following steps.
 
-| 
+|
 
 **Prepare EVM for in-field update:**
 
@@ -221,7 +221,7 @@ with the following steps.
    `here <http://www.ti.com/tool/lmflashprogrammer>`__) to update the
    firmware, as detailed in the steps below.
 
-| 
+|
 
 **Perform in-field update:**
 
@@ -251,7 +251,7 @@ with the following steps.
    will show latest version of BMC in Console.
 #. If step 9 was done after power was applied, just type "ver" at BMC
    prompt.
- 
+
 .. image:: ../../../images/K2EVM.jpg
 
 DIP Switch and Bootmode Configurations
@@ -509,7 +509,7 @@ configuration"
 
 .. image:: ../../../images/New_TargetConfig.png
 
-| 
+|
 
 Create New Target configuration in CCS by selecting appropriate
 emulator. For Default on board emulator select "Texas instruments XDS2xx
@@ -534,7 +534,7 @@ that is found in the same location.
 Going back to the Basic Tab, Save the configuration. For additional
 sanity check, you can also test connection.
 
-| 
+|
 
 **Step 3:** Connect to the cores
 
@@ -566,7 +566,7 @@ reference.
     arm_A15_0: GEL Output: Disabling MMU
     arm_A15_0: GEL Output: Disabling Caches
     arm_A15_0: GEL Output: Invalidate Instruction Caches
-    arm_A15_0: GEL Output: 
+    arm_A15_0: GEL Output:
 
 Connecting Target...
 
@@ -584,7 +584,7 @@ Connecting Target...
     arm_A15_0: GEL Output: Disabling MMU
     arm_A15_0: GEL Output: Disabling Caches
     arm_A15_0: GEL Output: Invalidate Instruction Caches
-    arm_A15_0: GEL Output: TCI6638K2K GEL file Ver is 1.89999998 
+    arm_A15_0: GEL Output: TCI6638K2K GEL file Ver is 1.89999998
     arm_A15_0: GEL Output: Disabling MMU
     arm_A15_0: GEL Output: Disabling Caches
     arm_A15_0: GEL Output: Invalidate Instruction Caches
@@ -625,8 +625,8 @@ Connecting Target...
     arm_A15_0: GEL Output: Switching on ARM Core 2
     arm_A15_0: GEL Output: Switching on ARM Core 3
     arm_A15_0: GEL Output: ARM PLL has been configured (125.0 MHz * 16 / 2 = 1000.0 MHz)
-    arm_A15_0: GEL Output:  DISABLESTAT ---> 0x00000000 
-    arm_A15_0: GEL Output: Power on all PSC modules and DSP domains... 
+    arm_A15_0: GEL Output:  DISABLESTAT ---> 0x00000000
+    arm_A15_0: GEL Output: Power on all PSC modules and DSP domains...
     arm_A15_0: GEL Output: Power on all PSC modules and DSP domains... Done.
     arm_A15_0: GEL Output: WARNING: SYSCLK is the input to the PA PLL.
     arm_A15_0: GEL Output: Completed PA PLL Setup
@@ -634,14 +634,14 @@ Connecting Target...
     arm_A15_0: GEL Output: PAPLLCTL1 - before: 0x0x00002040  after: 0x0x00002040
     arm_A15_0: GEL Output: DDR begin
     arm_A15_0: GEL Output: XMC setup complete.
-    arm_A15_0: GEL Output: DDR3 PLL (PLL2) Setup ... 
+    arm_A15_0: GEL Output: DDR3 PLL (PLL2) Setup ...
     arm_A15_0: GEL Output: DDR3 PLL Setup complete, DDR3A clock now running at 666 MHz.
-    arm_A15_0: GEL Output: DDR3A initialization complete 
-    arm_A15_0: GEL Output: DDR3 PLL Setup ... 
+    arm_A15_0: GEL Output: DDR3A initialization complete
+    arm_A15_0: GEL Output: DDR3 PLL Setup ...
     arm_A15_0: GEL Output: DDR3 PLL Setup complete, DDR3B clock now running at 800MHz.
-    arm_A15_0: GEL Output: DDR3B initialization complete 
+    arm_A15_0: GEL Output: DDR3B initialization complete
     arm_A15_0: GEL Output: DDR done
-    arm_A15_0: GEL Output: Entering A15 non secure mode .. 
+    arm_A15_0: GEL Output: Entering A15 non secure mode ..
     arm_A15_0: GEL Output: Disabling MMU
     arm_A15_0: GEL Output: Disabling Caches
     arm_A15_0: GEL Output: Invalidate Instruction Caches
@@ -654,7 +654,7 @@ Connecting Target...
     arm_A15_0: GEL Output: Disabling MMU
     arm_A15_0: GEL Output: Disabling Caches
     arm_A15_0: GEL Output: Invalidate Instruction Caches
-    arm_A15_0: GEL Output: A15 non secure mode entered 
+    arm_A15_0: GEL Output: A15 non secure mode entered
 
 Users can now load and run code on the cores by using Run -> Load
 Program. Happy Debugging !!

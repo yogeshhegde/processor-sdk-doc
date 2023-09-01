@@ -185,7 +185,7 @@ U-Boot Known Issues
    :header: "Record ID", "Summary", "Workaround"
    :widths: 20, 80, 60
 
-   LCPD-20131,Uboot fails to enumerate devices attached to a usb hub on the first 'usb reset' call ,Re-run usb reset command 
+   LCPD-20131,Uboot fails to enumerate devices attached to a usb hub on the first 'usb reset' call ,Re-run usb reset command
    LCPD-19871,U-boot: Documentation: Combined Boot flow and SPL Rearch,
    LCPD-17523,R5-SPL - Support to dump EEPROM to shared memory,
 
@@ -208,7 +208,7 @@ Linux Kernel Known Issues
    LCPD-19723,RTI watchdog test fails on J7VCL E5 SOM,
    LCPD-19659,Doc: PCIe: Update documentation to indicate how to move to compliance mode,
    LCPD-19499,Kernel: OSPI write throughput is less than 1MB/s,
-   LCPD-19497,J7200: CPSW2g: interface goes up and down sporadically,Seen only on very few EVMs. No workaround. 
+   LCPD-19497,J7200: CPSW2g: interface goes up and down sporadically,Seen only on very few EVMs. No workaround.
    LCPD-19460,J7200: USB3 devices fail to enumerate at 2.0/3.0 when SERDES multi-link (PCIe + USB3),No workaround for USB 3.0 devices exists. USB 2.0 devices enumerate fine.
    LCPD-17798,2020 LTS: INTA/INTR smp_affinity failure and IRQ allocation issues.,
 
@@ -230,6 +230,6 @@ For the specific supported hosts for current SDK, see :ref:`this page <how-to-bu
 
 
 .. note::
-   Processor SDK Installer is 64-bit, and installs only on 64-bit host machine. 
+   Processor SDK Installer is 64-bit, and installs only on 64-bit host machine.
 
 .. |reg| unicode:: U+00AE .. REGISTERED SIGN

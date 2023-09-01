@@ -51,7 +51,7 @@ examples <http://downloads.ti.com/mctools/esd/docs/opencl/examples/overview.html
 -  Don't have control on system memory layout, etc. to handle optimize
    DSP code
 
-| 
+|
 
 .. rubric:: DCE (Distributed Codec Engine)
    :name: dce-distributed-codec-engine
@@ -147,7 +147,7 @@ Guide <http://processors.wiki.ti.com/index.php/DRA7xx_GLSDK_Software_Developers_
 -  Need work to add new codec algorithm
 -  Need knowledge of DSP programming
 
-| 
+|
 
 .. rubric:: Big Data IPC
    :name: big-data-ipc
@@ -168,7 +168,7 @@ buffers
 .. rubric:: Examples
    :name: examples-2
 
--  Please see `Big Data IPC example 
+-  Please see `Big Data IPC example
    <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/
    index_examples_demos.html#big-data-ipc-example>`__
 
@@ -184,7 +184,7 @@ buffers
 -  Need knowledge of DSP configuration and programming
 -  TI proprietary API
 
-| 
+|
 
 .. rubric:: IPC
    :name: ipc
@@ -221,7 +221,7 @@ and DSP processors in a multi-processor environment.
    application and other modules to sotre and retrieve values based on a
    name.
 
-| For more info, please refer to `IPC User's Guide 
+| For more info, please refer to `IPC User's Guide
   <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/
   rtos/index_Foundational_Components.html#ipc>`__
 
@@ -251,7 +251,7 @@ and DSP processors in a multi-processor environment.
 -  message size is limited to 512 bytes
 -  TI proprietary API
 
-| 
+|
 
 .. rubric:: Pros and Cons
    :name: pros-and-cons
@@ -279,7 +279,7 @@ and DSP processors in a multi-processor environment.
 |            |                                                          | TI proprietary API                                                                |
 +------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
 
-| 
+|
 
 .. rubric:: Decision Making
    :name: decision-making

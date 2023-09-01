@@ -58,7 +58,7 @@ Note for Keystone-2 (K2H/K/E/L/G) platforms:
     U-Boot # run get_uboot_net
     U-Boot # run burn_uboot_spi
 
-| 
+|
 
 Booting from SPI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

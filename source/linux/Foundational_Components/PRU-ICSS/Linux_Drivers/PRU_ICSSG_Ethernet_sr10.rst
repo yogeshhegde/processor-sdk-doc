@@ -103,9 +103,9 @@ It also provides some information about supported features.
 
 	~# ethtool -i eth1
 	driver: icssg-prueth
-	version: 
-	firmware-version: 
-	expansion-rom-version: 
+	version:
+	firmware-version:
+	expansion-rom-version:
 	bus-info: pruss2_eth
 	supports-statistics: yes
 	supports-test: no
@@ -123,19 +123,19 @@ Run ``ethtool DEVNAME`` command without parameters.
 	~# ethtool eth1
 	Settings for eth1:
 		Supported ports: [ TP MII ]
-		Supported link modes:   100baseT/Full 
-					1000baseT/Full 
+		Supported link modes:   100baseT/Full
+					1000baseT/Full
 		Supported pause frame use: No
 		Supports auto-negotiation: Yes
 		Supported FEC modes: Not reported
-		Advertised link modes:  100baseT/Full 
-					1000baseT/Full 
+		Advertised link modes:  100baseT/Full
+					1000baseT/Full
 		Advertised pause frame use: No
 		Advertised auto-negotiation: Yes
 		Advertised FEC modes: Not reported
-		Link partner advertised link modes:  10baseT/Half 10baseT/Full 
-						     100baseT/Half 100baseT/Full 
-						     1000baseT/Full 
+		Link partner advertised link modes:  10baseT/Half 10baseT/Full
+						     100baseT/Half 100baseT/Full
+						     1000baseT/Full
 		Link partner advertised pause frame use: Symmetric Receive-only
 		Link partner advertised auto-negotiation: Yes
 		Link partner advertised FEC modes: Not reported
@@ -337,13 +337,13 @@ like eth1.5, below is an example how it check the vlan interface
     ....
 
     ~# ifconfig eth1.5
-    eth1.5    Link encap:Ethernet  HWaddr 70:FF:76:1D:5C:64  
+    eth1.5    Link encap:Ethernet  HWaddr 70:FF:76:1D:5C:64
               inet addr:10.0.0.5  Bcast:10.255.255.255  Mask:255.0.0.0
               inet6 addr: fe80::72ff:76ff:fe1d:5c64/64 Scope:Link
               UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
               RX packets:0 errors:0 dropped:0 overruns:0 frame:0
               TX packets:45 errors:0 dropped:0 overruns:0 carrier:0
-              collisions:0 txqueuelen:1000 
+              collisions:0 txqueuelen:1000
               RX bytes:0 (0.0 B)  TX bytes:7590 (7.4 KiB)
 
 *VLAN Packet Send/Receive*

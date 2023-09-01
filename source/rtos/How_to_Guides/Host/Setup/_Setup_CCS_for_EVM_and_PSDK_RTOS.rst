@@ -1,7 +1,7 @@
 Setup CCS for EVM and Processor-SDK RTOS
 ------------------------------------------
 
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS
 
 Overview
 ^^^^^^^^^
@@ -64,17 +64,17 @@ newly discovered products from the custom path.
 
 Install Latest Emulation Package and Sitara Device Support Package
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-1. In CCS, navigate to Help -> Check for Updates and select "Sitara device support" 
+1. In CCS, navigate to Help -> Check for Updates and select "Sitara device support"
 and "TI Emulators" and click Next.
-	
+
  .. image:: ../images/TMDX654_EVM_Hardware_Setup/CCS_Check_for_Updates.PNG
-	
-2. Click "Next" again, select "I accept the terms of the license agreements" 
+
+2. Click "Next" again, select "I accept the terms of the license agreements"
 and click Finish to begin the installation.
 
  .. image:: ../images/TMDX654_EVM_Hardware_Setup/CCS_Updating_Software.png
-	
-3. You may be prompted to restart CCS for the updates to take effect. Click "Restart Now" when 
+
+3. You may be prompted to restart CCS for the updates to take effect. Click "Restart Now" when
 prompted to complete the installation.
 
 
@@ -277,7 +277,7 @@ After launch, you can connect to a core. For GP AM437x EVM, select
 
 .. Image:: ../images/CCS-GP437x-EVM-Connnect-Target.png
 
-| 
+|
 
 Success!
 '''''''''
@@ -335,7 +335,7 @@ control signal to the DSP as shown in the image below:
 
 .. Image:: ../images/GPtimer5_DSPConnect.png
 
-| 
+|
 
 Troubleshooting
 """"""""""""""""
@@ -362,5 +362,5 @@ If this does not resolve your problem, see these additional resources:
 -  `Troubleshoot
    XDS560 <http://processors.wiki.ti.com/index.php/XDS560#Frequently_Asked_Questions>`__
 
-| 
+|
 

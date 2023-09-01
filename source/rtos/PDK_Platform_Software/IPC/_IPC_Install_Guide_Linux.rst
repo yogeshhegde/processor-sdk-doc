@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_Install_Guide_Linux 
+.. http://processors.wiki.ti.com/index.php/IPC_Install_Guide_Linux
 
 Introduction
 ^^^^^^^^^^^^^
@@ -32,7 +32,7 @@ This will extract the IPC product in a directory with its product name
 and version information (e.g. **c:/ti/ipc_<version>**)
 
 .. note::
-  
+
   -  This document assumes the IPC install path to be the user's home
      directory on a Linux host machine (**/home/<user>**) or the user's
      main drive on a Windows host machine (**C:\\**). The variable
@@ -184,7 +184,7 @@ the autotools-generated files should be clean(ed):
 
       <buildhost> make distclean
 
-| 
+|
 
 ipc-bios.mak
 """"""""""""""
@@ -274,7 +274,7 @@ location needs to be set.
 
 ::
 
-    bootargs console=ttyS2,115200n8 root=/dev/nfs nfsroot=HOST:nfs_root,nolock rw ip=dhcp rproc_mem=16M@0xC3000000 
+    bootargs console=ttyS2,115200n8 root=/dev/nfs nfsroot=HOST:nfs_root,nolock rw ip=dhcp rproc_mem=16M@0xC3000000
 
 *This is just an example, bootargs may vary depending on available setup*
 Depending on the memory map used in the final system configuration,
@@ -302,7 +302,7 @@ required to run **sudo make install** to properly install the files
   the end of the **prefix** variable path. As with other variables, you
   can override this on the command line:
   ::
-  
+
     buildhost$ sudo make install prefix=<target filesystem>/usr
 
 |
@@ -367,7 +367,7 @@ into a 'lad.txt' file, start LAD like this:
 
     target# /usr/bin/lad_<device> -l lad.txt
 
-| 
+|
 
 .. rubric:: Drivers
    :name: drivers

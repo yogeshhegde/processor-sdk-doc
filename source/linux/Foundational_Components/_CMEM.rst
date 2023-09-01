@@ -49,12 +49,12 @@ here <http://git.ti.com/ipc/pages/Home>`__, patches are welcome!
 .. rubric:: Linux Configuration
    :name: linux-configuration
 
-CMEM configuration can be done in 2 ways either through device tree soruce file (DTS) or command line when installing cmemk.ko driver using insmod command. 
+CMEM configuration can be done in 2 ways either through device tree soruce file (DTS) or command line when installing cmemk.ko driver using insmod command.
 
 .. rubric:: DTS Configuration
    :name: DTS Configuration
 
-The CMEM configuration can be defined in the DTS file. Take AM57xx CMEM configuration as an example which is defined in arch/arm/boot/dts/am57xx-evm-cmem.dtsi. 
+The CMEM configuration can be defined in the DTS file. Take AM57xx CMEM configuration as an example which is defined in arch/arm/boot/dts/am57xx-evm-cmem.dtsi.
 
 ::
 
@@ -335,10 +335,10 @@ feature <http://lwn.net/Articles/396657/>`__. CMA supports a "global"
 memory pool, as well as device-specific memory - CMEM provides the
 facilities to allocate from either type of CMA pool.
 
-CMA also defines the carveout area of the physical location where the DSP code/data will actually reside. The DSP carveouts are defined in the dts file. For example the AM57xx EVM, it is linux/arch/arm/boot/dts/am57xx-beagle-x15-common.dtsi. 
+CMA also defines the carveout area of the physical location where the DSP code/data will actually reside. The DSP carveouts are defined in the dts file. For example the AM57xx EVM, it is linux/arch/arm/boot/dts/am57xx-beagle-x15-common.dtsi.
 
 ::
- 
+
 	dsp1_cma_pool: dsp1_cma@99000000 {
 		compatible = "shared-dma-pool";
 		reg = <0x0 0x99000000 0x0 0x4000000>;
@@ -612,7 +612,7 @@ the kernel.
 
 **A:** The user space application need to be compiled with
 “–D\_FILE\_OFFSET\_BITS=64" to allow physical addresses > 32 bits.
-| 
+|
 
 .. rubric:: Licensing
    :name: licensing

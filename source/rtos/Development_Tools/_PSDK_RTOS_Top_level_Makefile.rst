@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK#Top-Level_Makefile 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK#Top-Level_Makefile
 
 .. rubric:: Overview
    :name: overview
@@ -41,7 +41,7 @@ to build the SDK from the toplevel Makefile.
 
    </div>
 
-| 
+|
 
 .. rubric:: Setup Environment
    :name: setup-environment
@@ -80,7 +80,7 @@ installed RTOS SDK.
 .. raw:: html
 
    </div>
-   
+
 ::
 
      C:\ti\processor_sdk_rtos_[soc]_[version]>setupenv.bat
@@ -114,7 +114,7 @@ installed RTOS SDK.
      PROCESSOR SDK BUILD ENVIRONMENT CONFIGURED
      **************************************************************************
 
-| 
+|
 
 .. raw:: html
 
@@ -169,7 +169,7 @@ SDK.
          IMGLIB_INSTALL_PATH       : /home/[user]/ti/imglib_c66x_[version]
          UIA_INSTALL_PATH          : /home/[user]/ti/uia_[version]
          PROC_SDK_INSTALL_PATH     : /home/[user]/ti/processor_sdk_rtos_[soc]_[version]
-     
+
      PROCESSOR SDK BUILD ENVIRONMENT CONFIGURED
      *******************************************************************************
 
@@ -255,7 +255,7 @@ for a given device additional targets may also be defined:
 -  **ipc_examples** - Builds the IPC examples provided in the IPC
    component
 
-| 
+|
 
 .. rubric:: Usage Examples
    :name: usage-examples
@@ -294,7 +294,7 @@ the Makefile from the top-level of the SDK.
 
      ~/ti/processor_sdk_rtos_[soc]_[version]$ make clean
 
-| 
+|
 
 .. rubric:: Rebuilding Components
    :name: rebuilding-components
@@ -315,5 +315,5 @@ within the component. Here are a collection of useful pages:
 -  `Rebuild
    SYS/BIOS <http://processors.wiki.ti.com/index.php/SYS/BIOS_FAQs>`__
 
-| 
+|
 

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_Install_Guide_BIOS 
+.. http://processors.wiki.ti.com/index.php/IPC_Install_Guide_BIOS
 
 Introduction
 ^^^^^^^^^^^^^
@@ -69,7 +69,7 @@ OS support.
 
 Edit **products.mak** and set the following variables:
 
-.. note:: 
+.. note::
    Please make sure the complete path is specified. (e.g) Don't use ~ in the path specified.
 
 -  **XDC_INSTALL_DIR** - Path to TI's XDCTools installation

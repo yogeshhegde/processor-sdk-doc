@@ -36,10 +36,10 @@ Hardware Prerequisites
 
     -  TI Low voltage servo motor: `LVSERVOMTR <https://www.ti.com/tool/LVSERVOMTR>`_
 
-    -  24 volt power supply that can be plugged into the screw terminals of 
+    -  24 volt power supply that can be plugged into the screw terminals of
        the GaNFET BoosterPack
 
-    -  Stand-offs for assembling LaunchPad, BoosterPack, and FSI adapter boards 
+    -  Stand-offs for assembling LaunchPad, BoosterPack, and FSI adapter boards
        via 0.1 inch (2.54 mm) pitch headers on each board
 
 - Cables not included in above mentioned hardware kits:
@@ -61,7 +61,7 @@ Hardware Jumper & Switch Settings
 
 Each Secondary Node comprises three hardware boards: an F280049 LaunchPad,
 an FSI adapter board, and a GaNFET BoosterPack. The jumper settings are
-identical for the boards in each node. Please see the following sections 
+identical for the boards in each node. Please see the following sections
 of [1] for details on the jumper settings:
 
 - LaunchPad: Section 3.1.2 LAUNCHXL-F280049C
@@ -70,13 +70,13 @@ of [1] for details on the jumper settings:
 
 - FSI Adapter Board: Section 3.1.5 TMDSFSIADAPEVM
 
-The Main Node hardware includes the AM64x EVM and an FSI Adapter Board. 
+The Main Node hardware includes the AM64x EVM and an FSI Adapter Board.
 
 - The AM64x EVM jumpers can be left in their default configuration.
 
-- The Main Node FSI Adapter Board jumper settings are the same as those 
-  in a Secondary Node, except a jumper should be placed on J5 Pin1-2. 
-  This is so power is supplied to the adapter board from the FSI bus. See 
+- The Main Node FSI Adapter Board jumper settings are the same as those
+  in a Secondary Node, except a jumper should be placed on J5 Pin1-2.
+  This is so power is supplied to the adapter board from the FSI bus. See
   [2], Table 2 for details.
 
 .. _boot switch settings:
@@ -93,8 +93,8 @@ The EVM Switch settings for different boot modes are shown in the table below.
 | OSPI Boot      | 11001110          | 01000000          |
 +----------------+-------------------+-------------------+
 
-Refer to the `AM64x EVM Hardware Users Guide 
-<../../rtos/pdk_am64x/docs/userguide/am64x/boot/boot_am64x.html##LinktoAM64XHWUG>`__ 
+Refer to the `AM64x EVM Hardware Users Guide
+<../../rtos/pdk_am64x/docs/userguide/am64x/boot/boot_am64x.html##LinktoAM64XHWUG>`__
 for more information on the AM64x EVM.
 
 
@@ -109,56 +109,56 @@ to fit the headers on the boards.
 
 .. Figure:: /images/Servo_Drive_Demo_11.png
    :width: 15%
-   
+
    Stackable Standoffs
 
 To assemble the hardware for each Secondary Node:
 
 - Connect the FSI Adaptor Board to the LaunchPad: J3 <-> J5/J7, J3 <-> J6/J8, and J1 <-> J11.
-    
+
 - Connect BoosterPack to LaunchPad: J1/J3 <-> J1/J3 and J2/J4 <-> J2/J4.
 
 The pictures below show an assembled Seconary Node from both sides.
 
 .. Image:: /images/Servo_Drive_Demo_12.png
    :width: 25%
-   
+
 .. Image:: /images/Servo_Drive_Demo_13.png
    :width: 25%
 
 Hardware Connections
 --------------------
 
-- Motor connections to LaunchPad & BootsterPack, see the following figures in 
+- Motor connections to LaunchPad & BootsterPack, see the following figures in
   [1]:
-    
-    - Motor to LaunchPad: Figure 14. Layout of LAUNCHXL-F280049C and Switches 
+
+    - Motor to LaunchPad: Figure 14. Layout of LAUNCHXL-F280049C and Switches
       Setting
 
-    - Motor to BoosterPack: Figure 15. Layout, Switches Setting and Wires 
+    - Motor to BoosterPack: Figure 15. Layout, Switches Setting and Wires
       Connection of BOOSTXL-3PHGANINV
 
-    - Power supply to BoosterPack: Figure 15. Layout, Switches Setting and 
+    - Power supply to BoosterPack: Figure 15. Layout, Switches Setting and
       Wires Connection of BOOSTXL-3PHGANINV
 
 - PC to AM64x EVM JTAG, select one of two options:
-    
-    - On-board XDS110: USB micro-B plug to USB-A plug cable, micro B connector 
+
+    - On-board XDS110: USB micro-B plug to USB-A plug cable, micro B connector
       J28
 
     - External: TI20 pin (J25) connector
 
-- PC to AM64x EVM, Ethernet: connect PC to EVM stacked RJ45 connector ICSSG 
+- PC to AM64x EVM, Ethernet: connect PC to EVM stacked RJ45 connector ICSSG
   PHY J21A or J21B using Ethernet patch cable
 
-- PC to AM64x EVM, UART: connect PC to EVM UARTs (FTDI) J26 using USB micro-B 
+- PC to AM64x EVM, UART: connect PC to EVM UARTs (FTDI) J26 using USB micro-B
   plug to USB-A plug cable
 
-- PC to F280049 LaunchPad: connect PC to each LaunchPad using USB micro-B plug 
-  to USB-A plug cable (included in LaunchPad kit). Provides LaunchPad power and 
+- PC to F280049 LaunchPad: connect PC to each LaunchPad using USB micro-B plug
+  to USB-A plug cable (included in LaunchPad kit). Provides LaunchPad power and
   on-board XDS110 JTAG connection.
 
-- FSI daisy chain connections : refer to [1] and diagram in Overview section 
+- FSI daisy chain connections : refer to [1] and diagram in Overview section
   above
 
     - Connect each node in chain using 2x CAT5 T568B patch cable, 1 ft.
@@ -174,7 +174,7 @@ Hardware Connections
 +---------------------------+------------------+----------------------------------+------------------+------------------------------+
 | **AM64x EVM Header:Pin**  | **Pin Function** | **FSI Adapter Board Header:Pin** | **Pin Function** | **Notes**                    |
 +===========================+==================+==================================+==================+==============================+
-| J7:P10                    | 3V3              | J1:P10                           | 3V3              | female-to-female jumper wire | 
+| J7:P10                    | 3V3              | J1:P10                           | 3V3              | female-to-female jumper wire |
 +---------------------------+------------------+----------------------------------+------------------+------------------------------+
 | J7:P6                     | FSI_RX0_D0       | J1:P5                            | RX_D0            | female-to-female jumper wire |
 +---------------------------+------------------+----------------------------------+------------------+------------------------------+
@@ -196,7 +196,7 @@ Hardware Connections
 +---------------------------+------------------+----------------------------+------------------+--------------------------------------------+
 | J1:P23                    | GROUND           | J2:P20                     | GROUND           |                                            |
 +---------------------------+------------------+----------------------------+------------------+--------------------------------------------+
- 
+
 
 PC Software Setup
 -----------------
@@ -207,20 +207,20 @@ Code Composer Studio Setup
 Setup of Code Composer Studio (CCS) for AM64x is documented here:
 `CCS Setup for AM64x <../../rtos/pdk_am64x/docs/userguide/am64x/ccs_setup_am64x.html#ccs-setup-for-am64x>`__. It is strongly recommended to install the CCS version mentioned in these instructions.
 
-The same version of CCS can be used for development on the F280049 Launchpad. 
-To enable development on C2000 devices, select "C2000 real-time MCUs" 
+The same version of CCS can be used for development on the F280049 Launchpad.
+To enable development on C2000 devices, select "C2000 real-time MCUs"
 in the "Select Components" window during CCS installation.
 
 
 TwinCAT Setup
 ~~~~~~~~~~~~~
-Download and install TwinCAT 3.1 Build 4024.7 or greater from 
+Download and install TwinCAT 3.1 Build 4024.7 or greater from
 `Beckhoff <https://www.beckhoff.com/en-us/>`__.
 
 Copy TI_ESC.xml file:
 
 - **from:** %SDK%/rtos/pru_icss_ethercat_slave_01.00.09.08/protocols/ethercat_slave/ecat_appl/esi
-    
+
 - **to:** C:\\TwinCAT\\3.1\\Config\\Io\\EtherCAT
 
 Download & install "TwinCAT Project3.zip":
@@ -236,26 +236,26 @@ Executing Demo from Pre-Built Binaries
 Flash Pre-Built Binaries to Main Node
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Servo Drive Demo uses the AM64x Secondary Boot Loader (SBL): 
+The Servo Drive Demo uses the AM64x Secondary Boot Loader (SBL):
 `AM64x SBL <../../rtos/pdk_am64x/docs/userguide/am64x/boot/boot_am64x.html>`__
 
-Pre-built binares for SD and OPSI boot modes are provided for the AM64x EVM in 
+Pre-built binares for SD and OPSI boot modes are provided for the AM64x EVM in
 folder apps/servo_drive_demo/prebuilt-images/AM64X.
 
-**OPSI boot:** app, sysfw.bin & tiboot3.bin binaries are located in OSPIImage 
+**OPSI boot:** app, sysfw.bin & tiboot3.bin binaries are located in OSPIImage
 sub-folder.
 
 **SD boot:**
-    - app, sysfw.bin & tiboot3.bin binaries are located in SDCardImage 
-      sub-folder.  
-    - The images should be copied to the root folder of an SD card, and the SD 
+    - app, sysfw.bin & tiboot3.bin binaries are located in SDCardImage
+      sub-folder.
+    - The images should be copied to the root folder of an SD card, and the SD
       card should be placed in uSD card slot on the EVM.
-  
+
 The EVM boot switch settings are described in `boot switch settings`_.
 
 Flash Pre-Built Binaries to Secondary Nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Pre-built C2000 flash-mode binaries for each Secondary Node are contained in 
+Pre-built C2000 flash-mode binaries for each Secondary Node are contained in
 folder apps/servo_drive_demo/c2000_slave/am64x:
 
 - Node 1: multi_axis_slave_node1_f28004x_cpu/F28004x_FLASH/multi_axis_slave_node1_f28004x_cpu.out
@@ -264,44 +264,44 @@ folder apps/servo_drive_demo/c2000_slave/am64x:
 
 - Node 3: multi_axis_slave_node3_f28004x_cpu/F28004x_FLASH/multi_axis_slave_node3_f28004x_cpu.out
 
-These binaries must be flashed to the Seconary Node 1, 2, and 3 LaunchPads in 
+These binaries must be flashed to the Seconary Node 1, 2, and 3 LaunchPads in
 the FSI daisy chain.
 
-One method of achieving this is if each LauchPad XDS110 can be distinguished 
-within CCS via a unique XDS110 serial number. The existing serial numbers can 
+One method of achieving this is if each LauchPad XDS110 can be distinguished
+within CCS via a unique XDS110 serial number. The existing serial numbers can
 be determined by executing the following at a DOS prompt:
 
     <CCS install>/ccs/ccs_base/common/uscif/xds110/xdsdfu -e
 
-If needed, the serial numbers can also be changed by using the xdsdfu tool with 
-the -m and -s options. Execute xdsdfu without any options for further help, or 
+If needed, the serial numbers can also be changed by using the xdsdfu tool with
+the -m and -s options. Execute xdsdfu without any options for further help, or
 see the xdsdfu documention in the same folder as xdsdfu.
 
 Next create a target configuration for each node. Launch CCS and for each node:
 
     - Select View -> Target Configurations
 
-    - In the Target Configurations Window, right-click "User Defined" and 
+    - In the Target Configurations Window, right-click "User Defined" and
       select "New Target Configuration"
 
-    - Select a unique name for the target configuration, e.g. 
+    - Select a unique name for the target configuration, e.g.
       TMS320F280049C_LaunchPad_N<x>.ccxml for Node x
 
     - For Connection, select "Texas Instruments XDS110 USB Debug Probe"
-    
+
     - For Board of Device, select "TMS320F280049C"
-    
-    - Under "Advanced Setup", click on Target Configuration, and then "Texas 
+
+    - Under "Advanced Setup", click on Target Configuration, and then "Texas
       Instruments XDS110 USB Debug Probe_0"
-    
+
     - Under "Debug Probe Selection", choose "Select by Serial Number"
-    
-    - In the "Enter the serial number" field, fill in the serial 
+
+    - In the "Enter the serial number" field, fill in the serial
       number obtained obtained from (or assigned using) xdsdfu.
 
 .. _F280049 JTAG Load:
 
-After creating the target configurations, the pre-built C2000 binaries can be 
+After creating the target configurations, the pre-built C2000 binaries can be
 written to the TMS320F28004x on-chip flash. For each node LaunchPad:
 
     - Right-click on node .ccxml in Target Configurations window
@@ -324,7 +324,7 @@ Execute Demo
 
 Follow the steps below to execute the demo.
 
-**1.** Press the S1 XRSn reset button on the side of each Seconary Node. Reset the 
+**1.** Press the S1 XRSn reset button on the side of each Seconary Node. Reset the
 nodes in order 3, 2, 1.
 
 **2.** Power cycle the AM64x EVM.
@@ -334,7 +334,7 @@ nodes in order 3, 2, 1.
 .. Image:: /images/Servo_Drive_Demo_14.png
 
 After the project is open, TwinCAT XAE will display the following:
-    
+
 .. Image:: /images/Servo_Drive_Demo_15.png
 
 **4.** The first time the demo is executed, the EtherCAT MAC address must be updated. Update the MAC address as shown below.
@@ -348,9 +348,9 @@ Click "OK" when prompted whether to Restart TwinCAT System in Run mode.
 
 .. Image:: /images/Servo_Drive_Demo_18.png
 
-**6.** Ensure the device is in "OP" mode. If the device is not in "OP" mode, 
+**6.** Ensure the device is in "OP" mode. If the device is not in "OP" mode,
 click on the "Activate Configuration" button again.
-   
+
 .. Image:: /images/Servo_Drive_Demo_19.png
 
 **7.** Select the target velocity for each axis.
@@ -360,17 +360,17 @@ click on the "Activate Configuration" button again.
     - For Module 1, 2 and 3, expand Outputs.
 
     - For each Module:
-    
-        - Click on Target Velocity. Click the Online tab in the Project window, 
-          then click "Force" and set the target velocity for the axis 
+
+        - Click on Target Velocity. Click the Online tab in the Project window,
+          then click "Force" and set the target velocity for the axis
           (e.g. set "Dec" field to 2000).
 
-        - The target velocity for an axis can be changed whether an axis is 
-          enabled (see below) or not. To change the target velocity, click on 
+        - The target velocity for an axis can be changed whether an axis is
+          enabled (see below) or not. To change the target velocity, click on
           "Force" and set a new target velocity.
 
 .. Image:: /images/Servo_Drive_Demo_20.png
-    
+
 **8.** Enable each axis.
 
 - Expand MOTION -> Axes
@@ -392,22 +392,22 @@ Build & Execute Demo Software
 Build & Execute AM64x Main Node Software
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Beckhoff EtherCAT stack must be downloaded separately from the Servo Drive 
-Demo software. Instructions on downloading the EtherCAT stack and generating 
-the stack source files are contained in the file 
+The Beckhoff EtherCAT stack must be downloaded separately from the Servo Drive
+Demo software. Instructions on downloading the EtherCAT stack and generating
+the stack source files are contained in the file
 apps/servo_drive_demo/ethercat_loop/beckhoff_ssc/README.txt.
 
-After the EtherCAT stack files are placed in the correct folder, the Servo 
-Drive Demo is built from the sitara-apps folder using the following 
+After the EtherCAT stack files are placed in the correct folder, the Servo
+Drive Demo is built from the sitara-apps folder using the following
 commands:
 
     - **Linux:** make common_libs servo_drive_demo BUILD_LINUX_APPS=0
 
     - **Windows:** gmake common_libs servo_drive_demo BUILD_LINUX_APPS=0
 
-The build outputs are described in the table below. All build outputs are 
-located in folder apps/servo_drive_demo/out/AM64X (referred to as <OUT> in 
-the table). 
+The build outputs are described in the table below. All build outputs are
+located in folder apps/servo_drive_demo/out/AM64X (referred to as <OUT> in
+the table).
 
 .. _Normal Build Images Table:
 
@@ -441,13 +441,13 @@ the table).
 |         |             |                                                                    |                                                            |
 +---------+-------------+--------------------------------------------------------------------+------------------------------------------------------------+
 
-To load and run executables (.out files) on the AM64x cores via CCS/JTAG, 
-follow the procedures mentioned in 
+To load and run executables (.out files) on the AM64x cores via CCS/JTAG,
+follow the procedures mentioned in
 `Load Rtos & Baremetal Application Binaries Thru CCS <../../rtos/pdk_am64x/docs/userguide/am64x/ccs_setup_am64x.html#step-4-load-rtos-baremetal-application-binaries-thru-ccs>`__.
 
-The execute the Servo Drive Demo, follow the steps listed in `Execute Demo`_. 
-However, instead of booting from SD or OPSI, load the executables via JTAG 
-after power cycling the AM64x EVM. When loading the executables, ensure the 
+The execute the Servo Drive Demo, follow the steps listed in `Execute Demo`_.
+However, instead of booting from SD or OPSI, load the executables via JTAG
+after power cycling the AM64x EVM. When loading the executables, ensure the
 EVM boot settings are set for 'No Boot' mode (refer to `boot switch settings`_).
 
 
@@ -466,16 +466,16 @@ C2000Ware_MotorControl_SDK_3_00_00_00/solutions/tidm_02006_multi_axis_drive/f280
 
 - multi_axis_slave_node3_f28004x_cpu.projectspec
 
-Details on code modifications to apply to the installed C2000 
+Details on code modifications to apply to the installed C2000
 code are contained in file apps/servo_drive_demo/c2000_slave/am64x/README.
 
 The Flash and RAM binaries for each node can be built as follows:
 
     - Right-click on project in Project Explorer
-    
+
     - Select Build Configurations -> Build All
 
-To load and execute code on the a F280049 core via CCS/JTAG, follow the 
+To load and execute code on the a F280049 core via CCS/JTAG, follow the
 procedure mentioned in `F280049 JTAG Load`_. Both RAM and Flash images
 can be loaded and executed using this procedure.
 
@@ -483,7 +483,7 @@ can be loaded and executed using this procedure.
 AM64x Main Node Software for System Development/Debug
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Several R5F programs are provided for system debug, or for system development 
+Several R5F programs are provided for system debug, or for system development
 in the case not all Servo Drive Demo hardware is available (e.g. the Seconary Node
 hardware is unavailable). These programs can be built alongside the normal Main Node
 software by adding BUILD_DEBUG_TEST_TARGETS=1 to the build commands as below:
@@ -492,10 +492,10 @@ software by adding BUILD_DEBUG_TEST_TARGETS=1 to the build commands as below:
 
     - **Windows:** gmake common_libs servo_drive_demo BUILD_LINUX_APPS=0 BUILD_DEBUG_TEST_TARGETS=1
 
-The table below provides a brief description of these programs and their 
-intended use for system develpment and debug. All build outputs are 
-located in folder apps/servo_drive_demo/out/AM64X (referred to as <OUT> in 
-the table). 
+The table below provides a brief description of these programs and their
+intended use for system develpment and debug. All build outputs are
+located in folder apps/servo_drive_demo/out/AM64X (referred to as <OUT> in
+the table).
 
 .. _Debug Build Images Table:
 
@@ -554,17 +554,17 @@ the table).
 +---------+----------+--------------------------------------------------------------------+------------------------------------------------------------+
 
 Additional system development and debug capability is supplied through a
-compile-time option for the R5F Position-Speed Loop program 
-(`Normal Build Images Table`_, No. 5 or 6). Specifically, this program can be 
-built in FSI loopback mode. In this case, the Position-Speed Loop program loops 
-FSI Tx traffic (normally sent to the Secondary Nodes over the FSI daisy chain) 
-to FSI Rx. This is useful if the Secondary Node hardware is unavailable, or 
-there is a desire to simplify Main Node code development by temporarily 
+compile-time option for the R5F Position-Speed Loop program
+(`Normal Build Images Table`_, No. 5 or 6). Specifically, this program can be
+built in FSI loopback mode. In this case, the Position-Speed Loop program loops
+FSI Tx traffic (normally sent to the Secondary Nodes over the FSI daisy chain)
+to FSI Rx. This is useful if the Secondary Node hardware is unavailable, or
+there is a desire to simplify Main Node code development by temporarily
 disconnecting the Secondary Node hardware.
 
-The R5F Position-Speed Loop program can be built in FSI loopback mode by adding 
-FSI_LOOPBACK=1 to the build commands as below. The resulting executable has the 
-same folder and file name as the normal FSI build. 
+The R5F Position-Speed Loop program can be built in FSI loopback mode by adding
+FSI_LOOPBACK=1 to the build commands as below. The resulting executable has the
+same folder and file name as the normal FSI build.
 
     - **Linux:** make common_libs servo_drive_demo BUILD_LINUX_APPS=0 FSI_LOOPBACK=1
 

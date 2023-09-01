@@ -9,10 +9,10 @@ Overview
 
 The default application loaded on the AM64x is the Benchmark Demo. It's
 purpose is to showcase the capabilities of the four R5F cores as well as
-the A53 core right out of the box. One of the four R5F benchmarks will run 
-on one of the 4 R5F cores. There are 4 running options available for each 
-benchmark. Users can switch using the drop-down to test the AM64x and view 
-it's performance. 
+the A53 core right out of the box. One of the four R5F benchmarks will run
+on one of the 4 R5F cores. There are 4 running options available for each
+benchmark. Users can switch using the drop-down to test the AM64x and view
+it's performance.
 
 All of the necessary equipment requirement and instructions are provided here.
 
@@ -27,7 +27,7 @@ Hardware Prerequisites
 
 -  Ethernet switch or ethernet router with DHCP service
 
--  SD card (minimum 2GB) 
+-  SD card (minimum 2GB)
 
 Get Started
 -----------
@@ -52,12 +52,12 @@ Get Started
 
 6.  Connect the UART (J26 via USB cable) to the PC's USB port.
 
-7. Open the the main UART0 port using the TeraTerm or other UART emulator 
+7. Open the the main UART0 port using the TeraTerm or other UART emulator
     program. Set the port to 115200bps, 8 bit, no parity, 1 stop bit, no flow control
 
 8. Power on the AM64x
 
-9. After the Linux boot completes, login as "root", then type in "ifconfig" in 
+9. After the Linux boot completes, login as "root", then type in "ifconfig" in
     Linux prompt to find out the IP address for the AM64x EVM
 
 .. Image:: /images/OOB_Linux_ifconfig.png
@@ -73,14 +73,14 @@ Get Started
 
 .. Image:: /images/OOB_GUI_stats.png
 
-13. With the current release, the R5F app for each R5F core are fixed. User can only 
+13. With the current release, the R5F app for each R5F core are fixed. User can only
     change the "Options" for each core, then click "LOAD" to refresh the statistics 
 
 +-------------+------------------+----------------------+-----------------------------------------------------------+
 | **R5 Core** | **App Name**     |   Default Option     | **Description**                                           |
 +=============+==================+======================+===========================================================+
 | 0_0         | ADC and PWM Loop |      8Khz            | ADC/PWM benchmark for R5 5 ADC sample read & 1 PWM write  |
-|             |                  |                      | This is not enabled in current release.                   |  
+|             |                  |                      | This is not enabled in current release.                   |
 +-------------+------------------+----------------------+-----------------------------------------------------------+
 | 0_1         | CFFT             |      1Khz & 128pt    | CMSIS CFFT benchmark for R5                               |
 +-------------+------------------+----------------------+-----------------------------------------------------------+
@@ -148,9 +148,9 @@ HTTP
 ~~~~
 
 All data communication is handled via HTTP. Benchmark data from the
-AM64x is requested by the GUI every second, whereas the option selection 
-data is pushed from the GUI to the AM64x when the "Load" button is clicked. 
-The HTTP requests are handled with jQuery, and the body of each HTTP request 
+AM64x is requested by the GUI every second, whereas the option selection
+data is pushed from the GUI to the AM64x when the "Load" button is clicked.
+The HTTP requests are handled with jQuery, and the body of each HTTP request
 is a JSON string containing the input/output benchmark data.
 
 JSON
@@ -167,14 +167,14 @@ will then be displayed on the GUI every second.     
 Build Baremetal Demos and Update SD card
 ----------------------------------------
 
-1. Install MCU+ SDK `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/08_05_00_24/exports/docs/api_guide_am64x/SDK_DOWNLOAD_PAGE.html>`__. 
-   Refer MCU+ SDK benchmark demo user guide 
-   `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/08_05_00_24/exports/docs/api_guide_am64x/EXAMPLE_MOTORCONTROL_BENCHMARKDEMO.html>`__  
+1. Install MCU+ SDK `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/08_05_00_24/exports/docs/api_guide_am64x/SDK_DOWNLOAD_PAGE.html>`__.
+   Refer MCU+ SDK benchmark demo user guide
+   `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/08_05_00_24/exports/docs/api_guide_am64x/EXAMPLE_MOTORCONTROL_BENCHMARKDEMO.html>`__
    on how to build demos.
-   Generated binaries will be in  <MCU+ SDK>/examples/motor_control/benchmark_demo/am64x-evm/system_nortos 
+   Generated binaries will be in  <MCU+ SDK>/examples/motor_control/benchmark_demo/am64x-evm/system_nortos
 
 2. Once the R5F binaries are available, copy them to Linux file system in folder /lib/firmware/mcusdk-benchmark_demo/.
-   The copy step can only be done using a Linux machine since the Linux filesystem on the 
+   The copy step can only be done using a Linux machine since the Linux filesystem on the
    SD card cannot be seen on a Windows machine. Once copied, make sure the soft links are pointing to the correct binaries.
 
 Directory Structure

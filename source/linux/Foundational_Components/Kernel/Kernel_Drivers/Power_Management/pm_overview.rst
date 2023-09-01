@@ -41,6 +41,6 @@ peripherals as that are not in use.
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
     The idle power management features on AM62X are:
-	
+
     #. Deep Sleep (Suspend-to-RAM)
     #. MCU Only Mode

@@ -30,7 +30,7 @@ to enable it again,
 
 ::
 
-    root@dra7xx-evm:/sys/bus/platform/drivers/omap_rtc# echo 48838000.rtc > bind             
+    root@dra7xx-evm:/sys/bus/platform/drivers/omap_rtc# echo 48838000.rtc > bind
     [ 7792.863975] omap_rtc 48838000.rtc: already running
     [ 7792.869822] omap_rtc 48838000.rtc: rtc core: registered 48838000.rtc as rtc1
     root@dra7xx-evm:/sys/bus/platform/drivers/omap_rtc#

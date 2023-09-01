@@ -204,7 +204,7 @@ Bring up the device using the command:
 
     $ ip link set can0 up
 
-| 
+|
 
 .. rubric:: **Transfer Packets**
    :name: transfer-packets

@@ -45,7 +45,7 @@ Following features are enabled/tested in this release for AM62x Android:
 * **Graphics:** GPU accelerated UI with Hwcomposer
 * **Audio:** HDMI Output and Jack Audio Output/Input
 * **Multimedia:** SW Video Decode/Encode, USB Camera Supported
-* **Android Baseport:** Support of Generic System Image, 
+* **Android Baseport:** Support of Generic System Image,
 * **Display:** Support for LVDS panel and dual display (mirroring and extended)
 
 SDK Components and Versions

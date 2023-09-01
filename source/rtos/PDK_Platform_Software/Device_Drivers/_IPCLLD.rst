@@ -44,8 +44,8 @@ Features
 Installation
 ------------
 
-IPCLLD is part of TI PDK (Platform Development Kit) package. Once PRSDK is installed, PDK and all dependent packages and tool-chains are installed automatically. 
-IPCLLD can also be located at <PRSDK_HOME>/pdk/packages/ti/drv/ipc. IPCLLD is also available publically at `<https://git.ti.com/processor-sdk/pdk/>`_ at packages/ti/drv/ipc. 
+IPCLLD is part of TI PDK (Platform Development Kit) package. Once PRSDK is installed, PDK and all dependent packages and tool-chains are installed automatically.
+IPCLLD can also be located at <PRSDK_HOME>/pdk/packages/ti/drv/ipc. IPCLLD is also available publically at `<https://git.ti.com/processor-sdk/pdk/>`_ at packages/ti/drv/ipc.
 
 It can also be cloned using following git command:
 
@@ -114,7 +114,7 @@ example  make -s -j BUILD_PROFILE=<debug/release> BOARD=<am65xx_evm/j721e_evm> C
 clean    make -s -j BUILD_PROFILE=<debug/release> BOARD=<am65xx_evm/j721e_evm> CORE=<core_name> ipc_echo_test_clean  Clean the ipc_echo_test (this can be replaced with any available IPC test name to build the specific test)
 =======  ==========================================================================================================  ===========
 
-See `Example Details`_ for list of supported examples. 
+See `Example Details`_ for list of supported examples.
 
 Available Core names
 ^^^^^^^^^^^^^^^^^^^^
@@ -132,8 +132,8 @@ J721E:
         - mcu3_0 (main-r5f1_0)
         - mcu3_1 (main-r5f1_1)
         - c66xdsp_1 (c66x_0)
-        - c66xdsp_2 (c66x_1)  
-        - c7x_1 (c71x_0)    
+        - c66xdsp_2 (c66x_1)
+        - c7x_1 (c71x_0)
 
 Expected Output
 ^^^^^^^^^^^^^^^
@@ -161,9 +161,9 @@ Loading Remote Firmware
 
 Remote firmware can be loading using CCS or using uBoot SPL.
 
-1. **Loading using CCS** : 
-   
-    Sciclient module contains default system firmware and CCS script to load the system firmware. The load scripts should be modified to reflect the correct full-path of the script location. Once the script is updated, 
+1. **Loading using CCS** :
+
+    Sciclient module contains default system firmware and CCS script to load the system firmware. The load scripts should be modified to reflect the correct full-path of the script location. Once the script is updated,
 
     * start TI CCS 9.1 or newer
     * open CCS script console using menu **View --> Scripting Console**
@@ -186,8 +186,8 @@ Remote firmware can be loading using CCS or using uBoot SPL.
                 :width: 672
 
 
-2. **Loading using SPL/uBoot** 
-    
+2. **Loading using SPL/uBoot**
+
   Run following steps to configure remote firmware for SPL loading with HLOS running on MPU
 
   1) Copy the remote firmware to rootfs at /lib/firmware/pdk-ipc folder
@@ -197,15 +197,15 @@ Remote firmware can be loading using CCS or using uBoot SPL.
      * rm j7*
   4) Create new soft links
 
-     * ln -s /lib/firmware/pdk-ipc/ipc_echo_test_c66xdsp_1_release.xe66 j7-c66_0-fw  
-     * ln -s /lib/firmware/pdk-ipc/ipc_echo_test_c66xdsp_2_release.xe66 j7-c66_1-fw    
-     * ln -s /lib/firmware/pdk-ipc/ipc_echo_test_c7x_1_release.xe71     j7-c71_0-fw     
+     * ln -s /lib/firmware/pdk-ipc/ipc_echo_test_c66xdsp_1_release.xe66 j7-c66_0-fw
+     * ln -s /lib/firmware/pdk-ipc/ipc_echo_test_c66xdsp_2_release.xe66 j7-c66_1-fw
+     * ln -s /lib/firmware/pdk-ipc/ipc_echo_test_c7x_1_release.xe71     j7-c71_0-fw
      * ln -s /lib/firmware/pdk-ipc/ipc_echo_test_mcu2_0_release.xer5f   j7-main-r5f0_0-fw
      * ln -s /lib/firmware/pdk-ipc/ipc_echo_test_mcu2_1_release.xer5f   j7-main-r5f0_1-fw
      * ln -s /lib/firmware/pdk-ipc/ipc_echo_test_mcu3_0_release.xer5f   j7-main-r5f1_0-fw
      * ln -s /lib/firmware/pdk-ipc/ipc_echo_test_mcu3_1_release.xer5f   j7-main-r5f1_1-fw
      * ln -s /lib/firmware/pdk-ipc/ipc_echo_testb_mcu1_0_release.xer5f  j7-mcu-r5f0_0-fw
-     * ln -s /lib/firmware/pdk-ipc/ipc_echo_test_mcu1_1_release.xer5f   j7-mcu-r5f0_1-fw 
+     * ln -s /lib/firmware/pdk-ipc/ipc_echo_test_mcu1_1_release.xer5f   j7-mcu-r5f0_1-fw
 
   5) sync : write the changes to filesystem
   6) Reboot the system
@@ -230,8 +230,8 @@ In this section ipc_echo_test is used to demonstrate, but same instructions appl
     .. image:: ../images/ipclld_linux_output.png
                 :height: 796px
                 :width: 983px
-        
-  
+
+
 IPCLLD Design Details
 ---------------------
 

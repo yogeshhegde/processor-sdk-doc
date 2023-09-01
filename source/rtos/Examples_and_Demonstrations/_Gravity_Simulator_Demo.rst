@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Gravity_Simulator_Demo 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Gravity_Simulator_Demo
 
 Overview
 ========

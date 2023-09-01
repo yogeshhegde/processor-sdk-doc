@@ -49,7 +49,7 @@ The main additions or 'enhacements' of LTP-DDT compared to LTP are:
 -  All LTP-DDT test cases and test code reside in <testcases-root>/ddt/
    and <testcode-root>/ddt/ folders respectively.
 
-| 
+|
 
 .. rubric:: LTP-DDT Highlights
    :name: ltp-ddt-highlights
@@ -62,7 +62,7 @@ The main additions or 'enhacements' of LTP-DDT compared to LTP are:
 -  High Code Reuse (atomic scripts and test scripts are reused and
    parameters are adjusted on the fly)
 
-| 
+|
 
 .. rubric:: Test Suites
    :name: test-suites
@@ -118,7 +118,7 @@ The main additions or 'enhacements' of LTP-DDT compared to LTP are:
 -  dwt
 -  wlan
 
-| 
+|
 
 .. rubric:: Device Under Tests Supported
    :name: device-under-tests-supported
@@ -150,7 +150,7 @@ LTP-DDT has been used on following devices:
     | am387x-evm   | am574x-idk   | da830-omapl137-evm | dra72x-evm         |                 |            |                |
     +--------------+--------------+--------------------+--------------------+-----------------+------------+----------------+
 
-| 
+|
 
 .. rubric:: Host Platform Requirements
    :name: host-platform-requirements
@@ -161,7 +161,7 @@ Linux host is required :
 -  to host the NFS server to boot the EVM with NFS as root filesystem
 -  to run host utilities - e.g.iperf
 
-| 
+|
 
 .. rubric:: Host Software Requirements
    :name: host-software-requirements
@@ -172,7 +172,7 @@ Linux host is required :
    boot.
 -  iperf utility on the host.
 
-| 
+|
 
 .. rubric:: Filesystem Requirements
    :name: filesystem-requirements
@@ -202,7 +202,7 @@ Clone the project
 
 ::
 
-    git clone https://git.ti.com/git/test-automation/ltp-ddt.git 
+    git clone https://git.ti.com/git/test-automation/ltp-ddt.git
 
 | Installation instructions are in the README-DDT file. Check sections
   6) and 7)
@@ -276,7 +276,7 @@ test cases.
 
     ./runltp -P <platform> -s "NAND_L_PERF" -S skiplist
 
-| 
+|
 
 .. rubric:: Join
    :name: join

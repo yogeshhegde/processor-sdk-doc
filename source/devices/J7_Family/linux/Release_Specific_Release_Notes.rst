@@ -162,7 +162,7 @@ Yocto
 |
 
 .. rubric:: meta-psdkla
-   
+
 | Head Commit: f9dcc7e5da71de3d6a745c051ae6b67e7ba58ee2 ti-apps-launcher: PSDK Auto-Merger: 20230728_1554
 | Date: 2023-07-28
 
@@ -322,14 +322,14 @@ U-Boot Known Issues
   "LCPD-24108","U-Boot: TISCI config ring fail traces seen in OSPI boot mode on J721E","j721e-evm,j721e-evm-ivi,j721e-idk-gw",""
   "LCPD-22904","U-boot: Update EMIFtool for i2244:DDR: Valid stop value must be defined for write DQ VREF training","j721e-idk-gw,j7200-evm",""
   "LCPD-17789","UBOOT J7:  Could not see UFS device by scsi scan","j721e-idk-gw",""
-  "LCPD-17523","A72-SPL - Support to dump EEPROM to shared memory","j721e-evm,j721e-idk-gw,j7200-evm",""  
+  "LCPD-17523","A72-SPL - Support to dump EEPROM to shared memory","j721e-evm,j721e-idk-gw,j7200-evm",""
 
 |
 
 Linux Known Issues
 ---------------------------
 .. csv-table::
-  :header: "Record ID", "Title", "Platform", "Workaround" 
+  :header: "Record ID", "Title", "Platform", "Workaround"
   :widths: 5, 10, 70, 35
 
   "LCPD-35097","OSPI Boot failing on AM69","am69_sk-fs",""
@@ -462,7 +462,7 @@ SDK features descoped from 8.6 release
   :widths: 20, 90, 90, 20, 20
 
    JACINTOREQ-5338 ,Jacinto PSDK 8.6 AEP/AHP industrial APL pull-in impact, "J721e, J7200, J721S2 , J784S4", 08.06.00 ,09.00.00
-      
+
 
 SDK features descoped from 8.5 release
 --------------------------------------
@@ -506,8 +506,8 @@ SDK features descoped from 8.0 release
    :widths: 20, 90, 90, 20, 20
 
     JACINTOREQ-1559 ,Linux H264 decoder support, J721e, 08.00.00 ,08.01.00
-    JACINTOREQ-1485 ,Linux writeback pipeline support , J721e, 08.00.00 ,None 
-    JACINTOREQ-1444 ,Vision apps inclusion in yocto build  , J721e, 08.00.00 ,None 
+    JACINTOREQ-1485 ,Linux writeback pipeline support , J721e, 08.00.00 ,None
+    JACINTOREQ-1444 ,Vision apps inclusion in yocto build  , J721e, 08.00.00 ,None
 
 
 SDK features present in 7.0 that were descoped in 7.1
@@ -539,6 +539,6 @@ Host Support
 For the specific supported hosts for current SDK, see :ref:`this page <how-to-build-a-ubuntu-linux-host-under-vmware>`.
 
 .. note::
-   Processor SDK Installer is 64-bit, and installs only on 64-bit host machine. 
+   Processor SDK Installer is 64-bit, and installs only on 64-bit host machine.
 
 .. |reg| unicode:: U+00AE .. REGISTERED SIGN

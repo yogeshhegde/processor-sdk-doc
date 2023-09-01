@@ -139,16 +139,16 @@ Examples
 +-----------------------+-----------------------+-----------------------+
 
 .. note::
-   
+
    ::
-   
+
         * Starting from Processor SDK 4.2 release, idkAM574x support is added for VPS.
         * Starting from Processor SDK 4.2 release, oV1063x camera part support is added for AM572x - GP evm (older Aptina MT9T11 camera is never supported).
-        * Starting from Processor SDK 3.2 release, osd101t2587 lcd panel is supported (new part) along with osd101t2045 lcd panel (old part) on idkAM572x 
+        * Starting from Processor SDK 3.2 release, osd101t2587 lcd panel is supported (new part) along with osd101t2045 lcd panel (old part) on idkAM572x
           and idkAM571x boards for all display subsystem examples.
         * The bare metal examples are added starting from Processor SDK 4.0 release
-        * Some of the clocks such as 32KHz Sync clock are directly tied to A15 core and need that core to be running. Hence while testing the code on other cores 
-          such as DSP/IPU, please make sure to disconnect the ARM core after connecting the ARM core & running the GEL files to enable the other cores and before 
+        * Some of the clocks such as 32KHz Sync clock are directly tied to A15 core and need that core to be running. Hence while testing the code on other cores
+          such as DSP/IPU, please make sure to disconnect the ARM core after connecting the ARM core & running the GEL files to enable the other cores and before
           loading the executable on that core.
 
 
@@ -200,7 +200,7 @@ of the dss functional clock / pixel clk. Please refer to section
 "11.2.4.10.4.2 DISPC Scaling limitations" of AM57x Technical Reference
 manual for minimum ratio allowed when using the scalar unit.
 
-| 
+|
 
 .. rubric::  **Running the Display DSS example**
    :name: running-the-display-dss-example
@@ -223,10 +223,10 @@ manual for minimum ratio allowed when using the scalar unit.
    EVM for test options
 
 .. note::
-   
+
    -  Test Input files for Display Sample application will be in
       "<pdk>\drv\vps\docs\test_inputs\dss_input_files.rar"
-   
+
 The rar file can be unrar-ed to get the test files using utilities such
 as http://www.7-zip.org Please download the latest version of 7-zip from
 this website. The command to unrar is: 7z x {file_to_unrar}
@@ -300,7 +300,7 @@ evmAM572x) to DPI1 LCD output.
 #. Run the application, Select any of the option.
 #. Captured Content will be displayed on the LCD panel connected to EVM
 
-| 
+|
 
 FAQ
 ---
@@ -386,4 +386,4 @@ file with 1920x1080 resolutions. To play them:
 -  In Windows, use yuv player from:
    https://sourceforge.net/projects/raw-yuvplayer/
 
-| 
+|

@@ -3,7 +3,7 @@
 Windows SD Card Creation Guide
 ===============================
 
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows
 
 Overview
 ----------
@@ -25,7 +25,7 @@ the SD card:
    following steps to *create* a bootable SD card and simply copy your
    SD card image files directly to the SD card.
 
-| 
+|
 
 What is Needed
 ----------------
@@ -38,7 +38,7 @@ What is Needed
    or larger
 -  A SD card reader/writer
 
-| 
+|
 
 Steps to Follow
 -----------------
@@ -132,7 +132,7 @@ You can follow the instructions provide below:
 
 .. Image:: ../images/SDF_Format_complete.png
 
-6. Copy the MLO (boot loader) to the formatted SD Card. 
+6. Copy the MLO (boot loader) to the formatted SD Card.
 
 7. Rename application boot binary as "app" and copy it to SD Card.
 
@@ -158,7 +158,7 @@ You can follow the instructions provide below:
 
 5. Click "Format."
 
-6. Copy the MLO (boot loader) to the formatted SD Card. 
+6. Copy the MLO (boot loader) to the formatted SD Card.
 
 7. Rename application binary as "app" and copy it to SD Card.
 
@@ -185,13 +185,13 @@ This method works with all the platforms. However, this method requires the PDK 
 
 .. Image:: ../images/Win7_device_can_be_safely_removed.png
 
-| 
+|
 
 .. note::
    Once SD card is made bootable with Win32 disk imager, it contains sample
    “MLO” and “app” which can be used on the target platform.
 
-| 
+|
 
 Boot from SD Card
 -------------------

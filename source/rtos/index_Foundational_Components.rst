@@ -43,12 +43,12 @@ Use Cases for IPC
 
 IPC Examples
 =============
-	
+
 .. include:: /rtos/PDK_Platform_Software/IPC/_IPC_examples.rst
 
 IPC Training
 =============
-	
+
 .. include:: /common/IPC/_IPC_Training.rst
 
 TI SDO IPC Package
@@ -75,7 +75,7 @@ GateMP Module
 -----------------
 .. include:: /rtos/PDK_Platform_Software/IPC/_GateMP_Module.rst
 
-GateMP Support for UIO and Misc Driver 
+GateMP Support for UIO and Misc Driver
 ---------------------------------------
 .. include:: /rtos/PDK_Platform_Software/IPC/_IPC_GateMP_Support_for_UIO_and_Misc_Driver.rst
 
@@ -115,7 +115,7 @@ Rebuilding IPC
 .. include:: /rtos/PDK_Platform_Software/IPC/_Rebuilding_IPC.rst
 
 
-| 
+|
 
 IPC Transports
 ===============

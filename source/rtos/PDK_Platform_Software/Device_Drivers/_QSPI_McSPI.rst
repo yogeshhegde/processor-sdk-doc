@@ -2,7 +2,7 @@ Introduction
 ------------
 
 SPI driver enables communication for general SPI, MCSPI (Multichannel
-SPI), QSPI (Quad SPI) and OSPI (Octal SPI) based peripherals on board 
+SPI), QSPI (Quad SPI) and OSPI (Octal SPI) based peripherals on board
 through common API to application.
 MCSPI is a generic full-duplex interface supporting transmit and
 receive of data over SPI bus. QSPI/OSPI is a variant of SPI supports four
@@ -78,7 +78,7 @@ SPI IP V1 driver also supports multi-channel API's:
 
 ::
 
-    #include <ti/drv/spi/MCSPI.h> 
+    #include <ti/drv/spi/MCSPI.h>
 
 Open SPI
 ^^^^^^^^
@@ -108,7 +108,7 @@ SPI IP V1 driver also supports multi-channel open API's:
     spiParams.transferCallbackFxn = NULL;
     handle = MCSPI_open(peripheralNum, channel, &spiParams);
 
-| 
+|
 At this point SPI driver is ready for data transfer in blocking mode
 on specific instance identified by handle. Pseudo/Sample code for
 SPI read/write transaction is included below. Refer example for
@@ -212,7 +212,7 @@ SPI
 |                       | platforms.            |                       |                     |                     |
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
 
-| 
+|
 QSPI
 ^^^^
 
@@ -239,7 +239,7 @@ QSPI
 |                       | QSPI driver           |                       |                     |                     |
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
 
-| 
+|
 OSPI
 ^^^^
 
@@ -262,7 +262,7 @@ OSPI
 |                       | mode. (A53 core)      |                       |                     |                     |
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
 
-| 
+|
 
 MCSPI
 ^^^^^
@@ -438,7 +438,7 @@ MCSPI
 Building SPI examples
 ----------------------
 
--  Makefile based examples and dependent libraries can be built from the top level or module level SPI makefile, refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
+-  Makefile based examples and dependent libraries can be built from the top level or module level SPI makefile, refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details of how to setup the build environment. Once you have setup the build environment, issue the following commands:
 ::
 
    To build and clean libs/apps from top-level makefile:
@@ -493,8 +493,8 @@ Support for Benchmark Testing
 +-----------------------+-----------------------+-----------------------------------------+-----------------------+-----------------------+
 | Name                  | Description           | Expected Results                        | SOC/Core Suppported   | Build Type            |
 +=======================+=======================+=========================================+=======================+=======================+
-| OSPI flash Test App   | Test application used | Test application                        |  am65xx/A53           | make                  |  
-|                       | for performance       | will print on the UART console:         |  am65xx/R5            |                       | 
+| OSPI flash Test App   | Test application used | Test application                        |  am65xx/A53           | make                  |
+|                       | for performance       | will print on the UART console:         |  am65xx/R5            |                       |
 |                       | benchmarking          |                                         |  j721e/mpu1_0         |                       |
 |                       |                       | Board_flashWrite ### bytes at transfer  |  j721e/mcu1_0         |                       |
 |                       |                       | rate #### Kbps                          |                       |                       |
@@ -533,5 +533,5 @@ Additional References
 |              git                  | D.pdf                             |
 +-----------------------------------+-----------------------------------+
 
-| 
+|
 

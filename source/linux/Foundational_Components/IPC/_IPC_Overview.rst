@@ -2,7 +2,7 @@
 .. rubric:: Overview
    :name: overview
 
-| 
+|
 | IPC is a generic term of Inter-Processor Communication referred widely
   in the industry, but also a package in TI Processor SDK for multi-core
   communication. In generic usage, there are different ways for
@@ -26,7 +26,7 @@
 | `IPC Quick Start Guide <Foundational_Components_IPC.html#ipc-quick-start-guide>`__                                     | Building and setting up examples for IPC with Processor SDK   |
 +------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------+
 
-| 
+|
 
 .. rubric:: Technical Documents
    :name: technical-documents
@@ -38,7 +38,7 @@
 | rtos/index_Foundational_Components.html#ipc>`__                                  |                       |
 +----------------------------------------------------------------------------------+-----------------------+
 
-| 
+|
 
 .. rubric:: Starting IPC project
    :name: starting-ipc-project
@@ -52,7 +52,7 @@
 +----------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
 | `Linux IPC on K2x <Foundational_Components_IPC.html#ipc-for-k2x>`__                                                        | General info on IPC under Linux environment for K2x                                |
 +----------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| `Running IPC example on DRA7xx/AM572x <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/                       | Info on running RTOS IPC examples on DRA7xx/AM572x                                 |                                             
+| `Running IPC example on DRA7xx/AM572x <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/                       | Info on running RTOS IPC examples on DRA7xx/AM572x                                 |
 | rtos/index_how_to_guides.html#run-ipc-examples-on-am572x>`__                                                               |                                                                                    |
 +----------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
 | `Training video on how to Run IPC example on AM572x <https://training.ti.com/am572x-build-run-ipc-examples>`__             | Step-by-step Video on running the IPC examples under Linux environment on AM572x   |
@@ -65,5 +65,5 @@
 +----------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
 | `IPC Daemon <Foundational_Components_IPC.html#ipc-daemon>`__                                                               | Overview of the IPC Daemon                                                         |
 +----------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| `Rpmsg Video <http://free-electrons.com/pub/video/2011/elce/elce-2011-ben-cohen-remote-processor-messaging-450p.webm>`__   | Video of the Embedded linux Conference Europe Presentation on Rpmsg                |              
+| `Rpmsg Video <http://free-electrons.com/pub/video/2011/elce/elce-2011-ben-cohen-remote-processor-messaging-450p.webm>`__   | Video of the Embedded linux Conference Europe Presentation on Rpmsg                |
 +----------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+

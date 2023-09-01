@@ -20,7 +20,7 @@ in assembly code.
 * C code is compiled into machine language by the TI PRU C/C++ Compiler. C code
   provides the benefits of a high level language. For example, C code is
   typically easier to read and write than Assembly code.
-  
+
 * Each assembly instruction directly correlates to a machine language instruction.
   That means that assembly code precisely controls the PRU core and the timing
   of the PRU core. For example, if the PRU implements a custom
@@ -29,7 +29,7 @@ in assembly code.
 
 * C code and assembly code can be combined to provide the benefits of both
   forms of programming.
-  
+
 
 .. seealso::
 
@@ -43,7 +43,7 @@ in assembly code.
    The C compiler can be used to generate assembly code from C code.
    Generated assembly code may be a helpful starting point for assembly code
    development. See :ref:`pru_getting_started_labs_lab_3`
- 
+
 Start this lab with either :ref:`pru_getting_started_labs_writing_c_code`, or
 with :ref:`pru_getting_started_labs_writing_assembly_code`.
 

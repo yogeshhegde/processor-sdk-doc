@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/CToolsLib 
+.. http://processors.wiki.ti.com/index.php/CToolsLib
 
 Introduction
 ------------
@@ -271,7 +271,7 @@ compatible with CCSv6.
 |                       |                       | Examples_1.3.zip>`__	|
 +-----------------------+-----------------------+-----------------------+
 
-| 
+|
 
 The latest release of all libraries now come with CCS projects. Please
 refer GettingStarted.htm for more details.

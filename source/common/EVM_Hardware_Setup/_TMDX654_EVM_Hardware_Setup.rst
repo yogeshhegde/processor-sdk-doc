@@ -1,4 +1,4 @@
-AM65x EVM 
+AM65x EVM
 ===================
 
 
@@ -10,12 +10,12 @@ Refer to the image below which highlights the key components available on the AM
 .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_IDK_Diagram.png
 
 
-The complete feature set for the AM65x EVM is described in AM65x EVM User Manual. This section only provides description 
-of components that are required to complete basic EVM setup for debugging code using an emulator and Code Composer Studio. 
+The complete feature set for the AM65x EVM is described in AM65x EVM User Manual. This section only provides description
+of components that are required to complete basic EVM setup for debugging code using an emulator and Code Composer Studio.
 
 Supported JTAG Debug Probes (Emulators)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The AM65x EVM includes a cTI20 JTAG connector for external emulators and a micro USB connector for the on-board XDS110 emulator. 
+The AM65x EVM includes a cTI20 JTAG connector for external emulators and a micro USB connector for the on-board XDS110 emulator.
 
 For XDS110 connect a USB cable to the micro USB connector J23 on the front of the board.
 
@@ -33,7 +33,7 @@ For Lauterbach or emulators with MIPI60 or TI14 pin connector, an adapter must b
 If you are using an external emulator pod, you must select which connector sources the clock. The AM65x EVM can support the MIPI60 or cTI20 connector. The JTAG select jumper must be set correctly to specify the clock source as either the MIPI60 or the cTI20 connector.
 
 .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_Clock_Select.png
-		
+
 
 BOOTMODE Switches
 ^^^^^^^^^^^^^^^^^^
@@ -58,7 +58,7 @@ Recommended Boot Mode
 BOOTMODE[18:0] = 000000000 0000000000  MCUBOOTMODE[8:0]= 000000011 (SLEEP BOOT)
 
 **Boot Settings**
- * SW2 – All switches OFF 
+ * SW2 – All switches OFF
  * SW3 – All switches OFF
 
 BOOTMODE[18:0] = 000000100 0000000110     MCUBOOTMODE[8:0]= 000000011 (SD BOOT)
@@ -127,24 +127,24 @@ For full details on supported boot modes, please refer to the table below.
 
 UART Connection
 ^^^^^^^^^^^^^^^^^
-1. Connect a micro USB cable between UART port (J42) of the EVM and host PC. 
+1. Connect a micro USB cable between UART port (J42) of the EVM and host PC.
 
-2. Open a serial console (e.g. Tera Term) on host PC, connect to COM port on which SOC UART0 port is connected. Four COM ports should appear in the serial console application. Connect to the first COM port in the list. 
+2. Open a serial console (e.g. Tera Term) on host PC, connect to COM port on which SOC UART0 port is connected. Four COM ports should appear in the serial console application. Connect to the first COM port in the list.
 
- * First COM port – SoC MAIN UART0 
- * Second COM port – MCU UART 
- * Third COM port – Wakeup UART 
- * Fourth COM port – SoC MAIN UART1 
+ * First COM port – SoC MAIN UART0
+ * Second COM port – MCU UART
+ * Third COM port – Wakeup UART
+ * Fourth COM port – SoC MAIN UART1
 
 .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_Tera_Term.png
 
-3. Open a serial console (e.g Tera Term) on host PC, connect to COM port on which EVM UART port is connected and set the following configuration. 
+3. Open a serial console (e.g Tera Term) on host PC, connect to COM port on which EVM UART port is connected and set the following configuration.
 
- * Baud rate - 115200 
- * Data length - 8 bit 
- * Parity - None 
- * Stop bits - 1 
- * Flow control - None 
+ * Baud rate - 115200
+ * Data length - 8 bit
+ * Parity - None
+ * Stop bits - 1
+ * Flow control - None
 
 Powering the EVM
 ^^^^^^^^^^^^^^^^^^
@@ -158,7 +158,7 @@ Powering the EVM
 | Barrel Plug, 2.5mm I.D x 5.5mm            | 12-24VDC, positive center,  | CUI Inc. SDI65-24UD-P6   |
 | O.D x 9.55                                | 2.71A Output (Max)          |                          |
 +-------------------------------------------+-----------------------------+--------------------------+
- 
+
 .. Note:: The DIN connector power supply is recommended to provide enough power for applications that make use of the PCIe interface.
 
 Minimum Hardware Setup Required to Connect to EVM
@@ -175,10 +175,10 @@ Minimum Hardware Setup Required to Connect to EVM
  * SW3 - All switches OFF
 
 **Jumpers**
- * J4 – Short all the pins 
- * JP37 – Short pins 1 & 2 
- * J43 - Short pins 1 & 2 
- * J8 – Short pins 1 & 2 
+ * J4 – Short all the pins
+ * JP37 – Short pins 1 & 2
+ * J43 - Short pins 1 & 2
+ * J8 – Short pins 1 & 2
 
 AM65x Debug Software Setup
 ----------------------------
@@ -187,51 +187,51 @@ The following software packages are required to setup the AM65x EVM
 
 - Code Composer Studio IDE Environment
 
-- Processor SDK RTOS for AM65xx 
- 
-CCS Host Setup 
+- Processor SDK RTOS for AM65xx
+
+CCS Host Setup
 ^^^^^^^^^^^^^^^
 
 1. Download CCS from the following link:
 http://processors.wiki.ti.com/index.php/Download_CCS
 
-.. Note:: Check the `Processor SDK Release Notes <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_release_specific.html#release-notes>`_ for the recommended CCS version. 
- 
+.. Note:: Check the `Processor SDK Release Notes <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_release_specific.html#release-notes>`_ for the recommended CCS version.
+
 Ensure that at least "Sitara AMx Processors" is selected:
 
  .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_CCS_Install.png
 
- 
+
 
 Install the latest Emulation Package and Device Support Package
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-	
-1. In CCS, navigate to Help -> Check for Updates and select "Sitara device support" 
+
+1. In CCS, navigate to Help -> Check for Updates and select "Sitara device support"
 and "TI Emulators" and click Next.
-	
+
  .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/CCS_Check_for_Updates.PNG
-	
-2. Click "Next" again, select "I accept the terms of the license agreements" 
+
+2. Click "Next" again, select "I accept the terms of the license agreements"
 and click Finish to begin the installation.
 
  .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/CCS_Updating_Software.png
-	
-3. You may be prompted to restart CCS for the updates to take effect. Click "Restart Now" when 
+
+3. You may be prompted to restart CCS for the updates to take effect. Click "Restart Now" when
 prompted to complete the installation.
 
 **Disable Automatic Updates**
 
-To disable automatic updates in CCS, navigate to Windows -> Preferences -> Install/Update -> Automatic Updates, and uncheck "Automatically find new updates and notify me." 
+To disable automatic updates in CCS, navigate to Windows -> Preferences -> Install/Update -> Automatic Updates, and uncheck "Automatically find new updates and notify me."
 
 This is a precautionary step to avoid automatic updates overwriting files updated through TI Emulation Updates for AM65x
 
 Basic CCS Setup
 ^^^^^^^^^^^^^^^^^
 
-The Basic CCS setup is similar to earlier Sitara devices which involves creation of target configuration and connecting 
+The Basic CCS setup is similar to earlier Sitara devices which involves creation of target configuration and connecting
 to cores using the GEL files. This step is suitable for new board bring up and getting hello world going on the AM65x cores.
 
-Users can use this setup for benchmarking code on cores, test basic pin functionality or to run diagnostics. However, multi-core application developers 
+Users can use this setup for benchmarking code on cores, test basic pin functionality or to run diagnostics. However, multi-core application developers
 requiring resource management, power management or security services will require the advanced CCS setup in addition to the basic core setup.
 
 We recommend that you follow the steps in basic setup and then migrate to the advanced SOC CCS setup for application development.
@@ -251,7 +251,7 @@ Creating the Target Configuration
 
  .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_Target_Configuration.png
 
-		
+
 4. Select "Texas Instruments XDS110 USB Debug Probe" for the Connection and "GPEVM_AM65x" for the Board or Device.
 
  .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_Target_Configuration2.png
@@ -260,7 +260,7 @@ Creating the Target Configuration
 .. Note:: The GEL files are automatically populated in the Target Configuration when selecting an EVM instead of an SOC. The SOC option is generally used for custom board bring up or secondary boot debugging.
 
 
-5. Navigate to the "Advanced" tab to ensure the GEL files are populated in the "initialization script" field for the various cores. 
+5. Navigate to the "Advanced" tab to ensure the GEL files are populated in the "initialization script" field for the various cores.
 
  .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_Target_Configuration3.png
 
@@ -355,12 +355,12 @@ On AM65x DMSC_Cortex_M3 is the boot master and is the first core that wakes up a
 	DMSC_Cortex_M3_0: GEL Output: Powering up LPSC_MAIN_TEST
 	DMSC_Cortex_M3_0: GEL Output: No change needed.
 	DMSC_Cortex_M3_0: GEL Output: Powering up LPSC_MAIN_PBIST
-	DMSC_Cortex_M3_0: GEL Output: No change needed. 
+	DMSC_Cortex_M3_0: GEL Output: No change needed.
 	DMSC_Cortex_M3_0: GEL Output: Powering up LPSC_CC_TOP
 	DMSC_Cortex_M3_0: GEL Output: No change needed.
 	DMSC_Cortex_M3_0: GEL Output: Powering up LPSC_A53_CLUSTER_0
 	DMSC_Cortex_M3_0: GEL Output: Power domain and module state changed successfully.
-	DMSC_Cortex_M3_0: GEL Output: Powering up LPSC_A53_0 
+	DMSC_Cortex_M3_0: GEL Output: Powering up LPSC_A53_0
 	DMSC_Cortex_M3_0: GEL Output: Power domain and module  state changed successfully.
 	DMSC_Cortex_M3_0: GEL Output: Powering up LPSC_A53_1
 	DMSC_Cortex_M3_0: GEL Output: Power domain and module state changed successfully.
@@ -408,86 +408,86 @@ On AM65x DMSC_Cortex_M3 is the boot master and is the first core that wakes up a
 	DMSC_Cortex_M3_0: GEL Output: Power domain and module state changed successfully.
 	DMSC_Cortex_M3_0: GEL Output: Powering up LPSC_EMIF_CFG
 	DMSC_Cortex_M3_0: GEL Output: Power domain and module state changed successfully.
-	DMSC_Cortex_M3_0: GEL Output: Powering up all PSC power domains done! 
-	
+	DMSC_Cortex_M3_0: GEL Output: Powering up all PSC power domains done!
+
 |
 
 3. **Connect to Cortex A53 or Cortex R5F**
 Users must now connect to either the Cortex A53 (CortexA53_0_0) or Cortex R5 (MCU_PULSAR_Cortex_R5_0). The following GEL output will appear in the CCS console when connecting to the Cortex A53::
 
-	CortexA53_0_0: GEL Output: VTT Regulator Enabled 
-	CortexA53_0_0: GEL Output: 
-	PHY Init complete 
+	CortexA53_0_0: GEL Output: VTT Regulator Enabled
+	CortexA53_0_0: GEL Output:
+	PHY Init complete
 	CortexA53_0_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x8000000F
-	CortexA53_0_0: GEL Output: 
-	Waiting for DRAM Init to complete... 
-	CortexA53_0_0: GEL Output: 
+	CortexA53_0_0: GEL Output:
+	Waiting for DRAM Init to complete...
+	CortexA53_0_0: GEL Output:
 	DRAM Init complete
 	CortexA53_0_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x8000001F
-	CortexA53_0_0: GEL Output: 
-	Waiting for write leveling to complete 
-	CortexA53_0_0: GEL Output: 
-	Write leveling complete 
+	CortexA53_0_0: GEL Output:
+	Waiting for write leveling to complete
+	CortexA53_0_0: GEL Output:
+	Write leveling complete
 	CortexA53_0_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x8000003F
 	CortexA53_0_0: GEL Output: checking status per byte...
-	CortexA53_0_0: GEL Output: 
+	CortexA53_0_0: GEL Output:
 	DDRSS_DDRPHY_DX0GSR0 = 0x00932420
-	CortexA53_0_0: GEL Output: 
+	CortexA53_0_0: GEL Output:
 	DDRSS_DDRPHY_DX1GSR0 = 0x009224A0
-	CortexA53_0_0: GEL Output: 
+	CortexA53_0_0: GEL Output:
 	DDRSS_DDRPHY_DX2GSR0 = 0x00992620
-	CortexA53_0_0: GEL Output: 
+	CortexA53_0_0: GEL Output:
 	DDRSS_DDRPHY_DX3GSR0 = 0x009825A0
-	CortexA53_0_0: GEL Output: 
-	Waiting for Read DQS training to complete 
-	CortexA53_0_0: GEL Output: 
-	Read DQS training complete 
+	CortexA53_0_0: GEL Output:
+	Waiting for Read DQS training to complete
+	CortexA53_0_0: GEL Output:
+	Read DQS training complete
 	CortexA53_0_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x8000007F
 	CortexA53_0_0: GEL Output: checking status per byte...
-	CortexA53_0_0: GEL Output: 
+	CortexA53_0_0: GEL Output:
 	DDRSS_DDRPHY_DX0RSR0 = 0x00000000
-	CortexA53_0_0: GEL Output: 
+	CortexA53_0_0: GEL Output:
 	DDRSS_DDRPHY_DX1RSR0 = 0x00000000
-	CortexA53_0_0: GEL Output: 
+	CortexA53_0_0: GEL Output:
 	DDRSS_DDRPHY_DX2RSR0 = 0x00000000
-	CortexA53_0_0: GEL Output: 
+	CortexA53_0_0: GEL Output:
 	DDRSS_DDRPHY_DX3RSR0 = 0x00000000
-	CortexA53_0_0: GEL Output: 
-	Waiting for Write leveling adjustment to complete 
-	CortexA53_0_0: GEL Output: 
-	Write leveling adjustment complete 
+	CortexA53_0_0: GEL Output:
+	Waiting for Write leveling adjustment to complete
+	CortexA53_0_0: GEL Output:
+	Write leveling adjustment complete
 	CortexA53_0_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x800000FF
-	CortexA53_0_0: GEL Output: 
-	Waiting for Read deskew to complete 
-	CortexA53_0_0: GEL Output: 
-	Read deskew complete 
+	CortexA53_0_0: GEL Output:
+	Waiting for Read deskew to complete
+	CortexA53_0_0: GEL Output:
+	Read deskew complete
 	CortexA53_0_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x800001FF
-	CortexA53_0_0: GEL Output: 
-	Waiting for Write deskew to complete 
-	CortexA53_0_0: GEL Output: 
-	Write deskew complete 
+	CortexA53_0_0: GEL Output:
+	Waiting for Write deskew to complete
+	CortexA53_0_0: GEL Output:
+	Write deskew complete
 	CortexA53_0_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x800003FF
-	CortexA53_0_0: GEL Output: 
-	Waiting for Read Eye training to complete 
-	CortexA53_0_0: GEL Output: 
-	Read Eye training complete 
+	CortexA53_0_0: GEL Output:
+	Waiting for Read Eye training to complete
+	CortexA53_0_0: GEL Output:
+	Read Eye training complete
 	CortexA53_0_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x800007FF
-	CortexA53_0_0: GEL Output: 
-	Waiting for Write Eye training to complete 
-	CortexA53_0_0: GEL Output: 
-	Write Eye training complete 
+	CortexA53_0_0: GEL Output:
+	Waiting for Write Eye training to complete
+	CortexA53_0_0: GEL Output:
+	Write Eye training complete
 	CortexA53_0_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x80000FFF
-	CortexA53_0_0: GEL Output: 
-	Waiting for VREF training to complete 
-	CortexA53_0_0: GEL Output: 
-	VREF training complete 
+	CortexA53_0_0: GEL Output:
+	Waiting for VREF training to complete
+	CortexA53_0_0: GEL Output:
+	VREF training complete
 	CortexA53_0_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x80004FFF
-	CortexA53_0_0: GEL Output:   
-	
+	CortexA53_0_0: GEL Output:
+
 	====
 
 	DDR4 Initialization has PASSED!!!!
- 
+
 	====
 
 |
@@ -500,7 +500,7 @@ The same GEL output will be shown if connecting to the Cortex R5 first instead o
 
 .. _advanced-am65x-debug-setup-with-dmsc-firmware-load:
 
-Advanced AM65x Debug Setup with DMSC Firmware Load 
+Advanced AM65x Debug Setup with DMSC Firmware Load
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Description**
@@ -513,7 +513,7 @@ For more details, refer to the Initialization Chapter in the TRM and the SciClie
 
 **Additional Software Dependency**
 
- * Processor SDK RTOS for AM65x 
+ * Processor SDK RTOS for AM65x
 
 Users are required to install Processor SDK RTOS to obtain the SciClient component package before proceeding to the Next Step.
 
@@ -525,17 +525,17 @@ ${PDK_INSTALL_PATH}/packages/ti/drv/sciclient/tools/ccsLoadDmsc
 The following files are provided as part for the SciClient tools:
 
  * launch_am65xx.js: CCS Debug Server script to perform on target connect and load DMSC firmware and R5F CCS Init app.
- 
+
  **Location:**: ${PDK_INSTALL_PATH}/packages/ti/drv/sciclient/tools/ccsLoadDmsc
- 
+
  * sciclient_ccs_init_mcu1_0_release.xer5f: R5F Application with default board config
- 
+
  **Location:**: ${PDK_INSTALL_PATH}/packages/ti/drv/sciclient/tools/ccsLoadDmsc/am65xx
- 
- * ti-sci-firmware-am6x-gp.bin: TISCI SYSFW binary loaded on the DMSC 
- 
+
+ * ti-sci-firmware-am6x-gp.bin: TISCI SYSFW binary loaded on the DMSC
+
  **Location:**: ${PDK_INSTALL_PATH}/packages/ti/drv/sciclient/src/V0
- 
+
 AM65x Advanced Debug Script Flow
 
 .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_Advanced_Flow.png
@@ -563,8 +563,8 @@ At the end of the setup, the R5F and A53 are in a clean state to load code and d
 
  .. code-block:: c
    :emphasize-lines: 7, 11
-   
-   
+
+
 	//<!!!!!! EDIT THIS !!!!!>
 	// Set this to 1 to allow loading the GEL files directly from the ccxml file.
 	disableGelLoad = 1;
@@ -577,14 +577,14 @@ At the end of the setup, the R5F and A53 are in a clean state to load code and d
 	// absolute paths to load the binaries.
 	thisJsFileDirectory = "pdk/packages/ti/drv/sciclient/tools/ccsLoadDmsc";
 	//<!!!!!! EDIT THIS !!!!!>
- 
+
  * Set disableGelLoad =1 if GEL files is linked to the cores in the target configuration file.
  * The variable "gelFilePath" doesn't need to be updated if CCS is installed in the default C:/ti/ directory.
  * The variable "thisJsFileDirectory" needs to be updated to point to the PDK install directory.
 
-2. Connect the Javascript to the CCXML file with the steps shown below. 
+2. Connect the Javascript to the CCXML file with the steps shown below.
 
-.. Note:: This step needs to be repeated if you switch workspaces or clean your workspace. 
+.. Note:: This step needs to be repeated if you switch workspaces or clean your workspace.
 
 In the debug view after completing the basic CCS setup, Click on Debug Configurations from the button as show below:
 
@@ -612,7 +612,7 @@ This would give the following output on the scripting console::
 	DMSC Firmware Load Done...
 	DMSC Firmware run starting now...
 	Connecting to MCU Cortex_R5_0!
-	
+
 GEL Output Log::
 
 	DMSC_Cortex_M3_0: GEL Output: Configuring AM65xEVM...
@@ -735,81 +735,81 @@ GEL Output Log::
 	DMSC_Cortex_M3_0: GEL Output: Powering up LPSC_EMIF_CFG
 	DMSC_Cortex_M3_0: GEL Output: Power domain and module state changed successfully.
 	DMSC_Cortex_M3_0: GEL Output: Powering up all PSC power domains done!
-	MCU_PULSAR_Cortex_R5_0: GEL Output: VTT Regulator Enabled 
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	PHY Init complete 
+	MCU_PULSAR_Cortex_R5_0: GEL Output: VTT Regulator Enabled
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	PHY Init complete
 	MCU_PULSAR_Cortex_R5_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x8000000F
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Waiting for DRAM Init to complete... 
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Waiting for DRAM Init to complete...
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
 	DRAM Init complete
 	MCU_PULSAR_Cortex_R5_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x8000001F
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Waiting for write leveling to complete 
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Write leveling complete 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Waiting for write leveling to complete
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Write leveling complete
 	MCU_PULSAR_Cortex_R5_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x8000003F
 	MCU_PULSAR_Cortex_R5_0: GEL Output: checking status per byte...
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
 	DDRSS_DDRPHY_DX0GSR0 = 0x00A728A0
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
 	DDRSS_DDRPHY_DX1GSR0 = 0x00AA2920
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
 	DDRSS_DDRPHY_DX2GSR0 = 0x00AB2920
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
 	DDRSS_DDRPHY_DX3GSR0 = 0x00AA2A20
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Waiting for Read DQS training to complete 
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Read DQS training complete 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Waiting for Read DQS training to complete
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Read DQS training complete
 	MCU_PULSAR_Cortex_R5_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x8000007F
 	MCU_PULSAR_Cortex_R5_0: GEL Output: checking status per byte...
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
 	DDRSS_DDRPHY_DX0RSR0 = 0x00000000
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
 	DDRSS_DDRPHY_DX1RSR0 = 0x00000000
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
 	DDRSS_DDRPHY_DX2RSR0 = 0x00000000
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
 	DDRSS_DDRPHY_DX3RSR0 = 0x00000000
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Waiting for Write leveling adjustment to complete 
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Write leveling adjustment complete 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Waiting for Write leveling adjustment to complete
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Write leveling adjustment complete
 	MCU_PULSAR_Cortex_R5_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x800000FF
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Waiting for Read deskew to complete 
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Read deskew complete 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Waiting for Read deskew to complete
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Read deskew complete
 	MCU_PULSAR_Cortex_R5_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x800001FF
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Waiting for Write deskew to complete 
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Write deskew complete 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Waiting for Write deskew to complete
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Write deskew complete
 	MCU_PULSAR_Cortex_R5_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x800003FF
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Waiting for Read Eye training to complete 
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Read Eye training complete 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Waiting for Read Eye training to complete
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Read Eye training complete
 	MCU_PULSAR_Cortex_R5_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x800007FF
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Waiting for Write Eye training to complete 
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Write Eye training complete 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Waiting for Write Eye training to complete
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Write Eye training complete
 	MCU_PULSAR_Cortex_R5_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x80000FFF
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	Waiting for VREF training to complete 
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	VREF training complete 
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	Waiting for VREF training to complete
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+	VREF training complete
 	MCU_PULSAR_Cortex_R5_0: GEL Output: DDRSS_DDRPHY_PGSR0 = 0x80004FFF
-	MCU_PULSAR_Cortex_R5_0: GEL Output: 
-	
-	====	
-	
+	MCU_PULSAR_Cortex_R5_0: GEL Output:
+
+	====
+
 	DDR4 Initialization has PASSED!!!!
 
 	====
-	
+
 |
 
 Additional Notes for GEL Users
@@ -820,6 +820,6 @@ Additional Notes for GEL Users
 AM65x EVM ships with the dual Cortex R5F configured in lockstep mode. The AM65x EVM GEL file provides a GEL function "Change_MCUSS_to_SplitMode"
 that can be added to OnTargetConnect or invoked from the DMSC_Cortex_M3 to set the dual R5F in split mode.
 
-**Configuring PRU-ICSS in Sync Mode** 
+**Configuring PRU-ICSS in Sync Mode**
 
 The PRU-ICSS subsystem can be configured to SYNC mode (250 Mhz) using the GEL function "PRU_ICSSG_SyncMode_250MHz" from Cortex A53 or R5F

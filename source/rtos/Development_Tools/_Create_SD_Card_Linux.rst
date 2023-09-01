@@ -1,7 +1,7 @@
 Linux SD Card Creation Guide
 =============================
 
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script
 
 Overview
 ----------
@@ -26,7 +26,7 @@ The script will give you information about each step, but the following
 sections will go over the details and walk you through how to use the
 script as well.
 
-| 
+|
 
 What is Needed
 ----------------
@@ -38,7 +38,7 @@ What is Needed
    or larger
 -  A SD card reader/writer
 
-| 
+|
 
 Creating an SD card
 ---------------------
@@ -77,12 +77,12 @@ SD card. For example, if the output looks like:
 
 ::
 
-    Availible Drives to write images to: 
-     
-    #  major   minor    size   name 
+    Availible Drives to write images to:
+
+    #  major   minor    size   name
     1:   8       16    7761920 sdb
-     
-    Enter Device Number: 
+
+    Enter Device Number:
 
 You would enter **1** to select the *sdb* device.
 
@@ -116,7 +116,7 @@ exit the script.
    Once SD card is made bootable, it contains sample “MLO” and “app”
    which can be used on the target platform.
 
-| 
+|
 
 Load Default Images to SD Card
 -------------------------------
@@ -145,7 +145,7 @@ The command to load the SD card is
 
      sudo [SDK Install Path]/bin/create-sdcard.sh ~/ti/processor_sdk_rtos_am57xx_2_00_00_00/prebuilt-sdcards/evmAM572x/sd_card_files
 
-| 
+|
 
 Boot from SD Card
 -------------------

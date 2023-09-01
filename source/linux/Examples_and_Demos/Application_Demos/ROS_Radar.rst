@@ -21,7 +21,7 @@ In case of 3D sensors, typical output is point cloud. Consumer of this informati
 defined. Due to modular nature of ROS it is easy to replace one sensor with the
 other as long as format of information (in this case point cloud) is the same.
 
-An important type of 3D sensor, especially suited for outdoor use cases is 
+An important type of 3D sensor, especially suited for outdoor use cases is
 mmWave radar (77-81GHz). For this demo IWR/AWR-1443 or 1642 EVM is needed.
 It is connected to Sitara device over USB connection creating virtual UART.
 
@@ -111,7 +111,7 @@ ROS RViz node since RViz requires OpenGL desktop support (Sitara only supports O
 
 ROS between distributed nodes (Sitara and Ubuntu Linux box)
 --------------------------------------------------------------
-     
+
 .. rubric:: 1st SSH terminal, to Sitara EVM
    :name: 1st-ssh-terminal-1-ros-demo1
 
@@ -131,14 +131,14 @@ Modify /opt/ros/indigo/setup.bash
         export ROS_PACKAGE_PATH=/opt/ros/indigo/share
         touch /opt/ros/indigo/.catkin
 
-Then, execute 
+Then, execute
 
 .. code-block:: console
 
         source /opt/ros/indigo/setup.bash
         roscore
 
-.. rubric:: 2nd SSH terminal, to Sitara EVM 
+.. rubric:: 2nd SSH terminal, to Sitara EVM
    :name: 2nd-ssh-terminal-1-demo1
 
 .. code-block:: console
@@ -212,8 +212,8 @@ Start roscore, only if it is not already started
    roslaunch  ti_mmwave_rospkg rviz_1443_3d.launch
 
    Change "rviz_1443_3d.launch to "rviz_1642_2d.launch", based on Radar EVM type (1443 or 1642).
-   
-   
+
+
 If Kobuki mobile is available, use the command below instead:
 
 .. code-block:: console
@@ -348,7 +348,7 @@ Bring up all ROS components for communicting and controlling Kobuki
         roslaunch kobuki_node minimal.launch
 
 
-        
+
 .. rubric:: 4th SSH terminal, to Sitara EVM
    :name: 4th-ssh-terminal-1
 
@@ -366,7 +366,7 @@ Start Kobuki teleop console (remotely control Kobuki movement using keyboard)
 		d : disable motors.
 		e : enable motors.
 		q : quit.
-        
+
 .. rubric:: 5th SSH terminal, to Ubuntu Linux box
    :name: 5th-ssh-terminal-1
 
@@ -379,7 +379,7 @@ Setup ROS variables on Ubuntu Linux box (to enable communication with ROS host o
 	export ROS_MASTER_URI=http://$SITARA_IP_ADDR:11311 (IP address of Sitara EVM, modify as needed)
 	export ROS_IP=$LINUX_BOX_IP_ADDR (IP address of Ubuntu Linux box, modify as needed)
 	source /opt/ros/indigo/setup.bash
-	
+
         rosrun rviz rviz
 
 Alternatively, in order to get Kobuki avatar on the screen, install kobuki_description on Ubuntu Linux box
@@ -395,9 +395,9 @@ and start RViz by launching view_model from kobuki_description.
 
 	roslaunch kobuki_description view_model.launch
 
-In RViz add point cloud from mmWave radar: 
+In RViz add point cloud from mmWave radar:
 
-* Click Add->PointCloud2 
+* Click Add->PointCloud2
 * Select /mmWaveDataHdl/RScan from the Topic field dropdown for the PointCloud2 on the left hand panel
 * Increase Size to 0.03, increase Decay Time to 0.25, and Select Style as "Spheres".
 * In rviz, select map for Fixed Frame in Global Options.
@@ -415,7 +415,7 @@ in chapters: "Visualizating the data", "Reconfiguring the chirp profile", and "H
 
 It is possible to start GStreamer pipeline on Sitara and receive front-camera view on Ubuntu Linux box or Windows PC using VLC.
 
-        
+
 .. code-block:: console
 
    gst-launch-1.0 -e v4l2src device=/dev/video1  io-mode=5 ! 'video/x-raw, \
@@ -431,7 +431,7 @@ E.g. on Windows PC (192.168.0.100), you can watch the stream using: "\Program Fi
     :alt: alternate text
     :figclass: align-center
 
-    Multiple windows on Ubuntu Linux box showing ROS RViz, front camera view and external camera view 
+    Multiple windows on Ubuntu Linux box showing ROS RViz, front camera view and external camera view
 
 
 Sense and Avoid Demo with mmWave and Sitara

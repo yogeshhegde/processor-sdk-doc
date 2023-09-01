@@ -2,7 +2,7 @@
 DSP Optimized Libraries
 ************************
 
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Libraries 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_Libraries
 
 
 Available Libraries
@@ -100,7 +100,7 @@ These libraries are delivered with TI C66x object code and included in
 Processor-SDK ROTS. For development in Processor-SDK Linux, they can be
 downloaded from the links listed above and used in any C66x DSP code.
 
-| 
+|
 
 High Performance or Application Specific Libraries
 --------------------------------------------------
@@ -153,5 +153,5 @@ Core benchmark comparison
 
 Please refer to `Core Benchmarks
 <http://www.ti.com/processors/digital-signal-processors/core-benchmarks/core-benchmarks.html>`__
-for DSP vs A15 core benchmark comparison for computation intensive tasks. 
+for DSP vs A15 core benchmark comparison for computation intensive tasks.
 

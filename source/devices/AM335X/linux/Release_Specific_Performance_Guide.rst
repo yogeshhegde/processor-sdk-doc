@@ -39,13 +39,13 @@ System Benchmarks
 
 LMBench
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-LMBench is a collection of microbenchmarks of which the memory bandwidth 
-and latency related ones are typically used to estimate processor 
+LMBench is a collection of microbenchmarks of which the memory bandwidth
+and latency related ones are typically used to estimate processor
 memory system performance. More information about lmbench at
 http://lmbench.sourceforge.net/whatis_lmbench.html and
 http://lmbench.sourceforge.net/man/lmbench.8.html
 
-  
+
 **Latency**: lat_mem_rd-stride128-szN, where N is equal to or smaller than the cache
 size at given level measures the cache miss penalty. N that is at least
 double the size of last level cache is the latency to external memory.
@@ -180,7 +180,7 @@ Dhrystone
 Dhrystone is a core only benchmark that runs from warm L1 caches in all
 modern processors. It scales linearly with clock speed. For standard ARM
 cores the DMIPS/MHz score will be identical with the same compiler and flags.
-  
+
 .. csv-table::
     :header: "Benchmarks","am335x-evm: perf"
 
@@ -383,7 +383,7 @@ Run Glmark2 and capture performance reported (Score). All display outputs (HDMI,
 
 
 Table:  **Glmark2**
- 
+
 |
 
 
@@ -391,12 +391,12 @@ Ethernet
 -----------------
 Ethernet performance benchmarks were measured using Netperf 2.7.1 https://hewlettpackard.github.io/netperf/doc/netperf.html
 Test procedures were modeled after those defined in RFC-2544:
-https://tools.ietf.org/html/rfc2544, where the DUT is the TI device 
+https://tools.ietf.org/html/rfc2544, where the DUT is the TI device
 and the "tester" used was a Linux PC. To produce consistent results,
-it is recommended to carry out performance tests in a private network and to avoid 
-running NFS on the same interface used in the test. In these results, 
+it is recommended to carry out performance tests in a private network and to avoid
+running NFS on the same interface used in the test. In these results,
 CPU utilization was captured as the total percentage used across all cores on the device,
-while running the performance test over one external interface.  
+while running the performance test over one external interface.
 
 In order to start a netperf client on one device, the other device must have netserver running.
 To start netserver:
@@ -405,10 +405,10 @@ To start netserver:
 
    netserver [-p <port_number>] [-4 (IPv4 addressing)] [-6 (IPv6 addressing)]
 
-Running the following shell script from the DUT will trigger netperf clients to measure 
+Running the following shell script from the DUT will trigger netperf clients to measure
 bidirectional TCP performance for 60 seconds and report CPU utilization. Parameter -k is used in
-client commands to summarize selected statistics on their own line and -j is used to gain 
-additional timing measurements during the test.  
+client commands to summarize selected statistics on their own line and -j is used to gain
+additional timing measurements during the test.
 
 ::
 
@@ -417,7 +417,7 @@ additional timing measurements during the test.
    do
       netperf -H <tester ip> -j -c -l 60 -t TCP_STREAM --
          -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
-      
+
       netperf -H <tester ip> -j -c -l 60 -t TCP_MAERTS --
          -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
    done
@@ -462,7 +462,7 @@ AM335X-EVM
 
 USB Driver
 -------------------------
- 
+
 
 
 USB Device Controller

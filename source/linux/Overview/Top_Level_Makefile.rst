@@ -72,7 +72,7 @@ Rules.make file.
    Linux kernel sources, which is used by components such as out-of-tree
    kernel drivers to find the Linux kernel Makefiles and headers.
 
-| 
+|
 
 .. rubric:: Makefile
    :name: makefile
@@ -102,9 +102,9 @@ makefile targets.
 
     ::
 
-        host# pip3 install jsonschema 
+        host# pip3 install jsonschema
         host# pip3 install pyelftools
-        host# pip3 install u-boot-tools 
+        host# pip3 install u-boot-tools
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
@@ -132,7 +132,7 @@ defined
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM64X')
 
-    -  **<target>_stage** - This target will copy the component to 
+    -  **<target>_stage** - This target will copy the component to
        <TISDK_path>/board-support/built-images folder.
 
 -  **<target>_install** - This target will install the component to the
@@ -171,7 +171,7 @@ package:
   -  **am-sysinfo** - Build the helper applications used by the system
      settings demos in Matrix.
 
-| 
+|
 
 .. rubric:: Additional Targets
    :name: additional-targets
@@ -193,7 +193,7 @@ devices will have following additional targets:
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X')
 
-    
+
     **arm-benchmarks** - Build the ARM Benchmarks
 
     **cryptodev** - Build module for cryptographic hardware accelerators.
@@ -220,7 +220,7 @@ devices will have following additional targets:
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
    .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X')
-  
+
         -  **u-boot** - This target will build both u-boot and the u-boot
         SPL (MLO) binaries used in newer versions of u-boot. This actually
         provides a u-boot and u-boot-spl target in the Makefile.
@@ -240,7 +240,7 @@ devices will have following additional targets:
 Along with these targets, there might be additional targets for different
 external kernel modules. This list is different for each platform.
 
-| 
+|
 
 
 
@@ -277,13 +277,13 @@ the Makefile from the top-level of the SDK.
 
     host# make linux
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM64X' )                                                                                                         
-    
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM64X' )
+
    - Copy FitImage, Linux Kernel Image and boot-binaries to built-images folder
-    
+
    ::
-        
-        host# make linux_stage    
+
+        host# make linux_stage
 
 -  Install Linux kernel modules and Fitimage to SD card rootfs
 
@@ -302,7 +302,7 @@ the Makefile from the top-level of the SDK.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    - To build Linux kernel and FitImage for ``am62xx-lp-evm``, pass ``PLATFORM=am62xx-lp-evm`` 
+    - To build Linux kernel and FitImage for ``am62xx-lp-evm``, pass ``PLATFORM=am62xx-lp-evm``
       argument to make.
 
     ::
@@ -314,9 +314,9 @@ the Makefile from the top-level of the SDK.
     ::
 
         host# sudo DESTDIR=/media/$USER/rootfs PLATFORM=am62xx-lp-evm make linux_install
-      
+
     - To Build GPU kernel module
-    
+
     ::
 
         host# make ti-img-rogue-driver
@@ -350,34 +350,34 @@ the Makefile from the top-level of the SDK.
 
     host# make am-benchmarks_install
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM64X' )                    
-      
-    -  Build the ARM Benchmarks                                                    
-                                                                                 
-    ::                                                                             
-                                                        
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM64X' )
+
+    -  Build the ARM Benchmarks
+
+    ::
+
         host# make arm-benchmarks
-                                                                            
-    -  Clean the ARM Benchmarks                                                    
-                                                                                
-    ::                                                                             
-                                                                                
-        host# make arm-benchmarks_clean                                              
-                                                                            
-    -  Install the ARM Benchmarks                                                  
-                                                                               
-    ::                                                                             
-                                                                                
+
+    -  Clean the ARM Benchmarks
+
+    ::
+
+        host# make arm-benchmarks_clean
+
+    -  Install the ARM Benchmarks
+
+    ::
+
         host# sudo make arm-benchmarks_install
 
 .. ifconfig:: CONFIG_part_variant in ( 'AM64X' )
 
     - Build Matrix-gui sources
-      
+
     ::
 
         host# make matrix-gui
-    
+
     - Clean the Matrix GUI
 
     ::
@@ -385,7 +385,7 @@ the Makefile from the top-level of the SDK.
         host# make matrix-gui_clean
 
     - Install the Matrix GUI sources
- 
+
     ::
 
         host# sudo make matrix-gui_install
@@ -467,7 +467,7 @@ the Makefile from the top-level of the SDK.
     ::
 
         host# make u-boot-a53
-    
+
     - Build R5
 
     ::
@@ -498,7 +498,7 @@ the Makefile from the top-level of the SDK.
     argument to make.
 
     - Build u-boot for ``am62xx-lp-evm``
-   
+
     ::
 
         host# make u-boot PLATFORM=am62xx-lp-evm
@@ -508,13 +508,13 @@ the Makefile from the top-level of the SDK.
     ::
 
         host# sudo DESTDIR=/media/$USER/boot PLATFORM=am62xx-lp-evm make u-boot_install
-  
+
     Similar argument can be added to all u-boot targets discussed above.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-    -  Build the combined boot image (tiboot3.bin) 
-  
+    -  Build the combined boot image (tiboot3.bin)
+
     This requires first building the R5 boot image. This will generate the u-boot-spl.bin. Then build sysfw-image to generate combined boot image.
 
     **For GP**
@@ -522,25 +522,25 @@ the Makefile from the top-level of the SDK.
 
         host# make u-boot
         host# make sysfw-image DEVICE_TYPE=gp
-  
+
     The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-gp-evm.bin
- 
+
     **For HS-FS**
     ::
 
         host# make u-boot
         host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
         host# make sysfw-image DEVICE_TYPE=hs-fs
-  
+
     The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-hs-fs-evm.bin
- 
+
     **For HS-SE**
     ::
 
         host# make u-boot
         host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
         host# make sysfw-image DEVICE_TYPE=hs
-  
+
     The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-hs-evm.bin
 
     .. note:: If TI_SECURE_DEV_PKG environment variable is not defined, tiboot3.bin can still be built for GP devices. The following errors will occur in K3-Image-Gen build logs when building for HS-FS or HS-SE devices without the TI_SECURE_DEV_PKG environment variable defined and K3-Image-Gen build may fail:
@@ -570,7 +570,7 @@ the Makefile from the top-level of the SDK.
         host# make SOC=j7200 ROM_COMBINED_IMAGE=1 SBL=u-boot-spl.bin
 
 .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X')
-   
+
    .. rubric:: Installing to SD card rootfs
    :name: installing-to-sd-card
 
@@ -668,22 +668,22 @@ the Makefile from the top-level of the SDK.
     **For GP**
     ::
 
-        #Replace the path to SD card boot partition as appropriate              
+        #Replace the path to SD card boot partition as appropriate
         host# sudo cp board-support/built-images/u-boot.img /media/$USER/boot/u-boot.img
         host# sudo cp board-support/built-images/tispl.bin /media/$USER/boot/tispl.bin
         host# sudo cp board-support/built-images/tiboot3-am64x-gp-evm.bin /media/$USER/boot/tiboot3.bin
 
     **For HS-FS**
     ::
-        
+
         #Replace the path to SD card boot partition as appropriate
         host# sudo cp board-support/built-images/u-boot.img /media/$USER/boot/u-boot.img
         host# sudo cp board-support/built-images/tispl.bin /media/$USER/boot/tispl.bin
         host# sudo cp board-support/built-images/tiboot3-am64x_sr2-hs-fs-evm.bin /media/$USER/boot/tiboot3.bin
-    
+
     **For HS-SE**
     ::
-       
+
         #Replace the path to SD card boot partition as appropriate
         host# sudo cp board-support/built-images/u-boot.img /media/$USER/boot/u-boot.img
         host# sudo cp board-support/built-images/tispl.bin /media/$USER/boot/tispl.bin

@@ -50,8 +50,8 @@ drivers concurrently.
 |                               | ${NDK_INSTALL_DIR}\packages\ti\ndk\inc                                |
 |                               | ${NDK_INSTALL_DIR}\packages\ti\ndk\inc\tools                          |
 +-------------------------------+-----------------------------------------------------------------------+
- 
-| 
+
+|
 
 NIMU Transport
 ---------------
@@ -80,7 +80,7 @@ as indicated in the table above.
   This module is only intended to be used with NDK. As such,
   users should not tie up to its API directly.
 
-  
+
 +-------------------------------------------------------------------------------------------------------+
 |                                       **NIMU for CPSW Summary**                                       |
 +-------------------------------+-----------------------------------------------------------------------+
@@ -99,7 +99,7 @@ as indicated in the table above.
 |**Reference Guides**           | None                                                                  |
 +-------------------------------+-----------------------------------------------------------------------+
 
-| 
+|
 
 NIMU for ICSS
 -------------
@@ -118,7 +118,7 @@ table above. For details of the PRU-ICSS, please refer to
   requires ICSS-EMAC low level driver. As such, users should not tie up
   to its API directly.
 
-  
+
 +-------------------------------------------------------------------------------------------------------+
 |                                       **NIMU for ICSS Summary**                                       |
 +-------------------------------+-----------------------------------------------------------------------+
@@ -137,7 +137,7 @@ table above. For details of the PRU-ICSS, please refer to
 |**Reference Guides**           | None                                                                  |
 +-------------------------------+-----------------------------------------------------------------------+
 
-| 
+|
 
 Examples
 ---------
@@ -422,7 +422,7 @@ devices(K2H/L/E/G), the following steps need to be performed.
 -  Rebuild the NDK
 -  Rebuild NIMU driver
 
-| 
+|
 
 CCLink Example
 ---------------
@@ -448,7 +448,7 @@ check packages\ti\transport\ndk\nimu\build\makefile.mk
 -  V5: K2G
 -  V6: OMAP-L137/138
 -  V7: AM65x, J7
-| 
+|
 
 Is there any multicast streams limitation using the NDK?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -517,12 +517,12 @@ How do I enable the jumbo packet support?
 Jumbo frames have packet sizes larger than 1500 bytes. Jumbo frame support can be built into an application by linking with libraries compiled for Jumbo frame support.  Two parts of changes are needed for NDK/NIMU example:
 1. NDK libraries: The NDK libraries would have to be recompiled with the following pre-processor definition added: _INCLUDE_JUMBOFRAME_SUPPORT.
 2. NIMU library: the CPSW switch has to be configured to support jumbo packet size and rebuilt. The coding is SOC specific, V0, V4, V5, V6 and V7 NIMU drivers use structure EMAC_OpenConfigInfo and pass the maximum packet size into max_pkt_size field. V1, V2 and V3 NIMU drivers use structure NETIF_DEVICE and pass the maximum packet size into mtu field.
-Finally, please rebuild the test application with updated NDK and NIMU libraries. A reference example for C6678 is available at: http://processors.wiki.ti.com/index.php/Enabling_Jumbo_Packet_Support_for_C6678. Note the work was implemented on earlier BIOS MCSDK package which was obsolete. 
+Finally, please rebuild the test application with updated NDK and NIMU libraries. A reference example for C6678 is available at: http://processors.wiki.ti.com/index.php/Enabling_Jumbo_Packet_Support_for_C6678. Note the work was implemented on earlier BIOS MCSDK package which was obsolete.
 
 Keystone PA or NDK example doesn’t work in other boot mode than no-boot mode using CCS/JTAG?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When running the program with CCS/JTAG, the default GEL file initializes the SOC. Same initialization, like turning on all the relevant power domains, and configuring the SGMII, Serdes, may not be implemented in other boot modes. First check GEL file under ccs_base\emulation\boards\<boards>\gel, function Global_Default_Setup() function to add the missing initializations into the application. Next, look for any boot mode dependent code in the application.  For example, passPowerUp() is called in no_boot mode to turn on PA, this has to be executed in your application when booting from other boot modes as well.   
+When running the program with CCS/JTAG, the default GEL file initializes the SOC. Same initialization, like turning on all the relevant power domains, and configuring the SGMII, Serdes, may not be implemented in other boot modes. First check GEL file under ccs_base\emulation\boards\<boards>\gel, function Global_Default_Setup() function to add the missing initializations into the application. Next, look for any boot mode dependent code in the application.  For example, passPowerUp() is called in no_boot mode to turn on PA, this has to be executed in your application when booting from other boot modes as well.
 
 
 
@@ -545,5 +545,5 @@ Additional Documentation References
 | Rebuilding NDK Core               | Rebuilding_the_NDK_Core                    |
 +-----------------------------------+--------------------------------------------+
 
-.. _Network Developers Kit FAQ: http://processors.wiki.ti.com/index.php/Network_Developers_Kit_FAQ 
+.. _Network Developers Kit FAQ: http://processors.wiki.ti.com/index.php/Network_Developers_Kit_FAQ
 

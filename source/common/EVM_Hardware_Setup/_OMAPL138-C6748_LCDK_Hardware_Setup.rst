@@ -5,8 +5,8 @@ OMAP-L138/C6748 LCDK Hardware Setup
 Overview
 ---------------
 
-The OMAP-L138/C6748 low-cost development kit (LCDK) enables fast and easy software and hardware development of everyday applications that require real-time signal processing 
-and control functional, including industrial control, medical diagnostics and communications. 
+The OMAP-L138/C6748 low-cost development kit (LCDK) enables fast and easy software and hardware development of everyday applications that require real-time signal processing
+and control functional, including industrial control, medical diagnostics and communications.
 
 Hardware
 ^^^^^^^^
@@ -38,7 +38,7 @@ The quick start guide for booting Linux on the Arm core can be found at the foll
 Connecting the LCDK to Code Composer Studio
 --------------------------------------------
 
-The following section describes how to connect to the LCDK and load code via CCS for application development and debug. 
+The following section describes how to connect to the LCDK and load code via CCS for application development and debug.
 
 Hardware Setup
 ^^^^^^^^^^^^^^^
@@ -46,7 +46,7 @@ Hardware Setup
 - Set the SW1 DIP switches to UART boot mode
 - Connect an external emulator to the J6 header.
 - Power on the LCDK using the J1 barrel connector.
- 
+
 Software Setup
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -55,17 +55,17 @@ Software Setup
 .. Note:: CCS versions 9.0 and later are 64-bit applications. Due to this, 32-bit emulators like the Spectrum Digital XDS510USB emulator are not supported with CCS versions 9.0 and later.
 
 - Processor SDK RTOS for OMAP-L138/C6748 - `Download <http://www.ti.com/tool/PROCESSOR-SDK-OMAPL138>`__
- 
+
 .. Note:: Please check the `Processor SDK Release Notes <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_release_specific.html#release-notes>`__ for the recommended CCS version.
 
 - Setup the software environment as described in the "Download and install software" section of the `Processor SDK RTOS Getting Started Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html#download-and-install-software>`__
 
-- Build an example. Below are some suggested examples to get started with. 
+- Build an example. Below are some suggested examples to get started with.
 
 	- `No OS (Bare Metal) Example <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_examples_demos.html#id53>`__
-	
+
 	- `TI-RTOS Kernel Example <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_examples_demos.html#dsp-c674x>`__
-	
+
 	- `GPIO LED Blink Example <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_device_drv.html#id22>`__
 
 Creating a Target Configuration File
@@ -75,16 +75,16 @@ Creating a Target Configuration File
 
 - In the Target Configurations window, right-click and select "New Target Configuration."
 
-- For Connection, select your external emulator. 
+- For Connection, select your external emulator.
 
-- For Board or Device, select LCDKC6748 or LCDKOMAPL138 as shown in the following image, and click Save. 
+- For Board or Device, select LCDKC6748 or LCDKOMAPL138 as shown in the following image, and click Save.
 
 .. Image:: ../images/lcdk_targetConfig.png
 
 |
 
 - Navigate to the Advanced tab and ensure the GEL file is loaded for the ARM9_0 core (OMAP-L138) or C674X_0 core (C6748).
- 
+
 **OMAP-L138 LCDK GEL File:**
 
 .. Image:: ../images/lcdk_omapl138_gel.png
@@ -94,25 +94,25 @@ Creating a Target Configuration File
 
 .. Image:: ../images/lcdk_c6748_gel.png
 	:scale: 100%
- 
+
 
 Connecting to Target and Loading/Running Program
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Connecting to Target** 
+**Connecting to Target**
 
 - In CCS, navigate to the Target Configurations window.
- 
+
 - Right-click on the newly created target configuration and select "Launch Selected Configuration."
- 
+
 - Right-click on the ARM9_0 core for OMAP-L138 or C674X_0 core for C6748, and click "Connect Target."
 
- 
+
 The following GEL outputs should appear in the CCS Console view.
- 
+
 **OMAP-L138 LCDK:**
-:: 
- 
+::
+
 	ARM9_0: Output: 	Target Connected.
 	ARM9_0: Output: 	---------------------------------------------
 	ARM9_0: Output: 	Memory Map Cleared.
@@ -129,10 +129,10 @@ The following GEL outputs should appear in the CCS Console view.
 	ARM9_0: Output: 	---------------------------------------------
 	ARM9_0: Output: 	DSP Wake Complete.
 	ARM9_0: Output: 	---------------------------------------------
- 
+
 **C6748 LCDK:**
 ::
- 
+
 	C674X_0: Output: 	Target Connected.
 	C674X_0: Output: 	---------------------------------------------
 	C674X_0: Output: 	Memory Map Cleared.
@@ -156,7 +156,7 @@ The following GEL outputs should appear in the CCS Console view.
 - Go to “Run -> Load -> Load Program.”
 - Click “Browse” to choose a prebuilt .out or click “Browse project..” to choose a .out from an open project.
 - Select the desired .out and click OK.
- 
+
 **Running Program**
 
 - Go to “Run -> Resume”

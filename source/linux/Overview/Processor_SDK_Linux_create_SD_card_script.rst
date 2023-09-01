@@ -24,7 +24,7 @@ The script will give you information about each step, but the following
 sections will go over the details for the use cases above and walk you
 through how to use the script as well.
 
-| 
+|
 
 .. _processor-sdk-linux-sd-card-common-steps:
 
@@ -61,12 +61,12 @@ SD card. For example if the output looks like:
 
 ::
 
-    Availible Drives to write images to: 
-     
-    #  major   minor    size   name 
+    Availible Drives to write images to:
+
+    #  major   minor    size   name
     1:   8       16    7761920 sdb
-     
-    Enter Device Number: 
+
+    Enter Device Number:
 
 You would enter **1** to select the **sdb** device.
 
@@ -154,7 +154,7 @@ to continue installing the file system or safely exit the script.
    -  **n** - Selecting no here will allow you to have partitioned your
       card but will leave the partitions empty.
 
-| 
+|
 
 .. _processor-sdk-linux-sd-card-using-default-images:
 
@@ -208,7 +208,7 @@ directory name, which makes the Hands on with the SDK training easiest.
 If you have to change the directory name, use option 2 to enter the
 custom file paths.
 
-| 
+|
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
@@ -332,7 +332,7 @@ tarball or a directory path and will copy the files accordingly. You
 will be given a list of the files that are going to be copied and given
 the option to change the path if the list of files is not correct.
 
-| 
+|
 
 .. _processor-sdk-linux-sd-card-using-partition-tarballs:
 
@@ -373,7 +373,7 @@ to verify that the tarballs are present in that directory. The SD card
 will then be populated with the contents of the tarballs and be ready
 for inclusion in the box with the EVM.
 
-| 
+|
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
@@ -390,5 +390,5 @@ for inclusion in the box with the EVM.
          $ cd <SDK INSTALL DIR>/board-support/prebuilt-images
          $ sudo dd if=u-boot-omapl138-lcdk.ais of=/dev/sd<N> seek=117 bs=512 conv=fsync
 
-| 
+|
 

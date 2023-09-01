@@ -35,7 +35,7 @@ Connect to the board's WiFi Access Point
 Follow the steps below to connect to the WiFi Access Point of the SK board:
 
 1. Power on the board. The SK will start the WiFi Access Point(AP) automatically on system boot.
-   
+
 2. Scan for WiFi network from your phone or PC. Each board has a specific AP SSID. For |__PART_FAMILY_NAME__| SK
    it will be "\ |__PART_FAMILY_NAME__|\ SK-AP_xxxxxx".
 
@@ -68,7 +68,7 @@ following steps:
 
 1. Modify the wificfg file on the boot partition of the SD card. You can use a card reader to mount the boot
    partition on Windows or Linux PC.
-   
+
    The default contents of the file are shown below:
 
    ::
@@ -83,7 +83,7 @@ following steps:
      demo_enable = no
      ssid = homewifi
      password = password123
-  
+
    Set demo_enable to yes. Enter the Wi-Fi credentials (Network name and Password) of the AP you want to connect to.
    Do not change the file formatting. In case of AP with no password, leave the password line blank. For example if you
    want to connect to a hotspot named **MyHomeWifi** with **Password123** password, the content should be as shown below:
@@ -105,8 +105,8 @@ following steps:
 
 3. The SK will read the config file and connect to the external AP automatically on system boot.
 
-4. The user can confirm that the SK is connected to the configured AP by running commands on the board such as: 
-   
+4. The user can confirm that the SK is connected to the configured AP by running commands on the board such as:
+
    ::
 
     iw wlan0 link

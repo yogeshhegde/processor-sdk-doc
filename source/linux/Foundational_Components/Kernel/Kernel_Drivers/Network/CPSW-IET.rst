@@ -104,7 +104,7 @@ Assume 2 AM65x IDKs are connected back to back over MCU Ethernet port (typically
  [  552.744839] am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
  [  552.753434] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
 
-.. rubric:: IET FPE example 
+.. rubric:: IET FPE example
    :name: iep-fpe-testing
 
 Highest priority Queue is Express queue. I.e if there are 8 queues configured through ethtool -L command, Q7 will be express and Q0-Q6 will be preemptible. Similarly if 4 queues are configured then Q3 will be express queue and Q0-Q2 will be preemptible queues. See below an example on how to verify preemption is happening in the hardware.  Setup requires 2 IDKs (Example AM65x) connected over MCU Ethernet/CPSW2g port. Assume that IET is enabled on both IDKs as in previous sections and either Force mode or MAC Verify mode is enabled. As soon as the Link comes up, the IET FPE gets enabled. The test requires MQPRIO qdisc to be configured at the Talker DUT's eth0 port and enable classifier to map UDP frames with specific port to be to a given traffic class. Traffic class is used as the index to direct traffic to the specific h/w queue. CPSW2g stats module provide a statistics counter for following that can be used to verify the IET FPE is functional:-
@@ -122,10 +122,10 @@ So to test, need to have traffic at the preemption queue as well as at the expre
  root@evm:~# tc qdisc replace dev eth0 handle 100: parent root mqprio num_tc 2  map 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 queues 1@0
  1@1 hw 0
  root@evm:~# tc -g class show dev eth0
- +---(100:ffe1) mqprio 
- |    +---(100:2) mqprio 
- | 
- +---(100:ffe0) mqprio 
+ +---(100:ffe1) mqprio
+ |    +---(100:2) mqprio
+ |
+ +---(100:ffe0) mqprio
      +---(100:1) mqprio
  # Enable classifier at net core
  root@evm:~# tc qdisc add dev eth0 clsact

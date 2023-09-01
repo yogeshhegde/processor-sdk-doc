@@ -113,7 +113,7 @@ which exists on the host PC.  Click on "Add..." and select "Serial
 Port".  Click "Next".  Choose "Use physical serial port on host".  Click
 "Next".  Click Finish.  Click "Ok".
 
-| 
+|
 
 Since this is a physical port on the host PC, it cannot be used by the
 host PC and the virtual machine at the same time.  When the virtual
@@ -133,7 +133,7 @@ Ubuntu are
   the installation and setup of minicom is done automattically by the
   Sitara SDK installer. 
 
-| 
+|
 
 Now click on "Play virtual machine".  Since this is the first time
 starting the machine and the Ubuntu ISO image is in the virtual CD
@@ -144,7 +144,7 @@ you go.  This will help with SDK installation scripts.
 
 .. Image:: /images/Vmware-player.PNG
 
-| 
+|
 | The full installation will take 20-30 minutes.  When it completes the
   machine will reboot.  The machine will now prompt for the username and
   password that you created during the installation.
@@ -228,7 +228,7 @@ address owned by the Windows host.
     collisions:0 txqueuelen:0
     RX bytes:720 (720.0 B) TX bytes:720 (720.0 B)
 
-| 
+|
 
 .. rubric:: How to Read a USB SD Card Reader in VMware
    :name: how-to-read-a-usbsdcard-reader-in-vmware
@@ -247,7 +247,7 @@ address owned by the Windows host.
   From this sub-menu it is possible to connect or disconnect the USB
   card reader.
 
-| 
+|
 
 .. Image:: /images/Sd_card_reader.png
 

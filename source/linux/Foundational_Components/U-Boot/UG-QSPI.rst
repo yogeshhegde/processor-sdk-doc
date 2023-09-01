@@ -502,7 +502,7 @@ documented in U-boot SPI section.
                 spi-max-frequency = <25000000>;
                 cdns,tshsl-ns = <60>;
                 cdns,tsd2d-ns = <60>;
-        -- 
+        --
         2.25.1
 
     The reason for choosing tx-bus-width as 1 is due to the fact that writing to flashes is always a

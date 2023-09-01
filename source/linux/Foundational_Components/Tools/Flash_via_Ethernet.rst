@@ -5,7 +5,7 @@
 Flash via Ethernet
 ==================
 
-Ethernet is used for peripheral boot and then to flash the files to on-chip memory 
+Ethernet is used for peripheral boot and then to flash the files to on-chip memory
 using DHCP server and TFTP.
 
 Important files
@@ -33,7 +33,7 @@ Set up Ethernet boot. For details of Ethernet boot refer :ref:`booting-over-ethe
 Building bootloader binaries for flashing and Ethernet Boot
 -----------------------------------------------------------
 
-First you need to override the bootcmd command to send the environment variable 
+First you need to override the bootcmd command to send the environment variable
 text file.
 
 ::
@@ -48,7 +48,7 @@ text file.
 
     Update CONFIG_BOOTCOMMAND in am64x_evm_a53_defconfig file as above
 
-    It will enable sending uEnv.txt after Ethernet boot, import the environment 
+    It will enable sending uEnv.txt after Ethernet boot, import the environment
     variable and run *user_commands* after Ethernet boot.
 
     Next build the bootloader binaries for Ethernet boot. For details refer :ref:`booting-over-ethernet`.
@@ -56,7 +56,7 @@ text file.
 Getting ready to flash
 ----------------------
 
-Make sure that the bootloader binaries for flashing and Ethernet boot is built for 
+Make sure that the bootloader binaries for flashing and Ethernet boot is built for
 the EVM and place them in the TFTP directory.
 
 Place the files to be flashed to TFTP directory.
@@ -68,11 +68,11 @@ For connection refer :ref:`booting-over-ethernet`.
 Environment variable text file for flashing
 -------------------------------------------
 
-It will be used to set environment variables in U-Boot for flashing. Create a new 
+It will be used to set environment variables in U-Boot for flashing. Create a new
 uEnv.txt file by using existing uEnv files as reference
 
-It assigns U-Boot commands to run the list of commands specified by user to variable 
-*user_commands*. Ex. for transfer to eMMC following commands are assigned to variable 
+It assigns U-Boot commands to run the list of commands specified by user to variable
+*user_commands*. Ex. for transfer to eMMC following commands are assigned to variable
 user_commands.
 
 ::
@@ -86,7 +86,7 @@ To add new U-Boot commands, assign them to a variable in text file. For example
     example_command1=echo Flash
     example_command2=mmc list
 
-Now add the variables to *command_list* to run them. By this way you can add or remove 
+Now add the variables to *command_list* to run them. By this way you can add or remove
 commands as per your choice.
 
 ::

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_UART 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_UART
 
 Overview
 --------
@@ -135,9 +135,9 @@ operation
 
 ::
 
-    UART_read(handle,scanPrompt, sizeof(scanPrompt));/* Read API */ 
-    ... 
-    UART_write(handle, bufferPrompt, sizeof(bufferPrompt));/* Write API */ 
+    UART_read(handle,scanPrompt, sizeof(scanPrompt));/* Read API */
+    ...
+    UART_write(handle, bufferPrompt, sizeof(bufferPrompt));/* Write API */
 
     Or
 
@@ -156,8 +156,8 @@ operation
 ::
 
     UART_readPolling(handle,scanPrompt, sizeof(scanPrompt));/* Read Polling mode API */
-    ... 
-    UART_writePolling(handle, bufferPrompt, sizeof(bufferPrompt));/* Write Polling API */ 
+    ...
+    UART_writePolling(handle, bufferPrompt, sizeof(bufferPrompt));/* Write Polling API */
 
 .. rubric:: DMA Usage :
    :name: dma-usage
@@ -174,14 +174,14 @@ create DMA handle and update the configuration before UART_init() API.
 ::
 
     uartInitCfg[UART_INSTANCE].edmaHandle = UartApp_edmaInit();/* For AM/K1/K2 devices */
-    
+
     or
-    
+
     uartInitCfg[UART_INSTANCE].udmaHandle = UartApp_udmaInit();/* For K3 devices */
 
     UART_init();
 
-Refer “UART_BasicExample_[SOC]_[cpu]DMATestproject” or "UART_DMA_[evm]_[cpu]TestApp" 
+Refer “UART_BasicExample_[SOC]_[cpu]DMATestproject” or "UART_DMA_[evm]_[cpu]TestApp"
 for additional reference. Refer SDK Release Note for supported EVMs.
 
 Application
@@ -241,7 +241,7 @@ Examples
 Building UART examples
 ----------------------
 
--  Makefile based examples and dependent libraries can be built from the top level or module level UART makefile, refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
+-  Makefile based examples and dependent libraries can be built from the top level or module level UART makefile, refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details of how to setup the build environment. Once you have setup the build environment, issue the following commands:
 ::
 
    To build and clean libs/apps from top-level makefile:
@@ -278,5 +278,5 @@ Additional References
 |                      | _LLD.pdf                          |
 +----------------------+-----------------------------------+
 
-| 
+|
 

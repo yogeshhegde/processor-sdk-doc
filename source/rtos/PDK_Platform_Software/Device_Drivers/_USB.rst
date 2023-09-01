@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_USB 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_USB
 
 Overview
 --------
@@ -52,7 +52,7 @@ manipulated like any other removable USB drive.
 Windows might show a message saying it should be scanned and fixed. We
 can just ignore it and just continue without scanning.
 
-| 
+|
 
    -  **USB device Mass Storage Class with MMCSD card**
 
@@ -64,7 +64,7 @@ functions calling MMCSD API's instead of RamDisk APIs
 
 .. Image:: ../images/Usb_device_mmcsd.PNG
 
-| 
+|
 
 -  **USB host Mass Storage Class**
 
@@ -77,14 +77,14 @@ attached USB disk drive.
 
 .. Image:: ../images/USB_MSC_host.PNG
 
-| 
+|
 
 Screenshot of a MSC host mode example running in RTOS after plugging in
 a USB thumb drive into USB port #1
 
 .. Image:: ../images/Host_shell_screen_shot.png
 
-| 
+|
 
 -  **USB device Audio Class**
 
@@ -98,49 +98,49 @@ allow the playback and record operations between EVM and USB host. This
 mode of operation is currently supported on AM335X GP EVM, OMAP-L137 EVM
 and OMAP-L138 LCDK.
 
-| 
+|
 .. Image:: ../images/Am335x_usb_ac_bd.jpg
 
-| 
+|
 
 -  **USB generic bulk device class**
 
 In this mode, a user-selected USB instance of the EVM will be working in
-device mode. The mentioned USB device will show up in the host PC as a generic 
+device mode. The mentioned USB device will show up in the host PC as a generic
 USB bulk device with one single interface containing a bulk IN and a bulk OUT
-endpoints. The configuration and interface descriptors published by the device 
-contain vendor-specific class identifiers, so an application on the host will 
-have to communicate with the device using either a custom driver or a subsystem 
-such as WinUSB or libusb-win32 on Windows (or just libusb on Linux) to read and 
-write to the device. 
+endpoints. The configuration and interface descriptors published by the device
+contain vendor-specific class identifiers, so an application on the host will
+have to communicate with the device using either a custom driver or a subsystem
+such as WinUSB or libusb-win32 on Windows (or just libusb on Linux) to read and
+write to the device.
 
 
    -  **Running USB bulk device demo application**
 
-The bulk demo application requires a host PC with USB host plugged to the USB device 
-port on the EVM. Depending on the platform, the USB device port might be USB port #0 
-or #1. 
+The bulk demo application requires a host PC with USB host plugged to the USB device
+port on the EVM. Depending on the platform, the USB device port might be USB port #0
+or #1.
 
 .. Image:: ../images/USB_MSC_device.PNG
 
-Please refer to PDK user guide for how to generate USB example projects. Once the demo 
+Please refer to PDK user guide for how to generate USB example projects. Once the demo
 application is loaded and run, the EVM UART console shows the following:
 
 .. Image:: ../images/usb_dev_bulk_console.png
 
-A Python host PC example application is provided in 
+A Python host PC example application is provided in
 ti/drv/usb/example/usb_dev/bulk/usb_dev_bulk_host_application.py
 
 |
 
-The example Python script requires PyUSB to run. On Linux host, proper UDEV rule is 
-also required in order to access the USB bulk device as non-sudo user.  The script 
-itself also lists the requirements to run it as well as what command options available. 
+The example Python script requires PyUSB to run. On Linux host, proper UDEV rule is
+also required in order to access the USB bulk device as non-sudo user.  The script
+itself also lists the requirements to run it as well as what command options available.
 The example UDEV rule is also placed in the same place where the Python script is located.
 It does the following:
 
-- The Python script looks for the USB device with the example PID:VID, 
-- Sends an ASCII text string to the USB bulk demo application running on the EVM 
+- The Python script looks for the USB device with the example PID:VID,
+- Sends an ASCII text string to the USB bulk demo application running on the EVM
 - Expects the same text string with reversed case letter returned back, and also
 - Verifies the received data with the data that it has sent and report the test result.
 
@@ -151,7 +151,7 @@ A screen shot of what the Python test script outputs
 The USB bulk demo application configures the USB endpoints as high speed endpoints with 512B packet size.
 
 |
-| 
+|
 
 User Interface
 --------------
@@ -176,7 +176,7 @@ Driver Configuration
       usb_drv.h and usbdmsc.h and usbhmsc.h provided in the root USB LLD
       directory.
 
-| 
+|
 
 -  **General USB LLD expectations**:
 
@@ -196,7 +196,7 @@ After these steps, application code then can expect to have USB
 enumeration done and start USB transfer through the provided APIs.
 
 Then handle reset function is called for the reconnecting of usb ,
-and Usb_close() is called to disconnect the handle and it is called in 
+and Usb_close() is called to disconnect the handle and it is called in
 USB device bulk application.
 
 API Call Flow
@@ -244,7 +244,7 @@ The following is the sequence of the APIs that were used:
 
 .. Image:: ../images/USB_MSC_host_API_flow.PNG
 
-| 
+|
 
 -  **USB Device Audio**
 
@@ -261,16 +261,16 @@ in the interrupt context.
 .. Image:: ../images/USB_Audio_class_flowchart.jpg
 
 
-| 
+|
 
 -  **USB Device Bulk**
 
-Sequence of API calls as long as what the example application looks like are 
+Sequence of API calls as long as what the example application looks like are
 described bellow
 
 .. Image:: ../images/usb_device_generic_bulk_example_application.png
 
-- Main APIs that are used to read/write from and to the USB bulk device are USBD_bulkRead() and USBD_bulkWrite(). 
+- Main APIs that are used to read/write from and to the USB bulk device are USBD_bulkRead() and USBD_bulkWrite().
 These two functions will block the caller until they finish their operation.
 
 - The main application should wait for about 500ms after the USB host sends the SetConfig request to make sure that the enumeration is completely finished before calling USBD_bulkRead/Write functions
@@ -279,11 +279,11 @@ These two functions will block the caller until they finish their operation.
 Application
 ------------
 
-Examples 
-^^^^^^^^  
+Examples
+^^^^^^^^
 
 Examples are CCS projects. Generated with pdkProjectCreate scripts.
-Please refer  `Processor SDK RTOS Getting Started Guide <index_overview.html#pdk-example-and-test-project-creation>`__  
+Please refer  `Processor SDK RTOS Getting Started Guide <index_overview.html#pdk-example-and-test-project-creation>`__
 for how to create and build examples projects
 
 +-----------------------+-----------------------+-----------------------+
@@ -342,19 +342,19 @@ for how to create and build examples projects
 Test Application
 ^^^^^^^^^^^^^^^^
 
-USB test applications are built using makefile. Some of the test application are 
-RTOS/BIOS apps, other are bare metal apps. They are replica of the USB examples but built by 
+USB test applications are built using makefile. Some of the test application are
+RTOS/BIOS apps, other are bare metal apps. They are replica of the USB examples but built by
 makefile instead of CCS projects.
 
-Refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  
-for details  of how to setup the build environment. Once you have setup the build environment, 
-issue the following commands:  
+Refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__
+for details  of how to setup the build environment. Once you have setup the build environment,
+issue the following commands:
 
 - cd <pdk>/packages/
 
-- To build: make usb 
+- To build: make usb
 
-- To clean: make usb_clean 
+- To clean: make usb_clean
 
 - Test applications are then under (TI_PDK_INSTALL_DIR)/packages/ti/binary/
 
@@ -391,8 +391,8 @@ issue the following commands:
 
 Both examples and test applications can be loaded and run on their intended EVM via
   	-  CCS JTAG connector, or
-  	-  Via SBL: the "app" file under CCS project's debug directory (<PDK_INSTALL_PATH/MyExampleProjects/<ExampleProjectDirectory>/Debug>) is SBL loadable file of the built project. 
-   	--  Project Memory layout must be considered and following SBL guideline so that examples can run safely via SBL. Please refer to `SBL Component <index_Foundational_Components.html#boot>`__   for more detail 
+  	-  Via SBL: the "app" file under CCS project's debug directory (<PDK_INSTALL_PATH/MyExampleProjects/<ExampleProjectDirectory>/Debug>) is SBL loadable file of the built project.
+   	--  Project Memory layout must be considered and following SBL guideline so that examples can run safely via SBL. Please refer to `SBL Component <index_Foundational_Components.html#boot>`__   for more detail
 
 
 
@@ -401,13 +401,13 @@ Benchmark tool
 
 USB host MSC
 ^^^^^^^^^^^^
-    - To measure the USB host MSC throughput, a new command (bm) is added into the USB host mode example (or test application). 
-    - This command is to run with a good known fast USB thumb drive attached to the USB host port. 
+    - To measure the USB host MSC throughput, a new command (bm) is added into the USB host mode example (or test application).
+    - This command is to run with a good known fast USB thumb drive attached to the USB host port.
     - The throughput measurement result varies greatly depends on which USB device is plugged in and which filesystem is used
     - The USB drive needs to be formated as FAT32 (since the USB host example only supports FAT filesystem) and has at least 100MB free space. Fast blank USB thumb drive is recomended.
-    - The command, when run, writes a 100MB file into the thumb drive and measures the time it takes to do so. It then reads back this 100MB file with time measurement to find the read throughput. 
+    - The command, when run, writes a 100MB file into the thumb drive and measures the time it takes to do so. It then reads back this 100MB file with time measurement to find the read throughput.
     - The write and read are done in block size of 100KB, 256KB, 1MB, and 5MB. It prints throughput measurements for each of these blocks.
-    - This command is only supported in AM65xx at the moment. 
+    - This command is only supported in AM65xx at the moment.
     - Syntax:
 
 ::
@@ -437,7 +437,7 @@ Hardware Setup
 This section provides the specific HW setup required to run the USB
 examples.
 
-| 
+|
 
 -  **USB Device Audio**
 
@@ -445,7 +445,7 @@ USB audio class demo requires additional setup for running playback and
 record operations. Below sections provide the setup details for each
 platform supported.
 
-| 
+|
 
 **AM335x GP EVM**
 
@@ -492,8 +492,8 @@ platform supported.
    in the headphone connected to the EVM
 
 .. note::
-   
+
    'board' can be evmAM335x, evmOMAPL137 or lcdkOMAPL138
-   
+
    'core' can be arm or c674x
 

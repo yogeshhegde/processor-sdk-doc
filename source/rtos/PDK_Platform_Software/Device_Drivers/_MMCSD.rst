@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MMCSD 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MMCSD
 
 Overview
 --------
@@ -27,7 +27,7 @@ to/from the CPU device through two-wire interface
 
 | Supports only controller mode. Peripheral mode is not supported
 
-| 
+|
 
 User Interface
 --------------
@@ -78,14 +78,14 @@ for a use case of write transaction in blocking mode:
      UInt peripheralNum = 0; /* Such as MMCSD0 */
      MMCSD_Params MMCSDParams;
      ...
-     MMCSD_Params_init(&MMCSDParams); 
+     MMCSD_Params_init(&MMCSDParams);
      MMCSD = MMCSD_open(peripheralNum, &MMCSDParams);<br>if (MMCSD == NULL) {<br> /* Error opening MMCSD */
      ...
      readOK = MMCSD_read(MMCSD, rxBuffer , startBlock, numBlock); /* Perform MMCSD read */
-     if (!transferOK) { /* MMCSD transaction failed */} 
+     if (!transferOK) { /* MMCSD transaction failed */}
 
      writeOK = MMCSD_write(MMCSD, TxBuffer , startBlock, numBlock); /* Perform MMCSD write */
-     if (!writeOK) { /* MMCSD transaction failed */} 
+     if (!writeOK) { /* MMCSD transaction failed */}
 
 
 .. rubric:: eMMC Usage
@@ -320,7 +320,7 @@ Benchmarking Read/Write Performance (on AM65x/J721e)
 -----------------------------------------------
 
 The MMCSD_<EMMC>_Regression_TestApp application (listed above) measures
-read/write throughput (in mega bytes per sec). 
+read/write throughput (in mega bytes per sec).
 
 It measures the following:
 
@@ -383,7 +383,7 @@ EMMC performance benchmarks can be measured with the following steps
 Building CCS projects based examples
 ------------------------------------
 
-CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in 
+CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in
 `PDK Example and Test Project Creation <index_overview.html#pdk-example-and-test-project-creation>`__
 
 
@@ -396,17 +396,17 @@ Building MMCSD Test applications via makefiles
 - Refer to the `Processor SDK RTOS Getting Started Guide
   <index_overview.html#setup-environment>`__  for details of how to setup the
   build environment. Once you have setup the build environment, issue the
-  following commands:  
+  following commands:
 
    - cd <pdk>/packages/
 
-   - To build: make mmcsd 
+   - To build: make mmcsd
 
-   - To clean: make mmcsd_clean 
+   - To clean: make mmcsd_clean
 
 - Similarly, to build at the module level, issue the following commands for
   rebuilding:
-	
+
    - cd <pdk>/packages/ti/drv/mmcsd
 
    - To build: make all
@@ -429,5 +429,5 @@ Additional References
 |                                   | D_LLD.pdf                                  |
 +-----------------------------------+--------------------------------------------+
 
-| 
+|
 

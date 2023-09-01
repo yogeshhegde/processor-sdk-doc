@@ -41,11 +41,11 @@ To start using this tool, follow these instructions:
 .. note::
 
   For devices that are not yet officially supported by the latest SysConfig tool,
-  K3 Resource Partitioning tool may provide patch files to support the device in 
-  SysConfig. 
-  
-  Run the **sysconfig-deviceData-update script** 
-  ``./scripts/sysconfig-deviceData-update.sh <soc> 
+  K3 Resource Partitioning tool may provide patch files to support the device in
+  SysConfig.
+
+  Run the **sysconfig-deviceData-update script**
+  ``./scripts/sysconfig-deviceData-update.sh <soc>
   --sysconfig_dir=/path/to/sysconfig/installation`` to patch the SysConfig tool.
 
 Usage

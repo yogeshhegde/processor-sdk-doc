@@ -65,7 +65,7 @@ system which ext2,ext3 and ext4 fall under. Go
 `here <https://en.wikipedia.org/wiki/Partition_type#List_of_partition_IDs>`__
 to find a complete list of partition ids.
 
-| 
+|
 
 Viewing, Reading and Writing to Partition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

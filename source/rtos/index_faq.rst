@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_FAQ 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_FAQ
 
 General Support
 ===============
@@ -55,7 +55,7 @@ software reuse for application developers:
 
 .. Image:: ../images/Alert_Me.png
 
-| 
+|
 
 .. rubric:: How do I make a feature request or file bugs for Processor
    SDK RTOS?
@@ -107,26 +107,26 @@ this link provided under the section "Previous Release."
 
 .. rubric:: Does processor SDK RTOS release support all device part numbers in supported device family?
    :name: does-processor-sdk-rtos-release-support-all-device-part-numbers-in-supported-device-family
-   
-Processor SDK RTOS software is tested and validated on TI evaluation platforms that generally includes the superset part
-in the device family however, the software components like CSL, LLD drivers and RTOS are applicable on reduced feature set 
-variant of the devices. Most of the code in the Processor SDK RTOS for multi-core devices is independent of how many cores 
-exists on the device as they provide baseline platform software that can be run from any core. 
 
-It is the users responsibility to modify components that deploy tasks/software on slave cores like OpenMP, OpenCL, IPC and MultiProc Manager 
-so that they use the feature set that is available on their device. In most cases software documentation will provide guidance on updating 
+Processor SDK RTOS software is tested and validated on TI evaluation platforms that generally includes the superset part
+in the device family however, the software components like CSL, LLD drivers and RTOS are applicable on reduced feature set
+variant of the devices. Most of the code in the Processor SDK RTOS for multi-core devices is independent of how many cores
+exists on the device as they provide baseline platform software that can be run from any core.
+
+It is the users responsibility to modify components that deploy tasks/software on slave cores like OpenMP, OpenCL, IPC and MultiProc Manager
+so that they use the feature set that is available on their device. In most cases software documentation will provide guidance on updating
 the software package however this should not be considered a comprehensive list of software components to be updated
 to run the software on a reduced feature set device variant.
 
-Example: `Processor SDK RTOS porting guide for AM571x/AM570x Speed 
+Example: `Processor SDK RTOS porting guide for AM571x/AM570x Speed
 Grades <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Porting_Guide_for_AM571x/AM570x_Speed_Grades>`_
 
-Features noted as “not supported,” in device datasheet must not be used. Their functionality is not supported by TI for this 
-family of devices. These features are subject to removal without notice on future device revisions. Any information regarding 
-the unsupported features has been retained in the documentation solely for the purpose of clarifying signal names or for consistency 
+Features noted as “not supported,” in device datasheet must not be used. Their functionality is not supported by TI for this
+family of devices. These features are subject to removal without notice on future device revisions. Any information regarding
+the unsupported features has been retained in the documentation solely for the purpose of clarifying signal names or for consistency
 with previous feature descriptions.
 
-| 
+|
 
 Training and Documentation
 ==========================
@@ -168,7 +168,7 @@ There are three main documents for Processor SDK RTOS:
    migration information for applications built on top of the Processor
    SDK for RTOS.
 
-| 
+|
 
 Host and Target Setup
 =====================
@@ -278,7 +278,7 @@ Components <Overview.html#top-level-makefile>`__.
 .. note::
    The SDK offers command line build for all the components. CCS projects
    are only supported for DSP libraries and PDK driver examples.
-| 
+|
 
 .. rubric:: Step 5: Generate and Run Peripheral Driver Examples
    :name: step-5-generate-and-run-peripheral-driver-examples
@@ -304,7 +304,7 @@ examples that can be built using build steps described in their
 documentation that is linked at the top level :ref:`Software Developer
 Guide <rtos-index>`.
 
-| 
+|
 
 .. rubric:: How can I optimize the build time when rebuilding the
    Processor SDK RTOS ?
@@ -334,7 +334,7 @@ supports.
 
     For Example:
     make LIMIT_BOARDS="evmK2G iceK2G" LIMIT_SOCS="k2g" LIMIT_CORES="a15_0"
-| 
+|
 
 .. rubric:: Why am I not able to connect to the DSP core in CCS when
    Linux is booted on KeyStone II devices?
@@ -388,7 +388,7 @@ prevent a reset from occurring.
 -  `Preventing a Reset When Connecting a JTAG on
    BeagleBone <http://elinux.org/Beagleboard:BeagleBone#Board_Reset_on_JTAG_Connect.28A3.2CA4.2CA5.29>`__
 
-| 
+|
 
 Device Drivers
 ==============
@@ -492,7 +492,7 @@ INPUT syntax
       "C:\ti\pdk_am335x_1_0_6\packages\ti\osal\lib\tirtos\a8\release\ti.osal.aa8fg"
     )
 
-| 
+|
 
 Chip Support Library (CSL)
 ==========================
@@ -533,7 +533,7 @@ For example, if you need to read the core ID on a multi-core DSP device:
 
      uint32_t coreNum;
      /* Get the core number. */
-     coreNum = CSL_chipReadReg(CSL_CHIP_DNUM); 
+     coreNum = CSL_chipReadReg(CSL_CHIP_DNUM);
 
 To do the same on the multi-core A15 device, you can use the following
 code in the A15 CSL:
@@ -570,7 +570,7 @@ Please take a look at the snapshot below for AM572x:
 ::
 
     /*  Memory Map for ti.platforms.evmAM572X
-     *  
+     *
      *  Virtual     Physical        Size            Comment
      *  ------------------------------------------------------------------------
      *              8000_0000  1000_0000  ( 256 MB) External Memory
@@ -613,7 +613,7 @@ bare-metal linker command files, you can refer to the CCS templates for
 or the linker command file used in the common folder of the the
 diagnostics package.
 
-| 
+|
 
 Board Support
 =============
@@ -694,7 +694,7 @@ described in the article
    board name which is used to configure the board. When creating a custom
    platform if you don`t intend to use an EEPROM then we recommend removing
    code corresponding to Board_getIDInfo in your board library
-| 
+|
 
 .. rubric:: Do I need to do any post processing on PDK files generated
    by Pin Mux Utility?
@@ -747,7 +747,7 @@ is provided in the application note "`Processor SDK RTOS Customization:
 Modifying UART
 Instance <http://www.ti.com/lit/pdf/sprac32>`__"
 
-| 
+|
 
 Secondary Bootloader
 ====================
@@ -809,7 +809,7 @@ The documentation for formatting the SD card through windows or linux is provide
 the wiki article **SDK Create SD Card Script** for `Windows <index_overview.html#windows-sd-card-creation-guide>`__
 and `Linux <index_overview.html#tools-create-sd-card-linux-label>`__.
 
-| 
+|
 
 Diagnostics
 ===========
@@ -863,12 +863,12 @@ section of the Processor SDK RTOS <Device_Drivers.html#fatfs>`__.
 .. rubric:: Is Unicode string supported in FATFS?
    :name: is-unicode-string-supported-in-fatfs
 
-Processor SDK RTOS only supports ANSI string for the path and file names. 
-To switch to Unicode support, please: set the _LFN_UNICODE to 1 in the FATFS (ffconf.h) 
-and rebuild the FATFS library. Also, Unicode support uses 16-bit WCHAR for CHAR. 
-When calling the FATFS APIs (in ff.h), the application needs to pass WCHAR. 
+Processor SDK RTOS only supports ANSI string for the path and file names.
+To switch to Unicode support, please: set the _LFN_UNICODE to 1 in the FATFS (ffconf.h)
+and rebuild the FATFS library. Also, Unicode support uses 16-bit WCHAR for CHAR.
+When calling the FATFS APIs (in ff.h), the application needs to pass WCHAR.
 
-| 
+|
 
 TI RTOS
 =======
@@ -952,7 +952,7 @@ Advanced debug of TI RTOS applications using system analyzer and ROV
 object viewer is described in the `TI RTOS SYSTEM Anlayzer
 wiki <http://processors.wiki.ti.com/index.php/How_is_SYS/BIOS_related_to_System_Analyzer%3F>`__.
 
-| 
+|
 
 .. rubric:: How can I run TI RTOS on secondary ARM cores on multi-core
    ARM devices
@@ -972,7 +972,7 @@ on secondary ARM core, application users need to add :
     var Core = xdc.useModule('ti.sysbios.family.arm.ducati.Core');
     Core.id = 1;
 
-| 
+|
 
 .. rubric:: Why do I get a "undefined reference to
    \`ti_sysbios_rts_gnu_ReentSupport_checkIfCorrectLibrary'" error when
@@ -1017,7 +1017,7 @@ the following in your DSP2.cfg :
      var Clock = xdc.useModule('ti.sysbios.knl.Clock');
      Clock.timerId = 5; /* Change BIOS clock to GPTimer6 */
 
-| 
+|
 
 Networking Support
 ==================
@@ -1041,7 +1041,7 @@ with the NDK software stack, is linked from the wiki `NDK Documentation
 and
 References <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_NDK#Additional_Documentation_References>`__.
 
-| 
+|
 
 Inter-processor Communication (IPC)
 ===================================
@@ -1074,7 +1074,7 @@ The instructions to run the IPC examples on AM57xx are provided in the
 wiki article "`Running IPC Examples on
 AM57xx/DRA7xx <How_to_Guides.html#run-ipc-examples-on-am572x>`__"
 
-| 
+|
 
 DSP-Optimized Libraries
 =======================
@@ -1112,7 +1112,7 @@ useful documents that enable benchmarking on the DSP and ARM cores.
 -  `TI DSP Benchmarking Application
    Report <http://www.ti.com/lit/pdf/sprac13>`__
 
-| 
+|
 
 EDMA Library
 ============

@@ -175,7 +175,7 @@ Issues closed on this release
    LCPD-28151,"HSR/PRP Multicast Filtering failure"
    LCPD-28152,"AM571x-idk: Failed to load /boot/am571x-idk-lcd-osd101t2587.dtb during boot"
    LCPD-26605,"am571x-idk and am572x-idk not booting from SD card"
-   
+
 SDK Known Issues
 -----------------
 .. csv-table::
@@ -198,7 +198,7 @@ SDK Known Issues
    LCPD-25280,am57xx-evm,Ethernet ping tests fails while doing power suspend/resume operations
    LCPD-25279,am57xx-evm,suspend resume by UART test failure
    LCPD-24728,"am335x-evm,am43xx-gpevm,am57xx-evm",Power measurement with Standby/Suspend/Resume failure
-   
+
 |
 
 .. _release-specific-linux-kernel-known-issues:
@@ -289,7 +289,7 @@ RT Linux Kernel Known Issues
    LCPD-6663 ,P3-Medium ,[RT] Kmemleak is buggy and boot is crashed randomly ,Baseport ,  ,
    LCPD-7623 ,P3-Medium ,Seeing SPI transfer failed error sometimes on k2hk when using rt kernel ,Connectivity ,k2hk-evm ,
    LCPD-11586 ,P3-Medium ,dhcp failed to get IP address after reboot for K2G-ICE non-RT linux ,Baseport  ,"k2g-ice ",
-     
+
 |
 
 
@@ -300,7 +300,7 @@ The `Software Developer's Guide <index.html>`__ provides instructions on how to 
 environment, install the SDK and start your development.  It also includes User's Guides for various Example Applications and Code
 Composer Studio.
 
-| 
+|
 
 .. rubric:: Host Support
    :name: host-support
@@ -314,4 +314,4 @@ are described in `this page <How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host
    machine. Support for 32-bit host is dropped as Linaro toolchain is
    available only for 64-bit machines
 
-| 
+|

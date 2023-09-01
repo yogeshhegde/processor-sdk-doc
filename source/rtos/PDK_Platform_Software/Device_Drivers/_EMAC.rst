@@ -1,4 +1,4 @@
-.. http://http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_EMAC 
+.. http://http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_EMAC
 
 Introduction
 -------------
@@ -6,8 +6,8 @@ Introduction
 EMAC driver provides a well defined API layer which allows
 applications to use the EMAC peripheral to control the flow of packet
 data from the processor to the PHY and the MDIO module to control PHY
-configuration and status monitoring. EMAC driver is a common driver for 
-supporting all 1 Gigabit Network interfaces including CPSW and ICSSG 
+configuration and status monitoring. EMAC driver is a common driver for
+supporting all 1 Gigabit Network interfaces including CPSW and ICSSG
 for applicable SOC's.
 
 Driver Configuration
@@ -32,7 +32,7 @@ can be called to initialize driver
 The emac_soc.c file binds driver with hardware attributes on the board
 through EMAC_Cfg structure. This structure must be provided to EMAC
 driver. It must be initialized before the emac_open() function is
-called. 
+called.
 
 For details about individual fields of this structure, see the Doxygen
 help by opening
@@ -52,21 +52,21 @@ API reference for application:
 
 The below sequence indicates the calling sequence of EMAC driver
 APIs for a use case of an EMAC example which implements a single
-Ethernet MAC port. This example call flow is illustrated using port 
+Ethernet MAC port. This example call flow is illustrated using port
 number 0.
 
 .. code-block:: c
 
     port_num = 0;
-    
+
     Board_initCfg cfg = BOARD_INIT_UART_STDIO | BOARD_INIT_PINMUX_CONFIG | BOARD_INIT_MODULE_CLOCK  | BOARD_INIT_ETH_PHY;
-    
+
     Board_init(boardCfg);
-     
+
     /* Update emac_cfg with SOC specific config required by the driver */
     /* Do a socGet, update emac_cfg as required and followed by socSet */
-    EMAC_socGetInitCfg(port_num, &emac_cfg); 
-    ... 
+    EMAC_socGetInitCfg(port_num, &emac_cfg);
+    ...
     EMAC_socSetInitCfg(port_num, &emac_cfg);
     ...
     /* For UDMA based DMA interface, init the UDMA driver */
@@ -96,8 +96,8 @@ At this point EMAC driver is ready to send and receive packets.
     {
         while (1)
         {
-            /* AM65xx supports optional mode of direct polling of RX queue for packets which can be 
-	       configured at time of emac_open.  This mode of operation does not use 
+            /* AM65xx supports optional mode of direct polling of RX queue for packets which can be
+	       configured at time of emac_open.  This mode of operation does not use
 	       interrupts. Note that default mode is via use of interrupts*/
             emac_poll_pkt(port_num);
         }
@@ -115,29 +115,29 @@ At this point EMAC driver is ready to send and receive packets.
             Osal_delay(1000);
             UART_printf("Link for port %d is DOWN\n", port_num);
         } while(linkInfo.link_status == EMAC_LINKSTATUS_NOLINK);
-        
+
 	UART_printf("Link for port %d is UP\n", port_num);
     }
 
     /* Close port and release all resources allocated at time of emac_open */
     retVal = emac_close(port_num);
 
-| 
+|
 
 
 Interposer Card Support
 ------------------------
-Interposer card is an ethernet wiring adapter to let 2 ICSSG subsystems drive 2 ethernet ports with DUAL MAC or SWITCH firmware. 
-So that each direction (TX/RX) can be handled by one pair of PRU cores. 
+Interposer card is an ethernet wiring adapter to let 2 ICSSG subsystems drive 2 ethernet ports with DUAL MAC or SWITCH firmware.
+So that each direction (TX/RX) can be handled by one pair of PRU cores.
 The interposer card permits the power of two ICSSG instances to be used on a two port switch or dual EMAC as opposed to the two-port, single ICSSG configuration.
 The following diagrams show the PRU-ICSSG RGMII TX/RX mapping to the physical ports for Maxwell and then for Maxwell with interposer card configured.
 Interposer card functionality can be verified by running the icssg-emac DIAG test( Refer `Processor SDK RTOS Board
 Support <index_board.html#board-support>`__ for additional details ) or the emac LLD test
 application (Emac_Icssg_TestApp described below).
-Note that prior to running these tests on Maxwell with interposer card, please hook up an ethernet cable between PHY0 and PHY1. 
+Note that prior to running these tests on Maxwell with interposer card, please hook up an ethernet cable between PHY0 and PHY1.
 
 
-.. rubric:: Interposer Layout 
+.. rubric:: Interposer Layout
    :name: Interposer Layout
 
 .. Image:: ../images/Interposer.png
@@ -416,8 +416,8 @@ Support for Benchmark Testing
 +-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
 | Name                  | Description           | Expected Results      | SOC Suppported        | Build Type            |
 +=======================+=======================+=======================+=======================+=======================+
-| Emac_Icssg_TestApp    | Test application with | Test applicaiton      |  am65xx               | make                  |  
-|                       | modifications can     | will print "polling   |                       |                       | 
+| Emac_Icssg_TestApp    | Test application with | Test applicaiton      |  am65xx               | make                  |
+|                       | modifications can     | will print "polling   |                       |                       |
 |                       | used for performance  | rx packets on port 4" |                       |                       |
 |                       | benchmarking          | via the UART console  |                       |                       |
 |                       |                       |                       |                       |                       |
@@ -433,7 +433,7 @@ Support for Benchmark Testing
 |                       |                       |                       |                       |                       |
 |                       |                       |                       |                       |                       |
 |                       | Connect external      |                       |                       |                       |
-|                       | packet generator to   |                       |                       |                       | 
+|                       | packet generator to   |                       |                       |                       |
 |			| PHY4.                 |                       |                       |                       |
 |                       |                       |                       |                       |                       |
 |                       | The unit test will    |                       |                       |                       |
@@ -447,8 +447,8 @@ Support for Benchmark Testing
 |                       | packet                |                       |                       |                       |
 |                       |			|                       |                       |                       |
 +-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
-| Emac_Cpsw_TestApp     | Test application with | Test application      |  am65xx               | make                  |  
-|                       | modifications can     | will print "polling   |                       |                       | 
+| Emac_Cpsw_TestApp     | Test application with | Test application      |  am65xx               | make                  |
+|                       | modifications can     | will print "polling   |                       |                       |
 |                       | used for performance  | rx packets on port 6" |                       |                       |
 |                       | benchmarking          | via the UART console  |                       |                       |
 |                       |                       |                       |                       |                       |
@@ -464,7 +464,7 @@ Support for Benchmark Testing
 |                       |                       |                       |                       |                       |
 |                       | To benchmark ICSSG    |                       |                       |                       |
 |                       | connect external      |                       |                       |                       |
-|                       | packet generator to   |                       |                       |                       | 
+|                       | packet generator to   |                       |                       |                       |
 |			| PHY4.                 |                       |                       |                       |
 |                       |                       |                       |                       |                       |
 |                       | To benchmark CPSW     |                       |                       |                       |
@@ -491,19 +491,19 @@ Building EMAC Test applications via makefiles
 -  EMAC Test applications and dependent libraries are built from the top level emac
    makefile
 -  Refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details
-   of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
+   of how to setup the build environment. Once you have setup the build environment, issue the following commands:
 
     -  cd <pdk>/packages/
-    -  To build: make emac 
-    -  To clean: make emac_clean 
+    -  To build: make emac
+    -  To clean: make emac_clean
 
 - Similarly, to build at the module level, issue the following commands for rebuilding :
-	
+
     - cd <pdk>/packages/ti/drv/emac
     - To build: make all
     - To clean: make clean
 
-	
+
 Running EMAC Examples and Test applications
 --------------------------------------------
 
@@ -538,7 +538,7 @@ Additional References
 +-----------------------------------+-----------------------------------------+
 |           **Document**            |           **Location**                  |
 +-----------------------------------+-----------------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\\packages\\ti     | 
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
 |                                   | \\drv\\emac\\docs\\doxygen\\html\\index |
 |                                   | .html                                   |
 +-----------------------------------+-----------------------------------------+

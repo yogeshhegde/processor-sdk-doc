@@ -1,6 +1,6 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_NWAL 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_NWAL
 
-| 
+|
 
 .. rubric:: Introduction
    :name: introduction
@@ -48,7 +48,7 @@ back in API call context.
 **Non-BLOCKING Mode**: In this mode, application can invoke a separate
 poll routine to retrieve status response result.
 
-| 
+|
 
 .. rubric:: Driver Configuration
    :name: driver-configuration-nwal

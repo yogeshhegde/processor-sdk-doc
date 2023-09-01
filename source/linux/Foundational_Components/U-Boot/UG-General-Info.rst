@@ -131,14 +131,14 @@ Build U-Boot
 
 
     .. ifconfig:: CONFIG_part_variant not in ('AM65X', 'AM64X')
-    
+
       .. note:: Note about HSM Rearchitecture
 
-         After HSM rearchitecture in bootloader, loading of remote cores with firmware 
+         After HSM rearchitecture in bootloader, loading of remote cores with firmware
          will be supported at A72 SPL stage only and not at R5 SPL stage. Early loading
-         of remote core firmware in R5 SPL requires core reset functionality. As part 
-         of HSM rearchitecture, this functionality has moved into the DM service which 
-         requires SPL to re-implement device and clock control. This support is not 
+         of remote core firmware in R5 SPL requires core reset functionality. As part
+         of HSM rearchitecture, this functionality has moved into the DM service which
+         requires SPL to re-implement device and clock control. This support is not
          present in Uboot R5 SPL due to memory constraints on the existing 64-bit TI devices.
 
     .. ifconfig:: CONFIG_part_variant not in ('AM65X')
@@ -147,15 +147,15 @@ Build U-Boot
         As of Processor SDK 9.0, compilation of bootloader images will no longer require
         different defconfigs for GP and HS devices. The same build commands will generate images
         for GP, HS-SE and HS-FS devices.
-    
+
     Several prebuilt images are required from the TI Processor SDK for building U-Boot on K3 based platforms.
-    
+
     .. ifconfig:: CONFIG_part_variant in ('AM62X')
-    	
+
     	Go `here <../../../devices/AM62X/linux/Overview/Download_and_Install_the_SDK.html>`__ to download and install the SDK.
 
     .. ifconfig:: CONFIG_part_variant in ('AM64X')
-	
+
     	Go `here <../../../devices/AM64X/linux/Overview/Download_and_Install_the_SDK.html>`__ to download and install the SDK.
 
     TI-u-boot is included in the SDK in <path to tisdk>/board-support. Ensure that the u-boot version matches the
@@ -190,8 +190,8 @@ Build U-Boot
        *on GP*
 
        .. code-block:: console
-          
-          R5 
+
+          R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am65x_evm_r5_defconfig O=<output directory>/r5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
@@ -200,12 +200,12 @@ Build U-Boot
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 
-        
+
        *on HS*
 
        .. code-block:: console
-          
-          R5 
+
+          R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am65x_hs_evm_r5_defconfig O=<output directory>/r5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 

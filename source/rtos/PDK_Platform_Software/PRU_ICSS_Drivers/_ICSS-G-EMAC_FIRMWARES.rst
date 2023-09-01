@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-G-EMAC_FIRMWARES 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-G-EMAC_FIRMWARES
 
 Introduction
 =============
@@ -62,7 +62,7 @@ To build the firmware:
 
 - make CLPRU_INSTALL_PATH=<dir_where_the_toolchain_installed>.
 
-The firmware will be located in the <PDK>packages/ti/drv/emac/firmware/icss_eth/src/dm directory. 
+The firmware will be located in the <PDK>packages/ti/drv/emac/firmware/icss_eth/src/dm directory.
 
-| 
+|
 

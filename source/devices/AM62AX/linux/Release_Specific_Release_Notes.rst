@@ -177,7 +177,7 @@ Issues Tracker
 Linux Known Issues
 ---------------------------
 .. csv-table::
-  :header: "Record ID", "Title", "Platform", "Workaround" 
+  :header: "Record ID", "Title", "Platform", "Workaround"
   :widths: 15, 70, 10, 25
 
   "LCPD-29423","AM62A: OV2312: Occassional IR frames in RGB channel","am62axx_sk-fs","PR with a workaround has been opened, Contacted sensor manufacturer for root-cause and proper fix."

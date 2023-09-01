@@ -121,7 +121,7 @@ an example if your application wants access to the alsa asound library
 then you can now do the following command (assuming you have added the
 cross compiler to your PATH):
 
-:: 
+::
 
   host# ${TOOLCHAIN_PREFIX}gcc -lasound app.c -o app.out
 
@@ -213,19 +213,19 @@ Cross-compile the **helloworld.c** file using the cross-compile
 toolchain. In this example we will invoke the toolchain without it
 having been added to our PATH.
 
-| 
+|
 
 ::
 
   host# <SDK INSTALL DIR>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/${TOOLCHAIN_PREFIX}gcc helloworld.c -o helloworld
 
-| 
+|
 
 After the above steps are run you should now have a **helloworld**
 executable in your directory that has been compiled for the ARM. A
 simple way to check this is to run the following command:
 
-| 
+|
 
 ::
 
@@ -252,7 +252,7 @@ This should yield output like:
 
     Create a file **thread-ex.c** with the following contents
 
-    | 
+    |
 
     .. code:: c
 
@@ -305,7 +305,7 @@ This should yield output like:
             return 0;
         }
 
-    | 
+    |
 
     Cross-compile the **thread-ex.c** file using the cross-compile
     toolchain. In this example we will first add the toolchain to our PATH.

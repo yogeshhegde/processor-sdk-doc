@@ -12,7 +12,7 @@ core foundation and building blocks that facilitate application software
 development on TI's embedded processors. This *Release Notes* focuses on
 the Real-time operating system (RTOS).
 
-| 
+|
 
 Licensing
 ===========
@@ -22,7 +22,7 @@ status for all packages included in this release. The manifest can be
 found on the SDK download page or in the installed directory as
 indicated below.
 
-| 
+|
 
 Documentation
 ===============
@@ -46,7 +46,7 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-| 
+|
 
 Processor SDK v06.03.00
 ========================
@@ -73,7 +73,7 @@ Released Apr 2020
 
 - Descoped features
     - Sercos3 softmaster demo on AM335x
-    
+
 .. _release-notes-component-version:
 
 .. rubric::  Component Version
@@ -84,7 +84,7 @@ SDK installer. See the :ref:`Software Developer Guide <Index-Processor-SDK-RTOS-
 more information on each item.
 
 .. note::
-   | This release has been tested with the following component and tool versions. It is recommended to use the versions listed here to avoid compatibility issues. 
+   | This release has been tested with the following component and tool versions. It is recommended to use the versions listed here to avoid compatibility issues.
 
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 |  Component  |   Version  |AM335x|AM437x|AM57x |AM65x |K2H/K2K| K2E  | K2L  | K2G  |C665x |C667x |OMAP-L137|OMAP-L138|
@@ -170,7 +170,7 @@ in the *Getting Started Guide* for options to select for Processor-SDK.
 
 
 
-Fixed Issues 
+Fixed Issues
 ==============
 
 .. csv-table::
@@ -200,7 +200,7 @@ Fixed Issues
 	PRSDK-3727,"c6748-evm, c6748-lcdk",PDK,C6748 is missing from SOC description list in pdkProjectCreate
 	PRSDK-8114,c6657-evm,Networking,C6657 NIMU ping test failure for packet size greater than 1510 bytes
 
-Known Issues 
+Known Issues
 ==============
 
 This section contains the list of known issues at the time of making the
@@ -252,10 +252,10 @@ release and any known workaround.
 
 .. _RN-Supported-Platforms-label:
 
-Supported Platforms 
+Supported Platforms
 =====================
 
-Devices 
+Devices
 ---------
 
 The following table lists all supported devices for a given installer.
@@ -386,20 +386,20 @@ The following table lists all supported devices for a given installer.
 .. _C6746: http://www.ti.com/product/tms320c6746
 .. _C6748: http://www.ti.com/product/tms320c6748
 
-Evaluation Modules 
+Evaluation Modules
 --------------------
 
 See :ref:`Processor SDK Supported Platforms <RTOS-SDK-Supported-Platforms>`
 page for a list of supported EVMs per platform and links to more
 information.
 
-Demonstrations 
+Demonstrations
 ----------------
 
 See `Examples and Demonstrations <Examples_and_Demonstrations.html>`__
 page for a list of demonstrations per platform and EVM.
 
-Drivers 
+Drivers
 ---------
 
 The following tables show RTOS driver availability per platform and EVM.
@@ -411,7 +411,7 @@ platform/EVM.
 +------------------+--------------------------------+---------------+-----------+-----------+-----------+----------+
 |     Feature      |    Platform/SOC                |  AM335x EVM   |AM437x EVM | AM57x EVM | AM65x EVM |J721E EVM |
 +==================+=======+======+=====+=====+=====+===+===+===+===+===+===+===+=====+=====+=====+=====+==========+
-|                  |AM335x |AM437x|AM57x|AM65x|J721E|GP |ICE|SK |BBB|GP |IDK|SK | GP  | IDK | GP  | IDK |  GP      | 
+|                  |AM335x |AM437x|AM57x|AM65x|J721E|GP |ICE|SK |BBB|GP |IDK|SK | GP  | IDK | GP  | IDK |  GP      |
 +------------------+-------+------+-----+-----+-----+---+---+---+---+---+---+---+-----+-----+-----+-----+----------+
 | CSL              |   X   |   X  |  X  |  X  |  X  | X | X | X | X | X | X | X |  X  |  X  |  X  |  X  |  X       |
 +------------------+-------+------+-----+-----+-----+---+---+---+---+---+---+---+-----+-----+-----+-----+----------+
@@ -577,7 +577,7 @@ platform/EVM.
 
 - In general driver support is available across all cores within an SOC
   with following exceptions
-  
+
 +----------------+-------------------+
 |    Feature     | Not supported     |
 +================+=========+=========+
@@ -598,7 +598,7 @@ platform/EVM.
 |All Drivers     | K2E/L/K |    A15  |
 +----------------+---------+---------+
 
-Other Features 
+Other Features
 ----------------
 
 The following table shows other feature availability per platform and
@@ -687,7 +687,7 @@ EVM:
 |Network (CPSW)|    X    |    X    |      X      |   X   |   X    |
 +--------------+---------+---------+-------------+-------+--------+
 
-Installation and Usage 
+Installation and Usage
 ========================
 
 The :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>` provides
@@ -698,18 +698,18 @@ To uninstall the SDK, remove the individual component directories from
 the installed path. This is safe to do even in Windows since these
 components do not modify the Windows registry.
 
-| 
+|
 
-Technical Support and Product Updates 
+Technical Support and Product Updates
 =======================================
 
 For further information or to report any problems, contact:
 -  `TI E2E Processor Support <https://e2e.ti.com/support/processors/>`__ for all supported platforms
 
 
-| 
+|
 
-Archived 
+Archived
 ==========
 -  `Processor-SDK RTOS
    6.1.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/06_01_00_08/rtos/Release_Specific.html#processor-sdk-rtos-release-notes>`__
@@ -732,5 +732,5 @@ Archived
 :ref:`Migration Guide <RTOS-SDK-Migration-Guide-label>` for information on
 migration from these releases.
 
-| 
+|
 

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Jailhouse_Hypervisor 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_Jailhouse_Hypervisor
 
 .. rubric:: Overview
    :name: overview
@@ -11,7 +11,7 @@ guest software programs called "inmates". One of these cells runs the
 Linux OS and is known as the "root cell". Other cells borrow CPUs and
 devices from the root cell as they are created.
 
-| 
+|
 .. Image:: ../images/Jailhouse.png
 
 *The picture above shows the jailhouse on a system a) before the
@@ -19,7 +19,7 @@ jailhouse is enabled; b) after the jailhouse is enabled; c) after a cell
 is created.
 *
 
-| 
+|
 
 Jailhouse consists of three parts: kernel module, hypervisor firmware
 and tools, which a user uses to enable the hypervisor, create a cell,
@@ -32,12 +32,12 @@ cpu_down() for the ARM1 core, leaving for Linux ARM0 only. The new cell
 will use the ARM1 core and hardware resources dedicated for this cell in
 the cell configuration file.
 
-| 
+|
 
 Jailhouse is an open source project, which can be found on
 https://github.com/siemens/jailhouse.
 
-| 
+|
 
 .. rubric:: Demo
    :name: demo
@@ -56,7 +56,7 @@ https://github.com/siemens/jailhouse.
 or \ **am572x-idk-jailhouse.dtb** for AM572x-IDK
 *
 
-| 
+|
 
 .. rubric:: Pre-built components
    :name: pre-built-components
@@ -77,7 +77,7 @@ are located at /usr/share/jailhouse/examples directory:
 
 ::
 
-    root@am57xx-evm:/usr/share/jailhouse/examples# ls -1 
+    root@am57xx-evm:/usr/share/jailhouse/examples# ls -1
     am572x-rtos-icss.cell
     am572x-rtos-pruss.cell
     am57xx-evm-ti-app.cell
@@ -106,7 +106,7 @@ where
 -  **linux-loader.bin** - loader required to run inmates, which start
    address is not 0x0;
 
-| 
+|
 
 .. rubric:: Running the Demo on AM572x-EVM
    :name: running-the-demo-on-am572x-evm
@@ -128,7 +128,7 @@ Here are the steps to run the demo:
 
 ::
 
-    root@am57xx-evm:~# jailhouse enable /usr/share/jailhouse/examples/am57xx-evm.cell 
+    root@am57xx-evm:~# jailhouse enable /usr/share/jailhouse/examples/am57xx-evm.cell
     Initializing Jailhouse hypervisor v0.6 on CPU 1
     Code location: 0xf0000030
     Page pool usage after early setup: mem 30/4073, remap 32/131072
@@ -143,7 +143,7 @@ Here are the steps to run the demo:
 
 ::
 
-    root@am57xx-evm:~# jailhouse cell create /usr/share/jailhouse/examples/am57xx-evm-ti-app.cell 
+    root@am57xx-evm:~# jailhouse cell create /usr/share/jailhouse/examples/am57xx-evm-ti-app.cell
     [ 5270.449687] CPU1: shutdown
     [ 5270.453221] NOHZ: local_softirq_pending 20
     Created cell "AM57XX-EVM-timer8-demo"
@@ -154,14 +154,14 @@ Here are the steps to run the demo:
 
 ::
 
-    root@am57xx-evm:~# jailhouse cell load 1 /usr/share/jailhouse/examples/ti-app.bin 
+    root@am57xx-evm:~# jailhouse cell load 1 /usr/share/jailhouse/examples/ti-app.bin
     Cell "AM57XX-EVM-timer8-demo" can be loaded
 
 -  Start the binary
 
 ::
 
-    root@am57xx-evm:~# jailhouse cell start 1 
+    root@am57xx-evm:~# jailhouse cell start 1
     Hey, I'm working !!!!!!!!!!!
     timer id 4fff2b01
     timer value fffffc17; irq status 00000002; raw 00000002
@@ -192,7 +192,7 @@ process from telnet session.*
 
 ::
 
-    root@am57xx-evm:~# jailhouse cell destroy 1                                                                                                       
+    root@am57xx-evm:~# jailhouse cell destroy 1
     Closing cell "AM57XX-EVM-timer8-demo"
     Page pool usage after cell destruction: mem 39/4073, remap 38/131072
     [ 6201.111168] Destroyed Jailhouse cell "AM57XX-EVM-timer8-demo"
@@ -201,7 +201,7 @@ process from telnet session.*
 
 ::
 
-    root@am57xx-evm:~# jailhouse disable                                                                                                              
+    root@am57xx-evm:~# jailhouse disable
     Shutting down hypervisor
      Releasing CPU 0
      Releasing CPU 1
@@ -226,7 +226,7 @@ After you enable hyprevisor, create a pdk cell  
 
 ::
 
-    root@am57xx-evm:~# jailhouse cell create /usr/share/jailhouse/examples/am57xx-pdk-leddiag.cell 
+    root@am57xx-evm:~# jailhouse cell create /usr/share/jailhouse/examples/am57xx-pdk-leddiag.cell
     [  312.419978] CPU1: shutdown
     Created cell "AM57XX-EVM-PDK-LED"
     Page pool usage after cell creation: mem 54/4075, remap 38/131072
@@ -237,7 +237,7 @@ After you enable hyprevisor, create a pdk cell  
 
 ::
 
-    root@am57xx-evm:~# jailhouse cell load 1 /usr/share/jailhouse/examples/led_test.bin 
+    root@am57xx-evm:~# jailhouse cell load 1 /usr/share/jailhouse/examples/led_test.bin
     Cell "AM57XX-EVM-PDK-LED" can be loaded
 
 and start it
@@ -306,12 +306,12 @@ Create a cell for pruss.bin
 
 ::
 
-    root@am57xx-evm:/usr/share/jailhouse/examples# jailhouse cell create ./am572x-rtos-pruss.cell                                                                                  
+    root@am57xx-evm:/usr/share/jailhouse/examples# jailhouse cell create ./am572x-rtos-pruss.cell
     [  745.067783] CPU1: shutdown
     Created cell "AM572X-IDK-PRUSS"
     Page pool usage after cell creation: mem 54/4075, remap 38/131072
     [  745.107324] Created Jailhouse cell "AM572X-IDK-PRUSS"
-    root@am57xx-evm:/usr/share/jailhouse/examples# 
+    root@am57xx-evm:/usr/share/jailhouse/examples#
 
 Use cell load command to load several required components:
 
@@ -331,7 +331,7 @@ where
 -  pruss.bin itself, loaded to the virtual address 0x80000000 - the
    address where this application is lined to;
 
-| 
+|
 | After loading run the inmate as usual:
 
 ::
@@ -356,10 +356,10 @@ where
     eventwait: got the INTC event from PRU, count: 5
     eventwait: waiting for the INTC event from PRU
     Testing for instance: 1, pru num: 0 is complete
-    passed verify constant tbl entry for instance 1: pruNum: 1                                               
-    sending the INTC event to the PRU for instance: 1 , pru num: 1                                           
-    eventwait: got the INTC event from PRU, count: 1                                                         
-    eventwait: waiting for the INTC event from PRU                                                           
+    passed verify constant tbl entry for instance 1: pruNum: 1
+    sending the INTC event to the PRU for instance: 1 , pru num: 1
+    eventwait: got the INTC event from PRU, count: 1
+    eventwait: waiting for the INTC event from PRU
     sending the INTC event to the PRU for instance: 1 , pru num: 1
     eventwait: got the INTC event from PRU, count: 2
     eventwait: waiting for the INTC event from PRU
@@ -408,7 +408,7 @@ where
     Testing for instance: 2, pru num: 1 is complete
     All tests have passed
 
-| 
+|
 | You may run the **icss_emac.bin** in similar way using appropriate
   cell configuration. **Note that icss_emac has different entry point -
   0x80000000**.
@@ -438,7 +438,7 @@ cores share L2 cache and access to the rest of the SoC, which the STREAM
 benchmark running on core 0 stresses while core 1 access GIC registers
 to respond to the interrupt.
 
-| 
+|
 
 .. table::  **Interrupt latency of a bare metal inmate (core 1)**
 
@@ -465,9 +465,9 @@ to respond to the interrupt.
    | latency               |                       |                       |
    +-----------------------+-----------------------+-----------------------+
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Building Jailhouse from Sources
    :name: building-jailhouse-from-sources
@@ -492,7 +492,7 @@ The top level SDK Makefile has the *jailhouse_clean*, *jailhouse* and
 *jailhouse_install* targets which can be used to clean, build and
 install jailhouse to the target file system.
 
-| 
+|
 
 .. rubric:: Building and Running the Ethercat Slave Demo
    :name: building-and-running-the-ethercat-slave-demo
@@ -549,7 +549,7 @@ parameter at the "jailhouse cell load" command:
 
     jailhouse cell load 1 linux-loader.bin -a 0 -s "kernel=0x80000000" -a 0x100 ethercat_slave_demo.bin -a 0x80000000
 
-| 
+|
 | Procedure to check two-way communication between the slave inmate and
   the master station:
 
@@ -562,7 +562,7 @@ parameter at the "jailhouse cell load" command:
 -  Slave: devmem2 0xeef00004 b [data]. After this, Master should display
    the corresponding value in TXPDO 32Bit Input.
 
-| 
+|
 
 .. rubric:: Jailhouse Internals
    :name: jailhouse-internals
@@ -786,7 +786,7 @@ current version demonstrates of using a uart, timer and a GIC SPI
 interrupt (timer generates periodic interrupts). The application also
 has some extra code, which was used to measure interrupt latency.
 
-| 
+|
 
 As any inmate the ti-app inmate works in a cell. The am57xx-evm-ti-app.c
 is the cell configuration file. For this cell only ARM1 core will be
@@ -859,7 +859,7 @@ interrupt line #134 (*One of two lines reserved in the kernel DTS*).
 
 ::
 
-      
+
         /* GIC */ {
             .address = 0x48211000,
             .pin_base = 160,
@@ -984,7 +984,7 @@ The **led** directory contains:
 -  **makefile** is to build the inmate. As you can see, it links number
    of brebuilt PDK libraries.
 
-| 
+|
 | To build the **led_test.bin** (a jailhouse inmate has to be \*.bin,
   but not \*.out file):
 
@@ -1014,7 +1014,7 @@ way as the led_test. Use the am57xx-bm.cell file from
 $TI_SDK_PATH/board-support/extra-drivers/jailhouse-0.7/configs to create
 the jailhouse cell for the memcp_bm inmate.
 
-| 
+|
 
 .. rubric:: RTOS BIOS Examples
    :name: rtos-bios-examples
@@ -1050,7 +1050,7 @@ version of the "PRU-ICSS Industrial Software", which has to be installed
 independently, building of the demo is not included into the top level
 makefile.
 
-| 
+|
 
 .. rubric:: RTOS BIOS Porting Notes
    :name: rtos-bios-porting-notes
@@ -1119,7 +1119,7 @@ node in the inmate cell configuration.
 #. small one with virtual address 0x0 for the linux-loader;
 #. main region for the icss_emac test itself;
 
-| 
+|
 
 .. rubric:: General Porting Notes
    :name: general-porting-notes
@@ -1166,5 +1166,5 @@ sense and previous porting experience*.
    Inmate. But it is not practical to share the same bank by the both
    Linux and Inmate.
 
-| 
+|
 

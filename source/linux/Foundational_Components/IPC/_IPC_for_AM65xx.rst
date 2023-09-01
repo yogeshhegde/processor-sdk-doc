@@ -64,13 +64,13 @@ The RTOS SDK is installed at:
     ├── xdais_7_xx_xx_xx
     ├── xdctools_3_xx_xx_xx
 
-| 
+|
 
 .. rubric:: Typical Boot Flow on AM65xx for ARM Linux users
    :name: typical-boot-flow-on-am65xx-for-arm-linux-users
 
-AM65xx SOC's have multiple processor cores - Cortex A53, ARM R5F cores. The A53 typically runs a HLOS like Linux/Android and the remote cores (R5Fs) run TI-RTOS. In the normal operation, 
-boot loader(U-Boot/SPL) boots and loads the A53 with the HLOS. The A53 
+AM65xx SOC's have multiple processor cores - Cortex A53, ARM R5F cores. The A53 typically runs a HLOS like Linux/Android and the remote cores (R5Fs) run TI-RTOS. In the normal operation,
+boot loader(U-Boot/SPL) boots and loads the A53 with the HLOS. The A53
 boots the R5 cores.
 
 .. Image:: /images/Normal-boot-a53.png
@@ -79,7 +79,7 @@ In this sequence, the interval between the Power on Reset and the
 remote cores (i.e. the R5Fs) executing is dependent on the
 HLOS initialization time.
 
-| 
+|
 
 .. rubric:: Getting Started with IPC Linux Examples
    :name: ipc-am65xx-getting-started-with-ipc-linux-examples
@@ -125,9 +125,9 @@ Here are the key files that you should see after a successful build:
     │       │   └── app_host
     │       └── release
     │           └── app_host
- 
 
-| 
+
+|
 
 .. rubric:: Running the Bundled IPC Examples
    :name: ipc-am65xx-running-the-bundled-ipc-examples
@@ -222,7 +222,7 @@ Finally, we can run the example on R5 core::
     <-- Main_main:
     <-- main:
     root@am65xx-evm:~#
- 
+
 .. rubric:: Understanding the Memory Map
    :name: ipc-am65xx-understanding-the-memory-map
 
@@ -242,7 +242,7 @@ Finally, we can run the example on R5 core::
 	880000000-8ffffffff : System RAM
 
 
-| 
+|
 
 .. rubric:: DMA memory Carveouts
    :name: dma-memory-carveouts
@@ -279,7 +279,7 @@ defined by the DMA carveout. To change this location, you must change
 the definition of the carveout. **The R5F carveouts are defined in the
 Linux dts file.** For example for the AM65xx EVM:
 
-| 
+|
 | linux/arch/arm64/boot/dts/ti/k3-am654-base-board.dts
 
 ::

@@ -69,7 +69,7 @@ utility.
   the Kernel
   Configuration <../../Foundational_Components_Kernel_Users_Guide.html#customizing-the-configuration>`__
 
-| 
+|
 | Look under:
 
 Device Drivers ---> Input device support ---> <\*> Mouse interface

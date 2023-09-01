@@ -134,7 +134,7 @@ DWC3 is integrated in AM65x, OMAP5, DRA7x and AM437x SoCs from TI.
 
 -  Full OTG is not supported. Only dual-role mode is supported.
 
-| 
+|
 
 .. rubric:: **Driver Configuration**
    :name: driver-configuration-dwc3
@@ -169,13 +169,13 @@ Kernel Configuration tool.
 ::
 
     ...
-    Multimedia support  --->             
-    Graphics support  --->               
-    <M> Sound card support  --->             
-    HID support  --->                    
-    [*] USB support  --->                    
-    < > Ultra Wideband devices  ----         
-    <*> MMC/SD/SDIO card support  --->       
+    Multimedia support  --->
+    Graphics support  --->
+    <M> Sound card support  --->
+    HID support  --->
+    [*] USB support  --->
+    < > Ultra Wideband devices  ----
+    <*> MMC/SD/SDIO card support  --->
     ...
 
 -  Enable Host-side support and Gadget support
@@ -183,9 +183,9 @@ Kernel Configuration tool.
 ::
 
     ...
-    <M>   Support for Host-side USB               
+    <M>   Support for Host-side USB
     ...
-    <M>   USB Gadget Support               
+    <M>   USB Gadget Support
     ...
 
 
@@ -195,9 +195,9 @@ Kernel Configuration tool.
 ::
 
     ...
-    <M>   DesignWare USB3 DRD Core Support               
-     DWC3 Mode Selection (Dual Role mode)  --->   
-     *** Platform Glue Driver Support ***         
+    <M>   DesignWare USB3 DRD Core Support
+     DWC3 Mode Selection (Dual Role mode)  --->
+     *** Platform Glue Driver Support ***
     <M>     Texas Instruments OMAP5 and similar Platforms
     ...
 
@@ -207,18 +207,18 @@ Kernel Configuration tool.
 
     ...
     -*- OMAP INTERCONNECT DRIVER
-    <*> OMAP OCP2SCP DRIVER    
+    <*> OMAP OCP2SCP DRIVER
     ...
 
 -  Select the PHY Subsystem for OMAP5, DRA7x and AM437x
 
 ::
 
-    ... 
+    ...
     [*] Reset Controller Support --->
     < > FMC support ---->
-    PHY Subsystem  ---> 
-    ... 
+    PHY Subsystem  --->
+    ...
 
 -  Select the OMAP CONTRO PHY driver, OMAP USB2 PHY driver for OMAP5,
    DRA7 and AM437x
@@ -237,10 +237,10 @@ Kernel Configuration tool.
 
 ::
 
-    < >     Support WUSB Cable Based Association (CBA)  
-    *** USB Host Controller Drivers ***         
+    < >     Support WUSB Cable Based Association (CBA)
+    *** USB Host Controller Drivers ***
     ...
-    <*>     xHCI HCD (USB 3.0) support                 
+    <*>     xHCI HCD (USB 3.0) support
     ...
 
 -  Select 'USB Gadget Support --->' from menuconfig in 'USB support' and
@@ -281,10 +281,10 @@ Kernel Configuration tool.
     [*]       RNDIS + CDC Serial + Storage configuration
     [*]       CDC Ethernet + CDC Serial + Storage configuration
     <M>     HID Gadget
-    <M>     HID Gadget                             
-    <M>     EHCI Debug Device Gadget               
+    <M>     HID Gadget
+    <M>     EHCI Debug Device Gadget
          EHCI Debug Device mode (serial)  --->
-    <M>     USB Webcam Gadget 
+    <M>     USB Webcam Gadget
 
 .. rubric:: **Configuring DWC3 in gadget only** 
    :name: configuring-dwc3-in-gadget-only
@@ -353,7 +353,7 @@ Kernel Configuration tool.
          pinctrl-0 = <&usb2_pins>;
         };
 
-| 
+|
 
 .. rubric:: Testing
    :name: testing-kerel-dwc3
@@ -471,7 +471,7 @@ run modinfo command:
     srcversion:     3050477C3FFA3395C8D79CD
     depends:        usb_f_mass_storage,libcomposite
     intree:         Y
-    vermagic:       3.17.0-rc6-00455-g0255b03-dirty SMP mod_unload modversions ARMv6 p2v8 
+    vermagic:       3.17.0-rc6-00455-g0255b03-dirty SMP mod_unload modversions ARMv6 p2v8
     parm:           idVendor:USB Vendor ID (ushort)
     parm:           idProduct:USB Product ID (ushort)
     parm:           bcdDevice:USB Device version (BCD) (ushort)
@@ -560,7 +560,7 @@ Shows the current USB Link State
 
 ::
 
-    # cat link_state 
+    # cat link_state
     U0
 
 .. rubric:: mode
@@ -574,13 +574,13 @@ never be used in production.
 
 ::
 
-    # cat mode 
+    # cat mode
     device
-    # echo host > mode 
-    # cat mode 
+    # echo host > mode
+    # cat mode
     host
-    # echo device > mode 
-    # cat mode 
+    # echo device > mode
+    # cat mode
     device
 
 .. rubric:: regdump
@@ -591,7 +591,7 @@ are owned by the xhci-hcd driver.
 
 ::
 
-    # cat regdump 
+    # cat regdump
     GSBUSCFG0 = 0x0000000e
     GSBUSCFG1 = 0x00000f00
     GTXTHRCFG = 0x00000000
@@ -656,7 +656,7 @@ want to check register DCTL we could:
 
 ::
 
-    # grep DCTL regdump 
+    # grep DCTL regdump
     DCTL = 0x8c000000
 
 .. rubric:: testmode
@@ -670,10 +670,10 @@ modes is through a USB Reset.
 
 ::
 
-    # cat testmode 
+    # cat testmode
     no test
-    # echo test_packet > testmode 
-    # cat testmode 
+    # echo test_packet > testmode
+    # cat testmode
     test_packet
 
 .. rubric:: Other Resources

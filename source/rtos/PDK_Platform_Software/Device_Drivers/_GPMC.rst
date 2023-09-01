@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_GPMC 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_GPMC
 
 Overview
 --------
@@ -51,13 +51,13 @@ Driver Configuration
 All the board specific configurations eg:enabling and pin-mux of GPMC
 pins should be performed before calling any driver APIs.By default
 Board_Init() API supports all initialization sequence for TI supported
-EVMs.Refer `Processor SDK RTOS Board Support <index_board.html#board-support>`__ 
+EVMs.Refer `Processor SDK RTOS Board Support <index_board.html#board-support>`__
 for additional details.
 
 Once the board specific configuration is complete driver API GPMC_init()
 can be called to initialize driver
 
-.. rubric:: **GPMC Configuration Structure** 
+.. rubric:: **GPMC Configuration Structure**
    :name: gpmc-configuration-structure
 
 GPMC_soc.c file binds driver with hardware attributes on the board
@@ -150,14 +150,14 @@ Refer Release Note for GPMC support across different EVMs
 +-----------------------+-----------------------+-----------------------+
 
 .. note::
-   
+
    1. GPMC Test Application supports write test, by default write test is
       disabled, user can enable the write test by defining
       TEST_GPMC_FLASH_WRITE in test/src/GPMC_board.h.
-   
+
    2. In GPMC_Test_icev2AM335x, J5 pin2 & 3 should be shorted on
       iceV2AM335x board in order to test GPMC NOR flash.
-   
+
    3. In GPMC_Test_evmAM437x, J2 pin1 & 2 should NOT be shorted on
    evmAM437x board in order to test GPMC NAND flash.
 
@@ -176,5 +176,5 @@ Additional References
 |                                   | LLD.pdf                                 |
 +-----------------------------------+-----------------------------------------+
 
-| 
+|
 

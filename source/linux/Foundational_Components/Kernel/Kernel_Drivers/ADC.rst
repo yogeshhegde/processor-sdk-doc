@@ -110,7 +110,7 @@ Formula:
    schematic (PROC062E3(003)_SCH) can be found
    `here <https://www.ti.com/lit/zip/sprcah2>`__.
 
-| 
+|
 
 .. rubric:: **Driver Configuration**
    :name: driver-configuration-adc
@@ -335,7 +335,7 @@ Important folders in the iio:deviceX directory are:
 
 ::
 
-    root@charlie:~# ls -l /sys/bus/iio/devices/iio\:device0/buffer/                                                                       
+    root@charlie:~# ls -l /sys/bus/iio/devices/iio\:device0/buffer/
     total 0
     -rw-r--r-- 1 root root 4096 Nov  3 22:53 enable
     -rw-r--r-- 1 root root 4096 Nov  3 22:53 length
@@ -396,7 +396,7 @@ Where:
 -  16 is the actual number of bits used to store the datum
 -  0 is the number of right shifts needed.
 
-| 
+|
 
 .. rubric:: **How to set it up**
    :name: how-to-set-it-up
@@ -454,7 +454,7 @@ just enabling the buffer ADC switches to continuous mode.
 
 ::
 
-    root@charlie:~# ./iio_generic_buffer -?                          
+    root@charlie:~# ./iio_generic_buffer -?
     Usage: generic_buffer [options]...
     Capture, convert and output data from IIO device buffer
       -a         Auto-activate all available channels
@@ -483,19 +483,19 @@ For example:-
     Enabling: in_voltage4_en
     Enabling: in_voltage6_en
     Enabling: in_voltage5_en
-    525.000000 924.000000 988.000000 1039.000000 
-    754.000000 986.000000 1071.000000 1117.000000 
-    877.000000 1067.000000 1150.000000 1169.000000 
-    1003.000000 1143.000000 1230.000000 1226.000000 
-    1078.000000 1222.000000 1298.000000 1286.000000 
-    1139.000000 1286.000000 1372.000000 1343.000000 
+    525.000000 924.000000 988.000000 1039.000000
+    754.000000 986.000000 1071.000000 1117.000000
+    877.000000 1067.000000 1150.000000 1169.000000
+    1003.000000 1143.000000 1230.000000 1226.000000
+    1078.000000 1222.000000 1298.000000 1286.000000
+    1139.000000 1286.000000 1372.000000 1343.000000
     ...
     ...
-    1863.000000 1954.000000 2031.000000 2074.000000 
-    1858.000000 1959.000000 2023.000000 2083.000000 
-    1852.000000 1958.000000 2024.000000 2076.000000 
-    1866.000000 1964.000000 2029.000000 2083.000000 
-    1850.000000 1952.000000 2026.000000 2074.000000 
+    1863.000000 1954.000000 2031.000000 2074.000000
+    1858.000000 1959.000000 2023.000000 2083.000000
+    1852.000000 1958.000000 2024.000000 2076.000000
+    1866.000000 1964.000000 2029.000000 2083.000000
+    1850.000000 1952.000000 2026.000000 2074.000000
     Disabling: in_voltage7_en
     Disabling: in_voltage4_en
     Disabling: in_voltage6_en

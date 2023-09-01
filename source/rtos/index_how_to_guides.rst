@@ -38,7 +38,7 @@ Setup
 .. include:: How_to_Guides/Host/Setup/_Update_ENV_for_a_Custom_Path.rst
 
 
-Prevent BeagleBone board reset on JTAG Connect 
+Prevent BeagleBone board reset on JTAG Connect
 -----------------------------------------------
 `<https://elinux.org/Beagleboard:BeagleBone#Board_Reset_on_JTAG_Connect.28A3.2CA4.2CA5.29>`__
 
@@ -81,7 +81,7 @@ Create DSP and IPU firmware using PDK drivers and IPC to load from ARM Linux on 
 .. include:: How_to_Guides/Host/System_Integration/_Create_DSP_and_IPU_FW_using_PDK_and_IPC_to_load_from_ARM_AM57xx.rst
 
 
-Customizing Memory map for creating Multicore Applications on AM57xx using IPC 
+Customizing Memory map for creating Multicore Applications on AM57xx using IPC
 -------------------------------------------------------------------------------
 `<http://www.ti.com/lit/an/sprac60/sprac60.pdf>`__
 
@@ -93,9 +93,9 @@ IPC Debugging Tools and Techniques on AM57xx
 EVM Hardware Setup
 *******************
 
-.. AM65x EVM 
+.. AM65x EVM
 .. ====================================================
-.. include:: ../common/EVM_Hardware_Setup/TMDX654_EVM_Hardware_Setup.rst.inc   
+.. include:: ../common/EVM_Hardware_Setup/TMDX654_EVM_Hardware_Setup.rst.inc
 
 .. AM572x GP EVM Hardware Setup
 .. ====================================================
@@ -150,10 +150,10 @@ EVM Hardware Setup
 .. include:: ../common/EVM_Hardware_Setup/_ICE_AMIC110_EVM_Hardware_Setup.rst
 
 
-66AK2G Audio DC AddOn             
+66AK2G Audio DC AddOn
 ====================================================
 
-Please refer to `K2G Audio DC AddOn 
+Please refer to `K2G Audio DC AddOn
 <index_examples_demos.html#k2g-audio-dc-addon>`__
 
 

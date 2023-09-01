@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Template_App 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Template_App
 
 Introduction
 ============
@@ -49,7 +49,7 @@ Software
 
 .. note::
    If you are using AM65x, you will also need to install latest TI Emulators
-   and Sitara device support packages into CCS. This can be done through 
+   and Sitara device support packages into CCS. This can be done through
    CCS --> Help --> Check for Updates.
 
 Hardware
@@ -71,7 +71,7 @@ Hardware
 
     - Recommended
   - XDS560v2-class JTAG debug probes
-  
+
     - High performance
 - Serial UART cable provided in the EVM kit
 
@@ -120,7 +120,7 @@ Software Design
 
 The Template Application is designed to provide a foundational project with a
 clean separation of the application-specific submodule from the startup and
-initialization code. This gives users the ability to focus on 
+initialization code. This gives users the ability to focus on
 application-specific code and quickly get it up and running. This separation is
 achieved by splitting the "main" and "app" submodules into different files.
 
@@ -174,7 +174,7 @@ products.
 .. image:: ../images/install-discovered-products.png
    :scale: 70 %
 
-For more info on setting up CCS. Check out 
+For more info on setting up CCS. Check out
 `Setup CCS for EVM and Processor-SDK RTOS <index_how_to_guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__
 in the How To Guides.
 
@@ -364,13 +364,13 @@ see the following text printed to your serial terminal::
     ======== Peripheral Initialization complete ========
 
     ======== Starting to create application tasks ========
-       
+
     gpio_toggle_led_task task created.
     uart_task task created.
     spi_test_task task created.
     i2c_eeprom_read_and_display_task task created.
     ======== Application tasks created successfully ========
-       
+
     gpio_toggle_led task started
     uart_task task started
 
@@ -543,7 +543,7 @@ below:
 
 **Bare-metal**
 
-Open the **app.c** file and take a look at the ``appRunTasks()`` function. 
+Open the **app.c** file and take a look at the ``appRunTasks()`` function.
 Inside of ``appRunTasks()`` there are function calls for each peripheral task.
 This file also contains setup code for a timer interrupt that controls
 the LED blink task.
@@ -689,7 +689,7 @@ provided at the end.
 
 Now, give your project a try. You should be able to type in LED delay values to
 the UART terminal and see the blink rate of the LED change accordingly. To see
-a functioning solution, you can download the modified source files from the 
+a functioning solution, you can download the modified source files from the
 links below. Sections of the source files that were modified from the originals
 are marked with a ``/* Modification: */`` comment.
 

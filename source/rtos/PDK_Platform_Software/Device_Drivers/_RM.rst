@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_RM 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_RM
 
 Overview
 --------
@@ -204,5 +204,5 @@ Additional References
 
 .. _Processor SDK Resource Manager: http://processors.wiki.ti.com/index.php/Processor_SDK_Resource_Manager
 
-| 
+|
 

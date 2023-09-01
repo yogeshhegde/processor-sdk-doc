@@ -3,8 +3,8 @@
 Introduction
 ============
 
-This page describes the interrupt latency benchmark provided in the 
-Processor-SDK for RTOS. This benchmark gives several options for 
+This page describes the interrupt latency benchmark provided in the
+Processor-SDK for RTOS. This benchmark gives several options for
 different types of load configurations.
 
 This benchmark runs on:
@@ -32,23 +32,23 @@ Software
 Software Design
 ===============
 
-The purpose of this benchmark is to measure the worst case interrupt 
-latency under load. This load is achieved by simultaneously running 
+The purpose of this benchmark is to measure the worst case interrupt
+latency under load. This load is achieved by simultaneously running
 a modified version of the Dhrystone benchmark.
 
 Dhrystone
 ---------
 
-The Dhrystone code is modified to run continuously. Instead of testing 
-the host system for DMIPS, Dhrystone threads are created repeatedly 
-until the benchmark completes. Essentially, once a Dhrystone thread 
-finishes, it is created again. Additionally, the user can specify the 
+The Dhrystone code is modified to run continuously. Instead of testing
+the host system for DMIPS, Dhrystone threads are created repeatedly
+until the benchmark completes. Essentially, once a Dhrystone thread
+finishes, it is created again. Additionally, the user can specify the
 number of Dhrystone threads to be created.
 
 Interrupt Latency Benchmark
 ---------------------------
 
-Several design choices were made when creating the interrupt latency 
+Several design choices were made when creating the interrupt latency
 benchmark.
 
 -  The benchmark task is set to core 0
@@ -72,9 +72,9 @@ How to Build the Demo
 Processor-SDK RTOS
 ------------------
 
-To build the project, navigate to the benchmark’s directory and 
+To build the project, navigate to the benchmark’s directory and
 run "gmake clean" and then "gmake all" on windows, or "make
-clean" and "make all" on Linux. 
+clean" and "make all" on Linux.
 
 ::
 
@@ -86,15 +86,15 @@ clean" and "make all" on Linux.
 How to Run the Demo
 ===================
 
-After building the benchmark, locate the binary under the relevant 
-device directory in the interrupt latency benchmark's bin/ directory. 
-Additionally, power on the board, connect the micro-USB cable to the 
+After building the benchmark, locate the binary under the relevant
+device directory in the interrupt latency benchmark's bin/ directory.
+Additionally, power on the board, connect the micro-USB cable to the
 UART port, and begin a UART console.
 
 ::
 
     <PROC_SDK_INSTALL_PATH>/benchmarks/interrupt_latency/bin/<soc>/
-    
+
 
 CCS
 ---
@@ -105,21 +105,21 @@ To run the benchmark on AM572xx using CCS, use the following steps.
    Configurations (http://software-dl.ti.com/ccs/esd/documents/ccs_custom_target_config.html)
 #. In the CCS debug view, create a sync group (http://software-dl.ti.com/ccs/esd/documents/ccs_smp-debug.html)
    with the A15 cores
-#. For each core, connect to it and load the binary. The A15_0 
-   core should halt at main while the SMP linked cores will begin 
+#. For each core, connect to it and load the binary. The A15_0
+   core should halt at main while the SMP linked cores will begin
    auto-running upon load
 #. Once all cores have been loaded, run them all
 #. The output will be sent to the UART console in real time
 #. You must manually halt the cores to end the benchmark
 
 .. note::
-   -  If running in non-SMP mode, do not create a sync group. Only 
+   -  If running in non-SMP mode, do not create a sync group. Only
       load and run the binary on the A15_0 core
 
 Secondary Bootloader (SBL)
 --------------------------
 
-To run the benchmark on a micro-SD card, follow the 
+To run the benchmark on a micro-SD card, follow the
 corresponding steps for AM57x (http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#am57x)
 
 .. note::
@@ -131,7 +131,7 @@ Known Issues and Limitations
 When running the benchmark, keep in mind the following
 issues which are still being fixed.
 
-#. The cause for several outliers in the data is being 
+#. The cause for several outliers in the data is being
    investigated
 
 Results
@@ -162,5 +162,5 @@ Results
    +----------------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
    | **Absolute Min**           |        1.093 us       |        1.250 us       |        1.250 us       |        2.343 us       |        2.343 us       |        2.343 us       |
    +----------------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
- 
+
 

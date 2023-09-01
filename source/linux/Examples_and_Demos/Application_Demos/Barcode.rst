@@ -18,7 +18,7 @@ OpenCV includes python wrapper to allow quick and easy prototyping. It
 also includes support for OpenCL offload on devices with C66 DSP core
 (currently OpenCV T-API cannot be used with python wrapper).
 
-| 
+|
 
 .. rubric:: Zbar Barcode Decoder/Reader
    :name: zbar-barcode-decoderreader
@@ -37,7 +37,7 @@ Command to run zbar test binary:
 
     barcode_zbar [barcode_image_name]
 
-| 
+|
 
 .. rubric:: Barcode Region Of Interest (ROI) Detection with OpenCV and
    Python
@@ -102,7 +102,7 @@ please find the modified python scripts detect\_barcode.py.
     cv2.imshow("Image", image)
     cv2.waitKey(0)
 
-| 
+|
 | Command to run detect\_barcode.py. Before running the python scripts,
   ensure that matrxi GUI has been stopped and weston is up running. With
   successful detection, the barcode image is displayed with a green
@@ -112,7 +112,7 @@ please find the modified python scripts detect\_barcode.py.
 
     python detect_barcode.py --image [barcode_image_name]
 
-| 
+|
 
 .. rubric:: Barcode Region Of Interest (ROI) Detection with OpenCV and
    CPP implementation

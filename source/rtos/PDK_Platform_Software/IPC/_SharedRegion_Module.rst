@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/SharedRegion_Module 
+.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/SharedRegion_Module
 
 .. |srmCfg_Img1| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
@@ -12,8 +12,8 @@
 
 .. |srmRun_Img2| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_multi_proc_8h.html
-                 
-| 
+
+|
 
    +---------------+---------------+
    |     API Reference Links       |
@@ -59,17 +59,17 @@ In order to use the SharedRegion module, the following must be true:
 
 The SharedRegion with an index of 0 (zero) is used by IPC_start() to create resource management tables for internal use by other IPC modules. Thus SharedRegion "0" must be accessible by all processors. Your applications can also make use of SharedRegion "0", but must be aware of memory limitations.
 
-  
+
 Adding Table Entries Statically
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   To create a shared region lookup table in the XDCtools configuration, first determine the shared memory regions you plan to use.
 
-Next, specify the maximum number of entries in the lookup table with the SharedRegion.numEntries property. You can specify a value for the SharedRegion.cacheLineSize configuration property, which is the default cache line size if no size is specified for a region. You can also specify the value of the SharedRegion.translate property, which should only be set to false if all shared memory regions have the same base address on all processors. Setting the translate property to false improves performance because no address translation is performed. 
+Next, specify the maximum number of entries in the lookup table with the SharedRegion.numEntries property. You can specify a value for the SharedRegion.cacheLineSize configuration property, which is the default cache line size if no size is specified for a region. You can also specify the value of the SharedRegion.translate property, which should only be set to false if all shared memory regions have the same base address on all processors. Setting the translate property to false improves performance because no address translation is performed.
 
 For example:
 
-:: 
-  
+::
+
   var SharedRegion = xdc.useModule('ti.sdo.ipc.SharedRegion');
   SharedRegion.cacheLineSize = 32;
   SharedRegion.numEntries = 4;
@@ -81,7 +81,7 @@ Then, use the SharedRegion.setEntryMeta() method in the configuration file to sp
 
   var SHAREDMEM      = 0x0C000000;
   var SHAREDMEMSIZE  = 0x00200000;
-   
+
   SharedRegion.setEntryMeta(0,
       { base: SHAREDMEM,
         len: SHAREDMEMSIZE,
@@ -92,7 +92,7 @@ Then, use the SharedRegion.setEntryMeta() method in the configuration file to sp
         createHeap: true,
         name: "internal_shared_mem"
   });
-  
+
 If, during static configuration, you don't know the base address for every processor, you should set the "isValid" field for an entry for which you don't yet know the base address to "false". Storing this information will allow it to be completed at runtime.
 
 The following figure shows the configuration of a SharedRegion table for the system in the following figure. This system has seven processors and two shared memory regions. Region 0 ("ext") is accessible by all processors. Region 1 ("local") is accessible only by processors 1 to 6.
@@ -101,7 +101,7 @@ The following figure shows the configuration of a SharedRegion table for the sys
 
 If the "createHeap" field is set to true, a HeapMemMP instance is created within the SharedRegion.
 
-|srmCfg_Img2| The latest version of the SharedRegion module configuration documentation is available 
+|srmCfg_Img2| The latest version of the SharedRegion module configuration documentation is available
 `online <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/index.html#ti/sdo/ipc/SharedRegion.html>`__.
 
 Modifying Table Entries Dynamically
@@ -114,7 +114,7 @@ Typically, applications configure SharedRegion table entries statically as descr
 The call to SharedRegion_setEntry() must specify all the fields in the SharedRegion_Entry structure. The index specified must be the same across all processors for the same shared memory region. The index also must be smaller than the maxNumEntries property, otherwise an assert will be triggered.
 
 ::
-  
+
   typedef struct SharedRegion_Entry {
     Ptr base;
     SizeT len;
@@ -125,12 +125,12 @@ The call to SharedRegion_setEntry() must specify all the fields in the SharedReg
     Bool createHeap;
     String name;
   } SharedRegion_Entry;
-  
+
 You can use SharedRegion_getEntry() to fill the fields in a SharedRegion_Entry structure. Then, you can modify fields in the structure and call SharedRegion_setEntry() to write the modified fields back to the SharedRegion table.
 
 If you want to reuse an index location in the SharedRegion table, you can call SharedRegion_clear() on all processors to erase the existing entry at that index location.
 
-|srmRun_Img2| The latest version of the SharedRegion module run-time API documentation is available 
+|srmRun_Img2| The latest version of the SharedRegion module run-time API documentation is available
 `online <http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_shared_region_8h.html>`__.
 
 Using Memory in a Shared Region
@@ -139,11 +139,11 @@ Note that the SharedRegion with an index of 0 (zero) is used by IPC_start() to c
 
 This example allocates memory from a SharedRegion:
 
-:: 
-  
+::
+
   buf = Memory_alloc(SharedRegion_getHeap(0), sizeof(Tester) * COUNT, 128, NULL);
-  
-  
+
+
 Getting Information About a Shared Region
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The shared region pointer (SRPtr) is a 32-bit portable pointer composed of an ID and offset. The most significant bits of a SRPtr are used for the ID. The ID corresponds to the index of the entry in the lookup table. The offset is the offset from the base of the shared memory region. The maximum number of table entries in the lookup table determines the number of bits to be used for the ID. An increase in the id means the range of the offset would decrease. The ID is limited to 16-bits.
@@ -152,18 +152,18 @@ Here is sample code for getting the SRPtr and then getting the real address poin
 
 SharedRegion_SRPtr srptr;
 UInt16 id;
- 
-:: 
+
+::
 
   // Get the id of the address if id is not already known.
   id = SharedRegion_getId(addr);
-   
+
   // Get the shared region pointer for the address
   srptr = SharedRegion_getSRPtr(addr, id);
-   
+
   // Get the address back from the shared region pointer
   addr = SharedRegion_getPtr(srptr);
-  
+
 In addition, you can use the SharedRegion_getIdByName() function to pass the name of a SharedRegion and receive the ID number of the region.
 
 You can use SharedRegion_getHeap() to get a handle to the heap associated with a region using the heap ID.

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_TF 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_TF
 
 Overview
 --------
@@ -37,7 +37,7 @@ API reference for application:
 
     #include <ti/instrumentation/traceframework/traceframework.h>
 
-| 
+|
 
 Example
 -------
@@ -60,7 +60,7 @@ Reference library path to be included in application build environment:
 ::
 
      <ti/instrumentation/traceframework/lib/c66>
-      
+
 
 **SysBIOS based application**
 
@@ -69,7 +69,7 @@ have a RTSC configuration file. Please refer to
 <ti/instrumentation/traceframework/test/TFUnitTest/<soc>/c66/bios/tfw_Uia_utest.cfg>
 sample RTSC cfg file for reference.
 
-| 
+|
 
 Additional References
 ---------------------

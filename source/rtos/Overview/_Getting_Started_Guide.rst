@@ -2,15 +2,15 @@
 Processor SDK RTOS Getting Started Guide
 *****************************************
 
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide
 
 Overview
 =========
 
-The **Processor Software Development Kit (Processor-SDK)** provides the core 
-foundation and building blocks that facilitate application software development 
-on TI's embedded processors. This *Getting Started Guide* focuses on the 
-Real-Time Operating System (RTOS) and provides information on acquiring the 
+The **Processor Software Development Kit (Processor-SDK)** provides the core
+foundation and building blocks that facilitate application software development
+on TI's embedded processors. This *Getting Started Guide* focuses on the
+Real-Time Operating System (RTOS) and provides information on acquiring the
 software and running basic examples/demonstrations bundled in the SDK.
 
 For anyone that is new to Processor-SDK RTOS, traversing through all the
@@ -18,7 +18,7 @@ resources we provide in the right order is important. Here is a sequence
 to follow that introduces the SDK structure and gets you started with
 writing applications using the SDK.
 
-| 
+|
 
 Introduction to Processor SDK RTOS
 ===================================
@@ -116,7 +116,7 @@ as enabling semi-host support. Specific instructions for each platform
 bundled in the Processor SDK RTOS can be found at
 `Processor SDK RTOS Examples <index_examples_demos.html#ti-rtos-kernel-example>`__
 
-| 
+|
 
 Advanced examples
 ==================
@@ -139,7 +139,7 @@ they are loaded and run on the EVM via JTAG. Instructions to create and
 run the CCS projects can be found at
 `Rebuilding The PDK <index_how_to_guides.html#rebuild-drivers-from-pdk-directory>`__
 
-| 
+|
 
 Application development
 ========================
@@ -150,7 +150,7 @@ Template Application Workshop
 ----------------------------------
 Take a look at the `workshop`__ for the RTOS/Bare-metal Template Application. This
 workshop will cover the basics of navigating the SDK and its documentation and
-using CCS. The Template Application is a good 
+using CCS. The Template Application is a good
 starting point to learn how to use drivers, the OSAL layer, and Board Library.
 It pulls portions of the SDK software into one application which can serve
 as the starting point for creating your first application.
@@ -232,7 +232,7 @@ The customize module provides information to create a new application.
 This includes configuring TI-RTOS kernel to link required driver
 libraries, memory map, RTSC platform definition, and task creation.
 
-| 
+|
 
 Download and install software
 ===============================
@@ -277,7 +277,7 @@ download page for your platform (see links in below section).
    the software in the SDK and will provide the best user experience.
    Occasionally, there may be compatibility issues if different versions
    are used.
-| 
+|
 
 When installing CCS, you can choose to control what is installed for
 processor architecture.
@@ -298,7 +298,7 @@ The minimum required for the SDK are the following items
    time of install. Code composer studio does not allow upgrades on drivers
    that were not installed during the first install.
 
-| 
+|
 
 Emulator support
 -----------------
@@ -356,9 +356,9 @@ clicking "Get Software" for the RTOS package.
 
 .. note::
     -  When Installing on linux (Ubuntu 16.04 and above) the following packages need to be installed before the Procsdk RTOS installer is installed
-    
+
        **sudo apt install diffstat texinfo gawk chrpath dos2unix unzip socat doxygen libc6:i386 libncurses-dev:i386 libstdc++6:i386 libz1:i386**
-       
+
     -  To avoid configuring CCS "Tool Discovery Path" to search for
        components in different directories, it is recommended to install the
        SDK in the same directory as CCS. This is *C:/TI* for Windows and
@@ -369,7 +369,7 @@ clicking "Get Software" for the RTOS package.
        from command line then you need resolve dependencies using
        instructions provided here :ref:`Processor SDK RTOS_Release Notes <processor-sdk-rtos-release-notes>`
 
-| 
+|
 
 Setup EVM hardware
 ===================
@@ -380,7 +380,7 @@ Setup EVM hardware
    board. Be sure to connect communication cables before applying power to
    any equipment.
 
-| 
+|
 
 The EVM provides the ability to utilize a variety of capabilities of the
 SoC. Follow instructions in the included *EVM Quick Start Guide* for
@@ -399,7 +399,7 @@ If you connect to the EVM UART, use the following host configuration:
 For more information beyond what is covered in the *EVM Quick Start
 Guide*, see :ref:`EVM Hardware User Guides <RTOS-SDK-Supported-Platforms>`
 
-| 
+|
 
 Setting up CCS for EVM and Processor-SDK RTOS
 ==============================================
@@ -410,7 +410,7 @@ as CCS, this is as simple as starting CCS and it will auto-detect the
 newly installed components.
 
 .. note::
-   If you installed the SDK and CCS in different paths, see the 
+   If you installed the SDK and CCS in different paths, see the
    `Custom Installation Path <index_how_to_guides.html#update-environment-when-installing-to-a-custom-path>`__
    **How To** page that provides instructions to configure for a custom
    installation path.
@@ -422,7 +422,7 @@ The next step is to make a connection between CCS and your EVM (or
 At this point, you should be able to connect to target using CCS and
 start development!
 
-| 
+|
 
 Useful links
 ==============
@@ -442,12 +442,12 @@ Useful links
 - :ref:`Release Notes <processor-sdk-rtos-release-notes>`
 - `Examples and Demonstrations <index_examples_demos.html>`__
 - `FAQ <index_faq.html>`__
-| 
+|
 
 Archived
 ==========
 - `Processor-SDK RTOS 4.0 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Getting_Started_Guide&oldid=230434>`__
 - `Processor-SDK RTOS 3.2 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Getting_Started_Guide&oldid=225568>`__
 
-| 
+|
 

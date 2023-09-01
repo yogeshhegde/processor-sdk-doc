@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PM 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PM
 
 Overview
 --------
@@ -93,7 +93,7 @@ in the below file:
 
     #include <ti/drv/pm/PowerDevice.h>  /* Contains device-specific TI RTOS Power API definitions and structures */
 
-| 
+|
 
 Application
 ------------
@@ -103,8 +103,8 @@ Examples
 
 .. csv-table::
    :header: "Name", "Description", "Expected Results"
-   :widths: 20, 30, 70  
-    
+   :widths: 20, 30, 70
+
     "PM RTOS Application","Example demonstarting power management use cases. Reference example for developers","Application cycles the processor running the application through various power states using the PM APIs. User observes the output printed over the device's UART connection. **Note:** The example should be run in *Free Run* mode when loaded and executed in Code Composer Studio in order to prevent sleep API testing interruptions from the JTAG.  Use the following  steps to execute the application on the    AM57xx's M4 and C66 processors in Code Composer Studio:  -  Connect to CortexA15_0 waiting until the GEL file initialization completes -  Run the GEL: Scripts-->AM572x MULTICORE  Initialization-->AM572x_MULTICORE_EnableAllCores -  Connect to M4_IPU1_C0 or the C66xx_DSP1  -  Load the PM RTOS application's M4 or c66 executable -  Free run the M4_IPU1_C0 or the C66xx_DSP1"
     "PM RTOS Thermal Application","Example demonstrating thermal management use case. Reference example for developers","Application sets high and low thermal set points using the PM APIs.The set points are triggered by     internally heating up the processor.User observes the output printed over the device's UART connection. Use the following steps to execute the application on the AM57xx's M4 and C66 processors in Code Composer Studio:   -  Connect to CortexA15_0 waiting until the GEL file initialization completes -  Run the GEL:Scripts-->AM572x MULTICORE Initialization-->AM572x_MULTICORE_EnableAllCores -  Connect to M4_IPU1_C0 or the C66xx_DSP1 -     Load the PM RTOS Thermal application's M4 or c66 executable -  Run the M4_IPU1_C0 or the C66xx_DSP1"
     "PM Measurement Application ", "Menu-based application allowing selection of processor OPPs and benchmark tests.", "Application allows the user to control the processor's OPP settings via the PM driver. The application  also allows the user to select execution of the Dhrystone benchmark for performance and power profiling under different OPP settings. The application's menu is printed over the device's UART connection. **Note:** The     measurement application is only supported on the AM335x device at the moment."

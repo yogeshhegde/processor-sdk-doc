@@ -46,18 +46,18 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
    :width: 467
    :height: 70
 
-.. note:: If you have connected the AM62x SK to a proxy network, then before launching Seva Store you need to configure Docker and System proxies once per SD Card. **To set proxy settings you can click on the Settings button from the Left Hand Side Menu and provide the necessary HTTPS & NO PROXY inputs and click Set Proxy button**. Then, continue with Step 3. 
-   
+.. note:: If you have connected the AM62x SK to a proxy network, then before launching Seva Store you need to configure Docker and System proxies once per SD Card. **To set proxy settings you can click on the Settings button from the Left Hand Side Menu and provide the necessary HTTPS & NO PROXY inputs and click Set Proxy button**. Then, continue with Step 3.
+
    .. Image:: /images/webproxy-settings.jpg
       :width: 950
       :height: 900
-   
+
 3. After you see an IP Address, Click on the `Seva Store` button from the Left Hand Side Menu to launch Seva Store.
 
 .. Image:: /images/seva-store-icon.jpg
    :width: 467
    :height: 400
-   
+
 4. Click on the Launch Button which you see in centre.
 
 .. Image:: /images/seva-launch-button.jpg
@@ -72,13 +72,13 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
 
 .. note:: It takes approximately **10-12 seconds** for Firefox ESR browser to launch.
 
-6. The Seva Control Centre has a widget in centre which shows the information of Demo you have selected from the Seva Design Gallery. Since, it's a first launch it displayed `No app selected`. 
+6. The Seva Control Centre has a widget in centre which shows the information of Demo you have selected from the Seva Design Gallery. Since, it's a first launch it displayed `No app selected`.
 
 .. Image:: /images/no-app-selected.jpg
    :width: 777
    :height: 760
 
-7. To Launch a Demo, you first need to visit the Seva Design Gallery. For that you need to click on the Bottom Right Store Icon as shown in Image below.  
+7. To Launch a Demo, you first need to visit the Seva Design Gallery. For that you need to click on the Bottom Right Store Icon as shown in Image below.
 
 .. Image:: /images/playstore-icon.jpg
    :width: 950
@@ -89,7 +89,7 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
 .. Image:: /images/seva-design-gallery.png
    :width: 950
    :height: 900
-   
+
 9. Currently we have the Thermostat Demo Docker Image hosted on Seva Design Gallery. To launch the Thermostat Demo, click on the `Launch` Button as shown below.
 
 .. Image:: /images/demo-launch.jpg
@@ -97,8 +97,8 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
    :height: 700
 
 |
-        
-10. After Clicking Launch Button, switch to the first tab (i.e. Seva Control Centre) by clicking on it.  
+
+10. After Clicking Launch Button, switch to the first tab (i.e. Seva Control Centre) by clicking on it.
 
 .. Image:: /images/seva-first-tab.jpg
    :width: 950
@@ -107,7 +107,7 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
 |
 
 11. The Centre Widget of Seva Control Centre which displayed `No app selected` earlier in Step 6 will show the information of demo you have selected now (i.e Thermostat Demo).
- 
+
 .. Image:: /images/demo-widget.jpg
    :width: 950
    :height: 900
@@ -121,7 +121,7 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
    :height: 900
 
 |
-   
+
 13. Once you click the `Start Icon` the Seva Control Centre will run the docker-compose file and start pulling the `Thermostat Demo` from `ghcr.io <https://github.com/TexasInstruments/seva-adocker/pkgs/container/app_thermostat_demo>`__ to launch it. The Seva Control Centre will
 show the `Downloading Icon` as shown in the image below.
 
@@ -131,7 +131,7 @@ show the `Downloading Icon` as shown in the image below.
 
 |
 
-.. note:: The Thermostat Demo Docker Image that we provide is around 2.3 GB. Hence, docker pull time may vary based on your internet speed provided to TI AM62x SK. 
+.. note:: The Thermostat Demo Docker Image that we provide is around 2.3 GB. Hence, docker pull time may vary based on your internet speed provided to TI AM62x SK.
 
 14. Once the Docker Image of `Thermostat Demo` is pulled, the Seva Control Centre will auto launch the demo in full screen as shown below.
 
@@ -140,7 +140,7 @@ show the `Downloading Icon` as shown in the image below.
    :height: 900
 
 |
-   
+
 15. To close `Thermostat Demo` and come back to Seva Store, click on the cross icon as shown below.
 
 .. Image:: /images/close-thermostat.jpg
@@ -154,7 +154,7 @@ show the `Downloading Icon` as shown in the image below.
 .. Image:: /images/demo-stop.jpg
    :width: 950
    :height: 900
-   
+
 17. To launch another demo, you can follow from **Step 6**.
 
 |
@@ -168,44 +168,44 @@ show the `Downloading Icon` as shown in the image below.
 How to Launch Seva Store via CLI
 --------------------------------
 
-1. Before Launching Seva-Store via CLI ensure that your AM62x SK is connected to a network. To launch the Seva Store via CLI, run  
+1. Before Launching Seva-Store via CLI ensure that your AM62x SK is connected to a network. To launch the Seva Store via CLI, run
 
    ::
 
        WAYLAND_DISPLAY=wayland-1 XDG_RUNTIME_DIR=/run/user/1000 seva-launcher-aarch64
- 
+
 .. note:: If you have connected the AM62x SK to a proxy network, then before launching Seva Store you need to configure Docker and System proxies. `seva-launcher-aarch64` takes http_proxy and no_proxy as input to help you configure it. **To launch the Seva Store via CLI in a proxy network**, run
 
    ::
-   
-        WAYLAND_DISPLAY=wayland-1 XDG_RUNTIME_DIR=/run/user/1000 seva-launcher-aarch64 -http_proxy=<A proxy URL> -no_proxy=<A comma-separated list of host names that shouldn't go through any proxy>    
+
+        WAYLAND_DISPLAY=wayland-1 XDG_RUNTIME_DIR=/run/user/1000 seva-launcher-aarch64 -http_proxy=<A proxy URL> -no_proxy=<A comma-separated list of host names that shouldn't go through any proxy>
 
 2. Once, you run the above command a Firefox Browser Container launches in full screen with Seva Control Centre in first tab.
 
-3. Refer `Step 6 to Step 16`  from :ref:`How-to-Launch-Seva-Store-via-TI-Apps-Launcher` to understand how to use Seva Store to Launch a Demo. 
+3. Refer `Step 6 to Step 16`  from :ref:`How-to-Launch-Seva-Store-via-TI-Apps-Launcher` to understand how to use Seva Store to Launch a Demo.
 
 How to Create & Host a Docker Image for your Demo
 -------------------------------------------------
 
 **How to Create a Docker Image of your Demo**
 
-Docker can build images automatically by reading the instructions from a `Dockerfile <https://docs.docker.com/engine/reference/builder/>`__. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. For more details on how to create a Docker Image you can refer `Thermostat Demo Dockerfile <https://raw.githubusercontent.com/TexasInstruments/seva-adocker/main/app_thermostat_demo/Dockerfile>`__. 
+Docker can build images automatically by reading the instructions from a `Dockerfile <https://docs.docker.com/engine/reference/builder/>`__. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. For more details on how to create a Docker Image you can refer `Thermostat Demo Dockerfile <https://raw.githubusercontent.com/TexasInstruments/seva-adocker/main/app_thermostat_demo/Dockerfile>`__.
 
 **How to Host a Docker Image of your Demo**
 
 After building a Docker Image, to host it you can use a Docker Registry. A Docker registry is a storage and distribution system for named Docker images. A Docker registry is organized into Docker repositories, where a repository holds all the versions of a specific image. The same image might have multiple different versions, identified by their tags. The registry allows Docker users to pull images locally, as well as push new images to the registry (given adequate access permissions when applicable).
- 
+
 How to add your Demos in Seva Store
 -----------------------------------
 
 Once you have your Demo Docker Image hosted on a Docker Registry, you can refer the following steps to add you Demo in Seva Store,
-    
+
 1. For backend, create a new directory with the naming convention as **app_your-demo-name_demo** and create two new files named **metadata.json** and **docker-compose.yml** under the same directory. For reference you can check out `Thermostat Demo Metadata <https://raw.githubusercontent.com/TexasInstruments/seva-apps/main/app_thermostat_demo/metadata.json>`__ and `Thermostat Demo Docker Compose File <https://raw.githubusercontent.com/TexasInstruments/seva-apps/main/app_thermostat_demo/docker-compose.yml>`__. Once you have both the files tested at your end, create a PR on `seva-apps <https://github.com/TexasInstruments/seva-apps>`__.
 
 2. For frontend, once your PR on `seva-apps <https://github.com/TexasInstruments/seva-apps>`__ is merged, to populate your Demo on Seva Store's Design Gallery you need to create a PR on `seva-design-gallery <https://github.com/TexasInstruments/seva-design-gallery/>`__ to add a `div class` for your Demo. You can refer the following template for the same.
 
 ::
- 
+
       <div class="ti_p-col-4">
         <div class="card bg-light mb-3 mt-3 h-100 d-flex flex-column align-items-start u-boxShadow-2 u-cardBorder-top-red">
           <p class="label">Your Organization Name</p>

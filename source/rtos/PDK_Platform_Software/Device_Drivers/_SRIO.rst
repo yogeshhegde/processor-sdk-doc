@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_SRIO 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_SRIO
 
 Overview
 --------
@@ -74,7 +74,7 @@ OSAL API reference for application:
     Srio_init ();
     ...
     /* Start the application Managed SRIO Driver. Refer example/test for appCfg fields */
-    hAppManagedSrioDrv = Srio_start (&appCfg); 
+    hAppManagedSrioDrv = Srio_start (&appCfg);
 
 At this point SRIO driver is ready for data transfer on specific
 instance identified by handle.
@@ -223,12 +223,12 @@ Examples
 |                       | is beyond the scope   |                            |
 |                       | of this document.     |                            |
 +-----------------------+-----------------------+----------------------------+
-                                                                             
-|                                                                            
-                                                                             
-Additional References                                                        
----------------------                                                        
-                                                                             
+
+|
+
+Additional References
+---------------------
+
 +-----------------------------------+----------------------------------------+
 | **Document**                      | **Location**                           |
 +-----------------------------------+----------------------------------------+
@@ -241,5 +241,5 @@ Additional References
 |                                   | river.pdf                              |
 +-----------------------------------+----------------------------------------+
 
-| 
+|
 

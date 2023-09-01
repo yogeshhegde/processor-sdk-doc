@@ -48,7 +48,7 @@ The PRU project needs an .asm file for the firmware assembly code. Use
    by right clicking on the project top-level folder and selecting
    **Add Files**. To keep things simple, later steps will only document
    **Project->Add Files...**. Either process can be used.
-   
+
 #. Navigate to **<PSSP_PATH>/Getting_Started_Labs/assembly_code** folder.
    Select **main.asm**. Select **open**.
 
@@ -100,7 +100,7 @@ resolve addresses, and more.
 .. note::
 
    AM335x, AM57x: Use the same linker command file for all PRU cores.
-   
+
    AM437x: Use AM437x_PRU_SS0.cmd for PRU cores in PRU-ICSS0. Use
    AM437x_PRU_SS1.cmd for PRU cores in PRU-ICSS1.
 
@@ -184,7 +184,7 @@ Will the PRU project be loaded by a core running Linux kernel 5.10 or later?
    needed. Jump to section :ref:`write_the_pru_firmware_asm_ccs`.
 
  * No --> Continue reading.
- 
+
 If you got to this step, then the PRU project will not be loaded by a core
 running Linux. The project does not need a resource table.
 
@@ -201,7 +201,7 @@ Check which version of PSSP is used:
    #. Delete the resource table lines:
 
       ::
-   
+
          ; Resource table needed for remoteproc Linux driver
 	         .global	||pru_remoteproc_ResourceTable||
 	         .sect	".resource_table:retain", RW
@@ -245,7 +245,7 @@ The getting started labs include empty resource tables.
 #. Check that the main.asm file includes an empty resource table:
 
       ::
-   
+
          ; Resource table needed for remoteproc Linux driver
 	         .global	||pru_remoteproc_ResourceTable||
 	         .sect	".resource_table:retain", RW
@@ -463,7 +463,7 @@ resolve addresses, and more.
 
 #. Make sure that the project Makefile **LINKER_COMMAND_FILE** matches the
    linker command file used:
-   
+
    #. Open the Makefile in a text editor.
 
    #. If **LINKER_COMMAND_FILE** does not match the project linker command
@@ -557,7 +557,7 @@ Will the PRU project be loaded by a core running Linux kernel 5.10 or later?
    needed. Jump to section :ref:`write_the_pru_firmware_asm_linux`.
 
  * No --> Continue reading.
- 
+
 If you got to this step, then the PRU project will not be loaded by a core
 running Linux. The project does not need a resource table.
 
@@ -568,13 +568,13 @@ Check which version of PSSP is used:
 
  * v5.9.0 or earlier: An empty resource table is included by default in these
    versions of the PSSP.
-   
+
    #. Go to the main.asm file
-   
+
    #. Delete the resource table lines:
-   
+
       ::
-   
+
          ; Resource table needed for remoteproc Linux driver
 	         .global	||pru_remoteproc_ResourceTable||
 	         .sect	".resource_table:retain", RW
@@ -610,7 +610,7 @@ Does the PRU project use RPMsg?
  * Yes --> TI only supports PRU RPMsg with C code. Steps for building a C code
    project (including how to add RPMsg Resource Tables) are at
    :ref:`pru_getting_started_labs_writing_c_code`.
-   
+
  * No --> Define an empty resource table.
 
 The getting started labs include empty resource tables.
@@ -619,7 +619,7 @@ The getting started labs include empty resource tables.
 #. Check that the main.asm file includes an empty resource table:
 
       ::
-   
+
          ; Resource table needed for remoteproc Linux driver
 	         .global	||pru_remoteproc_ResourceTable||
 	         .sect	".resource_table:retain", RW

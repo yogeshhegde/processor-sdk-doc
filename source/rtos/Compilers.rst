@@ -2,9 +2,9 @@
 Compilers
 ########################
 
-Compiler User's Guides are located at the links below. 
+Compiler User's Guides are located at the links below.
 
-Please refer to the Processor SDK `Release Notes <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_release_specific.html#release-notes>`__ to determine which version to use. 
+Please refer to the Processor SDK `Release Notes <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_release_specific.html#release-notes>`__ to determine which version to use.
 
 .. _compilers-ti-c6000:
 

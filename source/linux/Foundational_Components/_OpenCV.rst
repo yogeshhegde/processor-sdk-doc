@@ -54,7 +54,7 @@ of TI’s OpenCV implementation.
 OpenCV Modules Supported By TI
 =================================
 
- 
+
 Table 1 lists the modules of OpenCV and indicates which modules are
 supported by Processor SDK for K2H family and AM57X family.
 
@@ -106,7 +106,7 @@ supported by Processor SDK for K2H family and AM57X family.
 | cudaobjdetect    | No                  | No                     | No cuda support   |
 +------------------+---------------------+------------------------+-------------------+
 
-| 
+|
 
 =================================
 OpenCL offload
@@ -161,7 +161,7 @@ implementation of OpenCV. The prohibited list allows us to prevent
 certain OpenCL kernels from executing on the DSP. The kernels are
 prevented to execute on the DSP if they did not pass the accuracy tests.
 
- 
+
 .. Image:: /images/FlowChart3.jpg
 
 .. rubric:: Example of OpenCL offload
@@ -318,7 +318,7 @@ Tera-terminal connected to AM5728 EVM.
    or mount to external server. If the file system resides on SD card,
    the card size should be at least 32GB.
 
-| 
+|
 
 .. rubric:: Loading SDK and Standard Test Data
    :name: loading-sdk-and-standard-test-data
@@ -337,7 +337,7 @@ Processor SDK is available from the following locations
        For K2L -> http://www.ti.com/tool/PROCESSOR-SDK-K2L
        For K2G -> http://www.ti.com/tool/PROCESSOR-SDK-K2G
 
-| 
+|
 
 .. rubric:: Loading Standard Test Data
    :name: loading-standard-test-data
@@ -353,12 +353,12 @@ There are multiple ways to download the data into the EVM
 
 ::
 
-       If the EVM has display and keyboard the user can downloaded 
+       If the EVM has display and keyboard the user can downloaded
        the data compressed file directly to the EVM and then unzip it
-       Otherwise download the data compressed file to a PC on the network and 
-       use SCP or tftp or USB memory stick to move the data compressed file into the EVM. 
+       Otherwise download the data compressed file to a PC on the network and
+       use SCP or tftp or USB memory stick to move the data compressed file into the EVM.
 
- 
+
 The following screen shots show how to download the standard data
 compressed file into the EVM and unzip it. It assumes that there is a
 TFTP master server, for example Solarwinds or similar, and that the
@@ -375,18 +375,18 @@ is very large. (More than 600MB)
 
 .. Image:: /images/UnzipMaster3.jpg
 
-| 
+|
 
 .. Image:: /images/UnzipMaster4.jpg
 
 .. Image:: /images/InflatedZip.jpg
 
-| 
+|
 
 .. rubric:: Summary of Getting the Data Steps
    :name: summary-of-getting-the-data-steps
 
-| 
+|
 
 #. Boot the EVM and login as root.
 #. Change directory to /usr/share/OpenCV
@@ -395,7 +395,7 @@ is very large. (More than 600MB)
 #. unzip the opencv\_extra-master.zip file
 #. Delete the opencv\_extra-master.zip file
 
-| 
+|
 
 After unzip the file a new directory ***opencv\_extra-master*** is
 generated. A sub-directory ***testdata*** should be moved up one
@@ -409,13 +409,13 @@ opencv\_extra-master/testdata .*** . See the screen shot below.
 .. rubric:: Environment Settings and Run the Tests
    :name: environment-settings-and-run-the-tests
 
- 
+
 The script setupEnv.sh in directory /usr/share/OpenCV/titestsuite sets
 the environment variables that are needed for the unit tests.
 
 From the OpenCV directory do the following: ***cd titestsuit*** and
 then ***source ./setupEnv.sh*** . See the screen shot below.
- 
+
 .. Image:: /images/Environment1.jpg
 
 The script runtests run all the unit tests. From the titestsuit
@@ -696,7 +696,7 @@ modules/video/src/opencl/bgfg\_mog2.cl:
                       int src_offset_x, int src_offset_y, int cols, int rows,
                       int src_whole_cols, int src_whole_rows)
 
-| 
+|
 
 .. code-block:: cpp
 
@@ -706,7 +706,7 @@ modules/video/src/opencl/bgfg\_mog2.cl:
                       int src_offset_x, int src_offset_y, int cols, int rows,
                       int src_whole_cols, int src_whole_rows EXTRA_PARAMS)
 
-| 
+|
 
 -  Third option is to create new file and use it in kernel constructor,
    with \_oclsrc postfix (as mentioned in previous paragraph), like used
@@ -714,7 +714,7 @@ modules/video/src/opencl/bgfg\_mog2.cl:
 
 ::
 
-       TI DSP specific OpenCL implementation 
+       TI DSP specific OpenCL implementation
     ...
       cv::String kname = format( "tidsp_gaussian" ) ;
       cv::String kdefs = format("-D T=%s -D T1=%s -D cn=%d", ocl::typeToStr(type), ocl::typeToStr(depth), cn) ;
@@ -900,7 +900,7 @@ OpenCL C C66 DSP kernels
    convertScaleAbs,int16,uint8,modules/core/src/convert.cpp,modules/core/src/opencl/tidsparithm.cl,Additional optimizations possible
    MOG2 (mixture of Gaussians),uint8 (float32 internal),uint8 (float32 internal),modules/core/src/bgfg_gaussmix2.cpp,modules/core/src/opencl/bgfg_mog2.cl,Additional optimizations possible
 
-| 
+|
 
 --------------------------------------------------------------------------------------
 Profiling results of DSP optimized OpenCV OpenCL kernels (PLSDK 3.1), AM5728 platform
@@ -921,7 +921,7 @@ Profiling results of DSP optimized OpenCV OpenCL kernels (PLSDK 3.1), AM5728 pla
    GaussBlur (3x3),903159,82.601ms,2.036ms,4.289ms,2.1x
    convertScaleAbs,725346,112.60ms,1.73077ms,3.92ms,2.3x
 
-| 
+|
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Single channel, 1920x1080. barcode ROI detection use case**
@@ -938,7 +938,7 @@ Profiling results of DSP optimized OpenCV OpenCL kernels (PLSDK 3.1), AM5728 pla
    GaussBlur (3x3),2092713,98.61ms,3.478ms,10.0458ms,2.9x
    convertScaleAbs,1646050,268.272ms,3.13524ms,5.77027ms,1.8x
 
-| 
+|
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Single channel, 720x576, Gesture recognition use case**
@@ -953,7 +953,7 @@ Profiling results of DSP optimized OpenCV OpenCL kernels (PLSDK 3.1), AM5728 pla
    dilate,570094,31.035ms,1.750ms,5.455ms,3.2x
    MOG2 (mixture of Gaussians),40307446,316.984ms,59.63ms,40.667ms,0.7x
 
-| 
+|
 
 ----------------------------------------------------------------------------
 Alternative approach to add new OpenCL kernels at OpenCV application level
@@ -1034,7 +1034,7 @@ compilation).
         if (ifs.fail()) return 0;
         std::string kernelSource((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
         ocl::ProgramSource programSource(kernelSource);
-        // Compile the kernel code 
+        // Compile the kernel code
         cv::String errmsg;
         cv::String buildopt = "-DDBG_VERBOSE "; // We can set various clocl build options here, e.g. define-s to compile-in/out parts of CL code
         ocl::Program program = context.getProg(programSource, buildopt, errmsg);
@@ -1071,8 +1071,8 @@ loaded and compiled by above host program.
 
 .. code-block:: c
 
-    __kernel void invert_img(__global uchar* src, int src_step, int src_offset, 
-                             __global uchar* dst, int dst_step, int dst_offset, 
+    __kernel void invert_img(__global uchar* src, int src_step, int src_offset,
+                             __global uchar* dst, int dst_step, int dst_offset,
                              int dst_rows, int dst_cols)
     {
        int x = get_global_id(0);
@@ -1086,7 +1086,7 @@ loaded and compiled by above host program.
     #endif
     }
 
-| 
+|
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 OpenCL kernel dispatch from OpenCV application, using standard OpenCL dispatch with access to OpenCV data objects
@@ -1212,12 +1212,12 @@ DSP cores), these steps should be followed:
        [EVM] cd /usr/share/OpenCV/titestsuite
        [EVM] source setupEnv.txt
        [LINUXBOX] Copy test vectors (copy https://github.com/opencv/opencv_extra/tree/master/testdata) to [EVM] /usr/share/OpenCV/testdata
-       [LINUXBOX] We need Yocto build (follow http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK) 
+       [LINUXBOX] We need Yocto build (follow http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK)
            as opencv performance executables or scripts are not distributed, as standard deliverables:
            From Yocto build, copy all python scripts from opencv/XYZ/git/modules/ts/misc, to EVM folder: /usr/share/OpenCV/titestsuite
            From Yocto build, copy opencv_perf_* executables from opencv/XYZ/build/bin, to EVM folder: /usr/share/OpenCV/titestsuite
        [EVM] Use environment variable to enable / disable OpenCL kernel acceleration:
-           OPENCL off: 
+           OPENCL off:
                export OPENCV_OPENCL_DEVICE='
            OPENCL on:
                export TI_OCL_CACHE_KERNELS=Y
@@ -1236,7 +1236,7 @@ OpenCV Performance
 =================================
 
 Please refer to
-`OpenCV Performance <http://www.ti.com/processors/digital-signal-processors/libraries/open-cv.html>`__ 
+`OpenCV Performance <http://www.ti.com/processors/digital-signal-processors/libraries/open-cv.html>`__
 for the comparison of example performance of OpenCV routines as measured on multicore ARM Cortex-A15 cores and C66x DSPs in two different TI SoCs.
 
 =================================
@@ -1300,11 +1300,11 @@ Frequently Asked Questions
     It also depends a lot on data types used, and if floating point operations are involved.
     This can be accelerated if DSP optimized implementation of remap() is created.
 
-    To optimize DSP, please follow guideline in Chapters 
+    To optimize DSP, please follow guideline in Chapters
     `Creating OpenCL C kernel optimized for C66 core
-    <Foundational_Components_OpenCV.html#creating-opencl-c-kernel-optimized-for-c66-core>`__ to 
+    <Foundational_Components_OpenCV.html#creating-opencl-c-kernel-optimized-for-c66-core>`__ to
     `Alternative approach to add new OpenCL kernels at OpenCV application level
-    <Foundational_Components_OpenCV.html#alternative-approach-to-add-new-opencl-kernels-at-opencv-application-level>`__ 
+    <Foundational_Components_OpenCV.html#alternative-approach-to-add-new-opencl-kernels-at-opencv-application-level>`__
 
 
 **Why isn't the performance improved when calling dsplib and use OpenMP to accelerate?**

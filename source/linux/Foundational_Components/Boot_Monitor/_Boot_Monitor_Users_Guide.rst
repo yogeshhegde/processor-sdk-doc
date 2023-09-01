@@ -33,7 +33,7 @@ The command takes the load address above as the argument.
 
 This wiki will cover the basic steps for building boot monitor.
 
-| 
+|
 
 .. rubric:: General Information
    :name: general-information
@@ -46,7 +46,7 @@ downloading and installing the Processor SDK Linux. Once installed, the
 boto monitor source code is included in the SDK's board-support
 directory.
 
-| 
+|
 
 .. rubric:: Building Boot Monitor
    :name: building-boot-monitor
@@ -74,7 +74,7 @@ The command to build the boot monitor
       where ks2_platform = k2hk, k2e, k2l, or k2g
       if image_<ks2_platform> is left blank, all platforms will be built.
 
-| 
+|
 
 .. rubric:: Boot sequence of primary core
    :name: boot-sequence-of-primary-core
@@ -112,7 +112,7 @@ boot monitor entry code.
    kernel entry point address. Primary core wait for secondary cores to
    boot up and then proceeds to rest of booting sequence.
 
-| 
+|
 
 .. rubric:: Boot sequence of secondary core
    :name: boot-sequence-of-secondary-core
@@ -131,5 +131,5 @@ At the secondary core, following squence happens
    point address, and it starts booting secondary instance of Linux
    kernel.
 
-| 
+|
 

@@ -17,7 +17,7 @@ including desktop, mobile, server, storage and embedded communications.
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
-    .. rubric:: Keystone PCIe 
+    .. rubric:: Keystone PCIe
        :name: keystone-pcie
 
     Keystone PCIe module is used on K2H/K2K, K2E, K2L and K2G SoCs. For more
@@ -54,7 +54,7 @@ including desktop, mobile, server, storage and embedded communications.
         * J44: put stub to short pin 1 & 2. This ensure proper reset to PCIe slot
         * J15: put stub to short pin 2 & 3. This ensures 100MHz clock to PCIe slot
 
-    | 
+    |
 
     .. rubric:: Introduction to PCIe on TI Keystone platforms
        :name: introduction-linux-pcie
@@ -90,7 +90,7 @@ including desktop, mobile, server, storage and embedded communications.
          |------------------|       |--------------------|       |---------------------|       |---------------|
                             function calls              function calls
 
-    | 
+    |
     | PCIe has been verified on K2E EVM. K2E supports two PCI ports. Port 0
       is on Domain 0 and Port 1 is on Domain 1. On K2E EVM, a Marvel SATA
       controller, 0x9182 is connected to port 1 that supports interfacing
@@ -98,7 +98,7 @@ including desktop, mobile, server, storage and embedded communications.
       HDD interface with K2E. Western Digital 1.0 TB SATA / 64MB Cache hard
       disk drive, WD10EZEX is used for the test over PCI port 1.
 
-    | 
+    |
 
     ::
 
@@ -129,19 +129,19 @@ including desktop, mobile, server, storage and embedded communications.
 
     ::
 
-             Bus support  ---> 
+             Bus support  --->
                      [*] PCI support
-                     [*] Message Signaled Interrupts (MSI and MSI-X)  
-                     [ ] PCI Debugging  
-                     [ ] Enable PCI resource re-allocation detection   
+                     [*] Message Signaled Interrupts (MSI and MSI-X)
+                     [ ] PCI Debugging
+                     [ ] Enable PCI resource re-allocation detection
                      ......
-                     PCI host controller drivers  --->  
+                     PCI host controller drivers  --->
                                  [ ] Generic PCI host controller
                                  [*] TI Keystone PCIe controller
 
     The RC driver can be built into the kernel as a static module.
 
-    | 
+    |
 
     .. rubric:: Device Tree bindings
        :name: device-tree-bindings
@@ -151,7 +151,7 @@ including desktop, mobile, server, storage and embedded communications.
     source tree. The PCIE SerDes Phy related DT documentation is available
     at Documentation/devicetree/bindings/phy/ti-phy.txt
 
-    | 
+    |
 
     .. rubric:: Driver Source location
        :name: driver-source-location
@@ -160,11 +160,11 @@ including desktop, mobile, server, storage and embedded communications.
 
     ::
 
-        Files: pci-keystone.c 
+        Files: pci-keystone.c
                pci-keystone-dw.c
                pci-keystone.h
 
-    | 
+    |
     | The PCIe PHY (SerDes) contains the analog portion of the PHY, which is
       the transmission line channel that is used to transmit and receive
       data. It contains a phase locked loop, analog transceiver, phase
@@ -187,7 +187,7 @@ including desktop, mobile, server, storage and embedded communications.
     -  ASPM interrupt is non standard on Keystone and the same is not
        handled by the PCIe ASPM driver.
 
-    | 
+    |
 
     .. rubric:: U-Boot environment/scripts
        :name: u-boot-environmentscripts
@@ -213,7 +213,7 @@ including desktop, mobile, server, storage and embedded communications.
     Setup u-boot env as follows. These are expected to be available in the
     default env variable, but check and update it if not present.
 
-    | 
+    |
     | Update init\_\* variables
 
     ::
@@ -231,7 +231,7 @@ including desktop, mobile, server, storage and embedded communications.
 
         setenv bootcmd 'run envboot; run set_name_pmmc init_${boot} init_fw_rd_${boot} get_pmmc_${boot} run_pmmc get_fdt_${boot} get_mon_${boot} get_kern_${boot} run_mon run_kern'
 
-    | 
+    |
 
     .. rubric:: Procedure to boot Linux with FS on hard disk
        :name: procedure-to-boot-linux-with-fs-on-hard-disk
@@ -251,18 +251,18 @@ including desktop, mobile, server, storage and embedded communications.
 
          Device Drivers  --->
                       ---------
-                 < > ATA/ATAPI/MFM/RLL support (DEPRECATED)  ----                      
-                     SCSI device support  --->               
+                 < > ATA/ATAPI/MFM/RLL support (DEPRECATED)  ----
+                     SCSI device support  --->
                      <*> Serial ATA and Parallel ATA drivers (libata)  --->
-                                           *** Controllers with non-SFF native interface ***     
-                                     <*>   AHCI SATA support        
-                                     <*>   Platform AHCI SATA support                                                                          
+                                           *** Controllers with non-SFF native interface ***
+                                     <*>   AHCI SATA support
+                                     <*>   Platform AHCI SATA support
                                      < >   CEVA AHCI SATA support
                                      -----------------
-                                           *** Generic fallback / legacy drivers ***                                                       
-                                     <*>   Generic ATA support                                                      
-                                     < >   Legacy ISA PATA support (Experimental)                                                                 
-                     [ ] Multiple devices driver support (RAID and LVM)  ----       
+                                           *** Generic fallback / legacy drivers ***
+                                     <*>   Generic ATA support
+                                     < >   Legacy ISA PATA support (Experimental)
+                     [ ] Multiple devices driver support (RAID and LVM)  ----
 
 
     Boot Linux kernel on K2E EVM using NFS file system or Ramfs and using
@@ -271,7 +271,7 @@ including desktop, mobile, server, storage and embedded communications.
     uses a 1TB HDD and create two partition. First partition is for
     filesystem and is 510GB and second is for swap and is 256MB.
 
-    | 
+    |
 
     .. rubric:: Create partition with fdisk
        :name: create-partition-with-fdisk
@@ -384,7 +384,7 @@ including desktop, mobile, server, storage and embedded communications.
          6  FAT16           42  SFS             87  NTFS volume set db  CP/M / CTOS / .
          7  HPFS/NTFS/exFAT 4d  QNX4.x          88  Linux plaintext de  Dell Utility
          8  AIX             4e  QNX4.x 2nd part 8e  Linux LVM       df  BootIt
-         9  AIX bootable    4f  QNX4.x 3rd part 93  Amoeba          e1  DOS access 
+         9  AIX bootable    4f  QNX4.x 3rd part 93  Amoeba          e1  DOS access
          a  OS/2 Boot Manag 50  OnTrack DM      94  Amoeba BBT      e3  DOS R/O
          b  W95 FAT32       51  OnTrack DM6 Aux 9f  BSD/OS          e4  SpeedStor
          c  W95 FAT32 (LBA) 52  CP/M            a0  IBM Thinkpad hi eb  BeOS fs
@@ -403,20 +403,20 @@ including desktop, mobile, server, storage and embedded communications.
         Hex code (type L to list codes): 82
         Changed system type of partition 2 to 82 (Linux swap / Solaris)
 
-        Command (m for help): p 
+        Command (m for help): p
 
         Disk /dev/sda: 1000.2 GB, 1000204886016 bytes
         255 heads, 63 sectors/track, 121601 cylinders, total 1953525168 sectors
         Units = sectors of 1 * 512 = 512 bytes
         Sector size (logical/physical): 512 bytes / 4096 bytes
         I/O size (minimum/optimal): 4096 bytes / 4096 bytes
-        Disk identifier: 0x9b51b66e 
+        Disk identifier: 0x9b51b66e
 
          Device Boot      Start         End      Blocks   Id  System
         /dev/sda1            2048  1069549567   534773760   83  Linux
         /dev/sda2      1069549568  1070073855      262144   82  Linux swap / Solaris
 
-    | 
+    |
 
     .. rubric:: Format partitions
        :name: format-partitions
@@ -471,7 +471,7 @@ including desktop, mobile, server, storage and embedded communications.
 
     Where rootfs.cpio is the cpio file for the SDK fileystem.
 
-    | 
+    |
 
     .. rubric:: Booting with FS on harddisk
        :name: booting-with-fs-on-harddisk
@@ -537,35 +537,35 @@ including desktop, mobile, server, storage and embedded communications.
     .. rubric:: **Features of J7ES**
        :name: features-j7es-linux-pcie-ep
 
-    There are four instances of the PCIe subsystem. Following are some of the 
+    There are four instances of the PCIe subsystem. Following are some of the
     main features:
 
-    - Each instance can be configured to operate in Root Complex mode or 
+    - Each instance can be configured to operate in Root Complex mode or
       End Point mode
 
     - One or two lane configuration, capable up to 8.0 Gbps/lane (Gen3)
 
     - Support for Legacy, MSI and MSI-X Interrupt
 
-    - There can be 32 different address mappings in outbound address translation 
+    - There can be 32 different address mappings in outbound address translation
       unit. The mappings can be from regions reserved for each PCIe instance.
 
       - For instance PCIE0 and PCIE1, there are two regions in SoC Memory Map:
 
         - 128 MB region with address in lower 32 bits
-      
+
         - 4 GB region with address above 32 bits
 
       - For instance PCIE2 and PCIE3, there are two regions in SoC Memory Map:
 
         - 128 MB region with address above 32 bits
-        
+
         - 4 GB region with address above 32 bits
-        
+
     .. rubric:: **Capabilities of J721E EVM**
        :name: capabilities-j721e-evm-pcie-rc
 
-    There are three instances of the PCIe subsystem on the EVM. Following are 
+    There are three instances of the PCIe subsystem on the EVM. Following are
     some of the details for each instance:
 
     +------------------------+-------------------+------------------------------------+
@@ -583,7 +583,7 @@ including desktop, mobile, server, storage and embedded communications.
     .. rubric:: **Hardware Setup Details**
        :name: hardware-setup-details
 
-    |__PART_FAMILY_DEVICE_NAMES__| is, by default, intended to be operated in 
+    |__PART_FAMILY_DEVICE_NAMES__| is, by default, intended to be operated in
     Root Complex mode.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
@@ -595,7 +595,7 @@ including desktop, mobile, server, storage and embedded communications.
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
-    For End Point mode, PCIE_1L_MODE_SEL (switch 5) and PCIE_2L_MODE_SEL (switch 6) 
+    For End Point mode, PCIE_1L_MODE_SEL (switch 5) and PCIE_2L_MODE_SEL (switch 6)
     should be set to '0'.
 
     .. Image:: /images/dip-switch.png
@@ -609,25 +609,25 @@ Following is the software architecture for Root Complex mode:
 
 Following is a brief explanation of layers shown in the diagram:
 
-- There are different drivers for the connected PCIe devices like 
-  pci_endpoint_test, tg-3, r8169, xhci-pci, ahci, etc. It could be 
-  vendor-specific like most of the ethernet cards (tg3, r8169) or class-specific 
-  like xhci-pci and ahci. Each of these drivers will also interact with it's own 
-  domain-specific stack. For example, tg3 will interface with network stack, and 
+- There are different drivers for the connected PCIe devices like
+  pci_endpoint_test, tg-3, r8169, xhci-pci, ahci, etc. It could be
+  vendor-specific like most of the ethernet cards (tg3, r8169) or class-specific
+  like xhci-pci and ahci. Each of these drivers will also interact with it's own
+  domain-specific stack. For example, tg3 will interface with network stack, and
   xhci-pci will interface with USB stack.
 
 - The PCI core layer scans the PCIe bus to identify and detect any PCIe devices.
-  It also binds the driver from the layer above, for the PCIe device, based on 
+  It also binds the driver from the layer above, for the PCIe device, based on
   vendorid, deviceid and class.
 
 - The PCI BIOS layer handles resource management. For example, allocation of
   memory resources for BARs.
 
-- The bottom-most layer consists of the PCIe platform drivers like pcie-cadence, 
-  pcie-designware, etc. pci-j721e and pci-dra7xx are TI's wrappers over these 
-  drivers. They configure platform-specific controllers and perform 
+- The bottom-most layer consists of the PCIe platform drivers like pcie-cadence,
+  pcie-designware, etc. pci-j721e and pci-dra7xx are TI's wrappers over these
+  drivers. They configure platform-specific controllers and perform
   actual register writes.
-     
+
 .. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
     .. rubric:: **RC Device Configuration**
@@ -657,26 +657,26 @@ Following is a brief explanation of layers shown in the diagram:
     .. rubric:: **Testing Details**
        :name: testing-details
 
-    The RC should enumerate any off-the-shelf PCIe cards. It has been tested 
-    with Ethernet cards, NVMe cards, PCIe USB card, PCIe WiFi card, PCIe SATA 
+    The RC should enumerate any off-the-shelf PCIe cards. It has been tested
+    with Ethernet cards, NVMe cards, PCIe USB card, PCIe WiFi card, PCIe SATA
     card and also to |__PART_FAMILY_DEVICE_NAMES__| in loopback mode.
 
-    In order to see if the connected card is detected, lspci utility should be 
-    used. Different utilities can be used depending on the cards. 
-    
-    Following are the outputs for some of them: 
+    In order to see if the connected card is detected, lspci utility should be
+    used. Different utilities can be used depending on the cards.
+
+    Following are the outputs for some of them:
 
     - Loopback mode (|__PART_FAMILY_DEVICE_NAMES__| EVM to |__PART_FAMILY_DEVICE_NAMES__| EVM)
 
       Two |__PART_FAMILY_DEVICE_NAMES__| EVMs can be connected in loopback mode by following
       the steps explained in
-      `End Point (EP) Device Configuration <PCIe_End_Point.html#ep-device-configuration>`_ 
-      section for End Point (EP) and 
-      `HOST Device Configuration <PCIe_End_Point.html#host-device-configuration>`_ 
-      section for Root Complex (RC) in 
-      `PCIe End Point documentation. <PCIe_End_Point.html>`_ The pci-epf-test 
-      driver will be configured for End Point(EP) using those steps. 
-      
+      `End Point (EP) Device Configuration <PCIe_End_Point.html#ep-device-configuration>`_
+      section for End Point (EP) and
+      `HOST Device Configuration <PCIe_End_Point.html#host-device-configuration>`_
+      section for Root Complex (RC) in
+      `PCIe End Point documentation. <PCIe_End_Point.html>`_ The pci-epf-test
+      driver will be configured for End Point(EP) using those steps.
+
       The lspci output on the Root Complex (RC) device is as follows:
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
@@ -920,7 +920,7 @@ Following is a brief explanation of layers shown in the diagram:
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
       ::
-      
+
           root@j721e-evm:~# lspci
           0000:00:00.0 PCI bridge: Texas Instruments Device b00d
           0000:01:00.0 Unassigned class [ff00]: Texas Instruments Device b00d
@@ -1343,7 +1343,7 @@ Following is a brief explanation of layers shown in the diagram:
         - Test using hdparm
 
         ::
-        
+
             root@j721e-evm:~# hdparm -tT /dev/nvme0n1
 
             /dev/nvme0n1:
@@ -1353,7 +1353,7 @@ Following is a brief explanation of layers shown in the diagram:
         - Test using dd
 
         ::
-        
+
             root@j721e-evm:~# time dd if=/dev/urandom of=/home/root/srctest_file_pci_2199 bs=1M count=10|
             10+0 records in
             10+0 records out

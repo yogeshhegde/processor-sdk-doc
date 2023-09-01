@@ -102,7 +102,7 @@ inserted.
 -  PRU firmware binaries exist in the filesystem in the
    **/lib/firmware/** directory.
 
-| 
+|
 
 --------------
 
@@ -127,7 +127,7 @@ inserted.
 | ``echo 'start' > /sys/class/remoteproc/remoteproc1/state``
 | ``echo 'start' > /sys/class/remoteproc/remoteproc2/state``
 
-| 
+|
 
 --------------
 
@@ -163,11 +163,11 @@ firmware loading process.
       system resources that the PRUs will need during their program
       execution
 
-| 
+|
 
 --------------
 
-| 
+|
 
 .. rubric:: Step 3
    :name: step-3
@@ -188,7 +188,7 @@ firmware loading process.
    communication as well as setting up the interrupt mapping in the PRU
    subsystem INTC module
 
-| 
+|
 
 --------------
 
@@ -212,11 +212,11 @@ firmware loading process.
   through the resource table that gets copied into the data RAM of each
   PRU**
 
-| 
+|
 
 --------------
 
-| 
+|
 
 .. rubric:: Step 5
    :name: step-5

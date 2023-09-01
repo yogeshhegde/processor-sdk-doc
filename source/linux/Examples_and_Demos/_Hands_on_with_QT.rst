@@ -31,7 +31,7 @@ The steps in this lab are written against this configuration. The
 concepts of the lab will apply to other configurations but will need to
 be adapted accordingly.
 
-.. rubric:: 
+.. rubric::
    Hardware
    :name: hardware
 
@@ -569,19 +569,19 @@ development.
 
    .. Image:: /images/Sitara_Linux_QT_create_new_ssh_key.png
 
-   -  
+   -
       -  **Key algorithm RSA**
       -  Select **Key size: 1024**
       -  Then click **Generate and Save Key Pair...**
 
    .. Image:: /images/Sitara_Linux_QT_options_SSH_Key_Configuration.jpeg
 
-   -  
+   -
       -  Click **Do not Encrypt key file**
 
    .. Image:: /images/Sitara_Linux_QT_Password_for_Private_Key.jpeg
 
-   -  
+   -
       -  Just use the default name qtc\_id.pub and **Click Save** and
          **Click Close** to close the Generate SSH Key window.
 
@@ -589,7 +589,7 @@ development.
 
    .. Image:: /images/Sitara_Linux_QT_Deploy_Public_Key.png
 
-   -  
+   -
       -  Select the file just generated (should be under
          /home/sitara/.ssh)
 
@@ -608,7 +608,7 @@ development.
       -  Select the file **qtc\_id.pub** and click on **Open**, shortly
          a window should show up saying "Deployment finished
          sucessfully"
-   
+
    .. Image:: /images/Sitara_successful_deploy.png
 
    -  Close the window and **Click OK** to exit the Linux Devices
@@ -654,7 +654,7 @@ development.
       terminal.ui
 
    .. Image:: /images/Sitara-terminal-pro.jpeg
-   
+
    -  Under **Forms**, double click on **terminal.ui** This will bring
       up the widget editor.
    -  Remove the menuBar where it says Type Here on the top of the ui
@@ -723,7 +723,7 @@ development.
       now see the error is gone and replaced with /home/root/terminal
    -  Now in the Run portion: **Select Add -> terminal (on Remote
       Generic Linux Host)**
-   
+
    .. Image:: /images/Sitara_remote_host.jpeg
 
 #. Finally we are ready to run
@@ -968,7 +968,7 @@ scratch.
       while(process.waitForReadyRead())
       data.append(process.readAll());
       ui->textBrowser\_linuxshell->setText(data.data());
-   
+
    .. Image:: /images/Sitara_SendCMD_code.png
 
 #. Finally since we don't have a keyboard to type a command lets add a
@@ -1027,7 +1027,7 @@ style sheets.
 
    -  When complete with the above steps, it should look like the
       following:
-   
+
    .. Image:: /images/Sitara_webview.jpeg
 
 #. Now we can add a default URL. Since we are not connected to the
@@ -1282,7 +1282,7 @@ style sheets.
    keyboard.cpp. Notice how the each QPushbutton signals the
    keyboardHandler slot.
 
-   -  
+   -
 
       .. raw:: html
 
@@ -1343,7 +1343,7 @@ style sheets.
          border-left: 10px transparent;**/
      }
 
- 
+
 **tab style sheet settings**
 
 .. code-block:: cpp
@@ -1476,5 +1476,5 @@ commands, for example set sysroot
 set debug-file-directory
 /home/sitara/ti-processor-sdk-linux-xxx/linux-devkit/sysroots/armv7ahf-neon-linux-gnueabi/usr/lib/.debug
 
-| 
+|
 

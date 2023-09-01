@@ -57,7 +57,7 @@ support.
 
 And then build the kernel as usual.
 
-| 
+|
 
 .. rubric:: IO Pad Configuration
 
@@ -367,7 +367,7 @@ To aid your debugging efforts, the following resources are available:
    Guide <http://www.ti.com/lit/an/sprac74a/sprac74a.pdf>`__
 -  `E2E support forums <http://e2e.ti.com>`__
 
-| 
+|
 
 RTC-Only and RTC+DDR Mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -553,7 +553,7 @@ placed one after the other to send multiple messages, as is needed in
 the case of PMICs which have GO bits to actually apply the programmed
 voltage to the rail.
 
-| 
+|
 
 Simple Example
 ^^^^^^^^^^^^^^
@@ -565,7 +565,7 @@ Raw binary data using xxd:
 
 ::
 
-    a0274052local@uda0274052:~/git-repos/amx3-cm3$ xxd bin/am335x-evm-scale-data.bin 
+    a0274052local@uda0274052:~/git-repos/amx3-cm3$ xxd bin/am335x-evm-scale-data.bin
     0000000: 0c57 0006 0034 022d 251f 0034 022d 252b  .W...4.-%..4.-%+
 
 Explanation of values:
@@ -580,7 +580,7 @@ Explanation of values:
     02 2d 25 1f # Length of message, evm i2c bus addr, then message (i2c reg 0x25, write value 0x1f)
 
     0034        # Wake sequence section, starts with two bytes to describe i2c bus in khz (100)
-    02 2d 25 2b # Length of message, evm i2c bus addr, then message (i2c reg 0x25, write value 0x2b) 
+    02 2d 25 2b # Length of message, evm i2c bus addr, then message (i2c reg 0x25, write value 0x2b)
 
 Advanced Example
 ^^^^^^^^^^^^^^^^
@@ -592,7 +592,7 @@ Raw binary data using xxd:
 
 ::
 
-    amx3-cm3$ xxd bin/am43x-evm-scale-data.bin 
+    amx3-cm3$ xxd bin/am43x-evm-scale-data.bin
     0000000: 0c57 0012 0034 0224 106b 0224 168a 0224  .W...4.$.k.$...$
     0000010: 1067 0224 1a86 0034 0224 106b 0224 1699  .g.$...4.$.k.$..
     0000020: 0224 1067 0224 1a86                      .$.g.$..
@@ -605,18 +605,18 @@ Explanation of values:
     00          # Offset, starting after header, to sleep sequence
     12          # Offset, starting after header, to wake sequence
 
-    0034            # Sleep sequence section, starts with two bytes to describe i2c bus in khz (100) 
-    02 24 10 6b     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x10, write 0x6b) 
+    0034            # Sleep sequence section, starts with two bytes to describe i2c bus in khz (100)
+    02 24 10 6b     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x10, write 0x6b)
     02 24 16 8a     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x16, write 0x8a)
     02 24 10 67     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x10, write 0x67)
     02 24 1a 86     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x1a, write 0x86)
 
     0034            # Wake sequence section, starts with two bytes to describe i2c bus in khz (100)
-    02 24 10 6b     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x10, write 0x6b) 
-    02 24 16 99     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x16, write 0x99) 
-    02 24 10 67     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x10, write 0x67) 
-    02 24 1a 86     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x1a, write 0x86)         
+    02 24 10 6b     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x10, write 0x6b)
+    02 24 16 99     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x16, write 0x99)
+    02 24 10 67     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x10, write 0x67)
+    02 24 1a 86     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x1a, write 0x86)
 
-| 
+|
 
 

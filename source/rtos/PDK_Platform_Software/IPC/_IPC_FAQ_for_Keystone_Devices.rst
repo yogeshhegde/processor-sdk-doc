@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_FAQ_for_Keystone_Devices 
+.. http://processors.wiki.ti.com/index.php/IPC_FAQ_for_Keystone_Devices
 
 Overview
 ^^^^^^^^^^
@@ -7,7 +7,7 @@ This wiki article is a collection of frequently asked questions (FAQ) on
 IPC on Keystone family of devices , along with some useful collateral
 and software reference links. 
 
-| 
+|
 
 Guide on building and running the IPC examples of Processor SDK
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -27,7 +27,7 @@ Guide on building and running the IPC examples of Processor SDK
   ex44_compute, ex45_host and ex46_graph ) on target EVM.
 | 5. Real-time debugging on the DSP side programs using CCS.
 
-| 
+|
 
 Keystone IPC Frequently Asked Questions (FAQ)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -87,8 +87,8 @@ machine. This cannot be built through CCS.
 
 ::
 
-           PLATFORM = TCI6638 
-           DESTDIR = /opt/ti/ipc_3_xx_xx_xx/ipc_3_xx_xx_xx_lib 
+           PLATFORM = TCI6638
+           DESTDIR = /opt/ti/ipc_3_xx_xx_xx/ipc_3_xx_xx_xx_lib
 
 ::
 
@@ -102,7 +102,7 @@ machine. This cannot be built through CCS.
 | 7. $make
 | 8. $make install
 
-| 
+|
 
 .. rubric:: Q: Is there any simple example to demonstrate IPC methods
    like message Q or notify for Keystone-II ?
@@ -116,7 +116,7 @@ machine. This cannot be built through CCS.
 ::
 
           ~/ti/ipc_3_3x_xx_xx/examples$ ls
-          C6472_bios_elf C6A8149_bios_elf DRA7XX_android_elf DRA7XX_linux_elf makefile TCI6638_linux_elf 
+          C6472_bios_elf C6A8149_bios_elf DRA7XX_android_elf DRA7XX_linux_elf makefile TCI6638_linux_elf
           TI814X_bios_elf C6678_bios_elf dosrc.bat DRA7XX_bios_elf DRA7XX_qnx_elf OMAPL138_linux_elf TDA3XX_bios_elf
 
 Please refer the readme.txt to run and build the example according to
@@ -125,7 +125,7 @@ the target used. For K2, use the cluster ID as 0 instead of 18.
 #. perl patchExec.pl 0 compute_dspN.xe66 compute_dspN_patched.xe66
 #. lad_tci6638 -r 8 -n 9 -b 0 -l log.txt
 
-| 
+|
 
 .. rubric:: Q: For Keystone II, is there any CCS based examples to
    demonstrate a simple communication between ARM-DSP?
@@ -155,7 +155,7 @@ Linux, Android, QNX and TI-RTOS(SYS/BIOS) so the command line build is
 selected which is common across all these platforms and we do not have
 CCS based projects for these examples.
 
-| 
+|
 
 .. rubric:: Q: For keystone-II devices, where do I find the source code
    of the image processing demo and how to I re-build them? Using ARM
@@ -193,7 +193,7 @@ at
 ) which in turn uses the makefile located at
 ~\mcsdk_bios_3_0x_0x_0x\demos\image_processing\ipc\master\src
 
-| 
+|
 
 .. rubric:: Q: How to import the slave code of Image processing demo and
    how do I build it?
@@ -207,7 +207,7 @@ projects into work space" should be unchecked.
 
 .. Image:: /images/ImportPjt.jpg
 
-| 
+|
 
 In the project explorer screen, check whether you are able to see the
 folders, slave --> src --> \*.c files.... Right click on the project and
@@ -286,16 +286,16 @@ as below,
         IPC_INSTALL_DIR := /opt/ti/ipc_3_3x_xx_xx
 
         #The location where the libraries are installed after building the IPC package
-        SIPC_LINUX_DIR := /opt/ti/ipc_3_3x_xx_xx/IPC_Linux_libraries 
+        SIPC_LINUX_DIR := /opt/ti/ipc_3_3x_xx_xx/IPC_Linux_libraries
 
 ::
 
-        CROSS_COMPILE ?= arm-linux-gnueabihf- 
-        CC            := $(CROSS_COMPILE)gcc 
-        CFLAGS        := -Wall -I$(COMMON_INC) -I$(MASTER_INC) -I$(IPC_INSTALL_DIR)/linux/include -I$(IPC_INSTALL_DIR)/packages -D_GNU_SOURCE 
-        LFLAGS        := -lpthread -L$(SIPC_LINUX_DIR)/ -ltitransportrpmsg -L$(SIPC_LINUX_DIR)/ -ltiipc -L$(SIPC_LINUX_DIR)/ -ltiipcutils 
+        CROSS_COMPILE ?= arm-linux-gnueabihf-
+        CC            := $(CROSS_COMPILE)gcc
+        CFLAGS        := -Wall -I$(COMMON_INC) -I$(MASTER_INC) -I$(IPC_INSTALL_DIR)/linux/include -I$(IPC_INSTALL_DIR)/packages -D_GNU_SOURCE
+        LFLAGS        := -lpthread -L$(SIPC_LINUX_DIR)/ -ltitransportrpmsg -L$(SIPC_LINUX_DIR)/ -ltiipc -L$(SIPC_LINUX_DIR)/ -ltiipcutils
 
-| 
+|
 
 .. rubric:: Q: The Image processing demo does not work on the version of
    MCSDK, V3.0x.xx.x on both the K2H and K2E EVMs. The earlier version
@@ -313,7 +313,7 @@ as below,
              u-boot# setenv mem_reserve 1536M
              u-boot# saveenv
 
-| 
+|
 
 .. rubric:: Q: How to build and run the qmssIpcBenchmark on C6678 EVM?
    :name: q-how-to-build-and-run-the-qmssipcbenchmark-on-c6678-evm
@@ -382,7 +382,7 @@ after the throughput (msg/s) has been calculated.
   project.
 .. Image:: /images/QMSSIPC_project1.png
 
-| 
+|
 
 .. rubric:: Q: How to re-build the IPC - QMSS transport library and
    generate “ti.transport.ipc.qmss.transports.ae66” ?

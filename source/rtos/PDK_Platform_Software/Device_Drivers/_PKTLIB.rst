@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PKTLIB 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PKTLIB
 
 .. rubric:: Introduction
    :name: introduction

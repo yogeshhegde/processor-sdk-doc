@@ -159,7 +159,7 @@ Building everything from scratch
         export DIST_DIR=${YOUR_PATH}/ti-aosp-13/device/ti/am62x-kernel/kernel/6.1
         tools/bazel run --lto=full //common:ti_dist -- --dist_dir=$DIST_DIR
 
-    .. note:: 
+    .. note::
 
         Android move on Kleaf bazel build system, AOSP documentation can be read `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and Kleaf documentatation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
 

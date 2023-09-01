@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MCBSP 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MCBSP
 
 Overview
 --------
@@ -90,5 +90,5 @@ Additional References
 |                                   | P.pdf                                   |
 +-----------------------------------+-----------------------------------------+
 
-| 
+|
 

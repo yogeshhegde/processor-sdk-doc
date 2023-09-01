@@ -23,11 +23,11 @@ Processor SDK RTOS Software Developer's Guide
    :name: introduction
 
 The Texas Instruments Processor Software Development Kit (Processor-SDK)
-is a single scalable software platform that offers streamlined development 
+is a single scalable software platform that offers streamlined development
 across different TI `Sitara/DSP Processors <http://www.ti.com/lsds/ti/processors/overview.page>`__.
-The Processor-SDK for RTOS provides fundamental platform software and tools 
-for development, deployment and execution of RTOS-based applications. 
-It includes the following, though not all features are applicable across 
+The Processor-SDK for RTOS provides fundamental platform software and tools
+for development, deployment and execution of RTOS-based applications.
+It includes the following, though not all features are applicable across
 all supported platforms:
 
 -  TI-RTOS kernel, a light-weight real-time embedded operating system for TI devices
@@ -39,17 +39,17 @@ all supported platforms:
 -  Bootloaders and boot utilities
 -  Demonstrations and examples
 
-Combined with TI Code Composer Studio integrated development environment (IDE), 
-the Processor-SDK provides the core foundational building blocks that facilitate 
+Combined with TI Code Composer Studio integrated development environment (IDE),
+the Processor-SDK provides the core foundational building blocks that facilitate
 application software development on TI's embedded processors.
 
 .. rubric:: Scope
    :name: scope
 
-The purpose of this guide is to quickly provide the information you need most while 
-evaluating and developing applications on a TI embedded processor, specifically 
-running embedded real-time operating system. It is not intended to be a thorough 
-design document. As such, the focus is on application programming interfaces (API), 
+The purpose of this guide is to quickly provide the information you need most while
+evaluating and developing applications on a TI embedded processor, specifically
+running embedded real-time operating system. It is not intended to be a thorough
+design document. As such, the focus is on application programming interfaces (API),
 build information, and examples to use as a template to start development.
 
 .. rubric:: Guides
@@ -57,7 +57,7 @@ build information, and examples to use as a template to start development.
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 | **Processor SDK RTOS**                                                                                                                                 |
 +========================================================================+===============================================================================+
-| |__Getting Started Guide__|  <-- **Start Here**                        | |__Release Notes__|                                                           | 
+| |__Getting Started Guide__|  <-- **Start Here**                        | |__Release Notes__|                                                           |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 | |__Examples and Demonstrations__|                                      | |__RTOS Software Stack__|                                                     |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+

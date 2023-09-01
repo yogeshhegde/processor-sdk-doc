@@ -71,8 +71,8 @@ Setting Boot Switches
 The DIP switch (SW3) is used for selecting the boot
 mode.
 
-**For the EVM Out-of-Box experience, use SD/MMC boot mode as shown in the image below**: 
-  
+**For the EVM Out-of-Box experience, use SD/MMC boot mode as shown in the image below**:
+
 .. Image:: ../../../images/K2GICE_Boot_MODE.png
 	:scale: 50%
 
@@ -99,15 +99,15 @@ JTAG signals are routed to the external emulator.
 
 **On-board XDS100 Emulator**
 
-The K2G ICE EVM has on-board XDS100 embedded JTAG emulation circuitry so an external emulator is not required. 
-Users can connect to the target SoC via CCS by connecting the USB cable, supplied in the ICE EVM kit, as shown in the image below. 
+The K2G ICE EVM has on-board XDS100 embedded JTAG emulation circuitry so an external emulator is not required.
+Users can connect to the target SoC via CCS by connecting the USB cable, supplied in the ICE EVM kit, as shown in the image below.
 
-| 
+|
 
 .. Image:: ../../../images/ICE_K2G_connect.png
 	:scale: 50%
 
-| 
+|
 
 **20-pin JTAG Header for Connecting an External Emulator**
 
@@ -143,7 +143,7 @@ There are two scenarios while connecting to the EVM :
 
 .. Note:: Keystone II device support package in CCSv7.1 includes the support for K2G ICE board but CCSv7.0/ CCSv6 users may need to update the device support package as described in the section "Update CCS to Install Keystone II Device Support Package."
 
-| 
+|
 
 Update CCS to Install Keystone II Device Support Package
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -188,7 +188,7 @@ Line #1
 
     <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 
-to 
+to
 
 ::
 
@@ -220,42 +220,42 @@ In advanced settings, make sure that the GEL files are populated correctly. The 
 .. rubric:: Connecting to target
    :name: connecting-to-target
 
-1. Download Code composer Studio or for CCSv7.0 and earlier, ensure it contains Keystone device support package version 1.1.9 as described in the 
+1. Download Code composer Studio or for CCSv7.0 and earlier, ensure it contains Keystone device support package version 1.1.9 as described in the
 how to guide "Update CCS to Install Keystone II Device Support Package."
 
-2. 66AK2G02 ICE EVM contains boot switches to configure for "No boot/sleep" mode. So configure the boot switches to "No Boot Mode" as described in 
+2. 66AK2G02 ICE EVM contains boot switches to configure for "No boot/sleep" mode. So configure the boot switches to "No Boot Mode" as described in
 the "Setting Boot Switches" section.
 
-3. Connect an XDS100 Emulator to the XDS USB port of the ICE EVM as shown in the 
+3. Connect an XDS100 Emulator to the XDS USB port of the ICE EVM as shown in the
 section "Connecting Emulator."
 
-4. Launch CCS and create a new target configuration as discussed in 
+4. Launch CCS and create a new target configuration as discussed in
 the previous section "Configuring target configuration files."
 
-5. Launch the newly created 
+5. Launch the newly created
 target configuration.
 
 .. Image:: ../../../images/K2G_Launch_targetConfig.png
 	:scale: 50%
 
-6. K2G can be a DSP or an ARM master boot device 
+6. K2G can be a DSP or an ARM master boot device
 so connect to the C66x or the A15\_0.
 
 **GEL Log**
 
 ::
 
-    A15_0: GEL Output: PLL has been configured (24.0 MHz * 100 / 1 / 4 = 600.0 MHz) 
-    A15_0: GEL Output: ARM PLL has been configured with ref clock 24MHz, -sysclkp_period 41.6666 (24.0 MHz * 100 / 1 / 4 = 600.0 MHz) 
-    A15_0: GEL Output: Power on all PSC modules and DSP domains... 
-    A15_0: GEL Output: Power on PCIE PSC modules and DSP domains... Done. 
-    A15_0: GEL Output: UART PLL has been configured (24.0 MHz * 128 / 1 / 8 = 384.0 MHz) 
-    A15_0: GEL Output: NSS PLL has been configured (24.0 MHz * 250 / 3 / 2 = 1000.0 MHz) 
-    A15_0: GEL Output: ICSS PLL has been configured (24.0 MHz * 250 / 3 / 10 = 200.0 MHz) 
-    A15_0: GEL Output: DSS PLL has been configured (24.0 MHz * 198 / 12 / 16 = 24.75 MHz) 
-    A15_0: GEL Output: DDR PLL has been configured (24.0 MHz * 250 / 3 / 10 = 200.0 MHz) 
-    A15_0: GEL Output: XMC setup complete. A15_0: GEL Output: DDR3 PLL Setup ... 
-    A15_0: GEL Output: DDR3 PLL Setup complete, DDR3A clock now running at 400MHz. 
+    A15_0: GEL Output: PLL has been configured (24.0 MHz * 100 / 1 / 4 = 600.0 MHz)
+    A15_0: GEL Output: ARM PLL has been configured with ref clock 24MHz, -sysclkp_period 41.6666 (24.0 MHz * 100 / 1 / 4 = 600.0 MHz)
+    A15_0: GEL Output: Power on all PSC modules and DSP domains...
+    A15_0: GEL Output: Power on PCIE PSC modules and DSP domains... Done.
+    A15_0: GEL Output: UART PLL has been configured (24.0 MHz * 128 / 1 / 8 = 384.0 MHz)
+    A15_0: GEL Output: NSS PLL has been configured (24.0 MHz * 250 / 3 / 2 = 1000.0 MHz)
+    A15_0: GEL Output: ICSS PLL has been configured (24.0 MHz * 250 / 3 / 10 = 200.0 MHz)
+    A15_0: GEL Output: DSS PLL has been configured (24.0 MHz * 198 / 12 / 16 = 24.75 MHz)
+    A15_0: GEL Output: DDR PLL has been configured (24.0 MHz * 250 / 3 / 10 = 200.0 MHz)
+    A15_0: GEL Output: XMC setup complete. A15_0: GEL Output: DDR3 PLL Setup ...
+    A15_0: GEL Output: DDR3 PLL Setup complete, DDR3A clock now running at 400MHz.
     A15_0: GEL Output: DDR3A initialization complete
 
 Connect with an SD Card Boot Image
@@ -276,25 +276,25 @@ Provide an appropriate name to the configuration. Select Spectrum digital XDS100
 
 In advanced settings, make sure that no GEL files are populated.
 
-2. 66AK2G02 GP EVM contains boot switches to configure for "SD/MMC boot" mode. So configure the boot switches to "SD/MMC Boot" as described in 
+2. 66AK2G02 GP EVM contains boot switches to configure for "SD/MMC boot" mode. So configure the boot switches to "SD/MMC Boot" as described in
 the section "Setting Boot Switches."
 
 3. Connect an XDS100 Emulator to the XDS USB port of the GP EVM as shown in the
 section "Connecting Emulator."
 
-4. Launch CCS and create a new target configuration as discussed in the previous 
+4. Launch CCS and create a new target configuration as discussed in the previous
 section "Configuring target configuration files".
 
-5. Launch the newly created 
+5. Launch the newly created
 target configuration.
 
 .. Image:: ../../../images/K2G_Launch_targetConfig.png
 	:scale: 50%
 
-6. K2G will boot with ARM master boot from the SD card so connect to the A15\_0. There will be no output on the console when you 
+6. K2G will boot with ARM master boot from the SD card so connect to the A15\_0. There will be no output on the console when you
 connect to the core.
 
-7. SD card boot image will typically load a secondary bootloader like u-boot that will put the DSP in reset so users will need to follow 
+7. SD card boot image will typically load a secondary bootloader like u-boot that will put the DSP in reset so users will need to follow
 the instructions in the guide `How to take the C66x DSP out of reset with Linux running on A15 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#taking-the-c66x-out-of-reset-with-linux-running-on-the-arm-a15>`__
 
 .. Note:: RTOS users do not need to follow this step as the Secondary Bootloader (SBL) will put the DSP in idle state and not in reset if there is no code running on the DSP.

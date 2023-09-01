@@ -84,13 +84,13 @@ your host computer that is running Ubuntu Linux.
 
 #. Navigate to the newly downloaded bin file and make it executable
 
-   -   cd path/to/downloaded/SDK/bin/file/ 
+   -   cd path/to/downloaded/SDK/bin/file/
 
-   -   chmod +x ti-processor-sdk-linux-<DEV>-evm-<VERSION>-Linux-x86-Install.bin 
+   -   chmod +x ti-processor-sdk-linux-<DEV>-evm-<VERSION>-Linux-x86-Install.bin
 
 #. Launch the installer
 
-   -   ./ti-processor-sdk-linux-<DEV>-evm-<VERSION>-Linux-x86-Install.bin 
+   -   ./ti-processor-sdk-linux-<DEV>-evm-<VERSION>-Linux-x86-Install.bin
 
 #. Follow the steps in the installer to complete the installation
 
@@ -152,7 +152,7 @@ these steps may not be absolutely necessary for our purposes.
       kernel modules (beginning with Linux Processor SDK v02.00.02.11
       these modules will be enabled by default)
 
-      -   Device Drivers > Remoteproc Drivers > TI PRUSS remoteproc support 
+      -   Device Drivers > Remoteproc Drivers > TI PRUSS remoteproc support
       -   Device Drivers > Rpmsg drivers > PRU RPMsg Communication driver
 
       **If you type 'y' instead of 'm' next to these modules then your
@@ -198,12 +198,12 @@ into a board, turn on power, and get to a Linux login prompt.
 
 #. Change to the 'bin' directory in the Processor SDK
 
-   -   cd /home/user/ti-processor-sdk-linux-<DEV>-evm-<VERSION>/bin/ 
+   -   cd /home/user/ti-processor-sdk-linux-<DEV>-evm-<VERSION>/bin/
 
 #. Run the SD card creation script with sudo rights and enter your
    password when prompted
 
-   -   sudo ./create-sdcard.sh 
+   -   sudo ./create-sdcard.sh
 
 #. Select the SD card from the list the script provides
 
@@ -235,7 +235,7 @@ the previous section. Let's do that now.
    kernel and device tree, let's delete everything in this boot
    directory
 
-   -   sudo rm /media/user/rootfs/boot/* 
+   -   sudo rm /media/user/rootfs/boot/*
 
 #. Navigate to the Linux kernel source directory
 
@@ -243,11 +243,11 @@ the previous section. Let's do that now.
 
 #. Copy the new kernel to the SD card
 
-   -   sudo cp arch/arm/boot/zImage /media/user/rootfs/boot/ 
+   -   sudo cp arch/arm/boot/zImage /media/user/rootfs/boot/
 
 #. Copy the new device tree binary to the SD card
 
-   -   sudo cp arch/arm/boot/dts/am335x-boneblack.dtb /media/user/rootfs/boot/ 
+   -   sudo cp arch/arm/boot/dts/am335x-boneblack.dtb /media/user/rootfs/boot/
 
    **Once again the example .dtb given above is for the BeagleBone
    Black. Check
@@ -256,18 +256,18 @@ the previous section. Let's do that now.
 
 #. Install the newly built modules onto the SD card filesystem
 
-   -   sudo make ARCH=arm INSTALL_MOD_PATH=/media/user/rootfs/ modules_install 
+   -   sudo make ARCH=arm INSTALL_MOD_PATH=/media/user/rootfs/ modules_install
 
 #. Synchronize the data on the disk with the memory to make sure all of
    the files have completed copying over to the SD card
 
-   -   sync 
+   -   sync
 
 #. Unmount the two SD card partitions from your Ubuntu host computer
 
-   -   sudo umount -f /media/user/rootfs 
+   -   sudo umount -f /media/user/rootfs
 
-   -   sudo umount -f /media/user/boot 
+   -   sudo umount -f /media/user/boot
 
 |
 
@@ -299,7 +299,7 @@ Booting the Board and Testing RPMsg
 #. Find out which tty device on your Ubuntu host computer corresponds to
    your evaluation board
 
-   -   ls /dev/ | grep ttyUSB* 
+   -   ls /dev/ | grep ttyUSB*
 
    **Depending on the evaluation board you may need to power the board
    up before the ttyUSBn device shows up on your Ubuntu computer**
@@ -308,7 +308,7 @@ Booting the Board and Testing RPMsg
    board (in the example given below I use picocom and my device is on
    /dev/ttyUSB0)
 
-   -   sudo picocom -b 115200 /dev/ttyUSB0 
+   -   sudo picocom -b 115200 /dev/ttyUSB0
 
 #. Power up your evaluation board
 
@@ -318,7 +318,7 @@ Booting the Board and Testing RPMsg
 #. Wait for the board to complete booting and arrive at the '<DEV>-evm
    login:' prompt and type 'root' to login as root
 
-   -   <DEV>-evm login: root 
+   -   <DEV>-evm login: root
 
 #. Use the remoteproc sysfs interface to specify the firmware name to
    boot and to start the PRU cores
@@ -334,27 +334,27 @@ Booting the Board and Testing RPMsg
 #. List all of the devices under /dev/ and look for the two rpmsg_pru
    character devices
 
-   -   ls /dev/ 
+   -   ls /dev/
 
    or
 
-   -   ls /dev/ | grep pru 
+   -   ls /dev/ | grep pru
 
 #. Write to each of the character devices to test them out
 
-   -   echo "test30" > /dev/rpmsg_pru30 
+   -   echo "test30" > /dev/rpmsg_pru30
 
-   -   echo "test31" > /dev/rpmsg_pru31 
+   -   echo "test31" > /dev/rpmsg_pru31
 
 #. Now read from each of the character devices to make sure that the
    PRUs echoed the test strings back
 
-   -   cat /dev/rpmsg_pru30 
+   -   cat /dev/rpmsg_pru30
 
    **You will need to press 'Ctrl + c' to stop reading and close the
    character device**
 
-   -   cat /dev/rpmsg_pru31 
+   -   cat /dev/rpmsg_pru31
 
    **You will need to press 'Ctrl + c' to stop reading and close the
    character device**
@@ -400,29 +400,29 @@ each folder:
 
 #. Navigate to the directory of the example that you want to rebuild
 
-   -   cd /home/user/ti-processor-sdk-linux-<DEV>-evm-<VERSION>/example-applications/pru-icss-x.y.z/examples/<DEV>/PRU_RPMsg_Echo_InterruptN 
+   -   cd /home/user/ti-processor-sdk-linux-<DEV>-evm-<VERSION>/example-applications/pru-icss-x.y.z/examples/<DEV>/PRU_RPMsg_Echo_InterruptN
 
 #. Export the location of the PRU Code Generation Tools that are
    provided in the Linux Processor SDK
 
-   -   export PRU_CGT=/home/user/ti-processor-sdk-linux-<DEV>-evm-<VERSION>/linux-devkit/sysroots/x86_64-arago-linux/usr/share/ti/cgt-pru 
+   -   export PRU_CGT=/home/user/ti-processor-sdk-linux-<DEV>-evm-<VERSION>/linux-devkit/sysroots/x86_64-arago-linux/usr/share/ti/cgt-pru
 
 #. Clean the directory
 
-   -   make clean 
+   -   make clean
 
 #. Rebuild the project and generate the .out file in the 'gen' directory
 
-   -   make 
+   -   make
 
 #. Move to the 'gen' directory in the project folder to see the
    generated .out file
 
-   -   cd gen/ 
+   -   cd gen/
 
-   -   ls 
+   -   ls
 
-| 
+|
 
 Placing the Rebuilt Firmware into the Embedded Linux File System
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -517,7 +517,7 @@ necessary to make your board use SD card boot.
 #. Open a serial port connection to your device from your Ubuntu host
    computer
 
-   -   sudo picocom -b 115200 /dev/ttyUSB0 
+   -   sudo picocom -b 115200 /dev/ttyUSB0
 
 #. Power up your evaluation board and press Enter when prompted to 'Hit
    any key to stop autoboot: 1'. This will stop the boot process at the
@@ -527,33 +527,33 @@ necessary to make your board use SD card boot.
 
 #. Reset the U-Boot environment variables to the default settings
 
-   -   env default -f -a 
+   -   env default -f -a
 
 #. Save the default settings
 
-   -   saveenv 
+   -   saveenv
 
 #. Set the ip_method to none
 
-   -   setenv ip_method none 
+   -   setenv ip_method none
 
 #. Set the name of the bootfile to zImage
 
-   -   setenv bootfile zImage 
+   -   setenv bootfile zImage
 
 #. Set the getuenv environment variable
 
-   -   setenv getuenv 'if mmc rescan; then if run loadbootenv; then run importbootenv; fi; fi;' 
+   -   setenv getuenv 'if mmc rescan; then if run loadbootenv; then run importbootenv; fi; fi;'
 
 #. Set the boot command
 
-   -   setenv bootcmd 'mmc rescan; run findfdt; run getuenv; run loadimage; run loadfdt; run mmcargs; bootz ${loadaddr} - ${fdtaddr}' 
+   -   setenv bootcmd 'mmc rescan; run findfdt; run getuenv; run loadimage; run loadfdt; run mmcargs; bootz ${loadaddr} - ${fdtaddr}'
 
 #. Save the new environment variables
 
-   -   saveenv 
+   -   saveenv
 
 #. Use the new environment variables to boot from the SD card
 
-   -   boot 
+   -   boot
 

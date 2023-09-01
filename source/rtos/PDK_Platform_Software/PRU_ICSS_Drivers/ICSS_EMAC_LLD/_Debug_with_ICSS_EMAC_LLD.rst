@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide 
+.. http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide
 
 Introduction
 ^^^^^^^^^^^^^^
@@ -414,7 +414,7 @@ For AM335x, the addresses are:
 
 .. Image:: ../images/Dramaddr.png
 
-| 
+|
 | **Example:** For example, if storm prevention counter location needs
   to be accessed for Port 1 of ICEv2 EVM, the following steps give the
   value of the location to be entered in the Memory Browser of CCS:
@@ -433,7 +433,7 @@ the value is 01, storm prevention functionality is enabled and if it is
 
 .. Image:: ../images/Stormprev.png
 
-| 
+|
 | Similarly, the value would be 0x4a302000 + 0x1f8c (DRAM base address
   for Port 2 + Storm Prevention Offset) = 0x4a303f8c for Port 2 of
   ICEv2.
@@ -442,7 +442,7 @@ For AM437x, the DRAM base addresses are as follows:
 
 .. Image:: ../images/Dramaddram4.png
 
-| 
+|
 
 System Debug
 ^^^^^^^^^^^^^^
@@ -458,7 +458,7 @@ session.
 
 .. Image:: ../images/Rov.png
 
-| 
+|
 
 Checking the system performance using UIA
 '''''''''''''''''''''''''''''''''''''''''''
@@ -514,7 +514,7 @@ the loading percentage which can be used to determine the additional
 task needed to load CPU to a specific level to perform NDK tests at
 different loads.
 
-| 
+|
 
 Using SYS/BIOS Timer to measure performance
 '''''''''''''''''''''''''''''''''''''''''''''
@@ -557,7 +557,7 @@ every 100 packets transmitted
 6. Similarly, recv.exe, echoc.exe and testudp.exe applications are run
 to test performance.
 
-| 
+|
 
 Measuring network performance
 '''''''''''''''''''''''''''''''
@@ -579,7 +579,7 @@ which gives (12800000*8/1024)/1024 = 97.65 MBPS
 echoc.exe tests. The testudp.exe application tests UDP packet payloads
 from 1 to 1472 bytes and test loop should pass.
 
-| 
+|
 
 Checking NDK Buffers
 '''''''''''''''''''''

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Notify_Module 
+.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Notify_Module
 
 .. |notCfg_Img1| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
@@ -6,7 +6,7 @@
 .. |notRun_Img1| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_notify_8h.html
 
-| 
+|
 
    +---------------+---------------+
    |     API Reference Links       |
@@ -19,19 +19,19 @@ In order to use any Notify APIs, you must first call Ipc_start(). This sets up a
 
 To be able to receive notifications, a processor registers one or more callback functions to an eventId by calling Notify_registerEvent(). The callback function must have the following signature:
 
-:: 
-  
+::
+
   Void cbFxn(UInt16 procId, UInt16 lineId, UInt32 eventId, UArg arg, UInt32 payload);
-  
+
 Notify_registerEvent(), like most other Notify APIs, uses a MultiProc ID and line ID to target a specific interrupt line to/from a specific processor on a device.
 
 ::
-  
+
   Int status;
   armProcId = MultiProc_getId("ARM");
-   
+
   Ipc_start();
-   
+
   /* Register cbFxn with Notify. It will be called when ARM
    * sends event number EVENTID to line #0 on this processor.
    * The argument 0x1010 is passed to the callback function. */
@@ -48,13 +48,13 @@ When using Notify_registerEvent(), multiple callbacks may be registered with a s
 Once an event has been registered, a remote processor may "send" an event by calling Notify_sendEvent(). If the specified event and interrupt line are both enabled, all callback functions registered to the event will be called sequentially.
 
 ::
-  
+
   while (seq < NUMLOOPS) {
     Semaphore_pend(semHandle, BIOS_WAIT_FOREVER);
     /* Semaphore_post is called by callback function*/
     status = Notify_sendEvent(armProcId, 0, EVENTID, seq, TRUE);
   }
-  
+
 In this example, the seq variable is sent as the "payload" along with the event. The payload is limited to a fixed size of 32 bits.
 
 Since the fifth argument in the previous example call to Notify_sendEvent() is TRUE, if any previous event to the same event ID was sent, the Notify driver waits for an acknowledgement that the previous event was received.

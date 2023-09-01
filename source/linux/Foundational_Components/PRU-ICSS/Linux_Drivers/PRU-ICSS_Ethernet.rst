@@ -85,7 +85,7 @@ industrial communication network.
     provided by PRUSS2, and the LCD is disabled. To use this configuration,
     leave **J51** open.
 
-| 
+|
 
 .. Image:: /images/Am572x_idk.PNG
 
@@ -109,7 +109,7 @@ subsystems.
     Ethernet firmwares provided for the AM5728 device are only meant to be
     used on silicon revision SR 2.0.
 
-| 
+|
 
 .. Image:: /images/K2g_ice.PNG
 
@@ -127,9 +127,9 @@ card for easy boot up and out of box experience. The two PRU-ICSS
 subystems can be used for industrial Ethernet protocols such as
 Profinet, EtherCAT, Ethernet/IP, and others.
 
-| 
+|
 
-| 
+|
 
 .. rubric:: What You Get
    :name: what-you-get
@@ -145,9 +145,9 @@ The current implementation does **not** support Ethernet switching
 within the PRU-ICSS. The provided PRU firmwares only support 'dual emac'
 mode in this release of the Linux Processor SDK.
 
-| 
+|
 
-| 
+|
 
 .. rubric:: How It Works
    :name: how-it-works
@@ -181,7 +181,7 @@ folder of the EVM filesystem. The PRUs running this firmware, coupled
 with the ti-prueth Linux driver, allows up to 2 (or 4, on the AM571x
 IDK) additional 100 Mbps Ethernet interfaces to be exposed to the user.
 
-| 
+|
 
 .. rubric:: Block Diagram
 
@@ -191,7 +191,7 @@ IDK) additional 100 Mbps Ethernet interfaces to be exposed to the user.
 
 .. Image:: /images/Pru_eth_block_diagram_3_0_0_4.PNG
 
-| 
+|
 
 .. rubric:: Try It Out
    :name: try-it-out
@@ -313,9 +313,9 @@ Here are the steps needed to test out the new Ethernet interfaces:
 -  If all goes well you should see the PRU-ICSS ports in the output of
    the **ip/ifconfig** command
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Network Topologies
    :name: network-topologies
@@ -349,7 +349,7 @@ the two subnets as shown below.
     that you would expect due to ARP broadcasts and other topics that are
     outside the scope of this document.
 
-| 
+|
 
 .. Image:: /images/Pru_eth_block_gateway_3_0_0_4.PNG
 

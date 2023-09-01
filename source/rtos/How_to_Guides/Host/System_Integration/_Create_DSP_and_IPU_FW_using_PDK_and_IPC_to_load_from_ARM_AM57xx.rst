@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Linux_IPC_on_AM57xx#Adding_IPC_to_an_Existing_TI-RTOS_Application 
+.. http://processors.wiki.ti.com/index.php/Linux_IPC_on_AM57xx#Adding_IPC_to_an_Existing_TI-RTOS_Application
 
 Introduction
 ^^^^^^^^^^^^
@@ -110,7 +110,7 @@ CCS is installed at:
         ├── xs
         └── xs.x86U
 
-| 
+|
 
 .. rubric:: Typical Boot Flow on AM572x for ARM Linux users
    :name: typical-boot-flow-on-am572x-for-arm-linux-users
@@ -188,9 +188,9 @@ Here are the key files that you should see after a successful build:
             └── release
                 └── server_ipu2.xem4
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Running the Bundled IPC Examples
    :name: running-the-bundled-ipc-examples
@@ -324,7 +324,7 @@ Understanding the Memory Map
     a0000000-abffffff : CMEM
     ac000000-ffcfffff : System RAM
 
-| 
+|
 
 .. rubric:: CMA Carveouts
    :name: cma-carveouts
@@ -373,7 +373,7 @@ the Linux config:
 
 linux/arch/arm/configs/tisdk_am57xx-evm_defconfig
 
-:: 
+::
 
     #
     # Default contiguous memory area size:
@@ -381,7 +381,7 @@ linux/arch/arm/configs/tisdk_am57xx-evm_defconfig
     CONFIG_CMA_SIZE_MBYTES=24
     CONFIG_CMA_SIZE_SEL_MBYTES=y
 
-| 
+|
 
 .. rubric:: CMEM
    :name: cmem
@@ -451,7 +451,7 @@ linux/arch/arm/boot/dts/am57xx-evm-cmem.dtsi
            };
     };
 
-| 
+|
 
 .. rubric:: Changing the DSP Memory Map
    :name: changing-the-dsp-memory-map
@@ -473,7 +473,7 @@ defined by the CMA carveout. To change this location, you must change
 the definition of the carveout. **The DSP carveouts are defined in the
 Linux dts file.** For example for the AM57xx EVM:
 
-| 
+|
 linux/arch/arm/boot/dts/am57xx-beagle-x15-common.dtsi
 
 ::
@@ -582,7 +582,7 @@ ipc/packages/ti/ipc/remoteproc/rsc_table_vayu_dsp.h
             DSP_MEM_IPC_VRING_SIZE, 0, 0, "DSP_MEM_IPC_VRING",
         },
 
-| 
+|
 
 Let's have a look at some of these to understand them better. For
 example:
@@ -595,7 +595,7 @@ example:
             DSP_MEM_TEXT_SIZE, 0, 0, "DSP_MEM_TEXT",
         },
 
-| 
+|
 
 Key points to note are:
 
@@ -619,7 +619,7 @@ Let's take another:
             TYPE_TRACE, TRACEBUFADDR, 0x8000, 0, "trace:dsp",
         },
 
-| 
+|
 
 Key points are:
 
@@ -641,7 +641,7 @@ Finally, let's look at a TYPE_DEVMEM example:
             SZ_16M, 0, 0, "DSP_PERIPHERAL_L4CFG",
         },
 
-| 
+|
 
 Key points:
 
@@ -765,7 +765,7 @@ TRM:
    because each descriptor in the first level translation table describes 1
    MiB of memory. If an access points to a descriptor that is not
    initialized, the MMU will behave in an unpredictable way.
-| 
+|
 
 .. rubric:: Changing Cortex M4 IPU Memory Map
    :name: changing-cortex-m4-ipu-memory-map
@@ -785,7 +785,7 @@ defined by the CMA carveout. To change this location, you must change
 the definition of the carveout. **The M4 carveouts are defined in the
 Linux dts file.** For example for the AM57xx EVM:
 
-| 
+|
 |
 linux/arch/arm/boot/dts/am57xx-beagle-x15-common.dtsi
 
@@ -836,7 +836,7 @@ corresponding CMA.
     #define PHYS_MEM_IPC_VRING      0x95800000
     #endif
 
-| 
+|
 
 .. note::
    The PHYS_MEM_IPC_VRING definition from the resource
@@ -856,7 +856,7 @@ large pages. Here's a snippet showing some of the key mappings:
 
 ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/ipu1/IpuAmmu.cfg
 
-:: 
+::
 
     /*********************** Large Pages *************************/
     /* Instruction Code: Large page  (512M); cacheable */
@@ -886,7 +886,7 @@ ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/ipu1/IpuAmmu.cfg
     AMMU.largePages[2].L1_cacheable = AMMU.CachePolicy_CACHEABLE;
     AMMU.largePages[2].L1_posted = AMMU.PostedPolicy_POSTED;
 
-| 
+|
 
 ````
 
@@ -913,7 +913,7 @@ these. The more likely area for modification is the resource table in
 the next section. The AMMU mappings are needed mainly to understand the
 full picture with respect to the Cortex M4 memory map.
 
-| 
+|
 
 .. rubric:: IOMMU
    :name: iommu
@@ -960,7 +960,7 @@ ipc/packages/ti/ipc/remoteproc/rsc_table_vayu_ipu.h
     #define IPU_MEM_DATA_SIZE       (SZ_1M * 48)
     #endif
 
-| 
+|
 
 <snip...>
 
@@ -983,7 +983,7 @@ ipc/packages/ti/ipc/remoteproc/rsc_table_vayu_ipu.h
             IPU_MEM_IPC_DATA, 0,
             IPU_MEM_IPC_DATA_SIZE, 0, 0, "IPU_MEM_IPC_DATA",
         },
-| 
+|
 
 The 3 entries above from the resource table all come from the associated
 IPU CMA pool (i.e. as dictated by the TYPE_CARVEOUT). The second
@@ -1007,7 +1007,7 @@ Please see the `corresponding DSP
 documentation </index.php/Linux_IPC_on_AM57xx#Inspecting_the_DSP_IOMMU_Page_Tables_at_Run-Time>`__
 for more details on interpreting the output.
 
-| 
+|
 
 .. rubric:: Cortex M4 IPU Access to Peripherals
    :name: cortex-m4-ipu-access-to-peripherals
@@ -1130,7 +1130,7 @@ This example uses SYS/BIOS and blinks the USER0 LED on the AM572x GP
 EVM, it's labeled D4 on the EVM silkscreen just to the right of the
 blue reset button.
 
-| 
+|
 
 There were several steps taken to make this whole process work, each of
 which will be described in following sections
@@ -1165,7 +1165,7 @@ CCS. Here are the steps...
 -  A dialog box pops up, modify the name to denote it's using IPC. A
    good name is GPIO_LedBlink_evmAM572x+c66xExampleProjec_with_ipc.
 
-| 
+|
 
 This is the project we'll be working with from here on. The next thing
 we want to do is select the proper RTSC platform and other components.
@@ -1204,7 +1204,7 @@ Copy these files into your CCS project...
 -  C:/ti/ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/shared/config.bld
 -  C:/ti/ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/shared/ipc.cfg.xs
 
-| 
+|
 Now copy these files into your CCS project...
 
 -  C:/ti/ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/dsp1/Dsp1.cfg
@@ -1231,7 +1231,7 @@ make a *.c* source file.
 -  In your CCS project, rename rsc_table_vayu_dsp.h to
    rsc_table_vayu_dsp.c
 
-| 
+|
 | Now we want to *merge* the IPC example configuration file with the LED
   blink example configuration file. Follow these steps...
 
@@ -1244,24 +1244,24 @@ make a *.c* source file.
    from the Dsp1.cfg file. Basically we've appended the contents of
    Dsp1.cfg into gpio_test_evmAM572x.cfg.
 
-| 
+|
 We've now added in all the necessary configuration and source files
 into our project. Don't expect it to build at this point, we have to
 make edits first. These edits are listed below.
 
 .. note::
-   You can download the full CCS project with source files to use as a reference. 
+   You can download the full CCS project with source files to use as a reference.
    See link towards the end of this section.
 
 -  Edit **gpio_test_evmAM572x.cfg**
 
-| 
+|
 Add the following to the beginning of your configuration file
 
 .. code-block:: javascript
 
     var Program = xdc.useModule('xdc.cfg.Program');
-| 
+|
 
 Comment out the Memory sections configuration as shown below
 
@@ -1274,7 +1274,7 @@ Comment out the Memory sections configuration as shown below
     /* Program.sectMap["BOARD_IO_DELAY_DATA"] = "OCMC_RAM1"; */
     /* Program.sectMap["BOARD_IO_DELAY_CODE"] = "OCMC_RAM1"; */
 
-| 
+|
 
 Since we are no longer using a shared folder, make the following change
 
@@ -1283,7 +1283,7 @@ Since we are no longer using a shared folder, make the following change
     //var ipc_cfg = xdc.loadCapsule("../shared/ipc.cfg.xs");
     var ipc_cfg = xdc.loadCapsule("../ipc.cfg.xs");
 
-| 
+|
 
 Comment out the following. We'll be calling this function directly from
 main.
@@ -1292,7 +1292,7 @@ main.
 
     //BIOS.addUserStartupFunction('&IpcMgr_ipcStartup');
 
-| 
+|
 
 Increase the system stack size
 
@@ -1301,7 +1301,7 @@ Increase the system stack size
     //Program.stack = 0x1000;
     Program.stack = 0x8000;
 
-| 
+|
 
 Comment out the entire TICK section
 
@@ -1313,17 +1313,17 @@ Comment out the entire TICK section
     // //Clock.tickSource = Clock.TickSource_USER;
     // /* Configure BIOS clock source as GPTimer5 */
     // //Clock.timerId = 0;
-    // 
+    //
     // var Timer = xdc.useModule('ti.sysbios.timers.dmtimer.Timer');
-    // 
+    //
     // /* Skip the Timer frequency verification check. Need to remove this later */
     // Timer.checkFrequency = false;
-    // 
+    //
     // /* Match this to the SYS_CLK frequency sourcing the dmTimers.
     //  * Not needed once the SYS/BIOS family settings is updated. */
     // Timer.intFreq.hi = 0;
     // Timer.intFreq.lo = 19200000;
-    // 
+    //
     // //var timerParams = new Timer.Params();
     // //timerParams.period = Clock.tickPeriod;
     // //timerParams.periodType = Timer.PeriodType_MICROSECS;
@@ -1334,14 +1334,14 @@ Comment out the entire TICK section
     // /* Wake-up generation for Overflow */
     // //timerParams.twer.ovf_wup_ena = 0x1;
     // //Timer.create(Clock.timerId, Clock.doTick, timerParams);
-    // 
+    //
     // var Idle = xdc.useModule('ti.sysbios.knl.Idle');
     // var Deh = xdc.useModule('ti.deh.Deh');
-    // 
+    //
     // /* Must be placed before pwr mgmt */
     // Idle.addFunc('&ti_deh_Deh_idleBegin');
 
-| 
+|
 
 Make configuration change to use custom resource table. Add to the end
 of the file.
@@ -1352,12 +1352,12 @@ of the file.
     var Resource = xdc.useModule('ti.ipc.remoteproc.Resource');
     Resource.customTable = true;
 
-| 
+|
 
 |
 -  Edit **main_led_blink.c**
 
-| 
+|
 
 Add the following external declarations
 
@@ -1366,7 +1366,7 @@ Add the following external declarations
     extern Int ipc_main();
     extern Void IpcMgr_ipcStartup(Void);
 
-| 
+|
 
 In main(), add a call to ipc_main() and IpcMgr_ipcStartup() just before
 BIOS_start()
@@ -1383,7 +1383,7 @@ BIOS_start()
         BIOS_start();
         return (0);
 
-| 
+|
 
 Comment out the line that calls Board_init(boardCfg). This call is in
 the original example because it assumes TI-RTOS is running on the Arm
@@ -1402,13 +1402,13 @@ destructive so we comment it out.
 	    #endif
 		//Board_init(boardCfg);
 
-| 
+|
 
-| 
+|
 
 -  Edit **MainDsp1.c**
 
-| 
+|
 
 The app now has it's own main(), so rename this one and get rid of args
 
@@ -1418,65 +1418,65 @@ The app now has it's own main(), so rename this one and get rid of args
     Int ipc_main()
     {
 
-| 
+|
 
 No longer using args so comment these lines
 
-:: 
+::
 
         //taskParams.arg0 = (UArg)argc;
         //taskParams.arg1 = (UArg)argv;
-| 
+|
 
 
 BIOS_start() is done in the app main() so comment it out here
 
-:: 
+::
 
         /* start scheduler, this never returns */
         //BIOS_start();
-| 
+|
 
 
 Comment this out
 
-:: 
+::
 
         //Log_print0(Diags_EXIT, "<-- main:");
-| 
+|
 
 -  Edit **rsc_table_vayu_dsp.c**
 
-| 
+|
 
 Set this #define before it's used to select PHYS_MEM_IPC_VRING value
 
-:: 
+::
 
     #define VAYU_DSP_1
-| 
+|
 
 Add this extern declaration prior to the symbol being used
 
-:: 
+::
 
 	extern char ti_trace_SysMin_Module_State_0_outbuf__A;
-| 
+|
 
 -  Edit **Server.c**
 
-| 
+|
 
-| 
+|
 No longer have shared folder so change include path
 
-:: 
+::
 
     /* local header files */
     //#include "../shared/AppCommon.h"
     #include "../AppCommon.h"
 
-| 
+|
 
 .. rubric:: Download the Full CCS Project
    :name: download-the-full-ccs-project
@@ -1502,7 +1502,7 @@ the PDK (installed as part of the Processor SDK RTOS). This example
 uses TI RTOS and does serial IO using UART3 port on the AM572x GP EVM,
 it's labeled Serial Debug on the EVM silkscreen.
 
-| 
+|
 
 There were several steps taken to make this whole process work, each of
 which will be described in following sections
@@ -1531,9 +1531,9 @@ For the UART M4 example run the script with the following arguments:
 
 ::
 
-    pdkProjectCreate.bat AM572x evmAM572x little uart m4 
+    pdkProjectCreate.bat AM572x evmAM572x little uart m4
 
-| 
+|
 |
 After you run the script, you can find the UART M4 example project at
 <SDK_INSTALL_PATH>/pdk_am57xx_1_0_4/packages/MyExampleProjects/UART_BasicExample_evmAM572x_m4ExampleProject.
@@ -1557,9 +1557,9 @@ following log on the serial IO console:
     uart driver and utils example test cases :
     Enter 16 characters or press Esc
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Build and Run ex02_messageq IPC example
    :name: build-and-run-ex02_messageq-ipc-example
@@ -1601,7 +1601,7 @@ CCS. Here are the steps...
 -  A dialog box pops up, modify the name to denote it's using IPC. A
    good name is UART_BasicExample_evmAM572x_m4ExampleProject_with_ipc.
 
-| 
+|
 
 This is the project we'll be working with from here on. The next thing
 we want to do is select the proper RTSC platform and other components.
@@ -1627,7 +1627,7 @@ To do this, follow these steps.
 -  Go ahead and leave the *Build-profile* set to debug.
 -  Hit the OK button.
 
-| 
+|
 
 Now we want to copy configuration and source files from the
 ex02_messageq IPC example into our project. The IPC example is located
@@ -1642,7 +1642,7 @@ Copy these files into your CCS project...
 -  C:/ti/ipc_3_xx_xx_xx/examples/DRA7XX_linux_elf/ex02_messageq/shared/config.bld
 -  C:/ti/ipc_3_xx_xx_xx/examples/DRA7XX_linux_elf/ex02_messageq/shared/ipc.cfg.xs
 
-| 
+|
 Now copy these files into your CCS project...
 
 -  C:/ti/ipc_3_xx_xx_xx/examples/DRA7XX_linux_elf/ex02_messageq/ipu2/Ipu2.cfg
@@ -1669,7 +1669,7 @@ make a *.c* source file.
 -  In your CCS project, rename rsc_table_vayu_ipu.h to
    rsc_table_vayu_ipu.c
 
-| 
+|
 
 Now we want to *merge* the IPC example configuration file with the LED
 blink example configuration file. Follow these steps...
@@ -1683,19 +1683,19 @@ blink example configuration file. Follow these steps...
    from the Ipu2.cfg file. Basically we've appended the contents of
    Ipu2.cfg into uart_m4_evmAM572x.cfg.
 
-| 
+|
 
 We've now added in all the necessary configuration and source files
 into our project. Don't expect it to build at this point, we have to
 make edits first. These edits are listed below.
 
 .. note::
-   You can download the full CCS project with source files to use as a reference. 
+   You can download the full CCS project with source files to use as a reference.
    See link towards the end of this section.
 
 -  Edit **uart_m4_evmAM572x.cfg**
 
-| 
+|
 Add the following to the beginning(at the top) of your configuration
 file
 
@@ -1703,7 +1703,7 @@ file
 
     var Program = xdc.useModule('xdc.cfg.Program');
 
-| 
+|
 
 |
 Since we are no longer using a shared folder, make the following
@@ -1714,7 +1714,7 @@ change
     //var ipc_cfg = xdc.loadCapsule("../shared/ipc.cfg.xs");
     var ipc_cfg = xdc.loadCapsule("../ipc.cfg.xs");
 
-| 
+|
 
 Comment out the following. We'll be calling this function directly from
 main.
@@ -1723,7 +1723,7 @@ main.
 
     //BIOS.addUserStartupFunction('&IpcMgr_ipcStartup');
 
-| 
+|
 
 Increase the system stack size
 
@@ -1732,7 +1732,7 @@ Increase the system stack size
     //Program.stack = 0x1000;
     Program.stack = 0x8000;
 
-| 
+|
 
 Comment out the entire TICK section
 
@@ -1744,17 +1744,17 @@ Comment out the entire TICK section
     // //Clock.tickSource = Clock.TickSource_USER;
     // /* Configure BIOS clock source as GPTimer5 */
     // //Clock.timerId = 0;
-    // 
+    //
     // var Timer = xdc.useModule('ti.sysbios.timers.dmtimer.Timer');
-    // 
+    //
     // /* Skip the Timer frequency verification check. Need to remove this later */
     // Timer.checkFrequency = false;
-    // 
+    //
     // /* Match this to the SYS_CLK frequency sourcing the dmTimers.
     //  * Not needed once the SYS/BIOS family settings is updated. */
     // Timer.intFreq.hi = 0;
     // Timer.intFreq.lo = 19200000;
-    // 
+    //
     // //var timerParams = new Timer.Params();
     // //timerParams.period = Clock.tickPeriod;
     // //timerParams.periodType = Timer.PeriodType_MICROSECS;
@@ -1765,14 +1765,14 @@ Comment out the entire TICK section
     // /* Wake-up generation for Overflow */
     // //timerParams.twer.ovf_wup_ena = 0x1;
     // //Timer.create(Clock.timerId, Clock.doTick, timerParams);
-    // 
+    //
     // var Idle = xdc.useModule('ti.sysbios.knl.Idle');
     // var Deh = xdc.useModule('ti.deh.Deh');
-    // 
+    //
     // /* Must be placed before pwr mgmt */
     // Idle.addFunc('&ti_deh_Deh_idleBegin');
 
-| 
+|
 
 Make configuration change to use custom resource table. Add to the end
 of the file.
@@ -1783,13 +1783,13 @@ of the file.
     var Resource = xdc.useModule('ti.ipc.remoteproc.Resource');
     Resource.customTable = true;
 
-| 
+|
 
-| 
+|
 
 -  Edit **main_uart_example.c**
 
-| 
+|
 
 Add the following external declarations
 
@@ -1798,7 +1798,7 @@ Add the following external declarations
     extern Int ipc_main();
     extern Void IpcMgr_ipcStartup(Void);
 
-| 
+|
 
 In main(), add a call to ipc_main() and IpcMgr_ipcStartup() just before
 BIOS_start()
@@ -1813,7 +1813,7 @@ BIOS_start()
      BIOS_start();
      return (0);
 
-| 
+|
 
 Comment out the line that calls Board_init(boardCfg). This call is in
 the original example because it assumes TI-RTOS is running on the Arm
@@ -1839,7 +1839,7 @@ needs to be performed by the M4.
     #endif
         Board_init(boardCfg);
 
-| 
+|
 
 |
 **Modified Code :**
@@ -1863,11 +1863,11 @@ adding the following code before Board_init API call:
            L4PER_CM_CORE_COMPONENT_CM_L4PER_UART3_CLKCTRL_REG_MODULEMODE, ENABLE);
        while(CSL_L4PER_CM_CORE_COMPONENT_CM_L4PER_UART3_CLKCTRL_REG_IDLEST_FUNC !=
           CSL_FEXT(l4PerCmReg->CM_L4PER_UART3_CLKCTRL_REG,
-           L4PER_CM_CORE_COMPONENT_CM_L4PER_UART3_CLKCTRL_REG_IDLEST)); 
+           L4PER_CM_CORE_COMPONENT_CM_L4PER_UART3_CLKCTRL_REG_IDLEST));
 
 -  Edit **MainIpu2.c**
 
-| 
+|
 
 The app now has it's own main(), so rename this one and get rid of args
 
@@ -1891,7 +1891,7 @@ BIOS_start() is done in the app main() so comment it out here
     /* start scheduler, this never returns */
     //BIOS_start();
 
-| 
+|
 
 Comment this out
 
@@ -1899,11 +1899,11 @@ Comment this out
 
        //Log_print0(Diags_EXIT, "<-- main:");
 
-| 
+|
 
 -  Edit **rsc_table_vayu_ipu.c**
 
-| 
+|
 
 Set this #define before it's used to select PHYS_MEM_IPC_VRING value
 
@@ -1911,7 +1911,7 @@ Set this #define before it's used to select PHYS_MEM_IPC_VRING value
 
     #define VAYU_IPU_2
 
-| 
+|
 
 Add this extern declaration prior to the symbol being used
 
@@ -1919,13 +1919,13 @@ Add this extern declaration prior to the symbol being used
 
     extern char ti_trace_SysMin_Module_State_0_outbuf__A;
 
-| 
+|
 
-| 
+|
 
 -  Edit **Server.c**
 
-| 
+|
 
 No longer have shared folder so change include path
 
@@ -1935,7 +1935,7 @@ No longer have shared folder so change include path
     //#include "../shared/AppCommon.h"
     #include "../AppCommon.h"
 
-| 
+|
 
 .. rubric:: Handling AMMU (L1 Unicache MMU) and L2 MMU
    :name: handling-ammu-l1-unicache-mmu-and-l2-mmu
@@ -1985,9 +1985,9 @@ IPU UART register instance in the UART_HwAttrs to use alias addresses:
         CSL_MPU_UART3_REGS,
         106,
     #else
-        (CSL_IPU_UART3_REGS + 0x20000000),    //Base Addr = 0x48000000 + 0x20000000 = 0x68000000 
+        (CSL_IPU_UART3_REGS + 0x20000000),    //Base Addr = 0x48000000 + 0x20000000 = 0x68000000
         45,
-    #endif 
+    #endif
 
 Adding custom SOC configuration also means that you should use the
 generic UART driver instead of driver with built in SOC setup. To do

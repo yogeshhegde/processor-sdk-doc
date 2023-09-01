@@ -31,10 +31,10 @@ Refer to the Processor SDK RTOS Building page for information on setting up the 
 
 .. rubric::  Compiling Driver/Firmware
    :name: espi-compiling-driver-firmware
-   
+
 1. ``make spi``
 
-   
+
 .. rubric::  Running CCS Application
    :name: espi-run-app
 
@@ -61,13 +61,13 @@ Supported EVMs and pin configurations for these EVMs are listed below. See the d
 | Core    | PRU   | Functional Pin | GPIO Pins            | EVM Port | EVM Pin |
 +=========+=======+================+======================+==========+=========+
 |         |       | OUT[0]         | pr1_pru0_pru_r30_4   | J3       | 41      |
-|         |       +----------------+----------------------+----------+---------+ 
+|         |       +----------------+----------------------+----------+---------+
 |         |       | OUT[1]         | pr1_pru0_pru_r30_5   | J3       | 42      |
-|         |       +----------------+----------------------+----------+---------+ 
+|         |       +----------------+----------------------+----------+---------+
 |         |       | OUT[2]         | pr1_pru0_pru_r30_6   | J3       | 39      |
-|         |       +----------------+----------------------+----------+---------+ 
+|         |       +----------------+----------------------+----------+---------+
 |         |       | OUT[3]         | pr1_pru0_pru_r30_7   | J3       | 40      |
-|         |       +----------------+----------------------+----------+---------+ 
+|         |       +----------------+----------------------+----------+---------+
 |         |       | Alert          | pr1_pru0_pru_r30_9   | J3       | 29      |
 |         |       +----------------+----------------------+----------+---------+
 | ICSS1   | PRU1  | EN             | pr1_pru0_pru_r30_10  | J3       | 28      |
@@ -75,13 +75,13 @@ Supported EVMs and pin configurations for these EVMs are listed below. See the d
 |         |       | IN[0]          | pr1_pru0_pru_r30_0   | J3       | 45      |
 |         |       +----------------+----------------------+----------+---------+
 |         |       | IN[1]          | pr1_pru0_pru_r30_1   | J3       | 46      |
-|         |       +----------------+----------------------+----------+---------+ 
+|         |       +----------------+----------------------+----------+---------+
 |         |       | IN[2]          | pr1_pru0_pru_r30_2   | J3       | 43      |
-|         |       +----------------+----------------------+----------+---------+ 
+|         |       +----------------+----------------------+----------+---------+
 |         |       | IN[3]          | pr1_pru0_pru_r30_3   | J3       | 44      |
-|         |       +----------------+----------------------+----------+---------+ 
+|         |       +----------------+----------------------+----------+---------+
 |         |       | SCL            | pr1_pru0_pru_r30_8   | J3       | 27      |
-|         |       +----------------+----------------------+----------+---------+ 
+|         |       +----------------+----------------------+----------+---------+
 |         |       | CS             | pr1_pru0_pru_r30_11  | J3       | 30      |
 +---------+-------+----------------+----------------------+----------+---------+
 | A8      | n/a   | Reset          | GPIO_3_19            | J9       | 26      |
@@ -94,15 +94,15 @@ Supported EVMs and pin configurations for these EVMs are listed below. See the d
 | Core    | PRU   | Functional Pin | GPIO Pins            | EVM Port | EVM Pin |
 +=========+=======+================+======================+==========+=========+
 |         |       | OUT[0]         | pr1_pru0_pru_r30_6   | P16      | 49      |
-|         |       +----------------+----------------------+----------+---------+ 
+|         |       +----------------+----------------------+----------+---------+
 |         |       | Alert          | pr1_pru0_pru_r30_11  | P16      | 48      |
 |         |       +----------------+----------------------+----------+---------+
 | ICSS1   | PRU0  | EN             | pr1_pru0_pru_r30_8   | P16      | 6       |
 |         |       +----------------+----------------------+----------+---------+
 |         |       | IN[0]          | pr1_pru0_pru_r30_16  | P16      | 42      |
-|         |       +----------------+----------------------+----------+---------+ 
+|         |       +----------------+----------------------+----------+---------+
 |         |       | SCL            | pr1_pru0_pru_r30_10  | P16      | 46      |
-|         |       +----------------+----------------------+----------+---------+ 
+|         |       +----------------+----------------------+----------+---------+
 |         |       | CS             | pr1_pru0_pru_r30_9   | P16      | 8       |
 +---------+-------+----------------+----------------------+----------+---------+
 | A9      | n/a   | Reset          | GPIO_5_9             | P16      | 32      |
@@ -158,7 +158,7 @@ applications, along with the following:
     Board_init(boardCfg);
 
     ...
-    
+
     /* Initialize the ESPI fw configuration */
     ESPI_socInitFwCfg();
 
@@ -199,7 +199,7 @@ applications, along with the following:
     retVal = MCSPI_transfer(fwHandle, &transaction);  /* blocking */
 
     ...
-    
+
     /* Prepare TX response */
     transaction.txBuf = (uint8_t*) txBuf;
     transaction.rxBuf = NULL; /* indicates we want TX */
@@ -212,7 +212,7 @@ applications, along with the following:
 
     ...
 
-.. rubric::  Examples List 
+.. rubric::  Examples List
    :name: examples-list
 
 Refer to the Release Notes for details concerning eSPI support across different EVMs.
@@ -234,9 +234,9 @@ Refer to the Release Notes for details concerning eSPI support across different 
 |                       |                       | response.                 |
 +-----------------------+-----------------------+---------------------------+
 
-| 
+|
 
-.. rubric::  Firmware Design Guide 
+.. rubric::  Firmware Design Guide
    :name: firmware-design-guide
 
 +-----------------------------------+---------------------------------------------------------+
@@ -246,6 +246,6 @@ Refer to the Release Notes for details concerning eSPI support across different 
 +-----------------------------------+---------------------------------------------------------+
 
 **NOTE: For normal use of eSPI FW, there is no need to refer to the design guide.
-This document can be cosulted in case of interest in details of internal firmware 
+This document can be cosulted in case of interest in details of internal firmware
 operation, or a desire to modify the firmware.**
 

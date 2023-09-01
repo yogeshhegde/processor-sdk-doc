@@ -58,7 +58,7 @@ folder and can be compiled using the SDK's top-level Makefile
 .. rubric:: Block diagram
    :name: block-diagram
 
-| 
+|
 
 .. raw:: html
 
@@ -78,7 +78,7 @@ folder and can be compiled using the SDK's top-level Makefile
 
    </div>
 
-| 
+|
 
 .. rubric:: Demo Internals
    :name: demo-internals
@@ -243,69 +243,69 @@ The functionality is organized as shows in the files/description below.
 | 28   | MainWindow.ui                                                       |                                                                                                                                                                                                                                                                                                                   |
 +------+---------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Performance
    :name: performance

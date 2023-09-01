@@ -7,7 +7,7 @@ firmware based Ethernet switch that has been implemented on TI’s
 PRU-ICSS (Programmable Real-Time Unit Subsystem and Industrial
 Communication SubSystem) 32-bit RISC cores.
 
-| 
+|
 
 .. rubric::  Software Architecture
    :name: software-architecture
@@ -20,7 +20,7 @@ The ICSS EMAC low level driver can be partitioned into the following:
 -  Firmware which implements a 2 port ethernet switch supporting 802.1d
    @100 Mbps. This runs on the TI-PRU-ICSS cores.
 
-| 
+|
 
 .. rubric::  Driver Features
    :name: driver-features
@@ -41,7 +41,7 @@ ICSS_EMAC LLD implements following:
 For details of the driver, please refer to
   `[1] <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-EMAC-Design>`__
 
-| 
+|
 
 User Interface
 ----------------
@@ -59,7 +59,7 @@ Driver Configuration
   additional details.Once board specific configuration is complete 
   driver APIS can be invoked.
 
-| 
+|
 | **ICSS_EMAC Configuration Structure**
 | The icss_emacSoc.c file contains the declaration of the hardware
   attributes corresponding to the ICSS_EMAC subsystem. Hardware
@@ -70,7 +70,7 @@ Driver Configuration
   structure, see the Doxygen help by opening
   PDK_INSTALL_DIR\\packages\\ti\\drv\\icss_emac\\docs\\doxygen\\html\\index.html.
 
-| 
+|
 
 APIs
 ^^^^^
@@ -93,7 +93,7 @@ example inside package
 
     ...
     Board_init(cfg);
-     
+
     /* Perform MDIO init */
     ICSS_EMAC_testMdioInit(CSL_MPU_PRUSS2_U_MII_MDIO_REGS);
 
@@ -142,7 +142,7 @@ personalities. Examples include an SORTE, ethernet Switch, Industrial
 protocol switch. Please refer to `ICSS-EMAC Firmwares <index_pru_icss_fw.html#pru-icss-firmware>`__ for
 further explanation.
 
-| 
+|
 
 Application
 ------------
@@ -259,7 +259,7 @@ different EVMs.
 |                 |   check.        |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 
-| 
+|
 
 Debug Guide
 ------------
@@ -285,5 +285,5 @@ Additional References
 |                                   | om/index.php/ICSS-EMAC>`__               |
 +-----------------------------------+------------------------------------------+
 
-| 
+|
 

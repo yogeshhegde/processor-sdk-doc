@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_GateMP_Support_for_UIO_and_Misc_Driver 
+.. http://processors.wiki.ti.com/index.php/IPC_GateMP_Support_for_UIO_and_Misc_Driver
 
 Introduction
 ^^^^^^^^^^^^^^^

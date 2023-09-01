@@ -8,16 +8,16 @@ Neo-AI Deep Learning Runtime
   .. rubric:: Introduction
    :name: Introduction-neo-sitara
 
-  `Neo-AI-DLR <https://github.com/neo-ai/neo-ai-dlr>`__ is an open source common runtime 
-  for deep learning models and decision tree models compiled by TVM, AWS SageMaker Neo, 
+  `Neo-AI-DLR <https://github.com/neo-ai/neo-ai-dlr>`__ is an open source common runtime
+  for deep learning models and decision tree models compiled by TVM, AWS SageMaker Neo,
   or Treelite. |__SDK_FULL_NAME__| has integrated Neo-AI-DLR. DLR stands for Deep Learning
-  Runtime. With this integration, the models compiled by AWS SageMaker Neo and TVM can run 
+  Runtime. With this integration, the models compiled by AWS SageMaker Neo and TVM can run
   on all Arm core of all Sitara devices (AM3/AM4/AM5/AM6).
 
-  On A5729 and AM5749, TensorFlow models compiled by Neo, if supported by TIDL, are fully 
-  offloaded to EVE and DSP cores. If not, then they run on Arm core. In future release, 
-  a graph of any model supported by Neo compiler can be split into sub-graphs, where TIDL 
-  supported sub-graph will run on EVE/DSP cores, while unsupported layer sub-graph will 
+  On A5729 and AM5749, TensorFlow models compiled by Neo, if supported by TIDL, are fully
+  offloaded to EVE and DSP cores. If not, then they run on Arm core. In future release,
+  a graph of any model supported by Neo compiler can be split into sub-graphs, where TIDL
+  supported sub-graph will run on EVE/DSP cores, while unsupported layer sub-graph will
   run on Arm core.
 
   .. rubric:: Examples
@@ -28,11 +28,11 @@ Neo-AI Deep Learning Runtime
 
   - demos folder: contains examples of Neo-AI-DLR on top of TIDL, which can only
     run on AM5729/49 devices. To run the examples, a neural network model must be
-    compiled to generate runtime artifacts according to instructions in 
-    :ref:`Compiling Network Models`. Once a model is compiled, copy the generated 
+    compiled to generate runtime artifacts according to instructions in
+    :ref:`Compiling Network Models`. Once a model is compiled, copy the generated
     artifacts to this folder and run one of the examples, e.g:
 
-  :: 
+  ::
 
     cd /usr/share/dlr/demos
     Copy artifact, e.g. scp -r <TVM_on_host_machine>/apps/tidl_deploy/output4/mobileNet2 .
@@ -51,7 +51,7 @@ Neo-AI Deep Learning Runtime
   to `Neo-ai-dlr Texas Instruments branch in github <https://github.com/TexasInstruments/neo-ai-dlr/tree/dev/examples/tidl>`__.
 
   - tests folder: contains examples of Neo runtime for ARM cores, which can run on
-    any Sitara device. Go to folder python/integration and run the example (http_proxy 
+    any Sitara device. Go to folder python/integration and run the example (http_proxy
     needs to be set properly):
 
   ::
@@ -65,13 +65,13 @@ Neo-AI Deep Learning Runtime
   .. rubric:: Compiling Network Models to Run with DLR
    :name: Compiling-Network-Models-neo
 
-  SageMaker Neo compiler can compile neural network models to run with DLR on Sitara devices. 
-  Neo compiler source code supporting Sitara devices is hosted at https://github.com/TexasInstruments/tvm 
-  and will be periodically upstreamed to https://github.com/neo-ai/tvm. 
+  SageMaker Neo compiler can compile neural network models to run with DLR on Sitara devices.
+  Neo compiler source code supporting Sitara devices is hosted at https://github.com/TexasInstruments/tvm
+  and will be periodically upstreamed to https://github.com/neo-ai/tvm.
 
   - Build Neo Compiler from source
 
-  :: 
+  ::
 
       git clone --recursive https://github.com/TexasInstruments/tvm.git --branch dev
       cd tvm/
@@ -82,12 +82,12 @@ Neo-AI Deep Learning Runtime
 
   - Install Python Package
 
-  Follow instructions at https://docs.tvm.ai/install/from_source.html#python-package-installation for installation. 
+  Follow instructions at https://docs.tvm.ai/install/from_source.html#python-package-installation for installation.
 
   - Compile Neural Network Models
 
-  Follow instructions at https://github.com/TexasInstruments/tvm/tree/dev/apps/tidl_deploy to 
-  compile neural network models. A simple example generating the artifacts needed 
+  Follow instructions at https://github.com/TexasInstruments/tvm/tree/dev/apps/tidl_deploy to
+  compile neural network models. A simple example generating the artifacts needed
   to run the demo above is shown below:
 
   ::
@@ -96,14 +96,14 @@ Neo-AI Deep Learning Runtime
 
   .. note::
 
-    - Currently Neo compiler with Sitara support can compile any models supported by Neo, 
+    - Currently Neo compiler with Sitara support can compile any models supported by Neo,
       but only TensorFlow models can be compiled to run on TIDL for acceleration if the model
-      can be supported by TIDL. 
+      can be supported by TIDL.
 
   .. rubric:: Benchmarking
    :name: Benchmarking-neo
 
-  Performance with and without TIDL offload is shown below for TensorFlow MobileNet v1 and v2. The performance depends 
+  Performance with and without TIDL offload is shown below for TensorFlow MobileNet v1 and v2. The performance depends
   significantly on batch size (if batch size is 1, only one EVE is operating and performance would be very poor).
 
   ==========    ======================    =====================    ======================    =====================
@@ -122,9 +122,9 @@ Neo-AI Deep Learning Runtime
   .. rubric:: Rebuilding DLR from Source
    :name: Rebuilding-DLR-from-Source-neo
 
-  DLR for Sitara devices is included in Proc-SDK Linux target file system. Source 
-  code is hosted at https://github.com/TexasInstruments/neo-ai-dlr and will be periodically 
-  upstreamed to https://github.com/neo-ai/neo-ai-dlr. Users may rebuild the latest 
+  DLR for Sitara devices is included in Proc-SDK Linux target file system. Source
+  code is hosted at https://github.com/TexasInstruments/neo-ai-dlr and will be periodically
+  upstreamed to https://github.com/neo-ai/neo-ai-dlr. Users may rebuild the latest
   source code before official Proc-SDK release, following steps below:
 
   - Clone git repo on x86 host to target NFS (git cloning may not work on EVM):

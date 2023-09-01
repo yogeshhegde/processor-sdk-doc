@@ -14,7 +14,7 @@ not use shared resources within an ICSS including IEP timer and Scratchpad.
 Up to 3 independent UARTs are supported per PRU with the following features:
 
   - Common baud rates up to 115200 Mbps
-  - 5, 6, 7, or 8-bit characters per transfer 
+  - 5, 6, 7, or 8-bit characters per transfer
   - 1, 1.5, or 2 stop bit generation
   - Even, odd, or none parity bit generation and detection
   - Auto-RTS/CTS based harware flow control

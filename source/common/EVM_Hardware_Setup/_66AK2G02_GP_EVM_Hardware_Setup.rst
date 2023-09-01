@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/66AK2G02_GP_EVM_Hardware_Setup 
+.. http://processors.wiki.ti.com/index.php/66AK2G02_GP_EVM_Hardware_Setup
 
 66AK2GX GP EVM Hardware Setup
 ====================================================
@@ -66,7 +66,7 @@ List of standalone JTAG debug probes supported:
 -  XDS200-class JTAG debug probes (recommended)
 -  XDS560v2-class JTAG debug probes (high performance)
 
-| 
+|
 
 .. rubric:: Minimal EVM setup
    :name: minimal-evm-setup
@@ -79,20 +79,20 @@ List of standalone JTAG debug probes supported:
 The DIP Switch /Boot mode switch (SW3) is used for selecting the boot
 mode.
 
-| 
+|
 | **For EVM Out of box experience uses SD/MMC boot as shown in the
   image**:
 
 .. Image:: ../../../images/Boot_switch_SDboot.jpg
 
-| 
+|
 | **For Debugging over emulator use "No Boot/Sleep" Setting as shown
   below**:
 
 .. Image:: ../../../images/Boot_Switch_NoBoot.jpg
    :scale: 50%
 
-| 
+|
 | The table below provides the list of all the boot modes supported on
   the GP EVM
 
@@ -104,7 +104,7 @@ interpret of ON and OFF marking on the switch**
 
 Other Boot Pin configurations:
 
-| 
+|
 
 +--------------+-------------------+
 | SW3[4:1]     | BOOT MODE         |
@@ -150,7 +150,7 @@ Other Boot Pin configurations:
 **Note: This EVM setup is only required for developers who need to
 connect to cores using Code Composer studio to load application.**
 
-| 
+|
 | The EVM supports two types of Emulation - “On-Board-XDS200 emulator”
   and “60-pin MIPI Header”
 
@@ -174,7 +174,7 @@ and is directly useable by CCS.
 
 .. Image:: ../../../images/XDS200_connect.png
 
-| 
+|
 
 .. raw:: html
 
@@ -194,7 +194,7 @@ reconnect after board power up is complete.
 
    </div>
 
-| 
+|
 | **MIPI 60-pin header for connecting External emulator**
 
 If you are using a different JTAG, you can connect it at MIPI60
@@ -242,7 +242,7 @@ There are two scenarios while connecting to the EVM :
 Before discussing both these scenarios, let us look at how to pull in
 the latest KeystoneII device support in CCSv6
 
-| 
+|
 
 .. rubric:: Update CCS v6 to install Keystone II device Support package
    :name: update-ccs-v6-to-install-keystone-ii-device-support-package
@@ -275,7 +275,7 @@ and manually unzipped into CCSv6 installation.
 -  `Device Support
    Files <http://processors.wiki.ti.com/index.php/Device_support_files>`__
 
-| 
+|
 | **Note for K2G devices:** If using CCS v6.1.2 and Keystone2 device
   support v1.1.7, 66AK2G02 would not show up in the list of devices when
   creating the target configuration. This is due to an incompatibility
@@ -293,9 +293,9 @@ and manually unzipped into CCSv6 installation.
 | to
 | <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Connect without a SD card boot image
    :name: connect-without-a-sd-card-boot-image
@@ -357,20 +357,20 @@ in the previous section ConfiguringTargetConfigFile_
 
 ::
 
-    A15_0: GEL Output: PLL has been configured (24.0 MHz * 100 / 1 / 4 = 600.0 MHz) 
-    A15_0: GEL Output: ARM PLL has been configured with ref clock 24MHz, -sysclkp_period 41.6666 (24.0 MHz * 100 / 1 / 4 = 600.0 MHz) 
-    A15_0: GEL Output: Power on all PSC modules and DSP domains... 
-    A15_0: GEL Output: Power on PCIE PSC modules and DSP domains... Done. 
-    A15_0: GEL Output: UART PLL has been configured (24.0 MHz * 128 / 1 / 8 = 384.0 MHz) 
-    A15_0: GEL Output: NSS PLL has been configured (24.0 MHz * 250 / 3 / 2 = 1000.0 MHz) 
-    A15_0: GEL Output: ICSS PLL has been configured (24.0 MHz * 250 / 3 / 10 = 200.0 MHz) 
-    A15_0: GEL Output: DSS PLL has been configured (24.0 MHz * 198 / 12 / 16 = 24.75 MHz) 
-    A15_0: GEL Output: DDR PLL has been configured (24.0 MHz * 250 / 3 / 10 = 200.0 MHz) 
-    A15_0: GEL Output: XMC setup complete. A15_0: GEL Output: DDR3 PLL Setup ... 
-    A15_0: GEL Output: DDR3 PLL Setup complete, DDR3A clock now running at 400MHz. 
+    A15_0: GEL Output: PLL has been configured (24.0 MHz * 100 / 1 / 4 = 600.0 MHz)
+    A15_0: GEL Output: ARM PLL has been configured with ref clock 24MHz, -sysclkp_period 41.6666 (24.0 MHz * 100 / 1 / 4 = 600.0 MHz)
+    A15_0: GEL Output: Power on all PSC modules and DSP domains...
+    A15_0: GEL Output: Power on PCIE PSC modules and DSP domains... Done.
+    A15_0: GEL Output: UART PLL has been configured (24.0 MHz * 128 / 1 / 8 = 384.0 MHz)
+    A15_0: GEL Output: NSS PLL has been configured (24.0 MHz * 250 / 3 / 2 = 1000.0 MHz)
+    A15_0: GEL Output: ICSS PLL has been configured (24.0 MHz * 250 / 3 / 10 = 200.0 MHz)
+    A15_0: GEL Output: DSS PLL has been configured (24.0 MHz * 198 / 12 / 16 = 24.75 MHz)
+    A15_0: GEL Output: DDR PLL has been configured (24.0 MHz * 250 / 3 / 10 = 200.0 MHz)
+    A15_0: GEL Output: XMC setup complete. A15_0: GEL Output: DDR3 PLL Setup ...
+    A15_0: GEL Output: DDR3 PLL Setup complete, DDR3A clock now running at 400MHz.
     A15_0: GEL Output: DDR3A initialization complete
 
-| 
+|
 
 .. rubric:: Connect with a SD card boot image
    :name: connect-with-a-sd-card-boot-image
@@ -557,9 +557,9 @@ Steps to update the XDS200 firmware on the EVM are archived on the article
 The external resistors for the USB (R442 and R431) are currently 10k Ω.
 We recommend that users need to replace these with 200 Ω / 1%.
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Useful Resources and Support
    :name: useful-resources-and-support

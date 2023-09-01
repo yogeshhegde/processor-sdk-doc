@@ -4,7 +4,7 @@ PRU Cape Building Demos
 ------------------------------
 
 .. note::
-    
+
    This documentation uses legacy code that is no longer supported on the TI
    forums (AM335x Starterware). The documentation has not been updated in
    several years, and some steps may not work with more recent software or

@@ -10,7 +10,7 @@ In 08.06 release, USB Device Firmware Upgrade (DFU) boot failure was observed as
 
 Following steps can be used to fix the issue:-
 
-1. Cherry-pick this commit inside U-Boot directory in (<installer-path>/board-support/) included in SDK https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2021.01-next&id=28c75c2713915a122e5d39311ae7416ca35c0532 
+1. Cherry-pick this commit inside U-Boot directory in (<installer-path>/board-support/) included in SDK https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2021.01-next&id=28c75c2713915a122e5d39311ae7416ca35c0532
 
 ::
 
