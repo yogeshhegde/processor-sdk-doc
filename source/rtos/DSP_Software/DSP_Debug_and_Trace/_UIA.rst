@@ -377,5 +377,3 @@ For technical discussions and issues, please visit
 For product updates,
 -  Use the CCS/Eclipse Update Manager (see the Getting Started Guide above)
 
-.. raw:: html
-

@@ -550,5 +550,3 @@ Additional References
 |                                   | \\drv\\emac\\docs\\EMAC_LLD_SD.pdf      |
 +-----------------------------------+-----------------------------------------+
 
-
-.. raw:: html

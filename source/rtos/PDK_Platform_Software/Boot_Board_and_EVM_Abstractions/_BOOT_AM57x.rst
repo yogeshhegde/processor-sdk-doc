@@ -750,4 +750,3 @@ Steps to debug application boot using Processor SDK RTOS bootloader are
 discussed in the article `Common steps to debug application
 boot <index_Foundational_Components.html#common-steps-to-debug-application-boot>`__
 
-.. raw:: html

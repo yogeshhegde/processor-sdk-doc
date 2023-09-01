@@ -275,5 +275,3 @@ Additional steps for AM335x/AM437x users
    their custom board library. Additional steps required for AM335x/AM437x
    will be added to this article soon in this section
 
-.. raw:: html
-

@@ -2015,5 +2015,3 @@ filesystem that is used to load M4 firmware.
 
    `UART_BasicExample_evmAM572x_m4ExampleProject_with_ipc.zip <http://processors.wiki.ti.com/index.php/File:UART_BasicExample_evmAM572x_m4ExampleProject_with_ipc.zip>`__
 
-.. raw:: html
-

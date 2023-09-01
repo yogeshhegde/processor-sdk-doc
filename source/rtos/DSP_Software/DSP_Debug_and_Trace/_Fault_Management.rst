@@ -275,5 +275,3 @@ Additional References
 |                                   | docs\\ReleaseNotes_fault_mgmt.pdf |
 +-----------------------------------+-----------------------------------+
 
-.. raw:: html
-

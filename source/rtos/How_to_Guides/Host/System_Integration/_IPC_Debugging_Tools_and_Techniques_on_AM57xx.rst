@@ -724,5 +724,3 @@ Next, decide if this is a valid value that needs mapping, or if this is an inval
 some error in the code. If it is still not known where the value is coming from, use CCS to trace it back
 through the call stack to fix the code. If it turns out that the address is an address that must be accessible to the remote core, then map it through the resource table to the appropriate physical memory.
 
-.. raw:: html
-

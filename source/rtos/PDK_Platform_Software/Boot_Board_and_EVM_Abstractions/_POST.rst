@@ -98,4 +98,3 @@ POST routines. Refer to the following table:
 | Other failures              | blink | blink | blink | blink |
 +-----------------------------+-------+-------+-------+-------+
 
-.. raw:: html

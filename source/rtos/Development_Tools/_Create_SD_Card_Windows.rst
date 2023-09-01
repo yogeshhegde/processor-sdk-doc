@@ -208,5 +208,3 @@ installer, you will see
 
 .. Image:: ../images/AM57x-SD-Card-Example.png
 
-.. raw:: html
-

@@ -434,5 +434,3 @@ page using NDK.
 
 .. Image:: ../images/K2h_web_2.jpg
 
-.. raw:: html
-

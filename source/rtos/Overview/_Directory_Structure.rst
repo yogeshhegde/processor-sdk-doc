@@ -155,5 +155,3 @@ Target Content
 
 | 
 
-.. raw:: html
-

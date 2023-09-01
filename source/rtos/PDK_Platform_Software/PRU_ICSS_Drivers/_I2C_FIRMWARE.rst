@@ -342,5 +342,3 @@ operation, or a desire to modify the firmware.**
 
 | 
 
-.. raw:: html
-

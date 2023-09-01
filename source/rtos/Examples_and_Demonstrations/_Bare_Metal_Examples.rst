@@ -1106,5 +1106,3 @@ You should see **Hello World** string displayed on console window.
 
 | 
 
-.. raw:: html
-

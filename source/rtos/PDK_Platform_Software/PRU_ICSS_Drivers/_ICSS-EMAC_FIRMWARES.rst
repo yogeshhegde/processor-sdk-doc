@@ -252,5 +252,3 @@ wanted to modify it.**
 
 | 
 
-.. raw:: html
-

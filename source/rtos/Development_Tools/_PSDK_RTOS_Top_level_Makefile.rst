@@ -317,5 +317,3 @@ within the component. Here are a collection of useful pages:
 
 | 
 
-.. raw:: html
-

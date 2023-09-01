@@ -226,5 +226,3 @@ The SBL memory map is shown below:
    prevent overwriting SBL during load time. It is, however, free to use
    SBL memory after it is loaded and running.
 
-.. raw:: html
-

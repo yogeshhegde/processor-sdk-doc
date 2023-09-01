@@ -222,5 +222,3 @@ in by program_evm.js:
 
     POST result: PASS
 
-.. raw:: html
-

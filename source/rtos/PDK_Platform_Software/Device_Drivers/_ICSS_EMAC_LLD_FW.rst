@@ -287,4 +287,3 @@ Additional References
 
 | 
 
-.. raw:: html

@@ -105,5 +105,3 @@ Additional References
 |                    | ReleaseNotes_traceframework.pdf                 |
 +--------------------+-------------------------------------------------+
 
-.. raw:: html
-

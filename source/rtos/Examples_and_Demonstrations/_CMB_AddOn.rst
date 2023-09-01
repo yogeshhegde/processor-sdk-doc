@@ -171,5 +171,3 @@ The following sections provide detailed steps for each EVM.
 
 | 
 
-.. raw:: html
-

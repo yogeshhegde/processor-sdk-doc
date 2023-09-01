@@ -429,7 +429,7 @@ K2G EVM (Boot from SD card)
 How to Read the Input/output Audio Files
 ========================================
 
-Both the input/output audio files are in raw PCM format (*.pcm or
+Both the input/output audio files are in raw PCM format (\*.pcm or
 \*.bin) 16 bit per sample, big endian, mono, at 16Khz. They can be
 imported either by Adobe Audition or Audacity as the raw audio data.
 
@@ -457,6 +457,4 @@ Before and After Comparison
 .. Image:: ../images/Aud_pre_processing_after.png
 
 | 
-
-.. raw:: html
 

@@ -619,5 +619,3 @@ Industrial SDK. The “Debug” folder needs to be removed from the project
 as separate build configurations are available for AM335x and AM437x
 EVMs in 2.1 SDK.
 
-.. raw:: html
-

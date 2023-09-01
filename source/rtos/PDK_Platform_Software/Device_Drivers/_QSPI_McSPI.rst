@@ -538,4 +538,3 @@ Additional References
 
 | 
 
-.. raw:: html

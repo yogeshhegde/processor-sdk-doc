@@ -7469,9 +7469,3 @@ Diagnostic tests include support for CE compliance verication for some of the
 platforms. Compliance tests can be executed by selecting the menu option '0'
 from the diagnostic test menu. These tests are intended for use by board vendor.
 
-.. raw:: html
-
-
-
-
-

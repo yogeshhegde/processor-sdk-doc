@@ -301,5 +301,3 @@ please post your question on TI E2E Forums
 -  `TI E2E Forums for Sitara
    Processors <https://e2e.ti.com/support/arm/sitara_arm/>`__
 
-.. raw:: html
-

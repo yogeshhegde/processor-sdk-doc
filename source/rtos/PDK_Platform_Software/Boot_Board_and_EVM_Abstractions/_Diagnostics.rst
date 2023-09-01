@@ -1070,5 +1070,3 @@ idkAM437x - J16 pin 14
 
 evmAM335x - J5 pin 13
 
-.. raw:: html
-

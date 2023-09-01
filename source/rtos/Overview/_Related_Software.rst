@@ -33,4 +33,3 @@ that may be of interest for the Processor SDK RTOS package.
 | 6xcodecs>`__                      | Speech and Video codecs for c66x. |
 +-----------------------------------+-----------------------------------+
 
-.. raw:: html

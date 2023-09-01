@@ -66,5 +66,3 @@ The firmware will be located in the <PDK>packages/ti/drv/emac/firmware/icss_eth/
 
 | 
 
-.. raw:: html
-

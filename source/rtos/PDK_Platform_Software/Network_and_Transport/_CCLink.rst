@@ -210,4 +210,3 @@ You would see following output on uart port of device station.
 
 | 
 
-.. raw:: html

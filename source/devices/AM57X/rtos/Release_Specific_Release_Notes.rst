@@ -406,4 +406,3 @@ migration from these releases.
 
 |
 
-.. raw:: html

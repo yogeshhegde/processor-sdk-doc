@@ -470,5 +470,3 @@ The shared folder contains some common sources.
 The main sequence for big data IPC can be followed by looking at
 host/App.c and dsp/Server.c.
 
-.. raw:: html
-

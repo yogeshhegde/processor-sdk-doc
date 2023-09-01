@@ -408,5 +408,3 @@ Mode>/bin** and flash writer binary will be created at
 **<PDK_INSTALL_DIR>/packages/ti/boot/sbl/tools/flashWriter/<Boot
 Mode>/bin/<Board Name>**
 
-.. raw:: html
-

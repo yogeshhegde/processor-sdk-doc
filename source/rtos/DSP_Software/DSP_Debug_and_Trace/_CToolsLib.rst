@@ -358,8 +358,3 @@ Support
 -  Etblib Example
    `Here <http://processors.wiki.ti.com/index.php/Capturing_ETB_Trace_Data_With_ETBLib>`__
 
-
---------------
-
-.. raw:: html
-

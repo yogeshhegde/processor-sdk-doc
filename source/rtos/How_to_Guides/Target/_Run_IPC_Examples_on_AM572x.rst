@@ -393,7 +393,7 @@ at different intervals depending on each core processes execution time.
        20    SvrHost    SvrHost_run: message received     procId=1
        21    SvrHost    SvrHost_run: message received     procId=1
        22    SvrHost    SvrHost_run: message received     procId=1
-       
+
        52    AppHost    AppHost_run: ping procId=2    
        55    AppHost    AppHost_run: ping procId=2    
        58    AppHost    AppHost_run: ping procId=2    
@@ -439,4 +439,3 @@ at different intervals depending on each core processes execution time.
        80    xdc.runtime.Main    <-- MainHost_appTskFxn: 0    
        81    xdc.runtime.Main    MainHost_done:
 
-.. raw:: html

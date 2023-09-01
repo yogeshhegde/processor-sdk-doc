@@ -480,5 +480,3 @@ installed to a custom path.
    for instructions on how to register SDK RTOS components installed to a
    custom path with CCS
 
-.. raw:: html
-

@@ -445,5 +445,3 @@ Steps to run example and/or unit test projects on C66x/A15 Target
 
 | 
 
-.. raw:: html
-

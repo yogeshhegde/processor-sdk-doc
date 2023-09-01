@@ -964,9 +964,6 @@ For applications that already depend on StarterWare from Industrial SDK
 - **AM335x SOC:** ``pdk_am335x_1_0_0/ti/starterware``
 - **AM437x SOC:** ``pdk_am437x_1_0_0/ti/starterware``
 
-
-.. raw:: html
-
 .. _Linux_SD_Card_Creation: http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html?highlight=bootable#tools-create-sd-card-linux-label
 .. _Windows_SD_Card_Creation: http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html?highlight=bootable#windows-sd-card-creation-guide
 .. _NDK_Migration_Guide: http://software-dl.ti.com/targetcontent/ndk/3_40_01_01/exports/ndk_3_40_01_01/docs/ndk/NDK_2_to_3_Migration_Guide.html

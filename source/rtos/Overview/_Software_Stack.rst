@@ -20,5 +20,3 @@ Software Block Diagram
 
 | 
 
-.. raw:: html
-

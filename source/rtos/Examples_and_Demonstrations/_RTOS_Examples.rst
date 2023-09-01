@@ -628,5 +628,3 @@ Useful Resources
 
 | 
 
-.. raw:: html
-

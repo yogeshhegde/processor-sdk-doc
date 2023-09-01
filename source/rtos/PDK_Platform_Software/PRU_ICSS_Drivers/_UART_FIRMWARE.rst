@@ -303,5 +303,3 @@ can be used in case of modification required for firmware.**
 
 | 
 
-.. raw:: html
-

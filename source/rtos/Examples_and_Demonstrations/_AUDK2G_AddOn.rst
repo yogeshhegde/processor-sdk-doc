@@ -119,5 +119,3 @@ The following section provide detailed steps for K2G EVM
       ADC_IN 3 ==> DAC_OUT 3
       **************************************
 
-.. raw:: html
-

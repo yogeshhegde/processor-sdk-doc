@@ -619,5 +619,3 @@ Additional resources
    cost with improved
    performance <http://www.ti.com/lit/wp/spry127/spry127.pdf>`__
 
-.. raw:: html
-

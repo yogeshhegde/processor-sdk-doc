@@ -155,5 +155,3 @@ Please refer to `Core Benchmarks
 <http://www.ti.com/processors/digital-signal-processors/core-benchmarks/core-benchmarks.html>`__
 for DSP vs A15 core benchmark comparison for computation intensive tasks. 
 
-.. raw:: html
-

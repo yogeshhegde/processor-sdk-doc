@@ -76,5 +76,3 @@ API reference for application can be found in below file:
 |                                   | _pktlib.pdf                       |
 +-----------------------------------+-----------------------------------+
 
-.. raw:: html
-

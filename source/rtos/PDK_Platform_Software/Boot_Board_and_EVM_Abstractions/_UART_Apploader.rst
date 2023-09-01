@@ -184,4 +184,3 @@ Binaries needs to be manually built for these platforms.
 
 Refer `Rebuilding Board Utils <index_board.html#rebuilding-board-utils>`__ section to build Apploader.
 
-.. raw:: html

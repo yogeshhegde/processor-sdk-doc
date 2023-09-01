@@ -866,5 +866,3 @@ example does the following:
   reserved by RBL and shouldn’t be used: for 6678 ROM PG 1.0, 0x00872DC0
   – 0x0087FFFF; for 6670 ROM PG 1.0, 0x008F2DC0 – 0x008FFFFF.
   
-.. raw:: html
-

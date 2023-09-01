@@ -2397,9 +2397,11 @@ configuration file. See
 `here <http://processors.wiki.ti.com/index.php/SYSBIOS_Industrial_SDK_02.01.00.01_User_Guide#Ethernet_MAC>`__
 
 .. rubric:: How to configure MAC address
-:name: How-to-configure-MAC-address
-MAC address is variable macId in the configuration ICSSEMAC_InitConfig. It can be set as per the application requirements.
-The following excerpt from ethernet_mac example shows how to do this
+   :name: How-to-configure-MAC-address
+
+MAC address is variable macId in the configuration ICSSEMAC_InitConfig. It can
+be set as per the application requirements. The following excerpt from
+ethernet_mac example shows how to do this
 
 ::
 
@@ -2407,6 +2409,4 @@ The following excerpt from ethernet_mac example shows how to do this
     SOCCtrlGetPortMacAddr(1,lclMac);
     /*Assign MAC ID for that particular port*/
     switchEmacCfg->macId = lclMac;
-
-.. raw:: html
 

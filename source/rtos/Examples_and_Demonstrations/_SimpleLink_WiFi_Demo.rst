@@ -233,5 +233,3 @@ Now the network terminal demo will run and print progress through the UART.
    connection password. "192.168.0.1" is its default gateway. Users should adjust those parameters according 
    to their own wireless routers.
 
-.. raw:: html
-

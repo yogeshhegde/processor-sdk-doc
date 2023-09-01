@@ -338,5 +338,3 @@ Sample Output
 In the above example, nothing was flashed to NAND or NOR since there
 were no nand.bin or nor.bin binaries to flash.
 
-.. raw:: html
-
