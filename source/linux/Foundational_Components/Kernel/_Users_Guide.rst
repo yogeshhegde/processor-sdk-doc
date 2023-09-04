@@ -1,4 +1,4 @@
-.. include:: /replacevars.rst.inc
+.. include:: /_replacevars.rst
 
 .. contents:: Linux Kernel User's Guide
 
@@ -435,7 +435,7 @@ tree. These .ko files are the dynamic kernel modules.
 .. _fitImage-for-HS:
 
 Creating the kernel fitImage for high security device / GP devices
------------------------------------------------------------------
+------------------------------------------------------------------
 
 SDKs have pre-built FIT images that contain the default Kernel and DTB files.
 But developers may want to deploy and test new Kernel and DTB without going
@@ -449,11 +449,8 @@ Pre-requisites ( Already part of SDK installations )::
 
 .. note::
 
-    For GP/HS-FS Devices
-    ^^^^^^^^^^^^^^^^^^^^
-
-    GP/HS-FS devices will also enforce authentication if booting fitImage.
-    To disable authentication enforcement, FIT_SIGNATURE_ENFORCE needs to be
+    GP/HS-FS devices will also enforce authentication if booting fitImage. To
+    disable authentication enforcement, FIT_SIGNATURE_ENFORCE needs to be
     disabled in defconfig for the specific board during uboot build.
 
 Describing FIT source

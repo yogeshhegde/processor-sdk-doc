@@ -1,3 +1,3 @@
 .. _foundational-components-openvx:
 
-.. include:: Foundational_Components/OpenVX.rst.inc
+.. include:: Foundational_Components/_OpenVX.rst

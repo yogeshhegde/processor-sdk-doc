@@ -1,3 +1,3 @@
 .. _foundational-components-cmem:
 
-.. include:: Foundational_Components/CMEM.rst.inc
+.. include:: Foundational_Components/_CMEM.rst

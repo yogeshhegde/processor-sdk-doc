@@ -1,4 +1,4 @@
-.. include:: /replacevars.rst.inc
+.. include:: /_replacevars.rst
 
 .. _download-and-install-sdk:
 

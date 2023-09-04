@@ -1,4 +1,4 @@
 LTP-DDT Validation
 ==================================
-.. include:: Foundational_Components/Kernel/LTP-DDT_Validation.rst.inc
+.. include:: Foundational_Components/Kernel/_LTP-DDT_Validation.rst
 

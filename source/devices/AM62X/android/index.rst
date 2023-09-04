@@ -6,7 +6,7 @@ Processor SDK Android Software Developer's Guide
 
 .. rubric:: Welcome to the Processor SDK Android Software Developer's Guide for AM62X
 
-.. include:: /devices/AM62X/android/Overview/Processor_SDK_Android_Software_Developers_Guide.rst.inc
+.. include:: /devices/AM62X/android/Overview/_Processor_SDK_Android_Software_Developers_Guide.rst
 
 .. toctree::
    :maxdepth: 5

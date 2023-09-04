@@ -1,4 +1,4 @@
-.. include:: /replacevars.rst.inc
+.. include:: /_replacevars.rst
 
 .. rubric:: Quick Start Guide
 
@@ -23,7 +23,7 @@ Detailed steps are described at :ref:`run-setup-scripts`
 
 .. rubric:: Hardware EVM setup
 
-The AM62A SK EVM is a software kit that combines the AM62A7
+The AM62x SK EVM is a software kit that combines the AM625x
 SOC and other important platform specific hardware like PMIC, DDR memory,
 etc, on a single board.
 
@@ -48,7 +48,7 @@ you should see a welcome message on the display wallpaper.
 The SDK Installer packages latest pre-built binaries and filesystem for the target.
 For detailed steps on flashing these binaries on the SD card, refer to the section
 format your SD card and flash all the pre-built binaries from the SDK release,
-:ref:`processor-sdk-linux-create-sd-card`.
+:ref:`formatting-sd-card-on-linux`.
 
 You should be able to verify the same out of box demo after flashing the SD card.
 This step should be used only when you want to completely overwrite the card with

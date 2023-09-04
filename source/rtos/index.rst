@@ -1,6 +1,6 @@
 .. _rtos-index:
 
-.. include:: Overview/Processor_SDK_RTOS_Software_Developers_Guide.rst.inc
+.. include:: Overview/_Processor_SDK_RTOS_Software_Developers_Guide.rst
 
 .. toctree::
    :maxdepth: 5

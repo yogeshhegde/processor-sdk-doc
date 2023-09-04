@@ -1,4 +1,4 @@
-.. include:: /replacevars.rst.inc
+.. include:: /_replacevars.rst
 
 .. _foundational-components-ipc:
 
@@ -389,4 +389,4 @@ arch/arm64/boot/dts/ti/k3-j721s2-som-p0.dtsi
 .. note:: The reserved memory sizes listed above are provided as a reference only and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
           'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-j721s2-som-p0.dtsi?h=ti-linux-6.1.y'
 
-.. include:: Foundational_Components/IPC/RPMsg_char_driver.rst.inc
+.. include:: Foundational_Components/IPC/_RPMsg_char_driver.rst

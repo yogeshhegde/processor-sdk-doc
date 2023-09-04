@@ -3,4 +3,4 @@ conf.py
 *.swp
 *.pyc
 build/
-source/replacevars.rst.inc
+source/_replacevars.rst

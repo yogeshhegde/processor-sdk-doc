@@ -3,4 +3,4 @@
 .. ************************************
 .. Layer Configuration
 .. ************************************
-.. include:: Release_Specific/CoreSDK_Layer_Configuration.rst.inc
+.. include:: Release_Specific/_CoreSDK_Layer_Configuration.rst

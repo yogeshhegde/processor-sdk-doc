@@ -1,4 +1,4 @@
 FAQs
 ==================================
-.. include:: Foundational_Components/Kernel/FAQs.rst.inc
+.. include:: Foundational_Components/Kernel/_FAQs.rst
 

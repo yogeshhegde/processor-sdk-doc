@@ -1,4 +1,4 @@
-.. include:: /replacevars.rst.inc
+.. include:: /_replacevars.rst
 
 ************************************
 Building the SDK with Yocto
@@ -219,37 +219,6 @@ The "Build Output" is given relative to the
         +------------------------------+---------------------------------------------------------------+----------------------------+
         | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
         +------------------------------+---------------------------------------------------------------+----------------------------+
-
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
-
-    .. ifconfig:: CONFIG_demo in ('Foundational')
-
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | Target                       | Build Output                                                  | Description                |
-        +==============================+===============================================================+============================+
-        | tisdk-core-bundle            | images/<machine>/tisdk-core-bundle-<machine>.tar.xz           | Full SDK                   |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem   |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.tar.xz       | Minimal Target Filesytem   |
-        |                              |                                                               | with docker enabled        |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-
-    .. ifconfig:: CONFIG_demo not in ('Foundational')
-
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | Target                       | Build Output                                                  | Description                |
-        +==============================+===============================================================+============================+
-        | tisdk-core-bundle            | images/<machine>/tisdk-core-bundle-<machine>.tar.xz           | Full SDK                   |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-
-|
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 

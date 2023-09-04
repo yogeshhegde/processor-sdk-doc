@@ -33,73 +33,73 @@ IPC
 
 IPC User's Guide
 ================
-.. include:: /rtos/PDK_Platform_Software/IPC/IPC_Users_Guide.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_IPC_Users_Guide.rst
 
 Use Cases for IPC
 =============================
-.. include:: /rtos/PDK_Platform_Software/IPC/Use_Cases_for_IPC.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_Use_Cases_for_IPC.rst
 
 
 
 IPC Examples
 =============
 	
-.. include:: /rtos/PDK_Platform_Software/IPC/IPC_examples.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_IPC_examples.rst
 
 IPC Training
 =============
 	
-.. include:: /common/IPC/IPC_Training.rst.inc
+.. include:: /common/IPC/_IPC_Training.rst
 
 TI SDO IPC Package
 ====================
-.. include:: /rtos/PDK_Platform_Software/IPC/The_ti.sdo.ipc_Package.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_The_ti.sdo.ipc_Package.rst
 
 IPC Module
 ------------
-.. include:: /rtos/PDK_Platform_Software/IPC/IPC_Module.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_IPC_Module.rst
 
 MessageQ Module
 -----------------
-.. include:: /rtos/PDK_Platform_Software/IPC/MessageQ_Module.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_MessageQ_Module.rst
 
 ListMP Module
 -----------------
-.. include:: /rtos/PDK_Platform_Software/IPC/ListMP_Module.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_ListMP_Module.rst
 
 HeapMP Module
 -----------------
-.. include:: /rtos/PDK_Platform_Software/IPC/HeapMP_Modules.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_HeapMP_Modules.rst
 
 GateMP Module
 -----------------
-.. include:: /rtos/PDK_Platform_Software/IPC/GateMP_Module.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_GateMP_Module.rst
 
 GateMP Support for UIO and Misc Driver 
 ---------------------------------------
-.. include:: /rtos/PDK_Platform_Software/IPC/IPC_GateMP_Support_for_UIO_and_Misc_Driver.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_IPC_GateMP_Support_for_UIO_and_Misc_Driver.rst
 
 Notify Module
 -----------------
-.. include:: /rtos/PDK_Platform_Software/IPC/Notify_Module.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_Notify_Module.rst
 
 Shared Region Module
 ----------------------
-.. include:: /rtos/PDK_Platform_Software/IPC/SharedRegion_Module.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_SharedRegion_Module.rst
 
 
 
 TI SDO Utils Package
 =====================
-.. include:: /rtos/PDK_Platform_Software/IPC/The_ti.sdo.utils_Package.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_The_ti.sdo.utils_Package.rst
 
 List Module
 --------------
-.. include:: /rtos/PDK_Platform_Software/IPC/List_Module.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_List_Module.rst
 
 MultiProc Module
 -------------------
-.. include:: /rtos/PDK_Platform_Software/IPC/MultiProc_Module.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_MultiProc_Module.rst
 
 NameServer Module
 -------------------
@@ -108,34 +108,34 @@ NameServer Module
 
 Optimizing IPC Applications
 =============================
-.. include:: /rtos/PDK_Platform_Software/IPC/Optimizing_IPC_Applications.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_Optimizing_IPC_Applications.rst
 
 Rebuilding IPC
 ================
-.. include:: /rtos/PDK_Platform_Software/IPC/Rebuilding_IPC.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_Rebuilding_IPC.rst
 
 
 | 
 
 IPC Transports
 ===============
-.. include:: /common/IPC/IPC_Transports.rst.inc
+.. include:: /common/IPC/_IPC_Transports.rst
 
 IPC Benchmarking
 ==================
-.. include:: /rtos/PDK_Platform_Software/IPC/IPC_BenchMarking.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_IPC_BenchMarking.rst
 
 IPC 3.x
 ========
-.. include:: /rtos/PDK_Platform_Software/IPC/IPC_3.x.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_IPC_3.x.rst
 
 Resource Custom Table
 ----------------------
-.. include:: /rtos/PDK_Platform_Software/IPC/IPC_Resource_customTable.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_IPC_Resource_customTable.rst
 
 Resource Usage
 ---------------
-.. include:: /rtos/PDK_Platform_Software/IPC/IPC_Resource_Usage.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_IPC_Resource_Usage.rst
 
 IPC 3.x vs IPC LLD
 ==================
@@ -154,11 +154,11 @@ Please refer to the following page for details on the IPC LLD: `IPC LLD for AM65
 
 IPC FAQ
 ========
-.. include:: /rtos/PDK_Platform_Software/IPC/IPC_3.x_FAQ.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_IPC_3.x_FAQ.rst
 
 FAQ For Keystone Devices
 -------------------------
-.. include:: /rtos/PDK_Platform_Software/IPC/IPC_FAQ_for_Keystone_Devices.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_IPC_FAQ_for_Keystone_Devices.rst
 
 IPC Install Guides
 ====================
@@ -166,15 +166,15 @@ The IPC package now comes bundled with Processor SDK RTOS and can be built using
 
 BIOS Install Guide
 -------------------
-.. include:: /rtos/PDK_Platform_Software/IPC/IPC_Install_Guide_BIOS.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_IPC_Install_Guide_BIOS.rst
 
 Linux Install Guide
 -------------------
-.. include:: /rtos/PDK_Platform_Software/IPC/IPC_Install_Guide_Linux.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_IPC_Install_Guide_Linux.rst
 
 QNX Install Guide
 -------------------
-.. include:: /rtos/PDK_Platform_Software/IPC/IPC_Install_Guide_QNX.rst.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_IPC_Install_Guide_QNX.rst
 
 
 .. _foundational-components-opencl:
@@ -191,7 +191,7 @@ OpenCL
 Boot
 ***************
 .. _FC-Boot-label:
-.. include:: /rtos/Boot.rst.inc
+.. include:: /rtos/_Boot.rst
 
 
 .. _foundational-components-mpm:
@@ -199,7 +199,7 @@ Boot
 *****
 MPM
 *****
-.. include:: /rtos/MPM.rst.inc
+.. include:: /rtos/_MPM.rst
 
 
 .. _foundational-components-openmp:
@@ -207,7 +207,7 @@ MPM
 *******
 OpenMP
 *******
-.. include:: /rtos/Compute/OpenMP.rst.inc
+.. include:: /rtos/Compute/_OpenMP.rst
 
 
 .. _foundational-components-pktlib:
@@ -215,7 +215,7 @@ OpenMP
 ***************
 PKTLIB
 ***************
-.. include:: /rtos/PDK_Platform_Software/Device_Drivers/PKTLIB.rst.inc
+.. include:: /rtos/PDK_Platform_Software/Device_Drivers/_PKTLIB.rst
 
 .. _foundational-components-network:
 
@@ -224,19 +224,19 @@ Network
 ***************
 CCLink
 =======
-.. include:: /rtos/PDK_Platform_Software/Network_and_Transport/CCLink.rst.inc
+.. include:: /rtos/PDK_Platform_Software/Network_and_Transport/_CCLink.rst
 
 .. _foundational-components-ndk:
 
 NDK
 =======
-.. include:: /rtos/PDK_Platform_Software/Network_and_Transport/NDK.rst.inc
+.. include:: /rtos/PDK_Platform_Software/Network_and_Transport/_NDK.rst
 
 .. _foundational-components-nwal:
 
 NWAL
 ***************
-.. include:: /rtos/PDK_Platform_Software/Device_Drivers/NWAL.rst.inc
+.. include:: /rtos/PDK_Platform_Software/Device_Drivers/_NWAL.rst
 
 .. _foundational-components-transport:
 
@@ -245,7 +245,7 @@ Transport
 ***************
 TimeSync (PTP)
 ==============
-.. include:: /rtos/PDK_Platform_Software/Network_and_Transport/TimeSync.rst.inc
+.. include:: /rtos/PDK_Platform_Software/Network_and_Transport/_TimeSync.rst
 
 .. _foundational-components-tools:
 

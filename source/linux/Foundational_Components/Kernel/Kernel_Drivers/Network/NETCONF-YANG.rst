@@ -1,4 +1,4 @@
-.. include:: /replacevars.rst.inc
+.. include:: /_replacevars.rst
 
 NETCONF/YANG
 ============
@@ -106,7 +106,7 @@ Below are the steps to build and install the Netopeer Client and its dependencie
  $ sudo make install
 
 Generic Execution
-""""""""""""""""
+"""""""""""""""""
 
 **Steps to follow on the Netconf Server side:**
 
@@ -123,6 +123,7 @@ Generic Execution
 ::
 
  $ netopeer2-cli
+
 Once the client app opens, the prompt will now turn into **>**
 
 2. Connect to the netopeer2-server
@@ -274,6 +275,7 @@ c. Display the updated qdisc settings. The settings will not have any gate sched
 ::
 
  $ netopeer-cli
+
 Once the client app opens, the prompt will now become **>**
 
 2. Connect to the netopeer2-server

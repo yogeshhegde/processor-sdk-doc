@@ -1,4 +1,4 @@
-.. include:: /replacevars.rst.inc
+.. include:: /_replacevars.rst
 
 .. rubric:: Quick Start Guide
 
@@ -8,11 +8,13 @@ In this section, we describe the basic steps needed to start development using t
 For more detailed documentation, refer to :ref:`overview-getting-started`
 
 .. rubric:: Steps for SDK installation
+   :name: qsg-steps-for-sdk-installation
 
 Refer to section :ref:`download-and-install-sdk`
 for instructions on running the SDK installer.
 
 .. rubric:: Setting up host environment
+   :name: qsg-setting-up-host-environment
 
 Once the installer is run, you can setup your host environment with a few steps.
 Run the following scripts to achieve this:
@@ -22,25 +24,18 @@ Run the following scripts to achieve this:
 Detailed steps are described at :ref:`run-setup-scripts`
 
 .. rubric:: Hardware EVM setup
+   :name: qsg-hardware-evm-setup
 
-The AM62x SK EVM is a software kit that combines the AM625x
-SOC and other important platform specific hardware like PMIC, DDR memory,
-etc, on a single board.
+The J7 EVM comes with a SoM (System on Chip) based on which J7 variant is being used,
+a common processor board, a PMIC and a few optional daughter cards.
 
 Detailed instructions for EVM setup with image illustration can be found at
 :ref:`hardware-evm-setup`.
-Refer to this to setup your EVM as well as for instructions for booting with the default card.
+Refer to this to setup your EVM based on which J7 variant you are using
+as well as for instructions for booting with the default card.
 
 The preferred way for starting SDK development is SD card boot. The section referenced above
 describes pin settings to set the EVM in SD boot mode.
-
-.. rubric:: Running out of the box demo
-
-By default, the SD card comes with pre-built Linux SDK binaries flashed. This will allow
-you to quickly verify the EVM functionality with just a monitor with an HDMI port.
-
-Insert the SD card with pre-built binaries and boot the EVM. After successful bootup,
-you should see a welcome message on the display wallpaper.
 
 .. rubric:: Flashing release binaries
    :name: qsg-flashing-release-binaries
@@ -55,6 +50,7 @@ This step should be used only when you want to completely overwrite the card wit
 release binaries.
 
 .. rubric:: Illustration for simple kernel build and install to target
+   :name: qsg-kernel-build-install-example
 
 For most users, an important step in development is the ability to customize
 baseport software components like bootloader, Linux kernel, hypervisor, etc.

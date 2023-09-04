@@ -1,4 +1,4 @@
-.. include:: /replacevars.rst.inc
+.. include:: /_replacevars.rst
 
 How do I integrate a different version of open source software than what is packaged in |__SDK_FULL_NAME__|?
 ============================================================================================================

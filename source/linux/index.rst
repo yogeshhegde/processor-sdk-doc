@@ -26,7 +26,7 @@ Processor SDK Linux Software Developer's Guide
        |    - `Wiki Getting Started Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Getting_Started_Guide>`__.
        |
 
-.. include:: Overview/Processor_SDK_Linux_Software_Developers_Guide.rst.inc
+.. include:: Overview/_Processor_SDK_Linux_Software_Developers_Guide.rst
 
 .. toctree::
    :maxdepth: 5

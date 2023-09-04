@@ -1,1 +1,1 @@
-.. include:: ../../../common/EVM_Hardware_Setup/EVMK2E_Hardware_Setup.rst.inc
+.. include:: ../../../common/EVM_Hardware_Setup/_EVMK2E_Hardware_Setup.rst
