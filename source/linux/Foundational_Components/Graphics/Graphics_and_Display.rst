@@ -1100,14 +1100,16 @@ connectors, use the below command:
 
      weston --tty=1 --idle-time=0
 
-If you face any issues with the above procedure, please refer
-`GLSDK\_FAQs#Unable\_to\_run\_Weston\_on\_the\_GLSDK\_release <http://processors.wiki.ti.com/index.php/GLSDK_FAQs#Unable_to_run_Weston_on_the_GLSDK_release>`__
-for troubling shooting tips.
+If you face any issues with the above procedure, please refer to `the upstream
+weston documentation`_ for troubleshooting tips.
+
+.. _the upstream weston documentation:
+   https://wayland.pages.freedesktop.org/weston/toc/running-weston.html
 
 The filesystem comes with a preconfigured **weston.ini** file which will
 be located in
 
-**/etc/weston.ini**
+**/etc/xdg/weston/weston.ini**
 
 Running Weston clients
 ----------------------
@@ -1162,15 +1164,14 @@ Weston by pressing Ctrl-Alt-Backspace.
 Using IVI shell feature
 -----------------------
 
-The SDK also has support for configuring Weston ivi-shell. The default
-shell that is configured in the SDK is the desktop-shell.
+The SDK also has support for configuring Weston ivi-shell. The default shell
+that is configured in the SDK is the desktop-shell.
 
-To change the shell to ivi-shell, the user will have to add the
-following lines into the /etc/weston.ini.
+To change the shell to ivi-shell, the user will have to add the following lines
+into the /etc/xdg/weston/weston.ini.
 
-To switch back to the desktop-shell can be done by commenting these
-lines in the /etc/weston.ini (comments begin with a '#' at the start of
-line).
+To switch back to the desktop-shell can be done by commenting these lines in the
+/etc/xdg/weston/weston.ini (comments begin with a '#' at the start of line).
 
 ::
 
@@ -1218,67 +1219,44 @@ optimization, PC emulation, prototyping environments, on-line and off-line
 performance analysis tools and many more. Please refer to PowerVR-SDK_ for
 additional details on the tools and detailed documentation.
 
-The target file system includes a subset of PowerVR tools such as
-PVRScope and PVRTrace recorder libraries from Imagination PowerVR SDK to
-profile and trace GFX activities. In addition, it also includes
-PVRPerfServerDeveloper tool.
+There are a number of useful tools available in the Imagination PowerVR SDK that
+are compatible with our devices. Two of the most useful tools available are
+PVRTune and PVRCarbon, which can be used for to profiling and tracing GFX
+activities.
 
-.. note:: If you are experiencing issues with any of the tools try updating to
-          the latest provided by Imagination at
-          https://developer.imaginationtech.com/
+Previously these were included in the target's rootfs, but these were removed
+due to tight version dependencies between the target and host tools. Imagination
+has moved to packaging the target binaries with their host installer, so we
+recommend using those binaries directly for guaranteed compatibility.
 
 PVRTune
 -------
 
-The PVRTune utility is a real-time GPU performance analysis tool. It
-captures hardware timing data and counters which facilitate the
-identification of performance bottlenecks. PVRPerfServerDeveloper should
-be used along with the PVRTune running on the PC to gather data on the
-SGX loading and activity threads. You can invoke the tool with the below
-command:
+The PVRTune utility is a real-time GPU performance analysis tool. It captures
+hardware timing data and counters which facilitate the identification of
+performance bottlenecks. PVRPerfServer should be used along with the PVRTune
+running on the PC to gather data on the SGX loading and activity threads. The
+target binaries can be found in the host's PVRTune installation directory under
+PVRPerfServer.
 
-::
+For more information please refer to Imagination's upstream documentation on
+PVRTune and PVRPerfServer.
 
-    target # /opt/img-powervr-sdk/PVRHub/PVRPerfServer/PVRPerfServerDeveloper
+https://docs.imgtec.com/tools-manuals/pvrtune-manual/topics/introduction.html
 
-PVRTrace
---------
+PVRCarbon
+---------
 
-The PVRTrace is an OpenGL\ |reg| ES API recording and analysis utility.
-PVRTrace GUI provides off-line tools to inspect captured data, identify
-redundant calls, highlight costly shaders and many more. The default
-filesystem contains helper scripts to obtain the PVRTrace of the
-graphics application. This trace can then be played back on the PC using
-the PVRTrace Utility.
+The PVRCarbon is an OpenGL\ |reg| ES and Vulkan |reg| API recording and analysis
+utility. PVRCarbon GUI provides off-line tools to inspect captured data,
+identify redundant calls, highlight costly shaders and many more. This tool can
+capture traces on target and then play them back on multiple different devices
+by introducing shim libraries in place of the standard offering for that API.
 
-To start tracing, use the below commands as reference:
+This requires a little bit of setup on the target though. Please refer to
+Imagination's upstream target setup guide for the most recent instructions.
 
-::
-
-    target # cp /opt/img-powervr-sdk/PVRHub/Scripts/start_tracing.sh ~/.
-    target # ./start_tracing.sh <log-filename> <application-to-be-traced>
-
-Example:
-
-::
-
-    target # ./start_tracing.sh westonapp weston-simple-egl
-
-The above command will do the following:
-
-#. Setup the required environment for the tracing
-#. Create a directory under the current working directory called
-   pvrtrace
-#. Launch the application specified by the user
-#. Start tracing the PVR Interactions while recording the traces to a file under
-   the current directory
-
-To end the tracing, the user can invoke the Ctrl-C and the trace file path
-will be displayed.
-
-The trace file can then be transferred to a PC, and we can visualize the
-application using the host side PVRTrace utility. Please refer PowerVR-SDK_ for
-more details.
+https://docs.imgtec.com/tools-manuals/pvrcarbon-manual/topics/pvrcarbon-recorder/opengl-es/linux.html
 
 .. |reg|    unicode:: U+000AE .. REGISTERED SIGN
 .. _PowerVR-SDK: https://www.imgtec.com/developers/powervr-sdk-tools/installers/
