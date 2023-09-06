@@ -1623,14 +1623,14 @@ The SRAM memory layout explains the memory used for Bootloader's operation.
             │                                      │
             │                                      │
             │               SPL IMAGE              │
-            │           (Max size 191 KB)          │
+            │           (Max size 192 KB)          │
             │            (excluding BSS)           │
-            │             (196607B  Max)           │
+            │             (196608B  Max)           │
             │                                      │
-            ├──────────────────────────────────────┤0x43c32fff
+            ├──────────────────────────────────────┤0x43c30000
             │                                      │
             │                                      │
-            │            STACK (13KB Max)          │
+            │            STACK (13568B Max)        │
             │                                      │
             │                                      │
             ├──────────────────────────────────────┤
@@ -1638,6 +1638,57 @@ The SRAM memory layout explains the memory used for Bootloader's operation.
             ├──────────────────────────────────────┤
             │                                      │
             │            HEAP (28KB Max)           │
+            │                                      │
+            ├──────────────────────────────────────┤0x43c3a7f0
+            │                                      │
+            │             EMPTY (16B)              │
+            │                                      │
+            ├──────────────────────────────────────┤0x43c3a800
+            │                                      │
+            │                                      │
+            │         DM config data (2KB)         │
+            │                                      │
+            │                                      │
+            ├──────────────────────────────────────┤0x43c3b000
+            │                                      │
+            │             BSS (12KB)               │
+            │                                      │
+            ├──────────────────────────────────────┤0x43c3e000
+            │                                      │
+            │                                      │
+            │           EMPTY (4.5KB)              │
+            │        (Reserved for ROM)            │
+            │                                      │
+            ├──────────────────────────────────────┤0x43c3f1e0
+            │                                      │
+            │       ROM Boot parameter table       │
+            │    + Extended boot info (3.5 KB)     │
+            │                                      │
+            └──────────────────────────────────────┘0x43c3ffff
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+        .. code-block:: console
+
+            ┌──────────────────────────────────────┐0x43c00000
+            │                                      │
+            │                                      │
+            │               SPL IMAGE              │
+            │           (Max size 188 KB)          │
+            │            (excluding BSS)           │
+            │             (192512B  Max)           │
+            │                                      │
+            ├──────────────────────────────────────┤0x43c2f000
+            │                                      │
+            │                                      │
+            │            STACK (17KB Max)          │
+            │                                      │
+            │                                      │
+            ├──────────────────────────────────────┤
+            │         Global Data (428B Max)       │
+            ├──────────────────────────────────────┤
+            │                                      │
+            │            HEAP (28997B Max)         │
             │                                      │
             ├──────────────────────────────────────┤0x43c3a7f0
             │                                      │
