@@ -218,7 +218,6 @@ Note: Use Ctrl-C to terminate candump
         [ 1392.577915] can: controller area network core
         [ 1392.582388] NET: Registered protocol family 29
         [ 1392.594650] can: raw protocol
-        root@am62xx-evm:~#
 
 For more documentation on using the CAN utilities software, go to :ref:`mcan`.
 
@@ -274,7 +273,7 @@ SD card. This overlay can be loaded by stopping bootup at U-boot prompt and exec
 
         Hit any key to stop autoboot:  0
                 =>
-                => setenv name_overlays k3-am625-sk-mcan.dtbo
+                => setenv name_overlays ti/k3-am625-sk-mcan.dtbo
                 => boot
 
 |
