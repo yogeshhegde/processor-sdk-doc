@@ -189,9 +189,8 @@ The following images shows the final setup for testing 1x MCAN on AM62x and 1x M
 
 With all boards powered on and booted to Linux kernel, the following commands could be executed to test CAN functionality.
 
-*MCAN0 on AM64x to display received CAN packet*
-
-    ::
+.. code-block:: console
+        :caption: MCAN0 on AM64x to display received CAN packet
 
         root@am64xx-evm:~# ip link set can0 down
         root@am64xx-evm:~# ip link set can0 type can bitrate 125000
@@ -209,11 +208,9 @@ With all boards powered on and booted to Linux kernel, the following commands co
 
 Note: Use Ctrl-C to terminate candump
 
-*MCAN0 on AM62x to send CAN packet:*
+.. code-block:: console
+        :caption: MCAN0 on AM62x to send CAN packet
 
-    ::
-
-        # To send:
         root@am62xx-evm:~# ip link set can0 down
         root@am62xx-evm:~# ip link set can0 type can bitrate 125000
         root@am62xx-evm:~# ip link set can0 up
@@ -272,7 +269,8 @@ SD card. This overlay can be loaded by stopping bootup at U-boot prompt and exec
         For AM62a, you will first need to add the MCU-MCAN nodes before applying this overlay to enable 3x MCAN on AM62ax. Go here
         :ref:`Enable MCU MCANs on AM62ax`.
 
-::
+.. code-block:: console
+        :emphasize-lines: 3
 
         Hit any key to stop autoboot:  0
                 =>
@@ -292,7 +290,7 @@ AM62ax 3x MCAN was not enabled for TI PSDK 9.0 release. Before following the gui
 
 Apply the following change to <path-to-ti-linux>/arch/arm64/boot/dts/ti/k3-am62a-mcu.dtsi
 
-::
+.. code-block:: diff
 
         diff --git a/arch/arm64/boot/dts/ti/k3-am62a-mcu.dtsi b/arch/arm64/boot/dts/ti/k3-am62a-mcu.dtsi
         index 4d0a291bceea..c7e768b7ac9b 100644
@@ -332,7 +330,7 @@ Apply the following change to <path-to-ti-linux>/arch/arm64/boot/dts/ti/k3-am62a
 
 2. Build the DTB for AM62ax:
 
-::
+.. code-block:: console
 
         $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu-  defconfig ti_arm64_prune.config
         $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu-  dtbs
