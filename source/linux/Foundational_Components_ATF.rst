@@ -14,69 +14,83 @@ it sets up itself as the EL3 monitor handler. After this is installs the secure
 world software (OP-TEE) and passes execution on to either the Linux kernel or U-Boot
 in the non-secure world.
 
+|
+
 .. rubric:: Getting the ATF Source Code
 
-::
+The pre-built TF-A binary should be packaged in TI Processor SDK: <path-to-processor-sdk>/board-support/prebuilt-images/<optional-build-machine-name>/bl31.bin.
+Use this binary since it has been tested with TI Processor SDK.
+
+If it is not possible to use pre-build binary, use the following:
+
+.. code-block:: console
 
     $ git clone https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
-    $ git checkout v2.9
+    $ git checkout <hash>
+
+Where <hash> is the OPTEE commit shown here: :ref:`tf-a-release-notes`.
+
+|
 
 .. rubric:: Building ATF
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'AM62AX')
 
-    ::
+    .. code-block:: console
 
         $ export TFA_DIR=<path-to-arm-trusted-firmware>
-
-    ::
-
         $ cd $TFA_DIR
         $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 TARGET_BOARD=lite SPD=opteed
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-    ::
+    .. code-block:: console
 
         $ make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=generic SPD=opteed K3_USART=0x8
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
-    ::
+    .. code-block:: console
 
         $ make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=j784s4 SPD=opteed K3_USART=0x8
 
 .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX', 'J721S2', 'J784S4')
 
-    ::
+    .. code-block:: console
         
         $ make CROSS_COMPILE=aarch64-linux-gnu- PLAT=k3 TARGET_BOARD=generic SPD=opteed
+
+|
 
 .. rubric:: Default load locations
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
-    +---------------------------+------------+
-    | ATF image                 | 0x701c0000 |
-    +---------------------------+------------+
-    | OP-TEE image              | 0x9e800000 |
-    +---------------------------+------------+
-    | U-Boot/Linux kernel image | 0x80080000 |
-    +---------------------------+------------+
-    | DTB                       | 0x82000000 |
-    +---------------------------+------------+
+    .. code-block:: text
+
+        +---------------------------+------------+
+        | ATF image                 | 0x701c0000 |
+        +---------------------------+------------+
+        | OP-TEE image              | 0x9e800000 |
+        +---------------------------+------------+
+        | U-Boot/Linux kernel image | 0x80080000 |
+        +---------------------------+------------+
+        | DTB                       | 0x82000000 |
+        +---------------------------+------------+
 
 .. ifconfig:: CONFIG_part_family not in ('AM64X_family')
- 
-    +---------------------------+------------+
-    | ATF image                 | 0x70000000 |
-    +---------------------------+------------+
-    | OP-TEE image              | 0x9e800000 |
-    +---------------------------+------------+
-    | U-Boot/Linux kernel image | 0x80080000 |
-    +---------------------------+------------+
-    | DTB                       | 0x82000000 |
-    +---------------------------+------------+
+
+    .. code-block:: text
+
+        +---------------------------+------------+
+        | ATF image                 | 0x70000000 |
+        +---------------------------+------------+
+        | OP-TEE image              | 0x9e800000 |
+        +---------------------------+------------+
+        | U-Boot/Linux kernel image | 0x80080000 |
+        +---------------------------+------------+
+        | DTB                       | 0x82000000 |
+        +---------------------------+------------+
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family', 'AM62X_family')
 
@@ -84,26 +98,28 @@ in the non-secure world.
     is an example for AM64x family devices. Other family devices might not at the moment have binman dtsi files associated with
     them but they could in the future.
 
-    +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
-    | Source                                              | ATF              | OPTEE                 |  A53 SPL            | A53 U-Boot    | DTB               | kernel   | Comments                               |
-    +=====================================================+==================+=======================+=====================+===============+===================+==========+========================================+
-    | <atf>/plat/ti/k3/board/lite/board.mk                |                  | BL32_BASE             | PRELOADED_BL33_BASE |               | K3_HW_CONFIG_BASE |          | Change K3_HW_CONFIG_BASE for           |
-    |                                                     |                  |                       |                     |               |                   |          | u-boot a53 skip case                   |
-    +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
-    | <optee>/core/arch/arm/plat-k3/conf.mk               |                  | CFG_TZDRAM_START      |                     |               |                   |          |                                        |
-    +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
-    | <uboot>/configs/am64x_evm_r5_defconfig              | K3_ATF_LOAD_ADDR |                       |                     |               |                   |          |                                        |
-    +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
-    | <uboot>/configs/am64x_evm_a53_defconfig             |                  |                       | SPL_TEXT_BASE       | SYS_TEXT_BASE |                   |          | SYS_TEXT_BASE can be set in defconfig, |
-    |                                                     |                  |                       |                     |               |                   |          | has default value in Kconfig           |
-    +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
-    | <uboot/linux>/arch/arm/dts/k3-am642*.dts files      |                  | reserved-memory nodes |                     |               |                   |          |                                        |
-    +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
-    | <uboot>/arch/arm/dts/k3-am642-evm-binman.dtsi file  |                  | tee nodes             | uboot nodes         | uboot nodes   |                   |          |                                        |
-    +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
-    | <uboot>/include/configs/ti_armv7_common.h           |                  |                       |                     |               | fdtaddr           | loadaddr | If not defined here, u-boot            |
-    |                                                     |                  |                       |                     |               |                   |          | will pick any adress                   |
-    +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
-    | uEnv.txt                                            |                  |                       |                     |               | fdtaddr           | loadaddr | Overwrite the u-boot environment       |
-    |                                                     |                  |                       |                     |               |                   |          | variables                              |
-    +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
+    .. code-block:: text
+
+        +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
+        | Source                                              | ATF              | OPTEE                 |  A53 SPL            | A53 U-Boot    | DTB               | kernel   | Comments                               |
+        +=====================================================+==================+=======================+=====================+===============+===================+==========+========================================+
+        | <atf>/plat/ti/k3/board/lite/board.mk                |                  | BL32_BASE             | PRELOADED_BL33_BASE |               | K3_HW_CONFIG_BASE |          | Change K3_HW_CONFIG_BASE for           |
+        |                                                     |                  |                       |                     |               |                   |          | u-boot a53 skip case                   |
+        +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
+        | <optee>/core/arch/arm/plat-k3/conf.mk               |                  | CFG_TZDRAM_START      |                     |               |                   |          |                                        |
+        +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
+        | <uboot>/configs/am64x_evm_r5_defconfig              | K3_ATF_LOAD_ADDR |                       |                     |               |                   |          |                                        |
+        +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
+        | <uboot>/configs/am64x_evm_a53_defconfig             |                  |                       | SPL_TEXT_BASE       | SYS_TEXT_BASE |                   |          | SYS_TEXT_BASE can be set in defconfig, |
+        |                                                     |                  |                       |                     |               |                   |          | has default value in Kconfig           |
+        +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
+        | <uboot/linux>/arch/arm/dts/k3-am642*.dts files      |                  | reserved-memory nodes |                     |               |                   |          |                                        |
+        +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
+        | <uboot>/arch/arm/dts/k3-am642-evm-binman.dtsi file  |                  | tee nodes             | uboot nodes         | uboot nodes   |                   |          |                                        |
+        +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
+        | <uboot>/include/configs/ti_armv7_common.h           |                  |                       |                     |               | fdtaddr           | loadaddr | If not defined here, u-boot            |
+        |                                                     |                  |                       |                     |               |                   |          | will pick any adress                   |
+        +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
+        | uEnv.txt                                            |                  |                       |                     |               | fdtaddr           | loadaddr | Overwrite the u-boot environment       |
+        |                                                     |                  |                       |                     |               |                   |          | variables                              |
+        +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+

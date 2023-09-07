@@ -279,10 +279,9 @@ Build U-Boot
 
             - `ti-u-boot <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/>`__ Branch: ti-u-boot-2023.04
             - `ti-linux-firmware <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/>`__ Branch: ti-linux-firmware
-            - `arm-trusted-firmware <https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/>`__ Commit: 2fcd408bb3a6756767a43c073c597cef06e7f2d5
-            - `optee-os <https://github.com/OP-TEE/optee_os.git/>`__ Commit: 3bc3809afe372ca7e8216fc5d7a64e965bb4ad70
+            - TF-A version: :ref:`tf-a-release-notes`
+            - OP-TEE version: :ref:`optee-release-notes`
 
-            Notice: arm-trusted-firmware and optee-os are now sourced from upstream.
 
         ::
 
@@ -373,10 +372,9 @@ Build U-Boot
 
             - `ti-u-boot <https://git.ti.com/git/ti-u-boot/ti-u-boot.git/>`__ Branch: ti-u-boot-2023.04
             - `ti-linux-firmware <https://git.ti.com/git/processor-firmware/ti-linux-firmware.git/>`__ Branch: ti-linux-firmware
-            - `arm-trusted-firmware <https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/>`__ Commit: 1309c6c805190bd376c0561597653f3f8ecd0f58
-            - `optee-os <https://github.com/OP-TEE/optee_os.git/>`__ Commit: d6c5d0037b46f46caf71d67d7825d4b722cbcddf
+            - TF-A version: :ref:`tf-a-release-notes`
+            - OP-TEE version: :ref:`optee-release-notes`
 
-            Notice: arm-trusted-firmware and optee-os are now sourced from upstream.
 
         ::
 
@@ -420,10 +418,10 @@ Build U-Boot
 
             - `ti-u-boot <https://git.ti.com/git/ti-u-boot/ti-u-boot.git/>`__ Branch: ti-u-boot-2023.04
             - `ti-linux-firmware <https://git.ti.com/git/processor-firmware/ti-linux-firmware.git/>`__ Branch: ti-linux-firmware
-            - `arm-trusted-firmware <https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/>`__ Commit: 2fcd408bb3a6756767a43c073c597cef06e7f2d5
-            - `optee-os <https://github.com/OP-TEE/optee_os.git/>`__ Commit: 3bc3809afe372ca7e8216fc5d7a64e965bb4ad70
+          Where to get the sources:
 
-            Notice: arm-trusted-firmware and optee-os are now sourced from upstream.
+            - TF-A version: :ref:`tf-a-release-notes`
+            - OP-TEE version: :ref:`optee-release-notes`
 
         ::
 

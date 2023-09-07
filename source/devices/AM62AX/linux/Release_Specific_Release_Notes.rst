@@ -70,8 +70,27 @@ U-Boot
 | Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
 |
 
+.. _tf-a-release-notes:
+
+TF-A
+------------------
+| Head Commit: 2fcd408bb3a6756767a43c073c597cef06e7f2d5 feat(ti): do not handle EAs in EL3
+| Repo: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
+| Branch: master
+| Tag: 2.8+
+|
+
+.. _optee-release-notes:
+
+OP-TEE
+------------------
+| Head Commit: 8e74d47616a20eaa23ca692f4bbbf917a236ed94 Update CHANGELOG for 3.20.0
+| Repo: https://github.com/OP-TEE/optee_os/
+| Branch: master
+| Tag: 3.20.0
+|
+
 Kernel
-------
 
 .. rubric:: Linux Kernel
    :name: linux-kernel
