@@ -42,7 +42,7 @@ Release 09.00.00
 Released on July 2023
 
 What's new
-----------
+------------------
 
 Processor SDK Linux AM62x Release has following new features:
 
@@ -68,8 +68,10 @@ Major Refresh of component version:
 Build Information
 =================
 
+.. _u-boot-release-notes:
+
 U-Boot
-------
+------------------
 
 .. rubric:: u-boot
    :name: u-boot
@@ -85,6 +87,8 @@ U-Boot
 | Compiler Information:
 | - arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu
 | - arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf
+|
+
 .. _tf-a-release-notes:
 
 TF-A
@@ -105,8 +109,19 @@ OP-TEE
 | Tag: 3.20.0
 |
 
+.. _ti-linux-fw-release-notes:
+
+Ti-linux-firmware
+------------------
+| Head Commit: 6572c6e7cad584f9bb891076ab6ba06aa062edbb ti-dm: Update firmware to 09.00.06a for J7200
+| Date: 2023-07-04 09:03:52 -0500
+| Clone: https://git.ti.com/cgit/processor-firmware/ti-linux-firmware
+| Branch: ti-linux-firmware
+| Tag: 09.00.00.006
+|
 
 Kernel
+------------------
 
 .. rubric:: Linux Kernel
    :name: linux-kernel
@@ -125,6 +140,7 @@ Kernel
 | Compiler Information:
 | - arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu
 | - arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf
+|
 
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
@@ -143,9 +159,10 @@ Kernel
 | Compiler Information:
 | - arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu
 | - arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf
+|
 
 Yocto
------
+------------------
 .. rubric:: meta-ti
    :name: meta-ti
 

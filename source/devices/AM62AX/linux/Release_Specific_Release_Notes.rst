@@ -53,8 +53,10 @@ Processor SDK Linux AM62A Release has following new features:
 Build Information
 =================
 
+.. _u-boot-release-notes:
+
 U-Boot
-------
+------------------
 
 .. rubric:: u-boot
    :name: u-boot
@@ -90,7 +92,19 @@ OP-TEE
 | Tag: 3.20.0
 |
 
+.. _ti-linux-fw-release-notes:
+
+Ti-linux-firmware
+------------------
+| Head Commit: 6572c6e7cad584f9bb891076ab6ba06aa062edbb ti-dm: Update firmware to 09.00.06a for J7200
+| Date: 2023-07-04 09:03:52 -0500
+| Clone: https://git.ti.com/cgit/processor-firmware/ti-linux-firmware
+| Branch: ti-linux-firmware
+| Tag: 09.00.00.006
+|
+
 Kernel
+------------------
 
 .. rubric:: Linux Kernel
    :name: linux-kernel
@@ -125,7 +139,7 @@ Kernel
 |
 
 Yocto
------
+------------------
 .. rubric:: meta-processor-sdk
    :name: meta-processor-sdk
 

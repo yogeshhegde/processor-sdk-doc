@@ -277,13 +277,12 @@ Build U-Boot
 
             Where to get the sources:
 
-            - `ti-u-boot <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/>`__ Branch: ti-u-boot-2023.04
-            - `ti-linux-firmware <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/>`__ Branch: ti-linux-firmware
+            - ti-u-boot version: :ref:`u-boot-release-notes`
+            - ti-linux-firmware version: :ref:`ti-linux-fw-release-notes`
             - TF-A version: :ref:`tf-a-release-notes`
             - OP-TEE version: :ref:`optee-release-notes`
 
-
-        ::
+        .. code-block:: console
 
           $ export UBOOT_DIR=<path-to-ti-u-boot>
           $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
@@ -292,8 +291,9 @@ Build U-Boot
 
         .. note::
 
-            The instructions below assume all binaries are built manually. For instructions to build bl31.bin go to: :ref:`foundational-components-optee`. For instructions to build bl32.bin/tee-pager_v2.bin
-            go to: :ref:`foundational-components-atf`. To use existing images, go to <path-to-tisdk>/board-support/prebuilt-images to get the pre-build binaries that come in the pre-built SDK (bl31.bin for BL31, bl32.bin for TEE and BINMAN_INDIRS can point to <path-to-tisdk>/board-support/prebuilt-images itself)
+            The instructions below assume all binaries are built manually. For instructions to build bl31.bin go to: :ref:`foundational-components-optee`.
+            For instructions to build tee-pager_v2.bin (bl32.bin) go to: :ref:`foundational-components-atf`. BINMAN_INDIRS can point to
+            <path-to-tisdk>/board-support/prebuilt-images/am64xx-evm to use the pre-built binaries that come in the pre-built SDK (bl31.bin for BL31, bl32.bin for TEE).
 
         .. code-block:: console
 
@@ -366,17 +366,17 @@ Build U-Boot
         |    AM62X LP SK             |    am62x\_lpsk\_r5\_defconfig   |    am62x\_lpsk\_r5\_defconfig   |   am62x\_lpsk\_r5\_defconfig   |   am62x\_lpsk\_r5\_defconfig   |   am62x\_lpsk\_r5\_usbdfu\_defconfig   |                                        |
         |                            |    am62x\_lpsk\_a53\_defconfig  |    am62x\_lpsk\_a53\_defconfig  |   am62x\_lpsk\_a53\_defconfig  |   am62x\_lpsk\_a53\_defconfig  |   am62x\_lpsk\_a53\_defconfig          |                                        |
         +----------------------------+---------------------------------+---------------------------------+--------------------------------+--------------------------------+----------------------------------------+----------------------------------------+
+
         .. note::
 
             Where to get the sources:
 
-            - `ti-u-boot <https://git.ti.com/git/ti-u-boot/ti-u-boot.git/>`__ Branch: ti-u-boot-2023.04
-            - `ti-linux-firmware <https://git.ti.com/git/processor-firmware/ti-linux-firmware.git/>`__ Branch: ti-linux-firmware
+            - ti-u-boot version: :ref:`u-boot-release-notes`
+            - ti-linux-firmware version: :ref:`ti-linux-fw-release-notes`
             - TF-A version: :ref:`tf-a-release-notes`
             - OP-TEE version: :ref:`optee-release-notes`
 
-
-        ::
+        .. code-block:: console
 
           $ export UBOOT_DIR=<path-to-ti-u-boot>
           $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
@@ -385,16 +385,16 @@ Build U-Boot
 
         .. note::
 
-            The instructions below assume all binaries are built manually. For instructions to build bl31.bin go to: :ref:`foundational-components-optee`. For instructions to build tee-pager_v2.bin (bl32.bin)
-            go to: :ref:`foundational-components-atf`. To use existing images, go to <path-to-tisdk>/board-support/prebuilt-images to obtain pre-build binaries that come in the pre-built SDK (bl31.bin for BL31, bl32.bin for TEE and BINMAN_INDIRS can point to <path-to-tisdk>/board-support/prebuilt-images itself)
-
+            The instructions below assume all binaries are built manually. For instructions to build bl31.bin go to: :ref:`foundational-components-optee`.
+            For instructions to build tee-pager_v2.bin (bl32.bin) go to: :ref:`foundational-components-atf`. BINMAN_INDIRS can point to
+            <path-to-tisdk>/board-support/prebuilt-images/am62xx-evm to use the pre-built binaries that come in the pre-built SDK (bl31.bin for BL31, bl32.bin for TEE).
 
         .. code-block:: console
 
           R5
           To build tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62x_evm_r5_defconfig O=$UBOOT_DIR/out/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images/am62xx-evm
 
 
           A53
@@ -414,16 +414,14 @@ Build U-Boot
 
         .. note::
 
-            Where to get the sources:
-
-            - `ti-u-boot <https://git.ti.com/git/ti-u-boot/ti-u-boot.git/>`__ Branch: ti-u-boot-2023.04
-            - `ti-linux-firmware <https://git.ti.com/git/processor-firmware/ti-linux-firmware.git/>`__ Branch: ti-linux-firmware
           Where to get the sources:
 
+            - ti-u-boot version: :ref:`u-boot-release-notes`
+            - ti-linux-firmware version: :ref:`ti-linux-fw-release-notes`
             - TF-A version: :ref:`tf-a-release-notes`
             - OP-TEE version: :ref:`optee-release-notes`
 
-        ::
+        .. code-block:: console
 
           $ export UBOOT_DIR=<path-to-ti-u-boot>
           $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
@@ -432,8 +430,9 @@ Build U-Boot
 
         .. note::
 
-            The instructions below assume all binaries are built manually. For instructions to build bl31.bin go to: :ref:`foundational-components-optee`. For instructions to build tee-pager_v2.bin (bl32.bin)
-            go to: :ref:`foundational-components-atf`. To use existing images, go to <path-to-tisdk>/board-support/prebuilt-images to obtain pre-build binares that come in the pre-built SDK (bl31.bin for BL31, bl32.bin for TEE and BINMAN_INDIRS can point to <path-to-tisdk>/board-support/prebuilt-images itself)
+            The instructions below assume all binaries are built manually. For instructions to build bl31.bin go to: :ref:`foundational-components-optee`.
+            For instructions to build tee-pager_v2.bin (bl32.bin) go to: :ref:`foundational-components-atf`. BINMAN_INDIRS can point to
+            <path-to-tisdk>/board-support/prebuilt-images to use the pre-built binaries that come in the pre-built SDK (bl31.bin for BL31, bl32.bin for TEE).
 
         .. code-block:: console
 
