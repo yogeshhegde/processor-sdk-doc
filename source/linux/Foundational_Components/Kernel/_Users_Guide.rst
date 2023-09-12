@@ -49,7 +49,7 @@ to be added to the PATH environment variable
 
     [comment] The same path applies to both 32 bit and 64 bit processors
 
-::
+.. code-block:: console
 
     export PATH=<sdk path>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin:$PATH
 
@@ -76,7 +76,7 @@ The command to clean the kernel is:
   [comment] instructions for 32 bit processors
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- distclean
 
@@ -84,7 +84,7 @@ The command to clean the kernel is:
   [comment] instructions for 64 bit processors
 .. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- distclean
 
@@ -107,7 +107,7 @@ a command of the form:
   [comment] instructions for 32 bit processors
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- <defconfig>
 
@@ -115,7 +115,7 @@ a command of the form:
   [comment] instructions for 64 bit processors
 .. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- <defconfig>
 
@@ -136,7 +136,7 @@ as a starting point).
 
     For example, to apply the default AM335x kernel configuration, use:
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- tisdk_am335x-evm_defconfig
 
@@ -146,7 +146,7 @@ as a starting point).
 
     For example, to apply the recommended kernel configuration for K3 devices, use:
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig ti_arm64_prune.config
 
@@ -172,13 +172,13 @@ To invoke the kernel configuration you simply use a command like:
   [comment] instructions for 32 bit processors
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- <config type>
 
     i.e. for menuconfig the command would look like
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- menuconfig
 
@@ -186,13 +186,13 @@ To invoke the kernel configuration you simply use a command like:
   [comment] instructions for 64 bit processors
 .. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- <config type>
 
     i.e. for menuconfig the command would look like
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- menuconfig
 
@@ -221,7 +221,7 @@ Compiling the Kernel
 
     To just build the zImage use this command
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- zImage
 
@@ -244,7 +244,7 @@ Compiling the Kernel
     as well as any dynamic kernel modules that were selected. To rebuild kernel `Image` to boot as
     is or for FIT image boot, use this command:
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- Image
 
@@ -310,7 +310,7 @@ Compiling the Device Tree Binaries
     for the board you are using and replace the .dts extension with .dtb.
     Then run the following command:
 
-    ::
+    .. code-block:: console
 
         make DTC_FLAGS=-@ ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- <dt filename>.dtb
 
@@ -319,13 +319,13 @@ Compiling the Device Tree Binaries
     For example, the Beaglebone Black device tree file is named
     am335x-boneblack.dts. To build the device tree binary you would run:
 
-    ::
+    .. code-block:: console
 
         make DTC_FLAGS=-@ ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am335x-boneblack.dtb
 
     Alternatively, you can build every device tree binary with command
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- dtbs
 
@@ -374,7 +374,7 @@ Compiling the Device Tree Binaries
     for the board you are using and replace the .dts extension with .dtb.
     Then run the following command:
 
-    ::
+    .. code-block:: console
 
         make DTC_FLAGS=-@ ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- ti/<dt filename>.dtb
 
@@ -383,13 +383,13 @@ Compiling the Device Tree Binaries
     For example, the AM64x EVM device tree file is named
     k3-am642-evm.dts. To build the device tree binary you would run:
 
-    ::
+    .. code-block:: console
 
         make DTC_FLAGS=-@ ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- ti/k3-am642-evm.dtb
 
     Alternatively, you can build every device tree binary with command
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- dtbs
 
@@ -404,7 +404,7 @@ Compiling the Kernel Modules
     integrated into the kernel image file (zImage). These drivers are built as
     dynamic modules. The command to build these modules is:
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- modules
 
@@ -416,7 +416,7 @@ Compiling the Kernel Modules
     integrated into the kernel image file (Image). These drivers are built as
     dynamic modules. The command to build these modules is:
 
-    ::
+    .. code-block:: console
 
         make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- modules
 
@@ -442,7 +442,7 @@ But developers may want to deploy and test new Kernel and DTB without going
 through the standard build system. For the specific purpose, board specific
 fitImage.its will be present in the prebuilt-images directory.
 
-Pre-requisites ( Already part of SDK installations )::
+Pre-requisites ( Already part of SDK installations ):
 
 - Uboot build directory for ARMV8
 - Linux Image and DTB
@@ -459,7 +459,7 @@ Describing FIT source
 FIT Image is a packed structure containing binary blobs and configurations.
 The Kernel FIT Image that we have has Kernel Image, DTB and the DTBOs
 
-.. code-block::
+.. code-block:: dts
 
     kernel-1 {
             description = "Linux kernel";
@@ -505,7 +505,7 @@ For e.g change "linux.bin" to
 
 The new addition to the FIT from 8.6 to 9.0 is the FIT Signature.
 
-.. code-block::
+.. code-block:: dts
 
     conf-ti_k3-j721e-common-proc-board.dtb {
             description = "Linux kernel, FDT blob";
@@ -528,7 +528,7 @@ It should be the name of the file containing the keys.
 
     Generating new set of keys:
 
-    .. code-block::
+    .. code-block:: console
 
         $ mkdir keys
         $ openssl genpkey -algorithm RSA -out keys/dev.key \
@@ -547,7 +547,7 @@ Generating the fitImage
 
         For e.g
 
-        .. code-block::
+        .. code-block:: diff
 
             diff --git a/configs/j721e_evm_a72_defconfig b/configs/j721e_evm_a72_defconfig
             index a5c1df7e0054..6d0126d955ef 100644
@@ -567,25 +567,25 @@ Generating the fitImage
 
         For e.g
 
-        .. code-block::
+        .. code-block:: diff
 
             diff --git a/arch/arm/dts/k3-j721e-binman.dtsi b/arch/arm/dts/k3-j721e-binman.dtsi
-                  index 673be646b1e3..752fa805fe8d 100644
-                  --- a/arch/arm/dts/k3-j721e-binman.dtsi
-                  +++ b/arch/arm/dts/k3-j721e-binman.dtsi
-                  @@ -299,8 +299,8 @@
-                   #define SPL_J721E_SK_DTB "spl/dts/k3-j721e-sk.dtb"
+            index 673be646b1e3..752fa805fe8d 100644
+            --- a/arch/arm/dts/k3-j721e-binman.dtsi
+            +++ b/arch/arm/dts/k3-j721e-binman.dtsi
+            @@ -299,8 +299,8 @@
+            #define SPL_J721E_SK_DTB "spl/dts/k3-j721e-sk.dtb"
 
-                   #define UBOOT_NODTB "u-boot-nodtb.bin"
-                  -#define J721E_EVM_DTB "u-boot.dtb"
-                  -#define J721E_SK_DTB "arch/arm/dts/k3-j721e-sk.dtb"
-                  +#define J721E_EVM_DTB "arch/arm/dts/k3-j721e-common-proc-board.dtb"
-                  +#define J721E_SK_DTB "u-boot.dtb"
+            #define UBOOT_NODTB "u-boot-nodtb.bin"
+            -#define J721E_EVM_DTB "u-boot.dtb"
+            -#define J721E_SK_DTB "arch/arm/dts/k3-j721e-sk.dtb"
+            +#define J721E_EVM_DTB "arch/arm/dts/k3-j721e-common-proc-board.dtb"
+            +#define J721E_SK_DTB "u-boot.dtb"
 
 This step will embed the public key in the u-boot.dtb file that was already
 built during the initial u-boot build.
 
-.. code-block::
+.. code-block:: console
 
     mkimage -r -f fitImage.its -k $UBOOT_PATH/board/ti/keys -K $UBOOT_PATH/build/$ARMV8/dts/dt.dtb fitImage
 
@@ -619,7 +619,7 @@ Installing the Kernel Image and Device Tree Binaries
   [comment] instructions for 32 bit processors
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    ::
+    .. code-block:: console
 
         cd <kernel sources dir>
         sudo cp arch/arm/boot/zImage <rootfs path>/boot
@@ -629,7 +629,7 @@ Installing the Kernel Image and Device Tree Binaries
     Black device tree file to the rootfs partition of a SD card you would
     enter the below commands:
 
-    ::
+    .. code-block:: console
 
          cd <kernel sources dir>
          sudo cp arch/arm/boot/zImage /media/rootfs/boot
@@ -639,7 +639,7 @@ Installing the Kernel Image and Device Tree Binaries
   [comment] instructions for 64 bit processors
 .. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    ::
+    .. code-block:: console
 
         cd <kernel sources dir>
         sudo cp arch/arm64/boot/Image <rootfs path>/boot
@@ -649,7 +649,7 @@ Installing the Kernel Image and Device Tree Binaries
     device tree file to the rootfs partition of a SD card you would
     enter the below commands:
 
-    ::
+    .. code-block:: console
 
          cd <kernel sources dir>
          sudo cp arch/arm64/boot/Image /media/rootfs/boot
@@ -675,14 +675,14 @@ file system. The general format of the command is:
   [comment] instructions for 32 bit processors
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    ::
+    .. code-block:: console
 
         sudo make ARCH=arm  INSTALL_MOD_PATH=<path to root of file system> modules_install
 
     For example if you are installing the modules on the rootfs partition of
     the SD card you would do:
 
-    ::
+    .. code-block:: console
 
         sudo make ARCH=arm INSTALL_MOD_PATH=/media/rootfs modules_install
 
@@ -690,14 +690,14 @@ file system. The general format of the command is:
   [comment] instructions for 64 bit processors
 .. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    ::
+    .. code-block:: console
 
         sudo make ARCH=arm64  INSTALL_MOD_PATH=<path to root of file system> modules_install
 
     For example if you are installing the modules on the rootfs partition of
     the SD card you would do:
 
-    ::
+    .. code-block:: console
 
         sudo make ARCH=arm64 INSTALL_MOD_PATH=/media/rootfs modules_install
 
