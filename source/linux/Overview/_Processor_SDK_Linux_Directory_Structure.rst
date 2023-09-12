@@ -9,7 +9,7 @@ directories and files
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    .. code-block::
+    .. code-block:: console
 
         ./
         ├── bin/

@@ -44,7 +44,7 @@ Build U-Boot
     We strongly recommend using the toolchain that came with the Linux Core
     release that corresponds to this U-Boot release. For e.g:
 
-    ::
+    .. code-block:: console
 
         export PATH=$HOME/<TOOLCHAIN_PATH>/bin:$PATH
 
@@ -52,13 +52,13 @@ Build U-Boot
 
     If you did not use a separate object directory:
 
-    ::
+    .. code-block:: console
 
         $ make CROSS_COMPILE=arm-none-linux-gnueabihf- distclean
 
     If you used 'O=am335x\_evm' as your object directory:
 
-    ::
+    .. code-block:: console
 
         $ rm -rf ./am335x_evm
 
@@ -113,7 +113,7 @@ Build U-Boot
 
     Then (Use 'am335x_evm' and 'AM335x GP EVM' in this example):
 
-    ::
+    .. code-block:: console
 
         $ make CROSS_COMPILE=arm-none-linux-gnueabihf- O=am335x_evm am335x_evm_defconfig
         $ make CROSS_COMPILE=arm-none-linux-gnueabihf- O=am335x_evm
@@ -166,7 +166,7 @@ Build U-Boot
     We strongly recommend using the toolchain that came with the Linux Core
     release that corresponds to this U-Boot release. For e.g:
 
-    ::
+    .. code-block:: console
 
         export PATH=$HOME/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf/bin:$PATH
         export PATH=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu/bin:$PATH
@@ -605,7 +605,7 @@ Image Formats
 
        - tiboot3.bin
 
-       .. code-block:: console
+       .. code-block:: text
 
             +-----------------------+
             |        X.509          |
@@ -627,7 +627,7 @@ Image Formats
 
        - tispl.bin
 
-       .. code-block:: console
+       .. code-block:: text
 
             +-----------------------+
             |                       |
@@ -649,7 +649,7 @@ Image Formats
 
        - sysfw.itb
 
-       .. code-block:: console
+       .. code-block:: text
 
             +-----------------------+
             |                       |
@@ -676,7 +676,7 @@ Image Formats
 
        - tiboot3.bin
 
-       .. code-block:: console
+       .. code-block:: text
 
             +-----------------------+
             |        X.509          |
@@ -698,7 +698,7 @@ Image Formats
 
        - tispl.bin
 
-       .. code-block:: console
+       .. code-block:: text
 
             +-----------------------+
             |                       |
@@ -723,7 +723,7 @@ Image Formats
 
        - sysfw.itb
 
-       .. code-block:: console
+       .. code-block:: text
 
             +-----------------------+
             |                       |
@@ -750,7 +750,7 @@ Image Formats
 
         - tiboot3.bin:
 
-           .. code-block:: console
+           .. code-block:: text
 
                     +-----------------------+
                     |        X.509          |
@@ -791,7 +791,7 @@ Image Formats
 
         - tispl.bin
 
-           .. code-block:: console
+           .. code-block:: text
 
                     +-----------------------+
                     |                       |
@@ -818,7 +818,7 @@ Image Formats
 
         - tiboot3.bin:
 
-           .. code-block:: console
+           .. code-block:: text
 
                     +-----------------------+
                     |        X.509          |
@@ -859,7 +859,7 @@ Image Formats
 
         - tispl.bin
 
-           .. code-block:: console
+           .. code-block:: text
 
                     +-----------------------+
                     |                       |
@@ -883,7 +883,7 @@ Image Formats
 
        - tiboot3.bin:
 
-       .. code-block:: console
+       .. code-block:: text
 
             +-----------------------+
             |        X.509          |
@@ -910,7 +910,7 @@ Image Formats
 
        - tispl.bin
 
-       .. code-block:: console
+       .. code-block:: text
 
             +-----------------------+
             |                       |
@@ -1019,7 +1019,7 @@ Boot Flow
 
     .. ifconfig:: CONFIG_part_family not in ('J7_family', 'AM64X_family', 'AM62X_family', 'AM62AX_family')
 
-         .. code-block:: console
+         .. code-block:: text
 
              +------------------------------------------------------------------------+
              |        DMSC            |         R5            |        ARM64          |
@@ -1092,7 +1092,7 @@ Boot Flow
 
     .. ifconfig:: CONFIG_part_variant in ('J721E')
 
-        .. code-block:: console
+        .. code-block:: text
 
             +------------------------------------------------------------------------+-----------------------+
             |        DMSC            |      MCU R5           |        A72            |  MAIN R5/C66x/C7x     |
@@ -1185,7 +1185,7 @@ Boot Flow
 
     .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2', 'J784S4')
 
-        .. code-block:: console
+        .. code-block:: text
 
             +------------------------------------------------------------------------+-----------------------+
             |        SMS             |      MCU R5           |        A72            |  MAIN R5/C7x          |
@@ -1272,7 +1272,7 @@ Boot Flow
 
     .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-        .. code-block:: console
+        .. code-block:: text
 
             +------------------------------------------------------------------------+-----------------------+
             |        DMSC            |      MAIN R50         |         A53           |   MAIN R51            |
@@ -1349,7 +1349,7 @@ Boot Flow
 
     .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        .. code-block:: console
+        .. code-block:: text
 
             +------------------------------------------------------------------------+
             |        TIFS            |      Main R5          |        A53            |
@@ -1439,7 +1439,7 @@ actually being set during the development workflow.
 
 **Writing to MMC/EMMC**
 
-.. code-block::
+.. code-block:: console
 
   => env export -t $loadaddr <list of variables>
   => fatwrite mmc ${mmcdev} ${loadaddr} ${bootenvfile} ${filesize}
@@ -1463,7 +1463,7 @@ mmcdev) and set the environments.
 If manually needs to be done then the environment can be read from the
 filesystem and then imported
 
-.. code-block::
+.. code-block:: console
 
   => fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}
   => env import -t ${loadaddr} ${filesize}
@@ -1479,18 +1479,18 @@ environment. To create a valid address please read `**this
 page** <http://www.denx.de/wiki/view/DULG/WhereCanIGetAValidMACAddress>`__.
 Then issue the following command:
 
-::
+.. code-block:: console
 
-    U-Boot # setenv usbethaddr value:from:link:above
+    => setenv usbethaddr value:from:link:above
 
 You can use the **printenv** command to see if **usbethaddr** is already
 set.
 
 Then start the USB subsystem:
 
-::
+.. code-block:: console
 
-    U-Boot # usb start
+    => usb start
 
 The default behavior of U-Boot is to utilize all information that a DHCP
 server passes to us when the user issues the **dhcp** command. This will
@@ -1499,20 +1499,20 @@ files from via TFTP. There may be times however where the dhcp server on
 your network provides incorrect information and you are unable to modify
 the server. In this case the following steps can be helpful:
 
-::
+.. code-block:: console
 
-    U-Boot # setenv autoload no
-    U-Boot # dhcp
-    U-Boot # setenv serverip correct.server.ip
-    U-Boot # tftp
+    => setenv autoload no
+    => dhcp
+    => setenv serverip correct.server.ip
+    => tftp
 
 Another alternative is to utilize the full syntax of the tftp command:
 
-::
+.. code-block:: console
 
-    U-Boot # setenv autoload no
-    U-Boot # dhcp
-    U-Boot # tftp ${loadaddr} server.ip:fileName
+    => setenv autoload no
+    => dhcp
+    => tftp ${loadaddr} server.ip:fileName
 
 Available RAM for image download
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1520,7 +1520,7 @@ Available RAM for image download
 To know the amount of RAM available for downloading images or for other
 usage, use ``bdinfo`` command.
 
-::
+.. code-block:: console
 
     => bdinfo
     arch_number = 0x00000000
@@ -1565,7 +1565,7 @@ The SRAM memory layout explains the memory used for Bootloader's operation.
 
     .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-        .. code-block:: console
+        .. code-block:: text
 
             ┌──────────────────────────────────────┐0x70000000
             │                                      │
@@ -1614,7 +1614,7 @@ The SRAM memory layout explains the memory used for Bootloader's operation.
 
     .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        .. code-block:: console
+        .. code-block:: text
 
             ┌──────────────────────────────────────┐0x43c00000
             │                                      │

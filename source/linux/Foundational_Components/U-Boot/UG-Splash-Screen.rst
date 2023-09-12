@@ -37,7 +37,7 @@ to recompile tispl.bin. Use the new tispl.bin to boot the board to see splash sc
 
 At SPL stage splash screen is called from board/ti/am62x/evm.c in function spl_board_init
 
-::
+.. code-block:: c
 
       video_setup();
       enable_caches();
@@ -48,7 +48,7 @@ U-boot Proper
 ^^^^^^^^^^^^^
 To enable splash screen at U-boot proper enable following configs in configs/am62x_evm_a53_defconfig.
 
-::
+.. code-block:: c
 
         CONFIG_SPLASH_SCREEN=y
         CONFIG_SPLASH_SOURCE=y
@@ -58,8 +58,8 @@ To enable splash screen at U-boot proper enable following configs in configs/am6
 If user only want splash screen feature at u-boot proper, user can disable splash screen at A53 SPL
 splash screen using kconfig **CONFIG_SPL_VIDEO**.
 
-::
-   
+.. code-block:: c
+
          # CONFIG_SPL_VIDEO=y
 
 Splash screen feature at u-boot proper will be compiled in u-boot.img, built during u-boot
@@ -77,7 +77,7 @@ In U-boot all information for image to be displayed as splash screen is passed t
 defined below. These should be added in the .env file used by the board. For reference
 board/ti/am62x.env .
 
-::
+.. code-block:: c
 
       #Name of file to be displayed
       splashfile=ti_logo_414x97_32bpp.bmp.gz
@@ -85,10 +85,10 @@ board/ti/am62x.env .
       #DDR address to load image fom boot media
       splashimage=0x80200000
 
-      #position of image on display
+      #Position of image on display
       splashpos=m,m
 
-      #source of bmp image
+      #Source of bmp image
       splashsource=mmc
 
 To display custom logo change the **splashfile** variable to logo_file_name.
@@ -100,7 +100,7 @@ To display image from a different source, add the source information in struct
 default_splash_locations, which is defined in board.c. For reference board/ti/am62x/evm.c, by
 default OSPI and SD card as source are added for AM62x.
 
-::
+.. code-block:: c
 
       static struct splash_location default_splash_locations[] = {
    		{
@@ -139,7 +139,7 @@ A53 SPL
 ^^^^^^^
 To enable splash screen at A53 SPL enable following configs in configs/am62x_evm_a53_defconfig :
 
-::
+.. code-block:: c
 
    CONFIG_CMD_BMP=y
    CONFIG_VIDEO=y
@@ -175,7 +175,7 @@ U-boot proper
 ^^^^^^^^^^^^^
 To enable splash screen at u-boot proper enable following configs configs/am62x_evm_a53_defconfig:
 
-::
+.. code-block:: c
 
    CONFIG_DM_GPIO=y
    CONFIG_CMD_BMP=y
@@ -218,33 +218,33 @@ Display image using u-boot command line
 ---------------------------------------
 To test display and video driver in U-boot, at U-boot console run the following commands.
 
-::
+.. code-block:: console
 
-      To see all the files in your boot partition run
+      #To see all the files in your boot partition run
       => ls mmc 1
 
-      To load image
+      #To load image
       => fatload mmc 1 $loadaddr ti_logo_414x97_32bpp.bmp.gz
 
-      To display image
+      #To display image
       =>  bmp display $loadaddr m m
 
 The above command will display an image at centre of the screen.
 
-::
+.. code-block:: console
 
-      To get bmp image info
+      #To get bmp image info
       => bmp info
 
 Run splash screen using OSPI NOR
 --------------------------------
 #. To load bmp image on OSPI NOR run the following commands
 
-::
+.. code-block:: console
 
-   	   sf probe
-   	   fatload mmc 1 $loadaddr file_name.bmp
-   	   sf update $loadaddr 0x700000 $filesize
+      => sf probe
+      => fatload mmc 1 $loadaddr file_name.bmp
+      => sf update $loadaddr 0x700000 $filesize
 
 #. Change splashsource to sf in board.env, recompile tispl.bin for SPL stage and u-boot.img for U-boot
    proper.
@@ -256,7 +256,7 @@ Display RLE compressed image
 -----------------------------
 Enable following kconfigs to support **8bit** RLE compressed image.
 
-::
+.. code-block:: c
 
       CONFIG_SPL_VIDEO_BMP_RLE8  #for SPL splash screen
       CONFIG_VIDEO_BMP_RLE8      #for U-boot splash screen
@@ -269,7 +269,7 @@ blob containing video buffer address is passed from SPL stage to u-boot proper. 
 displaying the splash image after linux boot starts,a frame-buffer is reserved in linux device tree
 arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi, defining the video frame-buffer address and size.
 
-::
+.. code-block:: dts
 
       framebuffer: framebuffer@ff700000 {
             reg = <0x00 0xff700000 0x00 0x008ca000>;
