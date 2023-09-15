@@ -123,6 +123,8 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
        Your tisdk-default-image wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.    
 
+.. note:: While building images via Yocto, if you are facing **submodule init failed for powervr-graphics recipe** then you need to apply `powervr-graphics: Fix submodule related build issue <https://git.ti.com/cgit/processor-sdk/meta-processor-sdk/patch/?id=c07350d86ebe1dded563ecc545896b6fef807b42>`__ patch on meta-processor-sdk which is under tisdk/sources.
+
 .. note:: While building images via Yocto, if you are facing **locale.Error: unsupported locale setting** error it means your system is trying to use locale setting which was not there. Run the following commands which will setup the locale and try building your target image again.
 
     ::
