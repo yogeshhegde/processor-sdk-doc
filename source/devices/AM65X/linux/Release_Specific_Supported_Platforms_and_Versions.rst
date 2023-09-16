@@ -17,7 +17,7 @@ SDK.
 | Ubuntu                    | | 18.04 (64-bit)        |
 +---------------------------+-------------------------+
 
-| 
+|
 
 .. rubric:: Supported Platforms and EVMs
 

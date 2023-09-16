@@ -142,7 +142,7 @@ which, in turn, will trigger the rpmsg-kdrv core to discover "mpu_1_0_ethswitch-
 
 The j721e-cpsw-virt-mac driver is started separately by the Linux core once the corresponding main_r5fss_cpswng_virt_macX device has been created by the Linux DT parsing code.
 Once started, the j721e-cpsw-virt-mac driver will wait for rpmsg_kdrv_switch driver to be probed.
- 
+
 .. note::
 
    The EthSwitch FW may also be loaded by the bootloader, and, in this case, the remoteproc components will be started in "IPC-only" mode.

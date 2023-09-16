@@ -51,10 +51,10 @@ System Benchmarks
 
 LMBench
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-LMBench is a collection of microbenchmarks of which the memory bandwidth 
-and latency related ones are typically used to estimate processor 
+LMBench is a collection of microbenchmarks of which the memory bandwidth
+and latency related ones are typically used to estimate processor
 memory system performance.
-  
+
 **Latency**: lat_mem_rd-stride128-szN, where N is equal to or smaller than the cache
 size at given level measures the cache miss penalty. N that is at least
 double the size of last level cache is the latency to external memory.
@@ -189,7 +189,7 @@ Dhrystone
 Dhrystone is a core only benchmark that runs from warm L1 caches in all
 modern processors. It scales linearly with clock speed. For standard ARM
 cores the DMIPS/MHz score will be identical with the same compiler and flags.
-  
+
 .. csv-table::
     :header: "Benchmarks","am335x-evm: perf","am57xx-evm: perf","am654x-evm: perf","k2g-evm: perf","omapl138-lcdk: perf"
 
@@ -1311,7 +1311,7 @@ MMC/SD Driver
   sensitive applications, umount the auto-mounted filesystem and
   re-mount in async mode.
 
-| 
+|
 
 
 

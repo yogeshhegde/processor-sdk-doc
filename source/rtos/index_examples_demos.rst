@@ -59,7 +59,7 @@ Gravity Simulator Demo
 
 
 ***************************
-Jailhouse Hypervisor 
+Jailhouse Hypervisor
 ***************************
 .. include:: Examples_and_Demonstrations/_Jailhouse_Hypervisor.rst
 

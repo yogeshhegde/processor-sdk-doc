@@ -115,7 +115,7 @@ Create the PRU Project
          **AM62** instead.
 
    #. Select the **PRU** tab. Specify a **Project Name (such as "pru_add")**.
-   
+
    #. Verify that a Compiler version is listed (e.g., **TI v2.3.3**).
 
       .. note::
@@ -124,7 +124,7 @@ Create the PRU Project
          Go to **View->CCS App Center**. Select the **PRU Compiler**. Download the
          PRU compiler by selecting the **Install Software** button. Then redo the
          previous steps.
-   
+
    #. Select an "Empty Projects" template. Select **Empty Project**.
 
       .. TODO: Add screenshot(s) here.
@@ -157,7 +157,7 @@ Creating a Linux PRU Project
    the new branch (i.e., "checkout" the new branch).
 
    ::
-   
+
       $ git branch getting_started_labs
       $ git checkout getting_started_labs
 
@@ -174,7 +174,7 @@ Creating a Linux PRU Project
    * Example: AM62x with RPMsg on PRU0, project name PRU_Add:
 
      ::
- 
+
         $ cp -r PRU_RPMsg_Echo_Interrupt0 PRU_Add
 
    * Example: AM64x on RTU1, no RPMsg, project name RTU_Add:

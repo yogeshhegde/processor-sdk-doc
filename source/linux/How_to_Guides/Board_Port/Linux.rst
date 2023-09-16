@@ -5,11 +5,11 @@ Overview
 --------
 This document describes how to conduct a Linux Board Port on an
 AM335x-type custom board. This process will first start with a base
-Board Port using a **hello_world.dts** file, which can then be 
+Board Port using a **hello_world.dts** file, which can then be
 iteratively changed to add needed peripherals.
 
 This tutorial assumes the latest `TI SDK
-<https://software-dl.ti.com/processor-sdk-linux/esd/AM335X/latest/index_FDS.html>`__ 
+<https://software-dl.ti.com/processor-sdk-linux/esd/AM335X/latest/index_FDS.html>`__
 has been installed, and a host machine has been properly configured.
 
 This tutorial also recommends using TI's :download:`hello_world.dts <files/hello_world.dts>` file.
@@ -24,7 +24,7 @@ This tutorial also recommends using TI's :download:`hello_world.dts <files/hello
    peripherals of the selected processor. The DTSI is used as an include file for a
    custom board DTS file. Typically these DTSI files should be used as is and
    should not be edited. The main reason is that TI may make peripheral node
-   definition changes during development of an SDK release.  
+   definition changes during development of an SDK release.
 
 Creating an initial baseline "Hello World" Device Tree Source file
 ------------------------------------------------------------------
@@ -70,7 +70,7 @@ file.
       **<PROCESSOR-SDK>/board-support/linux-x.xx.xx+gitAUTOINC+be5389fd85-gbe5389fd85/arch/arm/boot/dts/**
 
    .. note:: MMC and UART are the minimum devices necessary to conduct a minimal
-      Linux board port. More peripherals can be added iteratively in the next section. 
+      Linux board port. More peripherals can be added iteratively in the next section.
 
    .. note:: Binding peripherals is very important to a successful Linux board
       port. The included hello_world.dts file has already binded the MMC and UART
@@ -125,11 +125,11 @@ file.
       ::
 
          sudo cp <PATH-TO-FILE>/hello_world.dtb /media/<USER>/rootfs/boot/am335x-boneblack.dtb
-      
+
       .. note:: Replacing the **am335x-boneblack.dtb** with our own
          **hello_world.dtb** file will allow us to use the prebuilt U-Boot and
 	 reduce our workload. Until our custom board ID has been flashed into
-         the EEPROM, using the default BeagleBone Black ID will suffice. 
+         the EEPROM, using the default BeagleBone Black ID will suffice.
 
    #. Connect board to serial port via FTDI Cable and boot it from the new SD
       Card
@@ -153,14 +153,14 @@ for selecting the peripheral interfaces that will be used in the system design.
 Its intelligent solver automatically selects pin combinations that help the
 designer make sure there are no multiplexing conflicts.
 
-#. Open project from previous steps on `TI's Pin Mux Tool 
+#. Open project from previous steps on `TI's Pin Mux Tool
    <http://www.ti.com/tool/PINMUXTOOL>`__
 
-#. Add next peripheral needed for your custom board  
+#. Add next peripheral needed for your custom board
 
 #. Export the DTSI file produced by the Pin Mux Tool under the name
    **pinmux.dtsi**. This file will be included in your custom board's
-   **hello_world.dts** file to provide functionality for all of its peripherals 
+   **hello_world.dts** file to provide functionality for all of its peripherals
 
 #. Copy **pinmux.dtsi** to
    **<PROCESSOR-SDK>/board-support/linux-x.xx.xx+gitAUTOINC+be5389fd85-gbe5389fd85/arch/arm/boot/dts/**
@@ -201,7 +201,7 @@ Suggested Tips
 * The "Hello World" message can be deleted from **hello_world.dts** once
   customization and debugging is complete. It is recommended to keep this message
   until debugging is fully complete to help show if the board port was still successful
-  after changing the **pinmux.dtsi** file. 
+  after changing the **pinmux.dtsi** file.
 * Because this guide is based on a TI EVM, it is suggested to bring up the
   **hello_world.dts** on a TI EVM initally.
 * Always try to use the `TI Pin Mux Tool <http://www.ti.com/tool/PINMUXTOOL>`__

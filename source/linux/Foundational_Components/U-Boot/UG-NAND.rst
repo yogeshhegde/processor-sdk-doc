@@ -72,7 +72,7 @@ When reading a file into DDR, U-boot by default sets the value of
 environment variable "filesize" to the number of bytes (in hex) that was
 read via the last read/load command.
 
-| 
+|
 | As an example below shows the process of writing a kernel (zImage)
   into the NAND's kernel partition. The zImage to be written is loaded
   from the SD card's rootfs (2nd) partition. Loading zImage from MMC to
@@ -106,7 +106,7 @@ that you want the contents of the NAND partition to be copied to. The
 symbol <partition name> contains the NAND partition name you want to
 read from.
 
-| 
+|
 
 Writing to NAND via DFU
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -247,14 +247,14 @@ Example of flashing u-boot over network (tftp)
     => nand erase.part NAND.tiboot3
     => nand write ${loadaddr} NAND.tiboot3 8b3fa
 
-Repeat the process for all files required for u-boot. (e.g. tispl.bin and u-boot.img)      
+Repeat the process for all files required for u-boot. (e.g. tispl.bin and u-boot.img)
 
 Once the file(s) have been written to NAND the board should then be
 powered off. Next evm's boot switches need to be configured for NAND
 booting. To understand the appropriate boot switches settings please see
 the EVM's hardware setup guide.
 
-| 
+|
 
 Booting Kernel and Filesystem from NAND
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

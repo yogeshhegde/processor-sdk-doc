@@ -108,7 +108,7 @@ any of the resources listed here are not used.
 | 76      | 0x4A002848   | 54      | MAILBOX8_IRQ_USER2         | MAILBOX8         | Mailbox 8 user 2 interrupt         |
 +---------+--------------+---------+----------------------------+------------------+------------------------------------+
 
-| 
+|
 
 **IPU2 Interrupt Mapping**
 

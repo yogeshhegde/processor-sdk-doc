@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PKTLIB 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PKTLIB
 
 .. rubric:: Introduction
    :name: introduction
@@ -75,6 +75,4 @@ API reference for application can be found in below file:
 |                                   | /runtime/pktlib/docs/ReleaseNotes |
 |                                   | _pktlib.pdf                       |
 +-----------------------------------+-----------------------------------+
-
-.. raw:: html
 

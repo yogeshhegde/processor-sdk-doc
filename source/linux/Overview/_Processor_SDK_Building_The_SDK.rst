@@ -62,10 +62,10 @@ system shell.
 
 .. rubric:: Large Swap File
 
-Building large packages, especially several at a time, requires a lot of 
-working memory for a computer. For computers with 32 GB or RAM or more, this 
-should not be a problem. For computers with less RAM, a swap file of ~16GB may 
-be needed to build large packages. Creating a large swap file, or resizing a 
+Building large packages, especially several at a time, requires a lot of
+working memory for a computer. For computers with 32 GB or RAM or more, this
+should not be a problem. For computers with less RAM, a swap file of ~16GB may
+be needed to build large packages. Creating a large swap file, or resizing a
 small swap file to be larger will help avoid build errors for large packages.
 
 .. rubric:: Proxy Setup
@@ -83,7 +83,7 @@ layer configuration for a particular release of |__SDK_FULL_NAME__|.
 The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
 .. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
-    
+
  .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
    .. ifconfig:: CONFIG_part_variant in ('AM62AX')
@@ -104,8 +104,8 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
            $ MACHINE=am62axx-evm bitbake -k tisdk-edgeai-image
 
        Your tisdk-edgeai-image wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.
-      
-      
+
+
    .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
 
        The final command below will build the **tisdk-default-image**, which is the
@@ -121,21 +121,21 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
            $ . conf/setenv
            $ MACHINE=<machine> bitbake -k tisdk-default-image
 
-       Your tisdk-default-image wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.    
+       Your tisdk-default-image wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.
 
 .. note:: While building images via Yocto, if you are facing **submodule init failed for powervr-graphics recipe** then you need to apply `powervr-graphics: Fix submodule related build issue <https://git.ti.com/cgit/processor-sdk/meta-processor-sdk/patch/?id=c07350d86ebe1dded563ecc545896b6fef807b42>`__ patch on meta-processor-sdk which is under tisdk/sources.
 
 .. note:: While building images via Yocto, if you are facing **locale.Error: unsupported locale setting** error it means your system is trying to use locale setting which was not there. Run the following commands which will setup the locale and try building your target image again.
 
     ::
-    
+
         export LC_ALL="en_US.UTF-8"
         export LC_CTYPE="en_US.UTF-8"
         export LC_NUMERIC="en_US.UTF-8"
         export LANG=en_US.UTF-8
         export LANGUAGE=en_US.UTF-8
-        ulimit -n 4096   
-     
+        ulimit -n 4096
+
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     |__SDK_FULL_NAME__| uses the 'oe-layersetup' tool to configure the meta layers. If you do not have the Linux SDK package installed:
@@ -262,8 +262,8 @@ The "Build Output" is given relative to the
         +-------------------------------+-----------------------------------------------------------------------+
         | |__SDK_BUILD_MACHINE__|       | J7200 EVM                                                             |
         +-------------------------------+-----------------------------------------------------------------------+
-    
-    .. ifconfig:: CONFIG_rt_linux_support in ('yes') 
+
+    .. ifconfig:: CONFIG_rt_linux_support in ('yes')
 
         .. rubric:: RT Support
 

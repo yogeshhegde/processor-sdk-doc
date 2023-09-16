@@ -57,7 +57,7 @@ Here is the process to follow to create the SD card.
    #. Insert the SD card reader/writer into the PC.
    #. Launch the disk writer software, if needed.
    #. Choose the image file for the SDK that you want to write.
-   
+
       .. Image:: /images/Win32_Disk_Imager_open.png
 
       And select the appropriate SDK Image file:
@@ -65,9 +65,9 @@ Here is the process to follow to create the SD card.
       .. Image:: /images/Win32_disk_imager_select_a_disk_image.png
 
    #. Choose the SD card as the destination.
-   
+
       .. Image:: /images/Win32_Disk_Imager_select_disk.png
-  
+
    #. Write the image to the SD card.
 
       .. Image:: /images/Win32_Disk_Imager_write_disk.png
@@ -112,5 +112,5 @@ Here is the process to follow to create the SD card.
    embedded Linux system (ex. run ifconfig to get the IP address of the
    target board in order to connect to it to view remote matrix).
 
-| 
+|
 

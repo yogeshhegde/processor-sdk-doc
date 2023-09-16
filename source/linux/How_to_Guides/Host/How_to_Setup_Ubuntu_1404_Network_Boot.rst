@@ -28,10 +28,10 @@ will be needed:
 -  A BOOTP/DHCP server - isc-dhcp-server is used, but others work as
    well
 
-   -  The server has to be configured to respond properly to the BOOTP requests from the 
+   -  The server has to be configured to respond properly to the BOOTP requests from the
       AM335x/AM437x device
 
--  A TFTP Server - atftpd is used, but others work as well 
+-  A TFTP Server - atftpd is used, but others work as well
 -  A method to start/stop services - xinetd is used here
 -  A Hardware platform that can be set to boot from either Ethernet or
    USB RNDIS (this guide uses the `Beaglebone
@@ -50,10 +50,10 @@ USB there are some additional steps required.
 
 #. Install Ubuntu 14.04 (preferably on a dedicated PC).
 
-   .. note:: Other versions of Ubuntu and other distributions will likely need small changes to configure this 
-             process correctly. 
-	     
-#. The `Processor SDK for Linux 
+   .. note:: Other versions of Ubuntu and other distributions will likely need small changes to configure this
+             process correctly.
+
+#. The `Processor SDK for Linux
    <http://www.ti.com/tools-software/processor-sw.html>`__
    provides a working Linux system for development (bootloader, kernel,
    filesystem and toolchain). This process should work with
@@ -65,10 +65,10 @@ USB there are some additional steps required.
       sudo apt-get install isc-dhcp-server atftpd xinetd
 
 #. Configure the BOOTP/DHCP Server
-   
+
    The RBL uses the vendor-id part of the BOOTP protocol to identify itself to the BOOTP host server. The following configuration takes this
    into account.
-   
+
    Edit /etc/dhcp/dhcpd.conf
 
    .. code::
@@ -104,20 +104,20 @@ USB there are some additional steps required.
          range 192.168.2.101 192.168.2.199;
     }
 
-   .. note:: 
-      This configuration creates a subnet, 192.168.2.0, with a bootp IP Address range of 2 - 100. The isc-dhcp-server will use this 
-      pool of addresses to respond to the client (the Beaglebone Black or other target board in this case). The server (Ubuntu PC) needs to have an ethernet 
-      port configured to use an IP Address on this subnet (192.168.2.1 is recommended by this guide) or the server will not start. This address 
+   .. note::
+      This configuration creates a subnet, 192.168.2.0, with a bootp IP Address range of 2 - 100. The isc-dhcp-server will use this
+      pool of addresses to respond to the client (the Beaglebone Black or other target board in this case). The server (Ubuntu PC) needs to have an ethernet
+      port configured to use an IP Address on this subnet (192.168.2.1 is recommended by this guide) or the server will not start. This address
       will be assigned properly in the below steps.
 
    .. warning::
-      Note the file names that are used above. These must correspond to the U-Boot and Linux files that are placed in the 
-      /tftpboot directory. If these names are not in sync, the RBL will request files that don't exist and the process will 
-      not work. For example, if the SPL file in the /tftpboot directory is named u-boot-spl.bin, then either it would need to be renamed or the above 
+      Note the file names that are used above. These must correspond to the U-Boot and Linux files that are placed in the
+      /tftpboot directory. If these names are not in sync, the RBL will request files that don't exist and the process will
+      not work. For example, if the SPL file in the /tftpboot directory is named u-boot-spl.bin, then either it would need to be renamed or the above
       configuration changed and the service restarted.
 
 #. Setup TFTP Server
-   
+
    Edit /etc/default/atftpd (create the file if necessary) with:
 
    ..  code::
@@ -130,7 +130,7 @@ USB there are some additional steps required.
 #. Create directory to store TFTP files (/tftpboot used here)
 
    .. code::
-   
+
     sudo mkdir /tftpboot
     sudo chmod -R 777 /tftpboot
     sudo chown -R nobody /tftpboot
@@ -175,13 +175,13 @@ USB there are some additional steps required.
       throughout this guide).
 
       ..  image::  ../../../images/Ubuntu_Setup_Ethernet_Connection_Choose_Interface.png
-       
-      | 
-       
-      ..  image::  ../../../images/Ubuntu_Setup_Ethernet_Connection_Manual_Address.png
-       
+
       |
-   
+
+      ..  image::  ../../../images/Ubuntu_Setup_Ethernet_Connection_Manual_Address.png
+
+      |
+
    #. Save all of your changes.
 
    #. If using USB, there's one additional step. The USB network interface
@@ -190,9 +190,9 @@ USB there are some additional steps required.
       capability to do this using the dispatcher.
 
       -  As root, create /etc/NetworkManager/dispatcher.d/99am-usb-dhcp-server
- 
+
          .. code::
- 
+
            #!/bin/sh
                
            IF=$1
@@ -201,15 +201,15 @@ USB there are some additional steps required.
            if [ "$IF" = "usb0" ] && [ "$STATUS" = "up" ]; then
                 service isc-dhcp-server restart
            fi
- 
+
       -  Make sure this file is executable.
- 
+
          **sudo chmod +x /etc/NetworkManager/dispatcher.d/99am-usb-dhcp-server**
- 
+
          |
- 
+
       -  Restart Network Manager:
- 
+
          **sudo service network-manager restart**
 
 
@@ -239,7 +239,7 @@ USB there are some additional steps required.
          broadcast 192.168.2.255
          up /etc/network/if-up.d/usb-interfaces
 
-	 
+
    #) Add the below script to /etc/network/if-up.d as sudo with the
       filename "usb-interfaces" (this is called by the "up" command in
       /etc/network/interfaces). This script restarts the DHCP/BOOTP server
@@ -254,9 +254,9 @@ USB there are some additional steps required.
          fi
 
    #) Make sure the script is executable as well.
-      
+
       **chmod +x /etc/network/if-up.d/usb-interfaces**
-       
+
       |
 
    #) Finally, make sure Network Manager is set up to ignore interfaces
@@ -272,7 +272,7 @@ USB there are some additional steps required.
          managed=false
 
    #) Restart Network Manager for the changes to take affect.
-       
+
       **sudo service network-manager restart**
 
 At this point, the Ubuntu box should be set up to host the boot process
@@ -300,7 +300,7 @@ Here's a quick review of the boot process needed.
    components. It will use this to get U-Boot.
 #. U-Boot needs to be appropriately configured as well.
 
-The prebuilt images that come with the SDK provide the support necessary to boot over either Ethernet or USB. These images are 
+The prebuilt images that come with the SDK provide the support necessary to boot over either Ethernet or USB. These images are
 provided with the SDK in the board-support/prebuilt-images directory within the SDK install. For U-Boot, simply copy the appropriate .bin and
 and .img files to the /tftpboot directory and rename them to u-boot-spl-restore.bin and u-boot-restore.img, respectively.
 

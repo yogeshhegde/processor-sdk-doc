@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM57x 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM57x
 
 Overview
 ^^^^^^^^^
@@ -79,7 +79,7 @@ Directory structure
 -  **PDK_INSTALL_PATH/ti/boot/sbl/src**: Source to boot media specific
    initialization used in the SBL.
 
-| 
+|
 
 Tools and Binary Formats
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -94,7 +94,7 @@ image with the TI header information. The image format has been
 described in detail in the Image Format Section of the\ `AM57xx
 Technical Reference manual <http://www.ti.com/lit/pdf/spruhz6>`__
 
-| 
+|
 **Application image format:**
 A bootable application image can be created by using the Am57xImageGen
 script provided under tools folder as part of sbl. It can be located at
@@ -151,7 +151,7 @@ The script creates the bootable image in 2 steps
 | 0x00000010 | **Reserved**              |
 +------------+---------------------------+
 
-| 
+|
 **Step 2: Multicore Image file generation**
 
 -  RPRC files for each cores is combined into a single multicore
@@ -268,7 +268,7 @@ boot modes supported for all the boards is tabulated in the table below.
 | AM574x IDKEVM         |  YES   | YES  | NO   |
 +-----------------------+--------+------+------+
 
-| 
+|
 
 Booting Via SD Card
 """"""""""""""""""""""
@@ -459,7 +459,7 @@ Pointing to the path where the AppImage needs to be generated
 
 ::
 
-    Ex: export BIN_PATH=$(TI_PDK_INSTALL_DIR)/packages/ti/boot/sbl/binary 
+    Ex: export BIN_PATH=$(TI_PDK_INSTALL_DIR)/packages/ti/boot/sbl/binary
 
 2. Edit the script file to point to the application elf files by setting
 the input application variables. 
@@ -508,7 +508,7 @@ Command to build the test application.
 
     Go to cd (TI_PDK_INSTALL_DIR)\packages\ti\boot\sbl
 
-    gmake example BOARD=<BOARD> SOC=<SOC> to build the application 
+    gmake example BOARD=<BOARD> SOC=<SOC> to build the application
     gmake example_clean BOARD=<BOARD>
 
 Example:
@@ -526,7 +526,7 @@ BIN_PATH: Pointing to the path where the AppImage needs to be generated 
 
 ::
 
-    Ex:  set BIN_PATH=%TI_PDK_INSTALL_DIR%\packages\ti\boot\sbl\binary 
+    Ex:  set BIN_PATH=%TI_PDK_INSTALL_DIR%\packages\ti\boot\sbl\binary
 
 2. Edit the batch file to point to the application elf files by setting
 the input application variables.
@@ -545,7 +545,7 @@ App_DSP2: Point to the path where the dsp core 2 application is located
 
     set App_IPU1_CPU0=%TI_PDK_INSTALL_DIR%\packages\ti\boot\sbl\binary\idkAM572x\example\m4\ipu1\bin\sbl_app.xem4
 
-    set App_IPU2_CPU0=%TI_PDK_INSTALL_DIR%\packages\ti\boot\sbl\binary\idkAM572x\example\m4\ipu2\bin\sbl_app.xem4 
+    set App_IPU2_CPU0=%TI_PDK_INSTALL_DIR%\packages\ti\boot\sbl\binary\idkAM572x\example\m4\ipu2\bin\sbl_app.xem4
 
 3. If it is not required to load an application on specific core leave
 the variable blank.
@@ -645,10 +645,12 @@ in the source files located under
 <PDK_INSTALL_PATH>/packages/ti/boot/sbl/src/<BOOT_MEDIA>
 
 Examples of customization that can be changed:
--  QSPI/SPI flash offsets: These offsets are configured in sbl_qspi.c
-   and sbl_spi.c
--  MMCSD: The name of the application is hard coded as app in function
-   SBL_MMCBootImage in the sbl_mmcsd.c
+
+- QSPI/SPI flash offsets: These offsets are configured in sbl_qspi.c and
+  sbl_spi.c
+
+- MMCSD: The name of the application is hard coded as app in function
+  SBL_MMCBootImage in the sbl_mmcsd.c
 
 Speeding up boot by increasing speed of the boot interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -748,4 +750,3 @@ Steps to debug application boot using Processor SDK RTOS bootloader are
 discussed in the article `Common steps to debug application
 boot <index_Foundational_Components.html#common-steps-to-debug-application-boot>`__
 
-.. raw:: html

@@ -5,7 +5,7 @@ Overview
 UART AppLoader is a standalone application used to download application image over UART
 from the host PC. Host PC uses the serial console utility to transfer application image to apploader.
 
-The Apploader application loads and executes the application binary to be tested, 
+The Apploader application loads and executes the application binary to be tested,
 over UART on the target platform.
 
 Supported Platforms
@@ -115,7 +115,7 @@ Launch the serial console utility with the following configurations:
 
 .. note::   Any Serial Console utility that supports xmodem protocol can be used.
             Verified utility is Teraterm
-    
+
 .. note::	TI Binaries does not work with Apploader on AM335x/AM437x platforms.
             Make sure to use non TI binaries for testing on these platforms.
 
@@ -128,16 +128,16 @@ AppLoader Usage
 
 ::
 
-        **** PDK SBL ****                                                
-        SBL Revision: 01.00.09.00 (May 10 2018 - 15:48:57)               
-        Begin parsing user application                                   
-                                                                                    
-        SD Boot - file open completed successfully                       
-        Jumping to user application...                                   
-        ********* PDK UART Apploader ********                            
-        version 0.1 (May 14 2018 - 21:40:11)                             
-                                                                                     
-        Please transfer file with XMODEM protocol...                     
+        **** PDK SBL ****
+        SBL Revision: 01.00.09.00 (May 10 2018 - 15:48:57)
+        Begin parsing user application
+
+        SD Boot - file open completed successfully
+        Jumping to user application...
+        ********* PDK UART Apploader ********
+        version 0.1 (May 14 2018 - 21:40:11)
+
+        Please transfer file with XMODEM protocol...
         CCCC
 
 .. note::  The above log is for reference purpose and content might change based on latest software available in processor SDK release
@@ -152,20 +152,20 @@ AppLoader Usage
 
 ::
 
-        Xmodem received 46848 bytes                                      
-                                                                                
-        Copying application image from UART to RAM is done               
-        Begin parsing user application                                  
-        Jumping to user application...                                   
-                                                                                  
-        *********************************************                    
-        *                 UART Test                 *                    
-        *********************************************                    
-                                                                                    
-        Testing UART print to console at 115.2k baud rate                
-        Press 'y' to verify pass: y                                      
-        Received: y                                                      
-                                                                                    
+        Xmodem received 46848 bytes
+
+        Copying application image from UART to RAM is done
+        Begin parsing user application
+        Jumping to user application...
+
+        *********************************************
+        *                 UART Test                 *
+        *********************************************
+
+        Testing UART print to console at 115.2k baud rate
+        Press 'y' to verify pass: y
+        Received: y
+
         Test PASSED!
 
 .. note::	For SPI Boot Mode:
@@ -184,4 +184,3 @@ Binaries needs to be manually built for these platforms.
 
 Refer `Rebuilding Board Utils <index_board.html#rebuilding-board-utils>`__ section to build Apploader.
 
-.. raw:: html

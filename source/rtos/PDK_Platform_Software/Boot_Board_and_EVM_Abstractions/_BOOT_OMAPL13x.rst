@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_OMAPL13x 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_OMAPL13x
 
 Overview
 ^^^^^^^^^^
@@ -109,8 +109,8 @@ input a different value to boot to other cores. Valid values are:
 +----------+-------+
 
 .. note::
-   Program entry point of DSP app images on OMAPL138 platform should be 1KByte aligned for loading and executing the DSP images from 
-   ARM core. GPIO LLD LED blink example for C674x core can be used as reference for aligning the DSP entry point to run the DSP code from 
+   Program entry point of DSP app images on OMAPL138 platform should be 1KByte aligned for loading and executing the DSP images from
+   ARM core. GPIO LLD LED blink example for C674x core can be used as reference for aligning the DSP entry point to run the DSP code from
    SBL. Other LLD examples does not work from SBL as is.
 
 Boot Modes
@@ -208,7 +208,7 @@ blink application
 
 .. Image:: ../images/Omapl137_boot_example.jpg
 
-| 
+|
 
 MMCSD Boot Mode
 """"""""""""""""
@@ -305,14 +305,14 @@ mentioned above.
 ::
 
     MLO offset in config file is set to 200 by default which indicates that MLO will be written to second sector of the SD card. MLO offset can be any non-
-    zero value which is multiple of 512 and should be within first 2Mbytes of SD card memory. DO NOT set the MLO offset to '0' which will corrupt the file 
+    zero value which is multiple of 512 and should be within first 2Mbytes of SD card memory. DO NOT set the MLO offset to '0' which will corrupt the file
     system on the card.
 
 .. note::
    This application will flash the image at required offset without taking
    into consideration any overwriting to previously flashed image.
 
-| 
+|
 
 Booting via MMCSD
 ''''''''''''''''''''
@@ -330,21 +330,21 @@ blink application
 
 .. Image:: ../images/Omapl138_boot_example.png
 
-| 
+|
 
 Memory Usage
 ^^^^^^^^^^^^^^^
 
 SBL uses 0x20000 bytes from shared RAM (0x80000000 to 0x8001FFFF).
 
-| 
+|
 
 .. note::
    app should not have loadable sections residing in SBL memory region to
    prevent overwriting SBL during load time. It is, however, free to use
    SBL memory after it is loaded and running.
 
-| 
+|
 
 Additional Details
 ^^^^^^^^^^^^^^^^^^^^
@@ -393,11 +393,11 @@ Mode>
 
 ::
 
-     Examples: 
+     Examples:
      Cleaning & Building OMAPL137 SBL
      gmake clean SOC=OMAPL137 BOARD=evmOMAPL137 BOOTMODE=spi
-     gmake SOC=OMAPL137 BOARD=evmOMAPL137 BOOTMODE=spi 
-     
+     gmake SOC=OMAPL137 BOARD=evmOMAPL137 BOOTMODE=spi
+
      Cleaning & Building OMAPL137 flash writer
      gmake spi_flashwriter_clean SOC=OMAPL137 BOARD=evmOMAPL137 BOOTMODE=spi
      gmake spi_flashwriter SOC=OMAPL137 BOARD=evmOMAPL137 BOOTMODE=spi
@@ -407,6 +407,4 @@ On successful build, SBL .out and MLO will be created at
 Mode>/bin** and flash writer binary will be created at
 **<PDK_INSTALL_DIR>/packages/ti/boot/sbl/tools/flashWriter/<Boot
 Mode>/bin/<Board Name>**
-
-.. raw:: html
 

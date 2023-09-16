@@ -1,24 +1,24 @@
-.. http://ap-fpdsp-swapps.dal.design.ti.com/index.php/Processor_SDK_RTOS_I2C_FIRMWARE 
+.. http://ap-fpdsp-swapps.dal.design.ti.com/index.php/Processor_SDK_RTOS_I2C_FIRMWARE
 
 Introduction
 ============
 
 | PRU-ICSS I2C serves as an example for firmware-based I2C peripheral
-  support. The I2C firmware (I2C FW) allows additional I2C instances for SOCs 
-  beyond those supported by SOC hardware. The Processor SDK package includes 
+  support. The I2C firmware (I2C FW) allows additional I2C instances for SOCs
+  beyond those supported by SOC hardware. The Processor SDK package includes
   full source code for I2C FW.
 
-| 
+|
 
 FIRMWARE FEATURES
 =================
 
-I2C FW supports the standard two pin I2C interface through three GPIO pins 
-from the PRU-ICSS module. The I2C SCL pin is implemented using a single 
-GPIO configured in GPO mode. The I2C SDA pin is implemented using two GPIO 
-pins: one pin configured in GPI mode for sampling SDA, and a second pin 
-configured in GPO mode for driving the SDA. Depending on the I2C clock 
-speed, I2C FW can emulate multiple I2C instances from a single PRU core. 
+I2C FW supports the standard two pin I2C interface through three GPIO pins
+from the PRU-ICSS module. The I2C SCL pin is implemented using a single
+GPIO configured in GPO mode. The I2C SDA pin is implemented using two GPIO
+pins: one pin configured in GPI mode for sampling SDA, and a second pin
+configured in GPO mode for driving the SDA. Depending on the I2C clock
+speed, I2C FW can emulate multiple I2C instances from a single PRU core.
 Following are high-level I2C FW features:
 
 +-----------------------------------+-----------------------------------+
@@ -89,7 +89,7 @@ Firmware Organization
 | Firmware binaries       | <PDK>/packages/ti/drv/i2c/firmware/icss_i2c/bin  |
 +-------------------------+--------------------------------------------------+
 
-| 
+|
 
 Firmware Build Instruction
 ==========================
@@ -122,7 +122,7 @@ Firmware binaries at the end of the build will be located at:
 -  <REVISION> indicates the revision of the firmware binary based on
    core (there are 2 revision of PRU-ICSS core), e.g. REV1.
 
-| 
+|
 
 Build instruction for GIT
 -------------------------
@@ -163,7 +163,7 @@ environment outside Processor SDK RTOS package.
    -  the firmware binaries which will be located in
       <WORK_DIR/ti/drv/i2c/firmware/<FIRMWARE_TYPE>/bin/<SOC>/<HOST_CORE>/<REVISION>>
 
-| 
+|
 
 Supported EVMs
 ==============
@@ -182,7 +182,7 @@ Supported EVMs and pin configurations for these EVMs are listed below.
 | idkAM572x   | 2                   | REV2              |
 +-------------+---------------------+-------------------+
 
-| 
+|
 
 .. rubric::  icev2AM335x
    :name: icev2am335x
@@ -241,7 +241,7 @@ Supported EVMs and pin configurations for these EVMs are listed below.
 |         |       |          |              |pr1_pru1_gpi0        | J21    | 3     |
 +---------+-------+----------+--------------+---------------------+--------+-------+
 
-| 
+|
 
 I2C FIRMWARE Example
 ====================
@@ -252,7 +252,7 @@ Sample code for I2C transaction:
 
     /* Refer to I2C FW Example for details */
     ...
-    
+
     /* Initialize the I2C FW configuration */
     I2C_socInitFwCfg();
 
@@ -264,10 +264,10 @@ Sample code for I2C transaction:
     /* Set the default I2C init configurations */
     I2C_socSetFwCfg(I2C_TEST_INSTANCE1, &i2c_cfg);
     ...
-    
-    Board_init(boardCfg);   
+
+    Board_init(boardCfg);
     ...
-    
+
     I2C_init();
 
     handle = I2C_open(I2C_TEST_INSTANCE1, &i2cParams);
@@ -277,7 +277,7 @@ Sample code for I2C transaction:
     I2C_transactionInit(&i2cTransaction);
     i2cTransaction.targetAddress = I2C_EEPROM_ADDR;
     ...
-    
+
     status = I2C_transfer(handle, &i2cTransaction);
     if (status!= I2C_STS_SUCCESS) {
         /* I2C transaction failed */
@@ -289,21 +289,21 @@ Sample code for SMBus transaction:
 
     /* Refer to I2C FW Test for details */
     ...
-    
+
     testCmd.transferCmd = SMBUS_WRITE_BYTE_CMD;
     testCmd.cmdCode = WRITE_SMBUS_COMMAND_CODE;
     controlStatus = I2C_control(handle, I2C_CMD_SMBUS_TYPE, ((void*)&testCmd));
     I2C_transactionInit(&i2cTransaction);
     ...
-    
+
     status = I2C_transfer(handle, &i2cTransaction);
     if (status != I2C_STS_SUCCESS) {
         /* I2C transaction failed */
     } 
 
-| 
+|
 
-.. rubric::  Examples List 
+.. rubric::  Examples List
    :name: examples-list
 
 Refer to the Release Notes for details concerning I2C support across different EVMs.
@@ -325,9 +325,9 @@ Refer to the Release Notes for details concerning I2C support across different E
 |                       |                       | passed.                |
 +-----------------------+-----------------------+------------------------+
 
-| 
+|
 
-.. rubric::  Firmware Design Guide 
+.. rubric::  Firmware Design Guide
    :name: firmware-design-guide
 
 +-----------------------------------+--------------------------------------------------------------------------+
@@ -337,10 +337,8 @@ Refer to the Release Notes for details concerning I2C support across different E
 +-----------------------------------+--------------------------------------------------------------------------+
 
 **NOTE: For normal use of I2C FW, there is no need to refer to the design guide.
-This document can be cosulted in case of interest in details of internal firmware 
+This document can be cosulted in case of interest in details of internal firmware
 operation, or a desire to modify the firmware.**
 
-| 
-
-.. raw:: html
+|
 

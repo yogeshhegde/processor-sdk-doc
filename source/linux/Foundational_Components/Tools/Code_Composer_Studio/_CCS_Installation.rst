@@ -38,7 +38,7 @@ training pages.
 
    </div>
 
-| 
+|
 
 .. rubric:: Prerequisites
    :name: prerequisites-ccs-install
@@ -54,7 +54,7 @@ For more information on setting up your development environment, see the
 `Processor SDK Linux Getting Started
 Guide <../../Overview/Processor_SDK_Linux_Getting_Started_Guide.html#start-your-linux-development>`__.
 
-| 
+|
 
 .. rubric:: Toolchain
    :name: toolchain
@@ -72,7 +72,7 @@ Latest SDK toolchains use a prefix of **arm-linux-gnueabihf-**. Versions
 older than Processor Linux SDK 06.00 and AM18x users may still use the
 prefix **arm-arago-linux-gnueabi-**.
 
-| 
+|
 
 .. rubric:: Locating the CCS Installer
    :name: locating-the-ccs-installer
@@ -105,7 +105,7 @@ form. After filling out the form, you will be given a download button to
 download the file and you will receive an e-mail with the download link.
 Download the tarball and save it to your Linux host development system.
 
-| 
+|
 
 .. rubric:: Starting the CCS Installer
    :name: starting-the-ccs-installer
@@ -127,7 +127,7 @@ to install it now, you can install CCS using the following commands:
 #. Begin the installer by executing the binary (.bin) file extracted.
    **./ccs\_setup\_<version>.bin**
 
-| 
+|
 
 .. rubric:: CCS Installation Steps
    :name: ccs-installation-steps
@@ -192,7 +192,7 @@ installation options and the recommended settings when installing CCS.
 
 .. Image:: /images/Sitara_Linux_SDK_finished.png
 
-| 
+|
 
 .. rubric:: Installing Emulator Support
    :name: installing-emulator-support
@@ -207,7 +207,7 @@ command:
 where <CCS\_INSTALL\_PATH> is the path that was chosen when the CCS
 installer was run.
 
-| 
+|
 
 .. rubric:: Launching CCS
    :name: launching-ccs
@@ -236,7 +236,7 @@ installer was run.
 
 .. Image:: /images/CCS_project_explorer.png
 
-| 
+|
 
 .. rubric:: Enabling CCS Capabilities
    :name: enabling-ccs-capabilities
@@ -265,7 +265,7 @@ After opening CCS with a new workspace:
 
 .. Image:: /images/Sitara-Linux-CCS-open-perspective.png
 
-| 
+|
 
 .. rubric:: Importing C/C++ Projects
    :name: importing-cc-projects
@@ -383,7 +383,7 @@ file system:
    executable files are stored in the project's Debug folder in the
    workspace.
 
-| 
+|
 
 .. rubric:: Creating a New Project
    :name: creating-a-new-project-ccs-install
@@ -471,7 +471,7 @@ build a simple *Hello World* application for the target.
 
    .. Image:: /images/CCS_helloworld_build.png
 
-| 
+|
 
 .. rubric:: Remote System Explorer
    :name: remote-system-explorer-ccs-install
@@ -486,7 +486,7 @@ is also a more detailed training using RSE with the SDK at `Processor
 SDK Linux Training: Hands on with the Linux
 SDK <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Training:_Hands_on_with_the_Linux_SDK>`__.
 
-| 
+|
 
 .. rubric:: Using GDB Server in CCS for Linux Debugging
    :name: using-gdb-server-in-ccs-for-linux-debugging

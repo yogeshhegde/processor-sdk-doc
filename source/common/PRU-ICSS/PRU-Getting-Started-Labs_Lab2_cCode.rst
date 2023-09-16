@@ -50,10 +50,10 @@ to copy the main.c file from <PSSP_PATH>/labs/Getting_Started_Labs/c_code/.
    by right clicking on the project top-level folder and selecting
    **Add Files**. To keep things simple, later steps will only document
    **Project->Add Files...**. Either process can be used.
-   
+
 #. Navigate to **<PSSP_PATH>/labs/Getting_Started_Labs/c_code** folder. Select
    **main.c**. Select **open**.
-   
+
 #. Select **Copy files** and click **OK**.
 
 #. Go to the Project Explorer view and double click on main.c. The text in the
@@ -73,7 +73,7 @@ resolve addresses, and more.
 #. If a linker command file was added to the project folder automatically,
    delete that linker command file. The automatically generated linker files
    are not kept up-to-date like the linker files in the PSSP.
-   
+
    * Example: AM335x. Look for AM335x_PRU.cmd and delete it.
 
 #. Delete the include link that points to automatically generated linker files:
@@ -242,13 +242,13 @@ project that uses an INTC configuration file.
 
 #. Add the INTC map file to the project. Use this file as a template:
    **<PSSP_PATH>/examples/<processor>/PRU_Direct_Connect0/intc_map_0.h**
-   
+
 #. Include the INTC map file in the main.c file.
 
    * Example: AM64x using INTC map file "intc_map_0.h"
 
 	::
-	
+
 	   #include "intc_map_0.h"
 
 #. Add the INTC map structure to the linker command file. Reference
@@ -301,7 +301,7 @@ Check which version of PSSP is used:
   #. Comment out the resource table include:
 
      ::
-   
+
          /* #include "resource_table_empty.h" */
 
   #. Jump to section :ref:`write_the_pru_firmware_ccs`
@@ -353,7 +353,7 @@ Does the PRU project use RPMsg?
 
 #. Check that the linker command file includes a section for the resource
    table.
-   
+
    * Example: AM335x PRU0
 
      ::
@@ -431,7 +431,7 @@ project that uses a resource table.
 #. Add the resource table file to the project.
 
    #. Select **Project->Add Files...**
-   
+
    #. Navigate to **<PSSP_PATH>/examples/<processor>/xxx_RPMsg_Echo_InterruptX** folder.
       Select **resource_table.h**.
 
@@ -466,7 +466,7 @@ project that uses a resource table.
 
         /* Ensure resource_table section is aligned on 8-byte address for
            ARMv8 (64-bit) kernel */
-        .resource_table : ALIGN (8) >  RTU1_DMEM_1, PAGE 1 
+        .resource_table : ALIGN (8) >  RTU1_DMEM_1, PAGE 1
 
 #. The resource table includes rsc_types.h. Add the appropriate include path:
 
@@ -519,7 +519,7 @@ The PRU project needs a .c file for the firmware C code.
 
 #. The basic PRU project should already have a main.c file. Delete the existing
    main.c file.
-   
+
    * Example: AM335x with PRU0:
 
      ::
@@ -547,7 +547,7 @@ The PRU project needs a .c file for the firmware C code.
    labs/Getting_Started_Labs/c_code/.
 
    * Example: AM335x with PRU0, based on PRU_Halt:
-   
+
      ::
 
         $ diff ../../../labs/Getting_Started_Labs/c_code/main.c main.c
@@ -591,7 +591,7 @@ resolve addresses, and more.
 
 #. Make sure that the project Makefile **LINKER_COMMAND_FILE** matches the
    linker command file used:
-   
+
    #. Open the Makefile in a text editor.
 
    #. If **LINKER_COMMAND_FILE** does not match the project linker command
@@ -758,7 +758,7 @@ project that uses an INTC configuration file.
    * Example: AM64x using INTC map file "intc_map_0.h"
 
 	::
-	
+
 	   #include "intc_map_0.h"
 
 #. Add the INTC map structure to the linker command file. Reference
@@ -796,7 +796,7 @@ Will the PRU project be loaded by a core running Linux kernel 5.10 or later?
  * Yes --> Jump to section :ref:`add_the_resource_table_linux_5_10_linux`
 
  * No --> Resource tables are not used. Continue reading.
- 
+
 If you got to this step, then the project does not need a resource table.
 Check which version of PSSP is used:
 
@@ -805,13 +805,13 @@ Check which version of PSSP is used:
 
  * v5.9.0 or earlier: An empty resource table is included by default in these
    versions of the PSSP.
-   
+
    #. Go to the main.c file
-   
+
    #. Comment out the resource table include:
-   
+
       ::
-   
+
          /* #include "resource_table_empty.h" */
 
    #. Jump to section :ref:`write_the_pru_firmware_linux`
@@ -834,14 +834,14 @@ Does the PRU project use RPMsg?
 
  * Yes --> Refer to
    **<PSSP_PATH>/examples/<processor>/xxx_RPMsg_Echo_InterruptX**
-   
+
  * No -->
- 
+
     * Does the PRU project configure the INTC?
 
       * Yes --> Refer to the AM335x example at
         **<PSSP_PATH>/examples/am335x/PRU_Direct_Connect0**
- 
+
       * No --> If the project does not use RPMsg, or configure the INTC, then
         use an empty resource table. The getting started labs include
         empty resource tables.
@@ -858,7 +858,7 @@ Does the PRU project use RPMsg?
 
 #. Check that the linker command file includes a section for the resource
    table.
-   
+
    * Example: AM335x PRU0
 
      ::
@@ -920,7 +920,7 @@ running Linux kernel 5.10 or later.
 Will the PRU project use RPMsg to communicate with the Linux core?
 
  * Yes --> A resource table is required. continue reading.
- 
+
  * No --> If the PRU project does not use RPMsg, then a resource table is not
    required. Jump to section :ref:`write_the_pru_firmware_linux`
 
@@ -958,7 +958,7 @@ project that uses a resource table.
 
 #. Add the resource table to the linker command file. Reference
    **<PSSP_PATH>/examples/<processor>/xxx_RPMsg_Echo_InterruptX/xxx_PRU0_intc_rscTbl.cmd**
-   
+
    * Example: AM335x PRU0
 
      ::
@@ -979,7 +979,7 @@ project that uses a resource table.
 
         /* Ensure resource_table section is aligned on 8-byte address for
            ARMv8 (64-bit) kernel */
-        .resource_table : ALIGN (8) >  RTU1_DMEM_1, PAGE 1 
+        .resource_table : ALIGN (8) >  RTU1_DMEM_1, PAGE 1
 
 #. The resource table includes rsc_types.h. Add the include path for
    rsc_types.h so that the compiler can find the header file.

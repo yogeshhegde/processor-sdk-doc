@@ -135,7 +135,7 @@ users are expected to check while debugging boot related issues. This
 section discusses common issues to checkout when debugging application
 boot.
 
-| 
+|
 
 .. rubric:: Hardware Debug Steps
    :name: hardware-debug-steps
@@ -243,7 +243,7 @@ utilities as reference and ensure that the production flashing tools use
 a method to erase, write and then verify the boot image that is written
 to the flash.
 
-| 
+|
 
 .. rubric:: DDR timings and configuration /SBL
    :name: ddr-timings-and-configuration-sbl

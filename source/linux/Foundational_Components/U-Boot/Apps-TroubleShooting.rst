@@ -13,7 +13,7 @@ Check if one of the cases below applies:
   When booting up a different version of u-boot, the u-boot boot process can be
   interruptted by hitting any key to get the u-boot prompt. Then, the following command needs
   to issue to reset the u-boot environment variables.
-   
+
     |   # env default -f -a
     |   # saveenv
 
@@ -31,8 +31,8 @@ Check if one of the cases below applies:
 
 - Check if the instruction for supported u-boot boot modes is followed.
 
-| Please follow instructions in `U-boot User's Guide 
-    <Users-Guide.html>`__ 
+| Please follow instructions in `U-boot User's Guide
+    <Users-Guide.html>`__
 |
 
 | Different boot modes ues diferent image formats. They are:

@@ -73,18 +73,18 @@ All relevant options are listed below:
 
 ::
 
-        [*] CPU Frequency scaling                                 
-        <*>   CPU frequency translation statistics                
-        [*]     CPU frequency translation statistics details      
-              Default CPUFreq governor (userspace)  --->          
-        <*>   'performance' governor                              
-        <*>   'powersave' governor                                
+        [*] CPU Frequency scaling
+        <*>   CPU frequency translation statistics
+        [*]     CPU frequency translation statistics details
+              Default CPUFreq governor (userspace)  --->
+        <*>   'performance' governor
+        <*>   'powersave' governor
         -*-   'userspace' governor for userspace frequency scaling
-        <*>   'ondemand' cpufreq policy governor                  
-        <*>   'conservative' cpufreq governor                     
-              *** CPU frequency scaling drivers ***               
-        <M>   Generic DT based cpufreq driver                     
-        <M>   Generic DT based cpufreq driver using clk notifiers 
+        <*>   'ondemand' cpufreq policy governor
+        <*>   'conservative' cpufreq governor
+              *** CPU frequency scaling drivers ***
+        <M>   Generic DT based cpufreq driver
+        <M>   Generic DT based cpufreq driver using clk notifiers
         <*>    Texas Instruments CPUFreq support
        ...
 
@@ -97,7 +97,7 @@ regulator node by looking at the schematics.
 
 ::
 
-    /* From arch/arm/boot/dts/am4372.dtsi */ 
+    /* From arch/arm/boot/dts/am4372.dtsi */
 
     cpus {
             #address-cells = <1>;
@@ -119,7 +119,7 @@ regulator node by looking at the schematics.
             };
     };
 
-    /* From arch/arm/boot/dts/am437x-gp-evm.dts */ 
+    /* From arch/arm/boot/dts/am437x-gp-evm.dts */
 
     &cpu {
             cpu0-supply = <&dcdc2>;
@@ -177,7 +177,7 @@ system load)
 
     $ echo 275000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
 
-| 
+|
 
 .. rubric:: Operating Points
    :name: operating-points
@@ -239,7 +239,7 @@ taking place if the system has been designed to use a single voltage.
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
 	.. rubric:: On-Demand OPP
-	
+
 	On-Demand is a load based DVFS governor, enabled by deafult. The
 	governor will scale voltage and frequency based on load between
 	available OPPs.

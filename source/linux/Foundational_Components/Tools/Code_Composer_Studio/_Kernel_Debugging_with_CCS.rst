@@ -154,7 +154,7 @@ Capabilities tab in the Preference dialog (select **Window** -->
 
    **Note:** the IP address of the target can be determined from the target
    linux console.
-   
+
    **IMPORTANT!** Some SDKs do not have gdbserver installed by default in
    the supplied filesystem. Check the SDK documentation for details on how
    to install it.
@@ -166,7 +166,7 @@ Capabilities tab in the Preference dialog (select **Window** -->
 
 8. On the target console, start the GDB server specifying the
    application file and the port number.
-   
+
    **Note:** make sure the port number matches the one specified in the
    Debugger Connection tab (10000 by default).
 
@@ -212,7 +212,7 @@ In addition to the procedure below, a short video clip is located
 -  Target system requirements: a Linux distribution running on the
    target. Kernel releases 2.6.x and 3.1.x were tested.
 
-| 
+|
 | The stop mode debug requires a JTAG connection to the target system.
   It supports either a standalone JTAG emulator (XDS100, XDS510, XDS560)
   or an embedded emulator on the development board (OMAPL137EVM,
@@ -314,7 +314,7 @@ Options...* --> click on *Show Advanced Settings* --> *C/C++ General*
 --> *Code Analysis*. It can also be completely disabled by going to the
 submenu Launching and then unchecking the box *Run as you type (selected
 checkers)*.
-| 
+|
 
 .. rubric:: Associating the Kernel Project with the Target
    :name: associating-the-kernel-project-with-the-target
@@ -346,10 +346,10 @@ Guide <http://processors.wiki.ti.com/index.php/CCSv5_Getting_Started_Guide>`__.
 3. Click on the button **File System...** near the box **Target
    Configuration** to select the target configuration file (.ccxml) for your
    hardware.
-   
+
    **Optional:** give a meaningful name for the Debug Configuration at the
    box *Name:*
-   
+
    **Optional:** depending on the target configuration, at this point a
    list of cores will be shown and can be disabled to improve the debugger
    performance.
@@ -428,7 +428,7 @@ screen below:
 GDB/GDBserver are running may cause communication timeouts, clock skews
 or other glitches inherent from the fact that the host system and other
 peripherals are still running.
-| 
+|
 
 .. rubric:: Linux Aware Debug
    :name: linux-aware-debug

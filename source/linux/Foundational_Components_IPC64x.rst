@@ -2,7 +2,7 @@
 
 .. _foundational-components-ipc:
 
-IPC for AM64x 
+IPC for AM64x
 =============
 
 The AM64x processor has up to two Dual-Core Cortex-R5F subsystems (R5FSS),
@@ -193,7 +193,7 @@ details: `Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml <htt
 	| M4F Pool         | 0xa4100000         | 15MB    | M4F externel code/data mem |
 	+------------------+--------------------+---------+----------------------------+
 
-	root@am64xx-evm:~# dmesg | grep 'Reserved'  
+	root@am64xx-evm:~# dmesg | grep 'Reserved'
 	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a0100000, size 15 MiB
 	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a1000000, size 1 MiB
 	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a1100000, size 15 MiB
@@ -304,7 +304,7 @@ linux/arch/arm64/boot/dts/ti/k3-am642-sk.dts
 .. warning:: Be careful not to overlap carveouts!
 
 RPMsg Char Driver
------------------   
+-----------------
 
 The below picture depicts the kernel driver components and the user space device
 model for using RPMsg Char driver for communicating with the remote processor.
@@ -376,11 +376,11 @@ rpmsg_char_open()
 
 rpmsg_char_close()
     Function to close and delete a previously created local endpoint
- 
+
 `All remote proc ids are defined in rproc_id.h <https://git.ti.com/cgit/rpmsg/ti-rpmsg-char/tree/include/rproc_id.h>`__
 
 The below table lists the device enumerations as defined in the rpmsg_char_library. The validiaty of the enumerations wrt AM64x is also specified.
-::	
+::
 
 	+------------------+--------------------+---------+-----------------------------------+
 	| Enumeration ID   | Device Name        | Valid   | Description                       |
@@ -453,7 +453,7 @@ Linux RPMsg can be tested with prebuilt binaries that are packaged in the
 	Usage: rpmsg_char_simple [-r <rproc_id>] [-n <num_msgs>] [-d <rpmsg_dev_name] [-p <remote_endpt]
 			Defaults: rproc_id: 0 num_msgs: 100 rpmsg_dev_name: NULL remote_endpt: 14
 
-	root@am64xx-evm:~# rpmsg_char_simple -r 2 -n 10                                                                                                  
+	root@am64xx-evm:~# rpmsg_char_simple -r 2 -n 10
 	Created endpt device rpmsg-char-2-1027, fd = 3 port = 1025
 	Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 2 ...
 

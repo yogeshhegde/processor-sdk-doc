@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Multicore_System_Analyzer 
+.. http://processors.wiki.ti.com/index.php/Multicore_System_Analyzer
 
 .. rubric:: Overview
    :name: overview
@@ -279,7 +279,7 @@ To use the required UIA events, need this include
 
     #include <ti/uia/events/UIABenchmark.h>
 
-| 
+|
 | Add entry and exit hook functions to the source (The below one is for
   Context aware function profiling)
 
@@ -305,7 +305,7 @@ For CCS 5.5 and later
         Log_write2(UIAProfile_exitFunctionAdrs,  (IArg)0, (IArg)addr);
     }
 
-| 
+|
 | The 1st parameter after the message string( 3rd parameter to
   Log_write3) is a context parameter (For CCS 5.5 and later is the 2nd
   parameter to Log_write2) and can be used to specify an additional
@@ -375,13 +375,9 @@ Note: When asking for help in the forum you should tag your posts in the
 Subject with "System Analyzer", the part number (e.g. "C6678"), and
 component (e.g. "UIA").
 
-| 
+|
 | For product updates,
 
 -  Use the CCS/Eclipse Update Manager (see the Getting Started Guide
    above)
-
---------------
-
-.. raw:: html
 

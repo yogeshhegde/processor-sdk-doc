@@ -115,7 +115,7 @@ packets over the musb endpoints.
 | `Mass Storage Class (MSC) <http://processors.wiki.ti.com/index.php/Usbgeneralpage#Mass_Storage_Driver>`_ _   | **Yes**   |
 +--------------------------------------------------------------------------------------------------------------+-----------+
 
-Table: 
+Table:
 
 .. rubric:: **The driver supports the following features for USB Gadget
    (AM33XX)**
@@ -131,7 +131,7 @@ Table:
 | `USB Networking - CDC <http://processors.wiki.ti.com/index.php/Usbgeneralpage#CDC.2FRNDIS_gadget>`__         | **Yes**   |
 +--------------------------------------------------------------------------------------------------------------+-----------+
 
-Table: 
+Table:
 
 .. rubric:: **The driver supports the following features for Dual
    host/gadget (AM33xx)**
@@ -143,7 +143,7 @@ Table:
 | `USB0 as OTG, USB1 as OTG <http://processors.wiki.ti.com/index.php/UsbgeneralpageLinux-v3p1#Driver_configuration>`__   | **Yes**   |
 +------------------------------------------------------------------------------------------------------------------------+-----------+
 
-Table: 
+Table:
 
 .. rubric:: **Not verified features of AM33xx**
    :name: not-verified-features-of-am33xx
@@ -156,7 +156,7 @@ Table:
 | **Serial device**       | **Not verified**   |
 +-------------------------+--------------------+
 
-Table: 
+Table:
 
 .. rubric:: **Known limitations**
    :name: known-limitations

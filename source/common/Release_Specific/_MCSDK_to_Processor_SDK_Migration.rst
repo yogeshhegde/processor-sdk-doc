@@ -67,7 +67,7 @@ that are no longer being maintained:
 If you are migrating from these SDKs, the notes below will highlight any
 changes that are required.
 
-| 
+|
 
 .. rubric:: Installation
    :name: installation
@@ -125,7 +125,7 @@ further development. There are additional helper/setup scripts to help
 with getting started with the EVMs. For an overview of the directory
 structure and a brief description of the contents of the folders, refer
 to
-`Processor\_SDK\_Linux\_Directory\_Structure 
+`Processor\_SDK\_Linux\_Directory\_Structure
 <Overview_Directory_Structure_Overview.html>`__.
 
 .. rubric:: Getting Started
@@ -220,7 +220,7 @@ Following features supported in MCSDK are not supported in Processor SDK
 
 -  Drivers: UDMA, 10G-KR firmware, IPSec inflow, kexec, network bonding
 
-| 
+|
 
 .. rubric:: Kernel Drivers
    :name: kernel-drivers
@@ -305,7 +305,7 @@ Processor SDK Linux Installer. The instructions on how to build the
 Processor SDK Linux are available
 `here <Overview_Building_the_SDK.html>`__
 
-| 
+|
 
 .. rubric:: Processor SDK RTOS
 
@@ -466,5 +466,5 @@ Processor-SDK.
    :name: mcsdk1.1-to-processor-sdk-migration-for-omapl13x-devices
 
 For OMAPL13x devices, you can refer to the `MCSDK1.1 to Processor SDK
-Migration <Release_Specific_Migration_Guide.html#mcsdk1-1-to-processor-sdk-linux-migration-guide-for-omapl13x-devices>`__ 
+Migration <Release_Specific_Migration_Guide.html#mcsdk1-1-to-processor-sdk-linux-migration-guide-for-omapl13x-devices>`__
 link

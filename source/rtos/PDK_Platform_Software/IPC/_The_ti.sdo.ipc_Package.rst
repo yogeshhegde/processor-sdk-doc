@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/The_ti.sdo.ipc_Package 
+.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/The_ti.sdo.ipc_Package
 
 .. |ipcSdoRun_Img1| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/files.html
@@ -8,7 +8,7 @@ Introduction
 This page introduces the modules in the ti.sdo.ipc package.
 
 .. note::
-  This package is not used on HLOS-based cores. Although this is a BIOS-only package, 
+  This package is not used on HLOS-based cores. Although this is a BIOS-only package,
   note that the BIOS-side of a HLOS<->BIOS IPC-using application will need to bring in a subset of these packages into the BIOS-side configuration scripts.
 
 The ``ti.sdo.ipc`` package contains the following modules that you may use in your applications:
@@ -148,7 +148,7 @@ to use. Depending on the APIs used in your application code, you may
 need to include different XDC, IPC, and SYS/BIOS header files.
 
 ::
-  
+
     #include <xdc/std.h>
     #include <string.h>
      
@@ -231,7 +231,7 @@ Your application can test the status value returned against any of the
 provided status constants. For example:
 
 ::
-  
+
     MessageQ_Msg     msg;
     MessageQ_Handle  messageQ;
     Int              status;

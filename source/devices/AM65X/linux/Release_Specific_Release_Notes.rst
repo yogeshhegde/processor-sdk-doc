@@ -71,7 +71,7 @@ U-Boot
 | uBoot Tag: cicd.dunfell.202303090400
 
 | Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
-| 
+|
 
 Kernel
 -------------------------
@@ -89,7 +89,7 @@ Kernel
 | Kernel defconfig: ti_sdk_arm64_release_defconfig
 
 | Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
-| 
+|
 
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
@@ -120,7 +120,7 @@ Yocto
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: dunfell
 | Release Tag: cicd.dunfell.202303090400
-| 
+|
 
 .. rubric:: meta-arago
    :name: meta-arago
@@ -132,7 +132,7 @@ Yocto
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: dunfell
 | Release Tag: cicd.dunfell.202303090400
-| 
+|
 
 .. rubric:: meta-processor-sdk
 
@@ -141,7 +141,7 @@ Yocto
 
 | Clone: git://git.ti.com/processor-sdk/meta-processor-sdk.git
 | Branch: dunfell
-| 
+|
 
 
 
@@ -153,21 +153,21 @@ Issues Tracker
       status = Closed AND
       resolution = Done AND
       component in (
-         "Audio & Display", 
-         Baseport, 
-         Connectivity, 
-         IPC, 
-         "Power & Thermal", 
-         Graphics, 
-         Multimedia, 
-         Wireless, 
-         "System Integration", 
+         "Audio & Display",
+         Baseport,
+         Connectivity,
+         IPC,
+         "Power & Thermal",
+         Graphics,
+         Multimedia,
+         Wireless,
+         "System Integration",
          Security) AND
       closedDate > 2021-12-10 AND
       createdDate <= 2021-12-10 AND
       (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE) OR labels is EMPTY) AND
-      OS in (Linux, RT-linux) 
-      ORDER BY priority DESC   
+      OS in (Linux, RT-linux)
+      ORDER BY priority DESC
 
 Issues opened in previous releases that were closed on this release
 -------------------------------------------------------------------
@@ -181,17 +181,17 @@ Issues opened in previous releases that were closed on this release
    "LCPD-18258","IPSEC perfomance failures"
    "LCPD-24127","AM654x IPSEC Software Crypto tests fail (Impact 4)"
    "LCPD-19859","ETH ICSSG netperf benchmark returns lower performance than expected"
-   
+
 ..
    project = LCPD AND platform in (am654x-evm, am654x-hsevm) AND
        issuetype = Bug AND
        status = Closed AND
        resolution = Done AND
        component in (
-          "Audio & Display", 
+          "Audio & Display",
           Baseport,
-          Connectivity, 
-          IPC, 
+          Connectivity,
+          IPC,
           "Power & Thermal",
           "System Integration",
           Wireless,
@@ -202,8 +202,8 @@ Issues opened in previous releases that were closed on this release
        createdDate > 2021-12-10 AND
        (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE) OR labels is EMPTY) AND
        OS in (Linux, RT-linux) AND
-       fixversion not in (Upstream) 
-       ORDER BY priority DESC  
+       fixversion not in (Upstream)
+       ORDER BY priority DESC
 
 Issues found and closed on this release that may be applicable to prior releases
 --------------------------------------------------------------------------------
@@ -221,8 +221,8 @@ Issues found and closed on this release that may be applicable to prior releases
        platform in (am654x-evm, am654x-hsevm) AND
        ErrataID is not EMPTY AND
        status = Closed AND
-       resolution not in (Duplicate, Rejected) 
-       ORDER BY priority DESC 
+       resolution not in (Duplicate, Rejected)
+       ORDER BY priority DESC
 
 
 Errata workarounds
@@ -249,8 +249,8 @@ Errata workarounds
        component in ("System Integration", Graphics, Wireless, Security, Multimedia) AND
        (labels not in (LCPD_K3.14_MAINT, MAINTENANCE, DO_NOT_RELEASE_NOTE) OR labels is EMPTY) AND
        (affectedVersion <= 08.02.00  AND
-       affectedVersion > Upstream OR affectedVersion < Upstream OR affectedVersion is EMPTY) 
-       ORDER BY key DESC, priority DESC, component ASC  
+       affectedVersion > Upstream OR affectedVersion < Upstream OR affectedVersion is EMPTY)
+       ORDER BY key DESC, priority DESC, component ASC
 
 .. _release-specific-known-issues:
 
@@ -276,8 +276,8 @@ SDK Known Issues
        (labels not in (LCPD_K3.14_MAINT, upstream, MAINTENANCE) OR labels is EMPTY) AND
        (summary ~ u-boot OR Subcomponent in (u-boot, UBOOT, Uboot)) AND
        (affectedVersion <= 08.02.00 AND
-       affectedVersion > Upstream OR affectedVersion < Upstream OR affectedVersion is EMPTY) 
-       ORDER BY priority DESC, component ASC, key DESC 
+       affectedVersion > Upstream OR affectedVersion < Upstream OR affectedVersion is EMPTY)
+       ORDER BY priority DESC, component ASC, key DESC
 
 U-Boot Known Issues
 -------------------
@@ -309,8 +309,8 @@ U-Boot Known Issues
        (labels not in (LCPD_K3.14_MAINT, upstream, MAINTENANCE, DO_NOT_RELEASE_NOTE) OR labels is EMPTY) AND
        summary !~ u-boot AND
        (Subcomponent not in (u-boot, UBOOT, Uboot) OR Subcomponent is EMPTY) AND
-       OS = Linux 
-       ORDER BY priority DESC, component DESC, key DESC   
+       OS = Linux
+       ORDER BY priority DESC, component DESC, key DESC
 
 .. _release-specific-linux-kernel-known-issues:
 
@@ -357,7 +357,7 @@ Linux Kernel Known Issues
     LCPD-16406,Seeing "e1000#0: ERROR: Hardware Initialization Failed" sometimes when do dhcp via pcie-eth
     LCPD-15540,uvc-gadget results in segmentation fault
     LCPD-14183,am654x-idk failed to login to kernel a few times (7/1000)
-    LCPD-13938,PCIe EP read/write/copy test failed with larger sizes 
+    LCPD-13938,PCIe EP read/write/copy test failed with larger sizes
     LCPD-13936,Uboot dhcp timeout 1 of 100 times
     LCPD-13603,One board could not boot rootfs from more than one SDHC card
     LCPD-13445,Seldom kernel oops triggered by prueth_netdev_init
@@ -395,7 +395,7 @@ Linux Kernel Known Issues
        (labels not in (LCPD_K3.14_MAINT, MAINTENANCE) OR labels is EMPTY) AND
        summary ~ rt AND
        (affectedVersion <= 08.02.00  AND
-       affectedVersion > Upstream OR affectedVersion < Upstream OR affectedVersion is EMPTY) 
+       affectedVersion > Upstream OR affectedVersion < Upstream OR affectedVersion is EMPTY)
        ORDER BY  priority DESC
 
 .. _release-specific-rt-linux-kernel-known-issues:
@@ -433,4 +433,4 @@ are described in :ref:`this page <how-to-build-a-ubuntu-linux-host-under-vmware>
    machine. Support for 32-bit host is dropped as Linaro toolchain is
    available only for 64-bit machines
 
-| 
+|

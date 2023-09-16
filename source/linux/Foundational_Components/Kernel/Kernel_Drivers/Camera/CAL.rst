@@ -187,7 +187,7 @@ driver to work properly:
 -  enum\_frame\_sizes()
 -  s\_stream()
 
-| 
+|
 
 In addition the subdevice driver **must** also calculate and make the current
 pixel rate (based on clocks, lanes and bits per pixels) available through the
@@ -266,9 +266,9 @@ Unsupported Features/Limitations
 -  Multi-stream interleaving/multiplex per port (i.e multiple VCs per
    port)
 
-| 
+|
 
-| 
+|
 
 Driver Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -284,7 +284,7 @@ platform devices" in the kernel menuconfig. You need to enable V4L2
 V4L platform driver (CONFIG\_V4L\_PLATFORM\_DRIVERS) before you can
 enable ti-cal (CONFIG\_VIDEO\_TI\_CAL).
 
-| 
+|
 
 Driver Usage
 ^^^^^^^^^^^^^

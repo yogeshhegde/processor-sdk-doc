@@ -41,7 +41,7 @@ Fault Management
 WDT
 ======
 .. include:: DSP_Software/DSP_Debug_and_Trace/_WDT.rst
-   
+
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+
 | .. Image:: /images/E2e.jpg     | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |

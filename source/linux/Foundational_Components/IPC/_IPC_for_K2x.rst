@@ -63,7 +63,7 @@ The RTOS SDK is installed at the following location:
 	├── xdctools_3_xx_xx_xx
 
 
-| 
+|
 
 Multiple Processor Manager
 ##########################
@@ -75,13 +75,13 @@ The Multiple Processor Manager (MPM) module is used to load and run DSP images f
 
 	- 	MPM server (mpmsrv): It runs as a daemon and runs automatically in the default filesystem supplied in Processor SDK. It parses the MPM configuration file from /etc/mpm/mpm_config.json, and then waits on a UNIX domain socket. The MPM server runs and maintains a state machine for each slave core.
 	-	MPM command line/client utility (mpmcl): It is installed in the filesystem and provides command line access to the server.
-	
+
 -	The following are the different methods that can be used by MPM to load and run slave images:
 
 	-	Using mpmcl utility.
 	-	From the config file, to load at bootup.
 	-	Writing an application to use mpmclient header file and library.
-	
+
 -	The location of the mpm server/daemon logs is based on the "outputif" configuration in the JSON config file. By default, this is /var/log/syslog.
 
 -	The load command writes the slave image segments to memory using UIO interface. The run command runs the slave images.
@@ -96,7 +96,7 @@ The Multiple Processor Manager (MPM) module is used to load and run DSP images f
 
 Methods to load and run ELF images using MPM
 *********************************************
-   
+
 **Using mpmcl utility to manage slave processors**
 
 Use mpmcl --help for details on the supported commands. The following is the output of mpmcl help:
@@ -110,7 +110,7 @@ Use mpmcl --help for details on the supported commands. The following is the out
                      load_withpreload, run_withpreload
 	[slave name] Name of the slave processor as specified in MPM config file
 	[options]    In case of load, the option field need to have image file name
-	
+
 
 The following is a sample set of mpmcl commands for managing slave processors:
 
@@ -227,9 +227,9 @@ Here are the key files that you should see after a successful build:
 	│       └── release
 	│       │   └── app_host
 
- 
 
-| 
+
+|
 
 Running the Bundled IPC Examples
 ********************************
@@ -247,7 +247,7 @@ these executable binaries:
 -   Core0/bin/debug/ server_core0.xe66
 -   host/bin/debug/app_host
 
-The Multi-Processor Manager (MPM) Command Line utilities are used to download and start the DSP executables. 
+The Multi-Processor Manager (MPM) Command Line utilities are used to download and start the DSP executables.
 
 Let’s load the example and run the DSP:
 
@@ -257,59 +257,59 @@ Let’s load the example and run the DSP:
     root@k2g-evm:~# mpmcl status dsp0
     root@k2g-evm:~# mpmcl load dsp0 server_core0.xe66
     root@k2g-evm:~# mpmcl run dsp0
-	
+
 You should see the following output:
 
 ::
 
-	[  919.637071] remoteproc remoteproc0: powering up 10800000.dsp                 
-	[  919.650495] remoteproc remoteproc0: Booting unspecified pre-loaded fw image  
-	[  919.683836] virtio_rpmsg_bus virtio0: rpmsg host is online                   
-	[  919.689355] virtio_rpmsg_bus virtio0: creating channel rpmsg-proto addr 0x3d 
-	[  919.712755] remoteproc remoteproc0: registered virtio0 (type 7)              
+	[  919.637071] remoteproc remoteproc0: powering up 10800000.dsp
+	[  919.650495] remoteproc remoteproc0: Booting unspecified pre-loaded fw image
+	[  919.683836] virtio_rpmsg_bus virtio0: rpmsg host is online
+	[  919.689355] virtio_rpmsg_bus virtio0: creating channel rpmsg-proto addr 0x3d
+	[  919.712755] remoteproc remoteproc0: registered virtio0 (type 7)
 	[  919.718671] remoteproc remoteproc0: remote processor 10800000.dsp is now up
-	
-	
+
+
 Now, we can run the IPC example:
 
 ::
 
 	root@k2g-evm:~# ./app_host CORE0
 
-	
+
 The following is the expected output:
 
 ::
 
-	--> main:                                                                       
-	--> Main_main:                                                                  
-	--> App_create:                                                                 
-	App_create: Host is ready                                                       
-	<-- App_create:                                                                 
-	--> App_exec:                                                                   
-	App_exec: sending message 1                                                     
-	App_exec: sending message 2                                                     
-	App_exec: sending message 3                                                     
-	App_exec: message received, sending message 4                                   
-	App_exec: message received, sending message 5                                   
-	App_exec: message received, sending message 6                                   
-	App_exec: message received, sending message 7                                   
-	App_exec: message received, sending message 8                                   
-	App_exec: message received, sending message 9                                   
-	App_exec: message received, sending message 10                                  
-	App_exec: message received, sending message 11                                  
-	App_exec: message received, sending message 12                                  
-	App_exec: message received, sending message 13                                  
-	App_exec: message received, sending message 14                                  
-	App_exec: message received, sending message 15                                  
-	App_exec: message received                                                      
-	App_exec: message received                                                      
-	App_exec: message received                                                      
-	<-- App_exec: 0                                                                 
-	--> App_delete:                                                                 
-	<-- App_delete:                                                                 
-	<-- Main_main:                                                                  
-	<-- main:     
+	--> main:
+	--> Main_main:
+	--> App_create:
+	App_create: Host is ready
+	<-- App_create:
+	--> App_exec:
+	App_exec: sending message 1
+	App_exec: sending message 2
+	App_exec: sending message 3
+	App_exec: message received, sending message 4
+	App_exec: message received, sending message 5
+	App_exec: message received, sending message 6
+	App_exec: message received, sending message 7
+	App_exec: message received, sending message 8
+	App_exec: message received, sending message 9
+	App_exec: message received, sending message 10
+	App_exec: message received, sending message 11
+	App_exec: message received, sending message 12
+	App_exec: message received, sending message 13
+	App_exec: message received, sending message 14
+	App_exec: message received, sending message 15
+	App_exec: message received
+	App_exec: message received
+	App_exec: message received
+	<-- App_exec: 0
+	--> App_delete:
+	<-- App_delete:
+	<-- Main_main:
+	<-- main:
 
 |
 
@@ -318,21 +318,21 @@ Understanding the Memory Map
 
 Overall Linux Memory Map
 ************************
-   
+
 ::
 
 	root@k2g-evm:~# cat /proc/iomem
 	[snip...]
-	80000000-8fffffff : System RAM (boot alias)                                     
-	92800000-97ffffff : System RAM (boot alias)                                     
-	9d000000-ffffffff : System RAM (boot alias)                                     
-	800000000-80fffffff : System RAM                                                
-		800008000-800dfffff : Kernel code                                             
-		801000000-80109433b : Kernel data                                             
-	812800000-817ffffff : System RAM                                                
-	818000000-81cffffff : CMEM                                                      
+	80000000-8fffffff : System RAM (boot alias)
+	92800000-97ffffff : System RAM (boot alias)
+	9d000000-ffffffff : System RAM (boot alias)
+	800000000-80fffffff : System RAM
+		800008000-800dfffff : Kernel code
+		801000000-80109433b : Kernel data
+	812800000-817ffffff : System RAM
+	818000000-81cffffff : CMEM
 	81d000000-87fffffff : System RAM
-	
+
 **CMA Carveouts**
 
 To view the allocation at run-time:
@@ -341,11 +341,11 @@ To view the allocation at run-time:
 
 	root@k2g-evm:~# dmesg | grep "Reserved memory"
 	[    0.000000] Reserved memory: created CMA memory pool at 0x000000081f800000, size 8 MiB
-	
+
 The CMA block is defined in the following file for the K2G EVM:
 
 linux/arch/arm/boot/dts/keystone-k2g-evm.dts
-	
+
 **CMEM**
 
 To view the allocation at run-time:
@@ -394,11 +394,11 @@ The carveouts for the DSP are defined in the Linux dts file. For the K2G EVM, th
 			status = "okay";
 		};
 	};
-	
+
 The memory region "dsp_common_mpm_memory" starts at address 0x9d000000 and has a size of 0x2800000 bytes. This region is where the DSP code/data needs to reside. If they are not in this region, you will see the error "load failed (error: -104)" when trying to load.
 
-The memory region "dsp_common_memory” starts at address 0x9f800000 and has a size of 0x800000. This is a CMA pool, as indicated by the line “compatible = "shared-dma-pool";”, and is reserved for 
-Virtque region and Rpmsg vring buffers. 
+The memory region "dsp_common_memory” starts at address 0x9f800000 and has a size of 0x800000. This is a CMA pool, as indicated by the line “compatible = "shared-dma-pool";”, and is reserved for
+Virtque region and Rpmsg vring buffers.
 
 As of Processor SDK 5.2, the Virtque and vring buffers are allocated by the remoteproc driver from this region and communicated to the slave by update to the resource table.
 
@@ -412,7 +412,7 @@ The resource table contains the definitions of the CMA carveout for the Rpmsg vr
 
 MPM Config File
 ***************
-   
+
 The MPM configuration file is a JSON format configuration file and is located in the default root file system release as part of Processor SDK Linux. It is labeled “mpm_config.json” and is located in /etc/mpm.
 
 The following are some details regarding the MPM configuration file:
@@ -446,7 +446,7 @@ The following are some details regarding the MPM configuration file:
 
 Config.bld
 **********
-   
+
 The config.bld file is used by the IPC examples to configure the external memory map at the application level. It is located in /ipc_3_x_x_x/examples/66AK2G_linux_elf/ex02_messageq/shared/. A linker command file can be used as well, in place of a config.bld file, to place sections into memory.
 
 By default, the ex02_messageq runs from MSMC memory so the config.bld file is not used. In the next section, we will show how to modify the config.bld to place the DSP code in DDR.
@@ -454,7 +454,7 @@ By default, the ex02_messageq runs from MSMC memory so the config.bld file is no
 
 Modifying ex02_messageQ example to run from DDR
 ###############################################
-   
+
 As an example, the following section shows how to modify the IPC memory map to run the ex02_messageq example from DDR instead of MSMC.
 
 
@@ -469,7 +469,7 @@ Remove the following lines:
 	Build.platformTable["ti.platforms.evmTCI66AK2G02:core0"] = {
     externalMemoryMap: [ ]
 	};
-	
+
 and add the following:
 
 .. code-block:: javascript
@@ -520,18 +520,18 @@ To:
 			"length": "0x30000000",
 			"devicename": "/dev/dsp0"
 		},
-		
-		
+
+
 **Changes to Core0.cfg**
 
-Remove the following lines: 
+Remove the following lines:
 
 .. code-block:: javascript
 
 	Program.sectMap[".text:_c_int00"] = new Program.SectionSpec();
 	Program.sectMap[".text:_c_int00"].loadSegment = "L2SRAM";
 	Program.sectMap[".text:_c_int00"].loadAlign = 0x400;
-	
+
 These lines above place the .text section into L2SRAM. We want it to be in DDR so it needs to be removed.
 
 Remove the following lines:
@@ -539,16 +539,16 @@ Remove the following lines:
 ::
 
 	var Resource = xdc.useModule('ti.ipc.remoteproc.Resource');
-	Resource.loadSegment = Program.platform.dataMemory; 
- 
-These lines place the resource table into the dataMemory section, which in our case is in DDR memory. 
+	Resource.loadSegment = Program.platform.dataMemory;
+
+These lines place the resource table into the dataMemory section, which in our case is in DDR memory.
 
 The Remoteproc driver requires the trace buffers and resource table to be placed into L2SRAM. If they are not, you will see the following error when loading:
 
 ::
 
-	keystone-rproc 10800000.dsp: error in ioctl call: cmd 0x40044902 
-	(2), ret -22                                                                    
+	keystone-rproc 10800000.dsp: error in ioctl call: cmd 0x40044902
+	(2), ret -22
 	load failed (error: -107)
 
 So we will need to add the following lines to place the trace buffer and resource table into L2SRAM:
@@ -565,11 +565,11 @@ So we will need to add the following lines to place the trace buffer and resourc
 ::
 
 Now follow the steps in `Running the Bundled IPC Examples`_.
-	
+
 
 Loading DSP images from CCS (without using MPM)
 ###############################################
-   
+
 By default, the DSP cores are powered down by u-boot at the time of EVM boot. After kernel is running, MPM can be used to load and run DSP images from Linux command-line/utility.
 
 Rather than using MPM, if you want to use CCS to load and run DSP images, then set the following setting in u-boot prompt:
@@ -579,14 +579,14 @@ Rather than using MPM, if you want to use CCS to load and run DSP images, then s
 	setenv debug_options 1
 	saveenv
 	reset
-	
+
 This will not power down DSPs at startup and CCS/JTAG can connect to the DSP for loading and debugging. This option is useful if you want to boot Linux on ARM and then use JTAG to manually load and run the DSPs. Otherwise you may see "held in reset" errors in CCS.
- 
+
 .. note:: The above step is not needed if you want to load DSP cores using MPM and subsequently use CCS to connect to DSP.
 
 MPM Debugging
 #############
-   
+
 The following are some pointers for MPM debugging.
 
 **MPM Error Codes**
@@ -615,7 +615,7 @@ The following are some pointers for MPM debugging.
 | -107       |	error_resource_table_setting      |
 +------------+------------------------------------+
 | -108       |	error_error_no_entry_point        |
-+------------+------------------------------------+	
++------------+------------------------------------+
 | -109       |	error_invalid_command             |
 +------------+------------------------------------+
 
@@ -625,10 +625,10 @@ The following are some pointers for MPM debugging.
 
 The DSP log messages can be read from following debugfs locations:
 
-:: 
+::
 
 	DSP log entry for core #: /sys/kernel/debug/remoteproc/remoteproc#/trace0
-	
+
 Where # is the core id starting from 0.
 
 ::
@@ -640,7 +640,7 @@ Where # is the core id starting from 0.
 
 Detecting crash event in MPM
 ****************************
-   
+
 In the case of a DSP exception, the MPM calls the script provided in JSON config file. The Processor SDK Linux filesystem has a sample script /etc/mpm/crash_callback.sh that sends message to syslog indicating which core crashed. This script can be customized to suit notification needs.
 
 **Generating DSP coredump**
@@ -656,7 +656,7 @@ The MPM creates an ELF formatted core dump.
 ::
 
 	root@keystone-evm:~# mpmcl coredump dsp0 coredump.out
-	
+
 The above command will generate a coredump file with name coredump.out for the DSP core 0.
 
 .. note:: The coredump can be captured from a running system that is not crashed, in this case the register information won't be available in the coredump.
@@ -670,19 +670,19 @@ The OpenCL application needs to be disabled since it interferes with the caching
 ::
 
 	root@k2g-evm:~# systemctl disable ti-mct-daemon.service
-	
-| 
+
+|
 
 After power-cycling the EVM, we can now load and run the example.
 
 
 Frequently Asked Questions
 ##########################
-   
+
 Q: How to maintain cache coherency
 
 A: In the first 2GB of DDR, region 00 8000 0000 - 00 FFFF FFFF (alias of 08 0000 0000 - 08 7FFF FFFF), no IO coherency is supported. Cache coherency will need to be maintained by software. The cache coherence API descriptions for the A15 can be found in the `TI-RTOS Cache Module cdocs. <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/sysbios/6_52_00_12/exports/bios_6_52_00_12/docs/cdoc/ti/sysbios/family/arm/a15/Cache.html#xdoc-desc>`__
-   
+
 Q: MPM does not load and run the DSP image
 
 A: There can be several scenarios, the following are a few of them:
@@ -708,14 +708,14 @@ A: The MPM fundamentally copies segments from DSP image to memory using a custom
 
 Q: MPM fails to run the image
 
-A: MPM takes DSP out of reset to run the image. So, the fails to run normally attributed to DSP is crashing before main or some other issue in the image. But, to debug such issue, after mpmcl run, use CCS to connect to the target and then do load symbols of the images. Then the DSP can be debugged using CCS. Another way to debug the run issue, is to aff a infinite while loop in the reset function so that the DSP stops at the very beginning. Then load and run the DSP using MPM and connect thru CCS, do load symbols and come out of while loop and debug. 
+A: MPM takes DSP out of reset to run the image. So, the fails to run normally attributed to DSP is crashing before main or some other issue in the image. But, to debug such issue, after mpmcl run, use CCS to connect to the target and then do load symbols of the images. Then the DSP can be debugged using CCS. Another way to debug the run issue, is to aff a infinite while loop in the reset function so that the DSP stops at the very beginning. Then load and run the DSP using MPM and connect thru CCS, do load symbols and come out of while loop and debug.
 
 Q: I don't see DSP prints from debugfs
 
-A: Make sure you followed the procedure described above to include the resource table in the image. Care should be taken for the resource table not being compiled out by linker. To check if the resource table present in the image using command readelf --hex-dump=.resource_table <image name>. It should have some non-zero data. 
-Another point is, if you are loading same image in multiple cores and if the resource table and trace buffer segments overlap with each other in memory, then there can be undesirable effect. 
+A: Make sure you followed the procedure described above to include the resource table in the image. Care should be taken for the resource table not being compiled out by linker. To check if the resource table present in the image using command readelf --hex-dump=.resource_table <image name>. It should have some non-zero data.
+Another point is, if you are loading same image in multiple cores and if the resource table and trace buffer segments overlap with each other in memory, then there can be undesirable effect.
 
 Q: I see the DSP state in /sys/kernel/debug/remoteproc/remoteproc0/state as crashed
 
-A: The file /sys/kernel/debug/remoteproc/remoteproc#/state does not indicate state of DSP when MPM is used for loading. The state of the DSP can be seen using MPM client. See the description of the command in Methods to load and run ELF images using MPM sections. 
+A: The file /sys/kernel/debug/remoteproc/remoteproc#/state does not indicate state of DSP when MPM is used for loading. The state of the DSP can be seen using MPM client. See the description of the command in Methods to load and run ELF images using MPM sections.
 

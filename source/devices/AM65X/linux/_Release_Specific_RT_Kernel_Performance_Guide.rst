@@ -40,13 +40,13 @@ System Benchmarks
 
 LMBench
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-LMBench is a collection of microbenchmarks of which the memory bandwidth 
-and latency related ones are typically used to estimate processor 
-memory system performance. More information about lmbench at 
+LMBench is a collection of microbenchmarks of which the memory bandwidth
+and latency related ones are typically used to estimate processor
+memory system performance. More information about lmbench at
 http://lmbench.sourceforge.net/whatis_lmbench.html and
 http://lmbench.sourceforge.net/man/lmbench.8.html
 
-  
+
 **Latency**: lat_mem_rd-stride128-szN, where N is equal to or smaller than the cache
 size at given level measures the cache miss penalty. N that is at least
 double the size of last level cache is the latency to external memory.
@@ -225,7 +225,7 @@ Table:  **Linpack Benchmark**
 
 NBench
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-NBench which stands for Native Benchmark is used to measure macro benchmarks 
+NBench which stands for Native Benchmark is used to measure macro benchmarks
 for commonly used operations such as sorting and analysis algorithms.
 More information about NBench at
 https://en.wikipedia.org/wiki/NBench and
@@ -253,10 +253,10 @@ Table:  **NBench Benchmarks**
 Stream
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 STREAM is a microbenchmark for measuring data memory system performance without
-any data reuse. It is designed to miss on caches and exercise data prefetcher 
+any data reuse. It is designed to miss on caches and exercise data prefetcher
 and speculative accesses.
 It uses double precision floating point (64bit) but in
-most modern processors the memory access will be the bottleneck. 
+most modern processors the memory access will be the bottleneck.
 The four individual scores are copy, scale as in multiply by constant,
 add two numbers, and triad for multiply accumulate.
 For bandwidth, a byte read counts as one and a byte written counts as one,
@@ -292,7 +292,7 @@ thread-enabled workloads to be tested.
 
 .. csv-table::
     :header: "Benchmarks","am654x-evm: perf"
- 
+
     "4m-check (workloads/)",356.68
     "4m-check-reassembly (workloads/)",69.2
     "4m-check-reassembly-tcp (workloads/)",35.77
@@ -372,7 +372,7 @@ To start netserver:
 ::
 
    netserver [-p <port_number>] [-4 (IPv4 addressing)] [-6 (IPv6 addressing)]
- 
+
 Running the following shell script from the DUT will trigger netperf clients to measure
 bidirectional TCP performance for 60 seconds and report CPU utilization. Parameter -k is used in
 client commands to summarize selected statistics on their own line and -j is used to gain
@@ -455,7 +455,7 @@ Table: **ICSSG UDP Egress Throughput**
     "1518","1472.00","751.92","75.12"
 
 Table: **ICSSG UDP Ingress Throughput (0% loss)**
- 
+
 
 
 ALSA SoC Audio Driver
@@ -523,20 +523,20 @@ MMC/SD Driver
   sensitive applications, umount the auto-mounted filesystem and
   re-mount in async mode.
 
-| 
-
-
- 
-
- 
-
- 
-
- 
+|
 
 
 
- 
+
+
+
+
+
+
+
+
+
+
 
 
 AM654x-EVM
@@ -594,7 +594,7 @@ Performance and Benchmarks not available in this release.
 
 |
 
-  
+
 
 
 CRYPTO Driver
@@ -604,7 +604,7 @@ Performance and Benchmarks not available in this release.
 
 
 
- 
+
 IPSec Software Performance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -614,13 +614,13 @@ IPSec Software Performance
     "3des","52.40","4.00","59.49"
     "aes256","91.30","8.00","36.35"
 
- 
 
- 
+
+
 
 DCAN Driver
 -------------------------
 
 Performance and Benchmarks not available in this release.
 
-    
+

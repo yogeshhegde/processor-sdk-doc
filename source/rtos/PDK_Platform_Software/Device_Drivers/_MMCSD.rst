@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MMCSD 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MMCSD
 
 Overview
 --------
@@ -27,7 +27,7 @@ to/from the CPU device through two-wire interface
 
 | Supports only controller mode. Peripheral mode is not supported
 
-| 
+|
 
 User Interface
 --------------
@@ -78,14 +78,14 @@ for a use case of write transaction in blocking mode:
      UInt peripheralNum = 0; /* Such as MMCSD0 */
      MMCSD_Params MMCSDParams;
      ...
-     MMCSD_Params_init(&MMCSDParams); 
+     MMCSD_Params_init(&MMCSDParams);
      MMCSD = MMCSD_open(peripheralNum, &MMCSDParams);<br>if (MMCSD == NULL) {<br> /* Error opening MMCSD */
      ...
      readOK = MMCSD_read(MMCSD, rxBuffer , startBlock, numBlock); /* Perform MMCSD read */
-     if (!transferOK) { /* MMCSD transaction failed */} 
+     if (!transferOK) { /* MMCSD transaction failed */}
 
      writeOK = MMCSD_write(MMCSD, TxBuffer , startBlock, numBlock); /* Perform MMCSD write */
-     if (!writeOK) { /* MMCSD transaction failed */} 
+     if (!writeOK) { /* MMCSD transaction failed */}
 
 
 .. rubric:: eMMC Usage
@@ -319,64 +319,99 @@ Examples & Unit tests
 Benchmarking Read/Write Performance (on AM65x/J721e)
 -----------------------------------------------
 
-The MMCSD_<EMMC>_Regression_TestApp application (listed above) measures read/write throughput (in mega bytes per sec). 
+The MMCSD_<EMMC>_Regression_TestApp application (listed above) measures
+read/write throughput (in mega bytes per sec).
 
-It measures the following
-	- RAW read/write throughput:  This involves the reading/writing of a continuous block of data, say 1MB data buffer on 
-	  to the SD/eMMC using MMCSD_Read()/MMCSD_Write().
-	- FATFS read/write (SD Only) throughput: This involves reading/writing of a 1MB buffer of data through f_read()/f_write(). 
-	  Please note that FAT32 is tested with SD card only
+It measures the following:
+
+- RAW read/write throughput:  This involves the reading/writing of a continuous
+  block of data, say 1MB data buffer on to the SD/eMMC using
+  MMCSD_Read()/MMCSD_Write().
+
+- FATFS read/write (SD Only) throughput: This involves reading/writing of a 1MB
+  buffer of data through f_read()/f_write(). Please note that FAT32 is tested
+  with SD card only
 
 Benchmarking Steps
 ------------------
 
-The performance benchmarks on SD Read/Write can be done with the following steps
+The performance benchmarks on SD Read/Write can be done with the following
+steps:
 
-	- Load the MMCSD_Regression_TestApp on A53/R5 core of AM65x or mpu1_0/mcu1_0 core of J721e
-	- Insert SD Card formatted with FAT32 format preferably with allocation size=4096 bytes for better performance.
-	- Run the application. It presents with a menu of various modes the SD card which can be run on the UART console
-	- Select the desired mode from the list (say HS mode) and press Enter
-	- The test will run RAW & FATFS read/writes of various buffer sizes 256K, 512K, 1024K and 2048K. 
-	  This might take a minute or two to complete.
-	- Two tables are printed at the end of the test run for this mode with RAW & FATFS throughput numbers 
-	  for each buffer size.
-	- Note: Instead of running each mode seperately, you can select "All non powercycle tests" option (-1)  
-	  which runs all the supported modes along with the throughput numbers for each of them.
+- Load the MMCSD_Regression_TestApp on A53/R5 core of AM65x or mpu1_0/mcu1_0
+  core of J721e
+
+- Insert SD Card formatted with FAT32 format preferably with allocation
+  size=4096 bytes for better performance.
+
+- Run the application. It presents with a menu of various modes the SD card
+  which can be run on the UART console
+
+- Select the desired mode from the list (say HS mode) and press Enter
+
+- The test will run RAW & FATFS read/writes of various buffer sizes 256K, 512K,
+  1024K and 2048K. This might take a minute or two to complete.
+
+- Two tables are printed at the end of the test run for this mode with RAW &
+  FATFS throughput numbers for each buffer size.
+
+- Note: Instead of running each mode seperately, you can select "All non
+  powercycle tests" option (-1)  which runs all the supported modes along with
+  the throughput numbers for each of them.
 
 
 EMMC performance benchmarks can be measured with the following steps
 
-	- Load the MMCSD_EMMC_Regression_TestApp on A53/R5 core of AM65x or mpu1_0/mcu1_0 core of J721e
-	- Run the application. It presents with a menu of various eMMC modes which can be run on the UART console
-	- Select the desired mode from the list (say HS-DDR mode) and press Enter
-	- The test will run RAW read/writes of various buffer sizes 256K, 512K, 1024K and 2048K. 
-	  This might take a minute or two to complete.
-	- A table is printed at the end of the test with the RAW throughput numbers for each buffer size.
-	- Note: Instead of running each mode seperately, you can select "All non powercycle tests" option (-1)  
-	  which runs all the supported modes along with the throughput numbers for each of them.
+- Load the MMCSD_EMMC_Regression_TestApp on A53/R5 core of AM65x or
+  mpu1_0/mcu1_0 core of J721e
+
+- Run the application. It presents with a menu of various eMMC modes which can
+  be run on the UART console
+
+- Select the desired mode from the list (say HS-DDR mode) and press Enter
+
+- The test will run RAW read/writes of various buffer sizes 256K, 512K, 1024K
+  and 2048K. This might take a minute or two to complete.
+
+- A table is printed at the end of the test with the RAW throughput numbers for
+  each buffer size.
+
+.. note:: Instead of running each mode seperately, you can select "All non
+   powercycle tests" option (-1)  which runs all the supported modes along with
+   the throughput numbers for each of them.
 
 Building CCS projects based examples
 ------------------------------------
 
-CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in 
+CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in
 `PDK Example and Test Project Creation <index_overview.html#pdk-example-and-test-project-creation>`__
 
 
 Building MMCSD Test applications via makefiles
 ----------------------------------------------
 
--  MMCSD Test applications and dependent libraries are built from the top level mmcsd makefile
--  Refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details
-   of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
-	-  cd <pdk>/packages/
-	-  To build: make mmcsd 
-	-  To clean: make mmcsd_clean 
+- MMCSD Test applications and dependent libraries are built from the top level
+  mmcsd makefile
 
-- Similarly, to build at the module level, issue the following commands for rebuilding :
-	
-	- cd <pdk>/packages/ti/drv/mmcsd
-	- To build: make all
-	- To clean: make clean
+- Refer to the `Processor SDK RTOS Getting Started Guide
+  <index_overview.html#setup-environment>`__  for details of how to setup the
+  build environment. Once you have setup the build environment, issue the
+  following commands:
+
+   - cd <pdk>/packages/
+
+   - To build: make mmcsd
+
+   - To clean: make mmcsd_clean
+
+- Similarly, to build at the module level, issue the following commands for
+  rebuilding:
+
+   - cd <pdk>/packages/ti/drv/mmcsd
+
+   - To build: make all
+
+   - To clean: make clean
 
 
 Additional References
@@ -394,5 +429,5 @@ Additional References
 |                                   | D_LLD.pdf                                  |
 +-----------------------------------+--------------------------------------------+
 
-| 
+|
 

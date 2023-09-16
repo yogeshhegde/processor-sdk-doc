@@ -12,10 +12,10 @@ recipes that were updated while integrating the components to the
 ::
 
 
-        ├── QT5:  
+        ├── QT5:
         │    ├──Baseline:
         │    │     └──meta-qt5:recipes-qt/qt5/: recipes and patches from community
-        │    │      
+        │    │
         │    └──Arago (TI) updates:
         │         ├──meta-arago:
         │         │ ├──meta-arago-distro/recipes-qt/qt5: recipes update and additional patches
@@ -27,7 +27,7 @@ recipes that were updated while integrating the components to the
         │         │ │   └──packagegroup-arago-tisdk-qte-sdk-host.bb
         │         │ ├──meta-arago-extras\recipes-core\packagegroups: no changes are expected
         │         │ │   └──packagegroup-arago-qte-toolchain-target.bb
-        │         │ │                                   
+        │         │ │
         │         │ ├──meta-arago-distro/conf/layer.conf: No changes needed for QT configurations
         │         │ └──meta-arago-distro/conf/distro/arago.conf
         │         └──meta-processor-sdk:
@@ -35,7 +35,7 @@ recipes that were updated while integrating the components to the
         ├──Wayland/Weston:
         │    ├──Baseline:
         │    │     └──oe-core/meta/recipes-graphics/wayland: recipes and patches from community
-        │    │      
+        │    │
         │    └──Arago (TI) updates:
         │         ├──meta-arago:
         │         │ ├──meta-arago-distro/recipes-graphics/wayland: recipes update and additional patches
@@ -43,13 +43,13 @@ recipes that were updated while integrating the components to the
         │         │ ├──meta-arago-distro/recipes-graphics/wayland/wayland-ivi-extension: wayland-ivi recipes
         │         │ ├──meta-arago-distro/recipes-graphics/wayland/weston-conf: weston configuration
         │         │ └──meta-arago-distro/conf/distro/arago.conf: DISTRO_FEATURES
-        
+
         Note: There are many modules that depend on wayland. For example: chromium-wayland, qt5/qtwayland, gstreamer1.0-plugins-bad(waylandsink), glmark2 and gtk+3
         ├──SGX (Not recommended to modify):
         │    ├──Baseline:
-        │    │      
+        │    │
         │    ├──meta-ti:
-        │    │  ├──recipes-graphics/libgles/ti-sgx-ddk-um_<version>  
+        │    │  ├──recipes-graphics/libgles/ti-sgx-ddk-um_<version>
         │    │  └──recipes-bsp/powervr-drivers/ti-sgx-ddk-km_<version>
         │    │
         │    ├──meta-arago:
@@ -58,8 +58,8 @@ recipes that were updated while integrating the components to the
         │    │  └──meta-arago-distro/conf/distro/include/arago-prefs.inc: define virtual/egl, virtual/libgles1 and virtual/libgles2
         │    │
         │    │ Note: There are many modules that depend on sgx, but that does not affect sgx update.
-        │    │        
-        │    └──Arago (TI) updates: 
+        │    │
+        │    └──Arago (TI) updates:
         │       └──meta-processor-sdk:
         │           └──recipes-graphics/libgles/ti-sgx-ddk-um_version: for non-sgx build only
         ├──Gstreamer:
@@ -86,6 +86,6 @@ recipes that were updated while integrating the components to the
 
 
 If users wish to learn more about Yocto project or Arago build, please refer to the below video link and the documentation on `Building Processor SDK Linux through Yocto <../../Overview_Building_the_SDK.html>`__.
-    
+
 - https://training.ti.com/customizing-yocto-for-production-introduction
 

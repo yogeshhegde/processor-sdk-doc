@@ -157,7 +157,7 @@ To enable SPI NOR framework:
 
               Device Drivers  --->
                 <*> Memory Technology Device (MTD) support  --->
-                  <*>   SPI-NOR device support  --->  
+                  <*>   SPI-NOR device support  --->
 
 To enable spi-cadence-quadspi driver:
 
@@ -277,9 +277,9 @@ section <#enabling-qspi-driver-configurations>`__ for more information).
 
          root~# ubiformat /dev/mtd9
          ubiformat: mtd9 (nor), size 23199744 bytes (22.1 MiB), 354 eraseblocks of 65536 bytes (64.0 KiB), min. I/O size 1 bytes
-         libscan: scanning eraseblock 353 -- 100 % complete 
+         libscan: scanning eraseblock 353 -- 100 % complete
          ubiformat: 354 eraseblocks are supposedly empty
-         ubiformat: formatting eraseblock 353 -- 100 % complete 
+         ubiformat: formatting eraseblock 353 -- 100 % complete
          root:~# ubiattach -p /dev/mtd9
          [  270.874428] ubi0: attaching mtd9
          [  270.914131] ubi0: scanning is finished
@@ -296,7 +296,7 @@ section <#enabling-qspi-driver-configurations>`__ for more information).
          root:~# ubimkvol /dev/ubi0 -N flash_fs -s 20MiB
          Volume ID 0, size 321 LEBs (20995968 bytes, 20.0 MiB), LEB size 65408 bytes (63.9 KiB), dynamic, name "flash_fs", alignment 1
          root:~# mkdir /mnt/flash
-         root:~# mount -t ubifs ubi0:flash_fs /mnt/flash/   
+         root:~# mount -t ubifs ubi0:flash_fs /mnt/flash/
          [  326.002602] UBIFS (ubi0:0): default file-system created
          [  326.008309] UBIFS (ubi0:0): background thread "ubifs_bgt0_0" started, PID 866
          [  326.027530] UBIFS (ubi0:0): UBIFS: mounted UBI device 0, volume 0, name "flash_fs"
@@ -397,12 +397,12 @@ Now you can access filesystem at /mnt/flash/.
              -               cdns,read-delay = <4>;
              +               cdns,read-delay = <0>;
                              cdns,phy-mode;
- 
+
                              partitions {
              @@ -801,9 +801,9 @@ partition@800000 {
                                              reg = <0x800000 0x37c0000>;
                                      };
- 
+
              -                       partition@3fc0000 {
              +                       partition@3fe0000 {
                                              label = "ospi.phypattern";

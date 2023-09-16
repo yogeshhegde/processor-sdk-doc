@@ -176,7 +176,7 @@ the other CAN device the user will be connecting to.
 
 .. Image:: /images/DB9_cable.jpg
    :scale: 50%
-   :align: center 
+   :align: center
 
 
 .. rubric:: **Jumper Wires**
@@ -231,7 +231,7 @@ may need to double check the evm's schematic.
 
    </div>
 
-| 
+|
 
 .. rubric:: **Custom DB9 to Header Cable**
    :name: custom-db9-to-header-cable
@@ -270,7 +270,7 @@ to the correct pins correctly. Use the below diagram as a reference.
 | Wiring Diagram                                              | Example of completed cable.                    |
 +-------------------------------------------------------------+------------------------------------------------+
 
-| 
+|
 
 .. rubric:: **CAN Utilities**
    :name: can-utilities
@@ -379,7 +379,7 @@ Packet reception can be achieve by using candump utility
 
     $ ip link set can0 down
 
-| 
+|
 
 .. rubric:: **Advanced Usage**
    :name: advanced-usage
@@ -481,7 +481,7 @@ the previous section
 
     $ candump can0 -e
 
-| 
+|
 
 .. rubric:: **Linux Driver Configuration**
    :name: linux-driver-configuration
@@ -539,7 +539,7 @@ kernel module.
 
    </div>
 
-| 
+|
 
 .. rubric:: **DCAN driver Architecture**
    :name: dcan-driver-architecture

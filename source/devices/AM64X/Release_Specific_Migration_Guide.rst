@@ -39,7 +39,7 @@ Processor SDK 08.06
 - OPTEE 3.20
 - Yocto Dunfell/3.1
 - Platforms Supported : AM64x SR2.0 (HS-FS, HS-SE) with default boot on HS-FS
-  
+
 Processor SDK 08.05
 -----------------------
 - This is the fifth release on 2021 LTS 5.10 kernel, 2021.01 U-Boot
@@ -90,4 +90,4 @@ Processor SDK 07.03.01
 
 Processor SDK 07.03.00
 ----------------------
-- This is the first release of Processor SDK Linux AM64X. 
+- This is the first release of Processor SDK Linux AM64X.

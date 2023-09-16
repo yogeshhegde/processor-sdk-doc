@@ -85,7 +85,7 @@ For an example of a driver using a GPIO pin, examine this entry in a dts
 file for how the MMC/SD interface could use a GPIO as a card detect pin
 Under Kernel directory arch/arm/boot/dts/am335x-bone-common.dtsi line 401
 
-| 
+|
 
 .. rubric:: Features
    :name: features

@@ -11,9 +11,9 @@ Overview
 This section provides guides to create SD cards for the following use cases:
 
 #. Create SD cards with default images:
-   
+
    - :ref:`Create SD cards with default images using balenaEtcher <processor-sdk-linux-create-sd-card-using-balena>`
- 
+
    - :ref:`Create SD cards with default images using bmap-tools <processor-sdk-linux-create-sd-card-using-bmap>`
 
    - :ref:`Create SD cards with default images using script packaged in installer <processor-sdk-linux-sd-card-with-default-images>`
@@ -42,8 +42,8 @@ Create SD Card using balenaEtcher
 ----------------------------------
 
 1.  Download the default bootable SD card image (WIC file) available on the release page as
-    tisdk-default-image-<machine>.wic.xz. The  |__SDK_FULL_NAME__| installer also contains other 
-    WIC images that can be flashed to the SD card similarly. Assuming the SDK is installed on a 
+    tisdk-default-image-<machine>.wic.xz. The  |__SDK_FULL_NAME__| installer also contains other
+    WIC images that can be flashed to the SD card similarly. Assuming the SDK is installed on a
     Linux machine at <PSDK\_PATH>, you can find other available WIC images at <PSDK\_PATH>/filesystem/
 
 |
@@ -71,8 +71,8 @@ Create SD Card using bmap-tools
 ----------------------------------
 
 1.  Download the default bootable SD card image (WIC file) available on the release page as
-    tisdk-default-image-<machine>.wic.xz. The  |__SDK_FULL_NAME__| installer also contains other 
-    WIC images that can be flashed to the SD card similarly. Assuming the SDK is installed on a 
+    tisdk-default-image-<machine>.wic.xz. The  |__SDK_FULL_NAME__| installer also contains other
+    WIC images that can be flashed to the SD card similarly. Assuming the SDK is installed on a
     Linux machine at <PSDK\_PATH>, you can find other available WIC images at <PSDK\_PATH>/filesystem/
 
 |
@@ -91,7 +91,7 @@ Create SD Card using bmap-tools
 3.  Flash the WIC image to SD card
 
     - For Linux:
-      
+
       a) First, make sure that the SD card is unmounted. You can use lsblk to
          inspect whether the SD card partitions have a MOUNTPOINT. If the SD
          card is mounted, use umount to unmount the partitions.
@@ -104,7 +104,7 @@ Create SD Card using bmap-tools
              NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
              :
              :
-             sdc      8:32   1    15G  0 disk 
+             sdc      8:32   1    15G  0 disk
              ├─sdc1   8:33   1 131.8M  0 part /media/localUser/boot
              └─sdc2   8:34   1 765.9M  0 part /media/localUser/root
 
@@ -118,15 +118,15 @@ Create SD Card using bmap-tools
              NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
              :
              :
-             sdc      8:32   1    15G  0 disk 
-             ├─sdc1   8:33   1 131.8M  0 part 
-             └─sdc2   8:34   1 765.9M  0 part 
+             sdc      8:32   1    15G  0 disk
+             ├─sdc1   8:33   1 131.8M  0 part
+             └─sdc2   8:34   1 765.9M  0 part
 
       b) Next, install bmap-tools using the following command:
 
          ::
 
-             sudo apt-get install bmap-tools 
+             sudo apt-get install bmap-tools
 
          Then generate a bmap file from the decompressed WIC image with the following command.
          This step can be skipped but the bmap file significantly reduces the time taken to flash the SD card.
@@ -162,14 +162,14 @@ done with your development you may want place these images onto an SD
 card so that they can be used stand-along without requiring a network
 connection to a server.
 
-For this purpose, the |__SDK_FULL_NAME__| package includes a script in the 
-**<PSDK\_PATH>/bin** directory named **create-sdcard.sh**. 
+For this purpose, the |__SDK_FULL_NAME__| package includes a script in the
+**<PSDK\_PATH>/bin** directory named **create-sdcard.sh**.
 
 The script will give you information about each step, but the following
 section will go over the details for the use cases above and walk you
 through how to use the script as well.
 
-| 
+|
 
 
 .. rubric:: 1. Invoking the Script:
@@ -200,16 +200,16 @@ SD card. For example if the output looks like:
 
 ::
 
-    Availible Drives to write images to: 
-     
-    #  major   minor    size   name 
+    Availible Drives to write images to:
+
+    #  major   minor    size   name
     1:   8       16    7761920 sdb
-     
-    Enter Device Number: 
+
+    Enter Device Number:
 
 You would enter **1** to select the **sdb** device.
 
-.. note:: 
+.. note::
 
  For most common installations, this script works fine.
  However, if you are using more advanced disk slicing and volume
@@ -290,7 +290,7 @@ to continue installing the file system or safely exit the script.
    -  **n** - Selecting no here will allow you to have partitioned your
       card but will leave the partitions empty.
 
- 
+
 
 .. rubric:: 6. Installing Custom Images
    :name: installing-custom-images

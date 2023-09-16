@@ -10,7 +10,7 @@ The WL127x's dual mode 802.11 b/g/n and *Bluetooth* transceiver
 gives users a robust selection of applications. A list of some basic use
 cases preloaded on the EVMs can be seen below:
 
-| 
+|
 
 +------------------------------------+----------------------------------------------------------------------------------------------+
 | Senario                            | Description                                                                                  |
@@ -54,7 +54,7 @@ cases preloaded on the EVMs can be seen below:
 -  `Enabling BLE on the
    WL127xL <http://processors.wiki.ti.com/index.php/BTS_with_BLE_enabled_for_WL127xL>`__
 
-| 
+|
 
 .. rubric:: WLAN Demos
    :name: wlan-demos
@@ -164,7 +164,7 @@ page for more instruction.
 -  `How-to configure Ethernet to WLAN
    Bridge <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_Ethernet_WLAN_Bridge>`__
 
-| 
+|
 
 .. rubric:: Miscellaneous Demos
    :name: miscellaneous-demos

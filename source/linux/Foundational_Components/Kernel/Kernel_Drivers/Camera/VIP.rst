@@ -77,7 +77,7 @@ addressing in the TILER space.
       -  Two separate 8-bit video ports for YUV/RAW (or BT656) data, up
          to 165 MHz
 
-| 
+|
 
 .. rubric:: Driver Architecture
    :name: driver-architecture
@@ -179,7 +179,7 @@ driver to work properly:
 -  enum\_frame\_sizes()
 -  s\_stream()
 
-| 
+|
 
 .. rubric:: Driver Features
    :name: driver-features
@@ -211,7 +211,7 @@ supported.
          wide bus, specify the bus width in dts file as bus-width =
          <16>;
 
-| 
+|
 
 +---------------------+--------------------------+-----------------------+
 | YUV                 | RGB                      | RAW Bayer 8-bit       |
@@ -228,7 +228,7 @@ supported.
 Table:  **Supported Input Pixel Format in FOURCC and V4L2
 MEDIA\_BUS\_FMT**
 
-| 
+|
 
 -  Supported VIP output pixel formats
 
@@ -298,7 +298,7 @@ Table:  **Supported Output Pixel Format**
    will need changes if the signals used for capture are DE (ACTVID)
    and/or Discrete Basic Mode set as 0.
 
-| 
+|
 
 .. rubric:: Hardware Limitations
    :name: hardware-limitations
@@ -329,7 +329,7 @@ VIP Slice
 
 -  No restrictions on height of capture video
 
-| 
+|
 
 .. rubric:: Driver Configuration
    :name: driver-configuration-vip
@@ -345,7 +345,7 @@ platform devices" in the kernel menuconfig. You need to enable V4L2
 V4L platform driver (CONFIG\_V4L\_PLATFORM\_DRIVERS) before you can
 enable ti-vip (CONFIG\_VIDEO\_TI\_VIP).
 
-| 
+|
 
 .. rubric:: Driver Usage
    :name: driver-usage-vip
@@ -594,7 +594,7 @@ any modifications) into the device. Following points to keep in mind –
    sensor driver will need to configure media bus format as ".code"
    settings as shown in the vip\_fmt.
 
-| 
+|
 
 .. code-block:: c
 

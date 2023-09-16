@@ -264,7 +264,7 @@ Linux Kernel Known Issues
 RT Linux Kernel Known Issues
 -----------------------------
    - None
-     
+
 |
 
 
@@ -275,7 +275,7 @@ The :ref:`Software Developer's Guide <linux-index>` provides instructions on how
 environment, install the SDK and start your development.  It also includes User's Guides for various Example Applications and Code
 Composer Studio.
 
-| 
+|
 
 .. rubric:: Host Support
    :name: host-support
@@ -289,4 +289,4 @@ are described in :ref:`this page <how-to-build-a-ubuntu-linux-host-under-vmware>
    machine. Support for 32-bit host is dropped as Linaro toolchain is
    available only for 64-bit machines
 
-| 
+|

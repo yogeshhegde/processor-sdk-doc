@@ -28,7 +28,7 @@ Boot Sequence
     -  U-boot
     -  Linux
 
-    | 
+    |
 
     At power-up an OMAP3 device begins booting from internal Boot ROM.  This
     code is fixed during the manufacturing process and cannot be altered. 
@@ -41,7 +41,7 @@ Boot Sequence
     u-boot.  U-boot is also a bootloader and is considered the second
     external bootloader in this case.
 
-    | 
+    |
 
     U-boot is the application which passes control to the Linux system.  The
     main goal of u-boot is to retrieve the Linux kernel and provide the
@@ -51,12 +51,12 @@ Boot Sequence
     that is located in NAND (jffs2), SRAM (ramdisk), SD/MMC card (ext3
     partition) or mounted over IP (NFS).
 
-    | 
+    |
 
     U-boot then boots the Linux kernel.  The Linux kernel mounts the Linux
     root filesystem.
 
-    .. rubric:: 
+    .. rubric::
        Booting TI SDK
        :name: booting-ti-sdk
 
@@ -87,7 +87,7 @@ Boot Sequence
 
     Table:  Files on boot (FAT) partition of SD card
 
-    | 
+    |
 
     When booting from an SD card, the OMAP3 Boot ROM code will search the SD
     card for the filename "MLO" when looking for x-loader. 
@@ -220,7 +220,7 @@ Boot Sequence
 
         dm3730-am3715-evm login:
 
-    | 
+    |
 
     .. rubric:: Closer Look At bootcmd
        :name: closer-look-at-bootcmd
@@ -228,7 +228,7 @@ Boot Sequence
     The bootcmd environment variable is a set of nested conditional
     statements.
 
-    | 
+    |
 
     ::
 

@@ -3,7 +3,7 @@ Arm NN and Arm Compute Library
 
 Introduction
 -------------
-Arm NN and Arm Compute Library, as a set of machine learning software, tools and libraries, enable Machine Learning on Arm. 
+Arm NN and Arm Compute Library, as a set of machine learning software, tools and libraries, enable Machine Learning on Arm.
 
 For Sitara devices without accelerators like C66x or EVE (AM3/4/6), one can use Arm provided libraries created for supporting inference only tasks on Arm CPUs.
 Arm NN and Arm Compute Library can also be used on AM57xx devices as well, as complementary approach to TIDL-API.
@@ -90,7 +90,7 @@ Sample executables using TensorFlow Lite models:
    /usr/bin/TfLiteResNetV2-50-Quantized-Armnn
    /usr/bin/TfLiteResNetV2-Armnn
    /usr/bin/TfLiteVGG16Quantized-Armnn
-  
+
 
 .. _arm-nn-mobilenet-demo:
 
@@ -100,13 +100,13 @@ Arm NN MobileNet Demo
 Upon boot, Matrix-GUI is started with multiple icons that can start many out of box demos. Under sub-menu "Machine Learning",
 there are two icons to start the Arm NN demos:
 
-* Arm NN MobileNet Real Common Objects 
+* Arm NN MobileNet Real Common Objects
 * Arm NN MobileNet Camera Input
 
 These examples demonstrate Deep Learning Imagenet classification (1000 classes) with `MobileNet model <https://storage.googleapis.com/mobilenet_v2/checkpoints/mobilenet_v2_1.0_224.tgz>`__ on Arm.
 One example uses pre-recorded real-world video clip and the other uses live camera input. The pre-recorded video clip (320x320 resolution) and live camera input (default 640x480 resolution)
 are scaled down and central-cropped in run-time (using OpenCV API) to 224x224. Result of this
-processing is standard Imagenet classification output (1D vector with 1000 elements). 
+processing is standard Imagenet classification output (1D vector with 1000 elements).
 
 Executable invoked from the Matrix-GUI demos above is /usr/bin/ArmnnExamples, and the TensorFlow Lite parser is used.
 
@@ -158,7 +158,7 @@ Here is an example of classification using JPG image - use "--number_frame" to s
 
      root@am57xx-evm:/usr/bin# ArmnnExamples -f tflite-binary -i input -s '1 224 224 3' -o MobilenetV2/Predictions/Reshape_1 -d /usr/share/arm/armnn/testvecs/baseball.jpg -m /usr/share/arm/armnn/models/mobilenet_v2_1.0_224.tflite -c CpuAcc --number_frame 10
      ArmNN v20190800
-     
+
      Top(1) prediction is 430:baseball with confidence: 69.5592%
      Top(2) prediction is 575:golf ball with confidence:  0.307349%
      Top(3) prediction is 474:can opener, tin opener with confidence:  0.248897%

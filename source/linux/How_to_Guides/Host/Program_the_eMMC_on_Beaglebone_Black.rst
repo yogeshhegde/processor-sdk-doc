@@ -1,13 +1,13 @@
-Program the eMMC on Beaglebone Black 
+Program the eMMC on Beaglebone Black
 ====================================
 
-Overview 
--------- 
+Overview
+--------
 This documentation provides the flow and scripts for programming the eMMC on a
 BeagleBone Black solely via CPSW Ethernet or USB Gadget Mode Ethernet
 connection to a Linux host PC. This solution will work with a completely blank
 board / EVM. This solution can be used as a base to create a custom production
-programming solution. 
+programming solution.
 
 In order to accomplish this goal, two main objectives need to happen:
    #. Modify the SDK to boot Linux from the eMMC. Most of this can be done using
@@ -26,7 +26,7 @@ What is Needed
 *  An image to flash. This can be derived from the SDK mentioned above
 *  A Linux Filesystem small enough to be peripheral booted, with the
    functionality needed to do the necessary flashing operation. This can be
-   derived from the SDK mentioned above 
+   derived from the SDK mentioned above
 *  A Linux host PC to serve as a flashing server
 *  A `Beaglebone Black <https://www.ti.com/tool/BEAGLEBK>`__
 *  A mini-USB or Ethernet cable to connect the Beaglebone Black to the host PC
@@ -41,18 +41,18 @@ What is Needed
   * :download:`**interfaces** <files/interfaces>` file
   * :download:`**tisdk_am335x-evm-flasher_defconfig** <files/tisdk_am335x-evm-flasher_defconfig>` file
 
-Preparing the Flasher Image 
---------------------------- 
+Preparing the Flasher Image
+---------------------------
 Before flashing the eMMC, we need to create the image that will
 run on the flash.
 
-#. Populate pre-built U-Boot images from SDK into TFTP folder 
+#. Populate pre-built U-Boot images from SDK into TFTP folder
 
    .. note:: We can use the prebuilt U-Boot images as-is with no modifications
       needed
 
    .. note:: A configured TFTP Server is necessary for this guide. Steps to
-      properly configure a TFTP Server can be found `here 
+      properly configure a TFTP Server can be found `here
       <../Host/How_to_Setup_Ubuntu_1404_Network_Boot.html>`__
 
    * Copy **u-boot-spl.bin-am335x-evm** and **u-boot-am335x-evm.img** files from
@@ -69,9 +69,9 @@ run on the flash.
      * Create a directory called **arago-tiny-image-am335x-evm** under
        **<Processsor-SDK>/filesystem/**
      * Create a tarball from the **arago-tiny-image-am335x-evm** directory
-       called **arago-tiny-image-am335x-evm.tar.xz**. 
+       called **arago-tiny-image-am335x-evm.tar.xz**.
 
-       :: 
+       ::
 
         tar -C arago-tiny-image-am335x-evm -xvf arago-tiny-image-am335x-evm.tar.xz
 
@@ -89,10 +89,10 @@ run on the flash.
      **arago-tiny-image-am335x-evm/etc/init.d/** directory
    * Verify **fetcher.sh** script has been populated into rootfs:
 
-     * ``ls -l arago-tiny-image-am335x-evm/etc/init.d/`` 
+     * ``ls -l arago-tiny-image-am335x-evm/etc/init.d/``
 
    * Create a symlink to fetcher.sh into rc5 for automatic startup init runlevel
-     5:  
+     5:
 
      * ``ln -s -r arago-tiny-image-am335x-evm/etc/init.d/fetcher.sh
        arago-tiny-image-am335x-evm/etc/rc5.d/S99fetcher.sh``
@@ -129,23 +129,23 @@ run on the flash.
    * Make a backup copy of .config called .config.orig
    * Edit the current Kernel config using menuconfig as follows:
 
-     :: 
+     ::
 
         make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
 
      #. Set CONFIG_INITRAMFS_SOURCE =
         <Processor-SDK>/filesystem/arago-tiny-image-am335x-evm
-        
+
         Select **General setup**:
 
-        .. Image:: /images/Program_flash_image1.PNG 
+        .. Image:: /images/Program_flash_image1.PNG
             :height: 300px
             :width: 400px
 
-        | 
+        |
 
 	Scroll down to **Initial RAM Filesystem and RAM Disk (initramfs/initrd)
-        support** and Select it: 
+        support** and Select it:
 
         .. Image:: /images/Program_flash_image2.PNG
             :height: 300px
@@ -224,7 +224,7 @@ run on the flash.
      #. Set MUSB DMA Mode to "Disable DMA" (optional, for Ethernet USB gadget
         mode)
 
-        |   
+        |
 
         Scroll down to **TI DSPS platforms** and enable it:
 
@@ -249,7 +249,7 @@ run on the flash.
 
      * Compile the zImage
 
-       :: 
+       ::
 
          make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage
 
@@ -258,7 +258,7 @@ run on the flash.
        ::
 
          make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am335x-boneblack.dtb
-   
+
    * Copy **<Processor-SDK>/filesystem/arch/arm/boot/zImage** to
      **/tftpboot/**
    * Copy
@@ -269,7 +269,7 @@ run on the flash.
 
 #. Create eMMC boot partition contents archive **boot_partition.tar.gz** from
    SDK artifacts in a temporary folder and populate into the TFTP home directory
-   
+
    * Create a temporary directory called **~/tmp/**
    * Copy **MLO-am335x-evm** and **u-boot-am335x-evm.img** from
      **<Processor-SDK>/board-support/prebuilt-images/** to the **~/tmp/** directory
@@ -277,7 +277,7 @@ run on the flash.
    * Rename **u-boot-am335x-evm.img** to **u-boot.uimg**
    * Create tarball from these files
 
-     :: 
+     ::
 
         tar -cvf boot_partition.tar.gz MLO u-boot.img
 
@@ -296,12 +296,12 @@ Now that the flash image has been created we can now flash the EVM
 .. note:: The EVM must be configured properly to boot via Ethernet and a TFTP
      server must be properly configured to transfer the flash image.
 
-#. Connect EVM to Linux host machine via Ethernet/USB and Serial Debugging Cable 
+#. Connect EVM to Linux host machine via Ethernet/USB and Serial Debugging Cable
 #. Open an active console window to monitor bootup messages
 #. Power on EVM and "strike andy key" to halt U-Boot at prompt
 #. Enter command to boot from TFTP server
 
-   :: 
+   ::
 
      dhcp && tftp ${fdtaddr} am335x-boneblack.dtb && env set bootargs
      console=${console} && bootz ${loadaddr} - ${fdtaddr}
@@ -318,9 +318,9 @@ Here are some things to do to debug setup:
 
 * The flasher.sh script expects to receive files from a TFTP server with IP
   address 192.168.1.1. Ensure the host has been manually configured to this
-  address. 
+  address.
 * Ensure Toolchain Path has been set before any build commands.
-* Utilize `Wireshark <https://www.wireshark.org/>`__ to monitor network when things go wrong.  
+* Utilize `Wireshark <https://www.wireshark.org/>`__ to monitor network when things go wrong.
 * If Wireshark is not returning a "BOOTP" request, it is likely the Beaglebone
   Black has not bee configured to boot via Ethernet or USB. Set
   SYSBOOT[4:0]=01000b for Ethernet, and SYSBOOT[4:0]=01011b for USB.

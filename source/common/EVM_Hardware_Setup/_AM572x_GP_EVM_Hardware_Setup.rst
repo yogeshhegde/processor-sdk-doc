@@ -56,7 +56,7 @@ List of standalone JTAG debug probes supported:
 -  XDS200-class JTAG debug probes (recommended)
 -  XDS560v2-class JTAG debug probes (high performance)
 
-| 
+|
 
 .. rubric:: Host Drivers
    :name: host-drivers
@@ -79,7 +79,7 @@ UART cable from the FTDI website:
 Other Boot Pin configurations: `GP EVM Boot
 Options <http://processors.wiki.ti.com/AM572x_General_Purpose_EVM_HW_User_Guide#Boot_and_emulation_setup>`__
 
-| 
+|
 
 .. rubric:: Connecting Emulator
    :name: connecting-emulator
@@ -98,7 +98,7 @@ from the LCD panel.
 | .. Image:: ../../../images/X15_PModule_disconnect.jpg | .. Image:: ../../../images/JMI_0065.jpg         |
 +-------------------------------------------------------+-------------------------------------------------+
 
-| 
+|
 | Image for how to connect the XDS200 Emulator to the 20 pin header is
   shown below:
 
@@ -183,7 +183,7 @@ correctly from the Help Menu to get the latest Sitara CSP package.
 
 .. Image:: ../../../images/GPEVM_Target_configuration.jpg
 
-| 
+|
 
 In advance settings, make sure that the gel files are populated
 correctly. The following GEL files and their corresponding cores are
@@ -202,7 +202,7 @@ provided below:
 -  M4\_IPU\_2\_C1: AM572x\_cortexM4\_startup.gel
 -  IVAHD: AM572x\_ivahd\_startup.gel
 
-| 
+|
 
 .. rubric:: Connecting to target
    :name: connecting-to-target
@@ -225,32 +225,32 @@ section.\ `Connecting\_Emulator <http://processors.wiki.ti.com/index.php/AM572x_
 **Step4:** Launch CCS and create new target configuration as discussed
 in the previous section.
 
-| 
+|
 | **Step5**: Launch Target configuration you just created. AM572x is an
   ARM master boot device so connect to the A15\_0 first. It is also
   recommended that you do a CPU reset from (Run->Reset->CPU Reset) Menu
   on the A15 to put it in a clean state as the EVM is designed to come
   up in SD boot mode.
 
-| 
+|
 | **Note: Keep in mind the PMIC shutdown issue discussed in previous
   section while connecting to the target cores. Due to the PMIC shutdown
   issue, users need to connect to A15\_0 as soon as you push the power
   button to enable power to the SoC.**
 
-| 
+|
 | Complete GEL log from A15 connect is provided below:
 
 ::
 
-    IcePick_D: GEL Output: IVAHD ICONT1 is released from Wait-In-Reset. 
-    IcePick_D: GEL Output: IVAHD ICONT2 is released from Wait-In-Reset. 
+    IcePick_D: GEL Output: IVAHD ICONT1 is released from Wait-In-Reset.
+    IcePick_D: GEL Output: IVAHD ICONT2 is released from Wait-In-Reset.
     CS_DAP_DebugSS: GEL Output: --->>> CONFIGURE DEBUG DPLL settings to 1.9 GHZs  <<<---
     CS_DAP_DebugSS: GEL Output: > Setup DebugSS 1.9GHz in progress...
-    CS_DAP_DebugSS: GEL Output: < Done with Setup DebugSS Trace export clock (TPIU) to 97MHz 
-    CS_DAP_DebugSS: GEL Output: < Done with Setup DebugSS PLL Clocking 1.9GHz 
-    CS_DAP_DebugSS: GEL Output: < Done with Setup DebugSS ATB Clocking 380MHz 
-    CS_DAP_DebugSS: GEL Output: < Done with Setup DebugSS Trace export clock (TPIU) to 97MHz 
+    CS_DAP_DebugSS: GEL Output: < Done with Setup DebugSS Trace export clock (TPIU) to 97MHz
+    CS_DAP_DebugSS: GEL Output: < Done with Setup DebugSS PLL Clocking 1.9GHz
+    CS_DAP_DebugSS: GEL Output: < Done with Setup DebugSS ATB Clocking 380MHz
+    CS_DAP_DebugSS: GEL Output: < Done with Setup DebugSS Trace export clock (TPIU) to 97MHz
     CS_DAP_DebugSS: GEL Output: --->>> TURNING ON L3_INSTR and L3_3 clocks required for debug instrumention <<<<<<----
     CS_DAP_DebugSS: GEL Output: ---<<< L3 instrumentation clocks are enabled >>>> ---
     CS_DAP_DebugSS: GEL Output: --->>> Mapping TIMER supsend sources to default cores <<<<<<----
@@ -263,15 +263,15 @@ in the previous section.
     CortexA15_0: GEL Output: --->>> AM572x PG2.0 GP device <<<---
     CortexA15_0: GEL Output: --->>> PRCM Clock Configuration for OPPNOM in progress... <<<---
     CortexA15_0: GEL Output:    Cortex A15 DPLL OPP 0 clock config is in progress...
-    CortexA15_0: GEL Output:    Cortex A15 DPLL is already locked, now unlocking...  
+    CortexA15_0: GEL Output:    Cortex A15 DPLL is already locked, now unlocking...
     CortexA15_0: GEL Output:    Cortex A15 DPLL OPP 0 is DONE!
     CortexA15_0: GEL Output:    IVA DPLL OPP 0 clock config is in progress...
     CortexA15_0: GEL Output:    IVA DPLL OPP 0 is DONE!
     CortexA15_0: GEL Output:    PER DPLL OPP 0 clock config in progress...
-    CortexA15_0: GEL Output:    PER DPLL already locked, now unlocking  
+    CortexA15_0: GEL Output:    PER DPLL already locked, now unlocking
     CortexA15_0: GEL Output:    PER DPLL OPP 0 is DONE!
     CortexA15_0: GEL Output:    CORE DPLL OPP 0 clock config is in progress...
-    CortexA15_0: GEL Output:    CORE DPLL OPP  already locked, now unlocking....  
+    CortexA15_0: GEL Output:    CORE DPLL OPP  already locked, now unlocking....
     CortexA15_0: GEL Output:    CORE DPLL OPP 0 is DONE!
     CortexA15_0: GEL Output:    ABE DPLL OPP 0 clock config in progress...
     CortexA15_0: GEL Output:    ABE DPLL OPP 0 is DONE!
@@ -292,12 +292,12 @@ in the previous section.
     CortexA15_0: GEL Output:        Launch full leveling
     CortexA15_0: GEL Output:        Updating slave ratios in PHY_STATUSx registers
     CortexA15_0: GEL Output:        as per HW leveling output
-    CortexA15_0: GEL Output:        HW leveling is now disabled. Using slave ratios from 
+    CortexA15_0: GEL Output:        HW leveling is now disabled. Using slave ratios from
     CortexA15_0: GEL Output:        PHY_STATUSx registers
     CortexA15_0: GEL Output:        Launch full leveling
     CortexA15_0: GEL Output:        Updating slave ratios in PHY_STATUSx registers
     CortexA15_0: GEL Output:        as per HW leveling output
-    CortexA15_0: GEL Output:        HW leveling is now disabled. Using slave ratios from 
+    CortexA15_0: GEL Output:        HW leveling is now disabled. Using slave ratios from
     CortexA15_0: GEL Output:        PHY_STATUSx registers
     CortexA15_0: GEL Output:        Two EMIFs in interleaved mode - (2GB total)
     CortexA15_0: GEL Output: --->>> DDR3 Initialization is DONE! <<<---
@@ -307,24 +307,24 @@ in the previous section.
     CortexA15_0: GEL Output: --->>> IPU2SS Initialization is in progress ... <<<---
     CortexA15_0: GEL Output: --->>> IPU2SS Initialization is DONE! <<<---
     CortexA15_0: GEL Output: --->>> DSP1SS Initialization is in progress ... <<<---
-    CortexA15_0: GEL Output: DEBUG: Clock is active ... 
-    CortexA15_0: GEL Output: DEBUG: Checking for data integrity in DSPSS L2RAM ... 
-    CortexA15_0: GEL Output: DEBUG: Data integrity check in GEM L2RAM is sucessful! 
+    CortexA15_0: GEL Output: DEBUG: Clock is active ...
+    CortexA15_0: GEL Output: DEBUG: Checking for data integrity in DSPSS L2RAM ...
+    CortexA15_0: GEL Output: DEBUG: Data integrity check in GEM L2RAM is sucessful!
     CortexA15_0: GEL Output: --->>> DSP1SS Initialization is DONE! <<<---
     CortexA15_0: GEL Output: >> START ==> Enable L3 Clk
     CortexA15_0: GEL Output: >> Change Suspend source for GPTimer5 to DSP1
     CortexA15_0: GEL Output: --->>> DSP2SS Initialization is in progress ... <<<---
-    CortexA15_0: GEL Output: DEBUG: Clock is active ... 
-    CortexA15_0: GEL Output: DEBUG: Checking for data integrity in DSPSS L2RAM ... 
-    CortexA15_0: GEL Output: DEBUG: Data integrity check in GEM L2RAM is sucessful! 
+    CortexA15_0: GEL Output: DEBUG: Clock is active ...
+    CortexA15_0: GEL Output: DEBUG: Checking for data integrity in DSPSS L2RAM ...
+    CortexA15_0: GEL Output: DEBUG: Data integrity check in GEM L2RAM is sucessful!
     CortexA15_0: GEL Output: --->>> DSP2SS Initialization is DONE! <<<---
     CortexA15_0: GEL Output: --->>> IVAHD Initialization is in progress ... <<<---
-    CortexA15_0: GEL Output: DEBUG: Clock is active ... 
+    CortexA15_0: GEL Output: DEBUG: Clock is active ...
     CortexA15_0: GEL Output: --->>> IVAHD Initialization is DONE! ... <<<---
     CortexA15_0: GEL Output: --->>> PRUSS 1 and 2 Initialization is in progress ... <<<---
     CortexA15_0: GEL Output: --->>> PRUSS 1 and 2 Initialization is in complete ... <<<---
 
-| 
+|
 
 .. rubric:: Multi-core Initialization
    :name: multi-core-initialization
@@ -351,7 +351,7 @@ If you wish to run TI RTOS code on DSP, please also run the `Timer
 Suspend Control
 Options <http://processors.wiki.ti.com/index.php/AM572x_GP_EVM_Hardware_Setup#Timer_Suspend_Control_Options_for_DSP>`__.
 
-| 
+|
 
 .. rubric:: Connect after booting from SD card
    :name: connect-after-booting-from-sd-card
@@ -377,7 +377,7 @@ files when you connect to the target
 **Note:** If you don\`t find the AM572x\_RevA target make sure you have
 installed the CCSv6.1.1 package and done the software update correctly.
 
-| 
+|
 
 .. Image:: ../../../images/COnfigure_targetConfigFiles_SDboot.png
 
@@ -410,7 +410,7 @@ points OPP\_NOM, OPP\_OD and OPP\_HIGH.
 -  GPU = 425 Mhz
 -  IVA = 388.3 Mhz
 
-| 
+|
 
 .. rubric:: Timer Suspend Control Options for DSP
    :name: timer-suspend-control-options-for-dsp

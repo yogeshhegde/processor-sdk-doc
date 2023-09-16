@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Big_Data_IPC_Examples 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_Big_Data_IPC_Examples
 
 Introduction
 ============
@@ -112,7 +112,7 @@ following command is needed to disable the default OpenCL applications.
 
 ::
 
-       systemctl stop ti-mct-daemon.service        
+       systemctl stop ti-mct-daemon.service
 
 Step 2: Switch the firmware running in the DSP. This can be done by
 using the following steps. Unbind dsp
@@ -225,11 +225,11 @@ Here is a sample log.
     <-- App_delete:
     <-- Main_main:
 
-     Host: Test Passed 
+     Host: Test Passed
     <-- main:
-    root@am57xx-evm:~# 
+    root@am57xx-evm:~#
 
-    root@am57xx-evm:~# cat /sys/kernel/debug/remoteproc/remoteproc2/trace0 
+    root@am57xx-evm:~# cat /sys/kernel/debug/remoteproc/remoteproc2/trace0
     [      0.000] 18 Resource entries at 0x95000000
     [      0.000] [t=0x0002122e] xdc.runtime.Main: --> main:
     [      0.000] registering rpmsg-proto:rpmsg-proto service on 61 with HOST
@@ -279,9 +279,9 @@ Here is a sample log.
     [     51.586] [t=0x00000008:a6127d48] Server: Server_create: server is ready
     [     51.586] [t=0x00000008:a612ff93] Server: <-- Server_create: 0
     [     51.586] [t=0x00000008:a613620c] Server: --> Server_exec:
-    root@am57xx-evm:~# 
+    root@am57xx-evm:~#
 
-| 
+|
 
 
 How to Re-Build the example
@@ -469,6 +469,4 @@ The host directory and dsp directory has the corresponding sources.
 The shared folder contains some common sources.
 The main sequence for big data IPC can be followed by looking at
 host/App.c and dsp/Server.c.
-
-.. raw:: html
 

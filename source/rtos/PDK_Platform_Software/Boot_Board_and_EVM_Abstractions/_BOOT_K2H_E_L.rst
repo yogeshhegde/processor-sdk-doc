@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_K2H/E/L 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_K2H/E/L
 
 Overview
 ^^^^^^^^^
@@ -89,20 +89,6 @@ The '0' used in step 2 refers to the Core ID to boot. By default, '0' is
 MPU (Cortex A15) core 0. You can input a different value to boot to
 other cores. Valid values are:
 
-.. list-table:: Title
-   :widths: 25 25 50
-   :header-rows: 2
-   
-    * - Heading row 1, column 1
-      - Heading row 1, column 2
-      - Heading row 1, column 3
-    * - Row 1, column 1
-      -
-      - Row 1, column 3
-    * - Row 2, column 1
-      - Row 2, column 2
-      - Row 2, column 3
-
 +-----------------------+-----------------------+-----------------------+
 |         K2H           |          K2E          |         K2L           |
 +==========+============+===========+===========+==========+============+
@@ -181,7 +167,7 @@ Usage
    Path]/pdk_<platform>_<version>/packages/ti/boot/sbl/tools/flashWriter/spi/bin/<platform>/spi_flash_writer.out
 #. You should see the flash progress output on UART terminal
 
-| 
+|
 
 Boot Example
 ^^^^^^^^^^^^^^
@@ -221,6 +207,4 @@ in by program_evm.js:
     POST done successfully!
 
     POST result: PASS
-
-.. raw:: html
 

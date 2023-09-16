@@ -90,7 +90,7 @@ adjusting/scaling voltage and frequency based on the current cpu load.
     cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
     (view options, select one for next step)
     echo <selected frequency, in KHz> > /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
-    cat /proc/cpuinfo 
+    cat /proc/cpuinfo
 
 .. rubric:: Suspend/Resume
    :name: suspendresume
@@ -100,7 +100,7 @@ adjusting/scaling voltage and frequency based on the current cpu load.
      (command line equivalent)
     mkdir /debug
     mount -t debugfs debugfs /debug
-    echo mem > /sys/power/state 
+    echo mem > /sys/power/state
 
 | This command sequence will put the platform into suspend mode. The
   final command initiates the suspend.

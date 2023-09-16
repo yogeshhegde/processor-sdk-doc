@@ -2,7 +2,7 @@
 TMDXEVM6678L EVM Hardware Setup Guide
 ========================================
 
-| 
+|
 
 This page will walk you through setting up your `TMDXEVM6678L <http://www.ti.com/tool/TMDSEVM6678>`__
 Evaluation Module (EVM). These guidelines also apply to the LE and LXE EVM models.
@@ -18,10 +18,10 @@ relevant switches and connectors.
 .. image:: ../images/TMDXEVM6678L-image.jpg
    :scale: 60 %
 
-| 
+|
 
 .. note:: Please refer to the following picture for the alpha/beta Lite EVM boards.
-.. image:: ../images/TMD6678L.jpg 
+.. image:: ../images/TMD6678L.jpg
 
 
 Hardware Setup Steps
@@ -32,13 +32,13 @@ discharges (ESD). Use a grounding strap or other device to prevent
 damaging the board. Be sure to connect communication cables before
 applying power to any equipment.
 
-| 
+|
 | **1. Attach the Ethernet cable**
 
 Using the Ethernet cable supplied, connect one end of the cable to the
 Ethernet port on the EVM and the other end to your PC.
 
-| 
+|
 | **2. Connect the JTAG interface**
 
 Use the USB to USB mini-B cable provided. Connect the USB mini-B
@@ -46,19 +46,19 @@ connector to the USB mini-B interface on the EVM and the USB connector
 to your PC. This enables XDS-100 emulation and is directly useable by
 CCS. If you are using a different JTAG, connect it now.
 
-| 
+|
 | **3. Verify Endian mode in the SW3 settings**
 
 The Endian mode should be set to Little Endian. SW3 also contains the
 boot device settings.
 
-| 
+|
 
 .. image:: ../images/TMD6678LSW3.png
    :scale: 40 %
 
 
-| 
+|
 | **4. Verify boot mode in the SW3 - SW6 settings**
 
 The boot mode settings below enable NOR boot by loading the boot loader
@@ -67,7 +67,7 @@ from EEPROM address 0x51.
 .. image:: ../images/TMD6678LSW3-6.png
    :scale: 40 %
 
-| 
+|
 | **5. Set User Switch for the demo application**
 
 The application needs an IP address. It can use either a static IP
@@ -80,7 +80,7 @@ controlled by setting dip switch 2 of SW9.
 .. image:: ../images/TMD6678LSW9.png
    :scale: 50 %
 
-| 
+|
 | **6. Attach the serial port cable**
 
 This EVM can use either a USB serial port or the standard DB-9 (use the
@@ -96,14 +96,14 @@ approach.
 .. note:: For the shunts on the alpha/beta Lite EVM, please refer to the picture below for the setting
 .. image:: ../images/TMD6678LShunts.jpg
 
-| 
+|
 | **7. Connect the power cable**
 
 Connect the power cable to the EVM power jack on the board. To be ESD
 safe, plug in the other end of the power cable only after you have
 connected the power cord to the board. Then turn on the board.
 
-| 
+|
 
 Boot Mode Dip Switch Settings
 -----------------------------
@@ -156,7 +156,7 @@ the EVM supports:
 |                | on)            | on)            | on)            | on)            |
 +----------------+----------------+----------------+----------------+----------------+
 
-| 
+|
 
 | **Footnotes:**
 

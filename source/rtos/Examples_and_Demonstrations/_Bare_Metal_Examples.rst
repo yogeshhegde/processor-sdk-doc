@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Bare_Metal_Examples 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_Bare_Metal_Examples
 
 Overview
 ========
@@ -17,29 +17,29 @@ ARM Cortex-A53
 ===============
 In this article, we take a look at creating bare-metal hello world examples for the Cortex-A53 core in CCS. We will be using the AM654x device as an example.
 
-.. Note:: For future Device Support Package releases, the Hello World examples will be added to CCS as an out-of-box experience. 
+.. Note:: For future Device Support Package releases, the Hello World examples will be added to CCS as an out-of-box experience.
 
-1. Start CCS and create a workspace for 
+1. Start CCS and create a workspace for
 generating the project.
 
-2. Configure the CCS Tools discovery path 
+2. Configure the CCS Tools discovery path
 to allow CCS to use the code generation tools supplied with Processor-SDK-RTOS.
 
 	- Select the menu Window->Preferences
 	- On the left-hand side of the Preferences window, select Code Composer Studio->Build->Compilers
 	- On the right-hand side of the Preferences window, click the "Add" button. Select the Processor-SDK-RTOS root install folder, then click "Apply and Close".
 
-3. Navigate to File -> New -> 
+3. Navigate to File -> New ->
 CCS Project.
 
-4. Select Target as AM65x - Cortex A53 and GPEVM_AM65x as 
+4. Select Target as AM65x - Cortex A53 and GPEVM_AM65x as
 shown in the image below.
 
-5. Select **Cortex A setting** in the options below and provide a name for the project. Use the default advanced settings 
-for the project. Select **GNU v7.2.1 (Linaro aarch64)** (or higher) for the Compiler Version. Under Tool-chain, for the Linker Command file, select the file (PDK INSTALL PATH)/packages/ti/build/am65xx/**linker_a53.lds**.  
+5. Select **Cortex A setting** in the options below and provide a name for the project. Use the default advanced settings
+for the project. Select **GNU v7.2.1 (Linaro aarch64)** (or higher) for the Compiler Version. Under Tool-chain, for the Linker Command file, select the file (PDK INSTALL PATH)/packages/ti/build/am65xx/**linker_a53.lds**.
 
 Under Project templates and examples, select **Empty Project (with main.c).**
-	
+
 Click Finish after you are done to allow CCS to auto generate the
 project from the template.
 
@@ -47,21 +47,21 @@ project from the template.
 .. Image:: ../images/AM65x_Create_CCS_Project.png
 
 
-6. The generated CCS project contains source file **main.c**, ARM assembly code **startup_ARMCA53.S** and a linker command file **AM65X.lds**. 
+6. The generated CCS project contains source file **main.c**, ARM assembly code **startup_ARMCA53.S** and a linker command file **AM65X.lds**.
 Remove startup_ARMCA53.S and AM65X.lds from the project.
 
 
-7. Add the following linker command file to the project. 
+7. Add the following linker command file to the project.
 ::
 
 	(PDK INSTALL PATH)/packages/ti/build/am65xx/linker_a53.lds
-	
+
 
 |
-	
-8. Modify main.c to include the 
+
+8. Modify main.c to include the
 following::
-	
+
 	/* Header files */
 	#include <stdint.h>
 	#include "stdio.h"
@@ -74,11 +74,11 @@ following::
 
 9. Navigate to Project Properties -> CCS Build -> GNU Linker and add "Entry" to the "Set start address" field.
 
-	
-10. Navigate to CCS Build -> GNU Linker -> Libraries and add the 
+
+10. Navigate to CCS Build -> GNU Linker -> Libraries and add the
 following libraries.
 ::
- 
+
 	ti.csl.init.aa53fg
 	ti.csl.aa53fg
 	rdimon
@@ -87,23 +87,23 @@ following libraries.
 	c
 	m
 
-11. Add the following library search 
+11. Add the following library search
 path.
 ::
 
 	(PDK INSTALL PATH)/ti/csl/lib/am65xx/a53/release
-	
 
-12. Save all changes, and right click on the project and select Build Project to 
-build the project and generate hello_world.out. 
 
-13. Launch the target configuration using your emulator to connect to the AM65x EVM as 
+12. Save all changes, and right click on the project and select Build Project to
+build the project and generate hello_world.out.
+
+13. Launch the target configuration using your emulator to connect to the AM65x EVM as
 described in the :ref:`Processor-SDK-RTOS-Getting-Started-Guide-label`.
 
-14. Right click on **DMSC_Cortex_M3_0** and click connect to target. 
-After connecting to the M3, right click on **CortexA53_0_0** and connect to it. 
+14. Right click on **DMSC_Cortex_M3_0** and click connect to target.
+After connecting to the M3, right click on **CortexA53_0_0** and connect to it.
 
-15. Load and run hello_world.out example file on the Cortex-A53. 
+15. Load and run hello_world.out example file on the Cortex-A53.
 You should see a Hello_world string displayed in the CCS console window.
 
 .. Image:: ../images/AM65x_CCS_Hello_World.PNG
@@ -165,13 +165,13 @@ highlighted code lines and save main.c file.
 
       /*
       * hello.c
-      */ 
+      */
       #include <stdio.h>
      
-      int main(void) { 
+      int main(void) {
      
           printf("Hello_world\n");
-          return 0; 
+          return 0;
      }
 
 .. raw:: html
@@ -227,7 +227,7 @@ contains the following Memory configurations.
 
 ::
 
-       MSMC  :      o=0x0c000000,    l = 0x00600000  /* 6MB Muticore shared memory */ 
+       MSMC  :      o=0x0c000000,    l = 0x00600000  /* 6MB Muticore shared memory */
 
 .. note::
    The .lds file expects users to provide STACKSIZE and HEAPSIZE from
@@ -264,8 +264,8 @@ configurations --> AM572_DDR3_532MHz_config
       see if the GNU linker is linking to Semihosting library (librdimon)
       in the linker setting. If it is not linked go to GNU linker settings
       in CCS project and add **"rdimon"** to the libraries that are linked
-	  
-| 
+
+|
 
 ARM Cortex-A9
 =============
@@ -316,13 +316,13 @@ Ensure the main.c file contains the following code
 
       /*
       * hello.c
-      */ 
+      */
       #include <stdio.h>
      
-      int main(void) { 
+      int main(void) {
      
           printf("Hello_world\n");
-          return 0; 
+          return 0;
      }
 
 .. raw:: html
@@ -425,13 +425,13 @@ assembly code **startup_ARMCA8.S** and a linker command file
 
       /*
       * hello.c
-      */ 
+      */
       #include <stdio.h>
      
-      int main(void) { 
+      int main(void) {
      
           printf("Hello_world\n");
-          return 0; 
+          return 0;
      }
 
 .. raw:: html
@@ -492,7 +492,7 @@ World!** string displayed on CCS console window.
 .. note::
    If the example does not load correctly in the first attempt, reload and
    **ensure ARM core starts at main**.
-   
+
 |
 
 ARM Cortex-R5
@@ -500,62 +500,62 @@ ARM Cortex-R5
 
 In this article, we take a look at creating bare-metal hello world examples for the Cortex-R5 core in CCS. We will be using the AM654x device as an example.
 
-.. Note:: For future Device Support Package releases, the Hello World examples will be added to CCS as an out-of-box experience. 
+.. Note:: For future Device Support Package releases, the Hello World examples will be added to CCS as an out-of-box experience.
 
-1. Start CCS and create a workspace for 
+1. Start CCS and create a workspace for
 generating the project.
 
-2. Navigate to File -> New -> 
+2. Navigate to File -> New ->
 CCS Project.
 
-3. Select Target as AM65x - Cortex R5 and GPEVM_AM65x as 
+3. Select Target as AM65x - Cortex R5 and GPEVM_AM65x as
 shown in the image below.
 
-4. Select the **Cortex R** tab and provide a name for the project. Select **TI v16.9.4.LTS** (or higher) for the Compiler Version. 
+4. Select the **Cortex R** tab and provide a name for the project. Select **TI v16.9.4.LTS** (or higher) for the Compiler Version.
 Under Tool-chain, set the Device Endianness to **little**, and for the Linker Command file, select **linker_r5.lds** located in the folder (PDK INSTALL PATH)/packages/ti/build/am65xx/.
 
-.. Note:: Please refer to the Release Notes for the recommended Compiler version. 
+.. Note:: Please refer to the Release Notes for the recommended Compiler version.
 
 Under Project templates and examples, select **Basic Examples -> Hello World**
-	
+
 Click Finish after you are done to allow CCS to auto generate the
 project from the template.
 
 .. Image:: ../images/AM65x_Create_CCS_Project_R5.png
 
-5. The generated CCS project contains source file **hello.c**, 
-and linker command file **linker_r5.lds**. 
-	
-6. Navigate to CCS Build -> ARM Linker -> File Search Path and 
+5. The generated CCS project contains source file **hello.c**,
+and linker command file **linker_r5.lds**.
+
+6. Navigate to CCS Build -> ARM Linker -> File Search Path and
 add the following libraries.
 ::
- 
+
 	ti.csl.aer5f
 	ti.csl.init.aer5f
 	libc.a
 
-7. Add the following library 
+7. Add the following library
 search path.
 ::
 
 	(PDK INSTALL PATH)/ti/csl/lib/am65xx/r5f/release
-	
 
-8. Save all changes, and right click on the project and select Build Project to 
-build the project and generate hello_world.out. 
 
-9. Launch the target configuration using your emulator to connect to the AM65x EVM as 
+8. Save all changes, and right click on the project and select Build Project to
+build the project and generate hello_world.out.
+
+9. Launch the target configuration using your emulator to connect to the AM65x EVM as
 described in the :ref:`Processor-SDK-RTOS-Getting-Started-Guide-label`.
 
-10. Right click on **DMSC_Cortex_M3_0** and click connect to target. 
-After connecting to the M3, right click on **MCU_PULSAR_Cortex_R5_0** and connect to it. 
+10. Right click on **DMSC_Cortex_M3_0** and click connect to target.
+After connecting to the M3, right click on **MCU_PULSAR_Cortex_R5_0** and connect to it.
 
-11. Load and run hello_world.out example file on the Cortex-R5. 
+11. Load and run hello_world.out example file on the Cortex-R5.
 You should see a Hello_world string displayed in the CCS console window.
 
 .. Image:: ../images/AM65x_CCS_Hello_World_R5.PNG
 
-| 
+|
 
 ARM Cortex-M4
 ==============
@@ -592,13 +592,13 @@ Ensure the main.c file contains the following code
 
       /*
       * hello.c
-      */ 
+      */
       #include <stdio.h>
      
-      int main(void) { 
+      int main(void) {
      
           printf("Hello_world\n");
-          return 0; 
+          return 0;
      }
 
 .. raw:: html
@@ -684,13 +684,13 @@ displayed on console window.
 
    If the example does not load correctly in the first attempt, reload and
    **ensure ARM core starts at main**.
-   
-| 
+
+|
 
 ARM9
 ====
 
-In this article, we take a look at creating bare-metal hello world examples for the ARM9 core using pre-built templates in CCS. 
+In this article, we take a look at creating bare-metal hello world examples for the ARM9 core using pre-built templates in CCS.
 As a sample we will use the OMAP-L138 device to describe the steps.
 
 1. Start CCS and create a workspace for generating the project.
@@ -719,13 +719,13 @@ template **Basic Examples-> Hello World**.
 
       /*
       * hello.c
-      */ 
+      */
       #include <stdio.h>
      
-      int main(void) { 
+      int main(void) {
      
           printf("Hello_world\n");
-          return 0; 
+          return 0;
      }
 
 
@@ -736,18 +736,18 @@ template **Basic Examples-> Hello World**.
 	MEMORY
 	{
 	#ifdef DSP_CORE      /* DSP exclusive memory regions */
-	
-		DSPL2ROM     o = 0x00700000  l = 0x00100000  /* 1MB L2 DSP local ROM */ 
+
+		DSPL2ROM     o = 0x00700000  l = 0x00100000  /* 1MB L2 DSP local ROM */
 		DSPL2RAM     o = 0x00800000  l = 0x00040000  /* 256kB L2 DSP local RAM */
 		DSPL1PRAM    o = 0x00E00000  l = 0x00008000  /* 32kB L1 DSP local Program RAM */
 		DSPL1DRAM    o = 0x00F00000  l = 0x00008000  /* 32kB L1 DSP local Data RAM */
-	
+
 	#endif
-	
-		SHDSPL2ROM   o = 0x11700000  l = 0x00100000  /* 1MB L2 Shared Internal ROM */          
-		SHDSPL2RAM   o = 0x11800000  l = 0x00040000  /* 256kB L2 Shared Internal RAM */       
+
+		SHDSPL2ROM   o = 0x11700000  l = 0x00100000  /* 1MB L2 Shared Internal ROM */
+		SHDSPL2RAM   o = 0x11800000  l = 0x00040000  /* 256kB L2 Shared Internal RAM */
 		SHDSPL1PRAM  o = 0x11E00000  l = 0x00008000  /* 32kB L1 Shared Internal Program RAM */
-		SHDSPL1DRAM  o = 0x11F00000  l = 0x00008000  /* 32kB L1 Shared Internal Data RAM */       
+		SHDSPL1DRAM  o = 0x11F00000  l = 0x00008000  /* 32kB L1 Shared Internal Data RAM */
 		EMIFACS0     o = 0x40000000  l = 0x20000000  /* 512MB SDRAM Data (CS0) */
 		EMIFACS2     o = 0x60000000  l = 0x02000000  /* 32MB Async Data (CS2) */
 		EMIFACS3     o = 0x62000000  l = 0x02000000  /* 32MB Async Data (CS3) */
@@ -755,15 +755,15 @@ template **Basic Examples-> Hello World**.
 		EMIFACS5     o = 0x66000000  l = 0x02000000  /* 32MB Async Data (CS5) */
 		SHRAM        o = 0x80000000  l = 0x00020000  /* 128kB Shared RAM */
 		DDR2         o = 0xC0000000  l = 0x20000000  /* 512MB DDR2 Data */
-	
+
 	#ifndef DSP_CORE     /* ARM exclusive memory regions */
-	
+
 		ARMROM       o = 0xFFFD0000  l = 0x00010000  /* 64kB ARM local ROM */
 		ARMRAM       o = 0xFFFF0000  l = 0x00002000  /* 8kB ARM local RAM */
-	
+
 	#endif
 	}
-	
+
 	SECTIONS
 	{
 		.text          >  SHRAM
@@ -778,11 +778,11 @@ template **Basic Examples-> Hello World**.
 		.args          >  SHRAM
 		.ppinfo        >  SHRAM
 		.ppdata        >  SHRAM
-		
+
 		/* TI-ABI or COFF sections */
 		.pinit         >  SHRAM
 		.cinit         >  SHRAM
-		
+
 		/* EABI sections */
 		.binit         >  SHRAM
 		.init_array    >  SHRAM
@@ -796,7 +796,7 @@ template **Basic Examples-> Hello World**.
 
 8. Now build the project to generate hello_world.out file.
 
-9. Launch target configurations using your emulator to connect to the OMAP-L138 
+9. Launch target configurations using your emulator to connect to the OMAP-L138
 as described in the :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`.
 
 10. Right click on ARM9_0 and connect to target. The on target functionality
@@ -852,13 +852,13 @@ Ensure the main.c file contains the following code
 
       /*
       * hello.c
-      */ 
+      */
       #include <stdio.h>
      
-      int main(void) { 
+      int main(void) {
      
           printf("Hello_world\n");
-          return 0; 
+          return 0;
      }
 
 .. raw:: html
@@ -909,7 +909,7 @@ The linker command file is designed to place code in OCMC memory.
 
 ::
 
-       MSMC  :      o=0x0c000000,    l = 0x00600000  /* 6MB Muticore shared memory */ 
+       MSMC  :      o=0x0c000000,    l = 0x00600000  /* 6MB Muticore shared memory */
 
 .. note::
    An optional step is to modify the section definition in linker command
@@ -932,9 +932,9 @@ You should see the following log in the Console
 ::
 
      CortexA15_0: GEL Output: --->>> DSP1SS Initialization is in progress ... <<<---
-     CortexA15_0: GEL Output: DEBUG: Clock is active ... 
-     CortexA15_0: GEL Output: DEBUG: Checking for data integrity in DSPSS L2RAM ... 
-     CortexA15_0: GEL Output: DEBUG: Data integrity check in GEM L2RAM is sucessful! 
+     CortexA15_0: GEL Output: DEBUG: Clock is active ...
+     CortexA15_0: GEL Output: DEBUG: Checking for data integrity in DSPSS L2RAM ...
+     CortexA15_0: GEL Output: DEBUG: Data integrity check in GEM L2RAM is sucessful!
      CortexA15_0: GEL Output: --->>> DSP1SS Initialization is DONE! <<<---
 
 10. Select and Connect to C66x_DSP1. Load and run hello_world_dsp.out
@@ -942,7 +942,7 @@ file. You should see **Hello World** string displayed on console window.
 
 .. Image:: ../images/Hello_world_dsp.jpg
 
-| 
+|
 
 DSP C674x
 =========
@@ -990,13 +990,13 @@ Ensure the main.c file contains the following code
 
       /*
       * hello.c
-      */ 
+      */
       #include <stdio.h>
      
-      int main(void) { 
+      int main(void) {
      
           printf("Hello_world\n");
-          return 0; 
+          return 0;
      }
 
 .. raw:: html
@@ -1056,11 +1056,11 @@ The linker command file is designed to place code in OCMC memory.
 
 ::
 
-       SECTIONS                                       
-      {                                              
-       .text          >  SHRAM                    
-       .stack         >  SHRAM                    
-       .bss           >  SHRAM      
+       SECTIONS
+      {
+       .text          >  SHRAM
+       .stack         >  SHRAM
+       .bss           >  SHRAM
         .......
       }
 
@@ -1097,14 +1097,12 @@ power up the DSP. You should see the following log in the console.
     C674X_0: Output:    DDR2 init for 150 MHz is done
     C674X_0: Output:    ---------------------------------------------
 
-| 
+|
 
 11. Select and Connect to C674x. Load and run hello_world_dsp.out file.
 You should see **Hello World** string displayed on console window.
 
 .. Image:: ../images/Hello_world_dsp674x.png
 
-| 
-
-.. raw:: html
+|
 

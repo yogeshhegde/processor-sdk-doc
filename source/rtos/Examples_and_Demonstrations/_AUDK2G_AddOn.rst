@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_AUDK2G_AddOn 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_AUDK2G_AddOn
 
 .. rubric:: Introduction
    :name: introduction
@@ -25,7 +25,7 @@ Currently, the following device and EVM are supported:
 
 -  K2G, on the K2G EVM with AUDK2G
 
-| 
+|
 
 .. rubric:: Requirements
    :name: requirements
@@ -42,7 +42,7 @@ Software
 -  Processor-SDK RTOS (3.2 or greater)
 -  Code Composer Studio 6.1.3
 
-| 
+|
 
 .. rubric:: How to Build the Unit Test
    :name: how-to-build-the-unit-test
@@ -102,15 +102,15 @@ The following section provide detailed steps for K2G EVM
 
 ::
 
-      [C66xx] 
+      [C66xx]
       ******************************************
-            Audio DC Analog Loopback Test       
+            Audio DC Analog Loopback Test
       ******************************************
-      
+
       Test Verifies ADC and DAC Channels 0 to 3
       Test Runs in Audio Loopback Mode
       Confirm that ADC Input Audio is Played at DAC Channels 0 to 3
-      
+
       Audio Connection Details
       **************************************
       ADC_IN 0 ==> DAC_OUT 0
@@ -118,6 +118,4 @@ The following section provide detailed steps for K2G EVM
       ADC_IN 2 ==> DAC_OUT 2
       ADC_IN 3 ==> DAC_OUT 3
       **************************************
-
-.. raw:: html
 

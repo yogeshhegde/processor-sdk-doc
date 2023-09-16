@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_K2G 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_K2G
 
 Overview
 ^^^^^^^^^^
@@ -199,9 +199,8 @@ below:
      Finished flashing 'app' with size 19398 at offset 80000
      Flashing completed!
 
-.. note::
-This application will flash the image at required offset without taking
-into consideration any overwriting to previously flashed image.
+.. note:: This application will flash the image at required offset without
+   taking into consideration any overwriting to previously flashed image.
 
 Booting via QSPI
 ''''''''''''''''''
@@ -225,6 +224,4 @@ The SBL memory map is shown below:
    app should not have loadable sections residing in SBL memory region to
    prevent overwriting SBL during load time. It is, however, free to use
    SBL memory after it is loaded and running.
-
-.. raw:: html
 

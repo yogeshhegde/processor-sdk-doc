@@ -51,7 +51,7 @@ Create SD Card with Default Images
                NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
                :
                :
-               sdc      8:32   1    15G  0 disk 
+               sdc      8:32   1    15G  0 disk
                ├─sdc1   8:33   1 131.8M  0 part /media/localUser/boot
                └─sdc2   8:34   1 765.9M  0 part /media/localUser/root
 
@@ -65,16 +65,16 @@ Create SD Card with Default Images
                NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
                :
                :
-               sdc      8:32   1    15G  0 disk 
-               ├─sdc1   8:33   1 131.8M  0 part 
-               └─sdc2   8:34   1 765.9M  0 part 
+               sdc      8:32   1    15G  0 disk
+               ├─sdc1   8:33   1 131.8M  0 part
+               └─sdc2   8:34   1 765.9M  0 part
 
         b) Next, install bmap-tools using the following command:
-           
+
            ::
 
-               sudo apt-get install bmap-tools 
-        
+               sudo apt-get install bmap-tools
+
            Then generate a bmap file from the decompressed WIC image with the following command.
            This step can be skipped but the bmap file significantly reduces the time taken to flash the SD card.
 
@@ -165,7 +165,7 @@ WIC image to place on an SD card.
     You can give the WIC image any name. In this example, we will name it
     custom-image.wic.
 
-    ::  
+    ::
 
         ../bin/scripts/create-sdcard-image.sh boot rootfs custom-image.wic
 

@@ -1,12 +1,12 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_SimpleLink_WiFi_Demo 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_SimpleLink_WiFi_Demo
 
 
 Overview
 ========
 
 This page describes the SimpleLink WiFi Demo provided in the
-Processor-SDK for RTOS. This demo illustrates the integration of CC3120 
-BoosterPack and AMIC110 ICE using components in the SDK to provides a 
+Processor-SDK for RTOS. This demo illustrates the integration of CC3120
+BoosterPack and AMIC110 ICE using components in the SDK to provides a
 low cost WiFi solution for application development.
 
 
@@ -25,7 +25,7 @@ Hardware
 
 -  TI CC3120 BoosterPack
 -  TI EVM (see list above)
--  Blue wires between CC3120 BP and AMIC110 ICE 
+-  Blue wires between CC3120 BP and AMIC110 ICE
 -  Serial UART cable (provided in EVM kit)
 -  Connection Diagram
 .. Image:: ../images/sl_wifi_demo_connection.jpg
@@ -51,11 +51,11 @@ RTOS Components:
 Software Design
 ===============
 
-The demo implemented a network terminal application to illustrate 
+The demo implemented a network terminal application to illustrate
 how the SimpleLink WiFi Plugin for Processor SDK RTOS can be used to provide
-a low cost solution for Sitara devies (AM3/4/5). The AMIC110 ICE and CC3120 
+a low cost solution for Sitara devies (AM3/4/5). The AMIC110 ICE and CC3120
 BoosterPack are connected via SPI and GPIO pins. The SPI interface will provide
-The data and command channels for SimpleLink WiFi Plugin, while the GPIO pins 
+The data and command channels for SimpleLink WiFi Plugin, while the GPIO pins
 are providing the INT and RESET signals.
 
 The following diagram shows the overview of the demo:
@@ -82,21 +82,21 @@ Please follow below step by step procedure to build the application.
 #. Install Code Composer Studio.
 #. Install Processor SDK RTOS for the respective platform needed, in a
    location where CCS expects: (by default $HOME/ti or c:/ti) Refer
-   :ref:`Processor SDK RTOS Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>` 
+   :ref:`Processor SDK RTOS Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`
    for details.
 #. Open CCS:
 #. Click Project-->Import CCS Projects and select network_terminal_AMIC110_ICE_RTOS_ccs
    under directory :
    processor_sdk_rtos_<platform>_<version>/demos/simplelink-wifi-demo/
 #. Build the application . ( By right clicking on imported project and
-   clicking "Build project") 
-   
+   clicking "Build project")
+
 .. note::
    This will create executable binary under <CCS_Workspace>/network_terminal_AMIC110_ICE_RTOS_RTOS_ccs/Debug/network_terminal_AMIC110_ICE_RTOS_RTOS_ccs.out
 
 .. Image:: ../images/sl_wifi_demo_ccs_import.jpg
-   
-   
+
+
 How to Build the SimpleLink WiFi Plugin Demo using makefile on Windows
 =====================================
 
@@ -104,7 +104,7 @@ Please follow below step by step procedure to build the application.
 
 #. Install Processor SDK RTOS for the respective platform needed, in a
    location where CCS expects: (by default c:/ti) Refer
-   :ref:`Processor SDK RTOS Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>` 
+   :ref:`Processor SDK RTOS Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`
    for details.
 #. Under DOS command prompt type:
 #. cd processor_sdk_rtos_<platform>_<version>/ folder
@@ -116,8 +116,8 @@ Please follow below step by step procedure to build the application.
    processor_sdk_rtos_<platform>_<version>/demos/simplelink-wifi-demo/examples\rtos/AMIC110_ICE/demos/network_terminal/tirtos/ccs and
    The executable network_terminal.out, boot image files network_terminal.bin and app will be under
    processor_sdk_rtos_<platform>_<version>/demos/simplelink-wifi-demo/bin/am335x/a8/debug
-   
-      
+
+
 How to Build the SimpleLink WiFi Plugin Demo using makefile on Linux
 =====================================
 
@@ -125,7 +125,7 @@ Please follow below step by step procedure to build the application.
 
 #. Install Processor SDK RTOS for the respective platform needed, in a
    location where CCS expects: (by default $HOME/ti) Refer
-   :ref:`Processor SDK RTOS Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>` 
+   :ref:`Processor SDK RTOS Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`
    for details.
 #. Under Linux command prompt type:
 #. cd processor_sdk_rtos_<platform>_<version>/ folder
@@ -136,7 +136,7 @@ Please follow below step by step procedure to build the application.
 #. The executable binary will be generated under
    processor_sdk_rtos_<platform>_<version>/demos/simplelink-wifi-demo/examples\rtos/AMIC110_ICE/demos/network_terminal/tirtos/ccs
 
-   
+
 How to Run the SimpleLink WiFi Plugin Demo using CCS
 ===================================
 
@@ -187,11 +187,11 @@ Now the network terminal demo will run and print progress through the UART.
 .. Image:: ../images/sl_wifi_demo_uart_ping.jpg
 
 .. note::
-   This demo uses the D-Link DIR-645 wirless router with DHCP server. "dir645" is its SSID. "12345678" is its 
-   connection password. "192.168.0.1" is its default gateway. Users should adjust those parameters according 
+   This demo uses the D-Link DIR-645 wirless router with DHCP server. "dir645" is its SSID. "12345678" is its
+   connection password. "192.168.0.1" is its default gateway. Users should adjust those parameters according
    to their own wireless routers.
 
-   
+
 How to Run the SimpleLink WiFi Plugin Demo using UART Boot
 ===================================
 
@@ -210,7 +210,7 @@ To load and run SimpleLink WiFi Plugin Demo:
    processor_sdk_rtos_<platform>_<version>/demos/simplelink-wifi-demo/bin/am335x/a8/debug
    using the XMODEM.
 .. Image:: ../images/sl_uart_boot_2nd.jpg
-   
+
 Now the network terminal demo will run and print progress through the UART.
 
 -  The inital display on the UART
@@ -229,9 +229,7 @@ Now the network terminal demo will run and print progress through the UART.
 .. Image:: ../images/sl_wifi_demo_uart_ping.jpg
 
 .. note::
-   This demo uses the D-Link DIR-645 wirless router with DHCP server. "dir645" is its SSID. "12345678" is its 
-   connection password. "192.168.0.1" is its default gateway. Users should adjust those parameters according 
+   This demo uses the D-Link DIR-645 wirless router with DHCP server. "dir645" is its SSID. "12345678" is its
+   connection password. "192.168.0.1" is its default gateway. Users should adjust those parameters according
    to their own wireless routers.
-
-.. raw:: html
 

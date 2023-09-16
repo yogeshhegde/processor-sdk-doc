@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_DIAG 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_DIAG
 
 Overview
 -----------
@@ -31,7 +31,7 @@ Pre-requisites to Building
 -  PRUSS
 -  MMCSD
 -  EMAC
--  USB  
+-  USB
 -  UDMA
 -  SCICLIENT
 
@@ -97,7 +97,7 @@ loadable files.
 
 -  **make <BOARD>_spi**
 
-| 
+|
 
 Make targets
 ^^^^^^^^^^^^^^^
@@ -179,7 +179,7 @@ To do so:
    program is opened after boot is powered on, you would've missed the
    initial printout messages. This step is for demonstration and
    confidence checking that the board has booted correctly)
-   
+
 .. note::
     Diagnostic tests on AM65xx platform supports A53 and R5 cores.
     A53 binary path: <PDK>/packages/ti/board/bin/<BOARD>/sd/armv8.
@@ -188,8 +188,8 @@ To do so:
 .. note::
     SBL binary name is different on AM65xx platform and requires
     system firmware binary also to be copied to SD card.
-    Copy the sbl_mmcsd_img_mcu1_0_release.tiimage file from 
-    <PDK>/packages/ti/boot/sbl/binary/mmcsd/<BOARD> to SD card and 
+    Copy the sbl_mmcsd_img_mcu1_0_release.tiimage file from
+    <PDK>/packages/ti/boot/sbl/binary/mmcsd/<BOARD> to SD card and
     rename it to tiboot3.bin.
     Copy the system firmware image <PDK>/packages/ti/drv/sciclient/soc/V0/sysfw.bin to SD card
     (for AM65xx SR2, copy "sysfw_sr2.bin" instead and rename it "sysfw.bin" on the SD card)
@@ -248,7 +248,7 @@ Sample CCS output of SPI flash writer is shown below:
 
 .. Image:: ../images/Spi_flash_writer_output.jpg
 
-| 
+|
 
 #. open Terminal emulator program eg: Teraterm to connect to the board's
    UART console
@@ -262,7 +262,7 @@ You should see the following screen:
 
 .. Image:: ../images/Amic110_ice_spi_boot_diag1.jpg
 
-| 
+|
 | The framework diagnostic application should be loaded through SBL, and
   gives you the options:
 
@@ -274,12 +274,12 @@ Below is an example of running a diagnostic application:
 
 .. Image:: ../images/Amic110_ice_spi_boot_diag2.jpg
 
-| 
+|
 | Result of return from above run:
 
 .. Image:: ../images/Amic110_ice_spi_boot_diag3.jpg
 
-| 
+|
 
 Running or debugging on CCS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -327,7 +327,7 @@ To run on CCS:
    at. If it is at 0x3808c (or near it), try reloading the program and
    running again.
 
-.. note:: Diagnostics are built for both DSP (C674x) and ARM (arm9) cores 
+.. note:: Diagnostics are built for both DSP (C674x) and ARM (arm9) cores
    on omapl13x platform.
 
 Running on a different ARM core
@@ -348,7 +348,7 @@ subcores in CCS. To do so, please consider the following:
 
 Diagnostic Applications
 -----------------------------
-   
+
 
 +-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
 |                      Name                       |    Description    | AM65xx | AM65xx | GP     | IDK           | IDK    | EVM | ICE | EVM    | SK     | BBB    | ICEv2  | EVM    | SK     | IDK    | EVM      | ICE     |
@@ -364,14 +364,14 @@ Diagnostic Applications
 |                                                 | range.            |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 +-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Test for ADC      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |      
+|                                                 | Test for ADC      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |    adc_TEST                                     | configuration for |        |        |        |               |        |     |     |    x   |  x     |        |        |    x   |  x     |        |          |         |
 |                                                 | Channel sequencing|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 | and One shot mode |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 | operation.        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 +-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Test for device   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         | 
+|                                                 | Test for device   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |    ambient_TEST                                 | detection on board|        |        |        |               |        |     |     |    x   |        |        |        |    x   |        |        |          |         |
 |                                                 | and working of    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 | the light sensor. |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
@@ -1069,6 +1069,4 @@ evmAM572x - P17 pin 5
 idkAM437x - J16 pin 14
 
 evmAM335x - J5 pin 13
-
-.. raw:: html
 

@@ -74,7 +74,7 @@ The latest release this documentation applies to is Kernel v3.12
 -  Supports static and dynamic driver model (insmod and rmmod
    supported).
 
-| 
+|
 
 .. rubric:: Unsupported Features/Limitations
 
@@ -83,7 +83,7 @@ The latest release this documentation applies to is Kernel v3.12
 -  Cropping and scaling and their V4L2 IOCTLS are not supported.
 -  USERPTR has not been tested.
 
-| 
+|
 
 .. rubric:: Driver Architecture
    :name: driver-architecture
@@ -146,7 +146,7 @@ Capture Driver Component Overview
 -  `AM437x VPFE Driver
    Sources <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/trees/ti-linux-3.12.y/drivers/media/platform/ti-vpfe>`__
 
-| 
+|
 
 .. rubric:: Kernel Configuration Options
    :name: kconfig-options-vpfe
@@ -163,7 +163,7 @@ omap2plus\_defconfig.
 
     $ make menuconfig ARCH=arm
 
-| 
+|
 
 -  Select "Device Drivers" from the main menu.
 
@@ -205,7 +205,7 @@ omap2plus\_defconfig.
     --- Multimedia support
     ...
     ...
-    [ ]   Media PCI Adapters  ---- 
+    [ ]   Media PCI Adapters  ----
     [*]   V4L platform devices -->
     [ ]   Memory-memory multimedia devices ...
     [ ]   Media test drivers  ----
@@ -258,7 +258,7 @@ chips and go inside Encoders/decoders and other helper chips
     < > Texas Instruments THS8200 video encoder
         *** Camera sensor devices ***
     <*> OmniVision OV2659 sensor support
-    < > OmniVision OV7640 sensor support  
+    < > OmniVision OV7640 sensor support
     ...
     ...
 
@@ -269,7 +269,7 @@ chips and go inside Encoders/decoders and other helper chips
    more information on loadable modules refer `Loadable Module
    HOWTO <http://tldp.org/HOWTO/Module-HOWTO/>`__
 
-| 
+|
 
 .. rubric:: DT Configuration
 
@@ -303,7 +303,7 @@ This an excerpt from the arch/arm/boot/dts/am437x-gp-evm.dts
                    >;
            };
 
-     
+
            vpfe0_pins_sleep: vpfe0_pins_sleep {
                    pinctrl-single,pins = <
                            0x1B0 (DS0_PULL_UP_DOWN_EN | INPUT_EN | MUX_MODE7)  /* cam0_hd mode 0*/
@@ -338,7 +338,7 @@ This an excerpt from the arch/arm/boot/dts/am437x-gp-evm.dts
                    compatible = "ti,ov2659";
                    reg = <0x30>;
 
-     
+
                    port {
                            ov2659_0: endpoint {
                                    remote-endpoint = <&vpfe0_ep>;
@@ -355,7 +355,7 @@ This an excerpt from the arch/arm/boot/dts/am437x-gp-evm.dts
            pinctrl-0 = <&vpfe0_pins_default>;
            pinctrl-1 = <&vpfe0_pins_sleep>;
 
-     
+
            /* Camera port \*/
            port {
                    vpfe0_ep: endpoint {
@@ -391,7 +391,7 @@ The driver support the following system calls and V4L2 ioctls:
 
 ``open(), close(), mmap(), munmap() and ioctl()``
 
-| 
+|
 
 +----------------------------+---------------------------------------------+
 | V4L2 ioctls                | Definition                                  |
@@ -453,7 +453,7 @@ Table:  **Supported ioctls**
   have any effect.
 | :sup:`+`: API is implemented, but as not been tested.
 
-| 
+|
 
 There are plenty of generic V4L2 capture applications available:
 

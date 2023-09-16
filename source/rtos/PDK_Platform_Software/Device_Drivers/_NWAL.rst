@@ -1,6 +1,6 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_NWAL 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_NWAL
 
-| 
+|
 
 .. rubric:: Introduction
    :name: introduction
@@ -48,7 +48,7 @@ back in API call context.
 **Non-BLOCKING Mode**: In this mode, application can invoke a separate
 poll routine to retrieve status response result.
 
-| 
+|
 
 .. rubric:: Driver Configuration
    :name: driver-configuration-nwal
@@ -84,16 +84,19 @@ API reference for application can be found in below file:
 .. rubric:: Additional References
    :name: additional-references
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/nwal/docs/doxygen/html/index |
-|                                   | .html                             |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/nwal/docs/ReleaseNotes_NWAL_ |
-|                                   | LLD.pdf                           |
-+-----------------------------------+-----------------------------------+
 
+.. list-table::
+   :header-rows: 1
+
+   * - **Document**
+
+     - **Location**
+
+   * - API Reference Manual
+
+     - ``$(TI_PDK_INSTALL_DIR)/packages/ti/drv/nwal/docs/doxygen/html/index.html``
+
+   * - Release Notes
+
+     - ``$(TI_PDK_INSTALL_DIR)/packages/ti/drv/nwal/docs/ReleaseNotes_NWAL_LLD.pdf``
 

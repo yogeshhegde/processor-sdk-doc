@@ -413,7 +413,7 @@ Sample XML based on EST YANG model
  		<bridge-type>provider-bridge</bridge-type>
  	</bridge>
  </bridges>
- 
+
  <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces"
  	    xmlns:dot1q="urn:ieee:std:802.1Q:yang:ieee802-dot1q-bridge"
  	    xmlns:sched-bridge="urn:ieee:std:802.1Q:yang:ieee802-dot1q-sched-bridge"

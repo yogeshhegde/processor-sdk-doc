@@ -27,7 +27,7 @@ Additionally, POST provides the following useful information:
 -  Indication of whether SA is available on SOC
 -  PLL Reset Type status register
 
-| 
+|
 
 .. rubric:: Compilation
    :name: compilation
@@ -54,7 +54,7 @@ To compile the POST application:
 
 This will create the .out executable that can be loaded via CCS
 
-| 
+|
 
 .. rubric:: Flashing POST Image
    :name: flashing-post-image
@@ -62,7 +62,7 @@ This will create the .out executable that can be loaded via CCS
 To flash a bootable image of POST, please refer to the `SDK RTOS
 Flashing Bootable Images <index_how_to_guides.html#flash-bootable-images-c66x-k2h-k2e-k2l-only>`__ guide.
 
-| 
+|
 
 .. rubric:: C66x LED Code
    :name: c66x-led-code
@@ -98,4 +98,3 @@ POST routines. Refer to the following table:
 | Other failures              | blink | blink | blink | blink |
 +-----------------------------+-------+-------+-------+-------+
 
-.. raw:: html

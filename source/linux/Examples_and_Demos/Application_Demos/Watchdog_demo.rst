@@ -40,10 +40,10 @@ In order for the users to run the watchdog demo, follow the following procedure 
 
 
 5. Restore the IPC firmware after SoC reboot
- 
+
 ::
 
     target # ln -sf /lib/firmware/ipc/ti_platforms_cortexR_AM65X_R5F0/messageq_single.xer5f /lib/firmware/am65x-mcu-r5f0_0-fw
 
 
- 
+

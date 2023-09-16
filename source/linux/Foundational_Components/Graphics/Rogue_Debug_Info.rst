@@ -14,7 +14,7 @@ libraries:
    * - pvrdebug
      - Control debug verbosity and other device info
    * - pvrlogdump
-     - Dump diagnostic information for an application 
+     - Dump diagnostic information for an application
    * - pvrsrvctl
      - Start, Stop, Restart and configure the GPU using a powervr.ini file
    * - rgx_blit_test
@@ -30,7 +30,7 @@ libraries:
 
 While future releases of ti-img-rogue-umlibs may include more tools, this is
 the core set expected to be available in most ti-img-rogue-umlibs releases and
-are the most useful for verifying GPU functionality. 
+are the most useful for verifying GPU functionality.
 
 The order of operation to verify fundamental GPU functionality is as follows:
 

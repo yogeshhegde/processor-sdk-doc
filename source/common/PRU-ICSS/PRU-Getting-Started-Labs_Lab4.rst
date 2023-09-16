@@ -221,7 +221,7 @@ Processor SDK, section "Foundational Components" -> "Kernel" -> "Users Guide".
 For the TIDA-01555 example, build am335x-boneblack-pruadc.dts
 
 .. TODO: Generalize the pinmux guidance. Point to pinmux documentation in the
-   Linux Academy once that is added. 
+   Linux Academy once that is added.
 
 
 Copy files to the target filesystem

@@ -19,7 +19,7 @@ APM
    GPU. One specifically set aside for the "core" which is the primary device
    running the GPU's firmware, and a second peripheral domain for what
    Imagination refers to as the "dust" components.
-   
+
    The "dust" components are not necessary for all GPU interactions and as such
    are directly controlled by the GPU core to avoid any unnecessary uptime.
 

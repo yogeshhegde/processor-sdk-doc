@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_IPC_Transports 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_IPC_Transports
 
 Introduction
 -----------------
@@ -49,12 +49,12 @@ location, and the communication path they enable.
 |               |              |   ories      |                |                 | the DSP.         |
 |               |              | - Yocto/     |                |                 | This provides    |
 |               |              |   bitbake    |                |                 | *clean*          |
-|               |              |   ti-ipc     |                |                 | partitioning     |         
+|               |              |   ti-ipc     |                |                 | partitioning     |
 |               |              |   recipe     |                |                 | between user     |
 |               |              |              |                |                 | memory and DSP   |
 |               |              |              |                |                 | memory. However, |
 |               |              |              |                |                 | Transport Rpmsg  |
-|               |              |              |                |                 | is considered    |     
+|               |              |              |                |                 | is considered    |
 |               |              |              |                |                 | a *slow path*    |
 |               |              |              |                |                 | since the user   |
 |               |              |              |                |                 | space MessageQ   |
@@ -64,7 +64,7 @@ location, and the communication path they enable.
 |               |              |              |                |                 | kernel and DSP.  |
 +---------------+--------------+--------------+----------------+-----------------+------------------+
 | SYS/BIOS      | Network      | PROCSDK      | SRIO LLD       | - SYS/BIOS      | TransportSrio    |
-| DSP           |              | RTOS PDK     |                |   DSP to/from   | can send MessageQ|         
+| DSP           |              | RTOS PDK     |                |   DSP to/from   | can send MessageQ|
 | Transport     |              |              |                |   SYS/BIOS DSP  | messages to ARMv7|
 | Srio          |              |              |                |   (intra and    | and DSP          |
 |               |              |              |                |   inter-device) | processors on    |
@@ -72,13 +72,13 @@ location, and the communication path they enable.
 |               |              |              |                |   DSP to/from   | in a multiple    |
 |               |              |              |                |   ARMv7 Linux   | device system.   |
 |               |              |              |                |   (intra- and   | IPC MultiProc    |
-|               |              |              |                |   inter- device)| must be          | 
+|               |              |              |                |   inter- device)| must be          |
 |               |              |              |                |                 | configured to be |
 |               |              |              |                |                 | aware of all     |
-|               |              |              |                |                 | processors       | 
+|               |              |              |                |                 | processors       |
 |               |              |              |                |                 | existing on all  |
 |               |              |              |                |                 | devices and all  |
-|               |              |              |                |                 | devices must be  |      
+|               |              |              |                |                 | devices must be  |
 |               |              |              |                |                 | connected over a |
 |               |              |              |                |                 | SRIO             |
 |               |              |              |                |                 | interconnect.    |
@@ -98,19 +98,19 @@ location, and the communication path they enable.
 |               |              |              |                |                 | latter capability|
 |               |              |              |                |                 | Therefore it is  |
 |               |              |              |                |                 | recommended a    |
-|               |              |              |                |                 | shared memory or |    
+|               |              |              |                |                 | shared memory or |
 |               |              |              |                |                 | other LLD-based  |
 |               |              |              |                |                 | transport        |
-|               |              |              |                |                 | is used for      |    
+|               |              |              |                |                 | is used for      |
 |               |              |              |                |                 | intra-device     |
 |               |              |              |                |                 | communication    |
 |               |              |              |                |                 | due to their     |
 |               |              |              |                |                 | lower latency    |
 |               |              |              |                |                 | costs.           |
 +---------------+--------------+--------------+----------------+-----------------+------------------+
-| ARMv7         | Network      | Yocto/bit    | SRIO LLD       | - ARMv7         | TransportSrio    | 
+| ARMv7         | Network      | Yocto/bit    | SRIO LLD       | - ARMv7         | TransportSrio    |
 | Linux         |              | bake         |                |   Linux to/from | can send         |
-| Transport     |              | ti-transp    |                |   ARMv7 Linux   | MessageQ messages|         
+| Transport     |              | ti-transp    |                |   ARMv7 Linux   | MessageQ messages|
 | Srio          |              | ort-srio     |                |   (intra- and   | to ARMv7 and DSP |
 |               |              | recipe       |                |   inter-device) | processors on    |
 |               |              |              |                | - SYS/BIOS      | remote devices   |
@@ -121,7 +121,7 @@ location, and the communication path they enable.
 |               |              |              |                |                 | configured to be |
 |               |              |              |                |                 | aware of all     |
 |               |              |              |                |                 | processors       |
-|               |              |              |                |                 | existing on all  |          
+|               |              |              |                |                 | existing on all  |
 |               |              |              |                |                 | devices and all  |
 |               |              |              |                |                 | devices must be  |
 |               |              |              |                |                 | connected        |
@@ -132,26 +132,26 @@ location, and the communication path they enable.
 |               |              |              |                |                 | purpose of       |
 |               |              |              |                |                 | TransportSrio    |
 |               |              |              |                |                 | is for           |
-|               |              |              |                |                 | multi-device     |      
+|               |              |              |                |                 | multi-device     |
 |               |              |              |                |                 | communication    |
 |               |              |              |                |                 | over MessageQ.   |
 |               |              |              |                |                 | The transmission |
 |               |              |              |                |                 | latency is       |
 |               |              |              |                |                 | greater for      |
-|               |              |              |                |                 | this transport   |     
+|               |              |              |                |                 | this transport   |
 |               |              |              |                |                 | due to the latter|
 |               |              |              |                |                 | capability.      |
-|               |              |              |                |                 | Therefore, it is |        
+|               |              |              |                |                 | Therefore, it is |
 |               |              |              |                |                 | recommended      |
 |               |              |              |                |                 | a shared memory  |
-|               |              |              |                |                 | or other         |  
+|               |              |              |                |                 | or other         |
 |               |              |              |                |                 | LLD-based        |
-|               |              |              |                |                 | transport        |      
+|               |              |              |                |                 | transport        |
 |               |              |              |                |                 | is used for      |
 |               |              |              |                |                 | intra-device     |
 |               |              |              |                |                 | communication    |
 |               |              |              |                |                 | due to their     |
-|               |              |              |                |                 | lower latency    | 
+|               |              |              |                |                 | lower latency    |
 |               |              |              |                |                 | costs.           |
 +---------------+--------------+--------------+----------------+-----------------+------------------+
 | SYS/BIOS      | Network      |              | QMSS LLD       | - SYS/BIOS      |                  |
@@ -239,7 +239,7 @@ the SrioDevice_init() API prior to configuring the transport.
 SrioDevice_init() reference:
 
 ::
-  
+
     ti/transport/ipc/c66/srio/example/src/device_srio.c
 
 Developers can modify the configurations made in the stock device_srio.c
@@ -407,11 +407,11 @@ Recompiling Through Yocto/bitbake
    $ MACHINE=k2hk-evm TOOLCHAIN_BRAND=linaro ARAGO_BRAND=mcsdk bitbake
    ipc-transport-srio-test
 
-   .. note:: 
+   .. note::
       The initial build may take quite some time since the kernel is built as a dependency
 
-   .. note:: 
-     Building with just the ipc-transport-srio-test recipe will also build the 
+   .. note::
+     Building with just the ipc-transport-srio-test recipe will also build the
      ipc-transport-srio recipe since the test recipe depends on the library recipe.
 
 #. The built TransportSrio static library will be located in
@@ -437,7 +437,7 @@ root>/procsdk_linux_3_XX_YY_ZZ/linux-devkit/
 #. Navigate to the PROCSDK Linux installation of pdk_3_XX_YY_ZZ/packages
    and source armv7setupenv.sh.
 
-   .. note:: 
+   .. note::
       The armv7setupenv.sh script must be modified to
       point to the linaro toolchain and installed devkit path
 
@@ -456,10 +456,10 @@ root>/procsdk_linux_3_XX_YY_ZZ/linux-devkit/
    <base_repo_path>/ipc-transport/bin/<k2 device>/test/ folder. Only the
    device specified in the armv7setupenv.sh will be built.
 
-.. note:: 
+.. note::
   Setting the USEDYNAMIC_LIB environment variable to
   "yes" will generate the shared library test executables
-  
+
   $ export USEDYNAMIC_LIB=yes
 
 SYS/BIOS DSP TransportQmss Source Delivery and Recompilation
@@ -530,11 +530,11 @@ Recompiling Through Yocto/bitbake
    $ MACHINE=k2hk-evm TOOLCHAIN_BRAND=linaro ARAGO_BRAND=mcsdk bitbake
    ipc-transport-qmss-test
 
-   .. note:: 
+   .. note::
      The initial build may take quite some time since
      the kernel is built as a dependency
 
-   .. note:: 
+   .. note::
      Building with just the ipc-transport-qmss-test
      recipe will also build the ipc-transport-qmss recipe since the test
      recipe depends on the library recipe.
@@ -562,7 +562,7 @@ root>/processor_sdk_linux_3_XX_YY_ZZ/linux-devkit/
 #. Navigate to the PROCSDK Linux installation of pdk_3_XX_YY_ZZ/packages
    and source armv7setupenv.sh.
 
-   .. note:: 
+   .. note::
      The armv7setupenv.sh script must be modified build
      for the correct K2 device, and to point to the linaro toolchain and
      installed devkit path
@@ -582,7 +582,7 @@ root>/processor_sdk_linux_3_XX_YY_ZZ/linux-devkit/
    <base_repo_path>/ipc-transport/bin/<k2 device>/test/ folder. Only the
    device specified in the armv7setupenv.sh will be built.
 
-.. note:: 
+.. note::
   Setting the USEDYNAMIC_LIB environment variable to
   "yes" will generate the shared library test executables
 

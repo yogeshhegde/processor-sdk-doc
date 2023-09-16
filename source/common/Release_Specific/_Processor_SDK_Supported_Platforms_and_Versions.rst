@@ -63,7 +63,7 @@ SDK.
     | Ubuntu                    | | 18.04 (64-bit)        |
     +---------------------------+-------------------------+
 
-| 
+|
 
 .. rubric:: Supported Platforms and EVMs
    :name: supported-platforms-and-evms
@@ -84,7 +84,7 @@ The following platforms and EVMs are supported with Processor SDK.
     |                                      |`AM65x/DRA80xM IDK                    | Beta     |Hardware User's Guide                       | X              | X              | X              | X              |
     |                                      |<http://www.ti.com/tool/              |          |`Hardware Setup with CCS <http://software-d |                |                |                |                |
     |                                      |tmdx654idkevm>`__                     |          |l.ti.com/processor-sdk-rtos/esd/docs/       |                |                |                |                |
-    |                                      |                                      |          |latest/rtos/How_to_Guides.html#am65x-evm>`__|                |                |                |                | 
+    |                                      |                                      |          |latest/rtos/How_to_Guides.html#am65x-evm>`__|                |                |                |                |
     +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
     |`AM57x <http://www.ti.com/lsds/ti/    |`AM572x EVM                           | A3       |`Hardware User's Guide <http://             | X              | X              | X              | X              |
     |processors/sitara/arm_cortex-a15/     |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruig1>`__              |                |                |                |                |

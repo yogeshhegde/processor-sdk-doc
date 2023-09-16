@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PRUSS 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PRUSS
 Overview
 --------
 
@@ -8,8 +8,8 @@ Introduction
 | The PRUSS (Programmable Real-Time Unit Subsystem) provides a
   well-defined API layer which allows applications to use the PRUSS low
   level driver to control  sub system.
- 
-| 
+
+|
 
 .. rubric:: Firmware
    :name: firmware
@@ -44,7 +44,7 @@ All the board specific configurations like enabling the clock and
 pin-mux of UART/GPIO/PRUSS ICSS pins should be performed before
 calling any of the driver APIs.
 
-| 
+|
 .. rubric::  **PRUSS Configuration Structure**
    :name: pruss-configuration-structure
 
@@ -74,31 +74,31 @@ for additional details
      ...
      /* Initialize Board */
      Board_init(boardCfg);
-     
+
      /* Creates handle for PRUICSS instance */
      handle = PRUICSS_create(pruss_config,instance);
-     
+
      /* Disable PRUICSS instance */
      PRUICSS_pruDisable(handle,instance );
-     
+
      /* Register an Interrupt Handler for an event */
      PRUICSS_registerIrqHandler(handle,pruEvtoutNum,intrNum,eventNum,waitEnable,irqHandler);
-     
+
      /* Sets the buffer pointer for PRU */
      PRUICSS_setPRUBuffer(..);
-     
+
      /* API to do Interrupt-Channel-host mapping */
      PRUICSS_pruIntcInit(handle,&pruss_intc_initdata);
-     
+
      /* Execute program on PRU */
      PRUICSS_pruExecProgram(handle,0);
-     
+
       /* Enable PRU */
      PRUICSS_pruEnable(handle,0);
-     
+
      /* Generates INTC event */
      PRUICSS_pruSendEvent(handle,ARM_PRU0_EVENT);
-      
+
 
 Application
 ------------
@@ -142,5 +142,5 @@ Additional References
 |                                   | S_LLD.pdf                              |
 +-----------------------------------+----------------------------------------+
 
-| 
+|
 

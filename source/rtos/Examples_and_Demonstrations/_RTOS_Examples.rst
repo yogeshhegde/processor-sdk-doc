@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Examples 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Examples
 
 Overview
 ========
@@ -13,17 +13,17 @@ ARM Cortex-A53
 
 The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout. As a
-sample we will use the AM65x device to describe the steps for the Cortex-A53. 
+sample we will use the AM65x device to describe the steps for the Cortex-A53.
 
-.. Note:: For future Device Support Package releases, the Hello World example for the Cortex-A53 will be added to CCS as an out-of-box experience. 
+.. Note:: For future Device Support Package releases, the Hello World example for the Cortex-A53 will be added to CCS as an out-of-box experience.
 
-1. Create a work space folder to be used for Hello Example project 
-(e.g. /ti/am65x_am53_hello_workspace), and start CCS. If prompted with 
-**New Products Discovered**, install any desired products and restart 
+1. Create a work space folder to be used for Hello Example project
+(e.g. /ti/am65x_am53_hello_workspace), and start CCS. If prompted with
+**New Products Discovered**, install any desired products and restart
 CCS if required.
 
-2. In CCS, go to File --> New --> 
-CCS Project. 
+2. In CCS, go to File --> New -->
+CCS Project.
 
 3. Enter a project name and configure the new CCS project as follows:
 
@@ -31,34 +31,34 @@ CCS Project.
  * **Cortex A**
  * **Device Endianness**: little
 
-4. Under "Project Templates and examples", select "More Examples... --> Search Using Import Wizard". 
+4. Under "Project Templates and examples", select "More Examples... --> Search Using Import Wizard".
 Select "hello" project and click "Finish".
 
-5. Remove AM6548.lds from the project. Add the file **linker_a53.lds** located in the folder (PDK INSTALL PATH)/packages/ti/build/am65xx/ 
+5. Remove AM6548.lds from the project. Add the file **linker_a53.lds** located in the folder (PDK INSTALL PATH)/packages/ti/build/am65xx/
 to the project.
 
-6. Remove hello.cfg from the project. Add the file **sysbios_a53.cfg** located in the folder (PDK INSTALL PATH)/packages/ti/build/am65xx/ 
+6. Remove hello.cfg from the project. Add the file **sysbios_a53.cfg** located in the folder (PDK INSTALL PATH)/packages/ti/build/am65xx/
 to the project.
 
-7. Add the file **InitMmu.c** located under (IPC INSTALL PATH)/examples/AM65XX_bios_elf/ex02_messageq/host 
-to the project. 
+7. Add the file **InitMmu.c** located under (IPC INSTALL PATH)/examples/AM65XX_bios_elf/ex02_messageq/host
+to the project.
 
-8. Select Compiler: right-click on the project, select "Properites". Under "Tool-chain", 
-select "GNU v7.2.1 (Linaro aarch64)" (or higher). 
+8. Select Compiler: right-click on the project, select "Properites". Under "Tool-chain",
+select "GNU v7.2.1 (Linaro aarch64)" (or higher).
 
-9. Build the project: right-click on the project and 
-select "Build Project". 
+9. Build the project: right-click on the project and
+select "Build Project".
 
-10. Launch the target configuration using the appropriate emulator to connect to AM65x EVM 
+10. Launch the target configuration using the appropriate emulator to connect to AM65x EVM
 as described in the AM65x EVM Hardware Setup Guide.
 
-11. Right click on DMSC_Cortex_M3_0 and click Connect Target. 
+11. Right click on DMSC_Cortex_M3_0 and click Connect Target.
 
-12. Connect to the CortexA53_0_0 core. Load and run Hello Example out file. 
+12. Connect to the CortexA53_0_0 core. Load and run Hello Example out file.
 You should see Hello World string displayed on console window.
 
-| 
-   
+|
+
 ARM Cortex-A15
 ==============
 
@@ -139,7 +139,7 @@ configurations.
 13. Load and run Hello Example out file. You should see **Hello World**
 string displayed on console window.
 
-| 
+|
 
 ARM Cortex-A9
 =============
@@ -215,7 +215,7 @@ configurations.
 13. Load and run Hello Example out file. You should see **Hello World**
 string displayed on console window.
 
-| 
+|
 
 ARM Cortex-A8
 =============
@@ -228,7 +228,7 @@ folder to be used for Hello Example project, and start CCS. You may be
 prompted with **New Products Discovered**, so select all and **click on
 Finish**
 
-2. On CCS click View --> 
+2. On CCS click View -->
 Resource Explorer (Examples).
 
 3. On SYS/BIOS scroll down to AM3352 --> Cortex A --> Generic Example
@@ -239,7 +239,7 @@ Resource Explorer (Examples).
 4. To import Hello Example, on the right window click on step 1. Import
 The Example to CCS Project.
 
-5. On New CCS Project window enter project name and then 
+5. On New CCS Project window enter project name and then
 click Next.
 
 .. Image:: ../images/HelloWorld_cortexA8.png
@@ -247,7 +247,7 @@ click Next.
 6. On RSTC window select platform name: **ti.platforms.evmAM335X** and
 check that the target is set to **gnu.targets.arm.A8F**
 
-7. Click Finish. Your project should show up on 
+7. Click Finish. Your project should show up on
 Project Explorer window.
 
 8. To get log message to print on console add this variable to hello.cfg
@@ -307,28 +307,28 @@ folder to be used for Hello Example project, and start CCS. You may be
 prompted with **New Products Discovered**, so select all and **click on
 Finish**
 
-2. Select File --> New --> 
+2. Select File --> New -->
 CCS Project.
 
-3. Select Target: 
+3. Select Target:
 AM6548.
 
-4. Select Cortex R 
+4. Select Cortex R
 [ARM] tab.
 
-5. Under Project templates and examples, 
+5. Under Project templates and examples,
 expand SYS/BIOS. Expand More Examples..., click Search using Import Wizard.
 
-6. Select "hello" project, 
+6. Select "hello" project,
 click Finish.
 
-7. Launch the target configuration using the appropriate emulator to 
+7. Launch the target configuration using the appropriate emulator to
 connect to AM65x EVM as described in the AM65x EVM Hardware Setup Guide.
 
-8. Right click on DMSC_Cortex_M3_0 and 
+8. Right click on DMSC_Cortex_M3_0 and
 click Connect Target.
 
-9. Connect to the MCU_PULSAR_Cortex_R5_0 core. Load and run Hello Example 
+9. Connect to the MCU_PULSAR_Cortex_R5_0 core. Load and run Hello Example
 out file. You should see Hello World string displayed on console window.
 
 
@@ -343,7 +343,7 @@ folder to be used for Hello Example project, and start CCS. You may be
 prompted with **New Products Discovered**, so select all and **click on
 Finish**
 
-2. On CCS click View --> Resource Explorer 
+2. On CCS click View --> Resource Explorer
 (Examples).
 
 3. on SYS/BIOS scroll down to AM572X --> Cortex M --> Generic Example
@@ -361,7 +361,7 @@ The Example to CCS Project.
 6. On RSTC window select platform name: **ti.platforms.evmAM572X** and
 check that the target is set to **gnu.targets.arm.elf.M4**
 
-7. Click Finish. Your project should show up on 
+7. Click Finish. Your project should show up on
 Project Explorer window.
 
 8. Build Hello Example project by Right click on Hello Project and click
@@ -377,7 +377,7 @@ Initialization->IPU1SSClkEnable_API <index_how_to_guides.html#connect-to-am57x-t
 11. Connect to the Cortex_M4_IPU1_C0. Load and run Hello Example out
 file. You should see **Hello World** string displayed on console window.
 
-| 
+|
 
 ARM9
 ====
@@ -424,7 +424,7 @@ configurations.
 12. Load and run Hello Example out file. You should see **Hello World**
 string displayed on the console window.
 
-| 
+|
 
 DSP C66x
 ========
@@ -573,7 +573,7 @@ should see **Hello World** string displayed on console window.
 
 .. Image:: ../images/Hello_world_dsp674x_rtos.png
 
-| 
+|
 
 Usage Notes
 ===========
@@ -598,7 +598,7 @@ you see the message
 You can also prevent these issues by adding the Processor SDK components
 to file search path under Windows->Preferences options in CCS GUI.
 
-| 
+|
 
 Known Issues
 ============
@@ -613,7 +613,7 @@ you are most likely running into this issue. To correct this issue
 please check the resolution here:
 https://e2e.ti.com/support/development_tools/code_composer_studio/f/81/t/539973
 
-| 
+|
 
 
 Useful Resources
@@ -626,7 +626,5 @@ Useful Resources
 -  `SYS/BIOS
    FAQ <http://processors.wiki.ti.com/index.php/SYS/BIOS_FAQs>`__
 
-| 
-
-.. raw:: html
+|
 

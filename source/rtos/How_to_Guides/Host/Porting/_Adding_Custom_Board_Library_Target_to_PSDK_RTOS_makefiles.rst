@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Adding_Custom_Board_Library_Target_to_Processor_SDK_RTOS_makefiles 
+.. http://processors.wiki.ti.com/index.php/Adding_Custom_Board_Library_Target_to_Processor_SDK_RTOS_makefiles
 
 Introduction
 ^^^^^^^^^^^^^
@@ -25,7 +25,7 @@ Instructions to add custom Board to the PDK build
 
 **Step 1: Creating new directory for custom board library**
 
-In pdk_am57xx_x_x_x/packages/ti/board/src, 
+In pdk_am57xx_x_x_x/packages/ti/board/src,
 Create new directory myCustomBoard and copy files from existing board
 library package. We recommend that you copy files from the board which
 closely matches your custom board design. In this case, we assume that
@@ -234,7 +234,7 @@ AM572x EVM, you can invoke the build using:
 
 ::
 
-    gmake board_lib LIMIT_SOCS=am572x LIMIT_BOARDS=customAM572x LIMIT_CORES=a15_0 
+    gmake board_lib LIMIT_SOCS=am572x LIMIT_BOARDS=customAM572x LIMIT_CORES=a15_0
 
 
 
@@ -274,6 +274,4 @@ Additional steps for AM335x/AM437x users
    will need to additionally modify build files in starterware to build
    their custom board library. Additional steps required for AM335x/AM437x
    will be added to this article soon in this section
-
-.. raw:: html
 

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Rebuilding_IPC 
+.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Rebuilding_IPC
 
 This page describes how to rebuild the IPC source code.
 
@@ -16,7 +16,7 @@ Note that you can cause the BIOS-side IPC (and BIOS) libraries to be rebuilt as 
 Build Procedure
 ------------------
 
-The IPC package now comes bundled with Processor SDK RTOS and can be rebuilt using the top-level makefile located in the Processor SDK RTOS folder. The following commands will build the BIOS-side IPC package. 
+The IPC package now comes bundled with Processor SDK RTOS and can be rebuilt using the top-level makefile located in the Processor SDK RTOS folder. The following commands will build the BIOS-side IPC package.
 
 Windows
 ::
@@ -31,7 +31,7 @@ Linux
     cd (Processor SDK RTOS folder)
     source ./setupenv.sh
     make ipc_bios
-	
+
 The IPC package can also be cleaned using the following commands.
 
 Windows
@@ -47,8 +47,8 @@ Linux
 	cd (Processor SDK RTOS folder)
 	source ./setupenv.sh
 	make ipc_clean
-	
-The install guides below have been kept here for those using older, legacy versions of IPC outside of Processor SDK. 
+
+The install guides below have been kept here for those using older, legacy versions of IPC outside of Processor SDK.
 
 The various IPC Install Guides describe the mechanics of rebuilding IPC
 libraries. Please consult the Install Guide appropriate for your
@@ -91,5 +91,5 @@ steps:
 #. Click **OK** to apply these changes to the project.
 #. You may now rebuild your project using the re-built version of IPC.
 
-| 
+|
 

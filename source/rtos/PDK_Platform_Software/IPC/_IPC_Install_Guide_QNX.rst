@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_Install_Guide_QNX 
+.. http://processors.wiki.ti.com/index.php/IPC_Install_Guide_QNX
 
 Introduction
 ^^^^^^^^^^^^^
@@ -32,7 +32,7 @@ This will extract the IPC product in a directory with its product name
 and version information (e.g. **c:/ti/ipc_<version>**)
 
 .. note::
-  
+
   -  This document assumes the IPC install path to be the user's home
      directory on a Linux host machine (**/home/<user>**) or the user's
      main drive on a Windows host machine (**C:\\**). The variable
@@ -43,7 +43,7 @@ and version information (e.g. **c:/ti/ipc_<version>**)
      configuration management system. This can help in identifying any
      changes made to the original sources - often useful when updating to
      newer releases.
-  
+
 Build
 ^^^^^^^
 
@@ -254,7 +254,7 @@ can be launched as follows:
 <CORE> should correspond to the name of the remote core on which you
 want the remote executable to be loaded. As a rule of thumb, it is the
 capitalized version of the core name specified by the name of the
-directory from which the executable was copied in the `#Installing remote core applications 
+directory from which the executable was copied in the `#Installing remote core applications
 <index_Foundational_Components.html#installing-remote-core-applications>`__
 section. For example, if the executable is copied from
 "ti_platform_omap54xx\_**ipu**/test_omx_ipu_omap5.xem4", then you should
@@ -595,7 +595,7 @@ E.g.:
 where <level> can be set to a value between 0 and 7, with 7 being the
 most verbose. The default level is 2.
 
-| 
+|
 
 .. rubric:: Slave-side trace output
    :name: slave-side-trace-output

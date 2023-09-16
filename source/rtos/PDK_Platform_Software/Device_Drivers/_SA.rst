@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_SA 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_SA
 
 Overview
 --------
@@ -25,7 +25,7 @@ Security accelerator library (ti.drv.sa) supports below modes
 and 3gpp protocols are supported, where command labels are created based
 on the protocols.
 
-**Data Mode**: In this mode, user can implement a custom/proprietary 
+**Data Mode**: In this mode, user can implement a custom/proprietary
 protocol mode with the help of APIs provided by SA LLD
 
 User Interface
@@ -67,23 +67,23 @@ Examples
 |                       |   example for         |                       |                                  |                                  |
 |                       |   developers          |                       |                                  |                                  |
 +-----------------------+-----------------------+-----------------------+----------------------------------+----------------------------------+
-| SA_UnitTestApplication| | Unit Test           | | User observes the   | | K2HK, K2L, K2E, C6678, K2G     |    AM65XX                        | 
+| SA_UnitTestApplication| | Unit Test           | | User observes the   | | K2HK, K2L, K2E, C6678, K2G     |    AM65XX                        |
 |                       |   application to test |   output printed over |                                  |                                  |
 |                       |   all APIs            |   the CCS console     |                                  |                                  |
 +-----------------------+-----------------------+-----------------------+----------------------------------+----------------------------------+
 
 **NOTE**
-: SA Unit Test applications are makefile based for AM65XX. Note that the application built, can be loaded on to CCS. 
+: SA Unit Test applications are makefile based for AM65XX. Note that the application built, can be loaded on to CCS.
 
 Building SA Examples/Unit Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Setup the build environment `SetupBuildEnvironment <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html#setup-environment>`__
 - Follow the steps `SDK example and test CCS Project Creation <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html#pdk-example-and-test-project-creation>`__  for creating the CCS based example and test projects creation
-- Create make based test application executables following the link `Building the component and make based test application <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html#rebuilding-components>`__. Once the build environment is set, issue the following commands:  
+- Create make based test application executables following the link `Building the component and make based test application <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html#rebuilding-components>`__. Once the build environment is set, issue the following commands:
     -  cd <pdk>/packages/
-    -  To build: make sa 
-    -  To clean: make sa_clean 
+    -  To build: make sa
+    -  To clean: make sa_clean
 
 
 Additional References
@@ -102,7 +102,7 @@ Additional References
 +-----------------------------------+-----------------------------------------+
 
 .. note::
-   
+
    Although SASS supports 3GPP specific Ciphering and
    Authentication algorithms such as Kasumi F8/F9 and Snow3G F8, those
    algorithms are locked out in this standard SA LLD distribution. In order
@@ -112,9 +112,9 @@ Additional References
    then download the SASS 3GPP Enabler package from TI from the link
    http://software-dl.ti.com/libs/sa_3gpp_enabler/latest/index_FDS.html
 
- 
+
 Due to export control restrictions, the SA 3GPP Enabler is a seperate
 download from the rest of the PROCESSOR-SDK.
- 
-| 
+
+|
 

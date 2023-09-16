@@ -79,7 +79,7 @@ The specific peripheral driver to enable depends on the SoC being used.
 
     Device Drivers  --->
        [*] SPI support
-          [*] Texas Instruments DaVinci/DA8x/OMAP-L/AM1x SoC SPI controller 
+          [*] Texas Instruments DaVinci/DA8x/OMAP-L/AM1x SoC SPI controller
 
 .. rubric:: SPI Driver Usecases
    :name: spi-driver-usecases
@@ -118,8 +118,8 @@ chips that are located on TI's evms.
 .. code-block:: text
 
     Device Drivers  --->
-       <*> Memory Technology Device (MTD) support  ---> 
-           Self-contained MTD device drivers  ---> 
+       <*> Memory Technology Device (MTD) support  --->
+           Self-contained MTD device drivers  --->
              <*> Support most SPI Flash chips (AT26DF, M25P, W25X, ...)
 
 .. rubric:: Reading/Writing to Flash

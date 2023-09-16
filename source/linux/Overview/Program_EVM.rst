@@ -11,7 +11,7 @@ eeprom, nand and nor for EVMK2H, EVM2E, and EVMK2L. The mechanism only
 applies to the devices with DSP core, and won't work for devices without
 DSP, such as AM5K2E02 and AM5K2E04 devices.
 
-| 
+|
 
 Files Provided
 --------------
@@ -76,7 +76,7 @@ nand\_writer\_input.txt:
 
       file_name  = nand.bin
 
-| 
+|
 
 .. rubric:: MD5SUM utility used
    :name: md5sum-utility-used
@@ -91,7 +91,7 @@ Device Support
 -  EVMK2E in little endian mode
 -  EVMK2L in little endian mode
 
-| 
+|
 
 Directory Structure
 -------------------
@@ -141,7 +141,7 @@ Directory Structure
     │   │           README.txt
     │   └───logs (empty directory)
 
-| 
+|
 
 Programming the bin files
 -------------------------
@@ -150,7 +150,7 @@ This section assumes you have installed Processor SDK 02.00.01 and
 above (which supports EVMK2H/EVMK2L/EVMK2E) and Code Composer Studio.
 
 Verify CCS Connection
----------------------  
+---------------------
 
 First, start CCS on linux host machine and configure the target
 configuration for the EVM (e.g.,
@@ -190,7 +190,7 @@ pod, and has CCS and the latest TI emulators package installed. Example:
      xds2xx_conf.exe update xds2xxu 0 xds200_firmware_v1006.bin
      xds2xx_conf.exe boot xds2xxu 0
 
-| 
+|
 
 .. rubric:: Set the EVM for no-boot mode
    :name: set-the-evm-for-no-boot-mode
@@ -249,7 +249,7 @@ See instruction `here
 <../How_to_Guides/Hardware_Setup_with_CCS/EVMK2H_Hardware_Setup.html#k2h-set-no-boot-mode>`__
 for K2H no boot mode for reference
 
-| 
+|
 
 .. rubric:: For EVMK2E
    :name: for-evmk2e
@@ -267,7 +267,7 @@ See instruction `here
 <../How_to_Guides/Hardware_Setup_with_CCS/EVMK2E_Hardware_Setup.html#k2e-set-no-boot-mode>`__
 for K2E no boot mode for reference:
 
-| 
+|
 
 .. rubric:: For EVMK2L
    :name: for-evmk2l
@@ -283,7 +283,7 @@ Make sure the EVM dip switches are kept as below, and continue.
 See instructions here for K2L no boot mode for reference:
 `K2L\_NoBoot <http://processors.wiki.ti.com/index.php/TCIEVMK2L_Hardware_Setup#No_Boot.2FJTAG_DSP_Little_Endian_Boot_mode>`__
 
-| 
+|
 
 .. rubric:: Set the Environment Variables
    :name: set-the-environment-variables
@@ -306,7 +306,7 @@ for the CCS. Example:
 
      export PROGRAM_EVM_TARGET_CONFIG_FILE=configs/evmk2h/evmk2h-linuxhost.ccxml
 
-| 
+|
 
 .. rubric:: DSS Script Arguments
    :name: dss-script-arguments
@@ -321,7 +321,7 @@ Script Usage:
      cd bin/program_evm
      $DSS_SCRIPT_DIR/dss.sh program_evm.js evm(k2h|k2e|k2l)[-le] (nor|nand)
 
- 
+
 | **k2h:**\ TCI6638 device
 | **k2e:**\ C66AK2E device
 | **k2l:**\ TCI6630 device
@@ -329,7 +329,7 @@ Script Usage:
 | **-be (optional):** Big Endian
 | **(nor\|nand)**: choose from nor or nand
 
-| 
+|
 
 .. rubric:: Formatting the NAND Flash
    :name: formatting-the-nand-flash
@@ -347,10 +347,10 @@ Linux:
       cd bin/program_evm
       $DSS_SCRIPT_DIR/dss.sh program_evm.js evm(k2h|k2e|k2l)-le format-nand
 
-.. warning:: 
+.. warning::
    Please note that this would erase all the nand blocks.
 
-| 
+|
 
 .. rubric:: Executing the DSS script to restore factory default images
    :name: executing-the-dss-script-to-restore-factory-default-images
@@ -371,7 +371,7 @@ Linux:
 
 This will write all the little endian images to K2H EVM.
 
-| 
+|
 
 .. rubric:: Sample DSS Script Output
    :name: sample-dss-script-output
@@ -503,7 +503,7 @@ The sample output after running the DSS Script is as below.
    be ignored and are not fatal. The program EVM will proceed and complete
    successfully.
 
-| 
+|
 
 .. rubric:: Programming the bin files for devices without DSP core
    :name: programming-the-bin-files-for-devices-without-dsp-core
@@ -512,7 +512,7 @@ This section describes how to program the bin files to either NOR or
 NAND on the devices without DSP core (AM5K2E02 and AM5K2E04). The
 installation of Processor SDK and Code Composer Studio is required.
 
-| 
+|
 
 .. rubric:: Set up TFTP server on the Linux host machine
    :name: set-up-tftp-server-on-the-linux-host-machine
@@ -525,7 +525,7 @@ respectively.
 
 Have the Ethernet connection between the EVM and TFTP Server.
 
-| 
+|
 
 .. rubric:: Set the EVM for no-boot mode
    :name: set-the-evm-for-no-boot-mode-1
@@ -533,7 +533,7 @@ Have the Ethernet connection between the EVM and TFTP Server.
 Follow the instruction in previous section to set the dip switch of
 the EVM in no-boot mode
 
-| 
+|
 
 .. rubric:: Load and Run U-Boot on keystone EVMs using CCS
    :name: load-and-run-u-boot-on-keystone-evms-using-ccs
@@ -542,7 +542,7 @@ Follow the instructions in
 {Proc\_SDK\_Install\_Dir}/board-support/u-boot-{Version}/board/ti/ks2\_evm/README
 to run u-boot using CCS
 
-| 
+|
 
 .. rubric:: Configuration for TFTP download
    :name: configuration-for-tftp-download
@@ -556,7 +556,7 @@ download
      # setenv serverip <TFTP_SERVER_IP>
      # setenv tftp_root <TFTP_SERVER_DOWNLOAD_DIR>
 
-| 
+|
 
 .. rubric:: Restore Factory default images
    :name: restore-factory-default-images
@@ -575,13 +575,13 @@ To restore the combined kernel and fileystem UBI image in NAND:
       # run get_ubi_net
       # run burn_ubi
 
-| 
+|
 
 .. note::
    When programming UBI image to NAND, be sure the UBI
    image size is enough to fit in NAND memory.
 
-| 
+|
 
 .. rubric:: Reset U-Boot Environment Variables
    :name: reset-u-boot-environment-variables
@@ -593,7 +593,7 @@ Reset U-Boot environment variables if U-Boot version has been changed
       # env default -f -a
       # saveenv
 
-| 
+|
 
 .. rubric:: Verification
    :name: verification

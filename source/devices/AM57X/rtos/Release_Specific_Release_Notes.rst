@@ -61,7 +61,7 @@ Released March 2022
    :name: new-features
 
 - SDK
-   - Naming change for APIs, Macros and Data structures in some of the components. Please refer :ref:`Migration Guide <RTOS-SDK-Migration-Guide-label>` for more details. 
+   - Naming change for APIs, Macros and Data structures in some of the components. Please refer :ref:`Migration Guide <RTOS-SDK-Migration-Guide-label>` for more details.
 - Board Diagnostics
    - 4GB DDR support in memory diagnostic test
 - USB driver
@@ -406,4 +406,3 @@ migration from these releases.
 
 |
 
-.. raw:: html

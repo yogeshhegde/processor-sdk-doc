@@ -37,7 +37,7 @@ Flashing Instruction
 
     Once the build is complete, follow the steps below to flash the images to eMMC.
 
-    Procedure is for the pre-built images from SDK download page is used 
+    Procedure is for the pre-built images from SDK download page is used
 
         .. Image:: ../images/am62x_sk_evm_setup.jpg
 

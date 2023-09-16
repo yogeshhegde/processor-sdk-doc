@@ -4,7 +4,7 @@ Overview
 Detailed test procedure and additional HW setup needed for running the processor SDK board diagnostic tests are explained
 in the following sections. Logs shown for each test are for sample reference, actual logs may slightly vary from platform to platform.
 
-Two different modes of diagnostic tests are supported - Functional and Stress. Functional tests verify basic functionality of an 
+Two different modes of diagnostic tests are supported - Functional and Stress. Functional tests verify basic functionality of an
 interface to confirm the interface HW connectivity. Stress tests verify the functionality of an interface under stress conditions which will
 confirm the stability of the HW interface.
 
@@ -19,7 +19,7 @@ This section describes the test procedure and setup for diagnostic functional te
 
 Accelerometer Test
 ^^^^^^^^^^^^^^^^^^
-This test verifies the Accelerometer sensor on the HW platform under test. 
+This test verifies the Accelerometer sensor on the HW platform under test.
 
 Test Accessories
 """""""""""""""""
@@ -33,7 +33,7 @@ Test Execution
 """"""""""""""""
  - Select the menu option to run ‘accelerometer_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""
 Sample log for Accelerometer test is shown below
@@ -43,16 +43,16 @@ Sample log for Accelerometer test is shown below
     *********************************************
     *         Accelerometer Test                *
     *********************************************
-    
+
     Test:                Expected Result:    Actual Result:    Result:
-    ----------------     ----------------    --------------    -------    
+    ----------------     ----------------    --------------    -------
     0x32                 PASS
     Self-Test(X Axis)    120-550             247               PASS
     Self-Test(Y axis)    120-550             192               PASS
     Self-Test(Z Axis)    140-750             349               PASS
     Exiting
 
-| 
+|
 
 ADC Test
 ^^^^^^^^^^^^^
@@ -70,7 +70,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘adc_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for ADC test is shown below
@@ -86,7 +86,7 @@ Sample log for ADC test is shown below
 
     Test PASSED!
 
-| 
+|
 
 Boot EEPROM Test
 ^^^^^^^^^^^^^^^^^
@@ -105,7 +105,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘bootEeprom_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for boot EEPROM test is shown below
@@ -132,13 +132,13 @@ Sample log for boot EEPROM test is shown below
 
     Boot EEPROM test Passed
 
-| 
+|
 
-Boot Switch Test 
+Boot Switch Test
 ^^^^^^^^^^^^^^^^^^
-Test verifies boot mode switch by configuring boot strap pins as GPIOs and reading the 
+Test verifies boot mode switch by configuring boot strap pins as GPIOs and reading the
 pin state with boot switch set in different patterns. Test prompts to set the boot switch
-with a specific pattern and waits for user confirmation of the setting. 
+with a specific pattern and waits for user confirmation of the setting.
 ON-OFF-ON... sequence indicated by the test starts from switch position 1.
 
 Test Accessories
@@ -154,7 +154,7 @@ Test Execution
  - Select the menu option to run ‘bootSwitch_TEST’
  - Setup the boot switch as instructed by the serial console log
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for boot switch test is shown below
@@ -177,12 +177,12 @@ Sample log for boot switch test is shown below
     Press Enter after setting the switches
 
     Test Passed
-| 
+|
 
 
 Button Test
 ^^^^^^^^^^^^^^^^^
-Verifies push buttons on the board. Test prompts for pressing a specific button 
+Verifies push buttons on the board. Test prompts for pressing a specific button
 which should be detected by the test and displayed on the console.
 
 Test Accessories
@@ -201,7 +201,7 @@ Test Execution
 
 .. note::
    Button release detection is supported only on AM65xx platform.
- 
+
 Test Log
 """""""""""
 Sample log for push button test is shown below
@@ -221,11 +221,11 @@ Sample log for push button test is shown below
     Button SW  6            PASS
     Test PASSED!
 
-| 
+|
 
 Buzzer Test
 ^^^^^^^^^^^^
-This test verifies the Buzzer interface on the HW platform under test. 
+This test verifies the Buzzer interface on the HW platform under test.
 
 Test Accessories
 """""""""""""""""
@@ -241,7 +241,7 @@ Test Execution
  - Verify the Buzzer sound on the HW platform
  - Verify the test log on serial console
  - Press 'y' to confirm proper buzzer output or any other key to indicate failure
- 
+
 Test Log
 """""""""
 Sample log for buzzer test is shown below
@@ -257,7 +257,7 @@ Sample log for buzzer test is shown below
     Received: y
 
     Test PASSED!
-| 
+|
 
 Clock Generator Test
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -277,7 +277,7 @@ Test Execution
  - Select the menu option to run ‘clock_TEST’
  - Verify the test log on serial console
  - Verify the clock generator output clocks and confirm the result on the serial console
- 
+
 Test Log
 """""""""""
 Sample log for clock generator test is shown below
@@ -310,9 +310,9 @@ Sample log for clock generator test is shown below
 
     -----------------X-----------------
 
-| 
+|
 
-Current Monitor Test 
+Current Monitor Test
 ^^^^^^^^^^^^^^^^^^^^^^
 Test reads the voltage and current values from different current monitor devices available on the board.
 All the current monitor devices available on the board are verified during the test.
@@ -330,7 +330,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘currentMonitor_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for current monitor test is shown below
@@ -486,11 +486,11 @@ Sample log for current monitor test is shown below
     Current Register Value = 156
     Current = 9mA
 
-| 
+|
 
 DCAN Test
 ^^^^^^^^^^
-This test verifies the DCAN ports on the HW platform under test. 
+This test verifies the DCAN ports on the HW platform under test.
 Test supports verifying the DCAN interface in internal and external loopback modes.
 
 Test Accessories
@@ -551,7 +551,7 @@ Sample log for DCAN test is shown below
 
     DCAN Application Test exiting...
 
-| 
+|
 
 EEPROM Test
 ^^^^^^^^^^^^^^^^^^^^^
@@ -569,7 +569,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘eeprom_TEST’
  - Verify the board ID details displayed on the serial console
- 
+
 Test Log
 """""""""""
 Sample log for Board ID EEPROM test is shown below
@@ -585,7 +585,7 @@ Sample log for Board ID EEPROM test is shown below
     serialNum: 09164P540001
     Test PASSED!
 
-| 
+|
 
 .. note::
    Board ID content shown in the above log changes from platform to platform.
@@ -623,7 +623,7 @@ Test Execution
  - Follow the instructions on serial console for disconnecting and connecting the cable during the test.
  - Verify the test log on serial console
 
- 
+
 Test Log
 """""""""
 
@@ -751,7 +751,7 @@ Sample log for Ethernet loopback test is shown below
     Ethernet Loopback test passed
     All tests completed
 
-| 
+|
 
 eMMC Test
 ^^^^^^^^^^
@@ -770,7 +770,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘emmc_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for eMMC test is shown below
@@ -782,7 +782,7 @@ Sample log for eMMC test is shown below
     *********************************************
 
     PASS: Read/Write Success for this pattern
-| 
+|
 
 External RTC Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -803,7 +803,7 @@ Test Execution
  - Select the menu option to run ‘extRtc_TEST’
  - Verify the test log on serial console
  - Confirm the test result by pressing 'y' if RTC time/date changes properly or press any key for failure
- 
+
 Test Log
 """""""""""
 Sample log for external RTC test is shown below
@@ -851,7 +851,7 @@ Sample log for external RTC test is shown below
 
     RTC test passed...
 
-| 
+|
 
 GMAC Test
 ^^^^^^^^^^
@@ -903,11 +903,11 @@ Sample log for GMAC test is shown below
     100Mbps Half-Duplex        2    Up    100Mbps Half duplex     PASS
     100Mbps Full-Duplex        2    Up    100Mbps Full duplex     PASS
     Exiting
-| 
+|
 
 Haptics Test
 ^^^^^^^^^^^^
-This verifies haptics motor using vibrations on the HW platform under test. 
+This verifies haptics motor using vibrations on the HW platform under test.
 
 Test Accessories
 """""""""""""""""
@@ -938,11 +938,11 @@ Sample log for Haptics test is shown below
     Received: y
 
     Test PASSED!
-| 
+|
 
 HDMI Test
 ^^^^^^^^^^
-This test verifies HDMI display port on the HW platform under test. 
+This test verifies HDMI display port on the HW platform under test.
 Color bar and different colors are displayed on HDMI monitor during the test.
 
 Test Accessories
@@ -966,13 +966,13 @@ Test Execution
  - Select the menu option to run ‘hdmi_TEST’
  - Verify the color bar and different colors displayed on the HDMI Monitor.
  - Verify the test log on serial console and confirm test result.
- 
+
 Test Log
 """""""""
 Sample log for HDMI test is shown below
 
 ::
-    
+
     ***********************
            HDMI Test
     ***********************
@@ -981,29 +981,29 @@ Sample log for HDMI test is shown below
     HDMI Device Detect Test Passed
 
     Displaying Colorbar... WAIT  Press 'y' if Colorbar is displayed, any other key for failure: y
-    Display Colorbar   - PASS                                                                                                                                                                            
+    Display Colorbar   - PASS
     Displaying WHITE... WAIT  Press 'y' if WHITE is displayed, any other key for failure: y
-    Display WHITE - PASS                                                                                                                                                                                 
+    Display WHITE - PASS
     Displaying BLUE... WAIT  Press 'y' if BLUE is displayed, any other key for failure: y
-    Display BLUE - PASS                                                                                              
+    Display BLUE - PASS
     Displaying GREEN... WAIT  Press 'y' if GREEN is displayed, any other key for failure: y
-    Display GREEN - PASS                                                                                             
+    Display GREEN - PASS
     Displaying RED... WAIT  Press 'y' if RED is displayed, any other key for failure: y
-    Display RED - PASS                                                                                               
+    Display RED - PASS
     Displaying PURPLE... WAIT  Press 'y' if PURPLE is displayed, any other key for failure: y
-    Display PURPLE - PASS                                                                                            
+    Display PURPLE - PASS
     Displaying PINK... WAIT  Press 'y' if PINK is displayed, any other key for failure: y
-    Display PINK - PASS                                                                                              
+    Display PINK - PASS
     Displaying BLACK... WAIT  Press 'y' if BLACK is displayed, any other key for failure: y
-    Display BLACK - PASS                                                                                             
+    Display BLACK - PASS
     Displaying YELLOW... WAIT  Press 'y' if YELLOW is displayed, any other key for failure: y
-    Display YELLOW - PASS                                                                                                                                                                                
+    Display YELLOW - PASS
 
     HDMI Tests Completed!!
 
     -----------------X-----------------
- 
-| 
+
+|
 
 ICSS EMAC Test
 ^^^^^^^^^^^^^^
@@ -1035,7 +1035,7 @@ Test Execution
 """"""""""""""""
  - Select the menu option to run ‘icssEmac_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""
 Sample log for ICSS EMAC test is shown below
@@ -1107,17 +1107,17 @@ Sample log for ICSS EMAC test is shown below
 
     PRU1_ICSS0 Loopback Test Completed!
 
-|    
+|
 
 ICSSG EMAC Test
 ^^^^^^^^^^^^^^^^^
-This port to port Ethernet test verifies the PRU-ICSS gigabit Ethernet interface on the board under test. 
-During the test, Ethernet interface is configured for 1000mbps speed with one port of an ICSS instance 
-is connected to another port. 5 packets are sent from one port and received by another port. 
+This port to port Ethernet test verifies the PRU-ICSS gigabit Ethernet interface on the board under test.
+During the test, Ethernet interface is configured for 1000mbps speed with one port of an ICSS instance
+is connected to another port. 5 packets are sent from one port and received by another port.
 Both the ports are verified for transmit and receive. All the ICSSG EMAC ports available on the board
-verified during the test. 
+verified during the test.
 Note that ICSSG EMAC Test can also run on a am65xx_idk with Interposer daughter card. For details
-of Interposer daughter card, please refer to  `Device Drivers <index_device_drv.html#emac>`_ 
+of Interposer daughter card, please refer to  `Device Drivers <index_device_drv.html#emac>`_
 
 Test Accessories
 """"""""""""""""""
@@ -1156,7 +1156,7 @@ Test Execution
  - Select the menu option to run ‘icssgEmac_TEST’
  - Verify the test log on serial console
 
- 
+
 Test Log
 """"""""""
 
@@ -1493,7 +1493,7 @@ Sample log for ICSGG Ethernet test is shown below
     ICSSG Ethernet Port to Port Test Passed!
     All Tests Completed
 
-| 
+|
 
 LCD Test
 ^^^^^^^^^^
@@ -1515,17 +1515,17 @@ Test Execution
  - Verify that LCD backlight is getting changed during backlight control test
  - Provide touch inputs during the touch interface test and confirm that positions are detected properly
  - Verify the test log on serial console
- 
+
 .. note::
-   Touch interface test is not supported on all the platforms. 
+   Touch interface test is not supported on all the platforms.
    Refer to LCD Touchscreen Test for touch interface test on other platforms.
-   
+
 Test Log
 """""""""
 Sample log for LCD test is shown below
 
 ::
-    
+
     *********************************************
     *              Display Test                 *
     *********************************************
@@ -1589,11 +1589,11 @@ Sample log for LCD test is shown below
     (x - 890, y - 442)
     LCD touch detect test passed!
 
-|  
+|
 
 LCD Touchscreen Test
 ^^^^^^^^^^^^^^^^^^^^^
-This test verifies the LCD Touchscreen on the HW platform under test. 
+This test verifies the LCD Touchscreen on the HW platform under test.
 
 Test Accessories
 """""""""""""""""
@@ -1608,7 +1608,7 @@ Test Execution
  - Select the menu option to run ‘lcdTouchscreen_TEST’
  - Provide multiple touch points to verify multi-touch input detection
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""
 Sample log for LCD Touchscreen test is shown below
@@ -1631,7 +1631,7 @@ Sample log for LCD Touchscreen test is shown below
     9        426, 637       4095,4095       4095,4095       4095,4095       4095,4095       4095,4095       4095,4095       4095,4095       4095,4095
     9        426, 637       4095,4095       4095,4095       4095,4095       4095,4095       4095,4095       4095,4095       4095,4095       4095,4095
 
-| 
+|
 
 ICSS LED Test
 ^^^^^^^^^^^^^^
@@ -1640,7 +1640,7 @@ All the LEDs are turned ON and OFF for 3 times during the test.
 
 Test Accessories
 """""""""""""""""
-No additional accessories are required for running this test. 
+No additional accessories are required for running this test.
 
 
 Test Setup
@@ -1653,7 +1653,7 @@ Test Execution
  - Confirm that all the PRU-ICSS LEDs on the board are toggling during the test
  - Verify the test log on serial console
  - Confirm the test result by pressing 'y' in case of success and any other key for failure
- 
+
 Test Log
 """""""""""
 Sample log for ICSS LED test is shown below
@@ -1672,7 +1672,7 @@ Sample log for ICSS LED test is shown below
 
     Test PASSED!
 
-| 
+|
 
 Industrial LED Test
 ^^^^^^^^^^^^^^^^^^^^
@@ -1693,7 +1693,7 @@ Test Execution
  - Confirm that all the industrial LEDs on the board are toggling during the test
  - Verify the test log on serial console
  - Confirm the test result by pressing 'y' in case of success and any other key for failure
- 
+
 Test Log
 """""""""""
 Sample log for industrial LED test is shown below
@@ -1721,7 +1721,7 @@ Sample log for industrial LED test is shown below
 
     Industrial LED test Passed
 
-| 
+|
 
 LED Test
 ^^^^^^^^^^^
@@ -1742,7 +1742,7 @@ Test Execution
  - Confirm that all the general purpose user LEDs on the board are toggling during the test
  - Verify the test log on serial console
  - Confirm the test result by pressing 'y' in case of success or any other key for failure
- 
+
 Test Log
 """""""""""
 Sample log for LED test is shown below
@@ -1761,11 +1761,11 @@ Sample log for LED test is shown below
 
     Test PASSED!
 
-| 
+|
 
 Light Sensor Test
 ^^^^^^^^^^^^^^^^^^
-This test verifies the Ambient Light Sensor on the HW platform under test. 
+This test verifies the Ambient Light Sensor on the HW platform under test.
 
 Test Accessories
 """""""""""""""""
@@ -1779,7 +1779,7 @@ Test Execution
 """"""""""""""""
  - Select the menu option to run ‘ambient_light_sensor_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""
 Sample log for Light Sensor test is shown below
@@ -1790,8 +1790,8 @@ Sample log for Light Sensor test is shown below
     *         Ambient Light Test                *
     *********************************************
 
-    Test:                Expected Result:    Actual Result:    Result:    
-    ----------------     ----------------    --------------    -------    
+    Test:                Expected Result:    Actual Result:    Result:
+    ----------------     ----------------    --------------    -------
     PowerUp/Read         0x03                PASS
     Read ADC 0           >=0x80              0x95              PASS
     Read ADC 1           >=0x80              0xAC              PASS
@@ -1799,11 +1799,11 @@ Sample log for Light Sensor test is shown below
     Read ADC 0           0x00                0x00              PASS
     Read ADC 1           0x00                0x00              PASS
 
-| 
+|
 
 MCAN Test
 ^^^^^^^^^^
-Verifies MCAN ports on the HW platform with two MCAN ports connected with each other. 
+Verifies MCAN ports on the HW platform with two MCAN ports connected with each other.
 Data is sent from one port and received on another port. Both the ports are verified for Tx and Rx.
 
 Test Accessories
@@ -1827,7 +1827,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘mcan_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for MCAN test is shown below
@@ -2713,7 +2713,7 @@ Sample log for MCAN test is shown below
 
      MCAN diagnostic test completed.
 
-| 
+|
 
 McASP Audio Test
 ^^^^^^^^^^^^^^^^^
@@ -2765,7 +2765,7 @@ Sample log for McASP audio test is shown below
 
     Audio Loopback test completed
 
-| 
+|
 
 McASP AudioDC Test
 ^^^^^^^^^^^^^^^^^^
@@ -2788,7 +2788,7 @@ Test Execution
  - Listen to the Audio played back through the Headphones
  - Verify that the audio plays without any noise on left and right channels.
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""
 Sample log for McASP AudioDC test is shown below
@@ -2805,7 +2805,7 @@ Sample log for McASP AudioDC test is shown below
     Audio DC Loopback Test Completed!
     Audio DC Loopback Test Passed!!
 
-| 
+|
 
 McSPI Test
 ^^^^^^^^^^^^
@@ -2848,7 +2848,7 @@ Test Execution
  - Verify the test log on serial console
  - Confirm the test result by pressing 'y' in case the input provided to industrial I/O header is read properly,
    else press any other key to indicate failure.
- 
+
 Test Log
 """""""""""
 Sample log for McSPI test is shown below
@@ -2867,11 +2867,11 @@ Sample log for McSPI test is shown below
     User input:  y
 
     Test PASSED!
-| 
+|
 
 Memory (DDR) Test
 ^^^^^^^^^^^^^^^^^^
-This test verifies the DDR memory of the HW platform under test. 
+This test verifies the DDR memory of the HW platform under test.
 Address bus test is performed with a test pattern and its compliment during the test.
 
 Test Accessories
@@ -2886,7 +2886,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘mem_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 
@@ -2942,7 +2942,7 @@ Sample DDR test log is shown below
             Read up to 0xf0000000 okay
     Board memory test passed!
 
-| 
+|
 
 MMCSD Test
 ^^^^^^^^^^^^^
@@ -2961,7 +2961,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘mmcsd_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for SD card test is shown below
@@ -2974,11 +2974,11 @@ Sample log for SD card test is shown below
 
     PASS: Read/Write Success for this pattern
 
-| 
+|
 
 Nand Test
 ^^^^^^^^^
-This test verifies NAND flash memory on the HW platform under test. 
+This test verifies NAND flash memory on the HW platform under test.
 Reading the NAND flash information and NAND page write/read with different test patterns
 is done during the test.
 
@@ -2994,13 +2994,13 @@ Test Execution
 """"""""""""""""
  - Select the menu option to run ‘nand_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""
 Sample log for NAND test is shown below
 
 ::
-    
+
     ***********************
            NAND Test
     ***********************
@@ -3036,7 +3036,7 @@ Sample log for NAND test is shown below
 
     -----------------X-----------------
 
-| 
+|
 
 NOR Flash Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3056,7 +3056,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘norflash_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for NOR flash test is shown below
@@ -3080,11 +3080,11 @@ Sample log for NOR flash test is shown below
 
     SPI NOR Flash Test Passed
 
-| 
+|
 
 OLED Display Test
 ^^^^^^^^^^^^^^^^^
-This test verifies the OLED display on the HW platform under test. 
+This test verifies the OLED display on the HW platform under test.
 
 Test Accessories
 """""""""""""""""
@@ -3122,7 +3122,7 @@ Sample log for OLED Display test is shown below
 
     -----------------X-----------------
 
-| 
+|
 
 OSPI Flash Test
 ^^^^^^^^^^^^^^^^^^^
@@ -3142,7 +3142,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘ospi_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for OSPI flash test is shown below
@@ -3162,12 +3162,12 @@ Sample log for OSPI flash test is shown below
     OSPI NOR Flash last page verification Successful
 
     OSPI NOR Flash verification Successful
-| 
+|
 
 PCIe (2-lane) Test
 ^^^^^^^^^^^^^^^^^^^
-This test verifies the two-lane PCIe ports on the AM65x IDK kit. 
-Two AM65x IDK kits are required to run this test. 
+This test verifies the two-lane PCIe ports on the AM65x IDK kit.
+Two AM65x IDK kits are required to run this test.
 Both the boards should be equipped with SD cards having the same diagnostic test binaries.
 
 .. note::
@@ -3185,10 +3185,10 @@ Test Setup
 Test Execution
 """""""""""""""
  - Select the menu option to run ‘pcie_TEST’ on both the boards
- - Press ‘R’ on first board serial console to enable rootcomplex operation 
+ - Press ‘R’ on first board serial console to enable rootcomplex operation
  - Press ‘E’ on second board serial console to enable endpoint operation
  - Verify the test log on serial console.
- 
+
 Test Log
 """""""""""
 Sample log for 2-lane PCIe test is shown below
@@ -3210,7 +3210,7 @@ Sample log for board running in RC mode
     RC writes a pattern to EP
     RC received data, loopback test passed
 
-| 
+|
 
 Sample log for board running in EP mode
 
@@ -3228,12 +3228,12 @@ Sample log for board running in EP mode
     Link speed:Gen3
     EP received data and will write back
 
-| 
+|
 
 PCIe (1-lane) Test
 ^^^^^^^^^^^^^^^^^^^
 This test verifies the one-lane PCIe ports on the AM65x EVM kit.
-Two AM65x EVM kits are required to run this test. 
+Two AM65x EVM kits are required to run this test.
 Both the boards should be equipped with SD cards having the same diagnostic test binaries.
 
 Test Accessories
@@ -3248,10 +3248,10 @@ Test Setup
 Test Execution
 """""""""""""""
  - Select the menu option to run ‘pcie_TEST’ on both the boards
- - Press ‘R’ on first board serial console to enable rootcomplex operation 
+ - Press ‘R’ on first board serial console to enable rootcomplex operation
  - Press ‘E’ on second board serial console to enable endpoint operation
  - Verify the test log on serial console.
- 
+
 Test Log
 """""""""""
 Sample log for 1-lane PCIe test is shown below
@@ -3273,7 +3273,7 @@ Sample log for board running in RC mode
     RC writes a pattern to EP
     RC received data, loopback test passed
 
-| 
+|
 
 Sample log for board running in EP mode
 
@@ -3291,11 +3291,11 @@ Sample log for board running in EP mode
     Link speed:Gen3
     EP received data and will write back
 
-| 
+|
 
 PMIC Test
 ^^^^^^^^^
-This test verifies PMIC interface on the HW platform under test. 
+This test verifies PMIC interface on the HW platform under test.
 
 Test Accessories
 """""""""""""""""
@@ -3309,7 +3309,7 @@ Test Execution
 """"""""""""""""
  - Select the menu option to run ‘pmic_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""
 Sample log for PMIC test is shown below
@@ -3328,11 +3328,11 @@ Sample log for PMIC test is shown below
     Setting PMIC voltage to original value
     Final voltage value = 0xff
     Test PASSED!
-| 
+|
 
 PWM Test
 ^^^^^^^^^
-This test verifies the PWM module to generate a pulse of 1KHz with different 
+This test verifies the PWM module to generate a pulse of 1KHz with different
 duty cycles on the HW platform under test.
 
 Test Accessories
@@ -3362,7 +3362,7 @@ Refer below table for the PWM output signals generated by the test on different 
 +---------------+-----------------+
 | evmAM335x     | J5 pin 13       |
 +---------------+-----------------+
- 
+
 Test Log
 """""""""
 Sample log for PWM test is shown below
@@ -3380,11 +3380,11 @@ Sample log for PWM test is shown below
     Generating 1KHz PWM pulse with 75 Duty Cycle
 
     PWM Test Completed!
-| 
+|
 
 QSPI Test
 ^^^^^^^^^
-This test verifies the QSPI flash on the HW platform under test. 
+This test verifies the QSPI flash on the HW platform under test.
 
 Test Accessories
 """""""""""""""""
@@ -3398,7 +3398,7 @@ Test Execution
 """"""""""""""""
  - Select the menu option to run ‘qspi_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""
 Sample log for QSPI test is shown below
@@ -3411,7 +3411,7 @@ Sample log for QSPI test is shown below
 
     Testing QSPI read/write...
     Test PASSED!
-| 
+|
 
 Rotary Switch Test
 ^^^^^^^^^^^^^^^^^^^^^
@@ -3430,7 +3430,7 @@ Test Execution
  - Select the menu option to run ‘rotarySwitch_TEST’
  - Verify the test log on serial console
  - Confirm the test result by pressing 'y' in case rotary switch input is read properly, else any other key to indicate failure.
- 
+
 Test Log
 """""""""""
 Sample log for rotary switch test is shown below
@@ -3467,7 +3467,7 @@ Sample log for rotary switch test is shown below
 RS485 UART Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This test verifies RS485 interface on platform under test.
-RS485 interface is connected to PRU-ICSS port of the SoC. 
+RS485 interface is connected to PRU-ICSS port of the SoC.
 Test outputs a test string through RS485 UART interface and receives user input as confirmation.
 RS485 to RS232 USB cable is used on AM65x IDK platform to run the test.
 
@@ -3480,7 +3480,7 @@ Test Setup
 am65x_idk:
  - Connect RS485 to RS232 USB cable between RS485 UART port of the board and host PC.
  - Setup serial console application on host PC with below configurations
- :: 
+ ::
 
     Baud rate    -    115200
     Data length  -    8 bit
@@ -3494,7 +3494,7 @@ am65x_idk:
  - Select the menu option to run ‘rs485_TEST’
  - Verify the test log on serial console
  - Confirm the test result on RS485 UART console
- 
+
 Test Log
 """""""""""
 Sample log for RS485 UART test (am65xx_idk) is shown below
@@ -3511,7 +3511,7 @@ Main test console log
     PRU-ICSS UART Test Passed!!
 
     PRU-ICSS UART Test Completed!
-|  
+|
 
 RS485 UART console log
 ::
@@ -3522,11 +3522,11 @@ RS485 UART console log
 
     Testing UART print to console at 115.2k baud rate
     Press 'y' to verify pass: Test Passed
-|  
+|
 
 RTC Test
 ^^^^^^^^^
-This test verifies the on-chip RTC Timer on the HW platform under test. 
+This test verifies the on-chip RTC Timer on the HW platform under test.
 
 Test Accessories
 """""""""""""""""
@@ -3540,7 +3540,7 @@ Test Execution
 """"""""""""""""
  - Select the menu option to run ‘rtc_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""
 Sample log for RTC test is shown below
@@ -3554,11 +3554,11 @@ Sample log for RTC test is shown below
     Current Date and Time:
     10:23:52  21:6:16 Sunday
     Test Passed!
-| 
+|
 
 Temperature Sensor Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This test verifies reading the ambient temperature from temperature sensor interface. 
+This test verifies reading the ambient temperature from temperature sensor interface.
 Test verifies all the temperature sensor devices on the board.
 
 Test Accessories
@@ -3573,7 +3573,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘temperature_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for temperature sensor test is shown below
@@ -3595,7 +3595,7 @@ Sample log for temperature sensor test is shown below
      target address - 0x49 is 32 degree centigrade
     Temperature sensor test Passed!
 
-| 
+|
 
 Timer Test
 ^^^^^^^^^^^
@@ -3616,7 +3616,7 @@ Test Execution
  - Verify the test log on serial console
  - Verify the time that tests waits counting the timer interrupts
  - Press 'y' if the test waits for 2secs or press any key in case wait time is more or less than 2secs
- 
+
 Test Log
 """""""""
 Sample log for Timer test is shown below
@@ -3634,12 +3634,12 @@ Sample log for Timer test is shown below
     Press 'y' if timer ran for correct duration, else any other key:y
 
     Test PASSED!
-| 
+|
 
 UART Test
 ^^^^^^^^^^^^
-This test verifies the UART serial port by sending a test string to the UART serial console 
-and reading user input to confirm the test result. 
+This test verifies the UART serial port by sending a test string to the UART serial console
+and reading user input to confirm the test result.
 
 Test Accessories
 """""""""""""""""
@@ -3651,7 +3651,7 @@ Test Setup
 """""""""""
  - Connect the UART serial cable between the board and host PC
  - Setup serial console application on host PC with below configurations
- :: 
+ ::
 
     Baud rate    -    115200
     Data length  -    8 bit
@@ -3659,15 +3659,15 @@ Test Setup
     Stop bits    -    1
     Flow control -    None
 
- - Four UART ports are verified on am65xx_evm platform and three UART ports are verified on am65xx_idk platform. 
+ - Four UART ports are verified on am65xx_evm platform and three UART ports are verified on am65xx_idk platform.
    Need to make above setup on all serial consoles connected to multiple ports on these platforms.
 
 Test Execution
 """""""""""""""
  - Select the menu option to run ‘uart_TEST’
- - Verify the test log on serial console. Verify the test log on all the serial consoles in case 
+ - Verify the test log on serial console. Verify the test log on all the serial consoles in case
    the HW platform supports more than one serial port
- 
+
 Test Log
 """""""""""
 Sample UART test log is shown below
@@ -3684,11 +3684,11 @@ Sample UART test log is shown below
 
     Test PASSED!
 
-| 
+|
 
 UART2USB Test
 ^^^^^^^^^^^^^^
-This test verifies the UART to USB serial port interface on K2G EVM. 
+This test verifies the UART to USB serial port interface on K2G EVM.
 
 Test Accessories
 """""""""""""""""
@@ -3698,7 +3698,7 @@ Test Setup
 """""""""""
  - Connect the UART serial cable between the board (J23) and host PC
  - Setup serial console application on host PC with below configurations
- :: 
+ ::
 
     Baud rate    -    115200
     Data length  -    8 bit
@@ -3710,7 +3710,7 @@ Test Execution
 """"""""""""""""
  - Select the menu option to run ‘uart2usb_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""
 Sample log for UART2USB test is shown below
@@ -3726,7 +3726,7 @@ Log on the main test console
 
     Received: y
     Test PASSED!
-| 
+|
 
 Log on the UART to USB test console
 ::
@@ -3734,7 +3734,7 @@ Log on the UART to USB test console
     Testing UART print to console at 115.2k baud rate
     Press 'y' to verify pass: y
 
-| 
+|
 
 USB Device Test
 ^^^^^^^^^^^^^^^^^^
@@ -3767,7 +3767,7 @@ Test Execution
  - Verify the test log on serial console
  - Check the USB device enumeration on the host PC
  - Verify the data write/read access to new drive displayed on the host PC
- 
+
 Test Log
 """""""""""
 Sample log for USB device test is shown below
@@ -3786,14 +3786,14 @@ Sample log for USB device test is shown below
 
     Done configuring USB driver and its interrupts. Ready to use
 
-| 
+|
 
 USB Host Test
 ^^^^^^^^^^^^^^^^^^
 This test verifies USB host mode operation of the HW platform under test.
 USB interface functions as USB mass storage host during the test.
-USB device connected to the board will be enumerated, a file will be created, 
-written with test data and read back to verify the data. 
+USB device connected to the board will be enumerated, a file will be created,
+written with test data and read back to verify the data.
 USB interface operates at high-speed (USB 2.0) during the test.
 
 Test Accessories
@@ -3818,10 +3818,10 @@ Check below table for the details of USB host port used by the test on different
 Test Execution
 """""""""""""""
  - Select the menu option to run ‘usbHost_TEST’
- - Test supports USB host port on CP board and SerDes board on AM65x IDK platform. 
+ - Test supports USB host port on CP board and SerDes board on AM65x IDK platform.
    Choose the board under test in the serial console while running the test on am65xx_idk
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for USB host test on am65xx_evm is shown below
@@ -3843,7 +3843,7 @@ Sample log for USB host test on am65xx_evm is shown below
 
     USB Host test Passed
 
-| 
+|
 
 Sample log for USB host test on am65xx_idk CP board is shown below
 
@@ -3869,7 +3869,7 @@ Sample log for USB host test on am65xx_idk CP board is shown below
 
     USB Host test Passed
 
-| 
+|
 
 Sample log for USB host test on am65xx_idk SerDes board is shown below
 
@@ -3895,19 +3895,24 @@ Sample log for USB host test on am65xx_idk SerDes board is shown below
 
     USB Host test Passed
 
-| 
+|
 
 Stress Tests
 -----------------
 This section describes the test procedure and setup for diagnostic stress tests.
 Stress test execution is done based on the type of interface as listed below
- - Memory interfaces: Whole memory is accessed during stress test
- - Communication interfaces (Ethernet, UART etc): Bulk data is sent during the stress test
- - Control interfaces (On-board I2C, SPI, GPIO control interfaces): Functional test is repeated for 100 iterations 
+
+- Memory interfaces: Whole memory is accessed during stress test
+
+- Communication interfaces (Ethernet, UART etc): Bulk data is sent during the
+  stress test
+
+- Control interfaces (On-board I2C, SPI, GPIO control interfaces): Functional
+  test is repeated for 100 iterations
 
 User confirmation for pass/fail status is disabled during the stress test.
 
-Enter the character 'b' to break the stress test before it completes 100 iterations for control interfaces. 
+Enter the character 'b' to break the stress test before it completes 100 iterations for control interfaces.
 There is no option to break the stress test before completion in case of memory and communication interfaces.
 
 Only partial logs are provided for stress tests for better readability.
@@ -3929,7 +3934,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘bootEepromStress_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for boot EEPROM stress test is shown below
@@ -4018,9 +4023,9 @@ Sample log for boot EEPROM stress test is shown below
 
     Clearing the Boot EEPROM pages successful...
 
-| 
+|
 
-Current Monitor Stress Test 
+Current Monitor Stress Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Test reads the voltage and current values from different current monitor devices available on the board.
 All the current monitor devices available on the board are verified during the test.
@@ -4039,7 +4044,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘currentMonitorStress_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for current monitor stress test is shown below
@@ -4283,7 +4288,7 @@ Sample log for current monitor stress test is shown below
     Fail Count - 0
     Overall Status - PASS
 
-| 
+|
 
 EMAC Stress Test
 ^^^^^^^^^^^^^^^^^
@@ -4304,7 +4309,7 @@ Test Execution
  - Select the menu option to run ‘emacStress_TEST’
  - Verify the test log on serial console
 
- 
+
 Test Log
 """""""""
 
@@ -4568,7 +4573,7 @@ Sample log for Ethernet stress test is shown below
     Ethernet Loopback test passed
     All tests completed
 
-| 
+|
 
 eMMC Stress Test
 ^^^^^^^^^^^^^^^^
@@ -4587,7 +4592,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘emmcStress_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for eMMC stress test is shown below
@@ -4649,7 +4654,7 @@ Sample log for eMMC stress test is shown below
     PASS: Read/Write Success for this block-0x1d5b000
 
     PASS: Read/Write Success for this pattern
-| 
+|
 
 External RTC Stress Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4669,7 +4674,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘extRtcStress_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for external RTC stress test is shown below
@@ -4685,13 +4690,13 @@ Sample log for external RTC stress test is shown below
 
     Running RTC Test...
 
-    Setting Time... 
+    Setting Time...
 
-    Setting Date... 
+    Setting Date...
 
-    Reading Time... 
+    Reading Time...
 
-    Reading Date... 
+    Reading Date...
 
 
     Displaying time: 11:59:53 PM
@@ -4724,13 +4729,13 @@ Sample log for external RTC stress test is shown below
 
     Running RTC Test...
 
-    Setting Time... 
+    Setting Time...
 
-    Setting Date... 
+    Setting Date...
 
-    Reading Time... 
+    Reading Time...
 
-    Reading Date... 
+    Reading Date...
 
 
     Displaying time: 11:59:53 PM
@@ -4767,13 +4772,13 @@ Sample log for external RTC stress test is shown below
 
     Running RTC Test...
 
-    Setting Time... 
+    Setting Time...
 
-    Setting Date... 
+    Setting Date...
 
-    Reading Time... 
+    Reading Time...
 
-    Reading Date... 
+    Reading Date...
 
 
     Displaying time: 11:59:53 PM
@@ -4812,15 +4817,15 @@ Sample log for external RTC stress test is shown below
 
     RTC Test Passed
 
-| 
+|
 
 ICSSG EMAC Stress Test
 ^^^^^^^^^^^^^^^^^^^^^^^
-This port to port Ethernet test verifies the PRU-ICSS gigabit Ethernet interface on the board under test. 
-During the test, Ethernet interface is configured for 1000mbps speed with one port of an ICSS instance 
-is connected to another port. 10240 packets are sent from one port and received by another port. 
+This port to port Ethernet test verifies the PRU-ICSS gigabit Ethernet interface on the board under test.
+During the test, Ethernet interface is configured for 1000mbps speed with one port of an ICSS instance
+is connected to another port. 10240 packets are sent from one port and received by another port.
 Both the ports are verified for transmit and receive. All the ICSSG EMAC ports available on the board
-verified during the test. 
+verified during the test.
 
 Test Accessories
 """"""""""""""""""
@@ -4835,7 +4840,7 @@ Test Execution
  - Select the menu option to run ‘icssgEmacStress_TEST’
  - Verify the test log on serial console
 
- 
+
 Test Log
 """"""""""
 
@@ -5339,17 +5344,17 @@ Sample log for ICSGG Ethernet stress test is shown below
     ICSSG Ethernet Port to Port Test Passed!
     All Tests Completed
 
-| 
+|
 
 ICSS LED Stress Test
 ^^^^^^^^^^^^^^^^^^^^^
 This test verifies LEDs connected to PRU-ICSS ports.
-All the LEDs are turned ON and OFF for 3 times during the test. 
+All the LEDs are turned ON and OFF for 3 times during the test.
 Test is repeated for 100 iterations.
 
 Test Accessories
 """""""""""""""""
-No additional accessories are required for running this test. 
+No additional accessories are required for running this test.
 
 
 Test Setup
@@ -5360,7 +5365,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘icssgLedStress_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for ICSS LED stress test is shown below
@@ -5495,7 +5500,7 @@ Sample log for ICSS LED stress test is shown below
     Fail Count - 0
     Overall Status - PASS
 
-| 
+|
 
 Industrial LED Stress Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -5516,7 +5521,7 @@ Test Execution
  - Select the menu option to run ‘ledIndustrialStress_TEST’
  - Confirm that all the industrial LEDs on the board are toggling during the test
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for industrial LED stress test is shown below
@@ -5675,7 +5680,7 @@ Sample log for industrial LED stress test is shown below
     Fail Count - 0
     Overall Status - PASS
 
-| 
+|
 
 LED Stress Test
 ^^^^^^^^^^^^^^^^
@@ -5696,7 +5701,7 @@ Test Execution
  - Select the menu option to run ‘ledStress_TEST’
  - Confirm that all the general purpose user LEDs on the board are toggling during the test
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for LED stress test is shown below
@@ -5815,11 +5820,11 @@ Sample log for LED stress test is shown below
     Fail Count - 0
     Overall Status - PASS
 
-| 
+|
 
 Memory (DDR) Stress Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-This test verifies the DDR memory of the HW platform under test. 
+This test verifies the DDR memory of the HW platform under test.
 Address bus test is performed with a test pattern and its compliment during the test.
 Walking 1s and walking 0s test is executed additionally as part of stress test.
 
@@ -5835,7 +5840,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘memStress_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 
@@ -5910,7 +5915,7 @@ Sample DDR stress test log is shown below
     walking0s test passed!
     Memory test passed!
 
-| 
+|
 
 MMCSD Stress Test
 ^^^^^^^^^^^^^^^^^^
@@ -5929,7 +5934,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘mmcsdStress_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for SD card stress test is shown below
@@ -5992,7 +5997,7 @@ Sample log for SD card stress test is shown below
 
     PASS: Read/Write Success for this pattern
 
-| 
+|
 
 NOR Flash Stress Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -6012,7 +6017,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘norflashStress_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for NOR flash stress test is shown below
@@ -6128,7 +6133,7 @@ Sample log for NOR flash stress test is shown below
 
     SPI NOR Flash Test Passed
 
-| 
+|
 
 OSPI Flash Stress Test
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -6148,7 +6153,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘ospiStress_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for OSPI flash stress test is shown below
@@ -6159,7 +6164,7 @@ Sample log for OSPI flash stress test is shown below
     *            OSPI FLASH Stress Test                *
     ****************************************************
 
-    OSPI NOR device ID: 0x5b1a, manufacturer ID: 0x2c 
+    OSPI NOR device ID: 0x5b1a, manufacturer ID: 0x2c
 
     Verifying the OSPI Flash ...
 
@@ -6196,24 +6201,24 @@ Sample log for OSPI flash stress test is shown below
     Verified upto Page - 0xe000
 
     Verified upto Page - 0xf000
-    
+
     ...
     ...
     ...
-   
+
     Verified upto Page - 0x3ffd000
 
     Verified upto Page - 0x3ffe000
 
     Verified upto Page - 0x3fff000
-    
+
     OSPI NOR Flash verification Successful
 
-| 
+|
 
 Temperature Sensor Stress Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This test verifies reading the ambient temperature from temperature sensor interface. 
+This test verifies reading the ambient temperature from temperature sensor interface.
 Test verifies all the temperature sensor devices on the board.
 Test is repeated for 100 iterations.
 
@@ -6229,7 +6234,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘temperatureStress_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for temperature sensor stress test is shown below
@@ -6246,7 +6251,7 @@ Sample log for temperature sensor stress test is shown below
 
 
     Running Temperature Sensor Test...
-    Running temperature sensor test... 
+    Running temperature sensor test...
     Read temperature register value - 680
 
     Temperature read from the temperature sensor
@@ -6263,7 +6268,7 @@ Sample log for temperature sensor stress test is shown below
     Iteration : 1 Temperature Sensor Test Passed
 
     Running Temperature Sensor Test...
-    Running temperature sensor test... 
+    Running temperature sensor test...
     Read temperature register value - 680
 
     Temperature read from the temperature sensor
@@ -6280,7 +6285,7 @@ Sample log for temperature sensor stress test is shown below
     Iteration : 2 Temperature Sensor Test Passed
 
     Running Temperature Sensor Test...
-    Running temperature sensor test... 
+    Running temperature sensor test...
     Read temperature register value - 680
 
     Temperature read from the temperature sensor
@@ -6297,7 +6302,7 @@ Sample log for temperature sensor stress test is shown below
     Iteration : 3 Temperature Sensor Test Passed
 
     Running Temperature Sensor Test...
-    Running temperature sensor test... 
+    Running temperature sensor test...
     Read temperature register value - 680
 
     Temperature read from the temperature sensor
@@ -6318,7 +6323,7 @@ Sample log for temperature sensor stress test is shown below
     ...
 
     Running Temperature Sensor Test...
-    Running temperature sensor test... 
+    Running temperature sensor test...
     Read temperature register value - 680
 
     Temperature read from the temperature sensor
@@ -6335,7 +6340,7 @@ Sample log for temperature sensor stress test is shown below
     Iteration : 99 Temperature Sensor Test Passed
 
     Running Temperature Sensor Test...
-    Running temperature sensor test... 
+    Running temperature sensor test...
     Read temperature register value - 680
 
     Temperature read from the temperature sensor
@@ -6361,14 +6366,14 @@ Sample log for temperature sensor stress test is shown below
 
 
     Temperature Sensor Test Passed
-| 
+|
 
 USB Host Stress Test
 ^^^^^^^^^^^^^^^^^^^^^
 This test verifies USB host mode operation of the HW platform under test.
 USB interface functions as USB mass storage host during the test.
-USB device connected to the board will be enumerated, a file will be created, 
-written with test data and read back to verify the data. 
+USB device connected to the board will be enumerated, a file will be created,
+written with test data and read back to verify the data.
 USB interface operates at high-speed (USB 2.0) during the test.
 Test is repeated for 100 iterations.
 
@@ -6383,10 +6388,10 @@ Refer `USB Host Test Setup <index_board.html#id188>`_ section for more details
 Test Execution
 """""""""""""""
  - Select the menu option to run ‘usbHostStress_TEST’
- - Test supports USB host port on CP board and SerDes board on AM65x IDK platform. 
+ - Test supports USB host port on CP board and SerDes board on AM65x IDK platform.
    Choose the board under test in the serial console while running the test on am65xx_idk
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for USB host stress test on am65xx_evm is shown below
@@ -6497,7 +6502,7 @@ Sample log for USB host stress test on am65xx_evm is shown below
 
     USB Host test Passed
 
-| 
+|
 
 Sample log for USB host stress test on am65xx_idk board is shown below
 
@@ -6614,7 +6619,7 @@ Sample log for USB host stress test on am65xx_idk board is shown below
 
 MCAN Stress Test
 ^^^^^^^^^^^^^^^^^
-Verifies MCAN ports on the HW platform with two MCAN ports connected with each other. 
+Verifies MCAN ports on the HW platform with two MCAN ports connected with each other.
 10240 packets sent from one port and received on another port. Both the ports are verified for Tx and Rx.
 
 Test Accessories
@@ -6629,7 +6634,7 @@ Test Execution
 """""""""""""""
  - Select the menu option to run ‘mcanStress_TEST’
  - Verify the test log on serial console
- 
+
 Test Log
 """""""""""
 Sample log for MCAN stress test is shown below
@@ -7063,18 +7068,18 @@ Sample log for MCAN stress test is shown below
      MCAN diagnostic test completed.
     Finished running mcanStress_TEST, result passed!
 
-| 
+|
 
 UART Stress Test
 ^^^^^^^^^^^^^^^^^
 This test verifies the UART serial port by sending 10MB of data to the serial console.
-Data is received by the teraterm script on host PC and looped back to the board. Data is 
+Data is received by the teraterm script on host PC and looped back to the board. Data is
 recieved by the test running on the board and verified to confirm data match.
 
-.. note:: 
+.. note::
    This test does not support SD boot execution and need to run from CCS over JTAG.
    Automation script is provided for teraterm application but the test should
-   be functional with any utility that can receive the data over COM port and 
+   be functional with any utility that can receive the data over COM port and
    send it back on the same COM port.
 
 Test Accessories
@@ -7089,7 +7094,7 @@ Test Setup
  - Connect the UART serial cable between the board UART port and host PC
  - Connect the JTAG port of the board to host PC
  - Setup serial console application on host PC with below configurations
- :: 
+ ::
 
     Baud rate    -    115200
     Data length  -    8 bit
@@ -7097,7 +7102,7 @@ Test Setup
     Stop bits    -    1
     Flow control -    None
 
- - Four UART ports are verified on am65xx_evm platform and three UART ports are verified on am65xx_idk platform. 
+ - Four UART ports are verified on am65xx_evm platform and three UART ports are verified on am65xx_idk platform.
    Need to make above setup on all serial consoles connected to multiple ports on these platforms.
 
 Test Execution
@@ -7118,29 +7123,29 @@ Sample UART stress test log is shown below
     0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
     0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
     0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
-    
+
     ....
     ....
     ....
-    
+
     0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
     0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
     0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
     0123456789:
-    
+
     UART Stress Test Passed
-| 
+|
 
 RS485 UART Stress Test
 ^^^^^^^^^^^^^^^^^^^^^^^
 This test verifies the RS485 UART serial port by sending 10MB of data to the serial console.
-Data is received by the teraterm script on host PC and looped back to the board. Data is 
+Data is received by the teraterm script on host PC and looped back to the board. Data is
 recieved by the test running on the board and verified to confirm data match.
 
-.. note:: 
+.. note::
    This test does not support SD boot execution and need to run from CCS over JTAG.
    Automation script is provided for teraterm application but the test should
-   be functional with any utility that can receive the data over COM port and 
+   be functional with any utility that can receive the data over COM port and
    send it back on the same COM port.
 
 Test Accessories
@@ -7156,7 +7161,7 @@ Test Setup
  - Connect the UART serial cable between the board RS485 UART port and host PC
  - Connect the JTAG port of the board to host PC
  - Setup serial console application on host PC with below configurations
- :: 
+ ::
 
     Baud rate    -    115200
     Data length  -    8 bit
@@ -7182,22 +7187,22 @@ Sample RS485 UART stress test log is shown below
     0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
     0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
     0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
-    
+
     ....
     ....
     ....
-    
+
     0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
     0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
     0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
     0123456789:
-    
+
     PRU-ICSS UART Stress Test Passed
-| 
+|
 
 Power On Self Test (POST)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-This test runs automatically when diagnostic tests are booted. 
+This test runs automatically when diagnostic tests are booted.
 Verifies the basic memories on the board and displays the test results.
 It also displays the board ID content programmed onto the Board ID EEPROM.
 After the diag boot, POST waits for 5 secs during which entering character 'b'
@@ -7215,57 +7220,57 @@ No specific test setup is needed. Use the default HW setup recommended in HW use
 Test Execution
 """""""""""""""
 Test runs automatically. No execution steps needed.
- 
+
 Test Log
 """""""""""
 Sample log for LED stress test is shown below
 
 ::
-	
+
 	DIAGNOSTIC TEST FRAMEWORK
 	Version - 01.00.00.01
 	Build Date - Apr  6 2019, Time - 03:47:24
-	
-	
+
+
 	Command options:
 		help - displays this help menu again
 		run - run a diagnostic application
 		status - prints the test status
-	
-	
+
+
 	Running Power On Self Tests...
 	Press 'b' to Skip the Test
 	Parsing bootEepromCompliance_TEST
 	Running bootEepromCompliance_TEST
-	
+
 	*********************************************
 	*              Boot EEPROM Test                  *
 	*********************************************
-	
+
 	Running Boot EEPROM test
-	
+
 	Detecting the Boot EEPROM device...
-	
+
 	Boot EEPROM device detection successful
-	
+
 	Boot EEPROM boundary verification test...
-	
+
 	Verifying the Boot EEPROM first page...
 
 	Verifying the Boot EEPROM last page...
-	
+
 	Boot EEPROM boundary verification test successful
-	
+
 	Boot EEPROM test Passed
-	
+
 	Finished running bootEepromCompliance_TEST, result passed!
 	Parsing memCompliance_TEST
 	Running memCompliance_TEST
-	
+
 	*********************************************
 	*              DDR Memory Test              *
 	*********************************************
-	
+
 	Testing writing and reading memory
 	board_external_memory_test: Start address (0x80000000),            end address (0xffffffff)
 	Address Bus Test Started
@@ -7334,23 +7339,23 @@ Sample log for LED stress test is shown below
 		Reading Memory 0xc0000000
 	Board memory test passed!
 	Memory test passed!
-	
+
 	Finished running memCompliance_TEST, result passed!
 	Parsing emmcCompliance_TEST
 	Running emmcCompliance_TEST
-	
+
 	*********************************************
 	*                 eMMC Test                 *
 	*********************************************
 
 	PASS: Read/Write Success for this block-0x300000
-	
+
 	PASS: Read/Write Success for this pattern
-	
+
 	Finished running emmcCompliance_TEST, result passed!
 	Parsing norflashCompliance_TEST
 	Running norflashCompliance_TEST
-	
+
 	***************************************
 	*            SPI FlASH Test           *
 	***************************************
@@ -7359,74 +7364,74 @@ Sample log for LED stress test is shown below
 	Device ID 1 - 0xba
 	Device ID 2 - 0x18
 	Flash Device ID Match!
-	
+
 	Flash Device ID Read Passed!
-	
+
 	Verifying Sector - 0
 	Data Read matches with Data written
 	SPI Flash Test Passed!
-	
+
 	SPI NOR Flash Test Passed
-	
+
 	Finished running norflashCompliance_TEST, result passed!
 	Parsing ospiCompliance_TEST
 	Running ospiCompliance_TEST
-	
+
 	*********************************************
 	*            OSPI FLASH Test                *
 	*********************************************
-	
-	OSPI NOR device ID: 0x5b1a, manufacturer ID: 0x2c 
-	
+
+	OSPI NOR device ID: 0x5b1a, manufacturer ID: 0x2c
+
 	 Verifying the OSPI Flash first page...
 	OSPI NOR Flash first page verification Successful
-	
+
 	OSPI NOR Flash verification Successful
-	
+
 	OSPI Flash Test Passed!
-	
+
 	Finished running ospiCompliance_TEST, result passed!
 	Parsing ledCompliance_TEST
 	Running ledCompliance_TEST
-	
+
 	*********************************************
 	*                 LED Test                  *
 	*********************************************
-	
+
 	Testing LED
 	Blinking LEDs...
 	Received: y
-	
+
 	Test PASSED!
-	
+
 	LED Test Passed
-	
+
 	Finished running ledCompliance_TEST, result passed!
 	Parsing bootSwitchCompliance_TEST
 	Running bootSwitchCompliance_TEST
-	
+
 	*********************************************
 	*             Boot Switch Test              *
 	*********************************************
-	Boot Switch SW3 Value - OFF ON ON OFF OFF OFF OFF OFF OFF OFF 
-	Boot Switch SW2 Value - OFF OFF ON OFF OFF OFF OFF OFF OFF 
-	Boot Switch SW4 Value - OFF OFF 
-	
+	Boot Switch SW3 Value - OFF ON ON OFF OFF OFF OFF OFF OFF OFF
+	Boot Switch SW2 Value - OFF OFF ON OFF OFF OFF OFF OFF OFF
+	Boot Switch SW4 Value - OFF OFF
+
 	Test Passed
-	
+
 	Finished running bootSwitchCompliance_TEST, result passed!
 	Parsing eepromCompliance_TEST
 	Running eepromCompliance_TEST
-	
+
 	*********************************************
 	*              EEPROM Test                  *
 	*********************************************
-	
+
 	CP Board:
 	Displaying Header Fields
 	========================
 		Header ID: 0xee3355aa
-	
+
 	Displaying Board Info Fields
 	============================
 		Board Name: AM6-COMPROCEVM
@@ -7443,7 +7448,7 @@ Sample log for LED stress test is shown below
 	Serial Number: 0017
 	Displaying DDR Fields
 	=====================	DDR Control Word: 5850
-	
+
 	Displaying MAC Info Fields
 	==========================
 		MAC Control Word: 08
@@ -7451,22 +7456,16 @@ Sample log for LED stress test is shown below
 		MAC ADDR1: 70-ff-76-1d-4c-41
 	Test Passed
 	Finished running eepromCompliance_TEST, result passed!
-	
-	
+
+
 	Power On Self Test Result
 	All Tests Passed
-	
-|  
+
+|
 
 Compliance Tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 Diagnostic tests include support for CE compliance verication for some of the
 platforms. Compliance tests can be executed by selecting the menu option '0'
 from the diagnostic test menu. These tests are intended for use by board vendor.
-
-.. raw:: html
-
-
-
-
 

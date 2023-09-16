@@ -17,13 +17,13 @@ intervention.
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
    Main features of the MMC/SDIO host controllers:
-   
-   
+
+
    -  Full compliance with MMC/SD command/response sets as defined in the
       Specification.
-   
+
    -  Support:
-   
+
       -  4-bit transfer mode specifications for SD and SDIO cards
       -  8-bit transfer mode specifications for eMMC
       -  Built-in 1024-byte buffer for read or write
@@ -38,7 +38,7 @@ intervention.
 
 MMC/SD Driver Architecture
 
-| 
+|
 
 References
 ^^^^^^^^^^
@@ -47,7 +47,7 @@ References
    [http://www.jedec.org/category/technology-focus-area/flash-memory-ssds-ufs-emmc]
 #. SD ORG Homepage [http://www.sdcard.org]
 
-| 
+|
 
 Acronyms & Definitions
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -68,7 +68,7 @@ Acronyms & Definitions
 
 Table:  **MMC/SD: Acronyms**
 
-| 
+|
 
 Features
 ^^^^^^^^
@@ -76,11 +76,11 @@ Features
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
    The SD driver supports the following features:
-   
+
    -  The driver is built in-kernel (part of vmlinux)
    -  SD cards including SD High Speed and SDHC cards
    -  Uses block bounce buffer to aggregate scattered blocks
-   
+
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
    The SD/MMC driver supports the following features:
@@ -118,8 +118,8 @@ Supported High Speed Modes
    +--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
 
    Table:  **MMC1/SD**
-   
-   **Note**: In AM654-SR1-EVM none of the UHS modes are supported.   
+
+   **Note**: In AM654-SR1-EVM none of the UHS modes are supported.
 
    **Important Info**: Certain UHS cards do not enumerate.
    The list of functional UHS cards is given in the following tables
@@ -143,7 +143,7 @@ Supported High Speed Modes
    +-------------------------------------------------------------------------------------------+
    | TRANSCEND PREMIUM 400X UHS CARD (Non fatal error and then it re-enumerates in UHS mode)   |
    +-------------------------------------------------------------------------------------------+
-   
+
    +------------------------------------------------------------------------------+
    | FUNCTIONAL (WITH LIMITED CAPABILITY) UHS CARD                                |
    +==============================================================================+
@@ -158,7 +158,7 @@ Supported High Speed Modes
    removing the PULLUP resistor in CLK line and changing the GPIO to
    PULLDOWN increases the frequency in which the card enumerates in UHS
    modes.
-   
+
    +--------------------+-------+---------+
    | Platform           | DDR   | HS200   |
    +====================+=======+=========+
@@ -189,8 +189,8 @@ Supported High Speed Modes
 
    .. csv-table::
       :header: "Platform", "SDR104", "DDR50", "SDR50", "SDR25", "SDR12"
-      :widths: auto 
-   
+      :widths: auto
+
       J721e-EVM, N, Y, Y, Y, Y
       J7200-EVM, Y, Y, Y, Y, Y
       J721s2-EVM, Y, Y, Y, Y, Y
@@ -219,14 +219,14 @@ Driver Configuration
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
    The default kernel configuration enables support for MMC/SD(built-in to kernel).
-   
+
    The selection of MMC/SD/SDIO driver can be modified using the linux kernel
    configuration tool. Launch it by the following command:
-   
+
    ::
-   
+
        $ make menuconfig  ARCH=arm
-   
+
    .. rubric:: **Building into Kernel**
       :name: building-into-kernel-mmcsd
 
@@ -254,11 +254,11 @@ Driver Configuration
 
       # modprobe sdhci-omap		(for DRA7XX and AM57XX devices)
       # modprobe omap_hsmmc		(for AM335X and AM437X devices)
-   
+
    If 'udev' is running and the SD card is already inserted, the devices
    nodes will be created and filesystem will be automatically mounted if
    exists on the card.
-   
+
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
    The default kernel configuration enables support for MMC/SD driver as
@@ -295,7 +295,7 @@ Driver Configuration
 
    .. rubric:: **Enabling eMMC Card Background operations support**
       :name: enabling-emmc-card-background-operations-support
-   
+
    | eMMC cards need to occasionally spend some time cleaning up garbage
      and perform cache/buffer related operations which are strictly on the
      card side and do not involve the host. These operations are at various
@@ -308,34 +308,34 @@ Driver Configuration
      some time to clear up the same.
    | This feature is already part of the framework and to start using it
      the User needs to enable EXT\_CSD : BKOPS\_EN [163] BIT 0.
-   
+
    **This can be done using the "mmc-utils" tool from user space or using
    the "mmc" command in U-boot.**
-   
+
    Command to enable bkops from userspace using mmc-utils, assuming eMMC
    instance to be mmcblk0
-   
+
    ::
-   
-       root@dra7xx-evm:mmc bkops enable /dev/mmcblk0 
-   
+
+       root@dra7xx-evm:mmc bkops enable /dev/mmcblk0
+
    You can find the instance of eMMC by reading the ios timing spec form
    debugfs
-   
+
    ::
-   
+
        root@dra7xx-evm:~# cat /sys/kernel/debug/mmc0/ios
        ----
        timing spec:    9 (mmc HS200)
        ---
-   
+
    or by looking for boot partitions, eMMC has two bootpartitions
    mmcblk<x>boot0 and mmcblk<x>boot1
-   
+
    ::
-   
+
        root@dra7xx-evm:/# ls /dev/mmcblk*boot*
-       /dev/mmcblk0boot0  /dev/mmcblk0boot1 
+       /dev/mmcblk0boot0  /dev/mmcblk0boot1
 
 Steps for working around SD card issues
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

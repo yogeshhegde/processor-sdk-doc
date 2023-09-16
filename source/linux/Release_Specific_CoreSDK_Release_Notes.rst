@@ -18,7 +18,7 @@ Licensing
 =========
 
 Please refer to the software manifest, which outlines the licensing
-status for all packages included in the prebuilt binaries location. 
+status for all packages included in the prebuilt binaries location.
 
 
 Release 09.00.00
@@ -45,7 +45,7 @@ Released July 2023
   * Multimedia: Gstreamer v1.20.5 Upgrade
 
 **AM62A**
-  
+
   * U-Boot: Remoteproc boot with C7x
   * Kernel: E5010 JPEG Encoder
   * Low Power: DFS and CPUIdle on HS FS
@@ -265,7 +265,7 @@ U-Boot Known Issues
 Linux Known Issues
 ---------------------------
 .. csv-table::
-  :header: "Record ID", "Platform", "Title", "Workaround" 
+  :header: "Record ID", "Platform", "Title", "Workaround"
   :widths: 5, 10, 70, 35
 
   "LCPD-35056","am62xx-sk,am62xx_sk-fs,am62xx_sk-se","'Error: ""main_cpsw0_qsgmii_phyinit"" not defined' on AM62x",""

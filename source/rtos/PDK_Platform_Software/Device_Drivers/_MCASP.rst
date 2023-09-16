@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MCASP 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MCASP
 
 Overview
 --------
@@ -133,7 +133,7 @@ serializer.
 
 .. Image:: ../images/1SER_MULTISER_1SLOT_SER_INTERLEAVED_2.PNG
 
-| 
+|
 
 .. rubric:: Mcasp_BufferFormat_MULTISER_1SLOT_SER_NON_INTERLEAVED
    :name: mcasp_bufferformat_multiser_1slot_ser_non_interleaved
@@ -222,9 +222,9 @@ Examples & Unit tests
 +------------------------------------+---------------------------+-----------------------+----------+-------------+
 | Name                               || Description              | | Expected Results    |  SOCs    | Build type  |
 +====================================+===========================+=======================+==========+=============+
-| Audio_ExampleProject               | | Example                 | | Audio sent in to    | AM335X   | CCS Project |        
+| Audio_ExampleProject               | | Example                 | | Audio sent in to    | AM335X   | CCS Project |
 |                                    |   demonstrating           |   the EVM being       | AM437x   |             |
-|                                    |   sample McASP            |   played out via the  | AM572x   |             | 
+|                                    |   sample McASP            |   played out via the  | AM572x   |             |
 |                                    |   loopback using AIC31    |   stereo output of    | K2G      |             |
 |                                    |   codec. Reference example|   the EVM             | OMAPL137 |             |
 |                                    |   for developers          |                       | OMAPL138 |             |
@@ -236,15 +236,15 @@ Examples & Unit tests
 |                                    |   codec. Reference example|   the EVM             |          |             |
 |                                    |   for developers with SMP |                       |          |             |
 |                                    |   enabled.(A15 core only) |                       |          |             |
-+------------------------------------+---------------------------+-----------------------+----------+-------------+   
-| DeviceLoopback_ExampleProject      | | Example                 | | Digital ramp        | AM335X   | CCS Project |  
++------------------------------------+---------------------------+-----------------------+----------+-------------+
+| DeviceLoopback_ExampleProject      | | Example                 | | Digital ramp        | AM335X   | CCS Project |
 |                                    |   demonstrating           |   pattern sent to     | AM437x   |             |
 |                                    |   sample McASP device     |   McASP and getting   | AM571x   |             |
 |                                    |   loopback .              |   looped back         | AM572x   |             |
 |                                    |   Reference example       |   internally using    | AM574x   |             |
-|                                    |   for developers          |   device loopback     | K2G      |             | 
+|                                    |   for developers          |   device loopback     | K2G      |             |
 +------------------------------------+---------------------------+-----------------------+----------+-------------+
-| AudioEQ_ExampleProject             | | Example                 | | Three band          | AM572x   | CCS Project |          
+| AudioEQ_ExampleProject             | | Example                 | | Three band          | AM572x   | CCS Project |
 |                                    |   demonstrating           |   Equalization of     | K2G      |             |
 |                                    |   stereo audio            |   stereo channel      |          |             |
 |                                    |   using biquad            |   filters with gain   |          |             |
@@ -355,24 +355,34 @@ Sample log for the Audio Equalizer test is shown below
 Building CCS projects based examples
 ----------------------------------------------
 
-CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in 
+CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in
 `PDK Example and Test Project Creation <index_overview.html#pdk-example-and-test-project-creation>`__
 
 Building MCASP Test applications via makefiles
 ----------------------------------------------
 
--  MCASP Test applications and dependent libraries are built from the top level mcasp makefile
--  Refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details
-   of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
-	-  cd <pdk>/packages/
-	-  To build: make mcasp 
-	-  To clean: make mcasp_clean 
+- MCASP Test applications and dependent libraries are built from the top level
+  mcasp makefile
 
-- Similarly, to build at the module level, issue the following commands for rebuilding :
-	
-	- cd <pdk>/packages/ti/drv/mcasp
-	- To build: make all
-	- To clean: make clean
+- Refer to the `Processor SDK RTOS Getting Started Guide
+  <index_overview.html#setup-environment>`__  for details of how to setup the
+  build environment. Once you have setup the build environment, issue the
+  following commands:
+
+   -  cd <pdk>/packages/
+
+   -  To build: make mcasp
+
+   -  To clean: make mcasp_clean
+
+- Similarly, to build at the module level, issue the following commands for
+  rebuilding :
+
+   - cd <pdk>/packages/ti/drv/mcasp
+
+   - To build: make all
+
+   - To clean: make clean
 
 .. _AudioEQ example: http://www.ti.com/tool/tidep0069
 

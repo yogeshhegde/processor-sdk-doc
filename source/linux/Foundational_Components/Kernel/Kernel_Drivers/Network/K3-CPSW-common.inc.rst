@@ -20,16 +20,16 @@ It also provides some information about supported features.
 
 ::
 
-    # ethtool -i <dev>                                              
-    driver: am65-cpsw-nuss                                                          
-    version: 0.1                                                                    
-    firmware-version:                                                               
-    expansion-rom-version:                                                          
-    bus-info: 46000000.ethernet                                                     
-    supports-statistics: yes                                                        
-    supports-test: no                                                               
-    supports-eeprom-access: no                                                      
-    supports-register-dump: yes                                                     
+    # ethtool -i <dev>
+    driver: am65-cpsw-nuss
+    version: 0.1
+    firmware-version:
+    expansion-rom-version:
+    bus-info: 46000000.ethernet
+    supports-statistics: yes
+    supports-test: no
+    supports-eeprom-access: no
+    supports-register-dump: yes
     supports-priv-flags: yes
 
 .. rubric:: ethtool - Display standard information about device/link
@@ -39,20 +39,20 @@ It also provides some information about supported features.
 
            # ethtool eth0
         Supported ports: [ TP MII ]
-        Supported link modes:   10baseT/Half 10baseT/Full 
-                                100baseT/Half 100baseT/Full 
-                                1000baseT/Half 1000baseT/Full 
+        Supported link modes:   10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Half 1000baseT/Full
         Supported pause frame use: Symmetric Receive-only
         Supports auto-negotiation: Yes
         Supported FEC modes: Not reported
-        Advertised link modes:  10baseT/Half 10baseT/Full 
-                                100baseT/Half 100baseT/Full 
-                                1000baseT/Half 1000baseT/Full 
+        Advertised link modes:  10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Half 1000baseT/Full
         Advertised pause frame use: No
         Advertised auto-negotiation: Yes
         Advertised FEC modes: Not reported
-        Link partner advertised link modes:  10baseT/Half 10baseT/Full 
-                                             100baseT/Half 100baseT/Full 
+        Link partner advertised link modes:  10baseT/Half 10baseT/Full
+                                             100baseT/Half 100baseT/Full
         Link partner advertised pause frame use: Symmetric
         Link partner advertised auto-negotiation: Yes
         Link partner advertised FEC modes: Not reported
@@ -65,7 +65,7 @@ It also provides some information about supported features.
         Supports Wake-on: d
         Wake-on: d
         Current message level: 0x00000000 (0)
-                               
+
         Link detected: yes
 
 .. rubric:: RX checksum offload
@@ -173,7 +173,7 @@ socket ioctl SIOCADDMULTI/SIOCDELMULTI.
 
 ::
 
-    # ip maddr add 01:00:5e:00:00:05 dev eth0                                                                             
+    # ip maddr add 01:00:5e:00:00:05 dev eth0
     # ip maddr show dev eth0
     2:      eth0
         link  01:00:5e:00:00:01
@@ -191,7 +191,7 @@ socket ioctl SIOCADDMULTI/SIOCDELMULTI.
 
     # ip maddr del 01:00:5e:00:00:05 dev eth0
 
-| 
+|
 
 .. rubric:: ``ethtool -P|--show-permaddr DEVNAME`` Show permanent hardware
    address
@@ -234,7 +234,7 @@ Sets the driver message type flags by name or number
            [ msglvl %d | msglvl type on|off ... ]
            # ethtool -s eth0 msglvl drv off
            # ethtool -s eth0 msglvl ifdown off
-           # ethtool -s eth0 msglvl ifup off 
+           # ethtool -s eth0 msglvl ifup off
            # ethtool eth0
            Current message level: 0x00000031 (49)
                                   drv ifdown ifup
@@ -277,7 +277,7 @@ Sets the driver message type flags by name or number
 
 ::
 
-           # ethtool -g eth0 
+           # ethtool -g eth0
            Ring parameters for eth0:
            Pre-set maximums:
            RX:             0
@@ -476,13 +476,13 @@ Exception: ALE table dumped as raw array of ALE records (3 * u32 per record).
            # ethtool -d eth0
            Offset          Values
            ------          ------
-           0x0000:         01 00 00 00 48 00 00 00 00 00 00 00 00 71 a0 6b 
-           0x0010:         04 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00 
-           0x0020:         0c 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00 
-           0x0030:         14 00 00 00 00 00 00 00 18 00 00 00 00 00 00 00 
-           0x0040:         1c 00 00 00 00 00 00 00 02 00 00 00 48 00 00 00 
-           0x0050:         30 00 00 00 0b 00 00 00 34 00 00 00 00 00 00 00 
-           0x0060:         38 00 00 00 00 00 00 00 3c 00 00 00 00 00 00 00 
+           0x0000:         01 00 00 00 48 00 00 00 00 00 00 00 00 71 a0 6b
+           0x0010:         04 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00
+           0x0020:         0c 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00
+           0x0030:         14 00 00 00 00 00 00 00 18 00 00 00 00 00 00 00
+           0x0040:         1c 00 00 00 00 00 00 00 02 00 00 00 48 00 00 00
+           0x0050:         30 00 00 00 0b 00 00 00 34 00 00 00 00 00 00 00
+           0x0060:         38 00 00 00 00 00 00 00 3c 00 00 00 00 00 00 00
            ...
 
 Interrupt pacing
@@ -548,7 +548,7 @@ branch::
 
 Usage::
 
-       # switch-config -h 
+       # switch-config -h
        Switch configuration commands.....
        switch-config -I,--ndev <dev> <command>
 
@@ -572,7 +572,7 @@ Example, ALE table dump::
 
         # switch-config -d
         K3 cpsw dump version (1) len(6328)
-        ALE table dump ents(64): 
+        ALE table dump ents(64):
         0   : type: vlan , vid = 0, untag_force = 0x3, reg_mcast = 0x0, unreg_mcast = 0x0, member_list = 0x3
         1   : type: ucast, addr = f4:84:4c:eb:a0:00, ucast_type = persistant, port_num = 0x0, Secure
         2   : type: mcast, addr = ff:ff:ff:ff:ff:ff, mcast_state = f, no super, port_mask = 0x3

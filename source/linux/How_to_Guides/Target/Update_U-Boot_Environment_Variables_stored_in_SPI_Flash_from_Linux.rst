@@ -15,7 +15,7 @@ using a tool provided from U-Boot.
 #. This example is based on the AMSDK, AM335x GP EVM and the User is has
    the latest version of the AMSDK installed
 
-| 
+|
 
 .. rubric:: Summary/Checklist
    :name: summarychecklist
@@ -26,7 +26,7 @@ using a tool provided from U-Boot.
 #. Load fw\_printenv/fw\_setenv into target file system
 #. Test fw\_printenv/fw\_setenv tool
 
-| 
+|
 
 .. rubric:: Overview
 
@@ -37,7 +37,7 @@ the latest AMSDK.
 
 .. Image:: /images/Sitara-Linux-Spi_nor_overview_1.png
 
-| 
+|
 
 .. rubric:: Build(Cross Compile) fw\_printenv/fw\_setenv U-Boot Tool
    :name: buildcross-compile-fw_printenvfw_setenv-u-boot-tool
@@ -61,7 +61,7 @@ This command is issued from the top of the u-boot source directory.
 Please be sure to see that the cross compiler was actually called and
 not just gcc.
 
-| 
+|
 
 .. rubric:: Prepare configuration file for U-Boot Tool
    fw\_printenv/fw\_setenv
@@ -72,7 +72,7 @@ placed into a specific directory that is called in fw\_env.h in the
 board-support/u-boot<version>/tools/env directory. The default location
 for the configuration file (fw\_env.config) is /etc/.
 
-| 
+|
 | MTD device name Device offset Env. size Flash sector size (only the
   line below is needed in the file)
 
@@ -80,7 +80,7 @@ for the configuration file (fw\_env.config) is /etc/.
 
     /dev/mtd2               0x0000          0x2000          0x1000
 
-| 
+|
 
 .. rubric:: Load fw\_printenv/fw\_setenv into target file system
    :name: load-fw_printenvfw_setenv-into-target-file-system
@@ -92,7 +92,7 @@ You must copy fw\_printenv to fw\_setenv to be able to set variables.
 The program detects the name it was called as and sets the context it
 will run in.
 
-| 
+|
 
 .. rubric:: Test fw\_printenv/fw\_setenv tool
    :name: test-fw_printenvfw_setenv-tool

@@ -48,13 +48,13 @@ System Benchmarks
 
 LMBench
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-LMBench is a collection of microbenchmarks of which the memory bandwidth 
-and latency related ones are typically used to estimate processor 
+LMBench is a collection of microbenchmarks of which the memory bandwidth
+and latency related ones are typically used to estimate processor
 memory system performance. More information about lmbench at
 http://lmbench.sourceforge.net/whatis_lmbench.html and
 http://lmbench.sourceforge.net/man/lmbench.8.html
 
-  
+
 **Latency**: lat_mem_rd-stride128-szN, where N is equal to or smaller than the cache
 size at given level measures the cache miss penalty. N that is at least
 double the size of last level cache is the latency to external memory.
@@ -346,8 +346,8 @@ and floating-point workloads, and data sets for utilizing larger memory subsyste
 Table:  **CoreMarkPro**
 
 
- 
- 
+
+
 
 
 MultiBench
@@ -402,8 +402,8 @@ thread-enabled workloads to be tested.
 Table:  **Multibench**
 
 
- 
- 
+
+
 
 
 Boot-time Measurement
@@ -421,8 +421,8 @@ Boot media: MMCSD
 Table:  **Boot time MMC/SD**
 
 
- 
- 
+
+
 
 
 ALSA SoC Audio Driver
@@ -467,20 +467,20 @@ Table:  **Audio Capture**
     "96000","3073209.00","0.46"
 
 Table:  **Audio Playback**
- 
+
 
 |
 
- 
 
 
 
- 
+
+
 
 
 Graphics SGX/RGX Driver
 -------------------------
- 
+
 
 
 
@@ -497,40 +497,40 @@ Run Glmark2 and capture performance reported (Score). All display outputs (HDMI,
 
 
 Table:  **Glmark2**
- 
- 
+
+
 |
 
- 
 
- 
+
+
 
 
 Ethernet
 -----------------
 Ethernet performance benchmarks were measured using Netperf 2.7.1 https://hewlettpackard.github.io/netperf/doc/netperf.html
 Test procedures were modeled after those defined in RFC-2544:
-https://tools.ietf.org/html/rfc2544, where the DUT is the TI device 
+https://tools.ietf.org/html/rfc2544, where the DUT is the TI device
 and the "tester" used was a Linux PC. To produce consistent results,
-it is recommended to carry out performance tests in a private network and to avoid 
-running NFS on the same interface used in the test. In these results, 
+it is recommended to carry out performance tests in a private network and to avoid
+running NFS on the same interface used in the test. In these results,
 CPU utilization was captured as the total percentage used across all cores on the device,
-while running the performance test over one external interface.  
+while running the performance test over one external interface.
 
 UDP Throughput (0% loss) was measured by the procedure defined in RFC-2544 section 26.1: Throughput.
 In this scenario, netperf options burst_size (-b) and wait_time (-w) are used to limit bandwidth
-during different trials of the test, with the goal of finding the highest rate at which 
+during different trials of the test, with the goal of finding the highest rate at which
 no loss is seen. For example, to limit bandwidth to 500Mbits/sec with 1472B datagram:
 
 ::
 
    burst_size = <bandwidth (bits/sec)> / 8 (bits -> bytes) / <UDP datagram size> / 100 (seconds -> 10 ms)
-   burst_size = 500000000 / 8 / 1472 / 100 = 425 
+   burst_size = 500000000 / 8 / 1472 / 100 = 425
 
    wait_time = 10 milliseconds (minimum supported by Linux PC used for testing)
 
 UDP Throughput (possible loss) was measured by capturing throughput and packet loss statistics when
-running the netperf test with no bandwidth limit (remove -b/-w options). 
+running the netperf test with no bandwidth limit (remove -b/-w options).
 
 In order to start a netperf client on one device, the other device must have netserver running.
 To start netserver:
@@ -539,10 +539,10 @@ To start netserver:
 
    netserver [-p <port_number>] [-4 (IPv4 addressing)] [-6 (IPv6 addressing)]
 
-Running the following shell script from the DUT will trigger netperf clients to measure 
+Running the following shell script from the DUT will trigger netperf clients to measure
 bidirectional TCP performance for 60 seconds and report CPU utilization. Parameter -k is used in
-client commands to summarize selected statistics on their own line and -j is used to gain 
-additional timing measurements during the test.  
+client commands to summarize selected statistics on their own line and -j is used to gain
+additional timing measurements during the test.
 
 ::
 
@@ -551,39 +551,39 @@ additional timing measurements during the test.
    do
       netperf -H <tester ip> -j -c -l 60 -t TCP_STREAM --
          -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
-      
+
       netperf -H <tester ip> -j -c -l 60 -t TCP_MAERTS --
          -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
    done
 
-Running the following commands will trigger netperf clients to measure UDP burst performance for 
-60 seconds at various burst/datagram sizes and report CPU utilization. 
+Running the following commands will trigger netperf clients to measure UDP burst performance for
+60 seconds at various burst/datagram sizes and report CPU utilization.
 
-- For UDP egress tests, run netperf client from DUT and start netserver on tester. 
+- For UDP egress tests, run netperf client from DUT and start netserver on tester.
 
 ::
 
-   netperf -H <tester ip> -j -c -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size> 
-      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE 
+   netperf -H <tester ip> -j -c -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size>
+      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE
 
-- For UDP ingress tests, run netperf client from tester and start netserver on DUT. 
+- For UDP ingress tests, run netperf client from tester and start netserver on DUT.
 
 ::
 
    netperf -H <DUT ip> -j -C -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size>
-      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE 
+      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE
 
 |
 
 
-CPSW/CPSW2g/CPSW3g Ethernet Driver 
+CPSW/CPSW2g/CPSW3g Ethernet Driver
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - CPSW2g: AM65x, J7200, J721e, J721S2, J784S4
 - CPSW3g: AM64x
 
 
-.. rubric::  TCP Bidirectional Throughput 
+.. rubric::  TCP Bidirectional Throughput
    :name: CPSW2g-tcp-bidirectional-throughput
 
 .. csv-table::
@@ -656,13 +656,13 @@ Table: **CPSW UDP Ingress Throughput (0% loss)**
 Table: **CPSW UDP Ingress Throughput (possible loss)**
 
 |
- 
- 
 
- 
 
- 
- 
+
+
+
+
+
 
 
 PCIe Driver
@@ -684,14 +684,14 @@ PCIe-ETH
 Table: **PCI Ethernet**
 
 
- 
+
 
 
 PCIe-NVMe-SSD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 
 
- 
+
+
 
 J784S4-EVM
 """""""""""""""""""""""""""
@@ -730,13 +730,13 @@ J721E-IDK-GW
     "4k","184.00","48.05","166.00","36.58"
     "256k","723.00","12.61","1520.00","11.65"
 
- 
+
 
 - Filesize used is: 10G
-- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based 
+- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
 - Platform: Speed 8GT/s, Width x2
 - SSD being used: PLEXTOR PX-128M8PeY
- 
+
 
 
 J7200-EVM
@@ -753,13 +753,13 @@ J7200-EVM
     "4k","186.00","47.87","166.00","36.16"
     "256k","708.00","13.60","1524.00","11.72"
 
- 
+
 
 - Filesize used is: 10G
-- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based 
+- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
 - Platform: Speed 8GT/s, Width x2
 - SSD being used: PLEXTOR PX-128M8PeY
- 
+
 
 
 J721S2-EVM
@@ -776,27 +776,27 @@ J721S2-EVM
     "4k","196.00","50.14","287.00","50.09"
     "256k","743.00","15.09","779.00","6.43"
 
- 
+
 
 - Filesize used is: 10G
-- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based 
+- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
 - Platform: Speed 8GT/s, Width x2
 - SSD being used: PLEXTOR PX-128M8PeY
- 
 
- 
- 
- 
 
- 
+
+
+
+
+
 
 
 OSPI Flash Driver
 -------------------------
 
- 
 
- 
+
+
 
 
 J721E-IDK-GW
@@ -813,8 +813,8 @@ RAW
 
     "50","38.76"
 
- 
- 
+
+
 
 
 J7200-EVM
@@ -831,19 +831,19 @@ RAW
 
     "50","238.09"
 
- 
- 
 
- 
 
- 
 
- 
 
- 
- 
 
- 
+
+
+
+
+
+
+
+
 
 
 UBoot QSPI/OSPI Driver
@@ -910,12 +910,12 @@ J721S2-EVM
 
 
 
- 
- 
 
- 
 
- 
+
+
+
+
 
 
 UBoot UFS Driver
@@ -938,12 +938,12 @@ J721E-IDK-GW
 
 
 
- 
 
- 
 
- 
- 
+
+
+
+
 
 
 EMMC Driver
@@ -1023,13 +1023,6 @@ J784S4-EVM
 |
 
 
- 
-
- 
-
- 
-
- 
 
 
 
@@ -1041,8 +1034,15 @@ J784S4-EVM
 
 
 
- 
- 
+
+
+
+
+
+
+
+
+
 
 
 UBoot EMMC Driver
@@ -1115,10 +1115,10 @@ J784S4-EVM
 
 
 
- 
- 
 
- 
+
+
+
 
 
 MMC/SD Driver
@@ -1132,15 +1132,7 @@ MMC/SD Driver
   sensitive applications, umount the auto-mounted filesystem and
   re-mount in async mode.
 
-| 
-
- 
-
-
-
-
-
- 
+|
 
 
 
@@ -1149,9 +1141,17 @@ MMC/SD Driver
 
 
 
- 
 
- 
+
+
+
+
+
+
+
+
+
+
 
 
 J7200-EVM
@@ -1190,8 +1190,6 @@ J721E-IDK-GW
 |
 
 
- 
- 
 
 
 
@@ -1205,17 +1203,19 @@ J721E-IDK-GW
 
 
 
- 
-
- 
-
- 
 
 
 
 
 
- 
+
+
+
+
+
+
+
+
 |
 
 
@@ -1230,7 +1230,7 @@ The performance numbers were captured using the following:
 
 UBoot MMC/SD Driver
 -------------------------
-| 
+|
 
 
 J721E-IDK-GW
@@ -1320,7 +1320,7 @@ The performance numbers were captured using the following:
 
 USB Driver
 -------------------------
- 
+
 
 
 USB Device Controller
@@ -1360,15 +1360,15 @@ Table: **USBDEVICE HIGHSPEED SLAVE WRITE THROUGHPUT**
 
 
 
- 
- 
- 
+
+
+
 
 
 CRYPTO Driver
 -------------------------
 
- 
+
 
 
 
@@ -1384,8 +1384,8 @@ IPSec Software Performance
     "aes192","77.30","6.00","101.88"
     "aes256","568.60","50.00","82.50"
 
- 
- 
+
+
 
 DCAN Driver
 -------------------------

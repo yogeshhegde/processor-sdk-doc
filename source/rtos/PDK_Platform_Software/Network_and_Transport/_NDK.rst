@@ -50,8 +50,8 @@ drivers concurrently.
 |                               | ${NDK_INSTALL_DIR}\packages\ti\ndk\inc                                |
 |                               | ${NDK_INSTALL_DIR}\packages\ti\ndk\inc\tools                          |
 +-------------------------------+-----------------------------------------------------------------------+
- 
-| 
+
+|
 
 NIMU Transport
 ---------------
@@ -80,7 +80,7 @@ as indicated in the table above.
   This module is only intended to be used with NDK. As such,
   users should not tie up to its API directly.
 
-  
+
 +-------------------------------------------------------------------------------------------------------+
 |                                       **NIMU for CPSW Summary**                                       |
 +-------------------------------+-----------------------------------------------------------------------+
@@ -99,7 +99,7 @@ as indicated in the table above.
 |**Reference Guides**           | None                                                                  |
 +-------------------------------+-----------------------------------------------------------------------+
 
-| 
+|
 
 NIMU for ICSS
 -------------
@@ -118,7 +118,7 @@ table above. For details of the PRU-ICSS, please refer to
   requires ICSS-EMAC low level driver. As such, users should not tie up
   to its API directly.
 
-  
+
 +-------------------------------------------------------------------------------------------------------+
 |                                       **NIMU for ICSS Summary**                                       |
 +-------------------------------+-----------------------------------------------------------------------+
@@ -137,7 +137,7 @@ table above. For details of the PRU-ICSS, please refer to
 |**Reference Guides**           | None                                                                  |
 +-------------------------------+-----------------------------------------------------------------------+
 
-| 
+|
 
 Examples
 ---------
@@ -186,169 +186,225 @@ to modify the following configuration parameters
 | If you you do change these settings, you will be required to re-build
   the Example Project using CCS.
 
-+-----------------+-----------------+-----------------+-----------------+-----------+
-| Name            | Description     | EVM             | Expected        |SOC        |
-|                 |                 | Configuration   | Results         |Supported  |
-+=================+=================+=================+=================+===========+
-| NIMU_BasicExamp |Example          |icev2AM335x:     |Run ping from    |AM335x     |
-| le_evmXXXX_<cor |demonstrates     |Jumpers J18      |any other PC     |AM437x     |
-| e>exampleproject|ping from        |and J19 need     |in the same      |AM57x      |
-|                 |external         |to be set        |subnet,          |K2G        |
-|                 |source to        |properly to      |                 |           |
-|                 |Gigabit          |select CPSW      |Ping response    |           |
-|                 |Ethernet port    |or ICSS mode.    |from the EVM     |           |
-|                 |on EVM.          |Pin2 and Pin3    |verifies         |           | 
-|                 |                 |need to be       |successful       |           |
-|                 |                 |connected for    |execution of     |           |
-|                 |                 |ICSS mode and    |example.         |           |
-|                 |                 |Pin1 and Pin2    |                 |           |
-|                 |                 |for CPSW         |                 |           |
-|                 |                 |mode.            |                 |           |
-|                 |                 |Update \*.cfg    |                 |           |
-|                 |                 |file with        |                 |           |
-|                 |                 |static IP to     |                 |           |
-|                 |                 |test. NIMU for   |                 |           |
-|                 |                 |CPSW test        |                 |           |
-|                 |                 |requires         |                 |           |
-|                 |                 |connection of    |                 |           |
-|                 |                 |configured       |                 |           |
-|                 |                 |Ethernet port    |                 |           |
-|                 |                 |under test to    |                 |           |
-|                 |                 |external PC on   |                 |           |
-|                 |                 |same subnet.     |                 |           |
-+-----------------+-----------------+-----------------+-----------------+-----------+
-| NIMU_ICSS_Basic |Example          |icev2AM335x:     |Run ping from    |AMIC110    |
-| Example_evmXXXX |demonstrates     |Jumpers J18      |any other PC in  |AM335x     |
-| _<core>Examplep |ping from        |and J19 need     |the same subnet. |AM437x     |
-| roject          |external         |to be set        |                 |AM57x      |
-|                 |source to        |properly to      |Ping response    |K2G        |
-|                 |PRU-ICSS         |select CPSW      |from the EVM     |           |
-|                 |Ethernet port    |or ICSS mode.    |verifies         |           |
-|                 |on EVM.          |Pin2 and Pin3    |successful       |           | 
-|                 |                 |need to be       |execution of     |           |
-|                 |                 |connected for    |example.         |           |
-|                 |                 |ICSS mode and    |                 |           |
-|                 |                 |Pin1 and Pin2    |                 |           |
-|                 |                 |for CPSW         |                 |           |
-|                 |                 |mode.            |                 |           |
-|                 |                 |Update \*.cfg    |                 |           |
-|                 |                 |file with        |                 |           |
-|                 |                 |static IP to     |                 |           |
-|                 |                 |test. NIMU for   |                 |           |
-|                 |                 |CPSW test        |                 |           |
-|                 |                 |requires         |                 |           |
-|                 |                 |connection of    |                 |           |
-|                 |                 |configured       |                 |           |
-|                 |                 |Ethernet port    |                 |           |
-|                 |                 |under test to    |                 |           |
-|                 |                 |external PC on   |                 |           |
-|                 |                 |same subnet.     |                 |           |
-+-----------------+-----------------+-----------------+-----------------+-----------+
-|NIMU_Cpsw_       |Example          |Update \*.cfg    |Run ping from    |AM65x      |
-|ExampleApp       |demonstrates     |file with        |any other PC in  |J721E      |
-|                 |ping from        |static IP to     |the same subnet. |           |
-|                 |external         |test. NIMU for   |                 |           |
-|                 |source to        |CPSW test        |Ping response    |           |
-|                 |Gigabit          |requires         |from the EVM     |           |
-|                 |Ethernet port    |connection of    |verifies         |           |
-|                 |on EVM.          |configured       |successful       |           |
-|                 |                 |Ethernet port    |execution of     |           |
-|                 |                 |under test to    |example.         |           |
-|                 |                 |external PC on   |                 |           |
-|                 |                 |same subnet.     |                 |           |
-+-----------------+-----------------+-----------------+-----------------+-----------+
-|NIMU_Icssg       |Example          |Update \*.cfg    |Run ping from    |AM65x      |
-|ExampleApp       |demonstrates     |file with        |any other PC in  |           |
-|                 |ping from        |static IP to     |the same subnet. |           |
-|                 |external         |test. NIMU for   |                 |           |
-|                 |source to        |CPSW test        |Ping response    |           |
-|                 |PRU-ICSS         |requires         |from the EVM     |           |
-|                 |Ethernet port    |connection of    |verifies         |           |
-|                 |on EVM.          |configured       |successful       |           |
-|                 |                 |Ethernet port    |execution of     |           |
-|                 |                 |under test to    |example.         |           |
-|                 |                 |external PC on   |                 |           |
-|                 |                 |same subnet.     |                 |           |
-+-----------------+-----------------+-----------------+-----------------+-----------+
-|NIMU_BasicClient |Example          |Same as above.   |See TI NDK user  |AM57x      |
-|Example_evmXXXX  |demonstrates     |Use DHCP by      |guide, section 2 |           |
-|_<core>Example   |creating local   |default.         |Example          |           |
-|project          |servers: TCP, UDP|                 |Applications     |           |
-|                 |, data, null and |                 |for how to test. |           |
-|                 |OOB.             |                 |                 |           |
-+-----------------+-----------------+-----------------+-----------------+-----------+
-|NIMU_emacExample |Example          |Same as above.   |See TI NDK user  |C665x      |
-|Client_evmXXXX   |demonstrates     |Use DHCP by      |guide, section 2 |C667x      |
-|_<core>Example   |creating local   |default.         |Example          |OMAP-L137/8|
-|project          |servers: TCP, UDP|                 |Applications     |           |
-|                 |, data, null and |                 |for how to test. |           |
-|                 |OOB.             |                 |                 |           |
-+-----------------+-----------------+-----------------+-----------------+-----------+
-|NIMU_BasicHello  |Example          |Same as above.   |See TI NDK user  |AM57x      |
-|WorldExample_    |demonstrates UDP |Use DHCP by      |guide, section 2 |           |
-|evmXXXX_<core>   |helloworld echo  |default.         |Example          |           |
-|Exampleproject   |test.            |                 |Applications     |           |
-|                 |                 |                 |for how to test. |           |
-+-----------------+-----------------+-----------------+-----------------+-----------+
-|NIMU_emacExample |Example          |Same as above.   |See TI NDK user  |C665x      |
-|evmXXXX_<core>   |demonstrates UDP |Use DHCP by      |guide, section 2 |C667x      |
-|Exampleproject   |helloworld echo  |default.         |Example          |K2H/K/E/L  |
-|                 |test.            |                 |Applications     |OMAP-L137/8|
-|                 |                 |                 |for how to test. |           |
-+-----------------+-----------------+-----------------+-----------------+-----------+
-|NIMU_DualMac     |Example          |Same as above.   |Run ping from    |AM57x      |
-|Example_evmXXXX  |demonstrates     |Use static IP by |any other PC in  |           |
-|_<core>Example   |using two EMAC   |default.         |the same subnet. |           |
-|project          |ports with       |                 |Ping response    |           |
-|                 |different        |                 |from the EVM     |           |
-|                 |subnets.         |                 |verifies         |           |
-|                 |                 |                 |successful       |           |
-|                 |                 |                 |execution of     |           |
-|                 |                 |                 |example.         |           |
-+-----------------+-----------------+-----------------+-----------------+-----------+
-|NIMU_FtpExample_ |Example          |Same as above.   |From host PC make|AM335x     |
-|evmXXXX_<core>   |demonstrates     |Use static IP by |a FTP connection |AM437x     |
-|Exampleproject   |FTP server with  |default.         |to EVM: ftp <EVM |AM57x      |
-|                 |put and get.     |                 |IP address>.     |K2G        |
-|                 |                 |                 |User:user        |           |
-|                 |                 |                 |Password:password|           |
-|                 |                 |                 |Test put and get |           |
-|                 |                 |                 |command and show |           |
-|                 |                 |                 |the throughput.  |           |
-+-----------------+-----------------+-----------------+-----------------+-----------+
-|NIMU_ICSS        |Example          |Same as above.   |From host PC make|AM335x     |
-|FtpExample_      |demonstrates     |Use static IP by |a FTP connection |AM437x     |
-|evmXXXX_<core>   |FTP server with  |default.         |to EVM: ftp <EVM |AM57x      |
-|Exampleproject   |put and get.     |                 |IP address>.     |K2G        |
-|                 |                 |                 |User:user        |           |
-|                 |                 |                 |Password:password|           |
-|                 |                 |                 |Test put and get |           |
-|                 |                 |                 |command and show |           |
-|                 |                 |                 |the throughput.  |           |
-+-----------------+-----------------+-----------------+-----------------+-----------+
-|NIMU_FtpCpsw_    |Example          |Same as above.   |From host PC make|AM65x      |
-|ExampleApp       |demonstrates     |Use static IP by |a FTP connection |J7         |
-|                 |FTP server with  |default.         |to EVM: ftp <EVM |           |
-|                 |put and get.     |                 |IP address>.     |           |
-|                 |                 |                 |User:user        |           |
-|                 |                 |                 |Password:password|           |
-|                 |                 |                 |Test put and get |           |
-|                 |                 |                 |command and show |           |
-|                 |                 |                 |the throughput.  |           |
-+-----------------+-----------------+-----------------+-----------------+-----------+
-|NIMU_FtpIcssg_   |Example          |Same as above.   |From host PC make|AM65x      |
-|ExampleApp       |demonstrates     |Use static IP by |a FTP connection |           |
-|                 |FTP server with  |default.         |to EVM: ftp <EVM |           |
-|                 |put and get.     |                 |IP address>.     |           |
-|                 |                 |                 |User:user        |           |
-|                 |                 |                 |Password:password|           |
-|                 |                 |                 |Test put and get |           |
-|                 |                 |                 |command and show |           |
-|                 |                 |                 |the throughput.  |           |
-+-----------------+-----------------+-----------------+-----------------+-----------+
+.. list-table::
+   :header-rows: 1
 
+   * - Name
 
-Note: Not all the test examples are supported on all the platforms. The NDK code is hardware agnostic, the NIMU driver however depends on the specific SOC. The NDK code can be ported to different platforms. Some Windows host test applications are available under ndk_3_xx_xx_xx\packages\ti\ndk\winapps.
+     - Description
+
+     - EVM Configuration
+
+     - Expected Results
+
+     - SOC Supported
+
+   * - NIMU_BasicExample_evmXXXX_<core>exampleproject
+
+     - Example demonstrates ping from external source to Gigabit Ethernet port
+       on EVM.
+
+     - icev2AM335x: Jumpers J18 and J19 need to be set properly to select CPSW
+       or ICSS mode. Pin2 and Pin3 need to be connected for ICSS mode and Pin1
+       and Pin2 for CPSW mode. Update \*.cfg file with static IP to test. NIMU
+       for CPSW test requires connection of configured Ethernet port under test
+       to external PC on same subnet.
+
+     - Run ping from any other PC in the same subnet.
+
+       Ping response from the EVM verifies successful execution of example.
+
+     - AM335x
+
+       AM437x
+
+       AM57x
+
+       K2G
+
+   * - NIMU_ICSS_BasicExample_evmXXXX_<core>Exampleproject
+
+     - Example demonstrates ping from external source to PRU-ICSS Ethernet port
+       on EVM.
+
+     - icev2AM335x: Jumpers J18 and J19 need to be set properly to select CPSW
+       or ICSS mode. Pin2 and Pin3 need to be connected for ICSS mode and Pin1
+       and Pin2 for CPSW mode. Update \*.cfg file with static IP to test. NIMU
+       for CPSW test requires connection of configured Ethernet port under test
+       to external PC on same subnet.
+
+     - Run ping from any other PC in the same subnet . Ping response from the
+       EVM verifies successful execution of example.
+
+     - AMIC110
+
+       AM335x
+
+       AM437x
+
+       AM57x
+
+       K2G
+
+   * - NIMU_Cpsw_ExampleApp
+
+     - Example demonstrates ping from external source to Gigabit Ethernet port
+       on EVM.
+
+     - Update \*.cfg file with static IP to test. NIMU for CPSW test requires
+       connection of configured Ethernet port under test to external PC on same
+       subnet.
+
+     - Run ping from any other PC in the same subnet. Ping response from the
+       EVM verifies successful execution of example.
+
+     - AM65x
+
+       J721E
+
+   * - NIMU_IcssgExampleApp
+
+     - Example demonstrates ping from external source to PRU-ICSS Ethernet port
+       on EVM.
+
+     - Update \*.cfg file with static IP to test. NIMU for CPSW test requires
+       connection of configured Ethernet port under test to external PC on same
+       subnet.
+
+     - Run ping from any other PC in the same subnet . Ping response from the
+       EVM verifies successful execution of example.
+
+     - AM65x
+
+   * - NIMU_BasicClientExample_evmXXXX_<core>Exampleproject
+
+     - Example demonstrates creating local servers: TCP, UDP, data, null and
+       OOB.
+
+     - Same as above. Use DHCP by default.
+
+     - See TI NDK user guide, section 2 Example Applications for how to test.
+
+     - AM57x
+
+   * - NIMU_emacExampleClient_evmXXXX_<core>Exampleproject
+
+     - Example demonstrates creating local servers: TCP, UDP, data, null and
+       OOB.
+
+     - Same as above. Use DHCP by default.
+
+     - See TI NDK user guide, section 2 Example Applications for how to test.
+
+     - C665x
+
+       C667x
+
+       OMAP-L137/8
+
+   * - NIMU_BasicHelloWorldExample_evmXXXX_<core>Exampleproject
+
+     - Example demonstrates UDP helloworld echo test.
+
+     - Same as above. Use DHCP by default.
+
+     - See TI NDK user guide, section 2 Example Applications for how to test.
+
+     - AM57x
+
+   * - NIMU_emacExampleevmXXXX_<core>Exampleproject
+
+     - Example demonstrates UDP helloworld echo test.
+
+     - Same as above. Use DHCP by default.
+
+     - See TI NDK user guide, section 2 Example Applications for how to test.
+
+     - C665x
+
+       C667x
+
+       K2H/K/E/L
+
+       OMAP-L137/8
+
+   * - NIMU_DualMacExample_evmXXXX_<core>Exampleproject
+
+     - Example demonstrates using two EMAC ports with different subnets.
+
+     - Same as above. Use DHCP by default.
+
+     - Run ping from any other PC in the same subnet. Ping response from the
+       EVM verifies successful execution of example.
+
+     - AM57x
+
+   * - NIMU_FtpExample_evmXXXX_<core>Exampleproject
+
+     - Example demonstrates FTP server with put and get.
+
+     - Same as above. Use DHCP by default.
+
+     - From host PC make a FTP connection to EVM: ftp <EVM IP address>.
+       User:user Password:password Test put and get command and show the
+       throughput.
+
+     - AM335x
+
+       AM437x
+
+       AM57x
+
+       K2G
+
+   * - NIMU_ICSSFtpExample_evmXXXX_<core>Exampleproject
+
+     - Example demonstrates FTP server with put and get.
+
+     - Same as above. Use static IP by default.
+
+     - From host PC make a FTP connection to EVM: ftp <EVM IP address>.
+       User:user Password:password Test put and get command and show the
+       throughput.
+
+     - AM335x
+
+       AM437x
+
+       AM57x
+
+       K2G
+
+   * - NIMU_FtpCpsw_ExampleApp
+
+     - Example demonstrates FTP server with put and get.
+
+     - Same as above. Use static IP by default.
+
+     - From host PC make a FTP connection to EVM: ftp <EVM IP address>.
+       User:user Password:password Test put and get command and show the
+       throughput.
+
+     - AM65x
+
+       J7
+
+   * - NIMU_FtpIcssg_ExampleApp
+
+     - Example demonstrates FTP server with put and get.
+
+     - Same as above. Use static IP by default.
+
+     - From host PC make a FTP connection to EVM: ftp <EVM IP address>.
+       User:user Password:password Test put and get command and show the
+       throughput.
+
+     - AM65x
+
+.. note:: Not all the test examples are supported on all the platforms. The NDK
+   code is hardware agnostic, the NIMU driver however depends on the specific
+   SOC. The NDK code can be ported to different platforms. Some Windows host
+   test applications are available under ndk_3_xx_xx_xx\packages\ti\ndk\winapps.
 
 
 Running NDK example on ARM core of Keystone II devices
@@ -366,7 +422,7 @@ devices(K2H/L/E/G), the following steps need to be performed.
 -  Rebuild the NDK
 -  Rebuild NIMU driver
 
-| 
+|
 
 CCLink Example
 ---------------
@@ -392,7 +448,7 @@ check packages\ti\transport\ndk\nimu\build\makefile.mk
 -  V5: K2G
 -  V6: OMAP-L137/138
 -  V7: AM65x, J7
-| 
+|
 
 Is there any multicast streams limitation using the NDK?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -461,12 +517,12 @@ How do I enable the jumbo packet support?
 Jumbo frames have packet sizes larger than 1500 bytes. Jumbo frame support can be built into an application by linking with libraries compiled for Jumbo frame support.  Two parts of changes are needed for NDK/NIMU example:
 1. NDK libraries: The NDK libraries would have to be recompiled with the following pre-processor definition added: _INCLUDE_JUMBOFRAME_SUPPORT.
 2. NIMU library: the CPSW switch has to be configured to support jumbo packet size and rebuilt. The coding is SOC specific, V0, V4, V5, V6 and V7 NIMU drivers use structure EMAC_OpenConfigInfo and pass the maximum packet size into max_pkt_size field. V1, V2 and V3 NIMU drivers use structure NETIF_DEVICE and pass the maximum packet size into mtu field.
-Finally, please rebuild the test application with updated NDK and NIMU libraries. A reference example for C6678 is available at: http://processors.wiki.ti.com/index.php/Enabling_Jumbo_Packet_Support_for_C6678. Note the work was implemented on earlier BIOS MCSDK package which was obsolete. 
+Finally, please rebuild the test application with updated NDK and NIMU libraries. A reference example for C6678 is available at: http://processors.wiki.ti.com/index.php/Enabling_Jumbo_Packet_Support_for_C6678. Note the work was implemented on earlier BIOS MCSDK package which was obsolete.
 
 Keystone PA or NDK example doesn’t work in other boot mode than no-boot mode using CCS/JTAG?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When running the program with CCS/JTAG, the default GEL file initializes the SOC. Same initialization, like turning on all the relevant power domains, and configuring the SGMII, Serdes, may not be implemented in other boot modes. First check GEL file under ccs_base\emulation\boards\<boards>\gel, function Global_Default_Setup() function to add the missing initializations into the application. Next, look for any boot mode dependent code in the application.  For example, passPowerUp() is called in no_boot mode to turn on PA, this has to be executed in your application when booting from other boot modes as well.   
+When running the program with CCS/JTAG, the default GEL file initializes the SOC. Same initialization, like turning on all the relevant power domains, and configuring the SGMII, Serdes, may not be implemented in other boot modes. First check GEL file under ccs_base\emulation\boards\<boards>\gel, function Global_Default_Setup() function to add the missing initializations into the application. Next, look for any boot mode dependent code in the application.  For example, passPowerUp() is called in no_boot mode to turn on PA, this has to be executed in your application when booting from other boot modes as well.
 
 
 
@@ -489,5 +545,5 @@ Additional Documentation References
 | Rebuilding NDK Core               | Rebuilding_the_NDK_Core                    |
 +-----------------------------------+--------------------------------------------+
 
-.. _Network Developers Kit FAQ: http://processors.wiki.ti.com/index.php/Network_Developers_Kit_FAQ 
+.. _Network Developers Kit FAQ: http://processors.wiki.ti.com/index.php/Network_Developers_Kit_FAQ
 

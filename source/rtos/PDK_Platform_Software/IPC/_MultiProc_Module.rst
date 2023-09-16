@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/MultiProc_Module 
+.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/MultiProc_Module
 
 .. |mpmCfg_Img1| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
@@ -6,14 +6,14 @@
 .. |mpmCfg_Img2| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-                 
+
 .. |mpmRun_Img1| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_multi_proc_8h.html
 
 .. |mpmRun_Img2| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_multi_proc_8h.html
-                 
-| 
+
+|
 
    +---------------+---------------+
    |     API Reference Links       |
@@ -24,13 +24,13 @@
 Introduction
 ^^^^^^^^^^^^^^
 
-Many IPC modules require the ability to uniquely specify and identify processors in a 
-multi-processor environment. The MultiProc module centralizes processor ID management into one module. 
-Most multi-processor IPC applications require that you configure this module using the MultiProc.setConfig() 
+Many IPC modules require the ability to uniquely specify and identify processors in a
+multi-processor environment. The MultiProc module centralizes processor ID management into one module.
+Most multi-processor IPC applications require that you configure this module using the MultiProc.setConfig()
 function in the *.cfg script. The setConfig() function tells the MultiProc module:
 
 - The specific processor for which this application is being built.
-- The processors in this cluster. A "cluster" is a set of processors within 
+- The processors in this cluster. A "cluster" is a set of processors within
 
 a system that share some memory and for which notification between those processors is needed.
 
@@ -38,13 +38,13 @@ Most systems contain a single cluster. For systems with multiple clusters, you a
 
 Each processor reference by the MultiProc module can be uniquely identified by either its name string or an integer ranging from 0 to MultiProc.maxProcessors - 1.
 
-The following XDCtools configuration statements set up a MultiProc array. 
-At runtime, the "DSP" processor running this configuration gets assigned an ID value of 2. 
-The other processors in the system are "VIDEO" with a processor ID of 0 and "DSS" with a 
+The following XDCtools configuration statements set up a MultiProc array.
+At runtime, the "DSP" processor running this configuration gets assigned an ID value of 2.
+The other processors in the system are "VIDEO" with a processor ID of 0 and "DSS" with a
 processor ID of 1.
 
 ::
-  
+
   /* DSP will get assigned processor id 2. */
   var MultiProc = xdc.useModule('ti.sdo.utils.MultiProc');
   MultiProc.setConfig("DSP", ["VIDEO", "DSS", "DSP"]);
@@ -61,7 +61,7 @@ For example, the following fragment of configuration code requires that the Mult
   /* Specify startup function */
   var Startup = xdc.useModule('xdc.runtime.Startup');
   Startup.firstFxns.$add('&setMyId');
- 
+
   /* Specify MultiProc config; current processor unknown */
   var MultiProc = xdc.useModule('ti.sdo.utils.MultiProc');
   MultiProc.setConfig(null, ["CORE0", "CORE1", "CORE2"]);
@@ -76,7 +76,7 @@ Then, the application code could contain the following setMyID() function to be 
   {
       UInt16 procId;
       Int    status;
-     
+
       //
       // Board specific determination of processor id.
       // Example: GPIO_READ reads register of GPIO pin 5
@@ -87,11 +87,11 @@ Then, the application code could contain the following setMyID() function to be 
       else {
          procId = 1;
       }
-   
+
       MultiProc_setLocalId(procId);
   }
 
-| 
+|
 
 Your application can query the MultiProc table using various runtime APIs.
 At runtime, the MultiProc_getId() call returns the MultiProc ID for any processor name. At config-time, the MultiProc.getIdMeta() call returns the same value. For example:
@@ -100,7 +100,7 @@ At runtime, the MultiProc_getId() call returns the MultiProc ID for any processo
 
   core1ProcId = MultiProc_getId("CORE1");
 
-| 
+|
 
 MultiProc_self() returns the processor ID of the processor running the API. For example:
 
@@ -108,24 +108,6 @@ MultiProc_self() returns the processor ID of the processor running the API. For 
 
   System_printf("My MultiProc id = %d\n", MultiProc_self());
 
-| 
-
-MultiProc_getBaseIdOfCluster() returns the MultiProc ID of the base processor in the cluster to which this processor belongs.
-The MultiProc_getName() API returns that processor name if given the MultiProc ID. For example:
-
-::
-
-  core0Name = MultiProc_getName(0);
-
-| 
-
-MultiProc_getNumProcessors() evaluates to the total number of processors.
-
-::
-
-  System_printf("Number of processors in the system = %d\n",
-                MultiProc_getNumProcessors() );
-              
 |
 
 MultiProc_getBaseIdOfCluster() returns the MultiProc ID of the base processor in the cluster to which this processor belongs.
@@ -134,17 +116,35 @@ The MultiProc_getName() API returns that processor name if given the MultiProc I
 ::
 
   core0Name = MultiProc_getName(0);
-  
-| 
+
+|
 
 MultiProc_getNumProcessors() evaluates to the total number of processors.
 
 ::
-  
+
   System_printf("Number of processors in the system = %d\n",
                 MultiProc_getNumProcessors() );
-                
-| 
+
+|
+
+MultiProc_getBaseIdOfCluster() returns the MultiProc ID of the base processor in the cluster to which this processor belongs.
+The MultiProc_getName() API returns that processor name if given the MultiProc ID. For example:
+
+::
+
+  core0Name = MultiProc_getName(0);
+
+|
+
+MultiProc_getNumProcessors() evaluates to the total number of processors.
+
+::
+
+  System_printf("Number of processors in the system = %d\n",
+                MultiProc_getNumProcessors() );
+
+|
 
 MultiProc_getNumProcsInCluster() returns the number of processors in the cluster to which this processor belongs.
 
@@ -165,24 +165,24 @@ For example, in a system with two 'C6678 devices that each use eight homogeneous
   MultiProc.setConfig(null, ["CORE0", "CORE1", "CORE2",
            "CORE3", "CORE4", "CORE5", "CORE6", "CORE7"]);
 
-| 
+|
 
 You could configure the second 'C6678 device as follows:
 
 ::
 
   var MultiProc = xdc.useModule('ti.sdo.utils.MultiProc');
-  MultiProc.baseIdOfCluster = 8; 
+  MultiProc.baseIdOfCluster = 8;
   MultiProc.numProcessors = 16;
   MultiProc.setConfig(null, ["CORE0", "CORE1", "CORE2",
            "CORE3", "CORE4", "CORE5", "CORE6", "CORE7"]);
 
-| 
+|
 
 Notice that the MultiProc.numProcessors property specifies the total number of processors in the system, while the length of the array passed to setConfig() specifies the number of processors in the cluster. (If you are not using multiple clusters, the numProcessors property is configured automatically.)
 The MultiProc.baseIdOfCluster property is set to the MultiProc ID number you want to use for the first processor in the array for this cluster. For example, if there are 8 processors in a cluster, the baseIdOfCluster property should be 0 for the first cluster and 8 for the second cluster.
 
-|mpmCfg_Img2| The latest version of the MultiProc module configuration documentation 
+|mpmCfg_Img2| The latest version of the MultiProc module configuration documentation
 is available in `MultiProc page <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/index.html#ti/sdo/utils/MultiProc.html>`_
 
 
@@ -198,7 +198,7 @@ Creating a connection between cores in different clusters allows you to call Mes
 
 Once the connection has been created, MessageQ can be used between different processors on different clusters just as it is used between different processors in the same cluster.
 
-|mpmRun_Img2| The latest version of the MultiProc module run-time API documentation is 
+|mpmRun_Img2| The latest version of the MultiProc module run-time API documentation is
 available in `MultiProc run-time API  <http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_multi_proc_8h.html>`_
 
 
@@ -215,17 +215,17 @@ The following example function creates a NameServerMessageQ and TransportXXX to 
       TransportXXX_Handle        tranHandle;
       TransportXXX_Params        tranParams;
       Error_Block eb;
-   
+
       Error_init(&eb);
-     
+
       /*
        *  Note: You must register a MessageQ heap prior to
        *  calling NameServerMessageQ_create().
        */
-   
+
       /* init nsParams */
       NameServerMessageQ_Params_init(&nsParams);
-   
+
       /* create driver to remote processor */
       nsHandle = NameServerMessageQ_create(
           remoteProcId, /* MultiProc ID of proc on 2nd cluster */
@@ -234,10 +234,10 @@ The following example function creates a NameServerMessageQ and TransportXXX to 
         if (nsHandle == NULL) {
           SYS_abort("NameServerMessageQ_create() failed");
       }
-     
+
         /* initialize the transport parameters */
       TransportXXX_Params_init(&tranParams);
-   
+
       tranHandle = TransportXXX_create(
          remoteProcId, /* MultiProc ID of proc on 2nd cluster */
          &tranParams,
@@ -247,6 +247,6 @@ The following example function creates a NameServerMessageQ and TransportXXX to 
       }
   }
 
-| 
+|
 
 

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_GPIO 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_GPIO
 
 Overview
 --------
@@ -135,7 +135,7 @@ Refer SDK Release Note for GPIO support across different EVMs.
 Building GPIO examples
 ----------------------
 
--  Makefile based examples and dependent libraries can be built from the top level or module level GPIO makefile, refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
+-  Makefile based examples and dependent libraries can be built from the top level or module level GPIO makefile, refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details of how to setup the build environment. Once you have setup the build environment, issue the following commands:
 ::
 
    To build and clean libs/apps from top-level makefile:
@@ -161,8 +161,8 @@ FAQ
 
 **Is there any example using GPIO as input**
 
-Please refer to `RTOS Customization: using an external input to trigger an interrupt 
-on AM57x <index_how_to_guides.html#rtos-customization-using-an-external-input-to-trigger-an-interrupt-on-am57x>`_ for details. 
+Please refer to `RTOS Customization: using an external input to trigger an interrupt
+on AM57x <index_how_to_guides.html#rtos-customization-using-an-external-input-to-trigger-an-interrupt-on-am57x>`_ for details.
 
 Additional References
 ---------------------
@@ -179,4 +179,4 @@ Additional References
 |                            | _LLD.pdf                          |
 +----------------------------+-----------------------------------+
 
-| 
+|

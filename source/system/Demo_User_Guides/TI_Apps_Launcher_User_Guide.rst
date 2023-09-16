@@ -13,7 +13,7 @@ TI Apps Launcher is a QT Based Application launcher for TI Platforms. Currently,
 
 - Live Camera
 
-- ARM Analytics 
+- ARM Analytics
 
 - Benchmarks
 
@@ -81,14 +81,14 @@ ____________________________
 .. Image:: /images/industrial-hmi-auto-manual.jpg
    :width: 950
    :height: 900
-   
+
 4. In Manual mode, you can use the **^** and **v** buttons of each motor to control the RPM.
-   
+
 Launching the Live Camera
 _________________________
 
 1. Ensure you have enabled the camera sensors which you have connected to TI AM62x SK. Refer `this <../../linux/Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX.html#enabling-camera-sensors>`__ to know the list of camera modules supported and how to enable the sensor overlays for them.
- 
+
 2. To launch the Live Camera demo, click on the `Live Camera` button on the left panel.
 
 .. Image:: /images/live-camera-button.jpg
@@ -97,7 +97,7 @@ _________________________
 
 .. note:: It takes around 3-5 seconds for Live Camera to start.
 
-3. The Live Camera demo starts streaming the output of the camera connected in the centre window of TI Apps Launcher. The image below is captured using USB Camera. 
+3. The Live Camera demo starts streaming the output of the camera connected in the centre window of TI Apps Launcher. The image below is captured using USB Camera.
 
 .. Image:: /images/live-camera.png
    :width: 950
@@ -106,7 +106,7 @@ _________________________
 Launching the ARM Analytics Demo
 ________________________________
 
-1. AM62x SDK now supports ARM Analytics with pre-existing demos showcasing Object Detection, Face Detection and Image Classification. 
+1. AM62x SDK now supports ARM Analytics with pre-existing demos showcasing Object Detection, Face Detection and Image Classification.
 
 2. To launch the ARM Analytics demo, click on the `ARM Analytics` button on the left panel.
 
@@ -131,7 +131,7 @@ ________________________________
 .. Image:: /images/image-classification.png
    :width: 950
    :height: 900
-   
+
 Launching the Benchmarks Demo
 _____________________________
 
@@ -148,13 +148,13 @@ _____________________________
 .. Image:: /images/benchmark-glmark2.png
    :width: 950
    :height: 400
-   
+
 4. You will see the updated values of FPS & Score metrices getting populated.
 
 .. Image:: /images/benchmark-glmark2-updated.png
    :width: 950
    :height: 400
- 
+
 Launching the GPU Performance Demo
 __________________________________
 
@@ -177,7 +177,7 @@ __________________________________
    :height: 900
 
 4. You will see the updated values of FPS & Score metrices getting populated.
-    
+
 Launching the Seva Store
 ________________________
 
@@ -190,13 +190,13 @@ ________________________
 Launching the Firefox Browser
 _____________________________
 
-1. AM62x SDK now supports Firefox ESR Browser. Click on the `Firefox` button on the left panel. 
+1. AM62x SDK now supports Firefox ESR Browser. Click on the `Firefox` button on the left panel.
 
 .. Image:: /images/firefox-icon.jpg
    :width: 407
    :height: 400
 
-2. Click `Launch` button to launch the Firefox Browser. The Browser launches with `TI Arm-based processors page <https://www.ti.com/microcontrollers-mcus-processors/arm-based-processors/overview.html>`__ as the first tab by default. 
+2. Click `Launch` button to launch the Firefox Browser. The Browser launches with `TI Arm-based processors page <https://www.ti.com/microcontrollers-mcus-processors/arm-based-processors/overview.html>`__ as the first tab by default.
 
 .. Image:: /images/firefox-tab.png
    :width: 950
@@ -220,7 +220,7 @@ _____________________
 .. Image:: /images/3d-demo.png
    :width: 950
    :height: 900
-   
+
 3. You can use mouse buttons or spacebar to pause the 3D Demo and press `ESC` to exit & go back to TI Apps Launcher.
 
 Using the Settings Button
@@ -263,6 +263,6 @@ The source code is available at `TI Apps Launcher <https://github.com/TexasInstr
         $ scp ti-apps-launcher root@<ip-addr-of-device>:/usr/bin/
 
 4. If you have modified the scripts under the ti-apps-launcher scripts directory then copy the same to the device
-   ::           
-        
+   ::
+
         $ scp -r scripts/ root@<ip-addr-of-device>:/opt/ti-apps-launcher/

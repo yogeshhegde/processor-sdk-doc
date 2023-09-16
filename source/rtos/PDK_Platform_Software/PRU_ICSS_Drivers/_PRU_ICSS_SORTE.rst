@@ -47,7 +47,7 @@ compoments which can be found at:
 
 **<PDK>/packages/ti/drv/pruss/example/apps/sorte/firmware/src/slave/README.txt**
 
-| 
+|
 
 Building the Examples
 =====================
@@ -73,7 +73,7 @@ This will make the firmware binaries which will be located in:
 
 **<PDK>/packages/ti/drv/pruss/example/apps/sorte/firmware/bin/<BOARD>**
 
-| 
+|
 
 Compiling the PRUSS SORTE Application
 -------------------------------------
@@ -90,7 +90,7 @@ which will be located in:
 
 **<PDK>/packages/ti/drv/pruss/example/apps/sorte/master<BOARD>**
 
-| 
+|
 
 Supported EVMs
 ==============
@@ -112,7 +112,7 @@ ports to be used:
 | iceK2G       | PRU-ICSS instance 2   | J8A       | J8B       |
 +--------------+-----------------------+-----------+-----------+
 
-| 
+|
 
 Running the PRUSS SORTE Example
 ===============================
@@ -127,7 +127,7 @@ follows:
 Connect master Port0 to slave1 Port0. Connect slave1 Port1 to slave2
 Port0.
 
-After loading the application binaries from CCS, run the master first, 
+After loading the application binaries from CCS, run the master first,
 then run the slave2, finally run the slave1 with Port0 connecting to the
 the master Port 0.
 
@@ -156,9 +156,9 @@ print will be displayed on UART console:
 
 **All tests have passed**
 
-| 
+|
 
-| 
+|
 
 Additional Reference
 ====================
@@ -173,6 +173,5 @@ Additional Reference
 | Reference Design                  |                                   |
 +-----------------------------------+-----------------------------------+
 
-| 
+|
 
-.. raw:: html

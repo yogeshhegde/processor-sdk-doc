@@ -49,7 +49,7 @@ prerequisites are met:
    .. Image:: /images/Debug-config-2.png
 
 5. Click the "Browse..." button for "Remote Absolute File Path for C/C++
-   Application".  Navgate to the executable file on the remote file system.  
+   Application".  Navgate to the executable file on the remote file system. 
    For this example, the executable file is found at "/usr/bin/helloworld".
 
    .. Image:: /images/Auto-debug-config-main-tab.png
@@ -61,7 +61,7 @@ Click Browse next to "GDB debugger" and browse to the GDB executable.
 GDB should be located at:
 <sdk-path>/linux-devkit/sysroot/i686-arago-linux/usr/bin/arm-linux-gnueabihf-gdb
 
-| 
+|
 | Click browse next to "GDB command file" and browse to the .gdbinit
   file in the SDK install directory.
 | GDB init file should be located at : <sdk-path>/.gdbinit
@@ -71,7 +71,7 @@ GDB should be located at:
 
   .. Image:: /images/Show_Hidden_Files.png
 
-| 
+|
 
 The .gdbinit file is used by GDB to locate source files and library
 files on the target. The .gdbinit file is created when the SDK
@@ -79,7 +79,7 @@ environment script runs. Here is an example of a .gdbinit file.
 
 .. Image:: /images/Gdbinit.png
 
-| 
+|
 
 Click Ok button in the browse window and then click the Close button in
 the Debug Configuration window.
@@ -108,7 +108,7 @@ You are now ready to debug the application!
 
 3. To toggle a breakpoint, highlight the line of code in the source code
    window. Then click the Run -> Toggle Breakpoint menu item.
- 
+
 6. Use the debugger "Step Over" and "Step Into" icons to step through
    the source code.
 
@@ -158,6 +158,6 @@ Once setup, you can follow these steps to terminate gdbserver:
    will open a "Send a Kill Signal" dialog box.  Click the Kill button.
 
    .. Image:: /images/Shell-processes.png
-   
+
    .. Image:: /images/Kill-gdbserver.png
 

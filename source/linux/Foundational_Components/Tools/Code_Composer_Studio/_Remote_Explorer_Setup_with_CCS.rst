@@ -153,7 +153,7 @@ steps:
 
 .. Image:: /images/Sitara-Linux-CCS-target-view.png
 
-| 
+|
 
 .. rubric:: Configuring with a Proxy
    :name: configuring-with-a-proxy
@@ -182,7 +182,7 @@ To bypass your proxy follow the below steps:
 
 .. Image:: /images/X-network-Connections-bottom.jpeg
 
-| 
+|
 
 .. rubric:: Connecting to the Target
    :name: connecting-to-the-target
@@ -224,7 +224,7 @@ exported to the Ubuntu host overwriting the existing public key.
 
 .. Image:: /images/Nasty-Warning-2.PNG
 
-| 
+|
 
 At this point, all Remote System Explorer functions will be functional.
 
@@ -239,7 +239,7 @@ rename or delete files and folders.
 
 .. Image:: /images/Expand-root-small.jpeg
 
-| 
+|
 
 .. rubric:: SSH Terminals
    :name: ssh-terminals
@@ -254,7 +254,7 @@ To open an SSH Terminal view
 
 .. Image:: /images/MyTerminalView-small.jpeg
 
-| 
+|
 
 .. rubric:: Next Steps
    :name: next-steps-ccs-remote-setup
@@ -270,5 +270,5 @@ Please refer to `Debugging using GDB with Code Composer
 Studio <../../Foundational_Components/Tools/Code_Composer_Studio.html#gdb-setup-with-ccs>`__ for more
 information.
 
-| 
+|
 

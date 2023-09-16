@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Gravity_Simulator_Demo 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Gravity_Simulator_Demo
 
 Overview
 ========
@@ -129,6 +129,4 @@ Physics algorithm behind gravit, Barnes-hut:
 
 Bresenham's line algorithm:
 `https://en.wikipedia.org/wiki/Bresenham's_line_algorithm <https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm>`__
-
-.. raw:: html
 

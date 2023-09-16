@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_TSIP 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_TSIP
 
 Overview
 --------
@@ -89,5 +89,5 @@ Additional References
 |                                   | pdf                                     |
 +-----------------------------------+-----------------------------------------+
 
-| 
+|
 

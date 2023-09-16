@@ -42,4 +42,4 @@ one of the kernel boot parameters for non-Weston application and at
     name=HDMI-A-1
     mode=1024x768
 
-| 
+|

@@ -24,7 +24,7 @@ Hardware Setup Steps
 
 .. note:: The EVM board is sensitive to electrostatic discharges (ESD). Use a grounding strap or other device to prevent damaging the board. Be sure to connect communication cables before applying power to any equipment.
 
-| 
+|
 
 **1. Attach the Ethernet cable**
 Using the Ethernet cable supplied, connect one end of the cable to the
@@ -43,7 +43,7 @@ boot device settings.
 .. image:: ../images/TMD6657LSW3.png
    :scale: 60%
 
-| 
+|
 
 **4. Verify boot mode in the SW3 and SW5 settings**
 The boot mode settings below enable NOR boot by loading the boot loader
@@ -88,7 +88,7 @@ Connect the power cable to the EVM power jack on the board. To be ESD
 safe, plug in the other end of the power cable only after you have
 connected the power cord to the board. Then turn on the board.
 
-| 
+|
 
 Boot Mode Dip Switch Settings
 -----------------------------

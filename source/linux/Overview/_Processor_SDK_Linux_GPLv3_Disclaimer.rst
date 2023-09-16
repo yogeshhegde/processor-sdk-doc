@@ -24,7 +24,7 @@ The gplv3-notice script will list all Processor SDK Linux installed
 packages as shipped.  If you installed additional GPLv3 components this
 script may not identify them until the next target reboot.  
 
-| 
+|
 
 .. rubric:: How to Remove Target side GPLv3 Components
    :name: how-to-remove-target-side-gplv3-components

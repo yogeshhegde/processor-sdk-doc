@@ -25,7 +25,7 @@ the IO-Link master demo application to provide an interface between the
 IO-Link master stack and the driver.
 
 .. note::
-   
+
    The stack interface layer should be ported to integrate a new master
    stack.
 
@@ -39,7 +39,7 @@ personalities. Processor SDK package includes IOLINK Firmware support.
 Refer `IOLINK Frame Handler FW <index_pru_icss_fw.html#pru-icss-iolink>`__ for
 additional details.
 
-| 
+|
 
 User Interface
 --------------
@@ -60,7 +60,7 @@ details.
 Once the board specific configuration is complete driver API IOLINK_init()
 can be called to initialize driver
 
-.. rubric::  **IOLINK Configuration Structure** 
+.. rubric::  **IOLINK Configuration Structure**
    :name: iolink-configuration-structure
 
 IOLINK_soc.c file binds driver with hardware attributes on the board
@@ -119,10 +119,10 @@ Refer Release Note for IOLINK support across different EVMs
 +-----------------------+-----------------------+------------------------------------------------+---------------+------------+
 
 .. note::
-   
+
    IOLINK demo example application uses 4 Autosen sensor devices and 4
    Autosen actuator devices. It pairs one sensor with one actuator
-   when the devices are connected. If a sensor detects an object, it 
+   when the devices are connected. If a sensor detects an object, it
    controls the paired acutator to turn on the display on the actuator.
    If the sensor does not detect an object, it controls the paired
    actuator to turn off the display.
@@ -134,7 +134,7 @@ Building IOLINK example
    the top level or module level IOLINK makefile, refer to the
    `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__
    for details of how to setup the build environment. Once you have
-   setup the build environment, issue the following commands:  
+   setup the build environment, issue the following commands:
 ::
 
    To build and clean libs/apps from top-level makefile:
@@ -161,4 +161,4 @@ Additional References
 |                       | \\drv\\iolink\\docs\\ReleaseNotes_IOLINK_LLD.pdf |
 +-----------------------+--------------------------------------------------+
 
-| 
+|

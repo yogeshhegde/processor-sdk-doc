@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PROFILING 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PROFILING
 
 Overview
 --------
@@ -84,7 +84,7 @@ Task hooks for Task switches.
 
 ::
 
-    -gdwarf-3 -finstrument-functions 
+    -gdwarf-3 -finstrument-functions
 
 2. For TI compiler add
 
@@ -113,7 +113,7 @@ Browser).
 to "elemlog" and length to "log_idx*4". (It is preferred to save it into
 ti .dat format.)
 
-| 
+|
 
 .. rubric:: Profiling Post-processing
    :name: profiling-post-processing
@@ -207,14 +207,14 @@ is an additional offset you would like to subtract.)
 exclusive(exc): excluding the cycles of its child functions.)
 
 .. note::
-   
+
    Remaining functions on the stack at last timestamp will be considered
    closed.
-   
+
    BIOS functions are not accounted by instrumentation and will not appear
    in the report.
-   
-   Functions which are optimized out will not appear in the report eg.
-   empty/single-line functions, ti_sysbios_\* functions etc.
 
-| 
+   Functions which are optimized out will not appear in the report eg.
+   empty/single-line functions, ``ti_sysbios_*`` functions etc.
+
+|

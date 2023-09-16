@@ -7,7 +7,7 @@ Processor SDK Documentation in Sphinx
 
     $ sudo apt-get install python-sphinx
 
-OR use the following command if using Ubuntu > 18.04
+OR use the following command for a known working config as of 2023/09/05:
 
     # python3 -m pip install -r requirements.txt
 

@@ -37,7 +37,7 @@ to the following link for further information on all the basic to
 download, install, run, and debug QT applications: `Hands on with
 Qt <Examples_and_Demos_Sub-system_Demos.html#hands-on-with-qt>`__
 
-| 
+|
 
 .. rubric:: Importing Existing C/C++ Projects
    :name: importing-existing-cc-projects
@@ -162,16 +162,16 @@ build a simple **Hello World** application for the target.
 
    .. Image:: /images/Code_Composer_Studio_Compiling_Project.png
 
-#. 
+#.
 
    -  **NOTE:** You can use **Project -> Build All** to build all of the
       projects in the *Project Explorer*
 
-| 
+|
 | Now that you have built your application you are ready to run and or
   debug the executable.
 
-| 
+|
 
 .. rubric:: Next Steps
    :name: next-steps-ccs-compiling
@@ -189,7 +189,7 @@ file system:
    the target evm using `Remote System
    Explorer <../../Foundational_Components/Tools/Code_Composer_Studio.html#remote-explorer-setup-with-ccs>`__
 
-| 
+|
 
 .. rubric:: Remote System Explorer
    :name: remote-system-explorer-ccs-compiling
@@ -203,7 +203,7 @@ System
 Explorer <../../Foundational_Components/Tools/Code_Composer_Studio.html#remote-explorer-setup-with-ccs>`__ to
 learn how to use this feature.
 
-| 
+|
 
 .. rubric:: Debugging Source Code using Code Composer Studio
    :name: debugging-source-code-using-code-composer-studio-ccs-compiling

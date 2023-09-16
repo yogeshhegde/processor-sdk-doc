@@ -37,16 +37,16 @@ Configuration tool:
 
 $ make menuconfig
 
-| 
+|
 | Select Device Drivers from the main menu.
 
 ::
 
       ...
       ...
-      Remoteproc drivers  --->                                                                                      
-      Rpmsg drivers  ----                                                                                            
-      SOC (System On Chip) specific Drivers  --->                                                                    
+      Remoteproc drivers  --->
+      Rpmsg drivers  ----
+      SOC (System On Chip) specific Drivers  --->
 
 Select SOC (System On Chip) specific Drivers
 
@@ -57,14 +57,14 @@ Select SOC (System On Chip) specific Drivers
 
 ::
 
-         <*>   Keystone Queue Manager Sub System                                                                             
+         <*>   Keystone Queue Manager Sub System
          <*>   TI Keystone Navigator Packet DMA support
-       
+
 
 Select Keystone Queue Manager Sub System and TI Keystone Navigator
 Packet DMA support from the TI SoC drivers support menu
 
-| 
+|
 
 .. rubric:: Device Tree Documentation
    :name: device-tree-documentation
@@ -77,7 +77,7 @@ bindings documentation
 -  knav qmss:
    Documentation/devicetree/bindings/soc/ti/keystone-navigator-qmss.txt
 
-| 
+|
 
 .. rubric:: Network Driver
    :name: network-driver
@@ -133,7 +133,7 @@ optional based on the requirement to support hw acceleration
 capabilities provided by the hardware. Core driver is located at
 drivers/net/ethernet/ti/netcp\_core.c
 
-| 
+|
 
 .. rubric:: Gigabit Ethernet Switching System
    :name: gigabit-ethernet-switching-system
@@ -183,7 +183,7 @@ An example is shown below for K2HK SoC
                 };
                    };
 
-| 
+|
 
 AS we can see in the above, the link-interface attribute must be
 appropriately changed to decide the mode of operation. The
@@ -207,7 +207,7 @@ EVM going to edge connectors such as AMC
                               };
                     };
 
-| 
+|
 
 .. note::
 
@@ -536,9 +536,9 @@ removed
     +                        efuse-mac = <0>;
     +                        netcp-gbe = <&gbe7>;
     +                };
-            }; 
+            };
 
-| 
+|
 
 .. rubric:: RGMII
    :name: rgmii
@@ -551,7 +551,7 @@ Please see kernel source tree DT documentation at
 Documentation/devicetree/bindings/net/keystone-netcp.txt values to be
 used
 
-| 
+|
 
 .. rubric:: Common Platform Time Sync (CPTS)
    :name: common-platform-time-sync-cpts
@@ -571,7 +571,7 @@ timestamp those packets.
 
 The CPTS properties are grouped under "cpts" sub-node.
 For DT documentation, please refer to Documentation/devicetree/bindings/net/keystone-netcp.txt in kernel source tree.
-| 
+|
 
 **2.** Configurations during driver initialization
 
@@ -588,7 +588,7 @@ up:
 -  uni-cast enabled
 -  ttl\_nonzero enabled
 
-| 
+|
 | **3.** Configurations during runtime (Sysfs)
 
 Currently the following sysfs are available for cpts related runtime
@@ -622,7 +622,7 @@ configuration
 -  Read Only
 -  shows the raw values of the cpsw port ts register configurations
 
-| 
+|
 
 ::
 
@@ -662,7 +662,7 @@ configuration
         ts_ctl, ts_seq_ltype, ts_vlan_ltype, ts_ctl_ltype2 and ts_ctl2
 
 |
- 
+
 Note 1: Although the above configurations are done through command
 line, they can also be done by using standard Linux
 open()/read()/write() file function calls.
@@ -714,7 +714,7 @@ nsec = ((cycles \* M) >> S) / D
   driver) to keep track of the overflows and hence the correct time
   passed.
 
-| 
+|
 | Note 2: The multiplier (M) shift (S) and divisor (D) depends on the
   rftclk frequency (F). Ideally, "good" values of M/S/D should be chosen
   so that when converting counter value when it reaches the rftclk
@@ -734,7 +734,7 @@ M / (2^S \* D) = 5000 / (2^10 \* 3)
 hence
 
 M = 5000, S = 10, D = 3
-| 
+|
 
 Note 3: cpts driver keeps a table of M/S/D for some common frequencies
 
@@ -760,7 +760,7 @@ Note 3: cpts driver keeps a table of M/S/D for some common frequencies
 | 750000000       | 4096    | 10      | 3       |
 +-----------------+---------+---------+---------+
 
-| 
+|
 
 Note 4: At start up, cpts driver selects or calculates the M/S/D for the
 rftclk frequency according to the following
@@ -787,12 +787,12 @@ d. call clocks\_calc\_mult\_shift( ) to calculate the M & S and set D = 1
   600000000 and 500000000 Hz respectively and "good" M/S/D exist for
   these rftclk frequencies.
 
-| 
+|
 | Note 6: Instead of an internal rftclk, cpts can be provided with an
   external rftclk. Also custom M/S/D can be configured in devicetree
   bindings.
 
-| 
+|
 | **2.** Timestamping in Tx
 
 In the tx direction during runtime, the driver
@@ -809,7 +809,7 @@ In the tx direction during runtime, the driver
 -  returns the buffer to the app which submits the packet for
    transmission through the socket's error queue
 
-| 
+|
 | **3.** Timestamping in Rx
 
 In the rx direction during runtime, the driver
@@ -823,9 +823,9 @@ In the rx direction during runtime, the driver
 -  packs the retrieved timestamp with received packet in a buffer
 -  pass the packet buffer onwards
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Using CPTS Timestamping
    :name: using-cpts-timestamping
@@ -833,7 +833,7 @@ In the rx direction during runtime, the driver
 CPTS user applications use standard Linux APIs to send and receive PTP
 packets, and to adjust CPTS clock.
 
-| 
+|
 | **1.** Send/receive L4 PTP messages (Annex D and E)
 
 User application sends and receives L4 PTP messages by calling Linux
@@ -855,7 +855,7 @@ standard socket API functions
          g. sendto to send PTP packets
          h. recvmsg( ... MSG_ERRQUEUE ...) to receive timestamped packets
 
-| 
+|
 | **2.** Send/receive L2 PTP messages (Annex F)
 
 User application sends and receives PTP messages over Ethernet by
@@ -874,7 +874,7 @@ opening Linux RAW sockets.
 In this case, PTP messages are encapsulated directly in Ethernet frames
 with EtherType 0x88f7.
 
-| 
+|
 | **3.** Send/receive PTP messages in VLAN
 
 When sending L2/L4 PTP messages over VLAN, **step b** in above example
@@ -950,7 +950,7 @@ interface.
          ioctl(sock, SIOCSHWTSTAMP, &hwtstamp);
          ...
 
-| 
+|
 | **4.** Clock Adjustments
 
 User application needs to inform the CPTS driver of any time or
@@ -1041,7 +1041,7 @@ NOT the current frequency.
             puts("set time okay");
          }
 
-| 
+|
 
 .. rubric:: Testing CPTS/PTP
    :name: testing-cptsptp
@@ -1091,7 +1091,7 @@ The adjusted time can be checked by cross compiling the testptp
 application from the linux kernel: Documentation/ptp/testptp.c. ( e.g)
 ./testptp -g
 
-| 
+|
 
 -  Master Side Examples
 
@@ -1110,7 +1110,7 @@ timestamping**.
 
     ./ptp4l -E -2 -S -i eth0 -l 7 -m -q -p -f config
 
-| 
+|
 
 .. rubric:: Who Is Timestamping What?
    :name: who-is-timestamping-what
@@ -1145,7 +1145,7 @@ line from the device tree
 
       cpts_reg_ofs = <0xd00>;
 
-| 
+|
 
 .. rubric:: Pulse-Per-Second (PPS)
    :name: pulse-per-second-pps
@@ -1161,7 +1161,7 @@ into the event FIFO when TS\_COMP is asserted. The polarity of the
 TS\_COMP output is determined by the ts\_polarity bit. The output is
 asserted low when the polarity bit is low.
 
-| 
+|
 | **1.** CPTS Driver PPS Initialization
 
 -  The driver enables its pps support capability when it registers
@@ -1172,7 +1172,7 @@ asserted low when the polarity bit is low.
    Doing so allows user applications to manage the PPS source by using
    Linux standard API.
 
-| 
+|
 | **2.** CPTS Driver PPS Operation
 
 -  Upon CPTS pps being enabled by user application, the driver programs
@@ -1189,7 +1189,7 @@ asserted low when the polarity bit is low.
 -  The event is also reported to the Linux PTP layer which in turn
    reports to the PPS layer.
 
-| 
+|
 | **3.** PPS User Application
 
 -  Enabling CPTS PPS by using standard Linux ioctl PTP\_ENABLE\_PPS
@@ -1215,7 +1215,7 @@ asserted low when the polarity bit is low.
          else
               puts("pps for system time disable okay");
 
-| 
+|
 
 -  Reading PPS last timstamp by using standard Linux ioctl PPS\_FETCH
 
@@ -1238,7 +1238,7 @@ asserted low when the polarity bit is low.
 
          ...
 
-| 
+|
 
 -  Enabling PPS from sysfs
 
@@ -1250,7 +1250,7 @@ asserted low when the polarity bit is low.
           1
           $ echo 1 > /sys/devices/soc.0/2090000.netcp/ptp/ptp0/pps_enable
 
-| 
+|
 
 -  Sysfs Provided by Linux PPS Layer (see
    `Reference <#cpts-references>`__ v for more details)
@@ -1278,7 +1278,7 @@ asserted low when the polarity bit is low.
 
           where before the "#" is the timestamp in seconds; after it is the sequence number.
 
-| 
+|
 
 **4.** Effects of Clock Adjustments on PPS
 
@@ -1370,7 +1370,7 @@ align the pulse with the 1 second boundary after the shift.
       .
       .
 
-| 
+|
 
 ::
 
@@ -1522,7 +1522,7 @@ can be accumulated.
       .
       .
 
-| 
+|
 
 ::
 
@@ -1549,7 +1549,7 @@ can be accumulated.
       .
       .
 
-| 
+|
 
 ::
 
@@ -1577,7 +1577,7 @@ can be accumulated.
       .
       .
 
-| 
+|
 
 -  Setting Time
 
@@ -1753,11 +1753,11 @@ cause hardware time stamp push events to be loaded into the event FIFO.
 The CPTS driver supports the reporting of such timestamps by using the
 PTP EXTTS feature of the Linux PTP infrastructure.
 
-| 
+|
 | User applications can request such timestamps through ioctl() and
   read() function calls.
 
-| 
+|
 
 ::
 
@@ -1798,7 +1798,7 @@ PTP EXTTS feature of the Linux PTP infrastructure.
            extts_request.flags = 0;
            ioctl(fd, PTP_EXTTS_REQUEST, &extts_request);
 
-| 
+|
 
 **Testing HW\_TS\_PUSH on Keystone2 (K2HK) EVM**
 
@@ -1821,7 +1821,7 @@ To use the TS\_COMP\_OUT signal to test HW\_TS\_PUSH:
 #. Under Linux prompt, issue "./testptp -e 10" to read the HW4\_TS\_PUSH
    timestamps.
 
-| 
+|
 
 .. rubric:: CPTS References
    :name: cpts-references
@@ -1841,7 +1841,7 @@ PPS <http://www.mjmwired.net/kernel/Documentation/pps/pps.txt>`__
 
 vi. `Linux pps-tools <https://github.com/ago/pps-tools>`__
 
-| 
+|
 
 .. rubric:: Switch/ALE configuration commands
    :name: switchale-configuration-commands
@@ -2021,7 +2021,7 @@ Delete the 100-th entry in the table
 
     $ echo "100:"  > /sys/class/net/eth0/device/ale_table
 
-| 
+|
 
 .. rubric:: Modifying ALE Controls
    :name: modifying-ale-controls
@@ -2038,7 +2038,7 @@ Delete the 100-th entry in the table
        • vlan_nolearn : set to 1 to prevent VLAN id from being learned along with source address.
        • no_port_vlan : set to 1 to allow processing of packets received with VLAN ID=0; set to 0 to replace received packets with VLAN ID=0 to the VLAN set in the port’s default VLAN register.
        • oui_deny : 0/1 (refer to [1] for a description of this bit)
-       • bypass: set to 1 to enable ALE bypass. In this mode the CPSW will not act as switch on receive; instead it will forward all received traffic from external ports to the host port. Set 
+       • bypass: set to 1 to enable ALE bypass. In this mode the CPSW will not act as switch on receive; instead it will forward all received traffic from external ports to the host port. Set
          to 0 for normal (switched) operations.
        • rate_limit_tx: set to 1 for rate limiting to apply to transmit direction, set to 0 for receive direction. Refer to [1] for a description of this bit.
        • vlan_aware: set to 1 to force the ALE into VLAN aware mode
@@ -2091,7 +2091,7 @@ enable flow control on port 2, use the command
 
     $ echo "port2_flow_control_en=1" > /sys/devices/platform/soc/2620110.netcp/gbe_sw/flow_control
 
-| 
+|
 
 .. rubric:: Resetting CPSW Statistics
    :name: resetting-cpsw-statistics
@@ -2265,9 +2265,9 @@ To set to Port 1 to “Drop unknown VLAN”:
 
 ::
 
-    GBE Switch Version 1.3 (1) Identification value 0x4ed1 
-    root@k2e-evm:~# 
-    root@k2e-evm:~# 
+    GBE Switch Version 1.3 (1) Identification value 0x4ed1
+    root@k2e-evm:~#
+    root@k2e-evm:~#
     root@k2e-evm:~# cat /sys/class/net/eth0/device/gbe_sw/control
     fifo_loopback=0
     vlan_aware=0
@@ -2278,14 +2278,14 @@ To set to Port 1 to “Drop unknown VLAN”:
     p3_pass_pri_tagged=0
     p4_pass_pri_tagged=0
 
-    root@k2e-evm:~# 
+    root@k2e-evm:~#
     root@k2e-evm:~# cat /sys/class/net/eth0/device/gbe_sw/flow_control
     port0_flow_control_en=1
     port1_flow_control_en=0
     port2_flow_control_en=0
     port3_flow_control_en=0
     port4_flow_control_en=0
-    root@k2e-evm:~# 
+    root@k2e-evm:~#
     root@k2e-evm:~# cat /sys/class/net/eth0/device/gbe_sw/priority_type
     escalate_pri_load_val=0
     port0_pri_type_escalate=0
@@ -2293,15 +2293,15 @@ To set to Port 1 to “Drop unknown VLAN”:
     port2_pri_type_escalate=0
     port3_pri_type_escalate=0
     port4_pri_type_escalate=0
-     
-    root@k2e-evm:~# 
+
+    root@k2e-evm:~#
     root@k2e-evm:~# ls -l /sys/class/net/eth0/device/gbe_sw/port_tx_pri_map/
     -rw-r--r--    1 root     root          4096 Jan  5 13:57 1
     -rw-r--r--    1 root     root          4096 Jan  5 13:57 2
     -rw-r--r--    1 root     root          4096 Jan  5 13:57 3
     -rw-r--r--    1 root     root          4096 Jan  5 13:57 4
 
-    root@k2e-evm:~# 
+    root@k2e-evm:~#
     root@k2e-evm:~# cat /sys/class/net/eth0/device/gbe_sw/port_tx_pri_map/1
     port_tx_pri_0=1
     port_tx_pri_1=0
@@ -2311,8 +2311,8 @@ To set to Port 1 to “Drop unknown VLAN”:
     port_tx_pri_5=2
     port_tx_pri_6=3
     port_tx_pri_7=3
-      
-    root@k2e-evm:~# 
+
+    root@k2e-evm:~#
     root@k2e-evm:~# cat /sys/class/net/eth0/device/gbe_sw/port_tx_pri_map/2
     port_tx_pri_0=1
     port_tx_pri_1=0
@@ -2322,13 +2322,13 @@ To set to Port 1 to “Drop unknown VLAN”:
     port_tx_pri_5=2
     port_tx_pri_6=3
     port_tx_pri_7=3
-     
-    root@k2e-evm:~# 
+
+    root@k2e-evm:~#
     root@k2e-evm:~# cat /sys/class/net/eth0/device/gbe_sw/port_tx_pri_map/3
-    root@k2e-evm:~# 
+    root@k2e-evm:~#
     root@k2e-evm:~# cat /sys/class/net/eth0/device/gbe_sw/port_tx_pri_map/3
 
-    root@k2e-evm:~# 
+    root@k2e-evm:~#
     root@k2e-evm:~# ls -l /sys/class/net/eth0/device/gbe_sw/port_vlan/
     -rw-r--r--    1 root     root          4096 Jan  5 14:10 0
     -rw-r--r--    1 root     root          4096 Jan  5 14:10 1
@@ -2336,7 +2336,7 @@ To set to Port 1 to “Drop unknown VLAN”:
     -rw-r--r--    1 root     root          4096 Jan  5 14:10 3
     -rw-r--r--    1 root     root          4096 Jan  5 14:10 4
 
-    root@k2e-evm:~# 
+    root@k2e-evm:~#
     root@k2e-evm:~# cat  /sys/class/net/eth0/device/gbe_sw/port_vlan/0
     port_vlan_id=0
     port_cfi=0
@@ -2344,7 +2344,7 @@ To set to Port 1 to “Drop unknown VLAN”:
 
 ::
 
-    root@k2e-evm:~# 
+    root@k2e-evm:~#
     root@k2e-evm:~# cat  /sys/class/net/eth0/device/gbe_sw/port_vlan/1
     port_vlan_id=0
     port_cfi=0
@@ -2352,7 +2352,7 @@ To set to Port 1 to “Drop unknown VLAN”:
 
 ::
 
-    root@k2e-evm:~# 
+    root@k2e-evm:~#
     root@k2e-evm:~# cat  /sys/class/net/eth0/device/gbe_sw/port_vlan/2
     port_vlan_id=0
     port_cfi=0
@@ -2360,13 +2360,13 @@ To set to Port 1 to “Drop unknown VLAN”:
 
 ::
 
-    root@k2e-evm:~# 
+    root@k2e-evm:~#
     root@k2e-evm:~# cat  /sys/class/net/eth0/device/gbe_sw/port_vlan/3
-    root@k2e-evm:~# 
-    root@k2e-evm:~# 
+    root@k2e-evm:~#
+    root@k2e-evm:~#
     root@k2e-evm:~# cat  /sys/class/net/eth0/device/gbe_sw/port_vlan/4
-    root@k2e-evm:~# 
-    root@k2e-evm:~# 
+    root@k2e-evm:~#
+    root@k2e-evm:~#
     root@k2e-evm:~# cat /sys/class/net/eth0/device/ale_control
     version=(ALE_ID=0x0029) Rev 1.3
     enable=1
@@ -2614,7 +2614,7 @@ To set to Port 1 to “Drop unknown VLAN”:
     249: 04 7000e89d 877c862f
     [0..1023]: 92 entries
 
-| 
+|
 
 .. rubric:: Using Accumulated queues for Network interfaces
    :name: using-accumulated-queues-for-network-interfaces
@@ -2623,7 +2623,7 @@ Accumulated queues allows interrupt pacing for rx queue interrupts.
 Accumulated queue range is defined in DTS under the queue-pools. See
 keystone-<SoC>-netcp.dtsi
 
-| 
+|
 
 ::
 
@@ -2637,19 +2637,19 @@ keystone-<SoC>-netcp.dtsi
                            };
                    };
 
-| 
+|
 | To use Accumulated queue for network interface rx side, replace
   following entries in DTS device tree bindings for the interface. Make
   sure the queue numbers are contiguous.
 
-| 
+|
 
 ::
 
-    netcp: netcp@2000000 { 
-     
+    netcp: netcp@2000000 {
+
     // other bindings
-      
+
            netcp-interfaces {
                    interface-0 {
                            rx-channel = "netrx0";
@@ -2701,7 +2701,7 @@ A workaround that helps to avoid the issue is to modify the Gigabit Ethernet int
 link type to **SGMII\_LINK\_MAC\_PHY\_NO\_MDIO (4)** and to remove the phy-handle in the
 gbe0 and gbe1 nodes as follows in the default K2HK netcp dtsi file.
 
-| 
+|
 
 ::
 
@@ -2728,7 +2728,7 @@ gbe0 and gbe1 nodes as follows in the default K2HK netcp dtsi file.
                                       };
                               };
 
-| 
+|
 
 .. rubric:: Hardware Fix
    :name: hardware-fix

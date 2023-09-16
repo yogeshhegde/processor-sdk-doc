@@ -96,7 +96,7 @@ REG\_PR\_OLD\_COUNT per your system need.
 -  HDMI EDID support
 -  DRM Atomic modeset support since Linux 4.9 and in ti2016.04
 
-.. rubric:: 
+.. rubric::
    **tilcdc Unsupported Features:**
    :name: tilcdc-unsupported-features
 
@@ -104,7 +104,7 @@ REG\_PR\_OLD\_COUNT per your system need.
 -  1920x1080@60 is not supported due to pixel clock requirements being
    too high for the AM335x hardware.
 
-| 
+|
 
 .. rubric:: **Configuring into kernel build:**
    :name: configuring-into-kernel-build
@@ -127,11 +127,11 @@ If using modules, it is enough to load tilcdc module, and tda998x module
 if using beaglebone-black. It does not matter in which order the modules
 are loaded.
 
-| 
+|
 
-| 
+|
 
-.. rubric:: 
+.. rubric::
    **Required Device Tree Nodes:**
    :name: required-device-tree-nodes
 
@@ -157,7 +157,7 @@ Example Device Tree nodes to enable HDMI with DRM on BeagleBone Black:
                 remote-endpoint = <&hdmi_0>;
             };
         };
-    }; 
+    };
     &i2c0 {
         tda19988: tda19988 {
             compatible = "nxp,tda998x";
@@ -176,7 +176,7 @@ Example Device Tree nodes to enable HDMI with DRM on BeagleBone Black:
         };
     };
 
-.. rubric:: 
+.. rubric::
    **Examples for using DRM:**
    :name: examples-for-using-drm
 

@@ -20,13 +20,13 @@ Smart Reflex
 
 	::
 
-		   cpufreq/devfreq driver which controls voltage and frequency pairs 
+		   cpufreq/devfreq driver which controls voltage and frequency pairs
 		   traditionally used:
 		   cpufreq/devfreq --> PMIC regulator
 		                   \-> clock framework
 		   This opens up a few issues:
 		   a) PMIC regulator is designed for platforms that may not use SmartReflex
-		      based SoCs, encoding the efuse offsets into every possible PMIC 
+		      based SoCs, encoding the efuse offsets into every possible PMIC
 		      regulator driver is practically in-efficient.
 		   b) Voltage values are not known a-priori to be encoded into DTB as they
 		      device specific.

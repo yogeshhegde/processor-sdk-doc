@@ -90,7 +90,7 @@ a few requirements once you have installed to your preferred directory.
    Installers can be found
    `here <http://processors.wiki.ti.com/index.php/Download_CCS#Code_Composer_Studio_Version_7_Downloads>`__.
 
-| 
+|
 
 .. rubric:: How to Enable PRU Support in Kernel
    :name: how-to-enable-pru-support-in-kernel
@@ -142,6 +142,6 @@ functionality.
 .. rubric:: What Next?
    :name: what-next
 
-For support please post questions on `E2E Processor Support 
+For support please post questions on `E2E Processor Support
 <https://e2e.ti.com/support/processors/>`__.
 

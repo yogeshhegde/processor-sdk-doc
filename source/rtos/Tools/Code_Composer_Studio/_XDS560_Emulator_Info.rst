@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/XDS560 
+.. http://processors.wiki.ti.com/index.php/XDS560
 
 .. rubric:: Overview
    :name: overview
@@ -38,7 +38,7 @@
    `here <http://www.blackhawk-dsp.com/Lan560.aspx>`__
 -  `XDS560v2 System Trace <http://processors.wiki.ti.com/index.php/XDS560v2_System_Trace>`__
 
-| 
+|
 
 .. rubric:: XDS560v2 System Trace
    :name: xds560v2-system-trace
@@ -266,7 +266,7 @@ N/A
 
 N/A
 
-| 
+|
 | :sup:`1` Isolation adapter
 | :sup:`2` Voltage Translation
 | :sup:`3` RTCK Signal Boost
@@ -323,7 +323,7 @@ TMDSADP1414
 
    </div>
 
-| 
+|
 
 TMDSADP1414-ISO
 ---------------
@@ -341,7 +341,7 @@ TMDSADP1414-ISO
 
    </div>
 
-| 
+|
 
 TMDSADP1420
 -----------
@@ -359,7 +359,7 @@ TMDSADP1420
 
    </div>
 
-| 
+|
 
 TMDSADP1460
 -----------
@@ -377,7 +377,7 @@ TMDSADP1460
 
    </div>
 
-| 
+|
 
 TMDSADPEMU-20A
 --------------
@@ -395,7 +395,7 @@ TMDSADPEMU-20A
 
    </div>
 
-| 
+|
 
 TMDSADPEMU-20T
 --------------
@@ -413,7 +413,7 @@ TMDSADPEMU-20T
 
    </div>
 
-| 
+|
 
 MDL-ADA2
 --------
@@ -432,11 +432,11 @@ MDL-ADA2
 
    </div>
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
 --------------
 
@@ -532,7 +532,7 @@ Q: I have a Blackhawk XDS560 USB/Lan560. What does the LED indicate?
 
 Start-up: Power-up: RED Enumeration Complete: GREEN
 
-| 
+|
 | In operation, USB status: Ready: GREEN Busy: RED
 
 Q: My JTAG is not working with CCS...
@@ -628,8 +628,3 @@ Related
 -  `XDS510 <http://processors.wiki.ti.com/index.php/XDS510>`__
 -  `XDS560v2 System Trace <http://processors.wiki.ti.com/index.php/XDS560v2_System_Trace>`__
 -  `XDS560 Trace <http://processors.wiki.ti.com/index.php/XDS560_Trace>`__
-
---------------
-
-.. raw:: html
-

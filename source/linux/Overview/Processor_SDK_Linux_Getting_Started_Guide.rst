@@ -53,7 +53,7 @@ need, take a look at the active `E2E Processor Support
 and see if the topic has been covered before. If not, post
 a new thread and we’ll do our best to provide some guidance.
 
-| 
+|
 
 What would you like to do with the SDK?
 ---------------------------------------

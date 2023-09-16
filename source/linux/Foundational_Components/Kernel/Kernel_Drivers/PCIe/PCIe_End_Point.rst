@@ -13,7 +13,7 @@ PCIe End Point
     of operating either in Root Complex mode (host) or End Point mode
     (device). When operating in End Point(EP) mode, the controller can be
     configured to be used as any function depending on the use case ('Test
-    endpoint' and 'NTB' are the only PCIe EP functions supported in Linux kernel 
+    endpoint' and 'NTB' are the only PCIe EP functions supported in Linux kernel
     right now).
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
@@ -22,7 +22,7 @@ PCIe End Point
     of operating either in Root Complex mode (host) or End Point mode
     (device). When operating in End Point (EP) mode, the controller can be
     configured to be used as any function depending on the use case ('Test
-    endpoint' and 'NTB' are the only PCIe EP functions supported in Linux kernel 
+    endpoint' and 'NTB' are the only PCIe EP functions supported in Linux kernel
     right now).
 
     .. rubric:: **Block Diagram**
@@ -35,10 +35,10 @@ PCIe End Point
 
     .. rubric:: **Features of J7ES**
 
-    There are four instances of the PCIe subsystem. Following are some of the 
+    There are four instances of the PCIe subsystem. Following are some of the
     main features:
 
-    - Each instance can be configured to operate in Root Complex mode or 
+    - Each instance can be configured to operate in Root Complex mode or
       End Point mode
 
     - One or two lane configuration, capable up to 8.0 Gbps/lane (Gen3)
@@ -46,29 +46,29 @@ PCIe End Point
     - Single-root I/O Virtualization in End Point(EP) mode
 
       - 6 Physical Functions (PF)
-        
+
       - 16 Virtual Functions (4 VF each for PF0, PF1, PF2 and PF3; 0 VF for PF4 and PF5)
 
     - Support for Legacy, MSI and MSI-X Interrupt
 
-    - There can be 32 different address mappings in outbound address translation 
+    - There can be 32 different address mappings in outbound address translation
       unit. The mappings can be from regions reserved for each PCIe instance.
 
       - For instance PCIE0 and PCIE1, there are two regions in SoC Memory Map:
 
         - 128 MB region with address in lower 32 bits
-      
+
         - 4 GB region with address above 32 bits
 
       - For instance PCIE2 and PCIE3, there are two regions in SoC Memory Map:
 
         - 128 MB region with address above 32 bits
-        
+
         - 4 GB region with address above 32 bits
 
     .. rubric:: **Capabilities of J721E EVM**
 
-    There are three instances of the PCIe subsystem on the EVM. Following are 
+    There are three instances of the PCIe subsystem on the EVM. Following are
     some of the details for each instance:
 
     +------------------------+-------------------+------------------------------------+
@@ -148,8 +148,8 @@ PCIe End Point
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
-    |__PART_FAMILY_DEVICE_NAMES__| is, by default, intended to be operated in 
-    Root Complex mode. So in order to connect two boards, a specialized cable 
+    |__PART_FAMILY_DEVICE_NAMES__| is, by default, intended to be operated in
+    Root Complex mode. So in order to connect two boards, a specialized cable
     like below is required.
 
 
@@ -159,7 +159,7 @@ This cable can be obtained from Adex Electronics (https://www.adexelec.com).
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
-    Use either X1 cable or X4 cable depending on the slot provided in the board. 
+    Use either X1 cable or X4 cable depending on the slot provided in the board.
     The part number is PE-FLEX1-MM-CX-3" (for 3" cable length x1).
 
 Modify the cable to remove resistors in CK+ and CK- in order to avoid
@@ -167,10 +167,10 @@ ground loops (power) and smoking clock drivers (clk+/-).
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
-    Remove the RST resistors to avoid reset (PERST) being propagated from Root 
-    Complex to End Point. Also in Root Complex to End Point loopback connection, 
-    End Point running Linux should be initialized before Root Complex comes up.   
-    Propagating reset from Root Complex to End Point will do POR\ :sub:`Z` of 
+    Remove the RST resistors to avoid reset (PERST) being propagated from Root
+    Complex to End Point. Also in Root Complex to End Point loopback connection,
+    End Point running Linux should be initialized before Root Complex comes up.
+    Propagating reset from Root Complex to End Point will do POR\ :sub:`Z` of
     End Point, which should be avoided.
 
 The ends of the modified cable should look like below:
@@ -207,7 +207,7 @@ The ends of the modified cable should look like below:
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
-    Following is an image of two J721E EVMs connected back to back. There is no 
+    Following is an image of two J721E EVMs connected back to back. There is no
     restriction on which end of the cable should be connected to host and device.
 
     .. Image:: /images/j721e-evm-back-to-back.jpg
@@ -335,7 +335,7 @@ file.
         @@ -46,10 +46,9 @@
                 status = "okay";
         };
-    
+
         -&pcie0_rc {
         +&pcie0_ep {
                 num-lanes = <2>;
@@ -359,17 +359,17 @@ file.
         +++ b/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts
         @@ -734,7 +734,7 @@
         };
-        
+
         &pcie0 {
         -       pci-mode = <PCI_MODE_RC>;
         +       pci-mode = <PCI_MODE_EP>;
                 num-lanes = <1>;
         };
-        
+
         @@ -754,6 +754,11 @@
                 phy-names = "pcie_phy";
         };
-        
+
         +&pcie0_ep {
         +       phys = <&serdes0_pcie_link>;
         +       phy-names = "pcie_phy";
@@ -389,17 +389,17 @@ file.
         +++ b/arch/arm64/boot/dts/ti/k3-j721e-proc-board-tps65917.dts
         @@ -769,7 +769,7 @@
         };
-        
+
         &pcie0 {
         -       pci-mode = <PCI_MODE_RC>;
         +       pci-mode = <PCI_MODE_EP>;
                 num-lanes = <1>;
         };
-        
+
         @@ -789,6 +789,11 @@
                 phy-names = "pcie_phy";
         };
-        
+
         +&pcie0_ep {
         +       phys = <&serdes0_pcie_link>;
         +       phy-names = "pcie_phy";
@@ -527,10 +527,10 @@ supported are:
 +-------------------------------+----------------------------------------------------+
 | Interrupt (legacy/MSI/MSI-X)  | Raise an interrupt (legacy/MSI/MSI-X) from EP      |
 +-------------------------------+----------------------------------------------------+
-| Read                          | Read data from a buffer in RC, and perform a       | 
+| Read                          | Read data from a buffer in RC, and perform a       |
 |                               | cyclic redundancy check (CRC) for that data        |
 +-------------------------------+----------------------------------------------------+
-| Write                         | Write data to a buffer in RC, and perform a        | 
+| Write                         | Write data to a buffer in RC, and perform a        |
 |                               | cyclic redundancy check (CRC) for that data        |
 +-------------------------------+----------------------------------------------------+
 | Copy                          | Copy data from one RC buffer to another RC buffer, |
@@ -583,7 +583,7 @@ supported are:
         # cat interrupt_pin
           0x0001
 
-    | 
+    |
 
     .. rubric:: Configuring pci-epf-test device
 
@@ -650,7 +650,7 @@ supported are:
         # cat dev/epf/pci_epf_test.0/interrupt_pin
           0x0001
 
-    | 
+    |
 
     .. rubric:: Configuring pci-epf-test device
 
@@ -662,7 +662,7 @@ supported are:
 
         # echo 0x104c > dev/epf/pci_epf_test.0/vendorid
 
-    The above command configures Texas Instruments as the vendor.    
+    The above command configures Texas Instruments as the vendor.
 
     If the endpoint is a DRA74x or AM572x device:
 
@@ -682,11 +682,11 @@ supported are:
 
         # echo 16 >  dev/epf/pci_epf_test.0/msi_interrupts
 
-    The above command configures the number of interrupts. 16 is the number of 
-    interrupts being configured. The number of interrupts configured should be 
+    The above command configures the number of interrupts. 16 is the number of
+    interrupts being configured. The number of interrupts configured should be
     between 1 to 32 for MSI.
 
-    | 
+    |
 
     .. rubric:: Binding pci-epf-test device to a EP controller
 
@@ -776,7 +776,7 @@ supported are:
 
         # echo 0x104c > functions/pci_epf_test/func1/vendorid
 
-    The above command configures Texas Instruments as the vendor.    
+    The above command configures Texas Instruments as the vendor.
 
     If the endpoint is a DRA74x or AM572x device:
 
@@ -803,14 +803,14 @@ supported are:
         # echo 0xb00c > functions/pci_epf_test_am6/func1/deviceid
 
     The above command configures the deviceid.
-    
+
     ::
 
         # echo 16 > functions/pci_epf_test/func1/msi_interrupts
 
-    The above command configures the number of interrupts. 16 is the number of 
-    interrupts being configured. The number of interrupts configured should be 
-    between 1 to 32 for MSI.    
+    The above command configures the number of interrupts. 16 is the number of
+    interrupts being configured. The number of interrupts configured should be
+    between 1 to 32 for MSI.
 
     .. rubric:: Binding pci-epf-test device to a EP controller
 
@@ -944,8 +944,8 @@ supported are:
         root@evm:/sys/kernel/config/pci_ep# echo 2 > functions/pci_epf_test/func1/msi_interrupts
         root@evm:/sys/kernel/config/pci_ep# echo 2 > functions/pci_epf_test/func1/msix_interrupts
 
-    The above command configures the number of interrupts. 2 is the number of 
-    MSI and MSI-X interrupts being configured. The number of interrupts 
+    The above command configures the number of interrupts. 2 is the number of
+    MSI and MSI-X interrupts being configured. The number of interrupts
     configured should be between 1 to 32 for MSI and 1 to 2048 for MSI-X.
 
     .. rubric:: Binding pci-epf-test device to a EP controller
@@ -1039,11 +1039,11 @@ supported are:
 
     .. rubric::Using virtual functions
 
-    If you want to use the virtual functions, you need to bind it to a physical 
+    If you want to use the virtual functions, you need to bind it to a physical
     function. And the physical function needs to be bound to a controller.
 
     A sample sequence of commands for using the virtual functions is as follows:
-     
+
     .. parsed-literal::
 
         mount -t configfs none /sys/kernel/config
@@ -1189,11 +1189,11 @@ The following config options have to be enabled in order to use the
         MSI8:           OKAY
         MSI9:           OKAY
         MSI10:          OKAY
-        MSI11:          OKAY                                                                                                  
-        MSI12:          OKAY                                                                                                  
-        MSI13:          OKAY                                                                                                  
-        MSI14:          OKAY                                                                                                  
-        MSI15:          OKAY                                                                                                  
+        MSI11:          OKAY
+        MSI12:          OKAY
+        MSI13:          OKAY
+        MSI14:          OKAY
+        MSI15:          OKAY
         MSI16:          OKAY
         MSI17:          NOT OKAY
         MSI18:          NOT OKAY
@@ -1238,13 +1238,13 @@ The following config options have to be enabled in order to use the
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
-    pci\_endpoint\_test driver creates the Endpoint Test function device which 
-    will be used by the following pcitest utility. pci\_endpoint\_test can 
-    either be built-in to the kernel or built as a module. For testing legacy 
+    pci\_endpoint\_test driver creates the Endpoint Test function device which
+    will be used by the following pcitest utility. pci\_endpoint\_test can
+    either be built-in to the kernel or built as a module. For testing legacy
     interrupt, MSI interrupt has to be disabled in the host.
 
-    pcitest.sh added in tools/pci/ can be used to run all the default PCI 
-    endpoint tests. Before pcitest.sh can be used, pcitest.c should be compiled 
+    pcitest.sh added in tools/pci/ can be used to run all the default PCI
+    endpoint tests. Before pcitest.sh can be used, pcitest.c should be compiled
     using following steps:
 
     ::
@@ -1294,7 +1294,7 @@ The following config options have to be enabled in order to use the
         root@evm:~# ./pcitest -e -D /dev/pci-endpoint-test.0
         CLEAR IRQ:              OKAY
 
-    The script pcitest.sh runs all the bar tests, interrupt tests, read tests, 
+    The script pcitest.sh runs all the bar tests, interrupt tests, read tests,
     write tests and copy tests.
 
 .. rubric:: **Files**
@@ -1321,7 +1321,7 @@ The following config options have to be enabled in order to use the
     |           | tools/pci/pcitest.sh                              |                                   |
     +-----------+---------------------------------------------------+-----------------------------------+
     | 5         | **4.4 Kernel**                                    | PCI Controller Driver             |
-    +           +---------------------------------------------------+                                   +    
+    +           +---------------------------------------------------+                                   +
     |           |  drivers/pci/controller/pci-dra7xx.c              |                                   |
     +           +---------------------------------------------------+                                   +
     |           |  drivers/pci/controller/pcie-designware.c         |                                   |
@@ -1331,7 +1331,7 @@ The following config options have to be enabled in order to use the
     |           |  drivers/pci/controller/pcie-designware-host.c    |                                   |
     +           +---------------------------------------------------+                                   +
     |           | **4.4 Kernel**                                    |                                   |
-    +           +---------------------------------------------------+                                   +    
+    +           +---------------------------------------------------+                                   +
     |           |  drivers/pci/dwc/pci-dra7xx.c                     |                                   |
     +           +---------------------------------------------------+                                   +
     |           |  drivers/pci/dwc/pcie-designware.c                |                                   |

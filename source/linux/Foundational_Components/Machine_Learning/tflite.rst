@@ -99,7 +99,7 @@ Options for *label_image*:
     --profiling, -p: [0|1], profiling or not
     --num_results, -r: number of results to show
     --threads, -t: number of threads
-    --verbose, -v: [0|1] print more information   
+    --verbose, -v: [0|1] print more information
 
 Example of running *label_image* on target, using the pre-installed mobilenet_v1_1.0_224_quant.tflite model,
 `grace_hopper.bmp <https://raw.githubusercontent.com/tensorflow/tensorflow/r1.12/tensorflow/contrib/lite/examples/label_image/testdata/grace_hopper.bmp>`__, and labels.txt.

@@ -98,7 +98,7 @@ abstraction layer.
    -  Step 9: Kick the slave Vring by writing its index (1) into a
       message in Mailbox 3
 
-| 
+|
 
 .. rubric:: PRU to ARM
    :name: pru-to-arm
@@ -139,7 +139,7 @@ abstraction layer.
    -  Step 9: Kick the host Vring by writing its index (0) into a
       message in Mailbox 2
 
-| 
+|
 
 .. rubric:: RPMsg PRU Code Example
    :name: rpmsg-pru-code-example

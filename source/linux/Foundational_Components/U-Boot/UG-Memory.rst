@@ -243,7 +243,7 @@ respective addresses.
 .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J7200', 'J721S2', 'AM62X', 'J784S4')
 
     .. code-block:: console
-    
+
       => mmc dev 0 1
       => fatload mmc 1 ${loadaddr} tiboot3.bin
       => mmc write ${loadaddr} 0x0 0x400
@@ -255,9 +255,9 @@ respective addresses.
       => mmc write ${loadaddr} 0x3600 0x800
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
-    
+
   .. code-block:: console
-    
+
     => mmc dev 0 1
     => fatload mmc 1 ${loadaddr} tiboot3.bin
     => mmc write ${loadaddr} 0x0 0x800
@@ -267,9 +267,9 @@ respective addresses.
     => mmc write ${loadaddr} 0x1800 0x2000
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2', 'AM62X', 'J784S4')
-    
+
   .. code-block:: console
-    
+
     => mmc dev 0 1
     => fatload mmc 1 ${loadaddr} tiboot3.bin
     => mmc write ${loadaddr} 0x0 0x400
@@ -322,12 +322,12 @@ the zeroth instance of usb,
       --- a/arch/arm/dts/k3-j7200-common-proc-board-u-boot.dtsi
       +++ b/arch/arm/dts/k3-j7200-common-proc-board-u-boot.dtsi
       @@ -155,11 +155,10 @@
- 
+
        &usbss0 {
               u-boot,dm-spl;
       -       ti,usb2-only;
        };
- 
+
        &usb0 {
       -       dr_mode = "peripheral";
       +       dr_mode = "host";
@@ -338,9 +338,9 @@ the zeroth instance of usb,
 
   .. note::
       USB instance in AM64 SoC is brought out using a USB 2.0 micro-AB port on the GP EVM. This port can be
-      used in both host and device modes. By default in U-Boot, peripheral mode is supported. 
-      For accessing USB storage devices in U-Boot, dr_mode should be set to "host" in the U-Boot 
-      device tree file. The following diff shows the required changes to be done. On Starter Kit, 
+      used in both host and device modes. By default in U-Boot, peripheral mode is supported.
+      For accessing USB storage devices in U-Boot, dr_mode should be set to "host" in the U-Boot
+      device tree file. The following diff shows the required changes to be done. On Starter Kit,
       USB instance in AM64 SoC is brought out using a USB 3.0 Type A port, so the mode is set to
       host by default and the following diff would not be required.
 
@@ -445,7 +445,7 @@ used for the first time:
 .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J7200', 'J721S2', 'AM62X')
 
     .. code-block:: console
-      
+
                  boot0 partition (8 MB)                        user partition
          0x0+----------------------------------+      0x0+-------------------------+
             |     tiboot3.bin (512 KB)         |         |                         |
@@ -460,12 +460,12 @@ used for the first time:
       0x3600+----------------------------------+         |                         |
             |          sysfw (1 MB)            |         |                         |
       0x3E00+----------------------------------+         +-------------------------+
-    
-    
+
+
 .. ifconfig:: CONFIG_part_variant in ('J7200')
-    
+
   .. code-block:: console
-    
+
                 boot0 partition (8 MB)                        user partition
        0x0+----------------------------------+      0x0+-------------------------+
           |     tiboot3.bin (1 MB)           |         |                         |
@@ -481,9 +481,9 @@ used for the first time:
 
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2', 'AM62X')
-    
+
   .. code-block:: console
-    
+
                 boot0 partition (8 MB)                        user partition
        0x0+----------------------------------+      0x0+-------------------------+
           |     tiboot3.bin (1 MB)           |         |                         |
@@ -527,16 +527,16 @@ Booting to U-Boot prompt from USB storage
 
 .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721E')
 
-  |__PART_FAMILY_DEVICE_NAMES__| SoC does not support booting from USB mass storage devices. 
+  |__PART_FAMILY_DEVICE_NAMES__| SoC does not support booting from USB mass storage devices.
   However, it can be used as storage device at U-Boot prompt.
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
   Booting to U-Boot prompt from USB storage is supported. The following are the steps to be followed,
-  
+
   #. Build the bootloader images using default "am64x_evm_r5_defconfig"
      and "am64x_evm_a53_defconfig" configs files. The configs required for
-     USB MSC boot are already enabled. For instructions to build the bootloader 
+     USB MSC boot are already enabled. For instructions to build the bootloader
      images please refer to :ref:`Build-U-Boot-label`.
 
   #. Create a FAT32 partition with boot flag enabled on the USB storage device.
@@ -553,7 +553,7 @@ Booting to U-Boot prompt from USB storage
 
   #. Build the bootloader images using default "am65x_evm_r5_usbmsc_defconfig"
      and "am65x_evm_a53_defconfig" configs files. The configs required for
-     USB MSC boot are already enabled. For instructions to build the bootloader 
+     USB MSC boot are already enabled. For instructions to build the bootloader
      images please refer to :ref:`Build-U-Boot-label`.
 
   #. Create a FAT32 partition with boot flag enabled on the USB storage device.
@@ -633,7 +633,7 @@ Booting Linux from USB storage
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
-    To load the Linux kernel, Device Tree and the Root file system from USB Mass storage device, 
+    To load the Linux kernel, Device Tree and the Root file system from USB Mass storage device,
     the following changes are required to be done,
 
     - U-Boot
@@ -641,9 +641,9 @@ Booting Linux from USB storage
       #. In U-Boot the USB controller can be used in either host or peripheral mode. For booting to linux kernel
          from USB storage device, the USB port is to be set as host.
       #. By default, the USB controller is set in peripheral mode.
-      #. If the boot media used to boot to U-Boot is USB Host mode(:ref:`U-Boot-USB-MSC-boot-label`) then, 
+      #. If the boot media used to boot to U-Boot is USB Host mode(:ref:`U-Boot-USB-MSC-boot-label`) then,
          the USB controller is set to host mode during runtime. Therefore, no changes would be required in this case.
-      #. If a boot media other than USB Host is used, the USB controller needs to be set host mode and custom 
+      #. If a boot media other than USB Host is used, the USB controller needs to be set host mode and custom
          bootloader images are required to be built. Please refer to note in section :ref:`mmc-boot-label`
 
     - Kernel

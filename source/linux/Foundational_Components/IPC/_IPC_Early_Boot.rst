@@ -77,7 +77,7 @@ in /lib/firmware folder (used by kernel).
             status = "okay";
             u-boot,dm-spl;
         };
-        
+
         ipu2_memory_region: ipu2-memory@95800000 {
             compatible = "shared-dma-pool";
             reg = <0x0 0x95800000 0x0 0x3800000>;
@@ -99,7 +99,7 @@ in /lib/firmware folder (used by kernel).
            reusable;
            status = "okay";
        };
-       
+
        ipu2_cma_pool: ipu2_cma@95800000 {
            compatible = "shared-dma-pool";
            reg = <0x95800000 0x3800000>;
@@ -125,7 +125,7 @@ in /lib/firmware folder (used by kernel).
             no-map;
             u-boot,dm-spl;
         };
-        
+
         ipu2_pgtbl: ipu2-pgtbl@95740000 {
             reg = <0x0 0x95740000 0x0 0x40000>;
             no-map;
@@ -156,24 +156,33 @@ in /lib/firmware folder (used by kernel).
    address. The source file in which the macro is defined is also
    modified.
 
-   +--------------------------+--------------------------+------------------------------------------+
-   | Core                     | Load Address             | Defined in                               |
-   +==========================+==========================+==========================================+
-   | IPU1                     | ``IPU1_LOAD_ADDR``       | ``arch/arm/mach-omap2/boot-common.c      |
-   |                          |                          | and drivers/remoteproc/ipu_rproc.c`` |
-   +--------------------------+--------------------------+------------------------------------------+
-   | IPU2                     | ``IPU2_LOAD_ADDR``       | ``arch/arm/mach-omap2/boot-common.c      |
-   |                          |                          | and drivers/remoteproc/ipu_rproc.c`` |
-   +--------------------------+--------------------------+------------------------------------------+
+.. list-table:: U-boot: Temporary load address for Early boot binaries
+   :header-rows: 1
 
-   Table: U-boot:Temporary load address for Early boot binaries
+   * - Core
+
+     - IPU1
+
+     - IPU2
+
+   * - Load Address
+
+     - ``IPU1_LOAD_ADDR``
+
+     - ``IPU2_LOAD_ADDR``
+
+   * - Defined in
+
+     - ``arch/arm/mach-omap2/boot-common.c and drivers/remoteproc/ipu_rproc.c``
+
+     - ``arch/arm/mach-omap2/boot-common.c and drivers/remoteproc/ipu_rproc.c``
 
 .. rubric:: Enabling Early Boot
    :name: enabling-early-boot
 
-   Early boot is enabled by default on all DRA7xx and AM57xx EVM boards in the
-   dra7xx_evm_defconfig and am57xx_evm_defconfig.
-   `Typical options needed for early-booting IPU remoteprocs are:
+Early boot is enabled by default on all DRA7xx and AM57xx EVM boards in the
+dra7xx_evm_defconfig and am57xx_evm_defconfig. Typical options needed for
+early-booting IPU remoteprocs are:
 
 ::
 
@@ -315,22 +324,22 @@ all required images into this folder.
 
     mmc dev 0
     sf probe 0
-    
+
     /* Flashing MLO */
     fatload mmc 0 0x82000000 qspi/MLO
     sf erase 0x10000 0x30000
     sf write 0x82000000 0x10000 0x30000
-    
+
     /* Flash u-boot */
     fatload mmc 0 0x83000000 qspi/u-boot.img
     sf erase 0x40000 0x200000
     sf write 0x83000000 0x40000 0x200000
-    
+
     /* Flashing umlo */
     fatload mmc 0 0x82000000 qspi/umlo
     sf erase 0x0 0x10000
     sf write 0x82000000 0x0 0x10000
-    
+
     /* Flashing remote core firmware */
     fatload mmc 0 0x83000000 qspi/dra7-ipu1-fw.uImage
     sf erase 0xA60000 0x800000
@@ -353,7 +362,7 @@ from the slot and power on the board.
 
 | The timestamp difference between the first line & third line
 (Trying to boot from SPI) from the above log, ensures at this point of time the
-firmware is already start executed. From the above log the time taken to boot the 
+firmware is already start executed. From the above log the time taken to boot the
 IPU is 240ms
 
 

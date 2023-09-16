@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PA 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PA
 
 Overview
 --------
@@ -132,7 +132,7 @@ with pa_DEST_HOST can be passed. Please refer to Pa_addMac and
 Pa_addMac2() API explanations as provided under the doxygen folder of PA
 (Or refer to Pa.h interface header file).
 
-.. rubric:: What are the right PA/NETCP/Ethernet user guides to use for different keystone devices? 
+.. rubric:: What are the right PA/NETCP/Ethernet user guides to use for different keystone devices?
    :name: what are the right PA/NETCP/Ethernet user guides to use for different keystone devices
 
 -	All Keystone I (C665x, C667x) devices use the same Serdes and documented in respective datasheets (See Device State Control Registers)
@@ -146,18 +146,18 @@ To summarize:
 +--------+--------------------+----------------------------------+----------------------------------+----------------------------------+
 | SOC    | Serdes             | Ethernet                         | PA                               | Netcp                            |
 +--------+--------------------+----------------------------------+----------------------------------+----------------------------------+
-|C665x   |See datasheet       |http://www.ti.com/lit/pdf/SPRUHH1 |N/A                               |N/A                               | 
+|C665x   |See datasheet       |http://www.ti.com/lit/pdf/SPRUHH1 |N/A                               |N/A                               |
 +--------+--------------------+----------------------------------+----------------------------------+----------------------------------+
-|C667x   |See datasheet       |http://www.ti.com/lit/pdf/SPRUGV9 |http://www.ti.com/lit/pdf/SPRUGS4 |http://www.ti.com/lit/pdf/SPRUGZ6 | 
-|        |                    |                                  |Driver: lib\<CPU>\ti.drv.pa       |                                  |   
+|C667x   |See datasheet       |http://www.ti.com/lit/pdf/SPRUGV9 |http://www.ti.com/lit/pdf/SPRUGS4 |http://www.ti.com/lit/pdf/SPRUGZ6 |
+|        |                    |                                  |Driver: lib\<CPU>\ti.drv.pa       |                                  |
 +--------+--------------------+----------------------------------+----------------------------------+----------------------------------+
 |K2H/K2K |http://www.ti.com/  |Same as C667x                     |Same as C667x	                    |Same as C667x                     |
-|        |lit/pdf/SPRUHO3     |                                  |                                  |                                  |  
+|        |lit/pdf/SPRUHO3     |                                  |                                  |                                  |
 +--------+--------------------+----------------------------------+----------------------------------+----------------------------------+
-|K2G     |Same as K2H/K2K     |http://www.ti.com/lit/pdf/SPRUHY8 |N/A                               |N/A                               |  
+|K2G     |Same as K2H/K2K     |http://www.ti.com/lit/pdf/SPRUHY8 |N/A                               |N/A                               |
 +--------+--------------------+----------------------------------+----------------------------------+----------------------------------+
 |K2E/K2L |Same as K2H/K2K     |http://www.ti.com/lit/pdf/SPRUHZ3 |http://www.ti.com/lit/pdf/SPRUHZ2 |http://www.ti.com/lit/pdf/SPRUHZ0 |
-|        |                    |                                  |Driver: lib\<CPU>\ti.drv.pa2      |                                  |   
+|        |                    |                                  |Driver: lib\<CPU>\ti.drv.pa2      |                                  |
 +--------+--------------------+----------------------------------+----------------------------------+----------------------------------+
 
 
@@ -177,5 +177,5 @@ Additional References
 |                                   | pdf                                     |
 +-----------------------------------+-----------------------------------------+
 
-| 
+|
 

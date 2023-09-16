@@ -61,7 +61,7 @@ operate at. This document is not an exhuastive list of all the changes
 needed for a proper board port as it focused on the changes needed to
 enable different speed grades.
 
-| 
+|
 
 .. rubric:: U-Boot Changes to Consider
    :name: u-boot-changes-to-consider
@@ -89,7 +89,7 @@ arch/arm/cpu/armv7/omap5/hw\_data.c.
             {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},       /* 38.4 MHz */
     };
 
-| 
+|
 
 .. rubric:: Change Structures to Use New Clock Table Entry
    :name: change-structures-to-use-new-clock-table-entry

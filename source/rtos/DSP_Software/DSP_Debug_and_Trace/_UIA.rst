@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Multicore_System_Analyzer#Unified_Instrumentation_Architecture_.28UIA.29 
+.. http://processors.wiki.ti.com/index.php/Multicore_System_Analyzer#Unified_Instrumentation_Architecture_.28UIA.29
 
 Overview
 --------
@@ -278,7 +278,7 @@ To use the required UIA events, need this include
 
     #include <ti/uia/events/UIABenchmark.h>
 
-| 
+|
 Add entry and exit hook functions to the source (The below one is for
 Context aware function profiling)
 
@@ -304,7 +304,7 @@ For CCS 5.5 and later
         Log_write2(UIAProfile_exitFunctionAdrs,  (IArg)0, (IArg)addr);
     }
 
-| 
+|
 The 1st parameter after the message string( 3rd parameter to
 Log_write3) is a context parameter (For CCS 5.5 and later is the 2nd
 parameter to Log_write2) and can be used to specify an additional
@@ -376,6 +376,4 @@ For technical discussions and issues, please visit
 
 For product updates,
 -  Use the CCS/Eclipse Update Manager (see the Getting Started Guide above)
-
-.. raw:: html
 

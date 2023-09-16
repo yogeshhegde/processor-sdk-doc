@@ -25,7 +25,7 @@ CC-Link IE Field Network Basic Overview:
 -  254 stations per network
 -  100 meters between stations
 -  Completely deterministic without using switches
-| 
+|
 Code Organization
 ------------------
 
@@ -58,7 +58,7 @@ table.
 +**Test Examples main code**        |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu_icss/example/CCLink/src                |
 +-----------------------------------+--------------------------------------------------------------------------------------------+
 
-| 
+|
 
 Building the Examples
 ----------------------
@@ -185,7 +185,7 @@ Example Project using CCS.
 |                       |                       | on same subnet.       |
 +-----------------------+-----------------------+-----------------------+
 
-| 
+|
 
 Running CC-Link IE Field Network Basic example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -197,7 +197,7 @@ same switch.
 
 .. Image:: /images/Cclink_setup_pic.PNG
 
-| 
+|
 | Once the connection is done, load controller and device station code on
   both evm and run them simultaneously. You would see following output
   on uart port of controller station.
@@ -208,6 +208,5 @@ You would see following output on uart port of device station.
 
 .. Image:: /images/Cclink_slave_screenshot_linux.png
 
-| 
+|
 
-.. raw:: html

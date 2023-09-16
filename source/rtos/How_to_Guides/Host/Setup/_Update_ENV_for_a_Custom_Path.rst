@@ -1,7 +1,7 @@
 Update environment when installing to a custom path
 -----------------------------------------------------
 
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Install_In_Custom_Path 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Install_In_Custom_Path
 
 Overview
 ^^^^^^^^
@@ -479,6 +479,4 @@ installed to a custom path.
    directories </index.php/Processor_SDK_RTOS_Setup_CCS#CCS_and_SDK_installed_in_different_directories>`__
    for instructions on how to register SDK RTOS components installed to a
    custom path with CCS
-
-.. raw:: html
 

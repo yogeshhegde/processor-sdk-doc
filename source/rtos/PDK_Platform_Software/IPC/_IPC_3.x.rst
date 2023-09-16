@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_3.x 
+.. http://processors.wiki.ti.com/index.php/IPC_3.x
 
 Introduction
 -------------

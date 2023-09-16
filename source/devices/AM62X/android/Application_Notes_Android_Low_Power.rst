@@ -24,7 +24,7 @@ LPM demo is only possible with cut-down dtb: k3-am625-sk-lpmdemo.dtb.
 
 **Steps to switch to LPM DT:**
 
-#. Setup an `Android kernel build system <../../../android/Overview_Building_the_SDK.html#kernel>`_  and `Android build system <../../../android/Overview_Building_the_SDK.html#android-file-system>`_ 
+#. Setup an `Android kernel build system <../../../android/Overview_Building_the_SDK.html#kernel>`_  and `Android build system <../../../android/Overview_Building_the_SDK.html#android-file-system>`_
 
 #. Edit android build system
 

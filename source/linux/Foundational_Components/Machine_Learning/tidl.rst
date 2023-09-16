@@ -11,16 +11,16 @@ TIDL brings deep learning to the edge by enabling applications to leverage TI’
 highly optimized CNN/DNN implementation on the EVE and C66x DSP compute engines. TIDL initially targets use cases with 2D (typically vision) data on AM57x SoCs.
 There are not fundamental limitations preventing the use of TIDL for 1D or 3D input data blobs.
 
-TIDL is a set of open-source Linux software packages and tools enabling offload of 
+TIDL is a set of open-source Linux software packages and tools enabling offload of
 Deep Learning **(inference only)** compute workloads from Arm cores to hardware accelerators
 such as EVE and/or C66x DSP. The objective for TIDL is to hide complexity of a heterogeneous device for Machine Learning/Neural network
 applications, and help developers focus on their specific requirements. In this way, Arm cores are freed from heavy compute load
-of Deep Learning task and can be used for other roles in your application. This also allows to use traditional Computer Vision 
+of Deep Learning task and can be used for other roles in your application. This also allows to use traditional Computer Vision
 (via OpenCV) augmenting Deep Learning algorithms.
 
-At the moment, TIDL software primarily enables Convolution Neural Network inference, using offline pre-trained models, 
-stored in device file-system (**no training on target device**). Models trained using Caffe or Tensorflow-slim frameworks can be 
-imported and converted (with provided import tool) for efficient execution on TI devices. 
+At the moment, TIDL software primarily enables Convolution Neural Network inference, using offline pre-trained models,
+stored in device file-system (**no training on target device**). Models trained using Caffe or Tensorflow-slim frameworks can be
+imported and converted (with provided import tool) for efficient execution on TI devices.
 
 Additional performance benefits can be achieved by doing training using Caffe-Jacinto fork of Caffe, which includes functions for
 making convolution weight tensor sparse, thus giving opportunity for 3x-4x performance boost of convolutions layers.
@@ -73,7 +73,7 @@ Current implementation of TIDL API provides following important features:
 - **Running a network on individual EVE subsystem or C66x DSP core**
 
 - Multiple networks on different EVEs/DSPs can run concurrently
-    We can run concurrently as many different networks as we have available accelerators. Single unit of task execution is complete network, i.e. it is typically executed from start to end on only one EVE or DSP. 
+    We can run concurrently as many different networks as we have available accelerators. Single unit of task execution is complete network, i.e. it is typically executed from start to end on only one EVE or DSP.
 
 - Splitting the network layers between available accelerators (EVE subsystem and/or C66x cores)
     For certain networks (JDetNet is one example), it is beneficial to use concept of layer groups.
@@ -161,8 +161,8 @@ The following layer types/Inference features are supported:
 #. Split Layer
 #. Detection Output Layer
 
-During import process (described later), some operators or layers in a network model 
-will be coalesced or converted into TIDL layers listed above. The supported 
+During import process (described later), some operators or layers in a network model
+will be coalesced or converted into TIDL layers listed above. The supported
 operators/layers for Tensorflow/TensorFlow Lite/ONNX/Caffe are listed below.
 
 **Supported TensorFlow operators and the corresponding TIDL layers:**
@@ -367,11 +367,11 @@ Constraints on layer parameters
 Layers in current release of TIDL Lib have certain parameter related constraints:
 
 - Convolution Layer
-   - Kernel size up to 7x7 
+   - Kernel size up to 7x7
    - Dilation vaild for parameter values of: 1,2,4
    - Stride values of 1 and 2 are supported.
    - Dense convolution flow is supported for only 1x1 and 3x3 kernels with stride = 1 and dilation =1
-   - Maximum number of input and output channel supported: 1024. 
+   - Maximum number of input and output channel supported: 1024.
 
 - Deconvolution Layer
    - Number of groups shall be equal to the number of channels
@@ -385,13 +385,13 @@ Layers in current release of TIDL Lib have certain parameter related constraints
    - Maximum input and output Nodes supported are 4096
    - The input data has to be flattened (That is C =1 and H =1 for the input data)
    - A flatten layer can be used before this layer in C > 1 and H > 1
-   - A global average pooling also can be used to flatten the output 
+   - A global average pooling also can be used to flatten the output
    - Input size has to be multiple of 8, because DSP implementation of the layer does aligned 8-byte double word loads
 
 - Spatial Pooling Layer
    - Average and Max Pooling are supported with stride 1, 2, 4 and kernel sizes of 2x2,3x3,4x4 etc. STOCHASTIC Pooling not supported
    - Global Pooling supported for both Average and Max. The output data N=1 and H =1. The output W will be Updated with input ‘N’
-   - Global Pooling can operate on feature maps up to 64x64 size. 
+   - Global Pooling can operate on feature maps up to 64x64 size.
 
 - BiasLayer
    - Only one scalar bias per channel is supported.
@@ -463,10 +463,10 @@ with multiple demo selection buttons. Scripts invoked via Matrix-GUI can be foun
 * Pascal VOC dataset trained object detection model, based on JDetNet topology; input live from camera input - runTidlObjDet_livecam.sh
 * Cityscape dataset trained image segmentation model (subset of Cityscape classes0, based on JSeg21 topology; input from pre-recorded video clip - runTidlSegment.sh
 
-Imagenet classification using Jacinto11 model `<https://github.com/tidsp/caffe-jacinto-models/tree/caffe-0.17/trained/image_classification/imagenet_jacintonet11v2/sparse>`_, with video input coming from pre-recorded clip. It is decoded in real-time via GStreamer pipeline (involving 
-IVAHD), and sent to OpenCV processing pipeline. Live camera input (default 640x480 resolution), or decoded video clip (320x320 resolution), are scaled down and central-cropped in run-time (using OpenCV API) to 224x224 before sending to TIDL API. 
+Imagenet classification using Jacinto11 model `<https://github.com/tidsp/caffe-jacinto-models/tree/caffe-0.17/trained/image_classification/imagenet_jacintonet11v2/sparse>`_, with video input coming from pre-recorded clip. It is decoded in real-time via GStreamer pipeline (involving
+IVAHD), and sent to OpenCV processing pipeline. Live camera input (default 640x480 resolution), or decoded video clip (320x320 resolution), are scaled down and central-cropped in run-time (using OpenCV API) to 224x224 before sending to TIDL API.
 
-Result of this processing is standard Imagenet classification output (1D vector with 1000 elements). Further, there is provision to define subset of objects expected to be present in video clip or live camera input. This allows additional decision filtering by using list of permitted classes (list is provided as command line argument). Blue bounding rectangle (in main image window) is presented only when valid detection is reported. 
+Result of this processing is standard Imagenet classification output (1D vector with 1000 elements). Further, there is provision to define subset of objects expected to be present in video clip or live camera input. This allows additional decision filtering by using list of permitted classes (list is provided as command line argument). Blue bounding rectangle (in main image window) is presented only when valid detection is reported.
 Class string of last successful is preserved until next detection (so if no object is detected, blue rectangle will disappear, but last class string remains).
 
 Executable invoked from Matrix-GUI is in: /usr/share/ti/tidl/examples/tidl_classification.
@@ -503,8 +503,8 @@ Please note that video clip is looped as long as maximum frame count (specified 
 
      cd /usr/share/ti/tidl/examples/classification
      ./tidl_classification -g 1 -d 2 -e 0 -l ./imagenet.txt -s ./classlist.txt -i ./clips/test2.mp4 -c ./stream_config_j11_v2.txt
-   
-On AM5749, we can leverage presence of EVE cores ("-e 2"). Also note that two layergroups are used (indicated with "-g 2"), 
+
+On AM5749, we can leverage presence of EVE cores ("-e 2"). Also note that two layergroups are used (indicated with "-g 2"),
 meaning that two EVEs are involved and only one DSP, with several bottom layers (closest to output) executed on DSP.
 Also since DSP utilization for 2nd layergroup is low, it can balance workload for two EVEs (running rest of layers):
 
@@ -649,10 +649,10 @@ User only needs to specify accelerator via parameter.
 
    Figure TIDL Software Stack
 
-Additional public TI resources 
+Additional public TI resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Following two Caffe-related repositories (maintained by TI team) provides necessary tools for the training phase. 
+Following two Caffe-related repositories (maintained by TI team) provides necessary tools for the training phase.
 Please use them **as primary source of information for training**, for TIDL inference software.
 They include modifications in Caffe source tree to enable higher compute performance (with TIDL inference).
 
@@ -660,7 +660,7 @@ They include modifications in Caffe source tree to enable higher compute perform
                     Repo/URL                                                     Description
 =========================================================================      ===============================================================================================================================
 `Caffe-jacinto <https://github.com/tidsp/caffe-jacinto>`_                       fork of NVIDIA/caffe, which in-turn is derived from BVLC/Caffe. The modifications \
-                                                                                in this fork enable training of sparse, quantized CNN models - resulting in low \ 
+                                                                                in this fork enable training of sparse, quantized CNN models - resulting in low \
                                                                                 complexity models that can be used in embedded platforms. Please follow README.md, \
                                                                                 how to clone, compile and install this version of Caffe.
 `Caffe-jacinto-models <https://github.com/tidsp/caffe-jacinto-models>`_         provides example scripts for training sparse models using tidsp/caffe-jacinto. These scripts enable training of sparse \
@@ -675,10 +675,10 @@ Introduction to Programming Model
 
 Public TIDL API interface is described in details at http://downloads.ti.com/mctools/esd/docs/tidl-api/intro.html
 
-In current release it has 3 classes only, allowing use of one or multiple neural network models that can run in parallel on 
+In current release it has 3 classes only, allowing use of one or multiple neural network models that can run in parallel on
 independent EVEs or C66x cores.
 
-Single unit of processing is a tensor (e.g. one image frame, but other inputs are also possible), which is typically processed by single accelerator (EVE or DSP), till completion. But in certain cases it is justified, from performance point of view, to split network layers into two layer groups. 
+Single unit of processing is a tensor (e.g. one image frame, but other inputs are also possible), which is typically processed by single accelerator (EVE or DSP), till completion. But in certain cases it is justified, from performance point of view, to split network layers into two layer groups.
 Than, we can have one layer group running on EVE and second layer group on DSP. This is done sequentially.
 
 Top layer TIDL API and OpenCL are primarily service software layers (with respect to TIDL software, not NN), i.e. they help in simplifying programming model, IPC mechanism and memory management. Desired features are provided by
@@ -691,7 +691,7 @@ Target file-system
 Firmware
 """""""""
 
-OpenCL firmware includes pre-canned DSP TIDL Lib (with hard-coded kernels) and EVE TIDL Lib following Custom Accelerator model. 
+OpenCL firmware includes pre-canned DSP TIDL Lib (with hard-coded kernels) and EVE TIDL Lib following Custom Accelerator model.
 OpenCL firmware is downloaded to DSP and M4/EVE immediately after Linux boot:
 
 ::
@@ -705,19 +705,19 @@ User space components
 
 User space TIDL components are included in the Folder /usr/share/ti/tidl and its sub-folders. The sub-folder name and description is as follows:
 
-=============  ======================================================================================================================================================================================================  
-Sub folder      Description of content 
-=============  ======================================================================================================================================================================================================  
+=============  ======================================================================================================================================================================================================
+Sub folder      Description of content
+=============  ======================================================================================================================================================================================================
 examples        test (file-to-file examples), imagenet classification, image segmentation and SSD multibox examples are here. Matrix GUI example which is based on imagenet one, is in folder tidl_classification.
 utils           Example configuration files for running the import tool.
-viewer          Imported model parser and dot graph creator. Input is TIDL model, output is .dot file that can be converted to PNG or PDF format using dot utility (on x86).   
+viewer          Imported model parser and dot graph creator. Input is TIDL model, output is .dot file that can be converted to PNG or PDF format using dot utility (on x86).
 tidl_api        Source of TIDL API implementation.
-=============  ======================================================================================================================================================================================================  
+=============  ======================================================================================================================================================================================================
 
 Input data format
 ^^^^^^^^^^^^^^^^^
 Current release is mainly used with 2D inputs. Most frequent 2D input tensors are color images. Format has to be prepared in same like it was used during model training.
-Typically, this is following BGR plane interlaced format (common in OpenCV). That means, first 2D array is Blue color plane, next is Green color plane and finally Red color plane. 
+Typically, this is following BGR plane interlaced format (common in OpenCV). That means, first 2D array is Blue color plane, next is Green color plane and finally Red color plane.
 
 But, it is perfectly possible to have E.g. two planes on input only: E.g. one plane with Lidar distance measurements and second plane with illumination.
 This assumes that same format was used during training.
@@ -742,11 +742,11 @@ TIDL import tool converts deep learning models to TI custom network format for e
    - Caffe
    - TensorFlow
    - TensorFlow Lite
-   - ONNX  
+   - ONNX
 
 The import process is done in two steps:
 
-- The first step deals with parsing of model parameters and network topology, and converting them into custom format that TIDL Lib can understand. 
+- The first step deals with parsing of model parameters and network topology, and converting them into custom format that TIDL Lib can understand.
 
 - The second step does calibration of dynamic quantization process by finding out ranges of activations for each layer. This is accomplished by invoking simulation (using native C implementation) which estimates initial values important for quantization process. These values are later updated on per frame basis, assuming strong temporal correlation between input frames.
 
@@ -757,11 +757,11 @@ or written in ONNX format. This tool will accept various parameters through impo
 will be executed using TIDL library across multiple EVE and DSP cores. The import configuration file is available in {TIDL_install_path}/test/testvecs/config/import
 
 
-There are two pre-built executable binaries for import tool: tidl_model_import.out and eve_test_dl_algo_ref.out. The first one is the main program to run the tool, 
-and the second one is the program to do the calibration and is specified in the configuration file. Both binaries can be referenced by the system path. For Linux x86, 
-linux-devkit/environment-setup needs to be run to setup the path. For AM57xx EVM, they will be in system path after the EVM is setup.  
+There are two pre-built executable binaries for import tool: tidl_model_import.out and eve_test_dl_algo_ref.out. The first one is the main program to run the tool,
+and the second one is the program to do the calibration and is specified in the configuration file. Both binaries can be referenced by the system path. For Linux x86,
+linux-devkit/environment-setup needs to be run to setup the path. For AM57xx EVM, they will be in system path after the EVM is setup.
 
-Sample Usage: 
+Sample Usage:
 
 ::
 
@@ -788,7 +788,7 @@ conv2dKernelType     can be either 0 or 1 for each layer. Set it to 0 to use spa
                      **Note that this parameter must be set for every layer if users choose not to use the default.**
 inElementType        can be either 0 or 1. Default value is 1. Set it to 0 for 8-bit unsigned input or to 1 for 8-bit signed input
 inQuantFactor        can take values >0. Default value is -1
-rawSampleInData      can be either 0 or 1. Default value is 0. Set it to 0, if the input data is encoded, or set it to 1, if the input is RAW data. 
+rawSampleInData      can be either 0 or 1. Default value is 0. Set it to 0, if the input data is encoded, or set it to 1, if the input is RAW data.
 
                      **Note that encoded input is only supported on the target but not on x86 host.**
 numSampleInData      can be > 0. Default value is 1.
@@ -808,7 +808,7 @@ inScale              is a list of scale values for input normalization. inScale 
 ==================   ======================================================================================================================================================================================
 
 Image pre-processing depends on configuration parameters rawSampleInData and preProcType as described below:
-     
+
 =================    ================   ===================================================================================================================================================================
 rawSampleInData      preProcType        image pre-processing
 =================    ================   ===================================================================================================================================================================
@@ -824,17 +824,17 @@ rawSampleInData      preProcType        image pre-processing
                                         1. Change color space from BGR to RGB for the original image (WxH).
                                         2. Crop new image to ROI (H/16, W/16, 7H/8, 7W/8) defined by cv::Rect.
                                         3. Resize the cropped image to (WxH) with scale factors (0,0) and INTER_AREA using OpenCV function resize().
-                                        4. Subtract pixels by (128, 128, 128) per plane. 
+                                        4. Subtract pixels by (128, 128, 128) per plane.
 0                    3                  Pre-processing for CIFAR 10:
 
                                         1. Change color space from BGR to RGB for the original image (WxH).
                                         2. Resize the original image (WxH) to (32x32) with scale factors (0,0) and INTER_AREA using OpenCV function resize().
                                         3. Crop the resized image to ROI (16-W/2, 16-H/2, W, H) defined by cv::Rect.
-0                    4                  For JDetNet: no pre-processing is performed on the original image. 
+0                    4                  For JDetNet: no pre-processing is performed on the original image.
 0                    5                  1. Change color space from BGR to RGB for the original image (WxH).
                                         2. Crop new image to ROI (0, 0, H, W) defined by cv::Rect.
                                         3. Resize the cropped image to (WxH) with scale factors (0,0) and INTER_AREA using OpenCV function resize().
-                                        4. Subtract pixels by (128, 128, 128) per plane. 
+                                        4. Subtract pixels by (128, 128, 128) per plane.
 0                    6                  Pre-processing for ONNX models: normalize the original image in the range of [0, 255]
 
                                         - Subtract pixels by (123.68 116.28, 103.53) per plane.
@@ -842,7 +842,7 @@ rawSampleInData      preProcType        image pre-processing
                                         - Divide pixels by (58.395, 57.12, 57.375) per plane.
 
 0                    7-255              Configuration error. No pre-processing to be done.
-0                    256                Take inMean and inScale from config file and do the normalization on RAW image: 
+0                    256                Take inMean and inScale from config file and do the normalization on RAW image:
 
                                         - Subtract pixels by (inMean[0], inMean[1], inMean[2]) per plane.
 
@@ -852,10 +852,10 @@ rawSampleInData      preProcType        image pre-processing
 1                    N/A                Raw image. No pre-processing to be done, and preProcType is ignored.
 =================    ================   ===================================================================================================================================================================
 
-Sample configuration file 
+Sample configuration file
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
-Sample configuration files for TIDL import can be found in folder /usr/share/ti/tidl/utils/test/testvecs/config/import. 
+Sample configuration files for TIDL import can be found in folder /usr/share/ti/tidl/utils/test/testvecs/config/import.
 One specific example, tidl_import_j11_v2.txt, is listed below:
 
 ::
@@ -876,7 +876,7 @@ One specific example, tidl_import_j11_v2.txt, is listed below:
     inElementType      = 0
 
     rawSampleInData    = 1
-    
+
     # Fold Batch Normalization Layer into TIDL Lib Conv Layer
     foldBnInConv2D     = 1
 
@@ -898,7 +898,7 @@ One specific example, tidl_import_j11_v2.txt, is listed below:
 
     # Reference implementation executable, used in calibration (processes calibration image file)
     tidlStatsTool = "eve_test_dl_algo_ref.out"
- 
+
 
 Import tool traces
 """"""""""""""""""""
@@ -1041,41 +1041,41 @@ Obviously Convolution Layer workload is significantly higher.
 Mapping to EVE capabilities
 """"""""""""""""""""""""""""""
 Each EVE core can do 16 MAC operation per cycle. Accumulated results are stored in 40-bit accumulator and can be barrel shifted
-before stored into local memory. Also, EVE can do ReLU operation for free, so frequently, Convolution Layer or 
+before stored into local memory. Also, EVE can do ReLU operation for free, so frequently, Convolution Layer or
 Fully Connected Layer is coalesced with ReLU layer.
 
 In order to support these operations wide path to local memory is needed. Concurrently transfers from external DDR memory
-are performed using dedicated EDMA engines. So, when EVE does convolutions it is always accessing both activations and 
+are performed using dedicated EDMA engines. So, when EVE does convolutions it is always accessing both activations and
 weights that are already present in high speed local memory.
 
 One or two layers are implemented on EVE local RISC CPU which is used primarily for programming vector engine and EDMA. In these
-rare cases EVE CPU is used as fully programmable, but slow compute engine. SoftMax layer is implemented using 
+rare cases EVE CPU is used as fully programmable, but slow compute engine. SoftMax layer is implemented using
 general purpose CPU, and significantly slower than DSP or A15 implementation. As SoftMax layer is terminal layer it is advised to
 do SoftMax either on A15 (in user space) or using DSP (layergroup2, as implemented in JDetNet examples).
 
 Verifying TIDL inference result
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The TIDL import step runs the inference on PC and the result generates expected output (with caffe or tensorflow inference). If you observe difference at this stage please follow below steps to debug.  
-   
-   - Caffe inference input and TIDL inference input shall match. Import step dumps input of the first layer at “trace_dump_0_*”, make sure that this is same for caffe as well. This is important to verify to avoid mismatch in image pre-processing steps.
-   - If the input is matching, then dump layer level features from caffe and match with TIDL import traces. 
-   - TIDL trace is in fixed point and can be converted to floating point (using OutQ printed in the import log). Due to quantization the results will not exactly match, but will be similar. 
-   - Check the parameters of the layer where the mismatch is observed. 
-   - Share the input and Parameter with TI for further debug. 
- 
-We use the statistics collected from the previous process for quantizing the activation dynamically in the current processes. 
-So, results we observe during the process on target will NOT be same (but similar) for same input images compared to import steps. 
-The logic was validated with semantic segmentation application on input video sequence 
+The TIDL import step runs the inference on PC and the result generates expected output (with caffe or tensorflow inference). If you observe difference at this stage please follow below steps to debug.
 
-Parameters controling dynamic quantization 
+   - Caffe inference input and TIDL inference input shall match. Import step dumps input of the first layer at “trace_dump_0_*”, make sure that this is same for caffe as well. This is important to verify to avoid mismatch in image pre-processing steps.
+   - If the input is matching, then dump layer level features from caffe and match with TIDL import traces.
+   - TIDL trace is in fixed point and can be converted to floating point (using OutQ printed in the import log). Due to quantization the results will not exactly match, but will be similar.
+   - Check the parameters of the layer where the mismatch is observed.
+   - Share the input and Parameter with TI for further debug.
+
+We use the statistics collected from the previous process for quantizing the activation dynamically in the current processes.
+So, results we observe during the process on target will NOT be same (but similar) for same input images compared to import steps.
+The logic was validated with semantic segmentation application on input video sequence
+
+Parameters controling dynamic quantization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 TIDL Inference process is not completely stateless. Information (activation min, max values) from previously executed inferences are used for quantization process.
 
-- quantMargin is margin added to the average in percentage. 
+- quantMargin is margin added to the average in percentage.
 - quantHistoryParam1 weights used for previously processed inference during application boot time (for initial few frames)
-- quantHistoryParam2 weights used for previously processed inference during application execution (after initial few frames) 
+- quantHistoryParam2 weights used for previously processed inference during application execution (after initial few frames)
 
 Default settings are:
 
@@ -1088,21 +1088,21 @@ Default settings are:
 Sometimes these parameters need further tuning (via trial and error with similar image sequences).
 
 
-In order to get the same result in TIDL target like during import step for an image: 
-
-:: 
-  
-  quantHistoryParam1 = 0; 
-  quantHistoryParam2 = 0; 
-  quantMargin = 0; 
-  
-
-For video sequence, below settings can be also tested: 
+In order to get the same result in TIDL target like during import step for an image:
 
 ::
 
-  quantHistoryParam1 = 20; 
-  quantHistoryParam2 = 10; 
+  quantHistoryParam1 = 0;
+  quantHistoryParam2 = 0;
+  quantMargin = 0;
+
+
+For video sequence, below settings can be also tested:
+
+::
+
+  quantHistoryParam1 = 20;
+  quantHistoryParam2 = 10;
   quantMargin = 20
 
 Quantization parameters are also discussed in `API reference <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#api-reference>`_
@@ -1214,7 +1214,7 @@ and Linux x86 simulation tool (added to the path, after enabling linux-devkit wi
 For bit-exact simulation, output of simulation tool is expected to be identical to the output of A5749 or AM57xx target.
 Please use this tool as convenience tool only (E.g. testing model on setup without target EVM).
 
-Simulation tool can be used also to verify converted model accuracy (FP32 vs 8-bit implementation). 
+Simulation tool can be used also to verify converted model accuracy (FP32 vs 8-bit implementation).
 It can run in parallel on x86 leveraging bigger number of cores (simulation tool is single thread implementation).
 Due to bit-exact simulation, performance of simulation tool cannot be used to predict target execution time, but
 it can used to validate model accuracy.
@@ -1258,7 +1258,7 @@ Simulation tool ./eve_test_dl_algo.out is invoked with single command line argum
 ::
 
    ./eve_test_dl_algo.out sim.txt
-   
+
 Simulation configuration file includes list of network modesl to execute, in this case only one: tild_config_j11.txt
 List is termined with: "0 ":
 
@@ -1295,7 +1295,7 @@ Summary of model porting steps
 Compatibility of trained model formats
 --------------------------------------
 
-Below versions of frameworks or runtimes have been used for testing the TIDL import procedure and execution of imported models in TIDL runtime. 
+Below versions of frameworks or runtimes have been used for testing the TIDL import procedure and execution of imported models in TIDL runtime.
 Below information should be used in addition to constraints related to operator availability in TIDL library.
 More recent versions of formats might be also supported, but not guaranteed.
 
@@ -1308,8 +1308,8 @@ Training
 --------
 
 Existing Caffe and TF-Slim models can be imported **as long as layers are supported and parameter constraints are met**.
-But, typically these models include dense weight matrices. 
-In order to leverage some benefits of TIDL Lib, and gain 3x-4x performance improvement (for Convolution Layers), 
+But, typically these models include dense weight matrices.
+In order to leverage some benefits of TIDL Lib, and gain 3x-4x performance improvement (for Convolution Layers),
 it is necessary to repeat the training process using caffe-jacinto caffe fork, available at `<https://github.com/tidsp/caffe-jacinto>`_
 Highest contribution to Convolution Neural Networks compute load comes from Convolution Layers (often in 80-90% range), hence special attention is paid
 to optimize Convolution Layer processing.
@@ -1327,12 +1327,12 @@ After that training is done in 3 steps:
 
 - Sparse ("sparsification")
       By gradual adjustment of weight threshold (from smaller to higher) sparsification target is tested at each step (E.g. 70% or 80%).
-      This procedure eliminates small weights, leaving bigger contributors only. Please note that this applies to Convolution 
+      This procedure eliminates small weights, leaving bigger contributors only. Please note that this applies to Convolution
       Layers only.
 
 - Define acceptable criteria for sparsification based on accuracy drop
-      Due to conversion from FP32 representation to 8-12 bit representation of weights (and 8-bit activations), acceptable 
-      accuracy drop should be within 1-2% range (depending on model), E.g. if classification accuracy for Caffe-Jacinto 
+      Due to conversion from FP32 representation to 8-12 bit representation of weights (and 8-bit activations), acceptable
+      accuracy drop should be within 1-2% range (depending on model), E.g. if classification accuracy for Caffe-Jacinto
       desktop model is 70% (using model after initial phase), we should not see lower accuracy for sparsified and quantized model below 68%.
 
 Example of training procedure
@@ -1346,10 +1346,10 @@ Example of training procedure
 - Data set collection using AM57xx
       Data set images can be recorded by external camera device, or even using Camera Daughter card (of AM57xx). Suggested recorded format is H264, that offers good quality and can be efficiently decoded using GStreamer pipeline. It can last 15-20 seconds only (rotation period of turn-table). With slower fps (10-15fps), this provides 200-300 frames. Procedure can be repeated
       by changing distance and elevation (3-4 times), so total image count can be up to 2000-3000 frames per class. This can limit single class data collection time to 5-10min.
-      
+
 - Post-processing
       Video clips should be copied to Linux x86 for offline post-processing. FFMPEG package allows easy splitting of video clips into individual images.
-      Since recording is made against uniform background, it is also possible to apply automated labeling procedure. Additional data set enhancements 
+      Since recording is made against uniform background, it is also possible to apply automated labeling procedure. Additional data set enhancements
       can be made using image augmentation scripts, easily increasing count of images 10-20x.
 
 -  Prepare LMDB files for the training
@@ -1357,9 +1357,9 @@ Example of training procedure
 
 -  Do training from scratch or do transfer learning (fine-tuning)
       Frequently, it is good to start training using initial weights created with generic data set (like ImageNet). Bottom layers act like feature extractors, and
-      only top 1 or few layers need to be fine tuned using data set that we just collected (as described in previous sets). In case of Jacinto11, good starting 
-      point is model created after "Initial" phase. We will need to repeat initial phase, but now using new data set, and using same layer names for those 
-      layers that we want to pre-load with earlier model. Further, training can be tuned by reducing base_lr (in train.prototxt), and increasing lr for top one or 
+      only top 1 or few layers need to be fine tuned using data set that we just collected (as described in previous sets). In case of Jacinto11, good starting
+      point is model created after "Initial" phase. We will need to repeat initial phase, but now using new data set, and using same layer names for those
+      layers that we want to pre-load with earlier model. Further, training can be tuned by reducing base_lr (in train.prototxt), and increasing lr for top one or
       few layers. In this way bottom layers will be changed superficially, but top layers will adapt as necessary.
       Matrix-GUI toy dog breeds classification example is created in this way. Imagenet trained Jacinto11 model is fine-tuned using custom data set of toy dogs.
       Recrodings of toy dogs standing on turn table, were captured using AM5749 camera. They were later split into individual images and augmented for offline training.
@@ -1367,14 +1367,14 @@ Example of training procedure
 Where does the benefit of sparsification come from?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Initially Deep Learning networks were implemented using Single Precision floating-point arithmetic's (FP32). 
+- Initially Deep Learning networks were implemented using Single Precision floating-point arithmetic's (FP32).
   During last few years, more research has been done regarding quantization impact and reduced accuracy of arithmetic operations.
   In many cases, 8-bits, or even less (down to 2-4 bits) are considered sufficient for correct operation.
   This is explained with huge number of parameters (weights) that all contribute to operation accuracy.
   In case of DSP and EVE inference implementation, weights (controlled by parameter in import tool configuration file) can be quantized with 8-12 bit accuracy.
   Activation layer outputs (neuron output) are stored in memory with 8-bit accuracy (single byte). Accumulation is done with 40-bit accuracy, but
   final output is right-shifted before single byte is stored into memory. Right shift count is determined dynamically, uniquely for each layer and once per frame.
-  More details can be found in http://openaccess.thecvf.com/content_cvpr_2017_workshops/w4/papers/Mathew_Sparse_Quantized_Full_CVPR_2017_paper.pdf 
+  More details can be found in http://openaccess.thecvf.com/content_cvpr_2017_workshops/w4/papers/Mathew_Sparse_Quantized_Full_CVPR_2017_paper.pdf
 
 - Additional optimization (described in above article) is based on sparsification of Convolution Layer weights. Individual weights are forced to zero during training.
   This is achieved during "L1 regularization" phase (enforcing fewer bigger weights at the expense of others) and "Sparse" when small weights are clamped to zero.
@@ -1428,7 +1428,7 @@ JSegNet21, sparse         Segment.   1024x512x3   2.43 roi/s              6.32 r
 JDetNet, sparse           Obj.Det.   768x320x3    -                       -                       12.98 roi/s                            -                      22.56 roi/s
 ========================  =========  ===========  ======================  ======================  ====================================== ====================== ======================================
 
-   * Optimal Model (as discussed in previous paragraph) typically requires last 2-3 layers to be executed on DSP, especially if they involve FP32 calculations (like SoftMax). 
+   * Optimal Model (as discussed in previous paragraph) typically requires last 2-3 layers to be executed on DSP, especially if they involve FP32 calculations (like SoftMax).
    * Layers groups can be defined in runtime using 2 layers group configuration: first layers group is executed on EVE and second on DSP. TIDL-API takes care of execution pipelining.
    * Properly setting configuration for conv2dkernelype parameter is very important for execution performance of layers with feature map size smaller than 64x64: dense type is mandatory for layers with small feature maps (dense is '1', sparese is '0'). This parameter is applicable on per layer basis (multiple values are expected - as many as there are layers).
    * In upcoming releases conv2dkernelytype setting will be done automatically during import process.
@@ -1511,7 +1511,7 @@ Troubleshooting
 - TIDL import tool doesn't give enough information
     The import tool will fail to import a model if it is not in supported format (Caffe/TensorFlow/ONNX).
     E.g. following report can be seen if format is not recognized:
-  
+
     ::
 
        $ ./tidl_model_import.out ./modelInput/tidl_import_mymodel.txt
@@ -1526,23 +1526,23 @@ Troubleshooting
 
        End of config list found !
 
-- Target execution is different from desktop Caffe execution 
+- Target execution is different from desktop Caffe execution
      To debug this, we can use simulation tool as it is bit-exact with EVE or DSP execution.
      Traces that are generated by simulation tool can be visually compared against data blobs that are saved after desktop Caffe inference.
      If all the rest is correct, it is worth comparing intermediate results. Please keep in mind that numerical equivalence between Caffe desktop
      computation (using single precision FP32) and target computation (using 8-bit activations, and 8-12 bit weights) are not expected.
      Still features maps (of intermediate layers) are supposed to be rather similar. If something is significantly different, please try to change
-     number of bits for weights, or repeat import processing with more representative image. Problems of this sort should be rarely encountered. 
+     number of bits for weights, or repeat import processing with more representative image. Problems of this sort should be rarely encountered.
 
-- Following error is seen in runtime 
+- Following error is seen in runtime
      ::
 
        ... inc/executor.h:199: T* tidl::malloc_ddr(size_t) [with T = char; size_t = unsigned int]: Assertion `val != nullptr' failed.
 
-     This means that previous run failed to de-allocate CMEM memory. Reboot is one option, restarting ti-mctd deamon is another option. 
+     This means that previous run failed to de-allocate CMEM memory. Reboot is one option, restarting ti-mctd deamon is another option.
 
 
-- Caffe import crashes with error message 
+- Caffe import crashes with error message
      ::
 
        [libprotobuf FATAL <protobuf path>/protobuf/repeated_field.h:1478] CHECK failed: (index) < (current_size_):
@@ -1553,5 +1553,5 @@ Troubleshooting
      This is usually caused by unsupported Caffe input layer format. For more details, refer to :ref:`Importing Caffe Models`.
 
 
-- TensorFlow import failed with error "Could not find the requested input Data:" 
+- TensorFlow import failed with error "Could not find the requested input Data:"
      This is likely due to unoptimized frozen graphs. Refer :ref:`Importing Tensorflow Models` for more details.

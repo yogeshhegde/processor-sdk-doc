@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_C66x 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_C66x
 
 Overview
 ^^^^^^^^^^^
@@ -134,7 +134,7 @@ directory.
    the build_instructions.txt that can be found under
    pdk_c66xx_xx_xx\packages\ti\boot\ibl\doc\ibl\doc
 
-| 
+|
 
 Flash Writers
 ^^^^^^^^^^^^^^^^^
@@ -285,7 +285,7 @@ default NAND boot only supports a BBLOB image format, if the customer
 wants to boot an ELF image,  the IBL configuration table needs to be
 modified and re-programmed to EEPROM.
 
-| 
+|
 
 NOR Boot
 """"""""""""
@@ -307,7 +307,7 @@ parameter index switch should be set to 0 or 1.
 NOR boot supports multiple images booting. Depending on the boot
 parameter index dip switch, maximum 2 boot images can be supported.
 
-| 
+|
 
 TFTP Boot
 """"""""""""
@@ -329,7 +329,7 @@ boot only supports a BBLOB image format, if the customer wants to boot
 an ELF image, the IBL configuration table needs to be modified and
 re-programmed to EEPROM.
 
-| 
+|
 
 Updating the IBL Ethernet Configurations
 '''''''''''''''''''''''''''''''''''''''''''
@@ -493,7 +493,7 @@ Configure your EVM's DIP Switches accordingly to I2C POST BOOT mode. The
 POST application will be loaded from EEPROM 0x50 and output will be
 available over the UART serial console.
 
-| 
+|
 
 ETHERNET Boot
 """"""""""""""
@@ -540,11 +540,11 @@ To use pcsendpkt:
 
 .. note::
    If you are on a Linux Host PC, you may need to recompile pcsendpkt locally with GCC
-  
+
   To verify, connect to the EVM's Core 0 via CCS and check that the A1
   register is set to 0x11223344
 
-| 
+|
 
 SRIO Boot
 """"""""""""
@@ -865,6 +865,4 @@ example does the following:
   resulting ibl_c66x_init.map file. In addition, following local L2 is
   reserved by RBL and shouldn’t be used: for 6678 ROM PG 1.0, 0x00872DC0
   – 0x0087FFFF; for 6670 ROM PG 1.0, 0x008F2DC0 – 0x008FFFFF.
-  
-.. raw:: html
 

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/OpenMP_on_C6000 
+.. http://processors.wiki.ti.com/index.php/OpenMP_on_C6000
 
 .. rubric:: Introduction
    :name: introduction
@@ -10,7 +10,7 @@ This page is intended to be the starting point for all information about
 OpenMP on C6000. However, at this writing, that is not the case. The
 information in this article is correct if you are using C667x devices
 which only contain C66x CorePac DSPs, and not any ARM cores. If you are
-using a 66AK2H device, then please see `MCSDK HPC 3.x 
+using a 66AK2H device, then please see `MCSDK HPC 3.x
 OpenMP <http://processors.wiki.ti.com/index.php/MCSDK_HPC_3.x_OpenMP>`__. OpenMP is not supported on
 any other C6000 devices.
 
@@ -246,7 +246,7 @@ Upon executing, output in the console window should appear similar to
 
 ::
 
-    [C66xx_0] 
+    [C66xx_0]
     [C66xx_0] Starting values of matrix A and vector b:
     [C66xx_0]   A[0]= 1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0   b[0]= 1.0
     [C66xx_0]   A[1]= 1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0   b[1]= 2.0
@@ -258,7 +258,7 @@ Upon executing, output in the console window should appear similar to
     [C66xx_0]   A[7]= 1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0   b[7]= 8.0
     [C66xx_0]   A[8]= 1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0   b[8]= 9.0
     [C66xx_0]   A[9]= 1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0   b[9]= 10.0
-    [C66xx_0] 
+    [C66xx_0]
     [C66xx_0] Results by thread/row:
     [C66xx_0]   thread 0 did row 0   c[0]=55.00 Running total= 55.00
     [C66xx_3]   thread 3 did row 9   c[9]=550.00    Running total= 605.00
@@ -270,9 +270,9 @@ Upon executing, output in the console window should appear similar to
     [C66xx_1]   thread 1 did row 5   c[5]=330.00    Running total= 2090.00
     [C66xx_2]   thread 2 did row 7   c[7]=440.00    Running total= 2530.00
     [C66xx_2]   thread 2 did row 8   c[8]=495.00    Running total= 3025.00
-    [C66xx_0] 
+    [C66xx_0]
     [C66xx_0] Matrix-vector total - sum of all c[] = 3025.00
-    [C66xx_0] 
+    [C66xx_0]
 
 The parts before and after *Results by thread/row* should match,
 particularly the final result of 3025.00. The *thread N* lines will

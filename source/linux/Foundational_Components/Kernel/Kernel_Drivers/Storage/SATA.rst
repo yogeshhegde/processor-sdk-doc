@@ -33,7 +33,7 @@ SATA
 | Gen-1/Gen-2/Gen-3   | Generation of SATA device.               |
 +---------------------+------------------------------------------+
 
-| 
+|
 
 .. rubric:: **Features NOT supported**
    :name: features-not-supported
@@ -104,7 +104,7 @@ was truncated.
     Disk /dev/sda: 64.0GB
     Sector size (logical/physical): 512B/512B
     Partition Table: msdos
-    Disk Flags: 
+    Disk Flags:
 
     Number  Start   End     Size    Type     File system  Flags
      1      1049kB  83.9MB  82.8MB  primary  fat32        boot, lba
@@ -140,7 +140,7 @@ Example output of the command is shown below:
 
     root@am57xx-evm:~# lsblk /dev/sda
     NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-    sda      8:0    0 59.6G  0 disk 
+    sda      8:0    0 59.6G  0 disk
     |-sda2   8:2    0   16G  0 part /run/media/sda2
     |-sda3   8:3    0 43.6G  0 part
     `-sda1   8:1    0   79M  0 part /run/media/sda1

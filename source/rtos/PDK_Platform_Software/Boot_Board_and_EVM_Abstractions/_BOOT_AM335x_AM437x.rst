@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x
 
 Overview
 ^^^^^^^^^
@@ -47,7 +47,7 @@ Bootloader build files for AM335x/AM437x
 -  **BASE_DIR/tools Contains tools to create boot images and flashing
    tools to program the boot binary on the boot media.**
 
-| 
+|
 
 Bootloader execution sequence
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -132,7 +132,7 @@ Tools and Binary formats
 
 .. _AM437x TRM: http://www.ti.com/lit/ug/spruhl7h/spruhl7h.pdf
 
-| 
+|
 
 **TI Boot image**
 
@@ -193,7 +193,7 @@ binary in starterware/tools/ti_image.
 
     tiimage.exe <Image Load Address> NONE <application>.bin <application>_ti.bin
 
-| 
+|
 
 Boot Modes supported
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -232,7 +232,7 @@ for the various EVMs.
 | t**       |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
 
-| 
+|
 
 Building the Bootloader
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -317,7 +317,7 @@ Prebuilt binaries inside the Processor SDK RTOS for AMIC110-DDRLESS will
 be configured using this option to allow for testing of cost optimized
 industrial use case.
 
-| 
+|
 
 Boot Mode settings
 ^^^^^^^^^^^^^^^^^^
@@ -547,7 +547,7 @@ Booting from McSPI involves two steps.
     Choose Operation:
     Enter 1 ----> To FLASH an Image
     Enter 2 ----> To ERASE Flash
-    Enter 3 ----> To EXIT 
+    Enter 3 ----> To EXIT
 
 -  When Flash option is chosen program prompts to enter file name.
 
@@ -573,7 +573,7 @@ Booting from McSPI involves two steps.
     SF: Successfully erased xxxx bytes @ xxxx
     Writing flash at page offset: x, number of pages: xxxx
     Flashing is in progress...
-    Verifying... Success. 
+    Verifying... Success.
 
 -  Repeat the steps to load and run the flash writer, then choose the application
    binary image <app_name>_a8host_ti.bin and enter **0x20000** as the offset.
@@ -592,7 +592,7 @@ Booting from McSPI involves two steps.
    memory. The bootloader then copies the application image from flash
    to DDR and passes the control to the application.
 
-| 
+|
 
 Booting Via NAND
 """"""""""""""""""
@@ -846,6 +846,4 @@ Debugging application boot
 Steps to debug application boot using Processor SDK RTOS bootloader are
 discussed in the article **`Common steps to debug application
 boot <index_Foundational_Components.html#common-steps-to-debug-application-boot>`__**
-
-.. raw:: html
 

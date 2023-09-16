@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_EDMA3 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_EDMA3
 
 Overview
 --------
@@ -65,7 +65,7 @@ FAQ <http://www.ti.com/lit/an/sprac52/sprac52.pdf>`__ for Keystone devices.
 
 Additional References
 ---------------------
-   
+
 +--------------------+-----------------------------------------------+
 |                       EDMA3 Driver Summary                         |
 +====================+===============================================+
@@ -103,7 +103,7 @@ Additional References
 +--------------------+-----------------------------------------------+
 | Additional         |    Programming the EDMA3 using the            |
 | Resources          |    Low-Level Driver (LLD)                     |
-|                    |                                               |    
+|                    |                                               |
 +--------------------+-----------------------------------------------+
 | License            |    BSD                                        |
 |                    |                                               |
@@ -111,7 +111,7 @@ Additional References
 
 .. rubric:: EDMA3 sample libs
    :name: edma3_sample_libs
-   
+
 +--------------------+-----------------------------------------------+
 |                    EDMA3 Driver Sample Summary                     |
 +====================+===============================================+
@@ -154,10 +154,10 @@ Additional References
 +--------------------+-----------------------------------------------+
 | Additional         |    Programming the EDMA3 using the            |
 | Resources          |    Low-Level Driver (LLD)                     |
-|                    |                                               |    
+|                    |                                               |
 +--------------------+-----------------------------------------------+
 | License            |    BSD                                        |
 |                    |                                               |
 +--------------------+-----------------------------------------------+
 
-| 
+|

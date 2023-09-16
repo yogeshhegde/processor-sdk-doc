@@ -49,7 +49,7 @@ Rules.make file.
    Linux kernel sources, which is used by components such as out-of-tree
    kernel drivers to find the Linux kernel Makefiles and headers.
 
-| 
+|
 
 .. rubric:: Makefile
    :name: makefile
@@ -107,7 +107,7 @@ the u-boot version used:
    SPL (MLO) binaries used in newer versions of u-boot. This actually
    provides a u-boot and u-boot-spl target in the Makefile.
 
-| 
+|
 
 .. rubric:: Usage Examples
    :name: usage-examples

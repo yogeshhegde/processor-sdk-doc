@@ -110,7 +110,7 @@ A walk through of these steps can be seen at `Ubuntu 12.04 Set Up to
 Network Boot an AM335x Based
 Platform <http://processors.wiki.ti.com/index.php/Ubuntu_12.04_Set_Up_to_Network_Boot_an_AM335x_Based_Platform>`__.
 
-| 
+|
 
 Multiple Interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

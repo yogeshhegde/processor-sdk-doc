@@ -36,7 +36,7 @@ Contents of the board
    - Port0 from this is used for Cortex M4F UART
    - Port1 from this is used for MCU R5F UART
 
-#. 6x CAN FD Interfaces 
+#. 6x CAN FD Interfaces
 #. Main Domain Ethernet (CPSW2G) port
 #. MCU Domain Ethernet (CPSW2G) port
 #. MIPI JTAG connector

@@ -77,7 +77,7 @@ Important configuration parameters are mentioned below.
 
 ::
 
-    * WindowSystem - This configuration item controls the low level window system that the EGL implementation should hook it up. This item takes the below values 
+    * WindowSystem - This configuration item controls the low level window system that the EGL implementation should hook it up. This item takes the below values
 
     * libpvrDRMWSEGL.so (DRM-based WS for VSync synchronised writes to Framebuffer - slower, but avoids tearing)
 
@@ -88,8 +88,8 @@ Important configuration parameters are mentioned below.
 
 ::
 
-    * DisableHWTextureUpload - This configuration item enables/disables the use of SGX Transfer queue hardware. 
-    * If set to 1, uses software upload (copying from driver to SGX) of textures, rather than transfer queue (using the SGX hardware). 
+    * DisableHWTextureUpload - This configuration item enables/disables the use of SGX Transfer queue hardware.
+    * If set to 1, uses software upload (copying from driver to SGX) of textures, rather than transfer queue (using the SGX hardware).
     * Useful to rule out problems in TQ.
 
 .. rubric:: DefaultPixelFormat
@@ -97,7 +97,7 @@ Important configuration parameters are mentioned below.
 
 ::
 
-    * DefaultPixelFormat - This configuration item sets the default display pixel format. 
+    * DefaultPixelFormat - This configuration item sets the default display pixel format.
 
 For eg if one wants to configure the default pixel format, then edit /etc/powervr.ini to have following line
      DefaultPixelFormat=ARGB8888

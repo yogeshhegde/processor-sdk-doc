@@ -18,7 +18,7 @@ following is an example from a Linux host.
 You will be prompted for a user name and password. The user name should
 be root and the password should be left blank (just hit Enter).
 
-| 
+|
 
 From a Windows XP host, click the Start button, then click Run... Type
 telnet and click OK. This will open a telnet window.
@@ -27,7 +27,7 @@ Type "o < ip-addr >" and hit enter.  Example:
 
 ::
 
-    Microsoft Telnet> o 128.247.107.12 
+    Microsoft Telnet> o 128.247.107.12
 
 Type root for the password and leave the password blank (just hit Enter)
 

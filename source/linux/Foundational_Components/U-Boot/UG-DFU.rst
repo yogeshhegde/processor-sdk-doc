@@ -84,7 +84,7 @@ platform that support USB Peripheral boot mode.
        host$ git clone git://git.omapzoom.org/repo/omapboot.git
        host$ cd omapboot
        host$ checkout 609ac271d9f89b51c133fd829dc77e8af4e7b67e
-       host$ make -C host/tools 
+       host$ make -C host/tools
 
    This results in host side tool called ``usbboot-stand-alone``
 
@@ -126,9 +126,9 @@ platform that support USB Peripheral boot mode.
      QSPI to fresh/factory boards.
 
 .. ifconfig:: CONFIG_part_family in ('AM62X_family')
-  
+
   .. note::
-    
+
      Please refer to :ref:`workarounds` to fix the USB Device Firmware Upgrade (DFU) Boot
      failure in AM62x.
 

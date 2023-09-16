@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CMB_AddOn 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CMB_AddOn
 
 .. rubric:: Introduction
    :name: introduction
@@ -75,9 +75,9 @@ overall steps:
       source ./pdksetupenv.sh
       make cmb_clean
       make cmb
-      the libraries will be in 
+      the libraries will be in
          pdk_k2g_1_x_x/packages/ti/addon/cmb/lib/k2g/c66/release
-      the OUT file (audioAnalogLoopbackTest.out) for DSP will be built at 
+      the OUT file (audioAnalogLoopbackTest.out) for DSP will be built at
          pdk_k2g_1_x_x/packages/ti/addon/cmb/test/evmK2G/analog/loopback/build/make
 
 **For Windows:**
@@ -89,9 +89,9 @@ overall steps:
       pdksetupenv.bat
       gmake cmb_clean
       gmake cmb
-      the libraries will be in 
+      the libraries will be in
          pdk_k2g_1_x_x\packages\ti\addon\cmb\lib\k2g\c66\release
-      the OUT file (audioAnalogLoopbackTest.out) for DSP will be built at 
+      the OUT file (audioAnalogLoopbackTest.out) for DSP will be built at
          pdk_k2g_1_x_x\packages\ti\addon\cmb\test\evmK2G\analog\loopback\build\make
 
 .. rubric:: OMAP-L137 EVM
@@ -107,9 +107,9 @@ overall steps:
       source ./pdksetupenv.sh
       make cmb_clean
       make cmb
-      the libraries will be in 
+      the libraries will be in
          pdk_omapl137_1_x_x/packages/ti/addon/cmb/lib/omapl137/c674/release
-      the OUT file (audioAnalogLoopbackTest.out) for DSP will be built at 
+      the OUT file (audioAnalogLoopbackTest.out) for DSP will be built at
          pdk_omapl137_1_x_x/packages/ti/addon/cmb/test/evmOMAPL137/analog/loopback/build/make
 
 **For Windows:**
@@ -122,9 +122,9 @@ overall steps:
       pdksetupenv.bat
       gmake cmb_clean
       gmake cmb
-      the libraries will be in 
+      the libraries will be in
          pdk_omapl137_1_x_x\packages\ti\addon\cmb\lib\omapl137\c674\release
-      the OUT file (audioAnalogLoopbackTest.out) for DSP will be built at 
+      the OUT file (audioAnalogLoopbackTest.out) for DSP will be built at
          pdk_omapl137_1_x_x\packages\ti\addon\cmb\test\evmOMAPL137\analog\loopback\build\make
 
 .. rubric:: How to Run the Unit Test
@@ -169,7 +169,5 @@ The following sections provide detailed steps for each EVM.
 -  The program will run the unit test forever, taking the input from CMB
    and output to the on-board line-out
 
-| 
-
-.. raw:: html
+|
 

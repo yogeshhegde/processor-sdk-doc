@@ -54,8 +54,8 @@ Configs to be enabled in kernel:
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-   From k3-am64-main.dtsi:   
-   
+   From k3-am64-main.dtsi:
+
 .. code-block:: text
 
    main_rti0: watchdog@e000000 {

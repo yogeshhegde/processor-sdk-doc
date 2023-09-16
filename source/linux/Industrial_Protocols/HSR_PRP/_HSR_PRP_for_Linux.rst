@@ -668,7 +668,7 @@ Node-1
     ip link add link hsr0 name hsr0.3 type vlan id 3
     ifconfig hsr0.2 192.168.2.40
     ifconfig hsr0.3 192.168.3.40
-    ip link set hsr0.2 type vlan egress 0:0 
+    ip link set hsr0.2 type vlan egress 0:0
     ip link set hsr0.3 type vlan egress 0:7
 
 Node-2
@@ -759,8 +759,8 @@ interface.
 .. rubric:: Useful commands
    :name: Useful-commands
 
-Internally, the VLAN filter table(s) are stored in each PRU's Data RAM 
-(PRU0->Data RAM0, PRU1->Data RAM1) instead of one table in Shared RAM 
+Internally, the VLAN filter table(s) are stored in each PRU's Data RAM
+(PRU0->Data RAM0, PRU1->Data RAM1) instead of one table in Shared RAM
 as for HSR/PRP.
 
 .. rubric:: Limitation
@@ -1119,9 +1119,9 @@ display the NT entries.
 ::
 
  root@am57xx-evm:~# cat /proc/prp0/node-table
- 
+
  Remote nodes in network: 1
- 
+
  Node[0]:
  MAC ADDR: 70:ff:76:1c:16:ef
  DANP
@@ -1519,7 +1519,7 @@ below
  else
 	if=prp0
  fi
- 
+
  ifa=eth2
  ifb=eth3
  ip=192.168.2.10
@@ -1551,7 +1551,7 @@ below
  else
 	ip link add name $if type hsr slave1 $ifa slave2 $ifb supervision 45 proto 1 sv_vid 3 sv_pcp 7 sv_dei 0
  fi
- 
+
  ifconfig $if $ip
  ifconfig $if
  ifconfig $ifa
@@ -1564,7 +1564,7 @@ interface, user may use ip link command as
 
 ip link delete <hsr or prp interface name>.  Example for hsr0 interface name, user type
 
-:: 
+::
 
  ip link delete hsr0
 
@@ -1584,7 +1584,7 @@ after this as below assuming eth2 and eth3 interfaces
 ::
 
  root@am57xx-evm:~# ifconfig eth2
-  eth2      Link encap:Ethernet  HWaddr 70:FF:76:1C:0F:8D 
+  eth2      Link encap:Ethernet  HWaddr 70:FF:76:1C:0F:8D
             BROADCAST MULTICAST  MTU:1500  Metric:1
             RX packets:0 errors:0 dropped:0 overruns:0 frame:0
             TX packets:0 errors:0 dropped:0 overruns:0 carrier:0

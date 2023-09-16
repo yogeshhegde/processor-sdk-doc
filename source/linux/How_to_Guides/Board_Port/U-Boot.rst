@@ -141,7 +141,7 @@ Steps to create an intitial baseline:
 
     #. Copy and update top-level device tree file and integrate into build process
 
-        * Copy **arch/arm/dts/am335x-evm.dts** to 
+        * Copy **arch/arm/dts/am335x-evm.dts** to
           **arch/arm/dts/am335x-<myboard>.dts**
         * Edit **arch/arm/dts/am335x-<myboard>.dts** and update ``model`` node
           with a custom, board-specific string
@@ -289,7 +289,7 @@ to complete this step, do the following:
    created defconfig file, and then performing the actual build of SPL and
    U-Boot. Fix any build errors you may encounter and re-build until the build
    performs cleanly, without any build warnings. Ensure that the `toolchain path
-   <../../Overview/GCC_ToolChain.html>`__ has been set properly. 
+   <../../Overview/GCC_ToolChain.html>`__ has been set properly.
 
     ::
 
@@ -569,7 +569,7 @@ only activated or applicable to SPL.
 
     * Remove dependency on RTC
         * If a custom board does not use the SOC's built-in RTC peripheral,
-          disable ``CONFIG_SPL_AM33XX_ENABLE_RTC32K_OSC`` via 
+          disable ``CONFIG_SPL_AM33XX_ENABLE_RTC32K_OSC`` via
           ``make ARCH=arm CROSS_COMPILE='arm-linux-gnueabihf-' menuconfig``
 
             * Navigate to the **Device Drivers** section and
@@ -577,7 +577,7 @@ only activated or applicable to SPL.
               count limit ----``. Exit to menuconfig page.
             * Navigate to the **SPL / TPL** section and
               deselect the option ``Enable the RTC32K OSC on AM33xx based
-              platforms``. Save and exit menuconfig. 
+              platforms``. Save and exit menuconfig.
         * Note that to fully disable RTC support there are also changes needed
           to the Linux Kernel, specifically the disabling of the ``rtc`` node
           from the Kernel device tree file by adding a ``status = "disabled";``

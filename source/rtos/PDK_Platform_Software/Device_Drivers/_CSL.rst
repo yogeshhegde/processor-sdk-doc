@@ -1,6 +1,6 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL
 
-| 
+|
 
 .. rubric:: Overview
    :name: overview-1
@@ -57,8 +57,8 @@ compatibility for existing applications on AM335x/AM437x SOCs,
 StarterWare low level package is retained. Customers are recommended
 to use driver interfaces for ease of migration of application software
 across SOCs.
-  
-  
+
+
 +-----------------------+------------------------------------------------------+
 |                       Chip Support Library/DAL Summary                       |
 +=======================+======================================================+
@@ -93,8 +93,8 @@ CSL source would need to pass compile time define -DSOC_XXX. Refer
 ti\csl\soc.h for list of devices/SOC's
 
 Refer list of APIs/interfaces available under <PDK_INSTALL_DIR\\packages\\ti\\csl> directory.
-  
-  
+
+
 +--------------------------+----------------------------------------+
 |                   Chip Support Library Summary                    |
 +==========================+========================================+
@@ -119,7 +119,7 @@ Refer list of APIs/interfaces available under <PDK_INSTALL_DIR\\packages\\ti\\cs
 |   Reference Guides       |   See docs under Install Directory     |
 |                          |                                        |
 +--------------------------+----------------------------------------+
-  
+
 
 CSL-FL EXAMPLES
 -----------------
@@ -175,5 +175,5 @@ Refer to the readme document at below path for more details.
 
 <PDK Root>/packages/ti/csl/example/dcan/dcanLoopback
 
-| 
+|
 

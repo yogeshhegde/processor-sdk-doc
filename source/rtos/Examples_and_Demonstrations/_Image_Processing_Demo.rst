@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Image_Processing_Demo 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Image_Processing_Demo
 
 Introduction
 ============
@@ -36,7 +36,7 @@ devices and EVM are supported:
 -  K2H, on the K2H EVM
 
 .. note::
-   For AM572x EVM, only the SD card boot option (via SBL) is current supported. 
+   For AM572x EVM, only the SD card boot option (via SBL) is current supported.
 
 .. note::
    This demo has been only verified with the Google Chrome along with the 100Mbit router with DHCP
@@ -58,7 +58,7 @@ Software
 -  Processor-SDK RTOS
 -  Code Composer Studio
 
-| 
+|
 
 Software Design
 ===============
@@ -97,7 +97,7 @@ one or more cores):
 -  Once master thread receives completion signal from all threads it
    proceeds with further user interface processing
 
-| 
+|
 
 How to Build the Demo
 ---------------------
@@ -115,7 +115,7 @@ AM572x GP EVM
       source ./setupenv.sh
       make demo_clean
       make demo
-      the OUT files for A15, DSP1 and DSP2 will be built at 
+      the OUT files for A15, DSP1 and DSP2 will be built at
          ~/ti/processor_sdk_rtos_am57xx_x_0x_xx_xx/demos/image_processing/ipc/evmam572x/host/build,
          ~/ti/processor_sdk_rtos_am57xx_x_0x_xx_xx/demos/image_processing/ipc/evmam572x/dsp1/build, and
          ~/ti/processor_sdk_rtos_am57xx_x_0x_xx_xx/demos/image_processing/ipc/evmam572x/dsp2/build respectively
@@ -130,7 +130,7 @@ AM572x GP EVM
       setupenv.bat
       gmake demo_clean
       gmake demo
-      the OUT files for A15, DSP1 and DSP2 will be built at 
+      the OUT files for A15, DSP1 and DSP2 will be built at
          C:\ti\processor_sdk_rtos_am57xx_x_0x_xx_xx\demos\image_processing\ipc\evmam572x\host\build,
          C:\ti\processor_sdk_rtos_am57xx_x_0x_xx_xx\demos\image_processing\ipc\evmam572x\dsp1\build, and
          C:\ti\processor_sdk_rtos_am57xx_x_0x_xx_xx\demos\image_processing\ipc\evmam572x\dsp2\build respectively
@@ -148,7 +148,7 @@ C6657 EVM
       source ./setupenv.sh
       make demo_clean
       make demo
-      the OUT files for DSPs will be built at 
+      the OUT files for DSPs will be built at
          ~/ti/processor_sdk_rtos_c665x_x_0x_xx_xx/demos/image_processing/ipc/evmc6657l/master/build,
          ~/ti/processor_sdk_rtos_c665x_x_0x_xx_xx/demos/image_processing/ipc/evmc6657l/slave/build respectively
 
@@ -162,7 +162,7 @@ C6657 EVM
       setupenv.bat
       gmake demo_clean
       gmake demo
-      the OUT files for DSPs will be built at 
+      the OUT files for DSPs will be built at
          C:\ti\processor_sdk_rtos_c665x_x_0x_xx_xx\demos\image_processing\ipc\evmc6657l\master\build,
          C:\ti\processor_sdk_rtos_c665x_x_0x_xx_xx\demos\image_processing\ipc\evmc6657l\slave\build respectively
 
@@ -179,7 +179,7 @@ C6678 EVM
       source ./setupenv.sh
       make demo_clean
       make demo
-      the OUT files for DSPs will be built at 
+      the OUT files for DSPs will be built at
          ~/ti/processor_sdk_rtos_c667x_x_0x_xx_xx/demos/image_processing/ipc/evmc6678l/master/build,
          ~/ti/processor_sdk_rtos_c667x_x_0x_xx_xx/demos/image_processing/ipc/evmc6678l/slave/build respectively
 
@@ -193,7 +193,7 @@ C6678 EVM
       setupenv.bat
       gmake demo_clean
       gmake demo
-      the OUT files for DSPs will be built at 
+      the OUT files for DSPs will be built at
          C:\ti\processor_sdk_rtos_c667x_x_0x_xx_xx\demos\image_processing\ipc\evmc6678l\master\build,
          C:\ti\processor_sdk_rtos_c667x_x_0x_xx_xx\demos\image_processing\ipc\evmc6678l\slave\build respectively
 
@@ -210,7 +210,7 @@ K2H EVM
       source ./setupenv.sh
       make demo_clean
       make demo
-      the OUT files for A15, DSPs will be built at 
+      the OUT files for A15, DSPs will be built at
          ~/ti/processor_sdk_rtos_k2hk_x_0x_xx_xx/demos/image_processing/ipc/evmk2hk/master/build,
          ~/ti/processor_sdk_rtos_k2hk_x_0x_xx_xx/demos/image_processing/ipc/evmk2hk/slave/build respectively
 
@@ -224,11 +224,11 @@ K2H EVM
       setupenv.bat
       gmake demo_clean
       gmake demo
-      the OUT files for A15, DSPs will be built at 
+      the OUT files for A15, DSPs will be built at
          C:\ti\processor_sdk_rtos_k2hk_x_0x_xx_xx\demos\image_processing\ipc\evmk2hk\master\build,
          C:\ti\processor_sdk_rtos_k2hk_x_0x_xx_xx\demos\image_processing\ipc\evmk2hk\slave\build respectively
 
-| 
+|
 
 How to Run the Demo
 -------------------
@@ -290,7 +290,7 @@ page using NDK.
 
 .. Image:: ../images/Am572x_web_2.jpg
 
-| 
+|
 
 AM572x GP EVM (Using SBL)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -433,6 +433,4 @@ HOST will write the input and output images to the Image Processing Demo
 page using NDK.
 
 .. Image:: ../images/K2h_web_2.jpg
-
-.. raw:: html
 

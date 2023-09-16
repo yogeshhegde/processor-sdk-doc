@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_WDT 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_WDT
 
 Introduction
 ------------
@@ -47,26 +47,16 @@ API reference for application:
 Initialize a Watchdog Timer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
+.. code:: c
 
      ...
      memset((void *)&wdCfg, 0, sizeof(WatchdogTimer_InitCfg));
-     
+
      wdCfg.wdPeriodLo = ...;
      wdCfg.wdPeriodHi = ...;
      ...
      /* Initialize and start the timer */
      WatchdogTimer_Init(&wdCfg);
-
-.. raw:: html
-
-   </div>
 
 At this point the watchdog timer is enabled and running.
 
@@ -112,6 +102,4 @@ Additional References
 |                                   | ti\\instrumentation\\wdtimer\\do  |
 |                                   | cs\\ReleaseNotes_WatchdogTimer.pdf|
 +-----------------------------------+-----------------------------------+
-
-.. raw:: html
 

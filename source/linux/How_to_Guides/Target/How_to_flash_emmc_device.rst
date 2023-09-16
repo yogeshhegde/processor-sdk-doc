@@ -16,7 +16,7 @@ a copy of the SD card rootfs filesystem.
   are available to kernel.
 - example output when both SD(mmcblk1) and eMMC(mmcblk0) are available
 
-.. code-block:: bash
+.. code-block:: console
 
     root@j721e-evm:~# ls -l /dev/mmcblk*
     brw-rw----    1 root     disk      179,   0 Jul 18 22:49 /dev/mmcblk0
@@ -42,7 +42,7 @@ a copy of the SD card rootfs filesystem.
 
 - Partition the eMMC device using mksdboot.sh script as follows:
 
-.. code-block:: bash
+.. code-block:: console
 
     root@j721e-evm:~# ./mksdboot.sh --device /dev/mmcblk0
     ./mksdboot.sh: line 83: [: too many arguments
@@ -57,18 +57,18 @@ a copy of the SD card rootfs filesystem.
     *                                                          *
     *         Press <ENTER> to confirm....                     *
     ************************************************************
-    
+
     ls: /dev/mmcblk0?: No such file or directory
     1024+0 records in
     1024+0 records out
-    
+
     Welcome to fdisk (util-linux 2.32.1).
     Changes will remain in memory only, until you decide to write them.
     Be careful before using the write command.
-    
+
     Device does not contain a recognized partition table.
     Created a new DOS disklabel with disk identifier 0x02f86286.
-    
+
     Command (m for help): Partition type
        p   primary (0 primary, 0 extended, 4 free)
        e   extended (container for logical partitions)
@@ -77,23 +77,23 @@ a copy of the SD card rootfs filesystem.
     Crea[87597.750177]  mmcblk0: p1 p2
     ted a new partition 1 of type 'Linux' and of size 62 MiB.
     Partition #1 contains a vfat signature.
-    
+
     Command (m for help): Partition type
        p   primary (1 primary, 0 extended, 3 free)
        e   extended (container for logical partitions)
     Select (default p): Partition number (2-4, default 2): First sector (129024-31080447, default 129024): Last sector, +sectors or +size{K,M,G,T,P} (129024-31080447, default 31080447):
     Created a new partition 2 of type 'Linux' and of size 14.8 GiB.
-    
+
     Command (m for help): Partition number (1,2, default 2): Hex code (type L to list all codes):
     Changed type of partition 'Linux' to 'W95 FAT32 (LBA)'.
-    
+
     Command (m for help): Partition number (1,2, default 2):
     The bootable flag on partition 1 is enabled now.
-    
+
     Command (m for help): The partition table has been altered.
     Calling ioctl() to re-read partition table.
     Syncing disks.
-    
+
     Formating /dev/mmcblk01 ...
     mkfs.fat 4.1 (2017-01-24)
     mkfs.fat: warning - lowercase labels might not work properly with DOS or Windows
@@ -104,12 +104,12 @@ a copy of the SD card rootfs filesystem.
     Filesystem UUID: a5586362-272d-4fb2-a0cc-56458dfc4b64
     Superblock backups stored on blocks:
             32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208
-    
+
     Allocating group tables: done
     Writing inode tables: done
     Creating journal (16384 blocks): done
     Writing superblocks and filesystem accounting information: done
-    
+
     Partitioning and formatting completed!
     root@j721e-evm:~# [87602.674595] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
 

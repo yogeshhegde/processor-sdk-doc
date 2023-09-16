@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Optimizing_IPC_Applications 
+.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Optimizing_IPC_Applications
 
 Compiler and Linker Optimization
 ----------------------------------
@@ -122,7 +122,7 @@ The options for the BIOS.libType configuration property are as follows:
 The following example statements set the BIOS.libType configuration
 property:
 
-:: 
+::
 
     var BIOS = xdc.useModule('ti.sysbios.BIOS');
     BIOS.libType = BIOS.LibType_Custom;
@@ -282,7 +282,7 @@ the NotifyDriverCirc driver for that device:
     var Notify = xdc.useModule('ti.sdo.ipc.Notify');
     Notify.SetupProxy = xdc.useModule('ti.sdo.ipc.family.dm6446.NotifyCircSetup');
 
-| 
+|
 
 
 IPC provides the following Notify drivers. Each has a corresponding
@@ -442,7 +442,7 @@ memory footprint of IPC applications:
 
    Ipc.procSync = Ipc.ProcSync_PAIR;
 
-| 
+|
 
 At run-time, only call Ipc_attach() to a remote processor if one or
 more of the following conditions is true::
@@ -484,13 +484,13 @@ more of the following conditions is true::
 .. code-block:: javascript
 
     var Notify = xdc.useModule('ti.sdo.ipc.Notify');
-    
+
     /* Reduce the total number of supported events from 32 to 2 */
     Notify.numEvents = 2;
-    
+
     var NameServerRemoteNotify = xdc.useModule('ti.sdo.ipc.NameServerRemoteNotify');
     NameServerRemoteNotify.notifyEventId = 1;
-    
+
     var TransportShm = xdc.useModule('ti.sdo.ipc.transports.TransportShm');
     TransportShm.notifyEventId = 0;
 
@@ -567,6 +567,6 @@ of a SYS/BIOS-based application that uses IPC.
    Modules <index_Foundational_Components.html#heapmp-module>`__ for more about
    Heap implementations.
 
-| 
+|
 
 

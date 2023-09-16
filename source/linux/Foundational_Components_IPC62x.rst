@@ -193,7 +193,7 @@ See the devicetree bindings documentation for more details: `Documentation/devic
           'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=ti-linux-5.10.y'
 
 By default the first 1MB of each pool is used for the Virtio and Vring buffers
-used to communicate with the remote processor core. The remaining carveout is 
+used to communicate with the remote processor core. The remaining carveout is
 used for the remote core external memory (program code, data, etc).
 
 .. note::

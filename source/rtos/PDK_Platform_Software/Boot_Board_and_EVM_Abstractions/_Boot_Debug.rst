@@ -7,7 +7,7 @@ users are expected to check while debugging boot related issues. This
 section discusses common issues to checkout when debugging application
 boot.
 
-| 
+|
 
 Hardware Debug Steps
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -112,7 +112,7 @@ utilities as reference and ensure that the production flashing tools use
 a method to erase, write and then verify the boot image that is written
 to the flash.
 
-| 
+|
 
 .. rubric:: DDR timings and configuration /SBL
    :name: ddr-timings-and-configuration-sbl
@@ -195,4 +195,3 @@ detected, pinmux configuration and confirm DDR initialization and target
 core states. This helps minimize the number of variables in the system
 boot and helps us zero in on the most likely cause for the boot failure.
 
-.. raw:: html

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Use_Cases_for_IPC 
+.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Use_Cases_for_IPC
 
 You can use IPC modules in a variety of combinations. From the simplest
 setup to the setup with the most functionality, the use case options are

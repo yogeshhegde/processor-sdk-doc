@@ -33,7 +33,7 @@ The benefits of using deep sleep in embedded devices:
 Inorder to enter deep sleep, use the following command:
 
 ::
-    
+
     root@am62xx-evm:~# echo mem > /sys/power/state
     [   45.902923] PM: suspend entry (deep)
     [   45.906725] Filesystems sync: 0.000 seconds

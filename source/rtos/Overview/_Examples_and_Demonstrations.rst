@@ -5,7 +5,7 @@ software and IDE. The *demonstrations* contain a richer set of software
 and perform more complex features. If new to the SDK, it is suggested to
 go through the examples and demos before writing your application.
 
-| 
+|
 
 Application
 
@@ -267,7 +267,7 @@ X
 
 X
 
-| 
+|
 | The source files for the demonstrations can be found in the **demos**
   folder of the top-level RTOS SDK directory:
 
@@ -280,6 +280,5 @@ The default SDK Install Path is ``C:\TI`` for Windows and
 
 .. Image:: ../images/Processor-SDK-RTOS-directory-top.png
 
-| 
+|
 
-.. raw:: html

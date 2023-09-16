@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK 
+.. http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK
 
 Overview
 ^^^^^^^^
@@ -49,7 +49,7 @@ commands:
     C:\ti\pdk_[soc]_[version]\packages>gmake clean
     C:\ti\pdk_[soc]_[version]\packages>gmake all
 
-Please note that the user can specify parallelism with the make option -j to reduce 
+Please note that the user can specify parallelism with the make option -j to reduce
 the build time for targets 'all' and 'clean'. For example,
 
 ::
@@ -57,7 +57,7 @@ the build time for targets 'all' and 'clean'. For example,
     C:\ti\pdk_[soc]_[version]\packages>gmake clean -j4
     C:\ti\pdk_[soc]_[version]\packages>gmake all -j4
 
-Individual PDK components can be cleaned and rebuilt from within the component's directory 
+Individual PDK components can be cleaned and rebuilt from within the component's directory
 with the following commands
 
 ::
@@ -72,7 +72,7 @@ with the following commands
     C:\ti\pdk_[soc]_[version]\packages\ti\drv\i2c>gmake clean
     C:\ti\pdk_[soc]_[version]\packages\ti\drv\i2c>gmake all
 
-Please note that parallel make (-j4) is not supported within individual 
+Please note that parallel make (-j4) is not supported within individual
 PDK components. It is supported only at the top level (C:\\ti\\pdk_[soc]_[version]\\packages)
 for targets 'all' and 'clean'
 
@@ -96,13 +96,13 @@ To build only, ARM version of evmAM572x board library
 
 ::
 
-    gmake LIMIT_BOARDS="evmAM572x" LIMIT_SOCS="am572x" LIMIT_CORES="a15_0"  
+    gmake LIMIT_BOARDS="evmAM572x" LIMIT_SOCS="am572x" LIMIT_CORES="a15_0"
 
 To build only, DSP version of evmK2G board library
 
 ::
 
-    gmake LIMIT_BOARDS="evmK2G" LIMIT_SOCS="k2g" LIMIT_CORES="dsp_0" 
+    gmake LIMIT_BOARDS="evmK2G" LIMIT_SOCS="k2g" LIMIT_CORES="dsp_0"
 
 
 Building PDK using make in Linux environment
@@ -143,7 +143,7 @@ commands:
     ~/ti/pdk_[soc]_[version]/packages$ make clean
     ~/ti/pdk_[soc]_[version]/packages$ make all
 
-Please note that the user can specify parallelism with the make option -j to reduce 
+Please note that the user can specify parallelism with the make option -j to reduce
 the build time for targets 'all' and 'clean'. For example,
 
 ::
@@ -164,7 +164,7 @@ Individual PDK components can be cleaned and rebuilt from within the components'
     ~/ti/pdk_[soc]_[version]/packages/ti/drv/i2c$ make clean
     ~/ti/pdk_[soc]_[version]/packages/ti/drv/i2c$ make all
 
-Please note that parallel make (-j) is not supported within individual 
+Please note that parallel make (-j) is not supported within individual
 PDK components. It is supported only at the top level (~/ti/pdk_[soc]_[version]/packages)
 for targets 'all' and 'clean'
 
@@ -190,13 +190,13 @@ To build only, ARM version of evmAM572x board library
 
 ::
 
-    make LIMIT_BOARDS="evmAM572x" LIMIT_SOCS="am572x" LIMIT_CORES="a15_0"  
+    make LIMIT_BOARDS="evmAM572x" LIMIT_SOCS="am572x" LIMIT_CORES="a15_0"
 
 To build only, DSP version of evmK2G board library
 
 ::
 
-    make LIMIT_BOARDS="evmK2G" LIMIT_SOCS="k2g" LIMIT_CORES="c66x" 
+    make LIMIT_BOARDS="evmK2G" LIMIT_SOCS="k2g" LIMIT_CORES="c66x"
 
 
 
@@ -238,7 +238,7 @@ Below are the steps on how to set up a development environment with the git repo
 
 .. note::
    When updating PDK for picking up bug fixes or for development, please be aware that the supporting components like tools versions might have changed since the previous release.The tools versions used by PDK are specified in pdk/packages/ti/build/pdk_tools_path.mk . Please ensure that those are downloaded in the processor sdk installation directory.
-  
+
 
 PDK Example and Test Project Creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -258,8 +258,8 @@ how the scripts are used to create CCS project content.
    script. The default settings in the pdkProjectCreate script will have
    the product versions installed with the PDK. The pdkProjectCreate
    script can be modified to use older or newer product versions based
-   on the user's development environment. 
-  
+   on the user's development environment.
+
 .. note::
    Project compilation and successful execution cannot be
    guaranteed for products not installed with the PDK.
@@ -297,7 +297,7 @@ how the scripts are used to create CCS project content.
       endian      -   little / big
       module      -   all
                       -or-
-                      aif2 / bcp / cppi / csl / dfe / emac / fatfs / fm / fftc / 
+                      aif2 / bcp / cppi / csl / dfe / emac / fatfs / fm / fftc /
                       gpio / hyplnk / i2c / icss_emac / iqn2 / mcasp / mcbsp / mmap / mmcsd /
                       nimu / nimu_icss / nwal / osal / pa / pcie / pktlib / pruss / qm / rm /
                       sa /serdes-diag / spi / srio / tcp3d / tfw / transportqmss /
@@ -328,7 +328,7 @@ how the scripts are used to create CCS project content.
 
     Linux Usage:
      pdkProjectCreate.sh [soc] [board] [endian] [module] [project type] [processor]
-     
+
       Description:    (first option is default)
       soc         -   AM335x / AM437x / AM571x / AM572x / K2E / K2G / K2K / K2H / K2L /
                       C6678 / C6657 / DRA72x / DRA75x / DRA78x / OMAPL137 / OMAPL138
@@ -346,7 +346,7 @@ how the scripts are used to create CCS project content.
                       transportsrio / tsip / uart / usb / wdtimer / vps / dcan / dss / lcdc
       project type -  all / example / test
       processor   -   arm / dsp / m4
-     
+
       Example:
        a) pdkProjectCreate.sh
                    - Creates all module projects for the AM335x soc for arm little endian
@@ -435,15 +435,13 @@ Steps to run example and/or unit test projects on C66x/A15 Target
       #. Click on Target -> Reset CPU
       #. Click on Target -> Load Program
       #. Select the executable file to be loaded. Example:
-      
+
         ::
-      
+
                 C:\ti\pdk_[soc]_[version]\packages\MyExampleProjects\GPIO_LedBlink_AM572X_GpEvm_c66xExampleProject\Debug\GPIO_LedBlink_evmAM572x_c66xExampleProject.out
       4. Click on OK.
       5. Once the project is loaded; click on Target -> Run to execute
          it.
 
-| 
-
-.. raw:: html
+|
 

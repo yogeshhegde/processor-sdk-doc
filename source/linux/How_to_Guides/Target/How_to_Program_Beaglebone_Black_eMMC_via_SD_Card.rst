@@ -31,7 +31,7 @@ Preparing the SD Card
 * Follow the steps outlined in the `Linux SD Card Creation Guide
   <../../Overview/Processor_SDK_Linux_create_SD_card_script.html>`__.
 * For this guide, it is recommended to follow the steps to create an "SD Card
-  Using Default Images." 
+  Using Default Images."
 * Once the SD Card has been created with default
   images, copy the included **sd-card-flasher.sh** to the **/home/root/**
   directory in the **rootfs** partition of the SD Card:
@@ -57,7 +57,7 @@ Preparing the SD Card
 
   ::
 
-   sudo ls <PATH-TO-SD-CARD>/rootfs/home/root/ 
+   sudo ls <PATH-TO-SD-CARD>/rootfs/home/root/
 
 Booting EVM and Running Partition Script
 ----------------------------------------

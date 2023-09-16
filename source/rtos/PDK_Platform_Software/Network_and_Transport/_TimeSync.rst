@@ -127,7 +127,7 @@ timeSync device operation
     }
 
 **NOTE**
-: 
+:
 
 #. The TimeSync Tx callback interrupt is mapped to the ISR TimeSync_txTSIsr(), where the two PRU interrupts configured to ARM interrupt txIntNum are PRU_ARM_EVENT_6 and PRU_ARM_EVENT_7.
 #. The PTP frames are received via the Real Time (RT) call back from ICSS_EMAC driver and hence RT call back needs to be implemented at the application for ICSS-EMAC driver.

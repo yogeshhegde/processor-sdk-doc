@@ -595,7 +595,7 @@ Enabling camera sensors
     supports **OV5640** module connected to MIPI connector. J721E SK has two
     instances of 15-pin FFC camera connector to which **IMX219** based RPi camera
     modules can be interfaced.
-   
+
     Applying sensor overlays
     ------------------------
 
@@ -635,7 +635,7 @@ Enabling camera sensors
     supports **OV5640** module connected to MIPI connector. AM68A SK has two
     instances of 22-pin FFC camera connector to which **IMX219** based RPi camera
     modules can be interfaced.
-   
+
     Applying sensor overlays
     ------------------------
 
@@ -675,7 +675,7 @@ Enabling camera sensors
     supports **OV5640** module connected to MIPI connector. AM69A SK has two
     instances of 22-pin FFC camera connector to which **IMX219** based RPi camera
     modules can be interfaced.
-   
+
     Applying sensor overlays
     ------------------------
 

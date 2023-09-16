@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Running_IPC_Examples_on_DRA7xx/AM572x 
+.. http://processors.wiki.ti.com/index.php/Running_IPC_Examples_on_DRA7xx/AM572x
 
 The sections relevant to AM57xx have been pulled from the `Debugging Tools and Techniques With IPC3.x Application Note <http://www.ti.com/lit/an/sprac12/sprac12.pdf>`_ and placed here.
 
@@ -28,7 +28,7 @@ error trace often gives an error code and a module or function name that can be 
 error was thrown.
 
 Linux and Android - Debugfs
-"""""""""""""""""""""""""""	
+"""""""""""""""""""""""""""
 Another useful place to look for debug info is in the debugfs. Information for each remote processor can
 be found there, as well as remote core traces, state information, and more.
 
@@ -52,11 +52,11 @@ environment variable at runtime. This feature is only supported on Linux and is 
 Table 1. IPC_DEBUG Trace Levels
 
 +-------------+------------------------------------------------------------------+
-| Trace Level | Description                                                      | 
+| Trace Level | Description                                                      |
 +=============+==================================================================+
-| 1           | Enables all warnings and errors to be printed                    | 
+| 1           | Enables all warnings and errors to be printed                    |
 +-------------+------------------------------------------------------------------+
-| 2           | Turns on all tracing (including socket and LAD client tracing).  |                                       
+| 2           | Turns on all tracing (including socket and LAD client tracing).  |
 +-------------+------------------------------------------------------------------+
 
 QNX – Enabling IPC Traces
@@ -115,15 +115,15 @@ remote processor.
 Table 2. Remoteproc Names for AM57xx
 
 +--------------+--------------------+
-| Debugfs Name |  Remote Core Name  | 
+| Debugfs Name |  Remote Core Name  |
 +==============+====================+
-| 58820000.ipu | IPU1               | 
+| 58820000.ipu | IPU1               |
 +--------------+--------------------+
-| 55020000.ipu | IPU2               |                                       
+| 55020000.ipu | IPU2               |
 +--------------+--------------------+
-| 40800000.dsp | DSP1               |                                       
+| 40800000.dsp | DSP1               |
 +--------------+--------------------+
-| 41000000.dsp | DSP2               |                                       
+| 41000000.dsp | DSP2               |
 +--------------+--------------------+
 
 QNX - Remote Core Traces
@@ -184,26 +184,26 @@ Table 3 lists what can be found for each core.
 Table 3. Remoteproc Debugfs Entries
 
 +--------------+-------------------------------------------------------------------------------------------+
-| Entry        |  Description                                                                              | 
+| Entry        |  Description                                                                              |
 +==============+===========================================================================================+
 | name         | Processor name, comprised of the RAM address and the processor type,                      |
-|              | (for example, 58820000.ipu for IPU1). For a complete list of names, see Table 2.          | 
+|              | (for example, 58820000.ipu for IPU1). For a complete list of names, see Table 2.          |
 +--------------+-------------------------------------------------------------------------------------------+
 | recovery     | Returns either “enabled” or “disabled”, indicating if recovery is enabled or disabled for |
-|              | the remote processor.                                                                     |                          
+|              | the remote processor.                                                                     |
 +--------------+-------------------------------------------------------------------------------------------+
 | state        | Gives the state of the remote processor. State is one of:                                 |
 |              | * offline (0)                                                                             |
 |              | * suspended (1)                                                                           |
 |              | * running (2)                                                                             |
-|              | * crashed (3)                                                                             |                                                              
+|              | * crashed (3)                                                                             |
 +--------------+-------------------------------------------------------------------------------------------+
-| trace0       | Returns the contents of the remote processor trace buffer.                                |                                               
+| trace0       | Returns the contents of the remote processor trace buffer.                                |
 +--------------+-------------------------------------------------------------------------------------------+
 | trace0_last  | Created after recovering the remote core. Returns the contents of the remote processor    |
-|              | trace buffer before recovery was triggered.                                               |                                                   
+|              | trace buffer before recovery was triggered.                                               |
 +--------------+-------------------------------------------------------------------------------------------+
-| version      | Returns the version. Currently returns nothing.                                           |                                                    
+| version      | Returns the version. Currently returns nothing.                                           |
 +--------------+-------------------------------------------------------------------------------------------+
 
 Linux and Android - IOMMU Info
@@ -219,19 +219,19 @@ Table 4 gives the corresponding core name for each MMU for AM57xx, and the regis
 Table 4. IOMMU Entry Names
 
 +--------------+-------------+
-| IOMMU Entry  |  Core Name  |            
+| IOMMU Entry  |  Core Name  |
 +==============+=============+
-| 58882000.mmu | IPU1        | 
+| 58882000.mmu | IPU1        |
 +--------------+-------------+
-| 55082000.mmu | IPU2        |                       
+| 55082000.mmu | IPU2        |
 +--------------+-------------+
-| 40d01000.mmu | DSP1 (MMU1) |                                                                                                                                                                  
+| 40d01000.mmu | DSP1 (MMU1) |
 +--------------+-------------+
 | 40d02000.mmu | DSP1 (MMU2) |
 +--------------+-------------+
-| 41501000.mmu | DSP2 (MMU1) |                                                                                             
+| 41501000.mmu | DSP2 (MMU1) |
 +--------------+-------------+
-| 41502000.mmu | DSP2 (MMU2) |                                              
+| 41502000.mmu | DSP2 (MMU2) |
 +--------------+-------------+
 
 Some of this information is inaccessible from a suspended state. Table 5 lists what can be found for each core.
@@ -239,13 +239,13 @@ Some of this information is inaccessible from a suspended state. Table 5 lists w
 Table 5. IOMMU Debugfs Entries
 
 +----------------+---------------------------------------+
-|     Entry      | Description                           |            
+|     Entry      | Description                           |
 +================+=======================================+
 | nr_tlb_entries | Gives the number of tlb entries       |
 +----------------+---------------------------------------+
-| pagetable      | Dumps the pagetable entries           |                       
+| pagetable      | Dumps the pagetable entries           |
 +----------------+---------------------------------------+
-| regs           | Gives the values of the MMU registers |                                                                                                                                                                  
+| regs           | Gives the values of the MMU registers |
 +----------------+---------------------------------------+
 | tlb            | Lists the tlb entries.                |
 +----------------+---------------------------------------+
@@ -486,7 +486,7 @@ An example of the crash dump will look like this::
  [0] [ 91.045] R6 = 0xffffffff LR(R14) = 0x0000c973
 
  [0] [ 91.045] R7 = 0xffffffff PC(R15) = 0x0000c976
- 
+
  [0] [ 91.045] PSR = 0x61000000
 
  [0] [ 91.045] ICSR = 0x00438803
@@ -534,7 +534,7 @@ An example of the crash dump will look like this::
  [0] [ 91.045] 80060860: bebebebe bebebebe bebebebe bebebebe bebebebe bebebebe bebebebe bebebebe
 
  [0] [ 91.045] 80060880: bebebebe bebebebe bebebebe bebebebe bebebebe 00000000 00000000 00000001
- 
+
  [0] [ 91.045] 800608a0: 00000001 000154c9 0001309a 0000000a 00000000 80041820 00000001 ffffffff
 
  [0] [ 91.045] 800608c0: ffffffff 0000fec9 00000000 00000000 000068b9 0000fec9 00015b91 bebebebe
@@ -723,6 +723,4 @@ equal to the fault address. This is the fault in this example.
 Next, decide if this is a valid value that needs mapping, or if this is an invalid value that passed due to
 some error in the code. If it is still not known where the value is coming from, use CCS to trace it back
 through the call stack to fix the code. If it turns out that the address is an address that must be accessible to the remote core, then map it through the resource table to the appropriate physical memory.
-
-.. raw:: html
 

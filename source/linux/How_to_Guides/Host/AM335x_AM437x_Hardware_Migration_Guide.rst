@@ -1,4 +1,4 @@
-AM335x to AM437x Hardware Migration Guide 
+AM335x to AM437x Hardware Migration Guide
 ==========================================
 
 Introduction
@@ -15,9 +15,9 @@ Basic Feature Comparison
 The figure and table below show a comparison of the basic features of the AM335x and the AM437x. The remainder of the document presents a comparison of these features in greater detail, and also provides references to the appropriate documentation for further information.
 
 	.. Image:: /images/AM335x_AM437x_1.png
-	
 
- 
+
+
 +---------------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------+
 | Device Family                         | AM335x                                                                                        | AM437x                                               |
 +=======================================+===============================================================================================+======================================================+
@@ -37,7 +37,7 @@ The figure and table below show a comparison of the basic features of the AM335
 |                                       |                                                                                               |                                                      |
 |                                       | Supported OPP: 50%/100%/120%/Turbo/Nitro                                                      | Supported OPP: 50%/100%/120%/Turbo/Nitro             |
 +---------------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------+
-| Neon Co-processor                     | Y                                                                                             | Y                                                    | 
+| Neon Co-processor                     | Y                                                                                             | Y                                                    |
 +---------------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------+
 | Graphics Engine                       | 3SGX530 3D, 200 MHz                                                                           | SGX530 3D, 200 MHz                                   |
 +---------------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------+
@@ -107,7 +107,7 @@ The figure and table below show a comparison of the basic features of the AM335
 +---------------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------+
 | **Test Interfaces**                                                                                                                                                                          |
 +---------------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------+
-| JTAG                                  | Y                                                                                             | Y                                                    | 
+| JTAG                                  | Y                                                                                             | Y                                                    |
 +---------------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------+
 | ETM, PTM, & ETB                       | ETM & ETB                                                                                     | PTM                                                  |
 +---------------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------+
@@ -117,7 +117,7 @@ The figure and table below show a comparison of the basic features of the AM335
 +---------------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------+
 | **Misc**                                                                                                                                                                                     |
 +---------------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------+
-| GP Timer                              | 7                                                                                             | 12                                                   | 
+| GP Timer                              | 7                                                                                             | 12                                                   |
 +---------------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------+
 | Watchdog Timer                        | 1                                                                                             | 1                                                    |
 +---------------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------+
@@ -191,7 +191,7 @@ General Purpose Memory Controller
 
 Both AM335x and AM437x support 7 chip selects.
 
-External Memory Interface 
+External Memory Interface
 --------------------------
 
 AM335x supports a single 16-bit LPDDR (mDDR)/DDR2/DDR3 SDRAM Interface, with up to:
@@ -319,7 +319,7 @@ Table: **AM335x Voltage Rails**
 
 \* *Note: These voltage rails are not available in the 13x13 package.*
 
- 
+
 Table: **AM437x Voltage Rails**
 
 +------------------------+------------------------------------------------+-------------------+
@@ -719,13 +719,13 @@ Multimedia Hardware Components
 LCDC vs DSS
 ------------
 
-The below image provides a brief summary of the differences between LCDC and DSS. Please refer to the TRM for more information. 
- 
+The below image provides a brief summary of the differences between LCDC and DSS. Please refer to the TRM for more information.
+
 	.. Image:: /images/lcdc_dss_diff.png
 		:scale: 120 %
 
 * The following `page <http://software-dl.ti.com/processor-sdk-linux/esd/docs/06_03_00_106/AM335X/linux/Foundational_Components/Kernel/Kernel_Drivers/Display/LCDC.html>`__ contains more information LCDC
-* The following `page <../../Foundational_Components/Kernel/Kernel_Drivers/Display/DSS.html>`__ contains more information on DSS	
+* The following `page <../../Foundational_Components/Kernel/Kernel_Drivers/Display/DSS.html>`__ contains more information on DSS
 
 
 DSS FIFO Underflow
@@ -748,7 +748,7 @@ Adjusting the parameters described in the errata will usually take place in u-bo
 
 ::
 
-		# Set Output Resolution 
+		# Set Output Resolution
 		optargs=video=HDMI-A-1:800x600
 
 		# A9 limiter = 700MBPS
@@ -779,14 +779,14 @@ If you are using fbdev, here is a patch that shows how to merge the FIFO:
 		--- a/drivers/video/fbdev/omap2/omapfb/dss/apply.c
 		+++ b/drivers/video/fbdev/omap2/omapfb/dss/apply.c
 		@@ -1039,6 +1039,10 @@ static void dss_ovl_setup_fifo(struct omap_overlay *ovl)
-		 
+
 			if (!op->enabled && !op->enabling)
 				return;
 		+	if (dss_has_feature(FEAT_FIFO_SZ_LIMITATION)) {
 		+    		use_fifo_merge = true;
 		+    		dispc_enable_fifomerge(use_fifo_merge);
 		+	}
-		 
+
 			dispc_ovl_compute_fifo_thresholds(ovl->id, &fifo_low, &fifo_high,
 					use_fifo_merge, ovl_manual_update(ovl));
 		diff --git a/drivers/video/fbdev/omap2/omapfb/dss/dispc.c b/drivers/video/fbdev/omap2/omapfb/dss/dispc.c
@@ -812,7 +812,7 @@ If you are using fbdev, here is a patch that shows how to merge the FIFO:
 			FEAT_FIFO_MERGE,
 		+	FEAT_FIFO_SZ_LIMITATION,
 		 };
-		 
+
 		 static const enum dss_feat_id omap3630_dss_feat_list[] = {
 		diff --git a/drivers/video/fbdev/omap2/omapfb/dss/dss_features.h b/drivers/video/fbdev/omap2/omapfb/dss/dss_features.h
 		index 3d67d39f19..433d925662 100644
@@ -826,7 +826,7 @@ If you are using fbdev, here is a patch that shows how to merge the FIFO:
 		+    +   /* due to bandwidth constraints */
 		+    +   FEAT_FIFO_SZ_LIMITATION,
 		 };
-		 
+
 		 /* DSS register field id */
 
 If FIFOMERGE is used, the DSS becomes limited in its ability to blend graphics and video data. Either the user must perform color space conversion using the ARM core, or the color space of the camera data must match the color space of the framebuffer before blending. Another possibility is to develop an OpenGL based application that uses the SGX core for blending and color space conversion.
@@ -926,11 +926,11 @@ AM335x has one PRU-ICSS and AM437x has two PRU-ICSS. The PRU-ICSS on AM437x is b
 +--------------------------------------+-----------------------------------------------------+------------------------------------------------------+-----------------------------------------------------+
 | **Features**                         | **AM335x**                                          | **AM437x**                                           | **AM437x**                                          |
 |                                      |                                                     |                                                      |                                                     |
-|                                      | **PRU-ICSS1**                                       | **PRU-ICSS1**                                        | **PRU-ICSS0**                                       | 
+|                                      | **PRU-ICSS1**                                       | **PRU-ICSS1**                                        | **PRU-ICSS0**                                       |
 +--------------------------------------+-----------------------------------------------------+------------------------------------------------------+-----------------------------------------------------+
 | Number of PRU cores                  | 2                                                   | 2                                                    | 2                                                   |
 +--------------------------------------+-----------------------------------------------------+------------------------------------------------------+-----------------------------------------------------+
-| Frequency                            | 200 MHz                                             | 200 MHz                                              | 200 MHz                                             | 
+| Frequency                            | 200 MHz                                             | 200 MHz                                              | 200 MHz                                             |
 +--------------------------------------+-----------------------------------------------------+------------------------------------------------------+-----------------------------------------------------+
 | IRAM size (per PRU core)             | 8 KB                                                | 12 KB                                                | 4 KB                                                |
 +--------------------------------------+-----------------------------------------------------+------------------------------------------------------+-----------------------------------------------------+
@@ -1024,5 +1024,5 @@ Software Migration Guide
 
 .. Image:: /images/am335_437_sw_stack.png
 	:scale: 120 %
-	
+
 As seen by the above image, the user application sits on top of the software stack. In order for a user to develop an application, one does not need to know about the Linux Kernel implementation. Once the Linux system is up and running, user application could start executing its desired tasks. Therefore, an application written on AM335x should work on AM437x without any modifications. For example, users could take the “Hello World” Qt `example <../../Examples_and_Demos_Sub-system_Demos.html#hands-on-with-qt>`__, build it for AM335x and execute it on AM437x. Please keep in mind that this will only work if common IP exists between AM437x and AM335x. The dual camera `example <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Examples_and_Demos/Application_Demos/Dual_Camera_Demo.html>`__ will not function properly on AM335x because the VPFE IP is not present on AM335x.

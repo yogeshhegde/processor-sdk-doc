@@ -37,9 +37,9 @@ As part of eglfs_kms QPA enhancement, following APIs are exposed via QPlatformNa
     2. distroy_plane: Free the reserved DSS hardware planes
     3. export_buffer: Export user allocated buffer to the QT QPA
     4. distroy_buffer: Free the buffers
-    5. set_plane_properties: Set the DSS plane properties for scaling of video planes and blending it with graphics planes. Properties can be set for both DRM plane type Primary and Overlay planes. 
-    6. get_plane_property: Read default/pre-set property value of a plane 
-    7. queue_plane: Queue the video buffer to a QPA plane to be overlayed/displayed 
+    5. set_plane_properties: Set the DSS plane properties for scaling of video planes and blending it with graphics planes. Properties can be set for both DRM plane type Primary and Overlay planes.
+    6. get_plane_property: Read default/pre-set property value of a plane
+    7. queue_plane: Queue the video buffer to a QPA plane to be overlayed/displayed
     8. start_disp_plane: Begin displaying of the queued buffers
     9. user_call_back_handle: Pass callback function pointer to the QT eglfs_kms QPA. The QPA will call this function to notify user the display completion of the overlay buffer
 

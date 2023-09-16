@@ -116,9 +116,9 @@ in Uniflash version 3.0 and beyond.
 
 .. image:: /images/Uniflashv3_setup_complete.png
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Preparing to Flash a Target Board
    :name: preparing-to-flash-a-target-board

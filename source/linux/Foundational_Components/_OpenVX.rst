@@ -38,7 +38,7 @@ kernels and call them using OpenVX APIs.
 
 .. Image:: /images/Tiovx.PNG
 
-| 
+|
 
 .. rubric:: TIOVX software
    :name: tiovx-software
@@ -129,7 +129,7 @@ Here is complete list of DSP kernel wrappers (wrappers are part of TIOVX):
 -  Subtract
 -  Threshold
 
-| 
+|
 
 .. rubric:: TIOVX in Processor Linux SDK on AM57xx EVM
    :name: tiovx-in-processor-linux-sdk-on-am57xx-evm
@@ -294,5 +294,5 @@ After finishing running the TIOVX test application, switch the firmware back to 
 
 ::
 
-    MACHINE=am57xx-evm bitbake tiovx-app-host 
+    MACHINE=am57xx-evm bitbake tiovx-app-host
 

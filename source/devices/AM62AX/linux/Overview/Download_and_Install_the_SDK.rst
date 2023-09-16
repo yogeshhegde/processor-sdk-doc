@@ -97,8 +97,8 @@ Refer :ref:`Release Notes <Release-note-label>` for complete feature-set and fur
 **MCU+ SDK for RTOS/NO-RTOS**
 
 .. note::
-   Processor SDK Linux AM62A contains only the Linux specific source and application intended   
-   to runs on A53/Linux core. For R5F and RTOS/NO-RTOS side source and applications, refer **MCU+ SDK** 
+   Processor SDK Linux AM62A contains only the Linux specific source and application intended
+   to runs on A53/Linux core. For R5F and RTOS/NO-RTOS side source and applications, refer **MCU+ SDK**
    package `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/08_06_00_18/exports/docs/api_guide_am62ax/index.html>`__.
 
 **Instructions to set-up CCS**

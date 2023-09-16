@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CPPI 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CPPI
 
 Overview
 --------
@@ -138,7 +138,7 @@ This came from k2k example:
 
 
     Core 0 : Memory region 0 inserted
-    Core 0 : Number of descriptors requested : 8. Number of descriptors allocated : 8 
+    Core 0 : Number of descriptors requested : 8. Number of descriptors allocated : 8
     Core 0 : Opened Rx channel : 0
     Core 0 : Opened Tx channel : 0
     Core 0 : Queue Number : 8192 opened
@@ -170,7 +170,7 @@ This came from k2k example:
     Core 1 : Memory region 1 inserted
 
 
-    Core 1 : Number of descriptors requested : 8. Number of descriptors allocated : 8 
+    Core 1 : Number of descriptors requested : 8. Number of descriptors allocated : 8
     Core 2 : QMSS CPDMA Opened
     Core 3 : QMSS CPDMA Opened
     Core 1 : Opened Rx channel : 0
@@ -180,8 +180,8 @@ This came from k2k example:
     Core 2 : Memory region 2 inserted
     Core 3 : Memory region 3 inserted
     Core 1 : Queue Number : 0 opened
-    Core 2 : Number of descriptors requested : 8. Number of descriptors allocated : 8 
-    Core 3 : Number of descriptors requested : 8. Number of descriptors allocated : 8 
+    Core 2 : Number of descriptors requested : 8. Number of descriptors allocated : 8
+    Core 3 : Number of descriptors requested : 8. Number of descriptors allocated : 8
     Core 1 : Queue Number : 1 opened
     Core 2 : Opened Rx channel : 1
     Core 3 : Opened Rx channel : 2
@@ -306,26 +306,28 @@ This came from k2k example:
 Additional References
 ---------------------
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/CPPI/docs/doxygen/html/index |
-|                                   | .html                             |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/CPPI/docs/ReleaseNotes_CPPI_ |
-|                                   | LLD.pdf                           |
-+-----------------------------------+-----------------------------------+
-| Hardware Userguide/TRM            | `UG TRM                           |
-|                                   | PDF <http://www.ti.com/lit/sprugr |
-|                                   | 9>`__                             |
-+-----------------------------------+-----------------------------------+
-| QMSS LLD (Navigator/Queueing HW   | `QMSS LLD`_                       |
-| component)                        |                                   |
-+-----------------------------------+-----------------------------------+
+.. list-table::
+   :header-rows: 1
+
+   * - **Document**
+
+     - **Location**
+
+   * - API Reference Manual
+
+     - ``$(TI_PDK_INSTALL_DIR)/packages/ti/drv/CPPI/docs/doxygen/html/index.html``
+
+   * - Release Notes
+
+     - ``$(TI_PDK_INSTALL_DIR)/packages/ti/drv/CPPI/docs/ReleaseNotes_CPPI_LLD.pdf``
+
+   * - Hardware Userguide/TRM
+
+     - `UG TRM PDF <http://www.ti.com/lit/sprugr9>`__
+
+   * - QMSS LLD (Navigator/Queueing HW component)
+
+     - `QMSS LLD`_
 
 .. _QMSS LLD:  index_device_drv.html#qmss
-
-| 
 

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/XDS100 
+.. http://processors.wiki.ti.com/index.php/XDS100
 
 .. rubric:: What is the XDS100
    :name: what-is-the-xds100
@@ -161,7 +161,7 @@ installation. For CCSv5.1, 5.2, 5.3 and 5.4 make sure to check for
 updates in CCS and install the latest TI Emulation update if support for
 XDS100v3 is needed.
 
-| 
+|
 
 +-----------------------------------------------------------------------+
 | .. raw:: html                                                         |
@@ -214,7 +214,7 @@ XDS100v3 is needed.
 | ARM Cortex R4   | v2, v3          | - as above -    | - as above -    |
 +-----------------+-----------------+-----------------+-----------------+
 
-| 
+|
 
 A. Install Code Composer Studio 5.1.x (XDS100v1 and XDS100v2 support is
 included) as per the table above **before ** connecting XDS100 USB
@@ -242,12 +242,12 @@ D. Setup Code Composer Studio v5.1.x
    XDS100v3)
 #. Select device.
 
-| 
+|
 
 .. rubric:: Installation for Code Composer Studio v4.x
    :name: installation-for-code-composer-studio-v4.x
 
-| 
+|
 
 +-----------------------------------------------------------------------+
 | .. raw:: html                                                         |
@@ -300,7 +300,7 @@ D. Setup Code Composer Studio v5.1.x
 | ARM Cortex R4   | v2              | - as above -    |                 |
 +-----------------+-----------------+-----------------+-----------------+
 
-| 
+|
 
 A. Install Code Composer Studio 4.x (XDS100 SW support is included) as
 per the table above **before ** connecting XDS100 USB hardware.
@@ -327,7 +327,7 @@ C. Setup Code Composer Studio v4.x
    Hardware Only)
    :name: installation-for-code-composer-studio-v3.3-xds100v1-hardware-only
 
-| 
+|
 
 +-----------------------------------------------------------------------+
 | .. raw:: html                                                         |
@@ -477,13 +477,13 @@ C. Setup Code Composer Studio v3.3
    identified by upgrading the CPLD on XDS100v2 designs. Please see
    `XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F <http://processors.wiki.ti.com/index.php/XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F>`__
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Troubleshooting
    :name: troubleshooting
@@ -517,7 +517,7 @@ C. Setup Code Composer Studio v3.3
    thread <https://e2e.ti.com/support/development_tools/code_composer_studio/f/81/p/522774/1904904>`__
    for details.
 
-| 
+|
 
 .. raw:: html
 
@@ -779,13 +779,13 @@ stick and "Target Connect" worked afetr re-starting CCSv4
    -  For 28x development cards, you may want to see this [`\|
       post <http://e2e.ti.com/support/microcontrollers/tms320c2000_32-bit_real-time_mcus/f/172/t/21086.aspx>`__]
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Frequently Asked Questions (FAQ)
    :name: frequently-asked-questions-faq
@@ -893,13 +893,13 @@ for every action
    the first one is recognized.
 -  xds100serial.exe can detect both XDS100v1 and XDS100v2 emulators.
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Q: Can I use the XDS100 with Stellaris Cortex M3 devices?
    :name: q-can-i-use-the-xds100-with-stellaris-cortex-m3-devices
@@ -1038,13 +1038,13 @@ A couple of things to try:
    Overview <http://processors.wiki.ti.com/index.php/CC13xx_CC26xx_Tools_Overview>`__ for more
    details on debugger support for these devices.
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Installation FAQ
    :name: installation-faq
@@ -1106,7 +1106,7 @@ for details.
 
 .. Image:: ../images/CCSV4xds100license.jpg
 
-| 
+|
 
 .. rubric:: Troubleshooting FAQ
    :name: troubleshooting-faq
@@ -1376,7 +1376,7 @@ device manager will look like the image in
    and a usb isolation adapter available in china mainland
    `here <https://item.taobao.com/item.htm?spm=a1z10.5-c.w4002-5359301182.14.b19Chh&id=41050855660>`__
 
-| 
+|
 
 .. rubric:: Q: What device voltages are supported by the XDS100v1?
    :name: q-what-device-voltages-are-supported-by-the-xds100v1
@@ -1475,7 +1475,7 @@ section <http://processors.wiki.ti.com/index.php/XDS100#How_to_make_an_XDS100_.2
 -  A: For some 28x based cards, a similar problem may
    `occur <http://processors.wiki.ti.com/index.php/XDS100#Q:_Windows_is_recognizing_the_XDS100_as_.22Dual_RS232_USB_Serial_Bridge.22_instead_of_the_TI_XDS100_JTAG_emulator.>`__
 
-| 
+|
 
 .. rubric:: Q: How do I reprogram the VID/PID EEPROM if it has not been
    programmed correctly?
@@ -1562,15 +1562,13 @@ now be able to use your XDS100 with CCS.
   this if you are using CCS v3.3 SR12 or newer, a CCS which came with
   your C2000 Control Stick, or CCSv4.
 
-| 
+|
 
-| 
+|
 
-| 
+|
 
 --------------
 
 `essay writing <http://custom-essay.ws/index.php>`__
-
-.. raw:: html
 

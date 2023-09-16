@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_HYPLNK 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_HYPLNK
 
 Overview
 --------
@@ -67,7 +67,7 @@ They key parts are:
 #. Exchange data with memcpy or EDMA using mapped address (returned from
    hyplnkExampleAddrMap).
 
-| 
+|
 
 Application
 ------------
@@ -163,7 +163,7 @@ This came from k2h device running in loopback.
     Constructed SERDES configs: PLL=0x00000228; RX=0x0046c495; TX=0x000ccf95
     system setup worked
     About to set up HyperLink Peripheral
-    ============================Hyperlink Testing Port 0 
+    ============================Hyperlink Testing Port 0
     ========================================== begin registers before initialization ===========
     Revision register contents:
       Raw    = 0x4e902101
@@ -190,8 +190,8 @@ This came from k2h device running in loopback.
       Raw             = 0x00006206
     ============== end registers after initialization ===========
     Waiting 5 seconds to check link stability
-    Precursors 1 
-    Postcursors: 19 
+    Precursors 1
+    Postcursors: 19
     Link seems stable
     About to try to read remote registers
     ============== begin REMOTE registers after initialization ===========
@@ -279,5 +279,5 @@ Additional documentation can be found in:
 |                                   | LNK_LLD.pdf                             |
 +-----------------------------------+-----------------------------------------+
 
-| 
+|
 

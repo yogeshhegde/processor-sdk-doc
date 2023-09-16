@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Running_IPC_Examples_on_DRA7xx/AM572x 
+.. http://processors.wiki.ti.com/index.php/Running_IPC_Examples_on_DRA7xx/AM572x
 
 DRA7xx/AM572xx IPC Examples
 ---------------------------
@@ -9,7 +9,7 @@ DRA7xx/AM572xx IPC Examples
 **ex01_hello**
 
 |
- 
+
 The following examples demonstrate some of the rudimentary IPC
 capabilities. They are mostly two processors examples. These examples
 may be built for any two processors on your device, but only for two
@@ -47,7 +47,7 @@ Set **GnuWin32\\bin** folder on file path and add a system variable
 build this example on Ubuntu PC, make sure there is no spaces between
 variable name and its value.
 
-| 
+|
 
 ::
 
@@ -82,20 +82,20 @@ variable name and its value.
       ti.targets.arp32.elf.ARP32_far=$(DEPOT)/ccsv6/tools/compiler/arm_5.2.4
 
 ::
-      
+
       See the following example, and ensure you are using the latest version
       of folder names present in ~/ti folder:
-	  
+
       DEPOT=/home/Your_Ubuntu_home_folder/ti
-	  
+
       # Use the following environment assignment  (Note you must use 32 bit Java even in Ubuntu 14.04 64 bit OS environment)
       export XDCTOOLS_JAVA_HOME=/home/Your_Ubuntu_home_folder/ti/ccsv6/eclipse/jre
- 
+
       #### BIOS-side dependencies ####
       BIOS_INSTALL_DIR=$(DEPOT)/bios_6_41_04_54
       IPC_INSTALL_DIR=$(DEPOT)/ipc_3_36_01_11
       XDC_INSTALL_DIR=$(DEPOT)/xdctools_3_31_02_38
- 
+
       #### BIOS-side toolchains ####
       gnu.targets.arm.A15F=$(DEPOT)/ccsv6/tools/compiler/gcc-arm-none-eabi-4_8-2014q3
       ti.targets.elf.C66=$(DEPOT)/ti-cgt-c6000_8.0.3
@@ -129,7 +129,7 @@ variable name and its value.
 
 13. Suspend (halt) DSP2 and click on ROV icon to view log messages.
 
-| 
+|
 
 .. rubric:: IPC Message Queue Example:
    :name: ipc-message-queue-example
@@ -151,7 +151,7 @@ creates an anonymous message queue. The client also creates and manages
 the message pool. The client's return address is set in the message
 header for each message before sending it to the server.
 
-1. Change to messageQ folder example by enter: 
+1. Change to messageQ folder example by enter:
     cd  ~/ti/ipc_nn_nn_nn_nn/examples/DRA7xx_bios_elf/\ **ex02_messageQ**
 
 2. Open readme.txt file and follow build instructions step-by-step. Make
@@ -244,7 +244,7 @@ wait on multiple input sources.
 
 13. Suspend (halt) DSP2 and click on ROV icon to view log messages.
 
-| 
+|
 
 .. rubric:: IPC Ping Example:
    :name: ipc-ping-example
@@ -308,7 +308,7 @@ sure there is no space between variable name and its value.
 
 16. Suspend (halt) ARM CortexA15_0 and click on ROV icon to view log messages.
 
-| 
+|
 
 .. rubric:: Expanding IPC Ping Example:
    :name: expanding-ipc-ping-example
@@ -343,100 +343,99 @@ at different intervals depending on each core processes execution time.
 
 ::
 
-       1    xdc.runtime.Main    --> main:    
-       2    xdc.runtime.Main    main: ipc ready    
-       3    xdc.runtime.Main    MainHost_svrTskFxn:    
-       4    SvrHost    --> SvrHost_setup:    
-       5    SvrHost    SvrHost_setup: slave is ready    
-       6    SvrHost    <-- SvrHost_setup:    
-       7    SvrHost    --> SvrHost_run:    
-       8    xdc.runtime.Main    --> MainHost_appTskFxn:    
-       9    AppHost    --> AppHost_setup:    
-       
+       1    xdc.runtime.Main    --> main:
+       2    xdc.runtime.Main    main: ipc ready
+       3    xdc.runtime.Main    MainHost_svrTskFxn:
+       4    SvrHost    --> SvrHost_setup:
+       5    SvrHost    SvrHost_setup: slave is ready
+       6    SvrHost    <-- SvrHost_setup:
+       7    SvrHost    --> SvrHost_run:
+       8    xdc.runtime.Main    --> MainHost_appTskFxn:
+       9    AppHost    --> AppHost_setup:
+
        10    AppHost    AppHost_setup: procId=0     opened server queue
        11    AppHost    AppHost_setup: procId=1     opened server queue
        12    AppHost    AppHost_setup: procId=2     opened server queue
        28    AppHost    AppHost_setup: procId=3     opened server queue
-       
-       32    AppHost    AppHost_run: ping procId=0    
-       34    AppHost    AppHost_run: ping procId=0    
-       36    AppHost    AppHost_run: ping procId=0    
-       38    AppHost    AppHost_run: ping procId=0    
-       40    AppHost    AppHost_run: ping procId=0    
-       
+
+       32    AppHost    AppHost_run: ping procId=0
+       34    AppHost    AppHost_run: ping procId=0
+       36    AppHost    AppHost_run: ping procId=0
+       38    AppHost    AppHost_run: ping procId=0
+       40    AppHost    AppHost_run: ping procId=0
+
        33    AppHost    AppHost_run: ack received     procId=0
        35    AppHost    AppHost_run: ack received     procId=0
        37    AppHost    AppHost_run: ack received     procId=0
        39    AppHost    AppHost_run: ack received     procId=0
        41    AppHost    AppHost_run: ack received     procId=0
-       
+
        13    SvrHost    SvrHost_run: message received     procId=0
        14    SvrHost    SvrHost_run: message received     procId=0
        15    SvrHost    SvrHost_run: message received     procId=0
        16    SvrHost    SvrHost_run: message received     procId=0
        17    SvrHost    SvrHost_run: message received     procId=0
-       
-       42    AppHost    AppHost_run: ping procId=1    
-       44    AppHost    AppHost_run: ping procId=1    
-       46    AppHost    AppHost_run: ping procId=1    
-       48    AppHost    AppHost_run: ping procId=1    
-       50    AppHost    AppHost_run: ping procId=1    
-       
+
+       42    AppHost    AppHost_run: ping procId=1
+       44    AppHost    AppHost_run: ping procId=1
+       46    AppHost    AppHost_run: ping procId=1
+       48    AppHost    AppHost_run: ping procId=1
+       50    AppHost    AppHost_run: ping procId=1
+
        43    AppHost    AppHost_run: ack received     procId=1
        45    AppHost    AppHost_run: ack received     procId=1
        47    AppHost    AppHost_run: ack received     procId=1
        49    AppHost    AppHost_run: ack received     procId=1
        51    AppHost    AppHost_run: ack received     procId=1
-       
+
        18    SvrHost    SvrHost_run: message received     procId=1
        19    SvrHost    SvrHost_run: message received     procId=1
        20    SvrHost    SvrHost_run: message received     procId=1
        21    SvrHost    SvrHost_run: message received     procId=1
        22    SvrHost    SvrHost_run: message received     procId=1
-       
-       52    AppHost    AppHost_run: ping procId=2    
-       55    AppHost    AppHost_run: ping procId=2    
-       58    AppHost    AppHost_run: ping procId=2    
-       61    AppHost    AppHost_run: ping procId=2    
-       64    AppHost    AppHost_run: ping procId=2    
-       
+
+       52    AppHost    AppHost_run: ping procId=2
+       55    AppHost    AppHost_run: ping procId=2
+       58    AppHost    AppHost_run: ping procId=2
+       61    AppHost    AppHost_run: ping procId=2
+       64    AppHost    AppHost_run: ping procId=2
+
        54    AppHost    AppHost_run: ack received     procId=2
        57    AppHost    AppHost_run: ack received     procId=2
        60    AppHost    AppHost_run: ack received     procId=2
        63    AppHost    AppHost_run: ack received     procId=2
        66    AppHost    AppHost_run: ack received     procId=2
-       
+
        53    SvrHost    SvrHost_run: message received     procId=2
        56    SvrHost    SvrHost_run: message received     procId=2
        59    SvrHost    SvrHost_run: message received     procId=2
        62    SvrHost    SvrHost_run: message received     procId=2
        65    SvrHost    SvrHost_run: message received     procId=2
-       
-       67    AppHost    AppHost_run: ping procId=3    
-       69    AppHost    AppHost_run: ping procId=3    
-       71    AppHost    AppHost_run: ping procId=3    
-       73    AppHost    AppHost_run: ping procId=3    
-       75    AppHost    AppHost_run: ping procId=3    
-       
+
+       67    AppHost    AppHost_run: ping procId=3
+       69    AppHost    AppHost_run: ping procId=3
+       71    AppHost    AppHost_run: ping procId=3
+       73    AppHost    AppHost_run: ping procId=3
+       75    AppHost    AppHost_run: ping procId=3
+
        68    AppHost    AppHost_run: ack received     procId=3
        70    AppHost    AppHost_run: ack received     procId=3
        72    AppHost    AppHost_run: ack received     procId=3
        74    AppHost    AppHost_run: ack received     procId=3
        76    AppHost    AppHost_run: ack received     procId=3
-       
+
        23    SvrHost    SvrHost_run: message received     procId=3
        24    SvrHost    SvrHost_run: message received     procId=3
        25    SvrHost    SvrHost_run: message received     procId=3
        26    SvrHost    SvrHost_run: message received     procId=3
        27    SvrHost    SvrHost_run: message received     procId=3
-       
-       29    AppHost    AppHost_setup: slave is ready    
-       30    AppHost    <-- AppHost_setup:    
-       31    AppHost    --> AppHost_run:    
-       77    AppHost    <-- AppHost_run: 0    
-       78    AppHost    --> AppHost_destroy:    
-       79    AppHost    <-- AppHost_destroy: status=0    
-       80    xdc.runtime.Main    <-- MainHost_appTskFxn: 0    
+
+       29    AppHost    AppHost_setup: slave is ready
+       30    AppHost    <-- AppHost_setup:
+       31    AppHost    --> AppHost_run:
+       77    AppHost    <-- AppHost_run: 0
+       78    AppHost    --> AppHost_destroy:
+       79    AppHost    <-- AppHost_destroy: status=0
+       80    xdc.runtime.Main    <-- MainHost_appTskFxn: 0
        81    xdc.runtime.Main    MainHost_done:
 
-.. raw:: html

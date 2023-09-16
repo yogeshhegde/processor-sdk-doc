@@ -37,7 +37,7 @@ This multimedia training page will cover the following topics.
 -  Rebuild IPUMM Firmware
 -  Load and Unload Firmware
 
-| 
+|
 
 .. rubric:: Capabilities of IVA-HD, VPE, DSP, and ARM
    :name: capabilities-of-iva-hd-vpe-dsp-and-arm
@@ -72,7 +72,7 @@ capabilities.
 -  Audio encoding and decoding on ARM: AAC, MPEG2 (leveraging open
    source codecs)
 
-| 
+|
 
 .. rubric:: Multimedia Demos Available via Matrix
    :name: multimedia-demos-available-via-matrix
@@ -97,7 +97,7 @@ with a brief description.
 | DSP C66 Image Processing                | This demonstrates the use of DSP C66x plugin (dsp66videokernel) for offloading image processing tasks to DSP.                                                                               |
 +-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-| 
+|
 
 .. rubric:: Software Stack of Accelerated Codec Encoding/Decoding
    :name: software-stack-of-accelerated-codec-encodingdecoding
@@ -267,7 +267,7 @@ destination at the alsasink element to play the decoded audio.
 
    </div>
 
-| 
+|
 
 .. rubric:: Encode Pipeline
    :name: encode-pipeline
@@ -342,7 +342,7 @@ space conversion.
      ! kmssink
 
 .. note::
-   1. While using playbin for playing the stream, vpe plugin is automatically picked up. However vpe cannot be used 
+   1. While using playbin for playing the stream, vpe plugin is automatically picked up. However vpe cannot be used
       with playbin for scaling. For utilizing scaling capabilities of vpe, using manual pipeline given above is recommended.
    2. Waylandsink and Kmssink uses the cropping metadata set on buffers and does not require vpe plugin for cropping
 
@@ -359,14 +359,14 @@ respectively.
 ::
 
     Note:
-     The following pipelines can also be used for NV12 capture-display usecase. 
+     The following pipelines can also be used for NV12 capture-display usecase.
      Dmabuf is allocated by v4l2src if io-mode=4 and by kmssink and imported by v4l2src if io-mode=5
      target # gst-launch-1.0 v4l2src device=/dev/video1 num-buffers=1000 io-mode=4 ! 'video/x-raw, \
     format=(string)NV12, width=(int)1280, height=(int)720' ! kmssink
      target # gst-launch-1.0 v4l2src device=/dev/video1 num-buffers=1000 io-mode=5 ! 'video/x-raw, \
     format=(string)NV12, width=(int)1280, height=(int)720' ! kmssink
 
-| 
+|
 
 ::
 
@@ -378,7 +378,7 @@ respectively.
 ::
 
     Note:
-     The following pipelines can also be used for NV12 capture-display usecase. Dmabuf is allocated by v4l2src 
+     The following pipelines can also be used for NV12 capture-display usecase. Dmabuf is allocated by v4l2src
      if io-mode=4 and by waylandsink and imported by v4l2src if io-mode=5.
      Waylandsink supports both shm and drm. A new property use-drm is added to specify drm allocator based bufferpool to be used.
      When using ducati or vpe plugins, use-drm is set in caps as true.
@@ -387,7 +387,7 @@ respectively.
      target # gst-launch-1.0 v4l2src device=/dev/video1 num-buffers=1000 io-mode=5 ! 'video/x-raw, \
     format=(string)NV12, width=(int)1280, height=(int)720' ! waylandsink use-drm=true
 
-| 
+|
 
 ::
 
@@ -543,7 +543,7 @@ pipeline completes.
 * Ivi-shell is not supported with gstreamer.
 
 
-| 
+|
 
 .. rubric:: DSP C66x Gstreamer Plugin Internals
    :name: dsp-c66x-gstreamer-plugin-internals
@@ -659,7 +659,7 @@ of the new plugin.
 -  [optional] any additional shared library (as described in previous
    section), should be placed in /usr/lib
 
-| 
+|
 
 .. rubric:: Rebuild IPUMM Firmware
    :name: rebuild-ipumm-firmware
@@ -790,17 +790,17 @@ Select the correct one for your devices.
 
 ::
 
-     * dra7-ipu2-fw.xem4: This firmware will be used for Linux or Android. 
-    The firmware is built with the resource table defined in platform/ti/dce/baseimage/custom_rsc_table_vayu_ipu.h 
+     * dra7-ipu2-fw.xem4: This firmware will be used for Linux or Android.
+    The firmware is built with the resource table defined in platform/ti/dce/baseimage/custom_rsc_table_vayu_ipu.h
     The corresponding map file is: platform/ti/dce/baseimage/package/cfg/out/ipu/release/ipu.xem4.map
 
 ::
 
-     * dra7xx-m4-ipu2.xem4: This firmware will be used for QNX. 
-    The firmware is built with the resource table defined in platform/ti/dce/baseimage/qnx_custom_rsc_table_vayu_ipu.h 
+     * dra7xx-m4-ipu2.xem4: This firmware will be used for QNX.
+    The firmware is built with the resource table defined in platform/ti/dce/baseimage/qnx_custom_rsc_table_vayu_ipu.h
     The corresponding map file is: platform/ti/dce/baseimage/package/cfg/out/ipu/release/qnx_ipu.xem4.map
 
-| 
+|
 
 .. rubric:: Firmware Loading and Unloading
    :name: firmware-loading-and-unloading
@@ -842,8 +842,8 @@ using the ``sysfs`` interface.
 
 ::
 
-    target $ cd /sys/bus/platform/drivers/omap-rproc/ 
-    target $ echo 55020000.ipu > unbind 
+    target $ cd /sys/bus/platform/drivers/omap-rproc/
+    target $ echo 55020000.ipu > unbind
     target $ echo 55020000.ipu > bind
 
 The ``echo 55020000.ipu > unbind`` command tears down the communication

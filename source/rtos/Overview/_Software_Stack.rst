@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Software_Stack 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Software_Stack
 
 Overview
 ==========
@@ -11,14 +11,12 @@ quickly utilize different peripherals accessible from an SOC.
 .. note::
    Certain features are platform dependent and are clarified in the associated User Guides.
 
-| 
+|
 
 Software Block Diagram
 ========================
 
 .. Image:: ../images/RTOS-Software-Architecture.png
 
-| 
-
-.. raw:: html
+|
 

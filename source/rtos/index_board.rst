@@ -29,7 +29,7 @@ Uniflash
 UART Apploader
 --------------
 UART AppLoader is a standalone application to download the application images over UART.
-Check the link `UART AppLoader <index_Foundational_Components.html#uart-apploader>`__ for more details on UART AppLoader.   
+Check the link `UART AppLoader <index_Foundational_Components.html#uart-apploader>`__ for more details on UART AppLoader.
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+
 | .. Image:: ../images/E2e.jpg   | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |

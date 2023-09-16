@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_QMSS 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_QMSS
 
 Overview
 --------
@@ -65,7 +65,7 @@ API header for application:
 
 Please see the doxygen in "API Reference Manual" below for details.
 
-| 
+|
 
 Application
 ------------
@@ -141,9 +141,9 @@ This came from K2K multicore example:
     Core 0 : Memory region 0 inserted
     Core 0 : Memory region 1 inserted
     Core 0 : Tx Completion Queue Number     : 897 opened
-    Core 0 : Number of Tx descriptors requested : 32. Number of descriptors allocated : 32 
-    Core 0 : Number of Rx descriptors requested : 32. Number of descriptors allocated : 32 
-    Core 0 : Number of Sync free descriptors requested : 32. Number of descriptors allocated : 32 
+    Core 0 : Number of Tx descriptors requested : 32. Number of descriptors allocated : 32
+    Core 0 : Number of Rx descriptors requested : 32. Number of descriptors allocated : 32
+    Core 0 : Number of Sync free descriptors requested : 32. Number of descriptors allocated : 32
     Core 0 : Sync Queue Number              : 9025 opened
     Core 0 : Sync Cfg Queue Number          : 9026 opened
     Core 0 : Sync Free Queue Number         : 898 opened
@@ -155,12 +155,12 @@ This came from K2K multicore example:
     --------------------Queue status CORE 0----------------------
                         After Initialization
 
-    Tx Free Queue 8928 Entry Count            : 32 
-    Rx Free Queue 736 Entry Count            : 32 
-    Tx completion Queue 897 Entry Count     : 0 
-    Sync Queue 9025 Entry Count              : 0 
-    Sync free Queue 898 Entry Count         : 32 
-    Sync Cfg Queue 9026 Entry Count          : 0 
+    Tx Free Queue 8928 Entry Count            : 32
+    Rx Free Queue 736 Entry Count            : 32
+    Tx completion Queue 897 Entry Count     : 0
+    Sync Queue 9025 Entry Count              : 0
+    Sync free Queue 898 Entry Count         : 32
+    Sync Cfg Queue 9026 Entry Count          : 0
     -------------------------------------------------------------
 
     Core 0 : Registering High Priority interrupt channel : 0 eventId : 48 queue Number : 704
@@ -248,12 +248,12 @@ This came from K2K multicore example:
     --------------------Queue status CORE 0----------------------
                         After packet processing
 
-    Tx Free Queue 8928 Entry Count            : 0 
-    Rx Free Queue 736 Entry Count            : 32 
-    Tx completion Queue 897 Entry Count     : 32 
-    Sync Queue 9025 Entry Count              : 4 
-    Sync free Queue 898 Entry Count         : 27 
-    Sync Cfg Queue 9026 Entry Count          : 1 
+    Tx Free Queue 8928 Entry Count            : 0
+    Rx Free Queue 736 Entry Count            : 32
+    Tx completion Queue 897 Entry Count     : 32
+    Sync Queue 9025 Entry Count              : 4
+    Sync free Queue 898 Entry Count         : 27
+    Sync Cfg Queue 9026 Entry Count          : 1
     -------------------------------------------------------------
 
     Core 0 : Waiting for other cores to ack sync signal
@@ -273,12 +273,12 @@ This came from K2K multicore example:
     --------------------Queue status CORE 0----------------------
                         Before exit
 
-    Tx Free Queue 8928 Entry Count            : 0 
-    Rx Free Queue 736 Entry Count            : 32 
-    Tx completion Queue 897 Entry Count     : 32 
-    Sync Queue 9025 Entry Count              : 0 
-    Sync free Queue 898 Entry Count         : 28 
-    Sync Cfg Queue 9026 Entry Count          : 4 
+    Tx Free Queue 8928 Entry Count            : 0
+    Rx Free Queue 736 Entry Count            : 32
+    Tx completion Queue 897 Entry Count     : 32
+    Sync Queue 9025 Entry Count              : 0
+    Sync free Queue 898 Entry Count         : 28
+    Sync Cfg Queue 9026 Entry Count          : 4
     -------------------------------------------------------------
 
     Core 0 : Receive free queue closed successfully. Ref count : 0
@@ -377,35 +377,39 @@ Debug FAQ
 Additional References
 ---------------------
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/QMSS/docs/doxygen/html/index |
-|                                   | .html                             |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/QMSS/docs/ReleaseNotes_QMSS_ |
-|                                   | LLD.pdf                           |
-+-----------------------------------+-----------------------------------+
-| QoS (Weighted Round Robin and SP  | $(TI_PDK_INSTALL_DIR)/packages/ti |
-| QoS tree)                         | /drv/QMSS/docs/firmware/qos_sched |
-|                                   | ,qos_sched_drop_sched,qos_sched_w |
-|                                   | ide.pdf                           |
-+-----------------------------------+-----------------------------------+
-| QoS (Leaky bucket and SRIO TX     | $(TI_PDK_INSTALL_DIR)/packages/ti |
-| Scheduler)                        | /drv/QMSS/docs/firmware/qos.pdf   |
-+-----------------------------------+-----------------------------------+
-| Hardware Userguide/TRM            | `UG TRM                           |
-|                                   | PDF <http://www.ti.com/lit/sprugr |
-|                                   | 9>`__                             |
-+-----------------------------------+-----------------------------------+
-| CPPI LLD (Navigator/QMSS DMA      | `CPPI LLD`_                       |
-| component)                        |                                   |
-+-----------------------------------+-----------------------------------+
+.. list-table::
+   :header-rows: 1
+
+   * - **Document**
+
+     - **Location**
+
+   * - API Reference Manual
+
+     - ``$(TI_PDK_INSTALL_DIR)/packages/ti/drv/QMSS/docs/doxygen/html/index.html``
+
+   * - Release Notes
+
+     - ``$(TI_PDK_INSTALL_DIR)/packages/ti/drv/QMSS/docs/ReleaseNotes_QMSS_LLD.pdf``
+
+   * - QoS (Weighted Round Robin and SP QoS tree)
+
+     - ``$(TI_PDK_INSTALL_DIR)/packages/ti/drv/QMSS/docs/firmware/qos_sched,qos_sched_drop_sched,qos_sched_wide.pdf``
+
+   * - QoS (Leaky bucket and SRIO TX Scheduler)
+
+     - ``$(TI_PDK_INSTALL_DIR)/packages/ti/drv/QMSS/docs/firmware/qos.pdf``
+
+   * - Hardware Userguide/TRM
+
+     - `UG TRM PDF <http://www.ti.com/lit/sprugr9>`__
+
+   * - CPPI LLD (Navigator/QMSS DMA component)
+
+     - `CPPI LLD`_
 
 .. _CPPI LLD: index_device_drv.html#cppi
 
-| 
+|
 
 

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Directory_Structure 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Directory_Structure
 
 Overview
 ===========
@@ -9,7 +9,7 @@ installer.
 
 .. note::
    Not all components are applicable on all platforms.
-| 
+|
 
 Software Component Directories
 ================================
@@ -17,7 +17,7 @@ Here is a sample directory layout for the AM57x RTOS SDK:
 
 .. Image:: ../images/Processor-SDK-RTOS-directories.png
 
-| 
+|
 
 Processor-SDK Directory
 ========================
@@ -64,7 +64,7 @@ These directories contain the collateral and tools applicable for RTOS:
 -  **setupenv.sh** - Configures the user Linux host system to prepare to
    invoke the makefile
 
-| 
+|
 
 Components Included in SDK
 ============================
@@ -153,7 +153,5 @@ Target Content
    provides the rules and guidelines necessary to enable integration and
    execution of algorithms
 
-| 
-
-.. raw:: html
+|
 

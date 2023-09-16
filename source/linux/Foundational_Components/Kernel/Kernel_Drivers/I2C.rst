@@ -68,8 +68,8 @@ i2cget commands:
           This will read from the 'register' of the device with address 'slaveaddr'.
 
 For more details, refer to man page of respective tools:
-`i2cdump <https://linux.die.net/man/8/i2cdump>`_, 
-`i2cset <https://linux.die.net/man/8/i2cset>`_, 
-`i2cget <https://linux.die.net/man/8/i2cget>`_, 
+`i2cdump <https://linux.die.net/man/8/i2cdump>`_,
+`i2cset <https://linux.die.net/man/8/i2cset>`_,
+`i2cget <https://linux.die.net/man/8/i2cget>`_,
 `i2cdetect <https://linux.die.net/man/8/i2cdetect>`_.
 

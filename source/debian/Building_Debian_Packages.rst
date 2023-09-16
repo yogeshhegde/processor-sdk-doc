@@ -4,7 +4,7 @@ Building Debian Packages
 
 Debian-Repos is a set of scripts to build TI's Debian packages with a single command.
 
-The generation of a Debian package from a binary or source involves many steps such as, obtaining the source code in tar (compressed) format, generating template files, modifying template file. The host build system and host build  environment variables should also be configured. 
+The generation of a Debian package from a binary or source involves many steps such as, obtaining the source code in tar (compressed) format, generating template files, modifying template file. The host build system and host build  environment variables should also be configured.
 
 The `run.sh` script handles these steps, thus the building of a deb package for TI's packages is as simple as running `run.sh` with the desired package's name.
 

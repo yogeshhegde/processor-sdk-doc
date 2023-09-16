@@ -179,7 +179,7 @@ Dhrystone
 Dhrystone is a core only benchmark that runs from warm L1 caches in all
 modern processors. It scales linearly with clock speed. For standard ARM
 cores the DMIPS/MHz score will be identical with the same compiler and flags.
-  
+
 .. csv-table::
     :header: "Benchmarks","am43xx-gpevm: perf"
 
@@ -354,7 +354,7 @@ Performance (Fps)
 
 
 Table:  **GLBenchmark 2.5 Performance**
- 
+
 
 
 Vertex Throughput
@@ -444,7 +444,7 @@ additional timing measurements during the test.
    do
       netperf -H <tester ip> -j -c -l 60 -t TCP_STREAM --
          -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
-      
+
       netperf -H <tester ip> -j -c -l 60 -t TCP_MAERTS --
          -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
    done
@@ -510,7 +510,7 @@ MMC/SD Driver
   sensitive applications, umount the auto-mounted filesystem and
   re-mount in async mode.
 
-| 
+|
 
 AM43XX-GPEVM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -535,7 +535,7 @@ The performance numbers were captured using the following:
 
 UBoot MMC/SD Driver
 -------------------------
-| 
+|
 
 AM43XX-GPEVM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

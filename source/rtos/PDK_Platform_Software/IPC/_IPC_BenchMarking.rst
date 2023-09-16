@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_BenchMarking 
+.. http://processors.wiki.ti.com/index.php/IPC_BenchMarking
 
 
 RTOS IPC Benchmark applications in SDK
@@ -88,21 +88,21 @@ For the main application the benchmark data will be displayed on UART port0:
 
 	 Overhead:34
 
-	 Payload Size: 176 
+	 Payload Size: 176
 
-	 Proc id 0, Delta count: 3829025 
+	 Proc id 0, Delta count: 3829025
 
-	 Proc id 0 to Proc Id 0: Average Roundtrip time is: 19 us 
+	 Proc id 0 to Proc Id 0: Average Roundtrip time is: 19 us
 
-	 Proc id 1, Delta count: 8920087 
+	 Proc id 1, Delta count: 8920087
 
-	 Proc id 0 to Proc Id 1: Average Roundtrip time is: 44 us 
+	 Proc id 0 to Proc Id 1: Average Roundtrip time is: 44 us
 
-	 Proc id 2, Delta count: 7091251 
+	 Proc id 2, Delta count: 7091251
 
-	 Proc id 0 to Proc Id 2: Average Roundtrip time is: 35 us 
+	 Proc id 0 to Proc Id 2: Average Roundtrip time is: 35 us
 
-	 AppHost_run: Test Passed 
+	 AppHost_run: Test Passed
 
 	 MainHost_appTskFxn: Test Passed
 
@@ -113,19 +113,19 @@ For the R5F0 app only build, the benchmark data will be displayed on UART port1:
 
 	 Overhead:144
 
-	 Payload Size: 176 
+	 Payload Size: 176
 
-	 Proc id 0, Delta count: 8460883 
+	 Proc id 0, Delta count: 8460883
 
-	 Proc id 1 to Proc Id 0: Average Roundtrip time is: 42 us 
+	 Proc id 1 to Proc Id 0: Average Roundtrip time is: 42 us
 
-	 Proc id 1, Delta count: 1046906 
+	 Proc id 1, Delta count: 1046906
 
-	 Proc id 1 to Proc Id 1: Average Roundtrip time is: 5 us 
+	 Proc id 1 to Proc Id 1: Average Roundtrip time is: 5 us
 
-	 Proc id 2, Delta count: 6297313 
+	 Proc id 2, Delta count: 6297313
 
-	 Proc id 1 to Proc Id 2: Average Roundtrip time is: 31 us 
+	 Proc id 1 to Proc Id 2: Average Roundtrip time is: 31 us
 
 	 AppR5f_0_run: Test Passed
 
@@ -134,7 +134,7 @@ Linux Benchmark test: MessageQBench
 
 The application utilizes the IPC 3.x stack to communicate from the main
 processor to the slave core via the MessageQ interface. The application
-measures the time taken to accomplish this. The MessageQBench binaries 
+measures the time taken to accomplish this. The MessageQBench binaries
 are included in the Linux file system and they are located in:
 
 |   Linux Application: /usr/bin/MessageQBench
@@ -209,12 +209,12 @@ corresponding slave-side binary must be loaded via the remoteproc kernel
 module. The slave-side binary (messageq_single.x<suffix>), is located in
 the $(IPC_ROOT)/packages/ti/ipc/tests/bin/<device> directory.
 
-| 
+|
 | Detailed information regarding this can be found in the **Installing
   Tests** and **IPC Daemons and Drivers** section of the `IPC Install
   Guide <index_Foundational_Components.html#linux-install-guide>`__.
 
-| 
+|
 
 .. note::
   Android users - The Android binaries (lad_dra7xx and messageQBench) will
@@ -224,7 +224,7 @@ the $(IPC_ROOT)/packages/ti/ipc/tests/bin/<device> directory.
   $(AFS_ROOT)/out/target/product/<device>/system/lib directory. These
   files need to be copied to your device filesystem for execution.
 
-| 
+|
 | Once the LAD daemon is running and the slave core binary has been
   loaded. You can execute the following to run the application:
 
@@ -251,7 +251,7 @@ using the resource manager. The slave-side binary
 (messageq_single.x<suffix>), is located in the
 $(IPC_ROOT)/packages/ti/ipc/tests/bin/<device> directory.
 
-| 
+|
 | Detailed information regarding this can be found in the **Installing
   Tests in QNX**, **IPC resource manager** and **Running Test
   Applications** sections of the `IPC Install
@@ -278,7 +278,7 @@ IPC Performance
 ----------------
 
 The performance numbers in this section are gathered using Processor SDK
-5.2 release. 
+5.2 release.
 
 IPC Average Round Trip Time
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -302,7 +302,7 @@ Table: IPC Average Round Trip Time (ARTT)
    The MessageQBench is a user space application which needs to call into
    kernel space and involves linux context switch, process priority, and
    multiple copies during the delivery of a message. Each message may show
-   different latency deviated from the average round trip time. 
+   different latency deviated from the average round trip time.
 
 
 Throughput

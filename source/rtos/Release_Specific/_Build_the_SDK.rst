@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK
 
 Overview
 =========
@@ -31,7 +31,7 @@ The pre-requisite compilers are provided in Code Compose Studio, see the
    `Processor SDK RTOS Install In Custom Path <index_how_to_guides.html#update-environment-when-installing-to-a-custom-path>`
    to build the SDK from the toplevel Makefile.
 
-| 
+|
 
 .. _Build-The-SDK-Setup-Environment-label:
 Setup Environment
@@ -54,7 +54,7 @@ folder.
       is not installed, download and install OpenSSL for your OS.
 
       -  For Windows : The easiest way is to download and install `Strawberry Perl <http:
-         //strawberryperl.com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi>`__. 
+         //strawberryperl.com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi>`__.
          The Strawberry Perl installer automatically installs and sets up OpenSSL.
          Alternately, users can also use any of these `Third Party OpenSSL Distributions
          <https://wiki.openssl.org/index.php/Binaries>`__ for Windows. Refer individual
@@ -83,7 +83,7 @@ installed RTOS SDK.
 ::
 
      C:\ti\processor_sdk_rtos_[soc]_[version]>setupenv.bat
-     
+
      IPC_PLATFORM: DRA7XX
      IPC_ALT_PLATFORM: AM572X AM571X
      PROC_SDK_INSTALL_PATH     : C:/ti/processor_sdk_rtos_[soc]_[version]
@@ -115,7 +115,7 @@ SDK.
          IPC_PLATFORM: DRA7XX
          IPC_ALT_PLATFORM: AM572X AM571X
          PROC_SDK_INSTALL_PATH     : /home/[user]/ti/processor_sdk_rtos_[soc]_[version]
-     
+
      PROCESSOR SDK BUILD ENVIRONMENT CONFIGURED
      *******************************************************************************
 
@@ -181,10 +181,10 @@ for a given device additional targets may also be defined:
 Support for parallelism (-j <job slots>)
 ----------------------------------------
 Support for parallel make (-j) is available on the top level makefile targets 'all' and 'clean'
-and it improves the build time. This feature is available from Processor SDK RTOS 6.0 onwards 
+and it improves the build time. This feature is available from Processor SDK RTOS 6.0 onwards
 and has been tested with <job slots> up to 4.
 
-| 
+|
 
 Usage Examples
 ================
@@ -222,7 +222,7 @@ Linux
 
      ~/ti/processor_sdk_rtos_[soc]_[version]$ make clean -j4
 
-| 
+|
 
 Rebuilding Components
 =======================
@@ -250,7 +250,7 @@ Rebuild SYS/BIOS
 -  `Rebuild
    SYS/BIOS <http://processors.wiki.ti.com/index.php/SYS/BIOS_FAQs>`__
 
-| 
+|
 
 .. raw:: html
 

@@ -70,7 +70,7 @@ config:
 	cat python-scripts/conf.py ${TAGFILE} ${FAMILYSETUPFILE} > build/conf.py
 
 lint:
-	rstcheck --log-level CRITICAL -r "$(SOURCEDIR)"
+	rstcheck -r "$(SOURCEDIR)"
 
 html: 
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) "$(SOURCEDIR)" "$(BUILDDIR)"

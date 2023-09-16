@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Audio_Benchmark_Starterkit 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Audio_Benchmark_Starterkit
 
 Introduction
 ============
@@ -39,23 +39,23 @@ release under the directory path
 
     <SDK_INSTALL_PATH>\processor_sdk_rtos_<soc>_x_xx_xx_xx\demos\audio-benchmark-starterkit
 
-| 
+|
 | The directory structure for the audio benchmark starterkit is shown in
   the image below.
 
 Detailed description of the directory structure is given below:
 .. Image:: ../images/Audben_dirStructure.png
 
--  prebuilt-binaries - directory contains prebuilt out files to run the benchmarks.           
+-  prebuilt-binaries - directory contains prebuilt out files to run the benchmarks.
 -  bootimages - SD card boot files to run the benchmarks using SD boot.
--  docs - directory contains ReadMe, Quick start guide and the software manifest for the package.                      
--  scripts - directory contains .txt script files that is used by BenchmarkProjectCreate     
+-  docs - directory contains ReadMe, Quick start guide and the software manifest for the package.
+-  scripts - directory contains .txt script files that is used by BenchmarkProjectCreate
    script to create CCS projects
--  src                           
-   -  common - Contains linker command file and logging functions used by all benchmark tests.           
-   -  singlePrecision_FFT - Source files for benchmark app for FFT                
-   -  singlePrecision_FIR - Source files for benchmark app for FIR                
-   -  singlePrecision_IIR - Source files for benchmark app for IIR                
+-  src
+   -  common - Contains linker command file and logging functions used by all benchmark tests.
+   -  singlePrecision_FFT - Source files for benchmark app for FFT
+   -  singlePrecision_FIR - Source files for benchmark app for FIR
+   -  singlePrecision_IIR - Source files for benchmark app for IIR
 
 Software Dependencies
 =====================
@@ -122,10 +122,10 @@ environment as described in :ref:`Processor SDK RTOS Setup environment <Build-Th
 
 .. note::
    If developers install CCS or Processor SDK RTOS under Custom path then
-   they need to refer to the setup instructions described under 
+   they need to refer to the setup instructions described under
    :ref:`Setup environment when installing to a custom path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
 
-| 
+|
 **Step2 : Invoke Make from root directory**
 
 The make file in the root director of the audio-starterkit can be used
@@ -140,7 +140,7 @@ to build the entire package. To build the benchmark examples:
    logs to UART console so that there is no dependency on the CCS IDE
    environment
 
-| 
+|
 For Other supported options, please type
 
 **For Windows:**
@@ -181,12 +181,12 @@ script provided in the root directory of the starterkit.
 Developers are required to setup the Processor SDK RTOS build
 environment as described in :ref:`Processor SDK RTOS Setup environment <Build-The-SDK-Setup-Environment-label>`
 
-.. note::
-If developers install CCS or Processor SDK RTOS under a Custom path then
-they need to refer to the setup instructions described under 
-:ref:`Setup environment when installing to a custom path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
+.. note:: If developers install CCS or Processor SDK RTOS under a Custom path
+   then they need to refer to the setup instructions described under :ref:`Setup
+   environment when installing to a custom path
+   <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
 
-| 
+|
 
 **Step 2: Run BenchmarkProjectCreate script to generate CCS Projects**
 
@@ -213,9 +213,9 @@ Description of arguments:
     Example:
      a) BenchmarkProjectCreate.bat
                  - Creates all module projects for the K2G soc for evmK2G platform
-     b) BenchmarkProjectCreate.bat AM572x 
+     b) BenchmarkProjectCreate.bat AM572x
                  - Creates all module projects for AM572x soc for evmAM572x and idkAM572x platform
-     c) BenchmarkProjectCreate.bat C6657 evmC6657 
+     c) BenchmarkProjectCreate.bat C6657 evmC6657
                  - Creates all modules for C6657 DSP for evmC6657 platform
      d) BenchmarkProjectCreate.bat K2H evmK2H FFT
                  - Creates FFT module project for K2H soc for evmK2H
@@ -280,7 +280,7 @@ To connect to the SOC, developers need to create a Target configuration
 by following the procedure described in wiki
 :ref:`Create_Target_Configuration_File_for_EVM <Create-Target-Configuration-File-for-EVM-label>`
 
-| 
+|
 Instructions specific to supported EVMs:
 
 -  `K2G GP EVM CCS
@@ -293,7 +293,7 @@ Instructions specific to supported EVMs:
    corresponding to each supported EVM so setup the boot switches to No
    boot if available
 
-| 
+|
 **Step 3: Loading and Running Benchmark application on the DSP**
 
 -  Load the out file using **Run -> Load -> Load Program** and browse to
@@ -301,13 +301,7 @@ Instructions specific to supported EVMs:
 -  After loading the out file, run the benchmark app by Pressing **F8**
    or **Run -> Resume**
 
-| 
-
-+--------------------------------+------------------------------+
-| **Output in CCS IO Console :** | **Output in UART Console :** |
-+================================+==============================+
-.. Image:: ../images/FFTBenchmark_CCS_Output.png
-+--------------------------------+------------------------------+
+|
 
 Using SD card (Supported only on AM57xx and K2G)
 ------------------------------------------------
@@ -375,7 +369,7 @@ provided. The demonstration app for this kernel includes the required
 bit reversal coefficients, ``brev``, and additional code to calculate
 the twiddle factor coefficients, ``ptr_w``.
 
-| 
+|
 
 .. note::
    -  For implementation details of this FFT computation refer to
@@ -425,14 +419,14 @@ API reference:
 
 ::
 
-    int tisigCascadeBiquad32f_2c_3skernel(CascadeBiquad_FilParam *pParam) 
+    int tisigCascadeBiquad32f_2c_3skernel(CascadeBiquad_FilParam *pParam)
 
 where CascadeBiquad_FilParam is defined as
 
 .. code-block:: c
 
      CascadeBiquad_FilParam {
-          float *restrict pin1;    // Input Data Channel 1 
+          float *restrict pin1;    // Input Data Channel 1
           float *restrict pin2;    // Input Data Channel 2
           float  *restrict pOut1;  // Output Data Channel 1
           float  *restrict pOut2;  // Output Data Channel 1
@@ -465,7 +459,7 @@ compiled with highest compiler optimization settings. User can refer to
 the compiler Build settings in the Makefiles or go to Build Settings in
 CCS Project settings to modify the compiler options.
 
-| 
+|
 
 .. note::
    For more Details on recommended C6000 Compiler options refer
@@ -618,6 +612,4 @@ Additional resources
    TMS320C674x core delivers faster code development and reduces system
    cost with improved
    performance <http://www.ti.com/lit/wp/spry127/spry127.pdf>`__
-
-.. raw:: html
 

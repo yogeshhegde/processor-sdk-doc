@@ -59,9 +59,9 @@ X
 K2G ICE
 X
 X
-| 
+|
 
-| 
+|
 
 .. rubric:: Source Code for CCLINK IEF Basic
    :name: source-code-for-cclink-ief-basic
@@ -71,7 +71,7 @@ The CCLINK IEF basic source code for Linux can be requested from
 from `Processor SDK CCLink
 Source <http://git.ti.com/processor-sdk/cclink/trees/master>`__.
 
-| 
+|
 
 .. rubric:: Compile CCLINK IEF Basic with Processor SDK Linux
    :name: compile-cclink-ief-basic-with-processor-sdk-linux
@@ -118,9 +118,9 @@ After the bitbake commands above are successfully done, the newly built
 ccief-basic binaries can found from the folder of
 ./build/arago-tmp-external-arm-toolchain/work/armv7ahf-neon-linux-gnueabi/ccief-basic/<ver\_number>/packages-split/ccief-basic/usr/bin.
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Run CCLink IEF Basic Sample Application
    :name: run-cclink-ief-basic-sample-application
@@ -158,7 +158,7 @@ station.
 
 .. Image:: ../images/Cclink_master_screeshot_linux.png
 
-| 
+|
 
 .. rubric:: Slave Sample Application
    :name: slave-sample-application
@@ -171,9 +171,9 @@ station.
 
 .. Image:: /images/Cclink_slave_screenshot_linux.png
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Compliance Testing
    :name: compliance-testing
@@ -184,5 +184,5 @@ Basic. The conformance test results are sent to CLPA for approval. Upon
 approval from CLPA, the platform is accepted as CC-Link IEF Basic
 complaint.
 
-| 
+|
 

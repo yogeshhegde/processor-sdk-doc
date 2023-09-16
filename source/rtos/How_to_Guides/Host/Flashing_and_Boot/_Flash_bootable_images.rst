@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Flashing_Bootable_Images 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Flashing_Bootable_Images
 
 Overview
 ^^^^^^^^
@@ -337,6 +337,4 @@ Sample Output
 
 In the above example, nothing was flashed to NAND or NOR since there
 were no nand.bin or nor.bin binaries to flash.
-
-.. raw:: html
 

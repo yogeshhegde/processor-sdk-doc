@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Tests 
+.. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Tests
 
 Overview
 -----------
@@ -47,7 +47,7 @@ details on setting up variables)
 
 NOTE: The Host linux binaries are located at the DESTDIR/bin.
 
-| 
+|
 | All these tests use the messageq_single.\* binaries loaded on the
   slave cores.
 
@@ -116,7 +116,7 @@ Syntax:
 
        MessageQBench 100 1
 
-| 
+|
 
 ping_rpmsg
 """""""""""""
@@ -150,7 +150,7 @@ syntax:
        ping_rpmsg
        ping_rpmsg 100
 
-| 
+|
 
 NameServerApp
 """"""""""""""""
@@ -174,7 +174,7 @@ With the slave processors loaded execute the following command.
 
        NameServerApp
 
-| 
+|
 
 MessageQMulti
 """"""""""""""""
@@ -202,7 +202,7 @@ run the Linux application.
 
        MessageQMulti
 
-| 
+|
 
 MessageQMultiMulti
 """""""""""""""""""
@@ -233,7 +233,7 @@ to run the Linux application.
 
        MessageQMultiMulti
 
-| 
+|
 
 fault
 """""""
@@ -263,7 +263,7 @@ to run the Linux application.
 
        fault
 
-| 
+|
 
 Qnx Unit tests
 ^^^^^^^^^^^^^^^^^^^^
@@ -364,7 +364,7 @@ With the slave processors loaded execute the following command.
 
        NameServerApp
 
-| 
+|
 
 MessageQMulti
 """"""""""""""""
@@ -462,7 +462,7 @@ Syntax:
 
 ::
 
-       GateMPApp 
+       GateMPApp
 
 mmrpc_test
 """""""""""

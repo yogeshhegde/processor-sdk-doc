@@ -30,5 +30,5 @@ Type "k3conf --help" to get complete list of available commands and options.
   K3CONF currently supports AM654, J721E, J7200, AM64x, AM62x, J721S2, J784S4 and
   AM62Ax Devices.
 
-Source code for k3conf tool can be accessed from 
+Source code for k3conf tool can be accessed from
 https://git.ti.com/cgit/k3conf/k3conf/ git repo.

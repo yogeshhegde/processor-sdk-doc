@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Porting_Guide_for_AM571x/AM570x_Speed_Grades 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Porting_Guide_for_AM571x/AM570x_Speed_Grades
 
 Description
 ^^^^^^^^^^^
@@ -39,7 +39,7 @@ family :**
 
 .. Image:: ../images/AM572x_AM571X_AM570x_Comparison.png
 
-| 
+|
 | **Supported OPP on AM57xx devices:**
 
 .. Image:: ../images/AM57xx_OPP.png
@@ -256,7 +256,7 @@ Pinmux Changes to Consider
    Processor SDK RTOS provides board/src/idkAM571x/include/am570x_pinmux.h
    file in the idkAM571x board library for reference for configuring pinmux
    on AM570x based hardware platform
- 
+
 
 Driver SOC Module clock changes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -300,6 +300,4 @@ please post your question on TI E2E Forums
 
 -  `TI E2E Forums for Sitara
    Processors <https://e2e.ti.com/support/arm/sitara_arm/>`__
-
-.. raw:: html
 

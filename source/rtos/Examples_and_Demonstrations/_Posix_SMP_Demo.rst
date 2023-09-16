@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Posix-SMP_Demo 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_Posix-SMP_Demo
 
 Introduction
 ============
@@ -39,7 +39,7 @@ Software
 -  Processor-SDK RTOS
 -  Code Composer Studio
 
-| 
+|
 
 Software Design
 ===============
@@ -89,7 +89,7 @@ builds for Linux (both for EVMs and x86).
 For more information on TI-RTOS Posix, see `POSIX
 Support <http://processors.wiki.ti.com/index.php/SYS/BIOS_POSIX_Thread_(pthread)_Support>`__.
 
-| 
+|
 
 How to Run the Demo
 ===================
@@ -176,7 +176,7 @@ running on two cores in this example.
       on one C66x core without SMP.
    -  Some of the DMIPS values may not be accurate, but the values will
       increase proportionally with the number of cores
- 
+
 How to Build the Demo
 =====================
 
@@ -214,6 +214,4 @@ will be displayed on the console.
 
 For the documentation on the Linux Matrix, please see:
 `link <http://processors.wiki.ti.com/index.php/Matrix_Users_Guide>`__.
-
-.. raw:: html
 

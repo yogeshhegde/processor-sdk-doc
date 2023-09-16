@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PCIe 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PCIe
 
 Overview
 --------
@@ -18,7 +18,7 @@ Address Space 0. Data is transferred outside the scope of the LLD using
 CPU or EDMA through the data area.
 
 There are three revisions of the pcie hardware. The first, v0, in KeyStone
-devices (C66x, K2x). The second, v1, is in AM57xx devices. The third, 
+devices (C66x, K2x). The second, v1, is in AM57xx devices. The third,
 v2, is in AM65xx devices.  The LLD
 abstacts the configuration of standards-based PCIe registers (Type 0,
 Type 1 and Capabilities registers) so same user code can be used on both
@@ -423,7 +423,7 @@ xds100 for two EVMs <#quick-setup-of-xds100-for-two-evms>`__
     Test passed.
     End of Test.
 
-| 
+|
 
 Debug FAQ
 ---------
@@ -451,9 +451,9 @@ Debug FAQ
          twice** instead of "PCIe test start EP mode" once and "PCIe
          test start RC mode" once.
 
-**How to debug common PCIe issues**  
- 
-Please refer to `PCI Express (PCIe) 
+**How to debug common PCIe issues**
+
+Please refer to `PCI Express (PCIe)
 FAQ <http://www.ti.com/lit/an/sprac59a/sprac59a.pdf>`__ for Keystone devices.
 
 
@@ -485,4 +485,4 @@ Additional documentation can be found in:
 |                                   | /drv/pcie/docs/ReleaseNotes_PCIE_LLD.pdf    |
 +-----------------------------------+---------------------------------------------+
 
-| 
+|

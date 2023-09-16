@@ -7,7 +7,7 @@ ARM Multimedia Users Guide
 .. rubric:: Overview
    :name: overview-arm-mm-ug
 
-| 
+|
 
 Multimedia codecs on ARM based platforms could be optimised for better
 performance using the tightly coupled
@@ -75,7 +75,7 @@ display applications.
 
 NEON is currently supported in the following Open Source projects.
 
-| 
+|
 
 -  ffmpeg/libav
 
@@ -182,7 +182,7 @@ as mentioned in the description page below.
 
     gst-launch-0.10 filesrc location=$filename ! mpeg4videoparse ! ffdec_mpeg4 ! ffmpegcolorspace ! fbdevsink device=/dev/fb0
 
-| 
+|
 
 .. rubric:: H.264 Decode
    :name: h.264-decode
@@ -228,7 +228,7 @@ the files directory using the pipeline
 
     gst-launch souphttpsrc location=http://<ip address>/files/HistoryOfTI.aac ! aacparse ! faad ! alsasink
 
-| 
+|
 
 .. rubric:: Multimedia Peripheral Examples
    :name: multimedia-peripheral-examples
@@ -237,7 +237,7 @@ Examples of how to use several different multimedia peripherals can be
 found on the `ARM Multimedia Peripheral
 Examples <http://processors.wiki.ti.com/index.php/ARM_Multimedia_Peripheral_Examples>`__ page.
 
-| 
+|
 
 .. rubric:: SDK Multimedia Framework
    :name: sdk-multimedia-framework

@@ -50,8 +50,8 @@ http://community.ti.com/ or http://support.ti.com/
 
 **LMBench**
 
-LMBench is a collection of microbenchmarks of which the memory bandwidth 
-and latency related ones are typically used to estimate processor 
+LMBench is a collection of microbenchmarks of which the memory bandwidth
+and latency related ones are typically used to estimate processor
 memory system performance.
 
 *Latency*: lat_mem_rd-stride128-szN, where N is equal to or smaller than the cache

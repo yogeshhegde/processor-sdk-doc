@@ -34,7 +34,7 @@ These tools bring in the capability to visualize the following:
    instructions below)
 #. Power plot (Will be available soon. Note that this requires board
    modification on the EVM)
-  
+
 .. Image:: /images/Updated_screen_shot_of_soc_performance_monitoring_tools.png
 
 |
@@ -183,7 +183,7 @@ the utility in the background with the following commands:
 
 ::
 
-    target # mpuload FIFO 
+    target # mpuload FIFO
 
     Example usage:
 
@@ -206,7 +206,7 @@ Usage instructions:
 
     target # pvrscope <option> <time_seconds>
 
-    options: 
+    options:
               -f    write into the FIFO (/tmp/socfifo)
               -c    output to console
 
