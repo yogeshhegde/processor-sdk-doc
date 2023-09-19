@@ -331,10 +331,10 @@ GStreamer Pipelines
 .. code-block:: text
 
    H.264 decode:
-        target # gst-launch-1.0 filesrc location=/<path_to_file>  ! matroskademux ! h264parse ! queue ! v4l2h264dec ! filesink location=/<path_to_file>
+        target # gst-launch-1.0 filesrc location=/<path_to_file>  ! h264parse ! queue ! v4l2h264dec ! filesink location=/<path_to_file>
 
    H.265 decode:
-        target # gst-launch-1.0 filesrc location=/<path_to_file>  ! matroskademux ! h265parse ! queue ! v4l2h265dec ! filesink location=/<path_to_file>
+        target # gst-launch-1.0 filesrc location=/<path_to_file>  ! h265parse ! queue ! v4l2h265dec ! filesink location=/<path_to_file>
 
 .. code-block:: text
 
