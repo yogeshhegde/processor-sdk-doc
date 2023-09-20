@@ -163,13 +163,10 @@ Build U-Boot
 
     .. rubric:: Setting the tool chain path
 
-    We strongly recommend using the toolchain that came with the Linux Core
-    release that corresponds to this U-Boot release. For e.g:
-
-    .. code-block:: console
-
-        export PATH=$HOME/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf/bin:$PATH
-        export PATH=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu/bin:$PATH
+    Setting the toolchain path is no longer required for Yocto but still required for standalone builds. We strongly recommend
+    using the toolchain that comes with the Processor SDK. The location of the toolchain can be found here: :ref:`location-in-sdk`.
+    If the Processor SDK is not used, the toolchain will need to be downloaded and toolchain path will need to be set, more
+    information can be found here: :ref:`download-arm-toolchains`.
 
     .. rubric:: Compiling R5 and ARM64 images
 

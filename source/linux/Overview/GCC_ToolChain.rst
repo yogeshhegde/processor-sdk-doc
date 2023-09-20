@@ -45,9 +45,26 @@ Here is the structure of the Linux-devkit directory within the SDK.
 .. rubric:: Location in SDK
    :name: location-in-sdk
 
-The toolchain is located in the Linux SDK in the **<SDK INSTALL
-DIR>/external-toolchain-dir** directory. The following sections will cover the key
-components of the toolchain.
+The toolchain is located in the Linux SDK in the **<SDK INSTALL DIR>/external-toolchain-dir** directory.
+
+.. rubric:: Download ARM toolchains
+   :name: download-arm-toolchains
+
+It is stongly recommended to use the toolchain in the Processor SDK which is the version tested for TI platforms. In case the Processor SDK is not
+used, the toolchain can be downloaded and the toolchain path can be set as follows. Download the toolchain from here: https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads,
+and the version can be found in the u-boot release notes: :ref:`u-boot-release-notes`. The following example shows how to download and set toolchain
+path in Linux Host using x86_64 architecture:
+
+.. code-block:: console
+
+   export AARCH32='https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf.tar.xz'
+   export AARCH64='https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu.tar.xz'
+   wget -c $AARCH32 -O - | tar -xv -J -C $HOME
+   wget -c $AARCH64 -O - | tar -xv -J -C $HOME
+   export PATH=$HOME/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf/bin:$PATH
+   export PATH=$HOME/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu/bin:$PATH
+
+The following sections will cover the key components of the toolchain.
 
 .. rubric:: Cross-Compilers/Tools
    :name: cross-compilerstools
