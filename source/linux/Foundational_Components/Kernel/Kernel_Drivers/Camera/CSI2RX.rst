@@ -259,10 +259,6 @@ Enabling camera sensors
         # Capture 20 frames @ 1024x768
         $ cam -c1 --stream width=1024,height=768,pixelformat=UYVY -C20
 
-    **Note:** Due to a bug in the driver only UYVY format works with libcamera
-    tool. You can still manually change the format using media-ctl to use with
-    other tools.
-
     To save the raw YUV frames to SD card for viewing later use the -F option:
 
     ::
@@ -284,6 +280,17 @@ Enabling camera sensors
         $ yavta -s 640x480 -f UYVY /dev/video0 -c20
         ....
         $ v4l2-ctl -d0 --stream-mmap -v width=640,height=480,pixelformat=UYVY
+
+
+    .. note::
+
+        Sometimes the sensor may not stream on the first attempt after sensor
+        wakes up from runtime suspend state. To make it work reliably on every
+        attempt, you can **disable runtime PM** for the sensor:
+
+        ::
+
+            $ echo "on" > /sys/devices/platform/bus@f0000/20020000.i2c/i2c-2/i2c-4/4-003c/power/control
 
     Capture to display
     ------------------
