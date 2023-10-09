@@ -18,6 +18,8 @@ following Evaluation Modules unless otherwise specified.**
 +----------------+---------------------------------------------------------------------------------------------------------------------+
 | AM62x SK       | AM62x Starter Kit rev E2 and E3 with ARM running at 1400 MHz, DDR4 data rate 1600 MT/S                              |
 +----------------+---------------------------------------------------------------------------------------------------------------------+
+| AM62SIP SK     | AM62SIP Starter Kit rev E1 with ARM running at 1400 MHz, 512MB LPDDR4 data rate 1600 MT/S                           |
++----------------+---------------------------------------------------------------------------------------------------------------------+
 
 
 Table:  Evaluation Modules
@@ -97,11 +99,11 @@ cyclictest -m -Sp80 -i400 -h400 -q -D1h
 
 
 .. csv-table::
-    :header: "Latencies","am62xx_sk:per-core", "am62axx_sk-fs:per-core", "am64xx-hsevm:per-core"
+    :header: "Latencies","am62xx_sk:per-core", "am62axx_sk-fs:per-core", "am64xx-hsevm:per-core", "am62xxsip_sk-fs:per-core"
 
-    "Minimum (usec)","6,6,6,6","6,6,6,6","7,8"
-    "Average (usec)","8,9,8,8","7,7,7,8","12,13"
-    "Maximum (usec)","67,62,63,74","50,52,42,128","168,88"
+    "Minimum (usec)","6,6,6,6","6,6,6,6","7,8","6,6,6,6"
+    "Average (usec)","8,9,8,8","7,7,7,8","12,13","8,8,7,9"
+    "Maximum (usec)","67,62,63,74","50,52,42,128","168,88","65,69,54,59"
 
 
 Table:  **Stress-ng and Cyclic Test**
