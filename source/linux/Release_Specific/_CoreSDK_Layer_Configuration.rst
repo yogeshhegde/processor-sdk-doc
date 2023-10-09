@@ -13,8 +13,10 @@ meta layers. These are the <config> used in the command:
       directory of the `oe-layersetup git repo <https://git.ti.com/cgit/arago-project/oe-layersetup/>`_.
 
     +-----------------------------------+---------------------------------------+-----------------------------------------------+
-    | Config File                       | Description				| Supported machines/platforms			|
+    | Config File                       | Description                           | Supported machines/platforms                  |
     +===================================+=======================================+===============================================+
-    |  coresdk-09.00.00.007-config.txt  | CoreSDK 09.00.00 Jacinto Release	| j721e, j7200, j721s2, j784s4			|
+    |  coresdk-09.00.00.006-config.txt  | CoreSDK 09.00.00 Sitara Release       | am64x 2.0, am62x, am62a                       |
+    +-----------------------------------+---------------------------------------+-----------------------------------------------+
+    |  coresdk-09.00.00.011-config.txt  | CoreSDK 09.00.00 Sitara Release       | am62sip                                       |
     +-----------------------------------+---------------------------------------+-----------------------------------------------+
 

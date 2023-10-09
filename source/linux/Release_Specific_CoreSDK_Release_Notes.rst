@@ -21,6 +21,27 @@ Please refer to the software manifest, which outlines the licensing
 status for all packages included in the prebuilt binaries location.
 
 
+Release 09.01.00
+================
+
+Released October 2023
+
+.. rubric:: What's New
+   :name: whats-new
+
+**Processor SDK 9.0 Sitara Release supports the following platforms**
+
+  * AM62SIP 2.0 (HS-FS, HS-SE)
+
+**Processor SDK 9.0 Sitara Release has following Major Updates**
+
+  * LTS Refresh with Stable Kernel 6.1, U-boot 2023.04, Yocto Dunfell 4.0
+  * Binman Migration
+  * HS-FS Default Boot Experience
+  * Graphics: Weston 10 and DDK 23.1 Upgrade
+  * Multimedia: Gstreamer v1.20.5 Upgrade
+
+
 Release 09.00.00
 ==================
 
@@ -78,13 +99,13 @@ Build Information
 
 U-Boot
 -------------------------
-| Head Commit: 24098ea90dbaac7b16958e2f7d9f7a412ef1522a configs: am64: Fix booting of fitImage on AM64x"
-| Date: 2023-07-07 08:52:25 -0500
+| Head Commit: 9390b636e8e292a85f236b4f1c70feb0ad8299cc arm: dts: k3-am64-main: Add ITAP delay values in Device Tree"
+| Date: 2023-10-07 06:39:59 -0500
 | uBoot Version: 2023.04
-| uBoot Description: 09.00.00.006
+| uBoot Description: 09.00.00.011
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2023.04
-| uBoot Tag: 09.00.00.006
+| uBoot Tag: 09.00.00.011
 |
 
 
@@ -93,14 +114,14 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 40c32565ca0e213fb653570cc618408ee8e9c6cf arm64: dts: ti: k3-am64-main: Add ITAP delay values in Device Tree
-| Date: 2023-07-07 08:51:44 -0500
-| Kernel Version: 6.1.33
-| Kernel Description: 09.00.00.006
+| Head Commit: 	3ec3755134e2a6c107b43e335fa32c958a2fe5f6 Revert "HACK: arm64: dts: ti: k3-j721s2-common-proc-board: Disable DSI"
+| Date: 2023-10-07 06:39:48 -0500
+| Kernel Version: 6.1.46
+| Kernel Description: 09.00.00.011
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.1.y
-| Tag: 09.00.00.006
+| Tag: 09.00.00.011
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config
 |
@@ -109,14 +130,14 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: 685e77152461bd6b791500f717bec62d17c1b36d Merge branch 'ti-linux-6.1.y-cicd' of git://git.ti.com/ti-linux-kernel/ti-linux-kernel into ti-rt-linux-6.1.y-cicd
-| Date: 2023-07-07 08:51:50 -0500
-| Kernel Version: 6.1.33-rt11
-| Kernel Description: 09.00.00.006-rt
+| Head Commit: 	4a3a5f9a7567d507b37b51980516ce26b34b353e Merge branch 'ti-linux-6.1.y-cicd' of git://git.ti.com/ti-linux-kernel/ti-linux-kernel into ti-rt-linux-6.1.y-cicd
+| Date: 2023-10-07 06:39:51 -0500
+| Kernel Version: 6.1.46-rt13
+| Kernel Description: 09.00.00.011-rt
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-6.1.y
-| Tag: 09.00.00.006-rt
+| Tag: 09.00.00.011-rt
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 |
@@ -128,23 +149,23 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 2e3ffb73630f4ff78227822bdb4c23e75a720223 linux-ti-staging_6.1: CI/CD Auto-Merger: cicd.kirkstone.202307061739
-| Date: 2023-07-07 08:52:30 -0500
+| Head Commit: 	5fd6a816470feefc9c58c5d3ae1b2fb93bead787 linux-ti-staging_6.1: CI/CD Auto-Merger: cicd.kirkstone.202310061657
+| Date: 2023-10-07 06:40:00 -0500
 
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: kirkstone
-| Release Tag: 09.00.00.006
+| Release Tag: 09.00.00.011
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: e1d3561ec681fd05509affa063e0d6212f1571d1 ltp-ddt: CI/CD Auto-Merger: cicd.kirkstone.202307061739
-| Date: 2023-07-07 08:51:10 -0500
+| Head Commit: 	08c9b5656f2d514f27ba580afdc2cd937ce059e4 arago-gpl-notice: Update script to look for updated GPL-3.0 identifier
+| Date: 2023-10-07 06:39:40 -0500
 
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: kirkstone
-| Release Tag: 09.00.00.006
+| Release Tag: 09.00.00.011
 |
 
 Issues Tracker

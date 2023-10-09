@@ -23,6 +23,20 @@ Processor CoreSDK Sitara 09.00
 - Yocto Kirkstone/4.0
 - Graphics DDK 23.1
 - Platforms Supported : AM64x 2.0 (HS-FS), AM62x ( GP, HS-FS, HS-SE), AM62x LP (HS-FS, HS-SE), AM62A (HS-FS, HS-SE)
+- Tag Info: 09.00.00.006
+
+Processor CoreSDK Sitara 09.00 Refresh
+--------------------------------------
+- This is the second release in the 2023 LTS stream, with new versions of Kernel, U-boot, toolchain and Yocto branch.
+- Kernel 6.1
+- U-Boot 2023.04
+- Toolchain GCC 11.4
+- ATF 2.9+
+- OPTEE 3.20
+- Yocto Kirkstone/4.0
+- Graphics DDK 23.1
+- Platforms Supported : AM62SIP ( HS-FS, HS-SE)
+- Tag Info: 09.00.00.011
 
 .. note::
 
