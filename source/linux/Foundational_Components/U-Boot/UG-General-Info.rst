@@ -354,15 +354,18 @@ Build U-Boot
 
    .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        +----------------------------+---------------------------------+---------------------------------+--------------------------------+--------------------------------+----------------------------------------+----------------------------------------+
-        |  Board                     |            SD Boot              |            eMMC Boot            |           UART boot            |           OSPI boot            |                USB DFU                 |                USB MSC                 |
-        +============================+=================================+=================================+================================+================================+========================================+========================================+
-        |    AM62X SK                |    am62x\_evm\_r5\_defconfig    |    am62x\_evm\_r5\_defconfig    |   am62x\_evm\_r5\_defconfig    |   am62x\_evm\_r5\_defconfig    |   am62x\_evm\_r5\_usbdfu\_defconfig    |   am62x\_evm\_r5\_usbmsc\_defconfig    |
-        |                            |    am62x\_evm\_a53\_defconfig   |    am62x\_evm\_a53\_defconfig   |   am62x\_evm\_a53\_defconfig   |   am62x\_evm\_a53\_defconfig   |   am62x\_evm\_a53\_defconfig           |   am62x\_evm\_a53\_defconfig           |
-        +----------------------------+---------------------------------+---------------------------------+--------------------------------+--------------------------------+----------------------------------------+----------------------------------------+
-        |    AM62X LP SK             |    am62x\_lpsk\_r5\_defconfig   |    am62x\_lpsk\_r5\_defconfig   |   am62x\_lpsk\_r5\_defconfig   |   am62x\_lpsk\_r5\_defconfig   |   am62x\_lpsk\_r5\_usbdfu\_defconfig   |                                        |
-        |                            |    am62x\_lpsk\_a53\_defconfig  |    am62x\_lpsk\_a53\_defconfig  |   am62x\_lpsk\_a53\_defconfig  |   am62x\_lpsk\_a53\_defconfig  |   am62x\_lpsk\_a53\_defconfig          |                                        |
-        +----------------------------+---------------------------------+---------------------------------+--------------------------------+--------------------------------+----------------------------------------+----------------------------------------+
+        +---------------+-------------------------------------------------+----------------------------------------+----------------------------------------+
+        |  Board        | SD / eMMC / UART / OSPI Boot                    |                USB DFU                 |                USB MSC                 |
+        +===============+=================================================+========================================+========================================+
+        |  AM62X SK     |  am62x\_evm\_r5\_defconfig                      |   am62x\_evm\_r5\_usbdfu\_defconfig    |   am62x\_evm\_r5\_usbmsc\_defconfig    |
+        |               |  am62x\_evm\_a53\_defconfig                     |   am62x\_evm\_a53\_defconfig           |   am62x\_evm\_a53\_defconfig           |
+        +---------------+-------------------------------------------------+----------------------------------------+----------------------------------------+
+        |  AM62X LP SK  |  am62x\_lpsk\_r5\_defconfig                     |   am62x\_lpsk\_r5\_usbdfu\_defconfig   |                                        |
+        |               |  am62x\_lpsk\_a53\_defconfig                    |   am62x\_lpsk\_a53\_defconfig          |                                        |
+        +---------------+-------------------------------------------------+----------------------------------------+----------------------------------------+
+        |  AM62SIP SK   | am62x\_evm\_r5\_defconfig am62xsip_sk_r5.config |                                        |                                        |
+        |               | am62x\_evm\_a53\_defconfig                      |                                        |                                        |
+        +---------------+-------------------------------------------------+----------------------------------------+----------------------------------------+
 
         .. note::
 
@@ -390,14 +393,30 @@ Build U-Boot
 
           R5
           To build tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62x_evm_r5_defconfig O=$UBOOT_DIR/out/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images/am62xx-evm
 
+          For AM62X
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62x_evm_r5_defconfig O=$UBOOT_DIR/out/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+
+          For AM62X LP
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62x_lpsk_r5_defconfig O=$UBOOT_DIR/out/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+
+          For AM62SIP
+          NOTE: AM62SIP Uses config fragment model.
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62x_evm_r5_defconfig am62xsip_sk_r5.config O=$UBOOT_DIR/out/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
           A53
           To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin, tee-pager_v2.bin
+
+          For AM62X or AM62SIP
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62x_evm_a53_defconfig O=$UBOOT_DIR/out/a53
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+
+          For AM62X LP
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62x_lpsk_a53_defconfig O=$UBOOT_DIR/out/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
 
    .. ifconfig:: CONFIG_part_variant in ('AM62AX')
