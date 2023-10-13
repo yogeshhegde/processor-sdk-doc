@@ -211,6 +211,7 @@ Linux Known Issues
   "LCPD-29874","am62xx_sk-fs, am62xx_sk-se, am62xxsip_sk-fs, am62xxsip_sk-se, am62xx-sk",am62x: robustness: fails to boot 100 reboot test consistently",""
   "LCPD-29445","am62xx_sk-fs, am62xx_sk-se, am62xxsip_sk-fs, am62xxsip_sk-se, am62xx-sk",am62xx-sk: MCAN loop-back test is failing",""
   "LCPD-28104","am62xx_sk-fs, am62xx_sk-se, am62xxsip_sk-fs, am62xxsip_sk-se, am62xx-sk",Automated test failure - CPSW test is passing invalid parameters to switch-config",""
+  "LCPD-34397","am62xxsip_sk-fs, am62xxsip_sk-se, am62xx-sk","usb xhci locks up after multiple Linux reboot",""
 
 
 |
