@@ -25,6 +25,12 @@ Environment variable text files are located at
 
         <TI_SDK_PATH>/bin/Ethernet_flash/am64xx-evm/
 
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   .. note::
+
+        This documentation note is applicable only for am62xx-evm.
+
 Requirements on host PC
 -----------------------
 

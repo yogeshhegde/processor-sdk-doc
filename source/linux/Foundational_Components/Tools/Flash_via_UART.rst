@@ -37,6 +37,12 @@ are located at
 
         <TI_SDK_PATH>/bin/uart_uniflash/am62axx-evm/
 
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   .. note::
+
+        This documentation note is applicable only for am62xx-evm and am62xx-lp-evm.
+
 Requirements on Host PC
 -----------------------
 
