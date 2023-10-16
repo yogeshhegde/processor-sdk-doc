@@ -5,240 +5,269 @@
 Flash via USB Device Firmware Upgrade (DFU)
 ===========================================
 
-Flash writer script will use DFU to boot the board and then flash the binaries to
-flash memory. It also supports flashing to multiple devices one by one.
+Flash Writer is a tool used to flash binaries to the on-board memory. This application 
+note provides instructions on how to use flash writer tool for flashing. Flash 
+writer script will use USB DFU to boot the board and then flash the binaries to on-board 
+memory. This tool also supports flashing multiple boards via DFU simultaneously.
+
+Get Tool
+--------
+
+**SDK installer**
+
+Download and install Processer SDK Installer. For steps refer :ref:`download-and-install-sdk`.
+
+**Clone repository**
+
+Clone the sources from `here <https://git.ti.com/cgit/processor-sdk/uboot-flash-writer/tree/?h=uboot-flash-writer_v2>`__.
+
+::
+    
+    git clone https://git.ti.com/git/processor-sdk/uboot-flash-writer.git
+    git checkout uboot-flash-writer_v2
+
 
 Important files
 ---------------
 
-u-boot_flashwriter.sh script for flashing via DFU is located at
+* bin - Contains boot binaries used to boot the board via USB DFU, also config files 
+  for GP, HS and HS-SE.
+* src - other python modules.
+* dfu_flash.py - main python script that is to be run.
+* Python script for flashing via DFU is located at
 
 ::
 
-    <TI_SDK_PATH>/bin/DFU_flash/u-boot_flashwriter.sh
+    <TI_SDK_PATH>/bin/DFU_flash/dfu_flash.py
 
-The text files for setting up environment variables in U-Boot for DFU flash are
-located at
+* Config files and example dfu boot binaries are located at
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+::
 
-    ::
+    <TI_SDK_PATH>/bin/DFU_flash/bin/<device>/
 
-        <TI_SDK_PATH>/bin/DFU_flash/am62xx-evm/
+Requirements
+------------
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
+* Linux or Windows Development PC that can access serial console.
+* Type C USB cable
+* dfu-util program needs to installed on your host.
 
-    ::
-
-        <TI_SDK_PATH>/bin/DFU_flash/am64xx-evm/
-
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+**For Ubuntu**
 
     ::
 
-        <TI_SDK_PATH>/bin/DFU_flash/am62axx-evm/
+        sudo apt-get install dfu-util
 
-Requirements on host PC
------------------------
+**For Windows**
 
-dfu-util program needs to installed on your Linux host.
+Download the dfu-util-0.9-win64.zip file from dfu-util site. Place executable files 
+in a directory ex. `C:\\Program Files\\dfu-util` and then edit the environment 
+variables to add this path.
+
+Download Zadig installer from `here <https://zadig.akeo.ie/>`__.
+
+Put the device in DFU mode. Then run the Zadig_<version>.exe file.
+
+Select libusbK and then click the Install Driver button. For more information 
+about libusbK, refer `wiki <https://github.com/libusb/libusb/wiki/Windows#How%5Fto%5Fuse%5Flibusb%5Fon%5FWindows>`__.
+
+* Python (3.10+)
+* dfu-util installed on host (0.11+)
+* USB hub to connect multiple boards (Optional)
+* UART to read the logs from the EVM (Optional)
+
+Flow of flashing
+----------------
+
+* Host PC is connected to boards via USB Type C.
+* After tool is run, it will detect the boards. Script will send the bootloader 
+  binaries ( tiboot3.bin, tispl.bin and u-boot.img ) from host PC to boards and 
+  boards will be booted.
+* After the boards are booted, tool will send uEnv.txt file from host PC to boards.
+* Environment variables on boards is set using uEnv.txt and boards are now ready 
+  for flashing. tool can now flash files from host PC to boards.
 
 Building bootloader binaries for flashing and DFU boot
 ------------------------------------------------------
 
 Override the bootcmd command to receive the environment variable text file after
-DFU boot. Following change needs to be done
+DFU boot and flash the binaries/images.Following change needs to be done.
+
+Example DFU boot binaries for TI boards are already present in bin directory. To 
+flash custom board(s) generate the boot binaries and place them in 
+`<TI_SDK_PATH>/bin/DFU_flash/bin/<board>/<type>` folder.
+
+Following change needs to be done in a53_defconfig file located at following path 
+inside the SDK.
+
+::
+
+    /board-support/ti-u-boot-2023*/configs/
+
+Add or update the CONFIG_BOOTCOMMAND
 
 ::
 
     CONFIG_BOOTCOMMAND="setenv dfu_alt_info_flashenv uEnv.txt ram 0x82000000 0x10000000; setenv dfu_alt_info ${dfu_alt_info_flashenv}; dfu 0 ram 0; env import -t ${loadaddr} $filesize; run user_commands;"
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+It will enable script to send uEnv.txt file, import the environment variables   
+from the uEnv.txt file and run user_commands after DFU boot. The user_commands  
+variable is defined in the uEnv.txt file and the value assigned will be based on 
+flashing memory and binaries/images to be flashed.
 
-    Add above line to am62x_evm_a53_defconfig file
+Additionallly, these changes can also be done:
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
+::
+    
+    To make sure board doesnt use saved environment variables after boot.
+    
+        Add below line.
+        CONFIG_ENV_IS_NOWHERE=y
+ 
+        Remove below line.
+        CONFIG_ENV_IS_IN_MMC=y
+ 
+    To decrease boot delay to 0
+        CONFIG_BOOTDELAY=0
 
-    Update CONFIG_BOOTCOMMAND in am64x_evm_a53_defconfig file as above
+For DFU boot, build the bootloader images using below configs file. Following 
+change is needed in Rules.make file present in the top level of SDK.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X')                                  
 
-    Update CONFIG_BOOTCOMMAND in am62ax_evm_a53_defconfig file as above
+    ::                                                                          
+                                                                              
+        UBOOT_MACHINE_R5=am62x_evm_r5_usbdfu_defconfig
+                                                                             
+.. ifconfig:: CONFIG_part_variant in ('AM64X')                                  
 
-It will enable script to send uEnv.txt file, import the environment variables and run *user_commands* after DFU boot.
+    ::                                                                          
+        
+        UBOOT_MACHINE_R5=am64x_evm_r5_defconfig    
+                                                                            
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')                                 
+                                                                                 
+    ::                                                                          
+                                                                                
+        UBOOT_MACHINE_R5=am62ax_evm_r5_usbdfu_defconfig    
 
-Next build the bootloader binaries for DFU boot. For details refer :ref:`usb-device-firmware-upgrade-label`.
-
-Export path to files
---------------------
-
-Assign the path of bootloader binaries for flashing and DFU boot to variables as
-shown below and export them. Not defining these variables or providing wrong path
-will throw an error.
+Generate the bootloader images for DFU boot using top-level makefile by running 
+following commands on the terminal from the top-level of the SDK.
 
 ::
 
-    export DFU_BOOT_TIBOOT=<path to tiboot3.bin for flashing & DFU boot>
-    export DFU_BOOT_TISPL=<path to tispl.bin for flashing & DFU boot>
-    export DFU_BOOT_UBOOT=<path to u-boot.img for flashing & DFU boot>
+    $ make u-boot_clean
+    $ make u-boot
 
-Assign the path of environment variable text file which contains to below variable
-and export. Not defining this variable or providing wrong path will throw an error.
-
-::
-
-    export UENV_TXT=<path to environment variable txt file for setting environment for flashing>
-
-Assign the path of the files you want to flash in the given variables and export
-them. Its not mandatory to assign all the below variables with a path. Script will
-skip flashing files for which corresponding variable is undefined.
+Save the bootloader binaries generated in a separate directory. These bootloader 
+images will be used for DFU boot and to start flashing the images. The bootloader 
+images after make will be generated in the following path.
 
 ::
 
-    export FLASH_TIBOOT=<path to tiboot3.bin to be flashed>
-    export FLASH_TISPL=<path to tispl.bin to be flashed>
-    export FLASH_UBOOT=<path to u-boot.img to be flashed>
-    export FLASH_ENV=<path to uenv.txt to be flashed>
-    export FLASH_ROOTFS=<path to rootfs to be flashed>
+    board-support/u-boot_build/r5/tiboot3.bin
+    board-support/u-boot_build/a53/tispl.bin
+    board-support/u-boot_build/a53/u-boot.img
 
-Getting ready to flash
-----------------------
+DFU boot binaries are required for flashing. These DFU binaries once booted on 
+the board listens for the images to be flashed over USB DFU. Go to the respective 
+directory `bin/${device}/${type}` and copy paste the DFU boot binaries (`tiboot3.bin`, `tispl.bin`, `u-boot.img`).
 
-Make sure dfu-util is installed in the host pc.
+For more details regarding USB DFU refer :ref:`usb-device-firmware-upgrade-label`.
 
-Make sure to build bootloader binaries for flashing and DFU boot and assign their
-path to the variables and export.
+Connections
+-----------
 
-Make sure to export path to your environment variable txt file.
-
-For connection refer :ref:`usb-device-firmware-upgrade-label`.
-
-Environment variable text file for flashing
--------------------------------------------
-
-It will be used to set environment variables in U-Boot for flashing.
-
-It assigns a set of U-Boot commands to variable *user_commands*. Ex. for DFU
-transfer to eMMC following commands are assigned to variable user_commands.
+Power off the EVM and set up the boot mode switches to boot from USB DFU
 
 ::
+    
+    SW2-11001100
+    SW3-00000000
 
-    user_commands=echo Flashing_on_eMMC; setenv dfu_alt_info ${dfu_alt_info_emmc}; dfu 0 mmc 0;
+Power on the board.
 
-The user_commands variable defined in the text file contains the commands to
-setup environment variables in U-Boot for DFU transfer.
+Optionally you can also connect host pc to board via UART to read the console logs.
+
+Preparing the Flash Configuration file
+--------------------------------------
+
+* Go to the directory `bin/${device}/${type}` according to the device and the type.
+* Edit the configuration file `flash-files.cfg` to list the commands for each of the files to be flashed.
+* For each config line, prepare the following three arguments separated by space.
+* Edit the path of files to be flashed using  -file=${path}.
+* Edit the operation using --operation=${flash-nor|flash-emmc|flash-nand}.
+* The operations flash-nor is used to flash the SPI NOR.
+* The operations flash-nand is used to flash the SPI NAND.
+* The operations flash-emmc is used to flash the eMMC.
+* Edit the offset using --offset=${hex_address}.
+
 
 Flashing the files
 ------------------
 
-Script takes 2 arguments - Flash memory and Device
-
-Run u-boot_flashwriter.sh to use the flash writer on Linux host with suitable
-arguments. All of the examples below assume that you are running commands from
-the top-level of the SDK.
+Change the working directory in terminal to flash writer tool directory i.e. 
+`<TI_SDK_PATH>/bin/DFU_flash/`
 
 ::
+    
+    $ ${PYTHON} dfu_flash.py [ -d device ] [ -t type ] [ -c cfg ] [ -r reset]
+    
+    where ${PYTHON} evalutes to specific python command according to the OS. 
+    In most cases, this should be `python` for Windows while `python3` for Linux.
+ 
+    Options
 
-    $ sudo ./bin/DFU_flash/u-boot_flashwriter.sh Flash_memory Device
+        - -d | --device : Argument to identify the device (Mandatory).
+        - -t | --type   : Argument to identify the type of the device gp,hs,hsfs (Mandatory).
+        - -c | --cfg    : Argument to get the path of the custom configuration file.
+        - -r | --reset  : Argument to reset the board after flashing.
 
 **Flash to eMMC**
 
 eMMC needs to be partitioned before running the script. For steps
 refer :ref:`partitioning-eMMC-from-uboot`.
 
-Use uEnv_dfu_emmc.txt as environment variable file for flashing.
+After the eMMC is partitioned, flash to eMMC can be done without error.
 
-After exporting paths to binaries and files, run following command in linux host
+In the config file, specify operation as 
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+::
 
-    ::
+    --operation=flash-emmc
 
-        $ sudo ./bin/DFU_flash/u-boot_flashwriter.sh emmc am62x
+Run following command in Linux or Windows to start the flash tool.
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
+::
 
-    ::
+    $ ${PYTHON} dfu_flash.py -d <device> -t <type> -c <cfg file>
 
-        $ sudo ./bin/DFU_flash/u-boot_flashwriter.sh emmc am64x
+    
+**Flash to SPI NOR**
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+In the config file, specify operation as 
 
-    ::
+::
 
-        $ sudo ./bin/DFU_flash/u-boot_flashwriter.sh emmc am62ax
+    --operation=flash-nor
+    
+Run following command in Linux or Windows host to start the flash tool.
 
-**Flash to SD card**
+::
 
-SD card needs to be partitioned before running U-boot flash writer.
+    $ ${PYTHON} dfu_flash.py -d <device> -t <type> -c <cfg file>
 
-Use uEnv_dfu_sdcard.txt as environment variable text file for flashing.
+**Flash to SPI NAND**
 
-After exporting paths to binaries and files, run following command in linux host.
+In the config file, specify operation as 
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+::
+    
+    --operation=flash-nand
 
-    ::
+Run following command in Linux or Windows host to start the flash tool.
 
-        $ sudo ./bin/DFU_flash/u-boot_flashwriter.sh sdcard am62x
+::
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
-
-    ::
-
-        $ sudo ./bin/DFU_flash/u-boot_flashwriter.sh sdcard am64x
-
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
-
-    ::
-
-        $ sudo ./bin/DFU_flash/u-boot_flashwriter.sh sdcard am62ax
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-    **Flash to OSPI NOR**
-
-    Use uEnv_dfu_ospi-nor.txt as environment variable file for flashing.
-
-    After exporting paths to binaries and files, run following command in linux host
-
-    ::
-
-        $ sudo ./bin/DFU_flash/u-boot_flashwriter.sh ospi-nor am62x
-
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
-
-    **Flash to OSPI NOR**
-
-    Use uEnv_dfu_ospi-nor.txt as environment variable file for flashing.
-
-    After exporting paths to binaries and files, run following command in linux host
-
-    ::
-
-        $ sudo ./bin/DFU_flash/u-boot_flashwriter.sh ospi-nor am64x
-
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
-
-    **Flash to OSPI NAND**
-
-    Use uEnv_dfu_ospi-nand.txt as environment variable file for flashing.
-
-    After exporting paths to binaries and files, run following command in linux
-    host
-
-    ::
-
-        $ sudo ./bin/DFU_flash/u-boot_flashwriter.sh ospi-nand am62ax
-
-
-Flashing multiple devices via USB Device Firmware Upgrade (DFU)
----------------------------------------------------------------
-
-The script supports flashing multiple EVMs via DFU one by one.
-
-It will check for existing DFU device(s), flash the files, detach the existing
-device(s) and wait for new device(s).
-
-If a new device is connected to host pc for flashing, it will detect and flash
-to that device .Script can be exited by pressing Ctrl C.
+    $ ${PYTHON} dfu_flash.py -d <device> -t <type> -c <cfg file>
