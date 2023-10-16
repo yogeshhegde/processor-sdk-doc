@@ -3,6 +3,10 @@
 Seva Store - User Guide
 =======================================
 
+.. note::
+
+   This page is not relevant for AM62SIP SK
+
 Overview
 --------
 

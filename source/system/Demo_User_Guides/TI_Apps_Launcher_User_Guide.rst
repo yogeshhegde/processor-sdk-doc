@@ -29,10 +29,14 @@ TI Apps Launcher is a QT Based Application launcher for TI Platforms. Currently,
 
 All of the necessary equipment requirement and instructions are provided here.
 
+.. note::
+
+   Not all of the above set of applications are supported by each platform. So there will be differences between each.
+
 Hardware Prerequisites
 ----------------------
 
--  TI AM62x SK
+-  TI AM62x SK / TI AM62x-LP SK / TI AM62xSIP SK
 
 -  PC (Windows or Linux, to use serial terminal console)
 
@@ -53,6 +57,10 @@ The TI Apps Launcher launches on Linux startup. Follow the below instructions to
 
 1. Flash an SD card with **tisdk-default-image-am62xx-evm.wic.xz**. User can download the tisdk-default-image-am62xx-evm.wic.xz image from `here <https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-AM62X/>`__. Please follow the instructions from here to `Flash an SD card <../../linux/Overview/Processor_SDK_Linux_create_SD_card.html>`__.
 
+.. note::
+
+   Images may vary between each platform based on the number of supported applications.
+
 2. Insert the flashed SD card to the board, connect the display, mouse, ethernet cable, keyboard and power on the TI AM62x SK. The TI Apps Launcher will launch automatically when the device is fully booted.
 
 .. Image:: /images/ti-apps-launcher.png
@@ -62,12 +70,16 @@ The TI Apps Launcher launches on Linux startup. Follow the below instructions to
 Launching the Industrial HMI
 ____________________________
 
+.. note::
+
+    Industrial HMI on AM62xSIP SK varies from the one documented here. This is only valid for AM62x SK and AM62x-LP SK.
+
 1. To launch the Industrial HMI demo, click on the `Industrial HMI` button on the left panel.
 
 .. Image:: /images/industrial-hmi-button.jpg
    :width: 407
    :height: 400
-
+|
 .. note:: It takes around 3-5 seconds for Industrial HMI to start.
 
 2. By default, the Industrial HMI demo starts in **Auto** mode as shown below.
@@ -106,6 +118,10 @@ _________________________
 Launching the ARM Analytics Demo
 ________________________________
 
+.. note::
+
+   ARM Analytics Demo is only supported on AM62x SK and AM62x-LP SK. AM62xSIP doesn't support it.
+
 1. AM62x SDK now supports ARM Analytics with pre-existing demos showcasing Object Detection, Face Detection and Image Classification.
 
 2. To launch the ARM Analytics demo, click on the `ARM Analytics` button on the left panel.
@@ -135,6 +151,10 @@ ________________________________
 Launching the Benchmarks Demo
 _____________________________
 
+.. note::
+
+   Benchmarks Demo is not supported on AM62xSIP because it depends on weston-terminal. AM62xSIP uses EGLFS to run the ti-apps-launcher.
+
 1. The Benchmarks Demo includes various System Benchmarks like dhrystone, linpack, nbench, etc. and GPU benchmarks like glmark2.
 
 2. Click on the `Benchmarks` button on the left panel.
@@ -157,6 +177,10 @@ _____________________________
 
 Launching the GPU Performance Demo
 __________________________________
+
+.. note::
+
+   GPU Performance Demo is not supported on AM62xSIP because it depends on weston or requires the ownership of EGLFS context.
 
 1. The GPU Performance demo allows users to vary the GPU loads using glmark2. Click on the `GPU Performance` button on the left panel.
 
@@ -181,6 +205,10 @@ __________________________________
 Launching the Seva Store
 ________________________
 
+.. note::
+
+   Seva Store is not supported on AM62xSIP due to it's memory constraints.
+
 1. AM62x SDK now supports Seva Store. Seva Store is TI developed Demo Gallery Tool which allows users to Download and Install demos on the go. Developers can host their Demos as Docker Images on any public Docker Registry and link them to Seva Design Gallery. Refer `Seva Store - User Guide <Seva_Store.html>`__ to know more about Seva Store.
 
 .. Image:: /images/seva-store-icon.jpg
@@ -189,6 +217,10 @@ ________________________
 
 Launching the Firefox Browser
 _____________________________
+
+.. note::
+
+   Firefox Browser is not supported on AM62xSIP due to it's memory constraints.
 
 1. AM62x SDK now supports Firefox ESR Browser. Click on the `Firefox` button on the left panel.
 
@@ -208,6 +240,10 @@ _____________________________
 
 Launching the 3D Demo
 _____________________
+
+.. note::
+
+   3D Demo requires weston to be running or EGLFS context to run. ti-apps-launcher is run on EGLFS so it is not supported on AM62xSIP.
 
 1. Click on the `3D Demo` button on the left panel.
 
@@ -255,7 +291,9 @@ The source code is available at `TI Apps Launcher <https://github.com/TexasInstr
 2. Go to the root of TI Apps Launcher repository and run the following command to build the application.
    ::
 
-        $ qmake "SOURCES += configs/am62xx-evm.cpp" "DEFINES += SOC_AM62"; make
+        $ qmake "SOURCES += configs/am62xx-evm.cpp" "DEFINES += SOC_AM62"; make # For AM62x SK
+        $ qmake "SOURCES += configs/am62xx-lp-evm.cpp" "DEFINES += SOC_AM62_LP"; make # For AM62x LP SK
+        $ qmake "SOURCES += configs/am62xxsip-evm.cpp" "DEFINES += SOC_AM62_LP"; make # For AM62xSIP SK
 
 3. Copy the compiled binary to /usr/bin directory of the device
    ::

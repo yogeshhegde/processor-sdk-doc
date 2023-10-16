@@ -116,7 +116,10 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
            $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
            $ cd tisdk
+           # for am62xx-evm and am62xx-lp-evm
            $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-09.00.00-config.txt
+           # for am62xxsip-evm
+           $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-09.00.00-am62xxsip-config.txt
            $ cd build
            $ . conf/setenv
            $ MACHINE=<machine> bitbake -k tisdk-default-image
@@ -328,6 +331,8 @@ The "Build Output" is given relative to the
         +------------------+--------------------------------------------+
         | am62xx-lp-evm    | AM62x LP Starter Kit (SK) - HS-FS, HS-SE   |
         +------------------+--------------------------------------------+
+        | am62xxsip-evm    | AM62x-SIP Starter Kit (SK) - HS-FS, HS-SE  |
+        +------------------+--------------------------------------------+
 
     .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
@@ -412,6 +417,8 @@ The "Build Output" is given relative to the
         | am62xx-evm       | AM62x Starter Kit (SK) - GP, HS-FS, HS-SE  |
         +------------------+--------------------------------------------+
         | am62xx-lp-evm    | AM62x LP Starter Kit (SK) - HS-FS, HS-SE   |
+        +------------------+--------------------------------------------+
+        | am62xxsip-evm    | AM62x-SIP Starter Kit (SK) - HS-FS, HS-SE  |
         +------------------+--------------------------------------------+
 
     .. ifconfig:: CONFIG_part_variant in ('AM65X')
