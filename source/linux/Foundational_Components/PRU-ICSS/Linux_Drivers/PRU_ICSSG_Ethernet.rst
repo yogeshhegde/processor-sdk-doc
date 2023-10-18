@@ -46,6 +46,7 @@ Features supported
 - IRQ Coalescing also known as interrupt pacing.
 - Multi-cast HW filtering
 - XDP Native Mode and XDP Generic Mode
+- Cut Through forwarding
 
 .. rubric:: **Features not supported**
 

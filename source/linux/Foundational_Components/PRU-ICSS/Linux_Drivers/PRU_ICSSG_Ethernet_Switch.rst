@@ -114,6 +114,53 @@ Limitations of switch mode offloading support
 * MDB/FDB static entries are limited to 511 entries and different FDBs can
   hash to same bucket and thus may not be completely offloaded
 
+Cut Through Forwarding
+""""""""""""""""""""""
+
+.. Caution::
+
+    The Cut Through configuration interface could be changed significantly in the future depending on Linux Kernel mainline development.
+
+ICSSG Switch firmware now supports cut through forwarding. Cut Through feature allows forwarding packet from one external port to another without being stored in Port FIFOs thus reducing overall latency for packet forwarding.
+
+**Limitations**
+
+#. Feature is not available in dual EMAC mode.
+#. Cut Through forwarding is only supported between external ports and no support for Cut Through to host port currently.
+#. Cut Through is not supported with 10/100 half-duplex.
+#. Cut Through is not supported with any form of flow control.
+#. If Intersperced Express Traffic (IET) is enabled, then Cut Through can only be enabled on an express priority queue and not on preemptible queues.
+
+Assuming eth1 and eth2 are the active ports of ICSSG2 on AM654x-IDK, to enable cut through run below commands,
+
+::
+
+  ip link set eth1 down
+  ip link set eth2 down
+  devlink dev param set platform/icssg2-eth name cut_thru value 1 cmode runtime # To enable cut thru for tx0 queue
+  devlink dev param set platform/icssg2-eth name cut_thru value 2 cmode runtime # To enable cut thru for tx1 queue
+  devlink dev param set platform/icssg2-eth name cut_thru value 3 cmode runtime # To enable cut thru for tx0 and tx1 queues
+  ip link set eth1 up
+  ip link set eth2 up
+
+To enable cut through for multiple (assume q1, q2 and q3) queues. Pass the value 2\ :sup:`q1` + 2\ :sup:`q2` + 2\ :sup:`q3` to the devlink command.
+
+To show the current cut through status, run the below command,
+::
+
+  devlink dev param show platform/icssg2-eth name cut_thru
+
+  platform/icssg2-eth:
+    name cut_thru type driver-specific
+      values:
+        cmode runtime value 133
+
+Here the value is shown as 133 (Binary 10000101). This means that cut through is enabled for q0, q2 and q7 queues. As bit 0,1 and 7 are set in the binary representation of the value 133.
+
+To disable cut through on all queues
+::
+  devlink dev param set platform/icssg2-eth name cut_thru value 0 cmode runtime
+
 SRAM Requirement
 """"""""""""""""
 
