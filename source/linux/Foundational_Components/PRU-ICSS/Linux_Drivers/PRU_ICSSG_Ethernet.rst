@@ -764,6 +764,10 @@ For example:
 MII Support
 ********************
 
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+    On AM654x-evm the DP83867HM are strapped to RGMII configuration by default. To use MII mode for ICSSG interfaces  pinmux `settings <https://dev.ti.com/sysconfig/#/config/?args=--device%20AM65xx_SR2.0_beta%20--part%20Default%20--package%20ACD%20--theme%20light>`_ for MII mode needs to be added to the device tree.
+
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
   .. rubric:: AM64 GP EVM
@@ -771,9 +775,10 @@ MII Support
   On AM64x-evm the DP83869HM are strapped to RGMII configuration by default. To use MII interface the
   k3-am642-evm-icssg1-dualemac-mii.dtbo overlay file has to be applied using the following command in uboot.
 
-::
+    ::
 
-  setenv bootcmd 'run findfdt; run envboot; run init_${boot}; run get_kern_${boot}; run get_fdt_${boot}; setenv name_overlays k3-am642-evm-icssg1-dualemac-mii.dtbo; run get_overlay_${boot}; run run_kern'
+      setenv bootcmd 'run findfdt; run envboot; run init_${boot}; run get_kern_${boot}; run get_fdt_${boot};
+      setenv name_overlays k3-am642-evm-icssg1-dualemac-mii.dtbo; run get_overlay_${boot}; run run_kern'
 
 
 CPSW / PRU Ethernet Selection
@@ -798,7 +803,7 @@ CPSW / PRU Ethernet Selection
 
       setenv bootcmd ‘run findfdt; run envboot;run init_${boot}; run get_kern_${boot}; run get_fdt_${boot};setenv name_overlays ti/k3-am642-evm-icssg1-dualemac-mii.dtbo; run get_overlay_${boot}; run run_kern’'
 
-To save this in uboot, run ``saveenv``. This will make sure that the overlay is persistent across boots and PRU Ethernet is selected by default after every boot.
+    To save this in uboot, run ``saveenv``. This will make sure that the overlay is persistent across boots and PRU Ethernet is selected by default after every boot.
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
