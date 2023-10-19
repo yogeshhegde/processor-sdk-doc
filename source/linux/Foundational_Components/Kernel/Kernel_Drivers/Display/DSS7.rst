@@ -226,13 +226,28 @@ Unsupported Features/Limitations
         - **MIPI DSI**
 
         - **Open LVDS Display Interface (OLDI)**
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4')
 
-        - **DisplayPort**
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J784S4')
+
+        - **DisplayPort (MHDP)**
                 - MST
+                - 4K@60FPS Resolution
+                | For 4k@60FPS resolution, sometimes visual artifacts are seen due to Video Sync Loss.
+                | Therefore the maximum supported video resolution as of now is limited to 4K@30FPS (or equivalent)
+                | by limiting the dp phy-link rate to 2700Mbps.
 
         - **Open LVDS Display Interface (OLDI)**
 
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+        - **DisplayPort (MHDP)**
+                - MST
+                - 4K@60FPS Resolution
+                | MHDP PHY has only 2 SERDES LANES dedicated to eDP and with the phy-link rate of 5400Mbps, the maximum
+                | data rate it can support is 10.8Gbps which is not sufficient for 4k@60FPS. So the maximum supported
+                | resolution is 4K@30FPS (and equivalent resolutions).
+
+        - **Open LVDS Display Interface (OLDI)**
 
 Driver Configuration
 ====================
