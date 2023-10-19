@@ -123,32 +123,8 @@ The main additions or 'enhacements' of LTP-DDT compared to LTP are:
 .. rubric:: Device Under Tests Supported
    :name: device-under-tests-supported
 
-LTP-DDT has been used on following devices:
-
-
-    +--------------+--------------+--------------------+--------------------+-----------------+------------+----------------+
-    | **LTP-DDT Devices**                                                                                                   |
-    +==============+==============+====================+====================+=================+============+================+
-    | am170x-evm   | am389x-evm   | am57xx-beagle-x15  | da850-omapl138-evm | dra72x-hsevm    | k2e-evm    | omap3evm       |
-    +--------------+--------------+--------------------+--------------------+-----------------+------------+----------------+
-    | am180x-evm   | am437x-idk   | am57xx-evm         | dm365-evm          | dra76x-evm      | k2e-hsevm  | omap5-evm      |
-    +--------------+--------------+--------------------+--------------------+-----------------+------------+----------------+
-    | am181x-evm   | am437x-sk    | am57xx-hsevm       | dm368-evm          | dra7xx-evm      | k2g-evm    | omapl138-lcdk  |
-    +--------------+--------------+--------------------+--------------------+-----------------+------------+----------------+
-    | am335x-evm   | am43xx-epos  | am654x-evm         | dm385-evm          | dra7xx-hsevm    | k2g-hsevm  | pandaboard-es  |
-    +--------------+--------------+--------------------+--------------------+-----------------+------------+----------------+
-    | am335x-hsevm | am43xx-gpevm | am654x-hsevm       | dm6467-evm         | dragonboard410c | k2g-ice    | sdp3430        |
-    +--------------+--------------+--------------------+--------------------+-----------------+------------+----------------+
-    | am335x-ice   | am43xx-hsevm | am654x-idk         | dm813x-evm         | hikey           | k2hk-evm   | tci6614-evm    |
-    +--------------+--------------+--------------------+--------------------+-----------------+------------+----------------+
-    | am335x-sk    | am571x-idk   | beagleboard        | dra71x-evm         | j721e-evm       | k2hk-hsevm | ti811x-evm     |
-    +--------------+--------------+--------------------+--------------------+-----------------+------------+----------------+
-    | am3517-evm   | am572x-idk   | beaglebone         | dra71x-hsevm       | j721e-evm-ivi   | k2l-evm    | ti813x-evm     |
-    +--------------+--------------+--------------------+--------------------+-----------------+------------+----------------+
-    | am37x-evm    | am574x-hsidk | beaglebone-black   | dra71x-lcard       | j721e-idk-gw    | k2l-hsevm  |                |
-    +--------------+--------------+--------------------+--------------------+-----------------+------------+----------------+
-    | am387x-evm   | am574x-idk   | da830-omapl137-evm | dra72x-evm         |                 |            |                |
-    +--------------+--------------+--------------------+--------------------+-----------------+------------+----------------+
+Supported platforms with LTP-DDT
+- can be found `here <https://git.ti.com/cgit/test-automation/ltp-ddt/tree/platforms>`__
 
 |
 
@@ -207,7 +183,7 @@ Clone the project
 | Installation instructions are in the README-DDT file. Check sections
   6) and 7)
 | There is also an Arago/OE recipe to build ltp-ddt
-  `here <https://git.ti.com/cgit/arago-project/meta-arago/tree/meta-arago-extras/recipes-devtools/ltp-ddt/ltp-ddt_20210524.bb>`__
+  `here <https://git.ti.com/cgit/arago-project/meta-arago/tree/meta-arago-test/recipes-devtools/ltp-ddt>`__
 
 .. rubric:: Running Tests
    :name: running-tests
