@@ -707,6 +707,7 @@ connected to J7VCL's eth2.
     ip link set dev eth2 master br0
     ip link set dev br0 up
     ip link set dev br0 type bridge vlan_filtering 1
+    bridge vlan add dev br0 vid 1 self
     bridge vlan add dev br0 vid 1 pvid untagged self
     # Ensure that multicast flooding is off
     bridge link set dev eth1 mcast_flood off
@@ -917,6 +918,7 @@ connected to AM625-SK's eth1.
     ip link set dev eth1 master br0
     ip link set dev br0 up
     ip link set dev br0 type bridge vlan_filtering 1
+    bridge vlan add dev br0 vid 1 self
     bridge vlan add dev br0 vid 1 pvid untagged self
     # Ensure that multicast flooding is off
     bridge link set dev eth0 mcast_flood off

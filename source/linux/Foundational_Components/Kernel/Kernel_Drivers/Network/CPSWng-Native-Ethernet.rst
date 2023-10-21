@@ -123,7 +123,7 @@ Bridge setup
     ip link set dev eth4 master br0
 
     [*] ip link set dev br0 type bridge vlan_filtering 1
-
+    [*] bridge vlan add dev br0 vid 1 self
     [*] bridge vlan add dev br0 vid 1 pvid untagged self
 
     Note: Steps [*] are mandatory.
@@ -144,6 +144,7 @@ VLAN configuration
 
 ::
 
+    bridge vlan add dev br0 vid 1 self <---- add VLAN as a Bridge Entry
     bridge vlan add dev br0 vid 1 pvid untagged self <---- add cpu port to VLAN 1
 
 This step is mandatory for bridge/default_pvid.
@@ -157,6 +158,7 @@ Adding extra VLANs
 
     bridge vlan add dev eth1 vid 100 pvid untagged master
     bridge vlan add dev sw0p2 vid 100 pvid untagged master
+    bridge vlan add dev br0 vid 100 self <---- add VLAN as a Bridge Entry
     bridge vlan add dev br0 vid 100 pvid untagged self <---- Add cpu port to VLAN100
 
 2. Tagged
@@ -165,6 +167,7 @@ Adding extra VLANs
 
     bridge vlan add dev eth1 vid 100 master
     bridge vlan add dev sw0p2 vid 100 master
+    bridge vlan add dev br0 vid 100 self <---- add VLAN as a Bridge Entry
     bridge vlan add dev br0 vid 100 pvid tagged self <---- Add cpu port to VLAN100
 
 Forwarding Data Bases (FDBs)
