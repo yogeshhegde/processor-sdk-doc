@@ -14,7 +14,7 @@ The Linux Debian distribution is enabled for TI's AM62x and AM64x platforms. Few
 
 - The entire project is made public and we accept community contributions as pull requests to github repositories.
 
-- The Github actions are enabled for buildscripts workflow, any change to config files, package additions or modifications in build scripts will result in auto generation of debian filesystem and hosted on the same repo, this allows user to try the Image for next 90 days without building on their owned.
+- Github actions are enabled for the buildscripts workflow. So, any change config files, package additions or modifications in build scripts will result in auto generation of a new debian filesystem that reflects these changes. The new build will store the filesystem image as an artifact hosted on the same repo, allowing other users to test the change without making a new build. These images are available via github for 90 days after which they may be purged to save disk space.
 
 
 Debian vs Yocto
