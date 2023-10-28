@@ -38,6 +38,18 @@ Processor CoreSDK Sitara 09.00 Refresh
 - Platforms Supported : AM62SIP ( HS-FS, HS-SE)
 - Tag Info: 09.00.00.011
 
+Processor CoreSDK Sitara 09.00 Refresh
+--------------------------------------
+- This is the third release in the 2023 LTS stream, with new versions of Kernel, U-boot, toolchain and Yocto branch.
+- Kernel 6.1
+- U-Boot 2023.04
+- Toolchain GCC 11.4
+- Yocto Kirkstone/4.0
+- Graphics DDK 1.17
+- Platforms Supported : AM335x(GP, HS), AM437x (GP, HS)
+- Tag Info: 09.01.00.001
+
+
 .. note::
 
     - For U-Boot builds, k3-image-gen and core-secdev-k3 are no longer needed
