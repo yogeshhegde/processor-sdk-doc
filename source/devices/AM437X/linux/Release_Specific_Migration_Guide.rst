@@ -11,6 +11,16 @@ Migration Guide for AM437X
 This page covers migration information for applications built on top
 of the Processor SDK for Linux.
 
+As of Oct 2023, Linux SDK for AM437x is in long term maintenance mode. TI will support critical bug fixes and once a year LTS updates but no new development or new features are planned for this device SDK at this time.
+
+Processor SDK 09.xx Releases
+============================
+
+Processor SDK 09.01.00
+-----------------------
+- 2023 LTS Update release, with new versions of Kernel and U-boot. Please see :ref:`release-specific-sdk-components-versions`.
+
+
 Processor SDK 08.xx Releases
 ============================
 
