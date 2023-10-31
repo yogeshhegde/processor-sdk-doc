@@ -168,6 +168,9 @@ package:
 -  **linux** - Compiles the Linux kernel using the default
    tisdk\_<PLATFORM>\_defconfig configuration.
 -  **linux-dtbs** - Compiles and creates the device tree blobs.
+-  **u-boot** - This target will build both u-boot and the u-boot
+  SPL (MLO) binaries used in newer versions of u-boot. This actually
+  provides a u-boot and u-boot-spl target in the Makefile.
 
 .. ifconfig:: CONFIG_sdk not in ('PLSDK')
 
@@ -207,9 +210,6 @@ devices will have following additional targets:
 
     **oprofile-example** - Build System profiler
 
-    **u-boot** - This target will build boot-binaries i.e. tiboot3.bin, tispl.bin
-    and u-boot.img.
-
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
     **ti-img-rogue-driver** - Build GPU Kernel module.
@@ -218,36 +218,19 @@ devices will have following additional targets:
     jailhouse tools and cell configs. Applicable for only platforms with
     Hypervisor support enabled.
 
+.. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM65X')
+
+   **ti-sgx-ddk-km** - Build GPU Kernel module.
+
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
     **matrix-gui** - Build matrix GUI sources.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-   .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X')
-
-        -  **u-boot** - This target will build both u-boot and the u-boot
-        SPL (MLO) binaries used in newer versions of u-boot. This actually
-        provides a u-boot and u-boot-spl target in the Makefile.
-
-        .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
-
-            -  **matrix-gui** - Builds the matrix-gui sources.
-            -  **matrix-gui-browser** - Builds the matrix GUI browser Qt project.
-            -  **refresh-screen** - Builds the refresh screen Qt project.
-
-    -  **sysfw-image** - Builds the system firmware itb file, which is a single
-        binary for the system firmware release along with the different board
-        configs.
-    -  **linux-fitimage** - Sign and pack linux kernel and dtbs into FIT image
-        required for booting HS devices.
 
 Along with these targets, there might be additional targets for different
 external kernel modules. This list is different for each platform.
 
 |
-
-
 
 .. rubric:: Usage Examples
    :name: usage-examples
@@ -276,7 +259,14 @@ the Makefile from the top-level of the SDK.
 
         host# make install
 
--  Build Linux kernel and Fitimage
+
+.. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X')
+
+    -  Build Linux kernel and Fitimage
+
+.. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X')
+
+    -  Build Linux kernel
 
 ::
 
@@ -290,14 +280,29 @@ the Makefile from the top-level of the SDK.
 
         host# make linux_stage
 
--  Install Linux kernel modules and Fitimage to SD card rootfs
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X')
 
-    host# make linux_install
+    -  Install Linux kernel image and kernel modules to SD card
 
-    To install in SD card directly:
-    host# sudo DESTDIR=/media/$USER/rootfs make linux_install
+    ::
+
+        host# make linux_install
+
+        To install in SD card directly:
+        host# sudo DESTDIR=/media/$USER/boot make linux_install
+        host# sudo DESTDIR=/media/$USER/rootfs make linux_modules_install
+
+.. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X')
+
+    -  Install Linux kernel modules and Fitimage to SD card rootfs
+
+    ::
+
+        host# make linux_install
+
+        To install in SD card directly:
+        host# sudo DESTDIR=/media/$USER/rootfs make linux_install
 
 -  Clean Linux
 
@@ -335,7 +340,7 @@ the Makefile from the top-level of the SDK.
         host# sudo DESTDIR=/media/$USER/rootfs make ti-img-rogue-driver_install
 
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62AX', 'AM62X', 'AM64X' )
+.. ifconfig:: CONFIG_sdk not in ('PLSDK')
 
  -  Build the ARM Benchmarks
 
@@ -451,13 +456,13 @@ the Makefile from the top-level of the SDK.
 
     ::
 
-        host# make u-boot-spl
+        host# make u-boot
 
     -  Clean u-boot
 
     ::
 
-        host# make u-boot-spl_clean
+        host# make u-boot_clean
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X')
 
@@ -574,7 +579,7 @@ the Makefile from the top-level of the SDK.
         host# cd board-support/k3-image-gen*/
         host# make SOC=j7200 ROM_COMBINED_IMAGE=1 SBL=u-boot-spl.bin
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X')
+.. ifconfig:: CONFIG_sdk not in ('PLSDK')
 
    .. rubric:: Installing to SD card rootfs
    :name: installing-to-sd-card
@@ -662,11 +667,12 @@ the Makefile from the top-level of the SDK.
         host# sudo cp board-support/built-images/tispl.bin /media/$USER/boot/tispl.bin
         host# sudo cp board-support/built-images/u-boot.img /media/$USER/boot/u-boot.img
 
-.. ifconfig:: CONFIG_part_variant not in ('AM65X','AM64X', 'AM62X', 'AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X')
 
     ::
 
-        host# sudo cp board-support/u-boot_build/a72/u-boot.img board-support/u-boot_build/a72/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
+        host# sudo cp board-support/u-boot_build/u-boot.img board-support/u-boot_build/MLO /media/$USER/boot
+
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 

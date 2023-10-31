@@ -17,8 +17,7 @@ SDK.
     +---------------------------+-------------------------+
     | **Operating System**      | | **Version**           |
     +---------------------------+-------------------------+
-    | Ubuntu                    | | 16.04 (64-bit)        |
-    |                           | | 18.04 (64-bit)        |
+    | Ubuntu                    | | 22.04 (64-bit)        |
     +---------------------------+-------------------------+
 
     -  **RTOS SDK**
@@ -187,7 +186,7 @@ The following platforms and EVMs are supported with Processor SDK.
     |processors/sitara/arm_cortex-a8/      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/AM335x_    |                |                |                |
     |am335x/overview.page>`__              |tmdxevm3358>`__                       |          |General_Purpose_EVM_HW_User_Guide>`__       |                |                |                |
     |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
-    |                                      |`AM335x SK                            | 1.2      |`Hardware User's Guide <http://             | X              |                | X              |
+    |                                      |`AM335x SK                            | 1.2      |`Hardware User's Guide <http://             | X              | X              | X              |
     |                                      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/           |                |                |                |
     |                                      |tmdssk3358>`__                        |          |AM335xStarterKitHardwareUsersGuide>`__      |                |                |                |
     |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
@@ -203,12 +202,6 @@ The following platforms and EVMs are supported with Processor SDK.
     |                                      |                                      |          |.wiki.ti.com/index.php/ICE_AM335x_          |                |                |                |
     |                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |
     +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
-    |`AMIC110 <http://www.ti.com/          |`AMIC110 ICE                          | 1.1      |`Hardware User's Guide <http://             |                |                | X              |
-    |product/AMIC110>`__                   |<http://www.ti.com/tool               |          |www.ti.com/lit/pdf/spruie6>`__              |                |                |                |
-    |                                      |/tmdxice110>`__                       |          |`Hardware Setup with CCS <http://processors |                |                |                |
-    |                                      |                                      |          |.wiki.ti.com/index.php/ICE_AMIC110_         |                |                |                |
-    |                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |
-    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
 
 .. ifconfig:: CONFIG_part_family in ('AM437X_family')
 
@@ -220,7 +213,7 @@ The following platforms and EVMs are supported with Processor SDK.
     |processors/sitara/arm_cortex-a9/      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/AM437x_    |                |                |                |
     |am437x/overview.page>`__              |TMDXEVM437X>`__                       |          |General_Purpose_EVM_HW_User_Guide>`__       |                |                |                |
     |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
-    |                                      |`AM437x SK                            | 1.1A     |`Hardware User's Guide <http://             | X              |                | X              |
+    |                                      |`AM437x SK                            | 1.1A     |`Hardware User's Guide <http://             | X              | X              | X              |
     |                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruhw8>`__              |                |                |                |
     |                                      |TMDXSK437X>`__                        |          |                                            |                |                |                |
     |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+

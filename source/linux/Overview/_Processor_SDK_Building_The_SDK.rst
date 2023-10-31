@@ -79,10 +79,10 @@ Build Steps
 -----------
 
 Please refer to :ref:`here <yocto-layer-configuration>` for the
-layer configuration for a particular release of |__SDK_FULL_NAME__|.
+layer configuration (oeconfig-file) for a particular release of |__SDK_FULL_NAME__|.
 The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family not in ('General_family')
 
  .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
@@ -116,17 +116,13 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
            $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
            $ cd tisdk
-           # for am62xx-evm and am62xx-lp-evm
-           $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-09.00.00-config.txt
-           # for am62xxsip-evm
-           $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-09.00.00-am62xxsip-config.txt
+           $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
            $ cd build
            $ . conf/setenv
            $ MACHINE=<machine> bitbake -k tisdk-default-image
 
-       Your tisdk-default-image wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.
+       Your tisdk-default-image wic image will be generated in deploy-ti directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.
 
-.. note:: While building images via Yocto, if you are facing **submodule init failed for powervr-graphics recipe** then you need to apply `powervr-graphics: Fix submodule related build issue <https://git.ti.com/cgit/processor-sdk/meta-processor-sdk/patch/?id=c07350d86ebe1dded563ecc545896b6fef807b42>`__ patch on meta-processor-sdk which is under tisdk/sources.
 
 .. note:: While building images via Yocto, if you are facing **locale.Error: unsupported locale setting** error it means your system is trying to use locale setting which was not there. Run the following commands which will setup the locale and try building your target image again.
 
@@ -187,7 +183,7 @@ in the command:
 ``MACHINE=<machine> bitbake <target>``
 
 The "Build Output" is given relative to the
-**arago-tmp-[toolchain]/deploy** directory.
+**deploy-ti** directory.
 
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
