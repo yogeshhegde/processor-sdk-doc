@@ -19,4 +19,5 @@ solutions.
    /linux/Overview_Technical_Support
    /linux/Overview_Training
    /linux/Overview_GPLv3_Disclaimer
+   /linux/Overview/GCC_ToolChain
 
