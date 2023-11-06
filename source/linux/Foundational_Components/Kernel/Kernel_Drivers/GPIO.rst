@@ -10,10 +10,10 @@ GPIO
 
 The GPIO Driver enables the GPIO controllers available on the device.
 The driver configures the GPIO hardware and interfaces and makes them
-available to the sysfs interface for user space interaction or other
-device drivers that need to access pins. For example, a MMC/SD driver
-may need to read a GPIO as in input to determine if a card is present.
-The H/W GPIO controllers available will vary by SoC and system
+available to user space as character device or other device drivers
+that need to access pins.
+For example, a MMC/SD driver may need to read a GPIO as in input to
+determine if a card is present. The H/W GPIO controllers available will vary by SoC and system
 configuration.
 
 .. ifconfig:: CONFIG_part_family in ('J7_family', 'General_family', 'AM335X_family', 'AM437X_family')
@@ -48,7 +48,7 @@ and interrupt generation.
 .. rubric:: User Layer
    :name: user-layer
 
-The GPIO driver can be used via the sysfs interface in user space or by
+The GPIO driver can be used via  user space or by
 other drivers that may need to access pins as either input/outputs or
 interrupts. More information about this driver and GPIO usage in Linux
 can be found in the kernel documentation:
@@ -58,19 +58,10 @@ can be found in the kernel documentation:
 -  GPIO Driver:
    Under Kernel directory Documentation/gpio/driver.txt
 
-.. rubric:: sysfs
-   :name: sysfs
 
-The sysfs interface is for GPIO is located in the kernel at
-/sys/class/gpio. More information about this interface can also be found
-in the kernel sources:
-
--  GPIO sysfs:
-   Under Kernel directory Documentation/gpio/sysfs.txt
-
-For controlling LEDs and Buttons, the kernel has standard drivers,
-"leds-gpio" and "gpio\_keys", respectively, that should be used instead
-of GPIO directly.
+.. note ::
+   Since linux 4.8 the GPIO sysfs interface is deprecated. User space should use
+   the character device instead.
 
 .. rubric:: Consuming Drivers
    :name: consuming-drivers
