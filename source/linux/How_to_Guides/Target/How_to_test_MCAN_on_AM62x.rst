@@ -1,36 +1,35 @@
 
 .. _mcan-on-am62x:
 
-3x MCAN on AM62x and AM62ax devices
-======================================
+How to enable MCAN in Linux
+============================
 
-The following guide applies to AM62x and AM62ax devices. However, to test 3x MCAN on AM62ax, please first enable MCU MCAN nodes as per instructions here:
-:ref:`Enable MCU MCANs on AM62ax`. Then proceed with the rest of the guide.
+The following guide applies to these devices:
 
-*Processor SDK supporting 3x MCAN*
+#. AM62x SK
+#. AM62SIP SK
+#. AM62x LP SK
+#. AM62Ax SK
+#. AM62Px SK
 
-The Processor SDK 9.0 release fully supports 3x MCAN on AM62 devices. For AM62ax, some changes have to be made as mentioned here
-:ref:`Enable MCU MCANs on AM62ax`.
+The following table shows a summary for MCAN support in TI SDK.
 
-*Linux Kernel version supporting 3x MCAN*
+#. "nx MCAN"   => how many MCAN nodes are enabled in the device tree for a specific device.
+#. "+ overlay" => for a specific release and device combination, there exists this overlay to enable nx MCAN in the Processor SDK.
 
-On AM62 SoCs, MCANs in MCU domain do not have hardware interrupt routed to A53 Linux. Instead timer polling functionality
-has been added to the MCAN driver in Linux Kernel to enable 3x MCAN. The driver changes have been merged to TI Linux Kernel on
-ti-linux-6.1.y branch.
-
-*Latency and CPU load benchmarks Results*
-
-1 MBPS timer polling interval was determined to be the better timer polling interval since it has comparable latency to hardware interrupt
-with the worse case being 1ms + CAN frame propagation time and CPU load is not substantial. Latency can be improved further with less than
-1 ms  polling intervals, howerver it is at the cost of CPU usage since CPU load increases at 0.5 ms.
-
-*Power implications*
-
-Enabling MCU MCANs with timer-polling might have a negative impact since the CPU has to wake up every 1 ms whether there are CAN packets
-pending in the RX FIFO or not. This might prevent the CPU from entering into deeper idle states for extended periods of time.
-
-|
-
++-------------+-----------------------------------------+-----------------------------------------+------------------------------------------+
+|             | 8.6                                     | 9.0                                     |  9.1                                     |
++=============+=========================================+=========================================+==========================================+
+| AM62x SK    | 1x MCAN + k3-am625-sk-mcan.dtbo overlay | 3x MCAN + k3-am625-sk-mcan.dtbo overlay | 3x MCAN + k3-am62x-sk-mcan.dtbo overlay  |
++-------------+-----------------------------------------+-----------------------------------------+------------------------------------------+
+| AM62SIP     | n/a                                     | n/a                                     | 3x MCAN + k3-am62x-sk-mcan.dtbo overlay  |
++-------------+-----------------------------------------+-----------------------------------------+------------------------------------------+
+| AM62x LP SK | 1x MCAN                                 | 3x MCAN + k3-am625-sk-mcan.dtbo overlay | 3x MCAN + k3-am62x-sk-mcan.dtbo overlay  |
++-------------+-----------------------------------------+-----------------------------------------+------------------------------------------+
+| AM62Ax SK   | 1x MCAN                                 | 3x MCAN                                 | 3x MCAN + k3-am62x-sk-mcan.dtbo overlay  |
++-------------+-----------------------------------------+-----------------------------------------+------------------------------------------+
+| AM62Px SK   | n/a                                     | n/a                                     | 4x MCAN + k3-am62p5-sk-mcan.dtbo overlay |
++-------------+-----------------------------------------+-----------------------------------------+------------------------------------------+
 
 MCAN Overview
 --------------
@@ -73,12 +72,14 @@ AM62x:
 _______
 
 There is 1x MCAN in the MAIN domain and 2x MCAN in MCU domain. According to the AM62x datasheet on `Table 6-1. Pin Attributes` we can see
-the following:
+the following Ball Names of interest:
 
-#. MCAN0_RX is pinmuxed with UART5_TXD
-#. MCAN0_TX is pinmuxed with UART5_RXD
-#. MCU_MCAN1_RX is pinmuxed with MCU_GPIO0_16
-#. MCU_MCAN1_TX is pinmuxed with MCU_GPIO0_15
+#. MCAN0_RX
+#. MCAN0_TX
+#. MCU_MCAN0_RX
+#. MCU_MCAN0_TX
+#. MCU_MCAN1_RX
+#. MCU_MCAN1_TX
 
 +-------------------------------------------------+
 | .. Image:: /images/mcan-pin-attributes.JPG      |
@@ -96,6 +97,8 @@ On the AM62x schematics, `SOC - General`, `User Expansion Connector`, and `MCU H
 #. EXP_UART5_RXD is pin 10 on User Expansion
 #. MCU_MCAN0_RX is brought out by pin 22 on MCU Header
 #. MCU_MCAN0_TX is brought out by pin 16 on MCU Header
+#. MCU_MCAN1_RX becomes signal name MCU_GPIO0_16
+#. MCU_MCAN1_RX becomes signal name MCU_GPIO0_15
 #. MCU_GPIO0_16 is brought out by pin 11 on MCU Header
 #. MCU_GPIO0_15 is brought out by pin 10 on MCU Header
 
@@ -109,12 +112,12 @@ On the AM62x schematics, `SOC - General`, `User Expansion Connector`, and `MCU H
 
 In summary:
 
-#. MCAN0_RX is brought out by pin 8 on User Expansion
-#. MCAN0_TX is brought out by pin 10 on User Expansion
-#. MCU_MCAN0_RX is brought out by pin 22 on MCU Header
-#. MCU_MCAN0_TX is brought out by pin 16 on MCU Header
-#. MCU_MCAN1_RX is brought out by pin 11 on MCU Header
-#. MCU_MCAN1_TX is brought out by pin 10 on MCU Header
+#. MCAN0_RX is brought out on pin 8 on User Expansion
+#. MCAN0_TX is brought out on pin 10 on User Expansion
+#. MCU_MCAN0_RX is brought out on pin 22 on MCU Header
+#. MCU_MCAN0_TX is brought out on pin 16 on MCU Header
+#. MCU_MCAN1_RX is brought out on pin 11 on MCU Header
+#. MCU_MCAN1_TX is brought out on pin 10 on MCU Header
 
 External CAN Transceiver:
 _________________________
@@ -170,6 +173,7 @@ The CAN external transceiver will then need to be powered, connect 3.3V and GND 
 Now connect AM64x EVM to receive CAN packages from AM62x according to the following diagram:
 
 .. Image:: /images/mcan-diagram-evm-to-evm.png
+
 |
 
 #. CAN transceiver pin 1 (CANL) on Header 2 to pin 3 (MCAN0_L) on AM64x J31 connector
@@ -257,81 +261,37 @@ go here: :ref:`mcan`.
 Enable Device Tree Overlay
 ---------------------------
 
-Since AM62 SKs do not have on-board CAN transceivers, there are no transceiver nodes in their respective DTB source files.
+Since AM62 SKs do not have on-board CAN transceivers, there are no transceiver nodes in their respective DTS files.
 
-A device tree overlay named `k3-am625-sk-mcan.dtbo` is supported in the Processor SDK 9.0 for AM62 devices that can be used to dynamically
-overlay each DTB. If an AM62 .wic image was flashed to an SD card, the overlay should be found in the root/boot/dtb/ti partition of the
-SD card. This overlay can be loaded by stopping bootup at U-boot prompt and executing the following commands:
+A device tree overlay named `k3-am62x-sk-mcan.dtbo` is supported in the Processor SDK 9.1 for the following devices:
 
-.. warning::
+#. AM62x SK
+#. AM62SIP SK
+#. AM62x LP SK
+#. AM62Ax SK
 
-        For AM62a, you will first need to add the MCU-MCAN nodes before applying this overlay to enable 3x MCAN on AM62ax. Go here
-        :ref:`Enable MCU MCANs on AM62ax`.
+An overlay can be used to dynamically overlay each DTB. If an AM62 .wic image was flashed to an SD card, the overlay
+should be found in the "root" partition in path: boot/dtb/ti. This overlay can be loaded by stopping bootup at U-boot
+prompt and executing the following commands:
+
+For 8.6 and 9.1 SDK:
 
 .. code-block:: console
         :emphasize-lines: 3
 
         Hit any key to stop autoboot:  0
                 =>
-                => setenv name_overlays ti/k3-am625-sk-mcan.dtbo
+                => setenv name_overlays <name-of-overlay>.dtbo
                 => boot
 
 |
 
-.. _Enable MCU MCANs on AM62ax:
-
-Enable MCU MCANs on AM62ax
----------------------------
-
-AM62ax 3x MCAN was not enabled for TI PSDK 9.0 release. Before following the guide above please follow the following steps to enable 3x MCAN on AM62ax.
-
-1. Add MCU_MCAN nodes to AM62ax DTS:
-
-Apply the following change to <path-to-ti-linux>/arch/arm64/boot/dts/ti/k3-am62a-mcu.dtsi
-
-.. code-block:: diff
-
-        diff --git a/arch/arm64/boot/dts/ti/k3-am62a-mcu.dtsi b/arch/arm64/boot/dts/ti/k3-am62a-mcu.dtsi
-        index 4d0a291bceea..c7e768b7ac9b 100644
-        --- a/arch/arm64/boot/dts/ti/k3-am62a-mcu.dtsi
-        +++ b/arch/arm64/boot/dts/ti/k3-am62a-mcu.dtsi
-        @@ -145,6 +145,30 @@ mcu_gpio0: gpio@4201000 {
-                        status = "disabled";
-                };
-
-        +       mcu_mcan1: can@4e00000 {
-        +               compatible = "bosch,m_can";
-        +               reg = <0x00 0x4e00000 0x00 0x8000>,
-        +                     <0x00 0x4e08000 0x00 0x200>;
-        +               reg-names = "message_ram", "m_can";
-        +               power-domains = <&k3_pds 188 TI_SCI_PD_EXCLUSIVE>;
-        +               clocks = <&k3_clks 188 6>, <&k3_clks 188 1>;
-        +               clock-names = "hclk", "cclk";
-        +               bosch,mram-cfg = <0x0 128 64 64 64 64 32 32>;
-        +               status = "disabled";
-        +       };
-        +
-        +       mcu_mcan2: can@4e10000 {
-        +               compatible = "bosch,m_can";
-        +               reg = <0x00 0x4e10000 0x00 0x8000>,
-        +                     <0x00 0x4e18000 0x00 0x200>;
-        +               reg-names = "message_ram", "m_can";
-        +               power-domains = <&k3_pds 189 TI_SCI_PD_EXCLUSIVE>;
-        +               clocks = <&k3_clks 189 6>, <&k3_clks 189 1>;
-        +               clock-names = "hclk", "cclk";
-        +               bosch,mram-cfg = <0x0 128 64 64 64 64 32 32>;
-        +               status = "disabled";
-        +       };
-        +
-                mcu_r5fss0: r5fss@79000000 {
-                        compatible = "ti,am62-r5fss";
-                        #address-cells = <1>;
-
-2. Build the DTB for AM62ax:
+For 9.0 SDK:
 
 .. code-block:: console
+        :emphasize-lines: 3
 
-        $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu-  defconfig ti_arm64_prune.config
-        $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu-  dtbs
-
-3. Copy `k3-am62a7-sk.dtb` and `k3-am625-sk-mcan.dtbo` to SD card root/boot/dtb/ti partition
+        Hit any key to stop autoboot:  0
+                =>
+                => setenv name_overlays ti/<name-of-overlay>.dtbo
+                => boot
