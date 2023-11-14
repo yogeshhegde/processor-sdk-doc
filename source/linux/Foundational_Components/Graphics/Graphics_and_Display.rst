@@ -716,9 +716,9 @@ The picture below shows the software architecture of Graphics in
 
    This is included by default in the SDK. The kernel module is located at:
 
-   ::
+   .. code-block:: console
 
-       target # /lib/modules/$(uname -r)/extra/pvrsrvkm.ko
+       # /lib/modules/$(uname -r)/extra/pvrsrvkm.ko
 
 
 Graphics Demos
@@ -766,12 +766,12 @@ Native_SDK examples.
     Please make sure the board is connected to at least one display before
     running these demos.
 
-    ::
+    .. code-block:: console
 
-        target # /usr/bin/SGX/demos/DRM/OGLES2Coverflow
-        target # /usr/bin/SGX/demos/DRM/OGLES2ChameleonMan
-        target # /usr/bin/SGX/demos/DRM/OGLES2ExampleUI
-        target # /usr/bin/SGX/demos/DRM/OGLES2Navigation
+        # /usr/bin/SGX/demos/DRM/OGLES2Coverflow
+        # /usr/bin/SGX/demos/DRM/OGLES2ChameleonMan
+        # /usr/bin/SGX/demos/DRM/OGLES2ExampleUI
+        # /usr/bin/SGX/demos/DRM/OGLES2Navigation
 
     After you see the output on the display interface, hit *q* to terminate
     the application.
@@ -784,32 +784,32 @@ Native_SDK examples.
 
     The following demos are available to run under the Wayland windowing system.
 
-    ::
+    .. code-block:: console
 
-        target # /usr/bin/SGX/demos/Wayland/OpenGLESDeferredShading
-        target # /usr/bin/SGX/demos/Wayland/OpenGLESGaussianBlur
-        target # /usr/bin/SGX/demos/Wayland/OpenGLESImageBasedLighting
-        target # /usr/bin/SGX/demos/Wayland/OpenGLESIntroducingPVRCamera
-        target # /usr/bin/SGX/demos/Wayland/OpenGLESIntroducingPVRUtils
-        target # /usr/bin/SGX/demos/Wayland/OpenGLESIntroducingUIRenderer
-        target # /usr/bin/SGX/demos/Wayland/OpenGLESNavigation2D
-        target # /usr/bin/SGX/demos/Wayland/OpenGLESNavigation3D
-        target # /usr/bin/SGX/demos/Wayland/OpenGLESParticleSystem
+        # /usr/bin/SGX/demos/Wayland/OpenGLESDeferredShading
+        # /usr/bin/SGX/demos/Wayland/OpenGLESGaussianBlur
+        # /usr/bin/SGX/demos/Wayland/OpenGLESImageBasedLighting
+        # /usr/bin/SGX/demos/Wayland/OpenGLESIntroducingPVRCamera
+        # /usr/bin/SGX/demos/Wayland/OpenGLESIntroducingPVRUtils
+        # /usr/bin/SGX/demos/Wayland/OpenGLESIntroducingUIRenderer
+        # /usr/bin/SGX/demos/Wayland/OpenGLESNavigation2D
+        # /usr/bin/SGX/demos/Wayland/OpenGLESNavigation3D
+        # /usr/bin/SGX/demos/Wayland/OpenGLESParticleSystem
 
     Additionally demos using the Null Window System / KMS / DRM / EGLFS are
     provided with Qt. By default EGLFS will use the eglfs\_kms backend.
 
-    ::
+    .. code-block:: console
 
-        target # /usr/share/qt5/examples/opengl/hellogles3/hellogles3 -platform eglfs
-        target # /usr/share/qt5/examples/opengl/2dpainting/2dpainting -platform eglfs
-        target # /usr/share/qt5/examples/opengl/paintedwindow/paintedwindow -platform eglfs
+        # /usr/share/qt5/examples/opengl/hellogles3/hellogles3 -platform eglfs
+        # /usr/share/qt5/examples/opengl/2dpainting/2dpainting -platform eglfs
+        # /usr/share/qt5/examples/opengl/paintedwindow/paintedwindow -platform eglfs
 
     The default eglfs\_kms configuration file for Qt5 is located at:
 
-    ::
+    .. code-block:: console
 
-        target # /etc/qt5/eglfs_kms_cfg.json
+        # /etc/qt5/eglfs_kms_cfg.json
 
     For more information about Qt's EGLFS and using Qt5 in embedded
     applications see:
@@ -848,15 +848,15 @@ Run the below ``modetest`` command:
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    ::
+    .. code-block:: console
 
-        target #  modetest -c
+        # modetest -c
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
-    ::
+    .. code-block:: console
 
-        target # modetest -M tidss -c
+        # modetest -M tidss -c
 
 Look for the display device for which the connector ID is required -
 such as HDMI, LCD etc.
@@ -885,15 +885,15 @@ To find the Plane ID, run the ``modetest`` command:
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    ::
+    .. code-block:: console
 
-        target #  modetest -p
+        # modetest -p
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
-    ::
+    .. code-block:: console
 
-        target # modetest -M tidss -p
+        # modetest -M tidss -p
 
 which should show something like below:
 
@@ -917,22 +917,27 @@ which should show something like below:
 
     Run kmscube on the default display:
 
-    ::
+    .. code-block:: console
 
-          target # kmscube
+          # kmscube
 
     Run kmscube on the secondary display:
 
-    ::
+    .. code-block:: console
 
-          target # kmscube -c <connector-id>
-          target # kmscube -c 16 #For example, the connector id for secondary display is 16.
+          # kmscube -c <connector-id>
+
+    For example, if the connector id for the secondary display is 16:
+
+    .. code-block:: console
+
+          # kmscube -c 16
 
     Run kmscube on all connected displays (LCD & HDMI):
 
-    ::
+    .. code-block:: console
 
-          target # kmscube -a
+          # kmscube -a
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
@@ -946,9 +951,9 @@ which should show something like below:
     of connected displays and plane ids. One can get these information by
     running the *modetest* application in the filesystem.
 
-    ::
+    .. code-block:: console
 
-          target #  modetest
+          #  modetest
 
     **Running drmclone application**
 
@@ -956,13 +961,15 @@ which should show something like below:
     window also displayed on LCD. To test clone mode, execute the following
     command:
 
-    ::
+    .. code-block:: console
 
-          target #  drmclone -l <lcd_w>x<lcd_h> -p <plane_w>x<plane_h>:<x>+<y> -h <hdmi_w>x<hdmi_h>
+          # drmclone -l <lcd_w>x<lcd_h> -p <plane_w>x<plane_h>:<x>+<y> -h <hdmi_w>x<hdmi_h>
 
-    ::
+    For example:
 
-        e.g.: target # drmclone -l 1280x800 -p 320x240:0+0 -h 640x480
+    .. code-block:: console
+
+          # drmclone -l 1280x800 -p 320x240:0+0 -h 640x480
 
     We can change position of overlay window by changing x+y values. eg.
     240+120 will show @ center
@@ -973,13 +980,15 @@ which should show something like below:
     also displayed on LCD. To test extended mode, execute the following
     command:
 
-    ::
+    .. code-block:: console
 
-          target # drmextended -l <lcd_w>x<lcd_h> -p <plane_w>x<plane_h>:<x>+<y> -h <hdmi_w>x<hdmi_h>
+          # drmextended -l <lcd_w>x<lcd_h> -p <plane_w>x<plane_h>:<x>+<y> -h <hdmi_w>x<hdmi_h>
 
-    ::
+    For example:
 
-        e.g.: target # drmextended -l 1280x800 -p 320x240:0+0 -h 640x480
+    .. code-block:: console
+
+          # drmextended -l 1280x800 -p 320x240:0+0 -h 640x480
 
     **Running drmzalpha application**
 
@@ -1009,13 +1018,16 @@ which should show something like below:
 
 
     To test drmzalpha, execute the following command:
-    ::
 
-          target # drmzalpha -s <crtc_w>x<crtc_h> -w <plane1_id>:<z_val>:<glo_alpha>:<pre_mul_alpha> -w <plane2_id>:<z_val>:<glo_alpha>:<pre_mul_alpha>
+    .. code-block:: console
 
-    ::
+          # drmzalpha -s <crtc_w>x<crtc_h> -w <plane1_id>:<z_val>:<glo_alpha>:<pre_mul_alpha> -w <plane2_id>:<z_val>:<glo_alpha>:<pre_mul_alpha>
 
-        e.g.: target # drmzalpha -s 1280x800 -w 19:1:255:1 -w 20:2:255:1
+    For example:
+
+    .. code-block:: console
+
+          # drmzalpha -s 1280x800 -w 19:1:255:1 -w 20:2:255:1
 
 Wayland/Weston
 ==============
@@ -1041,15 +1053,15 @@ variable if the user has sufficient permission to interact with the socket.
 
 To start the systemd service manually, do the following:
 
-::
+.. code-block:: console
 
-      target # systemctl start weston
+      # systemctl start weston
 
 To inspect the systemd service and socket status, do the following:
 
-::
+.. code-block:: console
 
-      target # systemctl status weston.service weston.socket
+      # systemctl status weston.service weston.socket
 
 
 Starting Weston Manually
@@ -1059,27 +1071,27 @@ To launch Weston manually, do the following:
 
 On the target console:
 
-::
+.. code-block:: console
 
-      target # unset WAYLAND_DISPLAY
+      # unset WAYLAND_DISPLAY
 
 On the default display:
 
-::
+.. code-block:: console
 
-      target # weston --tty=1 --display=<default connector-id>
+      # weston --tty=1 --display=<default connector-id>
 
 On the secondary display:
 
-::
+.. code-block:: console
 
-      target # weston --tty=1 --display=<secondary connector-id>
+      # weston --tty=1 --display=<secondary connector-id>
 
 On all connected displays (LCD and HDMI):
 
-::
+.. code-block:: console
 
-      target # weston --tty=1
+      # weston --tty=1
 
 By default, the screensaver timeout is configured to 300 seconds. The user can
 change the screensaver timeout using a command line option:
@@ -1091,14 +1103,14 @@ change the screensaver timeout using a command line option:
 For example, to set timeout of 10 minutes and Weston configured to
 display on all connectors, use the below command:
 
-::
+.. code-block:: console
 
      weston --tty=1 --idle-time=600
 
 To disable the screen timeout and to configure Weston to display on all
 connectors, use the below command:
 
-::
+.. code-block:: console
 
      weston --tty=1 --idle-time=0
 
@@ -1120,7 +1132,7 @@ Running Weston clients
   console or an SSH console. After launching Weston, the user should be
   able to use the keyboard and the mouse for various controls.
 
-::
+.. code-block:: console
 
            # /usr/bin/weston-flower
            # /usr/bin/weston-clickdot
@@ -1143,9 +1155,9 @@ Running multimedia with Wayland sink
 The GStreamer video sink for Wayland is the waylandsink. To use this
 video-sink for video playback:
 
-::
+.. code-block:: console
 
-      target # gst-launch-1.0 playbin uri=file://<path-to-file-name> video-sink=waylandsink
+      # gst-launch-1.0 playbin uri=file://<path-to-file-name> video-sink=waylandsink
 
 Exiting Weston
 --------------
@@ -1156,9 +1168,9 @@ Weston from the serial console, exit Weston by pressing Ctrl-C.
 If Weston was started automatically by the init system then it can be stopped
 with:
 
-::
+.. code-block:: console
 
-     target # systemctl stop weston
+     # systemctl stop weston
 
 It is also possible to invoke Weston from the native console, exit
 Weston by pressing Ctrl-Alt-Backspace.
@@ -1183,9 +1195,9 @@ To switch back to the desktop-shell can be done by commenting these lines in the
 After the above configuration is completed, we can restart Weston by
 running the following command
 
-::
+.. code-block:: console
 
-    target # systemctl restart weston
+    # systemctl restart weston
 
 .. note:: When Weston starts with ivi-shell, the default background is
           black, this is different from the desktop-shell that brings up a window
@@ -1206,11 +1218,11 @@ Running QT applications with IVI shell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To run the QT application with ivi-shell, set the
-QT\_WAYLAND\_SHELL\_INTEGRATION environment variable to ivi-shell.
+``QT_WAYLAND_SHELL_INTEGRATION`` environment variable to ivi-shell.
 
-::
+.. code-block:: console
 
-    export QT\_WAYLAND\_SHELL\_INTEGRATION=ivi-shell
+    # export QT_WAYLAND_SHELL_INTEGRATION=ivi-shell
 
 Using the PowerVR Tools
 =======================
