@@ -167,7 +167,7 @@ The default location is:
         In which directory do you want to install the target filesystem?(if this directory does not exist it will be created)
         [ /home/user/ti-processor-sdk-linux-[platformName]-evm-x.x.x.x/targetNFS ]
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     .. code-block:: text
 

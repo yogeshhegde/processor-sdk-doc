@@ -114,7 +114,7 @@ Training Material
 :ref:`pru_hands_on_labs`
 
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK','PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PLSDK','PSDKL','j7_foundational')
 
    :ref:`rpmsg_quick_start_guide`
 
@@ -148,7 +148,7 @@ PRU Assembly Instructions
 Software Information
 --------------------
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK','PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PLSDK','PSDKL','j7_foundational')
 
    Linux Software information
    ^^^^^^^^^^^^^^^^^^^^^^^^^^

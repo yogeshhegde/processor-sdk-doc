@@ -15,11 +15,11 @@ Please refer to `GCC ToolChain <../../Overview/GCC_ToolChain.html>`__ for detail
 Creating SD Cards
 -------------------------------------------------
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     Please refer to :ref:`formatting-sd-card-on-linux` for details.
 
-.. ifconfig:: CONFIG_sdk not in ('PSDKL')
+.. ifconfig:: CONFIG_sdk not in ('PSDKL','j7_foundational')
 
     Please refer to `Linux SD Card Creation Guide <../../Overview/Processor_SDK_Linux_create_SD_card_script.html>`__ for details.
 

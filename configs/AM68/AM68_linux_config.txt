@@ -34,7 +34,7 @@ Configuration Values
 --------------------
 'CONFIG_part_family'      : 'J7_family'
 'CONFIG_part_variant'     : 'J721S2'
-'CONFIG_sdk'              : 'PSDKL'
+'CONFIG_sdk'              : 'j7_foundational'
 'CONFIG_icss_support'     : 'no'
 'CONFIG_rt_linux_support' : 'yes'
 'CONFIG_gpu_ip'           : 'Rogue_BXS'

@@ -78,7 +78,7 @@ pieces to simplify things a bit:
    -  U-Boot sources and configuration files
    -  Kernel sources and configuration files
 
-   .. ifconfig:: CONFIG_sdk in ('PSDKL')
+   .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
        -  Hypervisor sources and configuration files
 
@@ -91,7 +91,7 @@ pieces to simplify things a bit:
        -  A Yocto/OE compliant filesystem and sources for example
           applications in Matrix
 
-   .. ifconfig:: CONFIG_sdk in ('PSDKL')
+   .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
        -  A Yocto/OE compliant filesystem and sources for example
           applications
@@ -135,7 +135,7 @@ and a supported `Hardware Platform <../Release_Specific_Supported_Platforms_and_
     .. rubric:: Evaluating the SDK Embedded Linux System and Matrix
        :name: evaluating-the-sdk-embedded-linux-system-and-matrix
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     .. rubric:: Evaluating the SDK Embedded Linux System
        :name: evaluating-the-sdk-embedded-linux-system
@@ -256,7 +256,7 @@ which you can start development.
        Use the `SDK Create SD Card Script <Processor_SDK_Linux_create_SD_card_script.html>`__,
        or **One-time Program EVM for K2H/K2K, K2E, and K2L** - following directions for `Program EVM User Guide <Program_EVM.html>`__
 
-   .. ifconfig:: CONFIG_sdk in ('PSDKL')
+   .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
        Use the mksdboot.sh script from the installer.
 
@@ -392,7 +392,7 @@ possibilities:
     |`Processor SDK Linux Tools <../Foundational_Components_Tools.html>`__                                               |Documentation for all of the various tools included with the SDK.                                                   |
     +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     .. Note::
         Some of the training content below has been written for DRA80x devices.

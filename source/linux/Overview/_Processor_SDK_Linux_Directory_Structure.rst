@@ -25,7 +25,7 @@ directories and files
         ├── Rules.make
         └── setup.sh*
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     .. Image:: /images/PSDKLA-directory-structure.png
 
@@ -56,7 +56,7 @@ Processor SDK devices.
 -  **setup.sh** - Configures the users host system as well as the target
    system for development.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     -  **configs** - Contains Yocto config to describe different yocto recipe
        sources and layers to be used for building SDKs.
