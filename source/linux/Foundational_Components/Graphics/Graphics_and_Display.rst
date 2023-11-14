@@ -18,19 +18,29 @@ Introduction
     Below table lists the various TI families supported by this SDK, and the
     SGX core information
 
-    +---------------+------------+---------------------+--------------------------------+
-    | TI SOC Name   | SGX Core   | SGX Core Revision   | Max SGX Core Frequency (MHz)   |
-    +===============+============+=====================+================================+
-    | AM335x        | SGX530     | 1.2.5               | 200                            |
-    +---------------+------------+---------------------+--------------------------------+
-    | AM437x        | SGX530     | 1.2.5               | 200                            |
-    +---------------+------------+---------------------+--------------------------------+
-    | AM57xx        | SGX544     | 1.1.6               | 532                            |
-    +---------------+------------+---------------------+--------------------------------+
-    | AM65xx        | SGX544     | 1.1.7               | 450                            |
-    +---------------+------------+---------------------+--------------------------------+
+    .. list-table:: TI System on Chips, and SGX cores
+       :header-rows: 1
 
-    Table:  TI System on Chips, and SGX cores
+       * - TI SOC Name
+         - SGX Core
+         - SGX Core Revision
+         - Max SGX Core Frequency (MHz)
+       * - AM335x
+         - SGX530
+         - 1.2.5
+         - 200
+       * - AM437x
+         - SGX530
+         - 1.2.5
+         - 200
+       * - AM57xx
+         - SGX544
+         - 1.1.6
+         - 532
+       * - AM65xx
+         - SGX544
+         - 1.1.7
+         - 450
 
     The SGX cores in AM family support OpenGL\ |reg| ES 1.1 and OpenGL\ |reg| ES
     2.0 APIs.
