@@ -730,26 +730,28 @@ Native_SDK examples.
 
 .. ifconfig:: CONFIG_gpu_ip in ('SGX')
 
-    .. rubric:: Demos via Maritx
-       :name: gfx-demos-via-matrix
-
     The following 3D Graphics demos are available via Matrix. The table
     below provides a list of these demos, with a brief description.
 
-    +-----------------+---------------------------------------------------------------------------------------------+
-    | **Demo Name**   | **Details**                                                                                 |
-    +-----------------+---------------------------------------------------------------------------------------------+
-    | ChameleonMan    | This demo shows a matrix skinned character in combination with bump mapping.                |
-    +-----------------+---------------------------------------------------------------------------------------------+
-    | CoverFlow       | This is a demonstration of a coverflow style effect                                         |
-    +-----------------+---------------------------------------------------------------------------------------------+
-    | ExampleUI       | This demo shows how to efficiently render sprites and interface elements.                   |
-    +-----------------+---------------------------------------------------------------------------------------------+
-    | Navigation      | This is a demonstration of how to implement rendering algorithms for Navigation software.   |
-    +-----------------+---------------------------------------------------------------------------------------------+
-    | Kmscube         | This demo shows how to render and display multi-colored spinning cube                       |
-    +-----------------+---------------------------------------------------------------------------------------------+
+    .. list-table:: Demos via Matrix
+       :widths: 25 75
+       :header-rows: 1
 
+       * - Demo Name
+         - Details
+       * - ChameleonMan
+         - This demo shows a matrix skinned character in combination with bump
+           mapping.
+       * - CoverFlow
+         - This is a demonstration of a coverflow style effect
+       * - ExampleUI
+         - This demo shows how to efficiently render sprites and interface
+           elements.
+       * - Navigation
+         - This is a demonstration of how to implement rendering algorithms for
+           Navigation software.
+       * - Kmscube
+         - This demo shows how to render and display multi-colored spinning cube
 
     .. rubric:: Running demos in Null Window system mode
        :name: gfx-demos-in-nullws
