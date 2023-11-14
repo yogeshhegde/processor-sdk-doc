@@ -19,9 +19,12 @@ documented in U-boot SPI section.
 
 .. note::
 
-    The sf command is used to access SPI flash, supporting read/write/erase and
+    The sf command is used to access SPI NOR flash, supporting read/write/erase and
     a few other functions. For more information on sf command in U-boot please
     refer to the u-boot documentation: `here <https://u-boot.readthedocs.io/en/latest/usage/cmd/sf.html>`__.
+    And for accessing SPI NAND flash, the mtd command is used, supporting
+    read/write/erase and bad block management.
+
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E')
 
@@ -512,98 +515,51 @@ documented in U-boot SPI section.
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-    j721s2 is largely similar to j721e and am654. the major differences are that it
-    has the cypress s28hs512t flash and sysfw is bundled with tiboot3.bin.
+    J721S2 is largely similar to J721E and AM654. The major differences are
+    that it has the cypress s28hs512t flash, sysfw is bundled with tiboot3.bin
+    and, OSPI0 is muxed externally between a NOR and a NAND flash through a
+    physical switch. OSPI NOR and OSPI NAND can't be used at the same time,
+    they need to be selected by changing a physical configuration switch on
+    the EVM board before driver probes them. CONFIG SW3.1 should be in OFF
+    state to use OSPI NOR, and in ON STATE for OSPI NAND.
 
-    **flashing images to ospi**
+    **Flashing images to OSPI NOR/NAND**
 
-    below commands can be used to download tiboot3.bin, tispl.bin and
-    u-boot.img over tftp and then flash it to ospi at respective addresses.
+    Below commands can be used to download tiboot3.bin, tispl.bin and
+    u-boot.img over tftp and then flash it to OSPI NOR/NAND at respective
+    addresses.
 
-    .. code-block:: console
+    * OSPI NOR:
 
-      => sf probe
-      => tftp ${loadaddr} tiboot3.bin
-      => sf update $loadaddr 0x0 $filesize
-      => tftp ${loadaddr} tispl.bin
-      => sf update $loadaddr 0x80000 $filesize
-      => tftp ${loadaddr} u-boot.img
-      => sf update $loadaddr 0x280000 $filesize
+        .. code-block:: console
+
+            => sf probe
+            => tftp ${loadaddr} tiboot3.bin
+            => sf update $loadaddr 0x0 $filesize
+            => tftp ${loadaddr} tispl.bin
+            => sf update $loadaddr 0x80000 $filesize
+            => tftp ${loadaddr} u-boot.img
+            => sf update $loadaddr 0x280000 $filesize
+
+    * OSPI NAND:
+
+        .. code-block:: console
+
+            => mtd list
+            => mtd erase spi-nand0
+            => tftp $loadaddr tiboot3.bin
+            => mtd write spi-nand0 $loadaddr 0x0 $filesize
+            => tftp $loadaddr tispl.bin
+            => mtd write spi-nand0 $loadaddr 0x80000 $filesize
+            => tftp $loadaddr u-boot.img
+            => mtd write spi-nand0 $loadaddr 0x280000 $filesize
 
     **phy calibration**
 
     phy calibration allows for higher read performance. to enable phy, the phy
     calibration pattern must be flashed to ospi at the start of the last erase
     sector. for the cypress s28hs512t flash, this lies at the address 0x3fc0000.
-
-    download the binary file containing the phy pattern from :download:`here </files/ospi_phy_pattern>`.
-    below commands can be used to flash the phy pattern, with the location of the
-    pattern depending on which flash is being used:
-
-    .. code-block:: console
-
-       => sf probe
-       => tftp ${loadaddr} ospi_phy_pattern
-       => sf update $loadaddr 0x3fc0000 $filesize
-
-    **flash layout for ospi**
-
-    .. code-block:: console
-
-             0x0 +----------------------------+
-                 |     ospi.tiboot3(1m)       |
-                 |                            |
-         0x80000 +----------------------------+
-                 |     ospi.tispl(2m)         |
-                 |                            |
-        0x280000 +----------------------------+
-                 |     ospi.u-boot(4m)        |
-                 |                            |
-        0x680000 +----------------------------+
-                 |     ospi.env(128k)         |
-                 |                            |
-        0x6A0000 +----------------------------+
-                 |   ospi.env.backup(128k)    |
-                 |                            |
-        0x6C0000 +----------------------------+
-                 |      padding (1280k)       |
-        0x800000 +----------------------------+
-                 |     ospi.rootfs(ubifs)     |
-                 |                            |
-       0x3fc0000 +----------------------------+
-                 |   ospi.phypattern (256k)   |
-                 |                            |
-                 +----------------------------+
-
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
-
-    J784S4 is similar to J721S2, only difference being that OSPI is muxed
-    externally between a NOR and a NAND flash through a physical switch.
-    OSPI NOR and OSPI NAND can't be used at the same time, they need to be
-    selected by changing a physical configuration switch on the EVM board
-    before driver probes them. CONFIG SW2.1 should be in OFF state to use
-    OSPI NOR, and in ON STATE for OSPI NAND.
-
-    **Flashing images to OSPI NOR flash**
-
-    Following commands can be used to download tiboot3.bin, tispl.bin and
-    u-boot.img over tftp and then flash it to OSPI at respective addresses.
-
-    .. code-block:: console
-
-      => sf probe
-      => tftp ${loadaddr} tiboot3.bin
-      => sf update $loadaddr 0x0 $filesize
-      => tftp ${loadaddr} tispl.bin
-      => sf update $loadaddr 0x80000 $filesize
-      => tftp ${loadaddr} u-boot.img
-      => sf update $loadaddr 0x280000 $filesize
-
-    **PHY calibration**
-
-    PHY calibration allows for higher read performance. To enable PHY, the PHY
-    calibration pattern must be flashed to ospi at the start of the last erase
-    sector. For the cypress s28hs512t flash, this lies at the address 0x3fc0000.
+    note, phy calibration is currently supported only for ospi nor flash.
 
     download the binary file containing the phy pattern from :download:`here </files/ospi_phy_pattern>`.
     below commands can be used to flash the phy pattern, with the location of the
@@ -643,6 +599,150 @@ documented in U-boot SPI section.
                  |   ospi.phypattern (256k)   |
                  |                            |
                  +----------------------------+
+
+    **Flash layout for OSPI NAND**
+
+    .. code-block:: console
+
+             0x0 +---------------------------------+
+                 |      ospi_nand.tiboot3(1m)      |
+                 |                                 |
+         0x80000 +---------------------------------+
+                 |        ospi_nand.tispl(2m)      |
+                 |                                 |
+        0x280000 +---------------------------------+
+                 |       ospi_nand.u-boot(4m)      |
+                 |                                 |
+        0x680000 +---------------------------------+
+                 |       ospi_nand.env(128k)       |
+                 |                                 |
+        0x6A0000 +---------------------------------+
+                 |    ospi_nand.env.backup(128k)   |
+                 |                                 |
+        0x6C0000 +---------------------------------+
+                 |        padding (98048K)         |
+       0x2000000 +---------------------------------+
+                 |     ospi_nand.rootfs(ubifs)     |
+                 |                                 |
+       0x7fc0000 +---------------------------------+
+                 |   ospi_nand.phypattern (256k)   |
+                 |                                 |
+                 +---------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+    J784S4 is similar to J721S2, only difference being that OSPI0 is muxed
+    externally between a NOR and a NAND flash through a physical switch.
+    OSPI NOR and OSPI NAND can't be used at the same time, they need to be
+    selected by changing a physical configuration switch on the EVM board
+    before driver probes them. CONFIG SW3.1 should be in OFF state to use
+    OSPI NOR, and in ON STATE for OSPI NAND.
+
+    **Flashing images to OSPI NOR flash**
+
+    Following commands can be used to download tiboot3.bin, tispl.bin and
+    u-boot.img over tftp and then flash it to OSPI NOR/NAND at respective
+    addresses.
+
+    * OSPI NOR:
+
+        .. code-block:: console
+
+            => sf probe
+            => tftp ${loadaddr} tiboot3.bin
+            => sf update $loadaddr 0x0 $filesize
+            => tftp ${loadaddr} tispl.bin
+            => sf update $loadaddr 0x80000 $filesize
+            => tftp ${loadaddr} u-boot.img
+            => sf update $loadaddr 0x280000 $filesize
+
+    * OSPI NAND:
+
+        .. code-block:: console
+
+            => mtd list
+            => mtd erase spi-nand0
+            => tftp $loadaddr tiboot3.bin
+            => mtd write spi-nand0 $loadaddr 0x0 $filesize
+            => tftp $loadaddr tispl.bin
+            => mtd write spi-nand0 $loadaddr 0x80000 $filesize
+            => tftp $loadaddr u-boot.img
+            => mtd write spi-nand0 $loadaddr 0x280000 $filesize
+
+    **PHY calibration**
+
+    PHY calibration allows for higher read performance. To enable PHY, the PHY
+    calibration pattern must be flashed to ospi at the start of the last erase
+    sector. For the cypress s28hs512t flash, this lies at the address 0x3fc0000.
+    Note, PHY calibration is currently supported only for OSPI NOR flash.
+
+    download the binary file containing the phy pattern from :download:`here </files/ospi_phy_pattern>`.
+    below commands can be used to flash the phy pattern, with the location of the
+    pattern depending on which flash is being used:
+
+    .. code-block:: console
+
+       => sf probe
+       => tftp ${loadaddr} ospi_phy_pattern
+       => sf update $loadaddr 0x3fc0000 $filesize
+
+    **Flash layout for OSPI NOR**
+
+    .. code-block:: console
+
+             0x0 +----------------------------+
+                 |     ospi.tiboot3(1m)       |
+                 |                            |
+         0x80000 +----------------------------+
+                 |     ospi.tispl(2m)         |
+                 |                            |
+        0x280000 +----------------------------+
+                 |     ospi.u-boot(4m)        |
+                 |                            |
+        0x680000 +----------------------------+
+                 |     ospi.env(128k)         |
+                 |                            |
+        0x6A0000 +----------------------------+
+                 |   ospi.env.backup(128k)    |
+                 |                            |
+        0x6C0000 +----------------------------+
+                 |      padding (1280k)       |
+        0x800000 +----------------------------+
+                 |     ospi.rootfs(ubifs)     |
+                 |                            |
+       0x3fc0000 +----------------------------+
+                 |   ospi.phypattern (256k)   |
+                 |                            |
+                 +----------------------------+
+
+    **Flash layout for OSPI NAND**
+
+    .. code-block:: console
+
+             0x0 +---------------------------------+
+                 |      ospi_nand.tiboot3(1m)      |
+                 |                                 |
+         0x80000 +---------------------------------+
+                 |        ospi_nand.tispl(2m)      |
+                 |                                 |
+        0x280000 +---------------------------------+
+                 |       ospi_nand.u-boot(4m)      |
+                 |                                 |
+        0x680000 +---------------------------------+
+                 |       ospi_nand.env(128k)       |
+                 |                                 |
+        0x6A0000 +---------------------------------+
+                 |    ospi_nand.env.backup(128k)   |
+                 |                                 |
+        0x6C0000 +---------------------------------+
+                 |        padding (98048K)         |
+       0x2000000 +---------------------------------+
+                 |     ospi_nand.rootfs(ubifs)     |
+                 |                                 |
+       0x7fc0000 +---------------------------------+
+                 |   ospi_nand.phypattern (256k)   |
+                 |                                 |
+                 +---------------------------------+
 
     **Writing to OSPI using DFU**
 
