@@ -9,16 +9,10 @@ import os
 #                            "replace" directives in the replacevars.rst.inc file
 
 def write_replacevars(app, replacevars):
-    replacevarstext = []
     replacevarsfile= os.environ.get('ROOTDIR') + "/source/" + "_replacevars.rst"
-    with open(replacevarsfile, 'w') as f:
-        for key in replacevars:
-            nextline=".. |" + key + "| replace:: " + replacevars[key]
-            replacevarstext.append(nextline)
-            #print(replacevarstext)
-    text=''
-    for key in replacevars:
-        text+=".. |" + key + "| replace:: " + replacevars[key] + "\n"
-    file=open(replacevarsfile, 'w')
-    file.write(text)
-    file.close()
+    replacevarstext = ["\n"]
+    for key, val in replacevars.items():
+        replacevarstext.append(f".. |{key}| replace:: {val}\n")
+    with open(replacevarsfile, 'w', encoding='utf-8') as vars_file:
+        replacevarstext.append("\n")
+        vars_file.write("\n".join(replacevarstext))
