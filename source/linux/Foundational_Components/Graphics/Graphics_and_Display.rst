@@ -689,14 +689,6 @@ Software Architecture
 The picture below shows the software architecture of Graphics in
 |__SDK_FULL_NAME__|.
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
     .. figure:: ../../../images/Graphic_software_stacks_DRM.png
@@ -710,14 +702,6 @@ The picture below shows the software architecture of Graphics in
         :align: center
 
         PSDK Linux Rogue Graphics Software Stack
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family')
 
