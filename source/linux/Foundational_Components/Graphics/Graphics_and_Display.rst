@@ -645,6 +645,11 @@ with rendering commands submitted by the user applications.
       * - YUYV
       * - NV12
 
+   Support for Ericsson Texture Compression (ETC1 and ETC2) on input textures.
+   For an example toolkit to interact with these texture compression mechanisms,
+   see the Khronos `KTX-Software
+   <https://github.com/KhronosGroup/KTX-Software>`_ project.
+
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_AXE')
 
    Support for up to 2Kx2K render surfaces.
