@@ -165,12 +165,11 @@ defined
 The following targets are common to all platforms in |__SDK_FULL_NAME__|
 package:
 
--  **linux** - Compiles the Linux kernel using the default
-   tisdk\_<PLATFORM>\_defconfig configuration.
--  **linux-dtbs** - Compiles and creates the device tree blobs.
--  **u-boot** - This target will build both u-boot and the u-boot
-  SPL (MLO) binaries used in newer versions of u-boot. This actually
-  provides a u-boot and u-boot-spl target in the Makefile.
+- **linux** - Compiles the Linux kernel using the default tisdk\_<PLATFORM>\_defconfig
+  configuration.
+- **linux-dtbs** - Compiles and creates the device tree blobs.
+- **u-boot** - This target will build both u-boot and the u-boot SPL (MLO) binaries used in newer
+  versions of u-boot. This actually provides a u-boot and u-boot-spl target in the Makefile.
 
 .. ifconfig:: CONFIG_sdk not in ('PLSDK')
 
