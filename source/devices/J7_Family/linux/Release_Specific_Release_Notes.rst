@@ -98,7 +98,7 @@ U-Boot
 |
 
 .. rubric:: Note:
-| meta-psdkla Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/jacinto-linux/meta-psdkla/tree/recipes-bsp/u-boot?h=09.01.00.03>`__.
+| meta-tisdk Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tree/recipes-bsp/u-boot?h=09.01.00.05>`__.
 |
 
 Kernel
@@ -135,7 +135,7 @@ Kernel
 | Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 11.3.0)
 
 .. rubric:: Note:
-| meta-psdkla Yocto layer contains additional patches for Linux Kernel `here <https://git.ti.com/cgit/jacinto-linux/meta-psdkla/tree/recipes-kernel/linux?h=09.01.00.03>`__.
+| meta-tisdk Yocto layer contains additional patches for Linux Kernel `here <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tree/recipes-kernel/linux?h=09.01.00.05>`__.
 |
 
 
@@ -163,14 +163,14 @@ Yocto
 | Release Tag: 09.01.00.003
 |
 
-.. rubric:: meta-psdkla
+.. rubric:: meta-tisdk
 
-| Head Commit: 393ae53d5070b690c60fffbc18b87b7e894b8cf3 packagegroups: remove obsolete bbappends for qte packagegroups
-| Date: 2023-10-07
+| Head Commit: a799cbacc2760216bf889939d677f129370791ac ti-apps-launcher: Update SRCREV to pull in GUI updates
+| Date: 2023-11-27
 
-| Clone: git://git.ti.com/jacinto-linux/meta-psdkla.git
+| Clone: git://git.ti.com/ti-sdk-linux/meta-tisdk.git
 | Branch: kirkstone
-| Release Tag: 
+| Release Tag: 09.01.00.05
 |
 
 Issues Tracker
