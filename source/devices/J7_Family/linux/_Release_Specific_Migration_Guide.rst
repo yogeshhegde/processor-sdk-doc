@@ -12,6 +12,14 @@ of the Processor SDK for Linux.
 Processor SDK 09.xx Releases
 ================================
 
+Processor SDK Jacinto 09.01
+-------------------------------
+- This is the Second release in the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
+- ATF 2.9
+- OPTEE 4.0.0
+- Yocto Kirkstone/4.0
+- Platforms Supported : J721E, J7200, J721S2, J784S4, AM68, AM69
+
 Processor SDK Jacinto 09.00
 -------------------------------
 - This is the first release in the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0

@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/CoreSDK_Linux_Kernel_Performance_Guide
 
 ======================================
- Linux 09.00.00 Performance Guide
+ Linux 09.01.00 Performance Guide
 ======================================
 
 .. rubric::  **Read This First**
@@ -48,13 +48,13 @@ System Benchmarks
 
 LMBench
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-LMBench is a collection of microbenchmarks of which the memory bandwidth
-and latency related ones are typically used to estimate processor
+LMBench is a collection of microbenchmarks of which the memory bandwidth 
+and latency related ones are typically used to estimate processor 
 memory system performance. More information about lmbench at
 http://lmbench.sourceforge.net/whatis_lmbench.html and
 http://lmbench.sourceforge.net/man/lmbench.8.html
 
-
+  
 **Latency**: lat_mem_rd-stride128-szN, where N is equal to or smaller than the cache
 size at given level measures the cache miss penalty. N that is at least
 double the size of last level cache is the latency to external memory.
@@ -75,81 +75,81 @@ Execute the LMBench with the following:
 .. csv-table::
     :header: "Benchmarks","j7200-evm: perf","j721e-idk-gw: perf","j721s2-evm: perf","j784s4-evm: perf"
 
-    "af_unix_sock_stream_latency (microsec)","16.41","14.81","16.47","24.57"
-    "af_unix_socket_stream_bandwidth (MBs)","1592.88","1995.08","2020.45","3428.50"
-    "bw_file_rd-io-1mb (MB/s)","2920.24","3112.41","2890.70","2995.13"
-    "bw_file_rd-o2c-1mb (MB/s)","1522.65","1597.44","1356.39","1665.56"
-    "bw_mem-bcopy-16mb (MB/s)","2378.83","2850.53","3398.11","3509.16"
-    "bw_mem-bcopy-1mb (MB/s)","3270.35","5347.59","4972.27","10230.65"
-    "bw_mem-bcopy-2mb (MB/s)","2495.99","3960.40","3573.34","5047.77"
-    "bw_mem-bcopy-4mb (MB/s)","2360.35","3843.94","3462.00","4430.50"
-    "bw_mem-bcopy-8mb (MB/s)","2361.28","3102.58","3394.63","3740.65"
-    "bw_mem-bzero-16mb (MB/s)","2343.98","9624.06","10596.03","10880.65"
-    "bw_mem-bzero-1mb (MB/s)","4078.49 (min 3270.35, max 4886.63)","8930.60 (min 5347.59, max 12513.60)","8977.33 (min 4972.27, max 12982.39)","12002.89 (min 10230.65, max 13775.13)"
-    "bw_mem-bzero-2mb (MB/s)","2709.45 (min 2495.99, max 2922.91)","8031.64 (min 3960.40, max 12102.87)","7356.20 (min 3573.34, max 11139.06)","9368.27 (min 5047.77, max 13688.76)"
-    "bw_mem-bzero-4mb (MB/s)","2417.23 (min 2360.35, max 2474.10)","7854.49 (min 3843.94, max 11865.04)","7083.71 (min 3462.00, max 10705.41)","8369.10 (min 4430.50, max 12307.69)"
-    "bw_mem-bzero-8mb (MB/s)","2354.87 (min 2348.45, max 2361.28)","7246.26 (min 3102.58, max 11389.93)","7027.99 (min 3394.63, max 10661.34)","7548.11 (min 3740.65, max 11355.57)"
-    "bw_mem-cp-16mb (MB/s)","985.34","1498.83","2139.04","2464.19"
-    "bw_mem-cp-1mb (MB/s)","3009.43 (min 1272.96, max 4745.90)","7174.32 (min 1670.07, max 12678.57)","7789.08 (min 2533.13, max 13045.03)","8722.00 (min 3718.16, max 13725.84)"
-    "bw_mem-cp-2mb (MB/s)","1956.00 (min 1025.47, max 2886.52)","6896.73 (min 1584.79, max 12208.66)","6749.89 (min 2104.89, max 11394.89)","8309.37 (min 2925.05, max 13693.69)"
-    "bw_mem-cp-4mb (MB/s)","1707.19 (min 976.09, max 2438.28)","6628.94 (min 1375.99, max 11881.88)","6413.43 (min 2116.40, max 10710.46)","7639.06 (min 2952.57, max 12325.54)"
-    "bw_mem-cp-8mb (MB/s)","1657.75 (min 980.75, max 2334.74)","6492.23 (min 1512.86, max 11471.59)","6376.57 (min 2107.76, max 10645.38)","6956.31 (min 2546.96, max 11365.65)"
-    "bw_mem-fcp-16mb (MB/s)","2416.92","2828.35","3359.23","3514.17"
-    "bw_mem-fcp-1mb (MB/s)","4044.46 (min 3202.28, max 4886.63)","8303.69 (min 4093.78, max 12513.60)","8609.84 (min 4237.29, max 12982.39)","10177.04 (min 6578.95, max 13775.13)"
-    "bw_mem-fcp-2mb (MB/s)","2728.66 (min 2534.40, max 2922.91)","8046.72 (min 3990.57, max 12102.87)","7308.33 (min 3477.59, max 11139.06)","8900.07 (min 4111.38, max 13688.76)"
-    "bw_mem-fcp-4mb (MB/s)","2441.87 (min 2409.64, max 2474.10)","7886.03 (min 3907.01, max 11865.04)","7061.23 (min 3417.05, max 10705.41)","8253.22 (min 4198.74, max 12307.69)"
-    "bw_mem-fcp-8mb (MB/s)","2377.60 (min 2348.45, max 2406.74)","7248.37 (min 3106.80, max 11389.93)","7031.11 (min 3400.88, max 10661.34)","7527.07 (min 3698.57, max 11355.57)"
-    "bw_mem-frd-16mb (MB/s)","6305.83","4814.93","4172.64","4238.41"
-    "bw_mem-frd-1mb (MB/s)","4791.23 (min 3202.28, max 6380.18)","4805.64 (min 4093.78, max 5517.50)","4626.26 (min 4237.29, max 5015.22)","7134.91 (min 6578.95, max 7690.86)"
-    "bw_mem-frd-2mb (MB/s)","4482.06 (min 2534.40, max 6429.72)","4875.58 (min 3990.57, max 5760.58)","4110.19 (min 3477.59, max 4742.79)","4488.36 (min 4111.38, max 4865.33)"
-    "bw_mem-frd-4mb (MB/s)","4364.38 (min 2409.64, max 6319.12)","4786.37 (min 3907.01, max 5665.72)","3820.09 (min 3417.05, max 4223.12)","4575.06 (min 4198.74, max 4951.37)"
-    "bw_mem-frd-8mb (MB/s)","4365.93 (min 2406.74, max 6325.11)","4243.38 (min 3106.80, max 5379.96)","3783.41 (min 3400.88, max 4165.94)","4249.77 (min 3698.57, max 4800.96)"
-    "bw_mem-fwr-16mb (MB/s)","2317.83","9567.95","10592.52","10807.16"
-    "bw_mem-fwr-1mb (MB/s)","5563.04 (min 4745.90, max 6380.18)","9098.04 (min 5517.50, max 12678.57)","9030.13 (min 5015.22, max 13045.03)","10708.35 (min 7690.86, max 13725.84)"
-    "bw_mem-fwr-2mb (MB/s)","4658.12 (min 2886.52, max 6429.72)","8984.62 (min 5760.58, max 12208.66)","8068.84 (min 4742.79, max 11394.89)","9279.51 (min 4865.33, max 13693.69)"
-    "bw_mem-fwr-4mb (MB/s)","4378.70 (min 2438.28, max 6319.12)","8773.80 (min 5665.72, max 11881.88)","7466.79 (min 4223.12, max 10710.46)","8638.46 (min 4951.37, max 12325.54)"
-    "bw_mem-fwr-8mb (MB/s)","4329.93 (min 2334.74, max 6325.11)","8425.78 (min 5379.96, max 11471.59)","7405.66 (min 4165.94, max 10645.38)","8083.31 (min 4800.96, max 11365.65)"
-    "bw_mem-rd-16mb (MB/s)","6599.75","5105.30","4888.48","5003.13"
-    "bw_mem-rd-1mb (MB/s)","10238.35 (min 5205.21, max 15271.49)","7011.91 (min 3821.66, max 10202.15)","7249.40 (min 4067.40, max 10431.40)","15981.18 (min 14755.07, max 17207.28)"
-    "bw_mem-rd-2mb (MB/s)","4032.60 (min 979.27, max 7085.92)","4038.96 (min 1640.96, max 6436.96)","4325.76 (min 3072.20, max 5579.32)","7219.65 (min 5631.82, max 8807.47)"
-    "bw_mem-rd-4mb (MB/s)","3734.81 (min 785.62, max 6684.00)","3818.32 (min 1367.05, max 6269.59)","3672.19 (min 2361.28, max 4983.09)","4996.70 (min 4017.68, max 5975.72)"
-    "bw_mem-rd-8mb (MB/s)","3659.61 (min 748.92, max 6570.30)","4023.40 (min 2074.42, max 5972.38)","3578.20 (min 2272.40, max 4884.00)","4910.89 (min 3931.85, max 5889.93)"
-    "bw_mem-rdwr-16mb (MB/s)","748.36","1926.78","2137.32","2762.43"
-    "bw_mem-rdwr-1mb (MB/s)","2269.53 (min 1272.96, max 3266.09)","2065.27 (min 1670.07, max 2460.46)","3605.96 (min 2533.13, max 4678.78)","6580.35 (min 3718.16, max 9442.53)"
-    "bw_mem-rdwr-2mb (MB/s)","1010.33 (min 995.19, max 1025.47)","1778.40 (min 1584.79, max 1972.00)","2456.10 (min 2104.89, max 2807.30)","3608.45 (min 2925.05, max 4291.85)"
-    "bw_mem-rdwr-4mb (MB/s)","885.27 (min 794.44, max 976.09)","1896.21 (min 1375.99, max 2416.43)","2182.75 (min 2116.40, max 2249.09)","3277.76 (min 2952.57, max 3602.95)"
-    "bw_mem-rdwr-8mb (MB/s)","867.20 (min 753.65, max 980.75)","1942.85 (min 1512.86, max 2372.83)","2138.19 (min 2107.76, max 2168.61)","2991.45 (min 2546.96, max 3435.93)"
-    "bw_mem-wr-16mb (MB/s)","742.05","1815.71","2220.68","3082.85"
-    "bw_mem-wr-1mb (MB/s)","4235.65 (min 3266.09, max 5205.21)","3141.06 (min 2460.46, max 3821.66)","4373.09 (min 4067.40, max 4678.78)","13324.91 (min 9442.53, max 17207.28)"
-    "bw_mem-wr-2mb (MB/s)","987.23 (min 979.27, max 995.19)","1806.48 (min 1640.96, max 1972.00)","2939.75 (min 2807.30, max 3072.20)","4961.84 (min 4291.85, max 5631.82)"
-    "bw_mem-wr-4mb (MB/s)","790.03 (min 785.62, max 794.44)","1891.74 (min 1367.05, max 2416.43)","2305.19 (min 2249.09, max 2361.28)","3810.32 (min 3602.95, max 4017.68)"
-    "bw_mem-wr-8mb (MB/s)","751.29 (min 748.92, max 753.65)","2223.63 (min 2074.42, max 2372.83)","2220.51 (min 2168.61, max 2272.40)","3683.89 (min 3435.93, max 3931.85)"
-    "bw_mmap_rd-mo-1mb (MB/s)","12421.21","8615.95","8302.58","12702.50"
-    "bw_mmap_rd-o2c-1mb (MB/s)","1566.48","1428.06","1211.28","2125.78"
-    "bw_pipe (MB/s)","674.09","799.72","817.27","681.23"
-    "bw_unix (MB/s)","1592.88","1995.08","2020.45","3428.50"
-    "lat_connect (us)","33.74","33.74","34.32","34.76"
-    "lat_ctx-2-128k (us)","3.37","3.43","3.37","5.96"
-    "lat_ctx-2-256k (us)","2.68","2.60","2.76","2.55"
-    "lat_ctx-4-128k (us)","3.36","3.43","3.56","4.16"
-    "lat_ctx-4-256k (us)","2.42","2.41","2.53","2.64"
-    "lat_fs-0k (num_files)","474.00","460.00","509.00","491.00"
-    "lat_fs-10k (num_files)","187.00","205.00","200.00","217.00"
-    "lat_fs-1k (num_files)","278.00","269.00","295.00","309.00"
-    "lat_fs-4k (num_files)","298.00","293.00","311.00","322.00"
-    "lat_mem_rd-stride128-sz1000k (ns)","11.51","10.50","12.73","5.65"
+    "af_unix_sock_stream_latency (microsec)","19.71","16.34","15.97","19.30"
+    "af_unix_socket_stream_bandwidth (MBs)","1661.35","2043.72","1896.16","3568.72"
+    "bw_file_rd-io-1mb (MB/s)","3093.16","2979.52","2971.77","3213.61"
+    "bw_file_rd-o2c-1mb (MB/s)","1545.86","1620.45","1300.39","1815.87"
+    "bw_mem-bcopy-16mb (MB/s)","2378.83","2826.36","3623.19","3098.37"
+    "bw_mem-bcopy-1mb (MB/s)","3343.89","4626.20","4645.98","10037.39"
+    "bw_mem-bcopy-2mb (MB/s)","2484.91","3977.58","3791.47","4490.50"
+    "bw_mem-bcopy-4mb (MB/s)","2354.79","3715.40","3511.85","3644.98"
+    "bw_mem-bcopy-8mb (MB/s)","2374.94","3090.59","3524.75","3220.18"
+    "bw_mem-bzero-16mb (MB/s)","2340.21","9644.36","10700.55","10852.98"
+    "bw_mem-bzero-1mb (MB/s)","4096.42 (min 3343.89, max 4848.94)","8563.10 (min 4626.20, max 12500.00)","8748.23 (min 4645.98, max 12850.47)","11891.55 (min 10037.39, max 13745.70)"
+    "bw_mem-bzero-2mb (MB/s)","2712.78 (min 2484.91, max 2940.64)","8049.40 (min 3977.58, max 12121.21)","7620.58 (min 3791.47, max 11449.68)","9090.87 (min 4490.50, max 13691.23)"
+    "bw_mem-bzero-4mb (MB/s)","2418.67 (min 2354.79, max 2482.54)","7790.22 (min 3715.40, max 11865.04)","7151.61 (min 3511.85, max 10791.37)","7984.15 (min 3644.98, max 12323.31)"
+    "bw_mem-bzero-8mb (MB/s)","2365.16 (min 2355.37, max 2374.94)","7355.03 (min 3090.59, max 11619.46)","7136.66 (min 3524.75, max 10748.56)","7274.81 (min 3220.18, max 11329.44)"
+    "bw_mem-cp-16mb (MB/s)","987.78","1595.21","2176.87","2398.08"
+    "bw_mem-cp-1mb (MB/s)","2967.00 (min 1234.57, max 4699.43)","7233.78 (min 1766.78, max 12700.78)","7712.52 (min 2484.71, max 12940.33)","8694.63 (min 3655.96, max 13733.29)"
+    "bw_mem-cp-2mb (MB/s)","1978.59 (min 1043.84, max 2913.33)","6865.20 (min 1539.65, max 12190.75)","6742.25 (min 2197.40, max 11287.09)","8186.90 (min 2710.95, max 13662.85)"
+    "bw_mem-cp-4mb (MB/s)","1719.30 (min 984.98, max 2453.61)","6747.19 (min 1589.61, max 11904.76)","6438.20 (min 2092.78, max 10783.61)","7536.43 (min 2756.24, max 12316.61)"
+    "bw_mem-cp-8mb (MB/s)","1647.87 (min 985.59, max 2310.14)","6566.20 (min 1536.10, max 11596.30)","6439.05 (min 2162.45, max 10715.65)","6886.01 (min 2450.60, max 11321.42)"
+    "bw_mem-fcp-16mb (MB/s)","2408.91","2837.89","3503.01","3047.62"
+    "bw_mem-fcp-1mb (MB/s)","4083.15 (min 3317.36, max 4848.94)","8238.43 (min 3976.86, max 12500.00)","8309.78 (min 3769.09, max 12850.47)","10224.18 (min 6702.66, max 13745.70)"
+    "bw_mem-fcp-2mb (MB/s)","2768.78 (min 2596.92, max 2940.64)","8064.25 (min 4007.29, max 12121.21)","7588.08 (min 3726.48, max 11449.68)","8878.83 (min 4066.42, max 13691.23)"
+    "bw_mem-fcp-4mb (MB/s)","2439.95 (min 2397.36, max 2482.54)","7873.14 (min 3881.23, max 11865.04)","7124.59 (min 3457.81, max 10791.37)","7946.10 (min 3568.88, max 12323.31)"
+    "bw_mem-fcp-8mb (MB/s)","2374.58 (min 2355.37, max 2393.78)","7380.00 (min 3140.54, max 11619.46)","7148.38 (min 3548.20, max 10748.56)","7249.09 (min 3168.74, max 11329.44)"
+    "bw_mem-frd-16mb (MB/s)","6295.91","4795.44","4308.02","3471.85"
+    "bw_mem-frd-1mb (MB/s)","5433.77 (min 3317.36, max 7550.17)","4719.18 (min 3976.86, max 5461.50)","4611.98 (min 3769.09, max 5454.87)","7311.73 (min 6702.66, max 7920.79)"
+    "bw_mem-frd-2mb (MB/s)","4516.77 (min 2596.92, max 6436.62)","4899.05 (min 4007.29, max 5790.81)","4287.07 (min 3726.48, max 4847.65)","4189.55 (min 4066.42, max 4312.67)"
+    "bw_mem-frd-4mb (MB/s)","4361.36 (min 2397.36, max 6325.36)","4766.47 (min 3881.23, max 5651.71)","3911.12 (min 3457.81, max 4364.43)","3704.44 (min 3568.88, max 3840.00)"
+    "bw_mem-frd-8mb (MB/s)","4354.45 (min 2393.78, max 6315.12)","4262.97 (min 3140.54, max 5385.39)","3931.60 (min 3548.20, max 4314.99)","3467.02 (min 3168.74, max 3765.30)"
+    "bw_mem-fwr-16mb (MB/s)","2321.53","9616.83","10688.04","10821.78"
+    "bw_mem-fwr-1mb (MB/s)","6124.80 (min 4699.43, max 7550.17)","9081.14 (min 5461.50, max 12700.78)","9197.60 (min 5454.87, max 12940.33)","10827.04 (min 7920.79, max 13733.29)"
+    "bw_mem-fwr-2mb (MB/s)","4674.98 (min 2913.33, max 6436.62)","8990.78 (min 5790.81, max 12190.75)","8067.37 (min 4847.65, max 11287.09)","8987.76 (min 4312.67, max 13662.85)"
+    "bw_mem-fwr-4mb (MB/s)","4389.49 (min 2453.61, max 6325.36)","8778.24 (min 5651.71, max 11904.76)","7574.02 (min 4364.43, max 10783.61)","8078.31 (min 3840.00, max 12316.61)"
+    "bw_mem-fwr-8mb (MB/s)","4312.63 (min 2310.14, max 6315.12)","8490.85 (min 5385.39, max 11596.30)","7515.32 (min 4314.99, max 10715.65)","7543.36 (min 3765.30, max 11321.42)"
+    "bw_mem-rd-16mb (MB/s)","6570.84","5125.74","5025.13","4029.72"
+    "bw_mem-rd-1mb (MB/s)","9785.54 (min 4586.24, max 14984.83)","7708.92 (min 5851.98, max 9565.86)","7384.25 (min 7199.56, max 7568.93)","16035.25 (min 15543.07, max 16527.42)"
+    "bw_mem-rd-2mb (MB/s)","4025.38 (min 977.36, max 7073.39)","4163.76 (min 1735.81, max 6591.70)","4432.40 (min 2871.50, max 5993.30)","4685.54 (min 3738.32, max 5632.75)"
+    "bw_mem-rd-4mb (MB/s)","3720.44 (min 785.31, max 6655.57)","3799.89 (min 1321.44, max 6278.34)","3764.36 (min 2381.66, max 5147.06)","4136.17 (min 3806.62, max 4465.71)"
+    "bw_mem-rd-8mb (MB/s)","3662.14 (min 748.57, max 6575.70)","4007.63 (min 2144.77, max 5870.48)","3660.03 (min 2281.48, max 5038.58)","4085.19 (min 3732.50, max 4437.87)"
+    "bw_mem-rdwr-16mb (MB/s)","750.19","1836.76","2217.91","2651.64"
+    "bw_mem-rdwr-1mb (MB/s)","2861.63 (min 1234.57, max 4488.68)","2973.85 (min 1766.78, max 4180.92)","3319.10 (min 2484.71, max 4153.48)","6616.56 (min 3655.96, max 9577.16)"
+    "bw_mem-rdwr-2mb (MB/s)","1017.14 (min 990.43, max 1043.84)","1809.15 (min 1539.65, max 2078.64)","2508.15 (min 2197.40, max 2818.89)","3470.76 (min 2710.95, max 4230.57)"
+    "bw_mem-rdwr-4mb (MB/s)","889.79 (min 794.60, max 984.98)","1995.29 (min 1589.61, max 2400.96)","2238.82 (min 2092.78, max 2384.86)","2982.74 (min 2756.24, max 3209.24)"
+    "bw_mem-rdwr-8mb (MB/s)","870.76 (min 755.93, max 985.59)","1932.54 (min 1536.10, max 2328.97)","2201.68 (min 2162.45, max 2240.90)","2728.21 (min 2450.60, max 3005.82)"
+    "bw_mem-wr-16mb (MB/s)","742.18","1754.77","2232.77","3078.11"
+    "bw_mem-wr-1mb (MB/s)","4537.46 (min 4488.68, max 4586.24)","5016.45 (min 4180.92, max 5851.98)","5861.21 (min 4153.48, max 7568.93)","13052.29 (min 9577.16, max 16527.42)"
+    "bw_mem-wr-2mb (MB/s)","983.90 (min 977.36, max 990.43)","1907.23 (min 1735.81, max 2078.64)","2845.20 (min 2818.89, max 2871.50)","3984.45 (min 3738.32, max 4230.57)"
+    "bw_mem-wr-4mb (MB/s)","789.96 (min 785.31, max 794.60)","1861.20 (min 1321.44, max 2400.96)","2383.26 (min 2381.66, max 2384.86)","3507.93 (min 3209.24, max 3806.62)"
+    "bw_mem-wr-8mb (MB/s)","752.25 (min 748.57, max 755.93)","2236.87 (min 2144.77, max 2328.97)","2261.19 (min 2240.90, max 2281.48)","3369.16 (min 3005.82, max 3732.50)"
+    "bw_mmap_rd-mo-1mb (MB/s)","12348.06","8420.28","8469.90","12913.79"
+    "bw_mmap_rd-o2c-1mb (MB/s)","1611.93","1532.27","1248.66","2377.90"
+    "bw_pipe (MB/s)","666.39","793.05","825.01","658.04"
+    "bw_unix (MB/s)","1661.35","2043.72","1896.16","3568.72"
+    "lat_connect (us)","34.10","34.05","34.72","34.20"
+    "lat_ctx-2-128k (us)","3.36","3.30","3.26","3.27"
+    "lat_ctx-2-256k (us)","2.60","2.52","2.64","4.32"
+    "lat_ctx-4-128k (us)","3.29","3.31","3.39","4.26"
+    "lat_ctx-4-256k (us)","2.34","2.47","2.38","2.34"
+    "lat_fs-0k (num_files)","540.00","459.00","546.00","518.00"
+    "lat_fs-10k (num_files)","176.00","204.00","182.00","212.00"
+    "lat_fs-1k (num_files)","267.00","263.00","289.00","290.00"
+    "lat_fs-4k (num_files)","296.00","310.00","300.00","309.00"
+    "lat_mem_rd-stride128-sz1000k (ns)","11.00","11.37","12.93","5.65"
     "lat_mem_rd-stride128-sz125k (ns)","5.57","5.57","5.57","5.65"
     "lat_mem_rd-stride128-sz250k (ns)","5.57","5.57","5.57","5.65"
-    "lat_mem_rd-stride128-sz31k (ns)","3.36","5.12","4.66","3.40"
+    "lat_mem_rd-stride128-sz31k (ns)","4.66","4.67","4.66","3.85"
     "lat_mem_rd-stride128-sz50 (ns)","2.00","2.00","2.00","2.00"
-    "lat_mem_rd-stride128-sz500k (ns)","5.57","5.57","5.57","5.65"
-    "lat_mem_rd-stride128-sz62k (ns)","5.12","5.57","5.57","5.20"
-    "lat_mmap-1m (us)","27.00","33.00","27.00","33.00"
+    "lat_mem_rd-stride128-sz500k (ns)","5.57","5.60","5.57","5.65"
+    "lat_mem_rd-stride128-sz62k (ns)","5.57","5.57","5.12","5.65"
+    "lat_mmap-1m (us)","36.00","33.00","28.00","33.00"
     "lat_ops-double-add (ns)","1.96","1.96","1.96","1.96"
     "lat_ops-double-div (ns)","9.01","9.01","9.01","9.01"
-    "lat_ops-double-mul (ns)","2.01","2.00","2.00","2.00"
+    "lat_ops-double-mul (ns)","2.00","2.00","2.00","2.00"
     "lat_ops-float-add (ns)","1.96","1.96","1.96","1.96"
-    "lat_ops-float-div (ns)","5.51","5.50","5.50","5.50"
+    "lat_ops-float-div (ns)","5.51","5.50","5.50","5.51"
     "lat_ops-float-mul (ns)","2.00","2.00","2.00","2.00"
     "lat_ops-int-add (ns)","0.50","0.50","0.50","0.50"
     "lat_ops-int-bit (ns)","0.33","0.33","0.33","0.33"
@@ -159,37 +159,37 @@ Execute the LMBench with the following:
     "lat_ops-int64-add (ns)","0.50","0.50","0.50","0.50"
     "lat_ops-int64-bit (ns)","0.33","0.33","0.33","0.33"
     "lat_ops-int64-div (ns)","3.00","3.00","3.00","3.00"
-    "lat_ops-int64-mod (ns)","5.67","5.67","5.67","5.67"
+    "lat_ops-int64-mod (ns)","5.72","5.67","5.67","5.68"
     "lat_ops-int64-mul (ns)","2.52","2.52","2.52","2.52"
-    "lat_pagefault (us)","0.50","0.49","0.51","0.52"
-    "lat_pipe (us)","11.79","11.89","11.99","12.36"
-    "lat_proc-exec (us)","422.92","380.07","446.92","407.86"
-    "lat_proc-fork (us)","361.79","322.83","373.29","376.87"
+    "lat_pagefault (us)","0.53","0.51","0.53","0.53"
+    "lat_pipe (us)","11.95","11.92","12.00","12.13"
+    "lat_proc-exec (us)","441.54","391.64","448.69","367.81"
+    "lat_proc-fork (us)","372.60","337.20","360.40","362.13"
     "lat_proc-proccall (us)","0.00","0.00","0.00","0.00"
-    "lat_select (us)","11.10","10.81","11.09","11.12"
-    "lat_sem (us)","1.41","1.35","1.41","2.34"
-    "lat_sig-catch (us)","2.70","2.71","2.63","2.79"
-    "lat_sig-install (us)","0.49","0.50","0.52","0.51"
-    "lat_sig-prot (us)","0.38","0.42","0.49","0.40"
-    "lat_syscall-fstat (us)","1.28","1.31","1.27","1.31"
-    "lat_syscall-null (us)","0.37","0.38","0.38","0.38"
-    "lat_syscall-open (us)","106.19","137.89","149.50","96.60"
-    "lat_syscall-read (us)","0.48","0.46","0.50","0.48"
-    "lat_syscall-stat (us)","1.65","1.61","1.63","1.74"
-    "lat_syscall-write (us)","0.42","0.42","0.42","0.42"
-    "lat_tcp (us)","0.75","0.75","0.75","0.75"
-    "lat_unix (us)","16.41","14.81","16.47","24.57"
-    "latency_for_0.50_mb_block_size (nanosec)","5.57","5.57","5.57","5.65"
-    "latency_for_1.00_mb_block_size (nanosec)","5.75 (min 0.00, max 11.51)","5.25 (min 0.00, max 10.50)","6.37 (min 0.00, max 12.73)","2.82 (min 0.00, max 5.65)"
-    "pipe_bandwidth (MBs)","674.09","799.72","817.27","681.23"
-    "pipe_latency (microsec)","11.79","11.89","11.99","12.36"
+    "lat_select (us)","10.92","10.90","10.81","13.03"
+    "lat_sem (us)","1.32","1.62","1.61","1.14"
+    "lat_sig-catch (us)","3.20","3.19","3.21","3.19"
+    "lat_sig-install (us)","0.50","0.50","0.50","0.50"
+    "lat_sig-prot (us)","0.33","0.43","0.34","0.45"
+    "lat_syscall-fstat (us)","1.20","1.20","1.22","1.24"
+    "lat_syscall-null (us)","0.38","0.39","0.37","0.37"
+    "lat_syscall-open (us)","371.76","136.93","425.77","96.33"
+    "lat_syscall-read (us)","0.48","0.47","0.47","0.48"
+    "lat_syscall-stat (us)","1.54","1.54","1.54","1.57"
+    "lat_syscall-write (us)","0.42","0.41","0.42","0.41"
+    "lat_tcp (us)","0.77","0.79","0.79","0.79"
+    "lat_unix (us)","19.71","16.34","15.97","19.30"
+    "latency_for_0.50_mb_block_size (nanosec)","5.57","5.60","5.57","5.65"
+    "latency_for_1.00_mb_block_size (nanosec)","5.50 (min 0.00, max 11.00)","5.68 (min 0.00, max 11.37)","6.46 (min 0.00, max 12.93)","2.82 (min 0.00, max 5.65)"
+    "pipe_bandwidth (MBs)","666.39","793.05","825.01","658.04"
+    "pipe_latency (microsec)","11.95","11.92","12.00","12.13"
     "procedure_call (microsec)","0.00","0.00","0.00","0.00"
-    "select_on_200_tcp_fds (microsec)","11.10","10.81","11.09","11.12"
-    "semaphore_latency (microsec)","1.41","1.35","1.41","2.34"
-    "signal_handler_latency (microsec)","0.49","0.50","0.52","0.51"
-    "signal_handler_overhead (microsec)","2.70","2.71","2.63","2.79"
-    "tcp_ip_connection_cost_to_localhost (microsec)","33.74","33.74","34.32","34.76"
-    "tcp_latency_using_localhost (microsec)","0.75","0.75","0.75","0.75"
+    "select_on_200_tcp_fds (microsec)","10.92","10.90","10.81","13.03"
+    "semaphore_latency (microsec)","1.32","1.62","1.61","1.14"
+    "signal_handler_latency (microsec)","0.50","0.50","0.50","0.50"
+    "signal_handler_overhead (microsec)","3.20","3.19","3.21","3.19"
+    "tcp_ip_connection_cost_to_localhost (microsec)","34.10","34.05","34.72","34.20"
+    "tcp_latency_using_localhost (microsec)","0.77","0.79","0.79","0.79"
 
 
 Table:  **LM Bench Metrics**
@@ -212,8 +212,8 @@ Execute the benchmark with the following:
     :header: "Benchmarks","j7200-evm: perf","j721e-idk-gw: perf","j721s2-evm: perf","j784s4-evm: perf"
 
     "cpu_clock (MHz)","2000.00","2000.00","2000.00","2000.00"
-    "dhrystone_per_mhz (DMIPS/MHz)","4.70","4.70","4.70","4.40"
-    "dhrystone_per_second (DhrystoneP)","16666667.00","16666667.00","16666667.00","15384615.00"
+    "dhrystone_per_mhz (DMIPS/MHz)","4.70","4.70","5.20","4.40"
+    "dhrystone_per_second (DhrystoneP)","16666667.00","16666667.00","18181818.00","15384615.00"
 
 
 Table:  **Dhrystone Benchmark**
@@ -245,16 +245,10 @@ Linpack
 Linpack measures peak double precision (64 bit) floating point performance in
 solving a dense linear system.
 
-Execute the benchmark with the following:
-
-::
-
-    linpack
-
 .. csv-table::
     :header: "Benchmarks","j7200-evm: perf","j721e-idk-gw: perf","j721s2-evm: perf","j784s4-evm: perf"
 
-    "linpack (Kflops)","2549821.00","2490630.00","2453258.00","2422959.00"
+    "linpack (Kflops)","2505169.00","2421252.00","2456768.00","2509747.00"
 
 
 Table:  **Linpack Benchmark**
@@ -273,15 +267,15 @@ https://nbench.io/articles/index.html
 .. csv-table::
     :header: "Benchmarks","j7200-evm: perf","j721e-idk-gw: perf","j721s2-evm: perf","j784s4-evm: perf"
 
-    "assignment (Iterations)","30.50","30.59","30.78","30.49"
-    "fourier (Iterations)","65182.00","65157.00","53653.00","53576.00"
-    "fp_emulation (Iterations)","214.64","214.62","214.62","214.64"
-    "huffman (Iterations)","2382.60","2377.40","2384.60","2383.20"
-    "idea (Iterations)","7996.60","7996.00","7995.60","7996.80"
-    "lu_decomposition (Iterations)","1351.50","1360.50","1360.60","1325.20"
-    "neural_net (Iterations)","28.94","30.03","28.26","29.82"
-    "numeric_sort (Iterations)","832.56","836.69","845.11","849.72"
-    "string_sort (Iterations)","416.90","398.15","417.45","416.94"
+    "assignment (Iterations)","30.74","30.64","30.78","30.65"
+    "fourier (Iterations)","60221.00","55852.00","53535.00","53542.00"
+    "fp_emulation (Iterations)","214.62","214.62","214.55","214.62"
+    "huffman (Iterations)","2382.90","2384.90","2381.40","2388.10"
+    "idea (Iterations)","7996.90","7996.00","7996.80","7996.50"
+    "lu_decomposition (Iterations)","1362.80","1365.40","1359.40","1350.10"
+    "neural_net (Iterations)","28.68","30.39","29.84","29.84"
+    "numeric_sort (Iterations)","854.74","849.41","845.29","850.33"
+    "string_sort (Iterations)","419.63","413.55","417.23","413.59"
 
 
 Table:  **NBench Benchmarks**
@@ -309,10 +303,10 @@ Execute the benchmark with the following:
 .. csv-table::
     :header: "Benchmarks","j7200-evm: perf","j721e-idk-gw: perf","j721s2-evm: perf","j784s4-evm: perf"
 
-    "add (MB/s)","5457.30","5345.80","6381.80","6236.70"
-    "copy (MB/s)","4776.80","5618.40","6982.00","7105.10"
-    "scale (MB/s)","4839.70","5479.20","7108.60","7119.70"
-    "triad (MB/s)","5464.60","5312.40","6391.30","6235.50"
+    "add (MB/s)","5462.40","5346.60","6200.70","6180.00"
+    "copy (MB/s)","4784.00","5606.40","6933.90","6662.80"
+    "scale (MB/s)","4848.90","5469.20","7060.60","6678.60"
+    "triad (MB/s)","5464.70","5323.60","6223.60","6182.90"
 
 
 Table:  **Stream**
@@ -331,23 +325,23 @@ and floating-point workloads, and data sets for utilizing larger memory subsyste
 .. csv-table::
     :header: "Benchmarks","j7200-evm: perf","j721e-idk-gw: perf","j721s2-evm: perf","j784s4-evm: perf"
 
-    "cjpeg-rose7-preset (workloads/)","29.67","81.97","82.64","81.97"
-    "core (workloads/)","0.26","0.78","0.78","0.78"
-    "coremark-pro ()","1034.87","2456.24","2476.54","2515.32"
-    "linear_alg-mid-100x100-sp (workloads/)","27.12","79.87","80.13","81.43"
-    "loops-all-mid-10k-sp (workloads/)","0.87","2.43","2.49","2.48"
-    "nnet_test (workloads/)","1.26","3.54","3.61","3.54"
-    "parser-125k (workloads/)","4.72","10.99","11.11","10.87"
-    "radix2-big-64k (workloads/)","124.64","252.53","254.52","289.44"
-    "sha-test (workloads/)","62.89","158.73","158.73","158.73"
-    "zip-test (workloads/)","45.45","47.62","47.62","50.00"
+    "cjpeg-rose7-preset (workloads/)","81.30","81.97","83.33","82.64"
+    "core (workloads/)","0.78","0.78","0.78","0.78"
+    "coremark-pro ()","2436.87","2476.52","2473.59","2487.47"
+    "linear_alg-mid-100x100-sp (workloads/)","81.97","81.70","79.87","80.91"
+    "loops-all-mid-10k-sp (workloads/)","2.48","2.43","2.48","2.47"
+    "nnet_test (workloads/)","3.57","3.82","3.72","3.62"
+    "parser-125k (workloads/)","10.99","10.87","10.87","10.75"
+    "radix2-big-64k (workloads/)","224.47","249.07","249.50","272.48"
+    "sha-test (workloads/)","158.73","158.73","158.73","158.73"
+    "zip-test (workloads/)","47.62","47.62","47.62","47.62"
 
 
 Table:  **CoreMarkPro**
 
 
-
-
+ 
+ 
 
 
 MultiBench
@@ -370,40 +364,40 @@ thread-enabled workloads to be tested.
 .. csv-table::
     :header: "Benchmarks","j7200-evm: perf","j721e-idk-gw: perf","j721s2-evm: perf","j784s4-evm: perf"
 
-    "4m-check (workloads/)","939.14","960.06","872.60","1040.37"
-    "4m-check-reassembly (workloads/)","120.92","149.03","151.29","209.21"
-    "4m-check-reassembly-tcp (workloads/)","92.25","102.88","98.81","121.36"
-    "4m-check-reassembly-tcp-cmykw2-rotatew2 (workloads/)","40.57","44.64","41.87","37.13"
-    "4m-check-reassembly-tcp-x264w2 (workloads/)","2.69","2.72","2.66","4.91"
-    "4m-cmykw2 (workloads/)","312.99","316.46","313.48","602.41"
-    "4m-cmykw2-rotatew2 (workloads/)","58.48","63.16","59.29","52.40"
-    "4m-reassembly (workloads/)","107.64","129.03","128.21","156.01"
-    "4m-rotatew2 (workloads/)","70.32","74.18","71.07","44.39"
-    "4m-tcp-mixed (workloads/)","280.70","280.70","266.67","275.86"
-    "4m-x264w2 (workloads/)","2.75","2.78","2.73","5.08"
-    "idct-4m (workloads/)","34.97","35.11","35.00","35.14"
-    "idct-4mw1 (workloads/)","34.97","35.08","35.00","35.15"
-    "ippktcheck-4m (workloads/)","924.56","939.14","872.60","1037.34"
-    "ippktcheck-4mw1 (workloads/)","936.33","938.79","871.69","1033.06"
-    "ipres-4m (workloads/)","155.60","179.64","166.48","209.21"
-    "ipres-4mw1 (workloads/)","154.48","180.07","167.97","208.62"
-    "md5-4m (workloads/)","45.87","48.33","45.81","47.53"
-    "md5-4mw1 (workloads/)","45.43","48.92","45.58","47.66"
-    "rgbcmyk-4m (workloads/)","163.00","163.80","163.13","164.20"
-    "rgbcmyk-4mw1 (workloads/)","163.27","163.80","163.13","164.07"
-    "rotate-4ms1 (workloads/)","52.25","55.07","51.60","55.07"
-    "rotate-4ms1w1 (workloads/)","52.14","55.07","51.71","54.88"
-    "rotate-4ms64 (workloads/)","52.85","55.68","52.36","55.31"
-    "rotate-4ms64w1 (workloads/)","53.02","55.31","52.47","55.74"
-    "x264-4mq (workloads/)","1.43","1.43","1.43","1.44"
-    "x264-4mqw1 (workloads/)","1.42","1.44","1.42","1.43"
+    "4m-check (workloads/)","924.56","922.85","871.99","1041.67"
+    "4m-check-reassembly (workloads/)","122.40","149.70","150.15","199.60"
+    "4m-check-reassembly-tcp (workloads/)","92.94","102.04","96.15","115.21"
+    "4m-check-reassembly-tcp-cmykw2-rotatew2 (workloads/)","40.57","44.44","41.44","40.57"
+    "4m-check-reassembly-tcp-x264w2 (workloads/)","2.70","2.72","2.65","4.88"
+    "4m-cmykw2 (workloads/)","312.50","318.47","310.56","604.23"
+    "4m-cmykw2-rotatew2 (workloads/)","59.00","62.83","59.29","50.80"
+    "4m-reassembly (workloads/)","107.41","130.72","123.76","146.63"
+    "4m-rotatew2 (workloads/)","71.02","74.40","70.62","56.50"
+    "4m-tcp-mixed (workloads/)","262.30","271.19","262.30","253.97"
+    "4m-x264w2 (workloads/)","2.75","2.80","2.75","5.09"
+    "idct-4m (workloads/)","34.95","35.10","35.00","35.14"
+    "idct-4mw1 (workloads/)","34.92","35.08","35.00","35.14"
+    "ippktcheck-4m (workloads/)","943.40","935.98","846.31","1028.81"
+    "ippktcheck-4mw1 (workloads/)","920.47","923.53","858.22","1042.97"
+    "ipres-4m (workloads/)","156.74","178.36","164.84","199.73"
+    "ipres-4mw1 (workloads/)","159.07","179.00","163.93","202.43"
+    "md5-4m (workloads/)","45.77","48.69","45.93","47.62"
+    "md5-4mw1 (workloads/)","45.87","49.00","46.08","47.96"
+    "rgbcmyk-4m (workloads/)","163.40","163.67","163.13","164.20"
+    "rgbcmyk-4mw1 (workloads/)","163.13","163.80","162.08","164.20"
+    "rotate-4ms1 (workloads/)","52.14","54.76","51.55","54.88"
+    "rotate-4ms1w1 (workloads/)","52.36","55.07","51.87","55.07"
+    "rotate-4ms64 (workloads/)","52.63","55.80","52.63","55.62"
+    "rotate-4ms64w1 (workloads/)","52.74","55.62","52.25","55.87"
+    "x264-4mq (workloads/)","1.42","1.43","1.42","1.42"
+    "x264-4mqw1 (workloads/)","1.43","1.43","1.42","1.43"
 
 
 Table:  **Multibench**
 
 
-
-
+ 
+ 
 
 
 Boot-time Measurement
@@ -415,14 +409,14 @@ Boot media: MMCSD
 .. csv-table::
     :header: "Boot Configuration","j7200-evm: boot time (sec)","j721e-idk-gw: boot time (sec)","j721s2-evm: boot time (sec)","j784s4-evm: boot time (sec)"
 
-    "Kernel boot time test when bootloader, kernel and sdk-rootfs are in mmc-sd","16.98 (min 16.86, max 17.06)","18.67 (min 18.52, max 18.79)","17.41 (min 17.10, max 17.78)"
-    "Kernel boot time test when init is /bin/sh and bootloader, kernel and sdk-rootfs are in mmc-sd","4.16 (min 4.13, max 4.18)","4.83 (min 4.82, max 4.87)","5.13","6.04 (min 5.99, max 6.09)"
+    "Kernel boot time test when bootloader, kernel and sdk-rootfs are in mmc-sd","13.44 (min 13.33, max 13.54)","17.31 (min 17.19, max 17.55)","18.77 (min 18.51, max 18.94)","15.57 (min 15.44, max 15.89)"
+    "Kernel boot time test when init is /bin/sh and bootloader, kernel and sdk-rootfs are in mmc-sd","4.18 (min 4.17, max 4.21)","5.06 (min 5.01, max 5.07)","5.33 (min 5.28, max 5.38)","6.43 (min 6.39, max 6.48)"
 
 Table:  **Boot time MMC/SD**
 
 
-
-
+ 
+ 
 
 
 ALSA SoC Audio Driver
@@ -437,15 +431,15 @@ ALSA SoC Audio Driver
 .. csv-table::
     :header: "Sampling Rate (Hz)","j721e-idk-gw: Throughput (bits/sec)","j721e-idk-gw: CPU Load (%)"
 
-    "11025","352792.00","0.19"
-    "16000","511991.00","0.29"
-    "22050","705578.00","0.27"
-    "24000","705584.00","0.27"
-    "32000","1023980.00","0.39"
-    "44100","1411175.00","0.48"
-    "48000","1535973.00","0.65"
-    "88200","2822350.00","0.84"
-    "96000","3071946.00","1.17"
+    "11025","352793.00","0.15"
+    "16000","511992.00","0.29"
+    "22050","705578.00","0.21"
+    "24000","705584.00","0.25"
+    "32000","1023981.00","0.38"
+    "44100","1411176.00","0.41"
+    "48000","1535975.00","0.24"
+    "88200","2822353.00","0.76"
+    "96000","3071948.00","1.12"
 
 Table:  **Audio Capture**
 
@@ -456,31 +450,31 @@ Table:  **Audio Capture**
 .. csv-table::
     :header: "Sampling Rate (Hz)","j721e-idk-gw: Throughput (bits/sec)","j721e-idk-gw: CPU Load (%)"
 
-    "11025","352937.00","0.20"
-    "16000","512202.00","0.26"
-    "22050","705866.00","0.26"
-    "24000","705872.00","0.29"
-    "32000","1024401.00","0.38"
-    "44100","1411754.00","0.48"
-    "48000","1536605.00","0.57"
-    "88200","2823510.00","0.78"
-    "96000","3073209.00","0.46"
+    "11025","352938.00","0.17"
+    "16000","512203.00","0.28"
+    "22050","705867.00","0.25"
+    "24000","705874.00","0.25"
+    "32000","1024402.00","0.37"
+    "44100","1411756.00","0.47"
+    "48000","1536607.00","0.60"
+    "88200","2823514.00","0.76"
+    "96000","3073213.00","1.17"
 
 Table:  **Audio Playback**
-
+ 
 
 |
 
+ 
 
 
 
-
-
+ 
 
 
 Graphics SGX/RGX Driver
 -------------------------
-
+ 
 
 
 
@@ -491,46 +485,47 @@ Glmark2
 Run Glmark2 and capture performance reported (Score). All display outputs (HDMI, Displayport and/or LCD) are connected when running these tests
 
 .. csv-table::
-    :header: "Benchmark","j721e-idk-gw: Score","j721s2-evm: Score"
+    :header: "Benchmark","j721e-idk-gw: Score","j721s2-evm: Score","j784s4-evm: Score"
 
-    "Glmark2-DRM","0.00","9.00"
+    "Glmark2-DRM","28.00","28.00"
+    "Glmark2-Wayland","1180.00","1286.00","1333.00"
 
 
 Table:  **Glmark2**
-
-
+ 
+ 
 |
 
+ 
 
-
-
+ 
 
 
 Ethernet
 -----------------
 Ethernet performance benchmarks were measured using Netperf 2.7.1 https://hewlettpackard.github.io/netperf/doc/netperf.html
 Test procedures were modeled after those defined in RFC-2544:
-https://tools.ietf.org/html/rfc2544, where the DUT is the TI device
+https://tools.ietf.org/html/rfc2544, where the DUT is the TI device 
 and the "tester" used was a Linux PC. To produce consistent results,
-it is recommended to carry out performance tests in a private network and to avoid
-running NFS on the same interface used in the test. In these results,
+it is recommended to carry out performance tests in a private network and to avoid 
+running NFS on the same interface used in the test. In these results, 
 CPU utilization was captured as the total percentage used across all cores on the device,
-while running the performance test over one external interface.
+while running the performance test over one external interface.  
 
 UDP Throughput (0% loss) was measured by the procedure defined in RFC-2544 section 26.1: Throughput.
 In this scenario, netperf options burst_size (-b) and wait_time (-w) are used to limit bandwidth
-during different trials of the test, with the goal of finding the highest rate at which
+during different trials of the test, with the goal of finding the highest rate at which 
 no loss is seen. For example, to limit bandwidth to 500Mbits/sec with 1472B datagram:
 
 ::
 
    burst_size = <bandwidth (bits/sec)> / 8 (bits -> bytes) / <UDP datagram size> / 100 (seconds -> 10 ms)
-   burst_size = 500000000 / 8 / 1472 / 100 = 425
+   burst_size = 500000000 / 8 / 1472 / 100 = 425 
 
    wait_time = 10 milliseconds (minimum supported by Linux PC used for testing)
 
 UDP Throughput (possible loss) was measured by capturing throughput and packet loss statistics when
-running the netperf test with no bandwidth limit (remove -b/-w options).
+running the netperf test with no bandwidth limit (remove -b/-w options). 
 
 In order to start a netperf client on one device, the other device must have netserver running.
 To start netserver:
@@ -539,10 +534,10 @@ To start netserver:
 
    netserver [-p <port_number>] [-4 (IPv4 addressing)] [-6 (IPv6 addressing)]
 
-Running the following shell script from the DUT will trigger netperf clients to measure
+Running the following shell script from the DUT will trigger netperf clients to measure 
 bidirectional TCP performance for 60 seconds and report CPU utilization. Parameter -k is used in
-client commands to summarize selected statistics on their own line and -j is used to gain
-additional timing measurements during the test.
+client commands to summarize selected statistics on their own line and -j is used to gain 
+additional timing measurements during the test.  
 
 ::
 
@@ -551,45 +546,45 @@ additional timing measurements during the test.
    do
       netperf -H <tester ip> -j -c -l 60 -t TCP_STREAM --
          -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
-
+      
       netperf -H <tester ip> -j -c -l 60 -t TCP_MAERTS --
          -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
    done
 
-Running the following commands will trigger netperf clients to measure UDP burst performance for
-60 seconds at various burst/datagram sizes and report CPU utilization.
+Running the following commands will trigger netperf clients to measure UDP burst performance for 
+60 seconds at various burst/datagram sizes and report CPU utilization. 
 
-- For UDP egress tests, run netperf client from DUT and start netserver on tester.
+- For UDP egress tests, run netperf client from DUT and start netserver on tester. 
 
 ::
 
-   netperf -H <tester ip> -j -c -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size>
-      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE
+   netperf -H <tester ip> -j -c -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size> 
+      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE 
 
-- For UDP ingress tests, run netperf client from tester and start netserver on DUT.
+- For UDP ingress tests, run netperf client from tester and start netserver on DUT. 
 
 ::
 
    netperf -H <DUT ip> -j -C -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size>
-      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE
+      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE 
 
 |
 
 
-CPSW/CPSW2g/CPSW3g Ethernet Driver
+CPSW/CPSW2g/CPSW3g Ethernet Driver 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - CPSW2g: AM65x, J7200, J721e, J721S2, J784S4
 - CPSW3g: AM64x
 
 
-.. rubric::  TCP Bidirectional Throughput
+.. rubric::  TCP Bidirectional Throughput 
    :name: CPSW2g-tcp-bidirectional-throughput
 
 .. csv-table::
-    :header: "Command Used","j7200-evm: THROUGHPUT (Mbits/sec)","j7200-evm: CPU Load % (LOCAL_CPU_UTIL)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)","j784s4-evm: THROUGHPUT (Mbits/sec)","j784s4-evm: CPU Load % (LOCAL_CPU_UTIL)"
+    :header: "Command Used","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)","j784s4-evm: THROUGHPUT (Mbits/sec)","j784s4-evm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1284.85","63.07","1840.86","73.41","1858.87","70.58","1844.07","18.49"
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1834.33","73.50","1849.46","73.40","1855.53","18.66"
 
 Table: **CPSW TCP Bidirectional Throughput**
 
@@ -601,9 +596,9 @@ Table: **CPSW TCP Bidirectional Throughput**
    :name: CPSW2g-tcp-bidirectional-throughput-interrupt-pacing
 
 .. csv-table::
-    :header: "Command Used","j7200-evm: THROUGHPUT (Mbits/sec)","j7200-evm: CPU Load % (LOCAL_CPU_UTIL)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)","j784s4-evm: THROUGHPUT (Mbits/sec)","j784s4-evm: CPU Load % (LOCAL_CPU_UTIL)"
+    :header: "Command Used","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1434.28","55.52","1852.99","33.77","1867.02","39.79","1871.41","8.15"
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1859.60","34.09","1867.98","45.94"
 
 Table: **CPSW TCP Bidirectional Throughput Interrupt Pacing**
 
@@ -615,13 +610,13 @@ Table: **CPSW TCP Bidirectional Throughput Interrupt Pacing**
    :name: CPSW2g-udp-throughput-0-loss
 
 .. csv-table::
-    :header: "Frame Size(bytes)","j7200-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j7200-evm: THROUGHPUT (Mbits/sec)","j7200-evm: Packets Per Second (kPPS)","j7200-evm: CPU Load % (LOCAL_CPU_UTIL)","j721e-idk-gw: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: Packets Per Second (kPPS)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: Packets Per Second (kPPS)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)","j784s4-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j784s4-evm: THROUGHPUT (Mbits/sec)","j784s4-evm: Packets Per Second (kPPS)","j784s4-evm: CPU Load % (LOCAL_CPU_UTIL)"
+    :header: "Frame Size(bytes)","j721e-idk-gw: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: Packets Per Second (kPPS)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: Packets Per Second (kPPS)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","18.00","30.39","211.00","89.29","18.00","32.58","226.00","87.16","18.00","30.90","215.00","90.62","18.00","32.05","223.00","22.68"
-    "128","82.00","142.94","218.00","90.68","82.00","149.33","228.00","87.95","82.00","28.73","44.00","18.40"
-    "256","210.00","322.78","192.00","88.31","210.00","383.84","228.00","87.94","210.00","359.07","214.00","90.26"
-    "1024","978.00","659.01","84.00","82.86","978.00","933.67","119.00","52.92","978.00","936.07","120.00","56.09"
-    "1518","1472.00","955.74","81.00","65.04","1472.00","955.17","81.00","36.49","1472.00","957.00","81.00","40.96"
+    "64","18.00","32.39","225.00","88.25","18.00","30.00","208.00","91.26"
+    "128","82.00","146.16","223.00","88.80","82.00","131.44","200.00","89.55"
+    "256","210.00","368.14","219.00","87.76","210.00","27.55","16.00","12.52"
+    "1024","978.00","675.97","86.00","35.83","978.00","700.58","90.00","50.47"
+    "1518","1472.00","592.23","50.00","23.48","1472.00","955.98","81.00","42.40"
 
 Table: **CPSW UDP Egress Throughput**
 |
@@ -629,13 +624,13 @@ Table: **CPSW UDP Egress Throughput**
 
 
 .. csv-table::
-    :header: "Frame Size(bytes)","j7200-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j7200-evm: THROUGHPUT (Mbits/sec)","j7200-evm: Packets Per Second (kPPS)","j7200-evm: CPU Load % (LOCAL_CPU_UTIL)","j721e-idk-gw: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: Packets Per Second (kPPS)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: Packets Per Second (kPPS)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)"
+    :header: "Frame Size(bytes)","j721e-idk-gw: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: Packets Per Second (kPPS)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: Packets Per Second (kPPS)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","18.00","1.11","8.00","7.10","18.00","5.53","38.00","13.65","18.00","1.22","8.00","4.97"
-    "128","82.00","10.23","16.00","6.22","82.00","21.71","33.00","12.60","82.00","5.25","8.00","6.54"
-    "256","210.00","17.64","11.00","8.80","210.00","17.64","11.00","3.93","210.00","32.59","19.00","13.86"
-    "1024","978.00","85.28","11.00","9.52","978.00","123.61","16.00","9.98","978.00","336.82","43.00","29.84"
-    "1518","1472.00","44.75","4.00","4.60","1472.00","949.39","81.00","59.83","1472.00","361.47","31.00","25.00"
+    "64","18.00","7.26","50.00","18.15","18.00","1.28","9.00","6.56"
+    "128","82.00","8.20","13.00","5.59","82.00","20.53","31.00","21.86"
+    "256","210.00","18.31","11.00","4.62","210.00","76.44","46.00","29.70"
+    "1024","978.00","107.19","14.00","8.80","978.00","180.73","23.00","15.57"
+    "1518","1472.00","216.68","18.00","13.52","1472.00","956.98","81.00","64.71"
 
 
 Table: **CPSW UDP Ingress Throughput (0% loss)**
@@ -645,24 +640,24 @@ Table: **CPSW UDP Ingress Throughput (0% loss)**
 
 
 .. csv-table::
-    :header: "Frame Size(bytes)","j7200-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j7200-evm: THROUGHPUT (Mbits/sec)","j7200-evm: Packets Per Second (kPPS)","j7200-evm: CPU Load % (LOCAL_CPU_UTIL)","j7200-evm: Packet Loss %","j721e-idk-gw: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: Packets Per Second (kPPS)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721e-idk-gw: Packet Loss %","j721s2-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: Packets Per Second (kPPS)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: Packet Loss %"
+    :header: "Frame Size(bytes)","j721e-idk-gw: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: Packets Per Second (kPPS)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721e-idk-gw: Packet Loss %","j721s2-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: Packets Per Second (kPPS)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: Packet Loss %"
 
-    "64","18.00","20.77","144.00","82.20","0.13","18.00","59.73","415.00","87.35","6.99","18.00","19.07","132.00","51.54","0.03"
-    "128","82.00","262.90","401.00","91.43","8.63","82.00","277.41","423.00","92.34","5.73","82.00","110.74","169.00","83.04","0.05"
-    "256","210.00","374.52","223.00","89.57","13.22","210.00","697.80","415.00","93.57","5.23","210.00","270.12","161.00","81.92","0.07"
-    "1024","978.00","929.46","119.00","83.65","0.60","978.00","927.67","119.00","83.24","0.12","978.00","898.80","115.00","80.41","0.11"
-    "1518","1472.00","956.42","81.00","86.29","0.04","1472.00","949.39","81.00","59.83","0.00","1472.00","949.61","81.00","67.41","0.03"
+    "64","18.00","59.08","410.00","88.04","1.78","18.00","18.61","129.00","71.03","0.04"
+    "128","82.00","261.28","398.00","90.62","1.68","82.00","86.81","132.00","72.16","4.34"
+    "256","210.00","669.82","399.00","92.76","1.82","210.00","234.27","139.00","80.60","0.06"
+    "1024","978.00","928.84","119.00","83.35","0.03","978.00","930.94","119.00","84.56","0.61"
+    "1518","1472.00","949.65","81.00","60.31","0.02","1472.00","956.98","81.00","64.71","0.00"
 
 Table: **CPSW UDP Ingress Throughput (possible loss)**
 
 |
+ 
+ 
 
+ 
 
-
-
-
-
-
+ 
+ 
 
 
 PCIe Driver
@@ -672,48 +667,26 @@ PCIe-ETH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
-    :header: "TCP Window Size(Kbytes)","j7200-evm: Bandwidth (Mbits/sec)","j721e-idk-gw: Bandwidth (Mbits/sec)","j721s2-evm: Bandwidth (Mbits/sec)"
+    :header: "TCP Window Size(Kbytes)","j7200-evm: Bandwidth (Mbits/sec)","j721e-idk-gw: Bandwidth (Mbits/sec)"
 
-    "8","222.40","0.00"
-    "16","222.40","0.00"
-    "32","0.00","0.00"
-    "64","567.20","0.00"
-    "128","724.00","0.00","0.00"
-    "256","800.00","0.00","0.00"
+    "8","209.60","271.20"
+    "16","224.00","239.20"
+    "32","348.00","376.80"
+    "64","574.40","598.40"
+    "128","717.60","751.20"
+    "256","808.00","796.80"
 
 Table: **PCI Ethernet**
 
 
-
+ 
 
 
 PCIe-NVMe-SSD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 
 
-
-
-
-J784S4-EVM
-"""""""""""""""""""""""""""
-
-
-
-
-.. csv-table::
-    :header: "Buffer size (bytes)","j784s4-evm: Write EXT4 Throughput (Mbytes/sec)","j784s4-evm: Write EXT4 CPU Load (%)","j784s4-evm: Read EXT4 Throughput (Mbytes/sec)","j784s4-evm: Read EXT4 CPU Load (%)"
-
-    "1m","1698.00","5.51","2461.00","2.61"
-    "4m","1733.00","6.21","2460.00","1.80"
-    "4k","184.00","12.61","285.00","12.55"
-    "256k","2113.00","7.18","2455.00","4.25"
-
-
-
-- Filesize used is: 10G
-- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
-- Platform: Speed 8GT/s, Width x4
-- SSD being used: INTEL OPTANE SSD 900P
-
+ 
 
 
 J721E-IDK-GW
@@ -725,18 +698,18 @@ J721E-IDK-GW
 .. csv-table::
     :header: "Buffer size (bytes)","j721e-idk-gw: Write EXT4 Throughput (Mbytes/sec)","j721e-idk-gw: Write EXT4 CPU Load (%)","j721e-idk-gw: Read EXT4 Throughput (Mbytes/sec)","j721e-idk-gw: Read EXT4 CPU Load (%)"
 
-    "1m","723.00","12.96","1523.00","6.40"
-    "4m","722.00","12.27","1520.00","5.29"
-    "4k","184.00","48.05","166.00","36.58"
-    "256k","723.00","12.61","1520.00","11.65"
+    "1m","720.00","13.11","1521.00","6.09"
+    "4m","721.00","11.86","1523.00","5.01"
+    "4k","187.00","48.64","166.00","36.34"
+    "256k","740.00","12.56","1520.00","11.87"
 
-
+ 
 
 - Filesize used is: 10G
-- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
+- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based 
 - Platform: Speed 8GT/s, Width x2
 - SSD being used: PLEXTOR PX-128M8PeY
-
+ 
 
 
 J7200-EVM
@@ -748,18 +721,18 @@ J7200-EVM
 .. csv-table::
     :header: "Buffer size (bytes)","j7200-evm: Write EXT4 Throughput (Mbytes/sec)","j7200-evm: Write EXT4 CPU Load (%)","j7200-evm: Read EXT4 Throughput (Mbytes/sec)","j7200-evm: Read EXT4 CPU Load (%)"
 
-    "1m","705.00","14.69","1527.00","6.85"
-    "4m","704.00","13.82","1523.00","5.71"
-    "4k","186.00","47.87","166.00","36.16"
-    "256k","708.00","13.60","1524.00","11.72"
+    "1m","717.00","14.80","1525.00","6.68"
+    "4m","713.00","13.96","1525.00","5.65"
+    "4k","186.00","48.63","167.00","36.12"
+    "256k","746.00","13.93","1523.00","11.57"
 
-
+ 
 
 - Filesize used is: 10G
-- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
+- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based 
 - Platform: Speed 8GT/s, Width x2
 - SSD being used: PLEXTOR PX-128M8PeY
-
+ 
 
 
 J721S2-EVM
@@ -771,32 +744,32 @@ J721S2-EVM
 .. csv-table::
     :header: "Buffer size (bytes)","j721s2-evm: Write EXT4 Throughput (Mbytes/sec)","j721s2-evm: Write EXT4 CPU Load (%)","j721s2-evm: Read EXT4 Throughput (Mbytes/sec)","j721s2-evm: Read EXT4 CPU Load (%)"
 
-    "1m","743.00","15.05","780.00","3.72"
-    "4m","743.00","13.60","781.00","3.27"
-    "4k","196.00","50.14","287.00","50.09"
-    "256k","743.00","15.09","779.00","6.43"
+    "1m","737.00","17.93","774.00","6.38"
+    "4m","737.00","15.64","776.00","5.39"
+    "4k","184.00","51.83","277.00","51.83"
+    "256k","736.00","15.94","778.00","8.22"
 
-
+ 
 
 - Filesize used is: 10G
-- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
+- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based 
 - Platform: Speed 8GT/s, Width x2
 - SSD being used: PLEXTOR PX-128M8PeY
+ 
 
+ 
+ 
+ 
 
-
-
-
-
-
+ 
 
 
 OSPI Flash Driver
 -------------------------
 
+ 
 
-
-
+ 
 
 
 J721E-IDK-GW
@@ -813,8 +786,8 @@ RAW
 
     "50","38.76"
 
-
-
+ 
+ 
 
 
 J7200-EVM
@@ -829,21 +802,37 @@ RAW
 .. csv-table::
     :header: "File size (Mbytes)","j7200-evm: Raw Read Throughput (Mbytes/sec)"
 
-    "50","238.09"
+    "50","217.39"
+
+ 
+ 
+
+ 
+
+
+J784S4-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 
 
+RAW
+"""""""""""""""""""""""""""
 
+.. csv-table::
+    :header: "File size (Mbytes)","j784s4-evm: Raw Read Throughput (Mbytes/sec)"
 
+    "50","263.16"
 
+ 
+ 
 
+ 
 
+ 
+ 
 
-
-
-
-
+ 
 
 
 UBoot QSPI/OSPI Driver
@@ -858,10 +847,10 @@ J721E-IDK-GW
 .. csv-table::
     :header: "File size (bytes in hex)","j721e-idk-gw: Write Throughput (Kbytes/sec)","j721e-idk-gw: Read Throughput (Kbytes/sec)"
 
-    "400000","1537.54","37577.98"
-    "800000","1539.85","39009.52"
-    "1000000","1540.72","39766.99"
-    "2000000","1541.66","40206.13"
+    "400000","1632.52","195047.62"
+    "800000","1634.15","240941.18"
+    "1000000","1632.20","277694.92"
+    "2000000","1631.06","300623.85"
 
 
 
@@ -873,10 +862,10 @@ J7200-EVM
 .. csv-table::
     :header: "File size (bytes in hex)","j7200-evm: Write Throughput (Kbytes/sec)","j7200-evm: Read Throughput (Kbytes/sec)"
 
-    "400000","348.63","195047.62"
-    "800000","350.55","248242.42"
-    "1000000","353.19","277694.92"
-    "2000000","354.63","300623.85"
+    "400000","344.75","195047.62"
+    "800000","348.08","240941.18"
+    "1000000","348.80","277694.92"
+    "2000000","349.88","300623.85"
 
 
 
@@ -887,10 +876,10 @@ J721S2-EVM
 .. csv-table::
     :header: "File size (bytes in hex)","j721s2-evm: Write Throughput (Kbytes/sec)","j721s2-evm: Read Throughput (Kbytes/sec)"
 
-    "400000","383.77","204800.00"
-    "800000","385.34","248242.42"
-    "1000000","389.19","282482.76"
-    "2000000","394.76","300623.85"
+    "400000","377.58","204800.00"
+    "800000","380.07","248242.42"
+    "1000000","378.37","282482.76"
+    "2000000","370.11","303407.41"
 
 
 
@@ -910,12 +899,12 @@ J721S2-EVM
 
 
 
+ 
+ 
 
+ 
 
-
-
-
-
+ 
 
 
 UBoot UFS Driver
@@ -930,20 +919,20 @@ J721E-IDK-GW
 .. csv-table::
     :header: "File size (bytes in hex)","j721e-idk-gw: Write Throughput (Kbytes/sec)","j721e-idk-gw: Read Throughput (Kbytes/sec)"
 
-    "400000","97523.81","372363.64"
-    "800000","95255.81","481882.35"
-    "1000000","99296.97","564965.52"
+    "400000","99902.44","372363.64"
+    "800000","98698.80","512000.00"
+    "1000000","95255.81","606814.81"
 
 |
 
 
 
+ 
 
+ 
 
-
-
-
-
+ 
+ 
 
 
 EMMC Driver
@@ -967,10 +956,10 @@ J7200-EVM
 .. csv-table::
     :header: "Buffer size (bytes)","j7200-evm: Write EXT4 Throughput (Mbytes/sec)","j7200-evm: Write EXT4 CPU Load (%)","j7200-evm: Read EXT4 Throughput (Mbytes/sec)","j7200-evm: Read EXT4 CPU Load (%)"
 
-    "1m","56.20","1.53","314.00","1.75"
-    "4m","56.00","1.31","306.00","1.12"
-    "4k","54.90","25.36","55.90","23.71"
-    "256k","56.30","1.66","314.00","3.26"
+    "1m","56.10","1.38","314.00","1.82"
+    "4m","56.40","1.20","309.00","1.33"
+    "4k","55.30","26.10","55.80","24.01"
+    "256k","56.30","1.71","314.00","3.56"
 
 |
 
@@ -983,10 +972,10 @@ J721E-IDK-GW
 .. csv-table::
     :header: "Buffer size (bytes)","j721e-idk-gw: Write EXT4 Throughput (Mbytes/sec)","j721e-idk-gw: Write EXT4 CPU Load (%)","j721e-idk-gw: Read EXT4 Throughput (Mbytes/sec)","j721e-idk-gw: Read EXT4 CPU Load (%)"
 
-    "1m","58.80","1.46","175.00","0.97"
-    "4m","59.20","1.33","175.00","0.87"
-    "4k","48.60","22.90","56.70","23.76"
-    "256k","58.90","1.68","174.00","2.08"
+    "1m","59.50","1.25","175.00","1.02"
+    "4m","59.10","1.10","175.00","0.66"
+    "4k","49.80","23.01","56.60","23.65"
+    "256k","58.90","1.70","174.00","1.93"
 
 |
 
@@ -999,10 +988,10 @@ J721S2-EVM
 .. csv-table::
     :header: "Buffer size (bytes)","j721s2-evm: Write EXT4 Throughput (Mbytes/sec)","j721s2-evm: Write EXT4 CPU Load (%)","j721s2-evm: Read EXT4 Throughput (Mbytes/sec)","j721s2-evm: Read EXT4 CPU Load (%)"
 
-    "1m","56.30","1.58","314.00","1.67"
-    "4m","56.30","1.35","292.00","1.24"
-    "4k","59.10","29.79","56.30","25.55"
-    "256k","56.30","1.71","314.00","3.45"
+    "1m","60.40","3.76","315.00","3.47"
+    "4m","60.30","3.43","314.00","3.61"
+    "4k","59.00","32.34","56.40","27.76"
+    "256k","60.20","4.00","316.00","5.24"
 
 |
 
@@ -1015,14 +1004,21 @@ J784S4-EVM
 .. csv-table::
     :header: "Buffer size (bytes)","j784s4-evm: Write EXT4 Throughput (Mbytes/sec)","j784s4-evm: Write EXT4 CPU Load (%)","j784s4-evm: Read EXT4 Throughput (Mbytes/sec)","j784s4-evm: Read EXT4 CPU Load (%)"
 
-    "1m","89.60","0.45","293.00","0.40"
-    "4m","96.70","0.46","248.00","0.23"
-    "4k","76.70","11.19","90.90","10.61"
-    "256k","90.30","0.47","292.00","0.81"
+    "1m","89.00","0.45","174.00","0.31"
+    "4m","88.60","0.43","174.00","0.20"
+    "4k","63.10","9.19","93.10","11.17"
+    "256k","88.80","0.57","173.00","0.52"
 
 |
 
 
+ 
+
+ 
+
+ 
+
+ 
 
 
 
@@ -1034,15 +1030,8 @@ J784S4-EVM
 
 
 
-
-
-
-
-
-
-
-
-
+ 
+ 
 
 
 UBoot EMMC Driver
@@ -1057,8 +1046,8 @@ J7200-EVM
 .. csv-table::
     :header: "File size (bytes in hex)","j7200-evm: Write Throughput (Kbytes/sec)","j7200-evm: Read Throughput (Kbytes/sec)"
 
-    "2000000","56790.29","303407.41"
-    "4000000","56938.31","309132.08"
+    "2000000","56109.59","309132.08"
+    "4000000","57136.88","300623.85"
 
 |
 
@@ -1071,8 +1060,8 @@ J721E-IDK-GW
 .. csv-table::
     :header: "File size (bytes in hex)","j721e-idk-gw: Write Throughput (Kbytes/sec)","j721e-idk-gw: Read Throughput (Kbytes/sec)"
 
-    "2000000","59041.44","173375.66"
-    "4000000","58357.97","175699.73"
+    "2000000","61020.48","173375.66"
+    "4000000","60290.71","177124.32"
 
 |
 
@@ -1085,8 +1074,8 @@ J721S2-EVM
 .. csv-table::
     :header: "File size (bytes in hex)","j721s2-evm: Write Throughput (Kbytes/sec)","j721s2-evm: Read Throughput (Kbytes/sec)"
 
-    "2000000","57186.74","312076.19"
-    "4000000","57690.14","319687.80"
+    "2000000","60235.29","309132.08"
+    "4000000","60681.48","303407.41"
 
 |
 
@@ -1099,8 +1088,8 @@ J784S4-EVM
 .. csv-table::
     :header: "File size (bytes in hex)","j784s4-evm: Write Throughput (Kbytes/sec)","j784s4-evm: Read Throughput (Kbytes/sec)"
 
-    "2000000","100207.95","282482.76"
-    "4000000","101448.92","295207.21"
+    "2000000","100824.62","151004.61"
+    "4000000","95394.47","260063.49"
 
 |
 
@@ -1115,10 +1104,10 @@ J784S4-EVM
 
 
 
+ 
+ 
 
-
-
-
+ 
 
 
 MMC/SD Driver
@@ -1132,7 +1121,15 @@ MMC/SD Driver
   sensitive applications, umount the auto-mounted filesystem and
   re-mount in async mode.
 
-|
+| 
+
+ 
+
+
+
+
+
+ 
 
 
 
@@ -1141,17 +1138,9 @@ MMC/SD Driver
 
 
 
+ 
 
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 J7200-EVM
@@ -1161,16 +1150,44 @@ J7200-EVM
 .. csv-table::
     :header: "Buffer size (bytes)","j7200-evm: Write EXT4 Throughput (Mbytes/sec)","j7200-evm: Write EXT4 CPU Load (%)","j7200-evm: Read EXT4 Throughput (Mbytes/sec)","j7200-evm: Read EXT4 CPU Load (%)"
 
-    "1m","19.40","0.73","87.00","0.75"
-    "4m","19.60","0.61","87.00","0.67"
-    "4k","5.13","3.18","16.60","7.40"
-    "256k","18.20","0.79","84.50","1.28"
+    "1m","19.20","0.78","87.00","0.78"
+    "4m","19.10","0.68","86.70","0.60"
+    "4k","5.19","3.25","16.70","7.41"
+    "256k","18.70","0.85","84.10","0.98"
 
 |
 
 
 
+J721S2-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|
 
+.. csv-table::
+    :header: "Buffer size (bytes)","j721s2-evm: Write EXT4 Throughput (Mbytes/sec)","j721s2-evm: Write EXT4 CPU Load (%)","j721s2-evm: Read EXT4 Throughput (Mbytes/sec)","j721s2-evm: Read EXT4 CPU Load (%)"
+
+    "1m","20.00","0.81","86.60","0.94"
+    "4m","19.70","0.79","86.70","0.76"
+    "4k","4.81","3.22","16.70","7.74"
+    "256k","19.20","0.93","84.30","1.33"
+
+|
+
+
+
+J784S4-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|
+
+.. csv-table::
+    :header: "Buffer size (bytes)","j784s4-evm: Write EXT4 Throughput (Mbytes/sec)","j784s4-evm: Write EXT4 CPU Load (%)","j784s4-evm: Read EXT4 Throughput (Mbytes/sec)","j784s4-evm: Read EXT4 CPU Load (%)"
+
+    "1m","18.20","0.15","86.70","0.21"
+    "4m","18.40","0.16","86.30","0.20"
+    "4k","4.75","0.84","16.60","2.23"
+    "256k","18.10","0.15","84.30","0.36"
+
+|
 
 
 
@@ -1182,14 +1199,16 @@ J721E-IDK-GW
 .. csv-table::
     :header: "Buffer size (bytes)","j721e-idk-gw: Write EXT4 Throughput (Mbytes/sec)","j721e-idk-gw: Write EXT4 CPU Load (%)","j721e-idk-gw: Read EXT4 Throughput (Mbytes/sec)","j721e-idk-gw: Read EXT4 CPU Load (%)"
 
-    "1m","18.30","0.60","43.50","0.52"
-    "4m","18.00","0.51","43.40","0.36"
-    "4k","4.89","2.80","13.70","5.81"
-    "256k","18.00","0.78","43.00","0.60"
+    "1m","18.80","0.70","43.50","0.48"
+    "4m","19.40","0.59","43.50","0.45"
+    "4k","4.75","2.76","13.70","5.93"
+    "256k","18.50","0.70","42.80","0.71"
 
 |
 
 
+ 
+ 
 
 
 
@@ -1203,19 +1222,17 @@ J721E-IDK-GW
 
 
 
+ 
+
+ 
+
+ 
 
 
 
 
 
-
-
-
-
-
-
-
-
+ 
 |
 
 
@@ -1230,7 +1247,7 @@ The performance numbers were captured using the following:
 
 UBoot MMC/SD Driver
 -------------------------
-|
+| 
 
 
 J721E-IDK-GW
@@ -1239,9 +1256,9 @@ J721E-IDK-GW
 .. csv-table::
     :header: "File size (bytes in hex)","j721e-idk-gw: Write Throughput (Kbytes/sec)","j721e-idk-gw: Read Throughput (Kbytes/sec)"
 
-    "400000","17808.70","34420.17"
-    "800000","18703.20","39766.99"
-    "1000000","17925.60","43002.62"
+    "400000","1043.30","34133.33"
+    "800000","605.96","39574.88"
+    "1000000","1281.80","43115.79"
 
 
 
@@ -1252,9 +1269,9 @@ J7200-EVM
 .. csv-table::
     :header: "File size (bytes in hex)","j7200-evm: Write Throughput (Kbytes/sec)","j7200-evm: Read Throughput (Kbytes/sec)"
 
-    "400000","12603.08","71859.65"
-    "800000","19412.32","81108.91"
-    "1000000","22692.52","86687.83"
+    "400000","17355.93","73142.86"
+    "800000","18492.10","81920.00"
+    "1000000","27536.13","87148.94"
 
 
 The performance numbers were captured using the following:
@@ -1270,9 +1287,9 @@ J721S2-EVM
 .. csv-table::
     :header: "File size (bytes in hex)","j721s2-evm: Write Throughput (Kbytes/sec)","j721s2-evm: Read Throughput (Kbytes/sec)"
 
-    "400000","30117.65","62060.61"
-    "800000","35008.55","74472.73"
-    "1000000","18919.17","82331.66"
+    "400000","13429.51","61134.33"
+    "800000","21501.31","73801.80"
+    "1000000","32251.97","82331.66"
 
 
 The performance numbers were captured using the following:
@@ -1288,9 +1305,9 @@ J784S4-EVM
 .. csv-table::
     :header: "File size (bytes in hex)","j784s4-evm: Write Throughput (Kbytes/sec)","j784s4-evm: Read Throughput (Kbytes/sec)"
 
-    "400000","19412.32","56888.89"
-    "800000","33300.81","70620.69"
-    "1000000","24975.61","80313.73"
+    "400000","21903.74","56109.59"
+    "800000","22321.53","70017.09"
+    "1000000","23043.60","80313.73"
 
 
 The performance numbers were captured using the following:
@@ -1321,6 +1338,67 @@ The performance numbers were captured using the following:
 USB Driver
 -------------------------
 
+USB Host Controller
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. warning::
+
+  **IMPORTANT**: For Mass-storage applications, the performance numbers can be severely
+  affected if the media is mounted in sync mode. Hot plug scripts in the
+  filesystem mount removable media in sync mode to ensure data
+  integrity. For performance sensitive applications, umount the
+  auto-mounted filesystem and re-mount in async mode.
+
+|
+
+**Setup** : Inateck ASM1153E USB hard disk is
+connected to usb0 port. File read/write performance data on usb0 port is
+captured.
+
+|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+J721E-IDK-GW
+"""""""""""""""""""""""""""""""
+|
+
+.. csv-table::
+    :header: "Buffer size (bytes)","j721e-idk-gw: Write EXT4 Throughput (Mbytes/sec)","j721e-idk-gw: Write EXT4 CPU Load (%)","j721e-idk-gw: Read EXT4 Throughput (Mbytes/sec)","j721e-idk-gw: Read EXT4 CPU Load (%)"
+
+    "1m","396.00","7.74","426.00","2.52"
+    "4m","399.00","6.93","425.00","2.12"
+    "4k","30.90","23.86","61.80","27.34"
+    "256k","363.00","11.81","405.00","5.49"
+
+|
+
+
+
+
+
+
+
+
+ 
+
+|
+ 
 
 
 USB Device Controller
@@ -1336,9 +1414,9 @@ USB Device Controller
 
 
 .. csv-table::
-    :header: "Number of Blocks","j721s2-evm: Throughput (MB/sec)","j784s4-evm: Throughput (MB/sec)"
+    :header: "Number of Blocks","j721e-idk-gw: Throughput (MB/sec)","j721s2-evm: Throughput (MB/sec)"
 
-    "150","30.30","41.10"
+    "150","39.90","31.70"
 
 Table: **USBDEVICE HIGHSPEED SLAVE READ THROUGHPUT**
 
@@ -1348,9 +1426,9 @@ Table: **USBDEVICE HIGHSPEED SLAVE READ THROUGHPUT**
 
 
 .. csv-table::
-    :header: "Number of Blocks","j721s2-evm: Throughput (MB/sec)","j784s4-evm: Throughput (MB/sec)"
+    :header: "Number of Blocks","j721e-idk-gw: Throughput (MB/sec)","j721s2-evm: Throughput (MB/sec)"
 
-    "150","29.50","31.30"
+    "150","38.20","30.90"
 
 Table: **USBDEVICE HIGHSPEED SLAVE WRITE THROUGHPUT**
 
@@ -1360,15 +1438,111 @@ Table: **USBDEVICE HIGHSPEED SLAVE WRITE THROUGHPUT**
 
 
 
-
-
-
+ 
+ 
+ 
 
 
 CRYPTO Driver
 -------------------------
 
 
+OpenSSL Performance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table::
+    :header: "Algorithm","Buffer Size (in bytes)","j721e-idk-gw: throughput (KBytes/Sec)","j721s2-evm: throughput (KBytes/Sec)","j784s4-evm: throughput (KBytes/Sec)"
+
+    "aes-128-cbc","1024","48453.63","45772.12","44823.89"
+    "aes-128-cbc","16","942.70","888.04","676.94"
+    "aes-128-cbc","16384","193320.28","186985.13","184582.14"
+    "aes-128-cbc","256","14607.87","13907.54","13579.01"
+    "aes-128-cbc","64","3768.34","3648.83","3144.62"
+    "aes-128-cbc","8192","161095.68","153356.97","151259.82"
+    "aes-128-ecb","1024","49528.49","46890.67","36290.22"
+    "aes-128-ecb","16","937.08","910.89","676.62"
+    "aes-128-ecb","16384","199983.10","187077.97","187711.49"
+    "aes-128-ecb","256","14722.99","13981.01","10468.52"
+    "aes-128-ecb","64","3802.43","3476.31","2711.68"
+    "aes-128-ecb","8192","165606.74","155216.55","141399.38"
+    "aes-192-cbc","1024","48661.85","46075.22","44281.17"
+    "aes-192-cbc","16","953.85","912.28","807.53"
+    "aes-192-cbc","16384","183009.28","173249.88","175134.04"
+    "aes-192-cbc","256","14654.89","13748.31","13618.26"
+    "aes-192-cbc","64","3799.55","3545.00","3516.25"
+    "aes-192-cbc","8192","153946.79","146650.45","146090.67"
+    "aes-192-ecb","1024","49100.80","44446.72","44505.09"
+    "aes-192-ecb","16","955.56","905.09","661.71"
+    "aes-192-ecb","16384","187389.27","180655.45","179879.94"
+    "aes-192-ecb","256","14733.48","13853.10","13811.20"
+    "aes-192-ecb","64","3814.57","3580.12","3079.34"
+    "aes-192-ecb","8192","155828.22","150451.54","149214.55"
+    "aes-256-cbc","1024","48290.13","44231.34","43749.72"
+    "aes-256-cbc","16","953.80","907.91","691.89"
+    "aes-256-cbc","16384","169547.09","165096.11","163829.08"
+    "aes-256-cbc","256","14762.15","13807.10","13485.91"
+    "aes-256-cbc","64","3805.87","3607.72","2964.33"
+    "aes-256-cbc","8192","144089.09","138824.36","137885.01"
+    "aes-256-ecb","1024","48545.45","45822.29","43770.20"
+    "aes-256-ecb","16","948.38","899.13","686.00"
+    "aes-256-ecb","16384","174631.59","167646.55","170120.53"
+    "aes-256-ecb","256","14718.12","13825.79","11266.39"
+    "aes-256-ecb","64","3791.81","3463.36","2742.27"
+    "aes-256-ecb","8192","148307.97","141860.86","141713.41"
+    "des3","1024","40902.31","39253.67","32882.01"
+    "des3","16","940.37","910.05","684.22"
+    "des3","16384","97107.97","96343.38","95300.27"
+    "des3","256","13781.33","12932.18","10467.84"
+    "des3","64","3764.35","3632.41","2742.49"
+    "des3","8192","88888.66","87258.45","82507.09"
+    "sha1","1024","57184.26","57512.62","57071.96"
+    "sha1","16","949.11","932.65","956.85"
+    "sha1","16384","460554.24","464382.63","459745.96"
+    "sha1","256","15081.47","15106.99","14994.43"
+    "sha1","64","3774.25","3758.81","3785.98"
+    "sha1","8192","311825.75","309021.35","310326.61"
+    "sha256","1024","57045.33","57306.45","56020.65"
+    "sha256","16","943.25","945.89","944.29"
+    "sha256","16384","451608.58","453432.66","449462.27"
+    "sha256","256","15084.89","14586.03","14753.96"
+    "sha256","64","3774.19","3762.97","3740.31"
+    "sha256","8192","307664.21","307727.02","300007.42"
+    "sha512","1024","45960.53","45791.23","44510.21"
+    "sha512","16","958.94","938.88","933.77"
+    "sha512","16384","150350.51","150033.75","149924.52"
+    "sha512","256","14068.39","14111.32","13743.02"
+    "sha512","64","3823.89","3833.47","3722.45"
+    "sha512","8192","130717.01","128614.40","129111.38"
+
+
+|
+|
+
+
+
+.. csv-table::
+    :header: "Algorithm","j721e-idk-gw: CPU Load","j721s2-evm: CPU Load","j784s4-evm: CPU Load"
+
+    "aes-128-cbc","33.00","33.00","34.00"
+    "aes-128-ecb","35.00","34.00","34.00"
+    "aes-192-cbc","34.00","33.00","34.00"
+    "aes-192-ecb","34.00","34.00","33.00"
+    "aes-256-cbc","33.00","33.00","32.00"
+    "aes-256-ecb","33.00","34.00","32.00"
+    "des3","30.00","30.00","30.00"
+    "sha1","99.00","99.00","99.00"
+    "sha256","99.00","99.00","99.00"
+    "sha512","99.00","99.00","99.00"
+
+ 
+
+Listed for each algorithm are the code snippets used to run each
+  benchmark test.
+
+::
+    time -v openssl speed -elapsed -evp aes-128-cbc
+
+ 
 
 
 
@@ -1379,13 +1553,13 @@ IPSec Software Performance
 .. csv-table::
     :header: "Algorithm","j721e-idk-gw: Throughput (Mbps)","j721e-idk-gw: Packets/Sec","j721e-idk-gw: CPU Load"
 
-    "3des","174.90","15.00","28.19"
-    "aes128","724.30","64.00","57.65"
-    "aes192","77.30","6.00","101.88"
-    "aes256","568.60","50.00","82.50"
+    "3des","211.80","18.00","34.62"
+    "aes128","654.10","58.00","57.73"
+    "aes192","722.50","64.00","57.72"
+    "aes256","721.90","64.00","57.56"
 
-
-
+ 
+ 
 
 DCAN Driver
 -------------------------
