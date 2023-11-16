@@ -532,6 +532,79 @@ pipelines provided some insight on how these configurations can be done.
    hinting to the driver what is desired, but the driver inevitably makes the final
    decision.
 
+Furthermore, controls have been added to give the user the ability to customize the memory configuration in the driver. The default
+configuration is to adhere to the H.264 spec while simultaneously achieving max performance as per IMG hardware. However,
+not every stream will need to use the same amount of Decoded Picture Buffers (DPB) - buffers that are used to hold the output
+from a video decode operation. Buffers found in the DPB list are used for reference for future frames. The stream in use
+may be configured in a way that only one reference frame is needed. In this case, the default configuration is using more memory
+than necessary.
+
+To revert the driver back to previous version that only uses 1 reference frame, see below gstreamer pipeline. This pipeline will
+result in the driver communicating to the firmware that only 1 reference frame should be retained during decode proces. 
+
+.. code-block:: text
+
+   Use 1 Reference Frame for Decode
+   target # gst-launch-1.0 filesrc location=<filename.264> ! h264parse ! v4l2h264dec extra-controls=”s,max_dec_frame_buffering=1” ! waylandsink
+
+.. note:: 
+   This might decrease the display latency if the stream does not depend on more than a single reference frame, 
+   but it will make the driver less compliant with the H.264 specification.
+
+The algorithm to calculate the number of buffers is now as follows.
+
+.. code-block:: text
+
+   num_ref_frames + ((num_cores * slots_per_core) - 1) + display_pipeline_length
+
+.. note::
+   num_cores and slots_per_core are constants set in the driver that correspond to the hardware pipelines on the DECODER. These values 
+   can be changed, but it is not recommened as it could lead to performance issues.
+
+The driver now allows for complete configuration of this algorithm by exposing these four new controls to the user.
+
+.. code-block:: text
+
+   max_dec_frame_buffering:   min=0 max=16 step=1 default=0 value=0
+   display_pipeline_size:     min=0 max=6 step=1 default=3 value=3
+   img_extra_decode_buffers:  min=-1 max=3 step=1 default=-1 value=-1
+   override_spec_dpb_buffers: min=-1 max=16 step=1 default=-1 value=-1
+
+.. note::
+   The combination of override_spec_dpb_buffers + img_extra_decode_buffers + display_pipeline_length will translate to the total
+   number of buffer used by the driver to perform decode.
+
+If override_spec_dpb_buffers is set to -1, then the driver will base the number of DPBs using the algorithm supplied in the 
+H.264 specification based on profile and level. Setting img_extra_decode_buffers will overwrite the ((num_cores * slots_per_core) - 1) 
+portion of buffer allocation algorithm.
+
+The following pipelines highlight how these controls can be used to control memory allocation in the driver.
+
+.. code-block:: text
+
+   Remove additional buffers allocated due to cores present on DECODER
+   target # gst-launch-1.0 filesrc location=<filename.264> ! h264parse ! v4l2h264dec 
+   extra-controls=”s,max_dec_frame_buffering=0,display_pipeline_size=2,img_extra_decode_buffers=0” ! waylandsink
+
+.. code-block:: text
+
+   Hardcode number of reference frames used
+   target # gst-launch-1.0 filesrc location=<filename.264> ! h264parse ! v4l2h264dec 
+   extra-controls=”s,max_dec_frame_buffering=0,display_pipeline_size=2,img_extra_decode_buffers=0, override_spec_dpb_buffers=2” ! kmssink
+
+.. note::
+   Keep in mind that while this allows for complete control, it is important to understand that changing these values can negatively impact decode
+   performance while reducing memory consumption. It is best to trial different configurations and select what is best for the use case if reducing
+   memory consumption is desired.
+
+
+All external controls supported by Encoder and Decoder can be seen using below command.
+
+.. code-block:: text
+
+   Encoder: v4l2-ctl -d 1 -l
+   Decoder: v4l2-ctl -d 0 -l
+
 |
 
 Limitations of GStreamer Plugins
