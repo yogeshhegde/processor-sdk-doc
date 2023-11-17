@@ -13,7 +13,7 @@
 
 Replacement Variables
 ---------------------
-'__PART_FAMILY_NAME__'           : 'Jacinto 7 AHP'
+'__PART_FAMILY_NAME__'           : 'J784S4'
 '__PART_FAMILY_DEVICE_NAMES__'   : 'J784S4'
 '__PRODUCT_LINE_NAME__'          : 'Jacinto'
 '__SDK_BUILD_MACHINE__'          : 'j784s4-evm'

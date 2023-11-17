@@ -1,4 +1,4 @@
-# Device Family is J721S2 = Jacinto 7 AEP
+# Device Family is J721S2
 fam_name = 'AM68'
 
 # Project name and HTML title
