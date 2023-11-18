@@ -654,6 +654,22 @@ Following is a brief explanation of layers shown in the diagram:
         CONFIG_PCIE_CADENCE=y
         CONFIG_PCIE_CADENCE_HOST=y
 
+    .. rubric:: **Compliance Mode**
+        :name: compliance-mode
+
+    In RC mode of operation, the Endpoint device can be forced to enter
+    Compliance Mode for PCIe compliance testing by setting the "EC" bit
+    in the LINK_CTRL_STATUS_2 register of the respective PCIe RC instance.
+    Setting "EC" to 1 initiates a hot reset thereby forcing the Endpoint
+    device into Compliance mode. The "EC" bit can be set from command-line
+    by using devmem2 utility as follows:
+
+        devmem2 <address> w <value>
+
+    where <address> is the address of LINK_CTRL_STATUS_2 register and
+    <value> is the resulting value to be written with "EC" bit of the
+    register set.
+
     .. rubric:: **Testing Details**
        :name: testing-details
 
