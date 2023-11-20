@@ -156,10 +156,10 @@ Create SD Card using bmap-tools
 Create SD Card with custom images
 ---------------------------------
 
-Often times you will use TFTP and NFS during development to transfer you
+Often times you will use TFTP and NFS during development to transfer your
 kernel images and boot your root file systems respectively. Once you are
-done with your development you may want place these images onto an SD
-card so that they can be used stand-along without requiring a network
+done with your development you may want to place these images onto an SD
+card so that they can be used stand-alone without requiring a network
 connection to a server.
 
 For this purpose, the |__SDK_FULL_NAME__| package includes a script in the
