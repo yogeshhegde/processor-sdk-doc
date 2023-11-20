@@ -27,7 +27,7 @@ Prerequisites (One-time setup)
 .. rubric:: Host Setup - Ubuntu (Recommended)
    :name: Host Setup - ubuntu (Recommended)
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKL','j7_foundational')
 
     The recommended Linux distribution is Ubuntu 22.04.
 
@@ -35,7 +35,7 @@ The following build host packages are required for Ubuntu. The following
 command will install the required tools on the Ubuntu Linux
 distribution.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKL','j7_foundational')
 
     For Ubuntu 22.04, please run the following:
 
@@ -135,7 +135,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
         export LANGUAGE=en_US.UTF-8
         ulimit -n 4096
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     |__SDK_FULL_NAME__| uses the 'oe-layersetup' tool to configure the meta layers. If you do not have the Linux SDK package installed:
     ::
@@ -221,7 +221,7 @@ The "Build Output" is given relative to the
         | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
         +------------------------------+---------------------------------------------------------------+----------------------------+
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     .. rubric:: Platforms
 
@@ -468,7 +468,7 @@ the recipe and all its dependencies.
     folder, independent shared objects (.so files) under packages-split
     folder, and IPKs under deploy-ipks folder.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     For example, the command below builds only the jailhouse recipe and all the
     dependencies it defines.
@@ -498,7 +498,7 @@ the recipe and all its dependencies.
 
     ``MACHINE=<machine> bitbake opencl``
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     When needed, source code under the work directory (e.g.,
     **arago-tmp-[toolchain]/work/<machine>-linux/jailhouse**/git) can
@@ -523,7 +523,7 @@ the recipe and all its dependencies.
 
     ``opkg install [package_ipk].ipk``
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     To install a modified and rebuilt package, copy the new IPKs from the
     deploy-ipks folder (e.g.,

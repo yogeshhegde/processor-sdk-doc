@@ -14,7 +14,7 @@ SDK File System Optimization/Customization
     in this article are installed by default in the Processor SDK Linux file
     system for your convenience.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     The purpose of this article is to explain the file system that is
     delivered as part of the |__SDK_FULL_NAME__| and how this file system
@@ -45,7 +45,7 @@ SDK File System Optimization/Customization
     be used as a starting point for system optimization as discussed in the
     next sections.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     The |__SDK_FULL_NAME__| ships with a default file system:
 

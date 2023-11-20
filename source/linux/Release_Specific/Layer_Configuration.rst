@@ -19,7 +19,7 @@ meta layers. These are the <config> used in the command:
     | processor-sdk-09.01.00-legacy-config.txt | Processor SDK 09.01.00.01 Release | am335x-evm, am437x-evm          |
     +------------------------------------------+-----------------------------------+---------------------------------+
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     |
     | The following config files are located in the **configs/**

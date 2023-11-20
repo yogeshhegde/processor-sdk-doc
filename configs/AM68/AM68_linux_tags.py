@@ -1,10 +1,10 @@
 # Device Family is J721S2
-fam_name = 'J721S2'
+fam_name = 'AM68'
 
 # Project name and HTML title
 sdk_product = 'null' #todo: remove after the new structure is used for all device families
-project = u'Processor SDK Linux for J721s2'
-html_title = 'Processor SDK Linux for J721s2 Documentation'
+project = u'Processor SDK Linux for AM68'
+html_title = 'Processor SDK Linux for AM68 Documentation'
 
 # The master toctree document.
 master_doc = 'devices/J7_Family/linux/index'

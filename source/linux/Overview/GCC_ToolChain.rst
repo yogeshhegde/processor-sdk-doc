@@ -103,7 +103,7 @@ architectures found in Processor SDK.
     | aarch64-none-linux-gnu-  | ARMv8        | am65xx-evm, am62xx-evm, am62xx-lp-evm, am64xx-evm                       |
     +--------------------------+--------------+-------------------------------------------------------------------------+
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     +-----------------------+--------------+-------------------------------------------------------------------------+
     | Toolchain Prefix      | Architecture | Processor SDK Device                                                    |
@@ -187,12 +187,12 @@ the kernel to fail to compile.
 
 .. rubric:: Usage
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     The following sections give some examples of how to use the included
     toolchain to compile a simple *HelloWorld* application.
 
-.. ifconfig:: CONFIG_sdk not in ('PSDKL')
+.. ifconfig:: CONFIG_sdk not in ('PSDKL','j7_foundational')
 
     The following sections give some examples of how to use the included
     toolchain to compile simple applications such as *HelloWorld* to more
@@ -254,7 +254,7 @@ This should yield output like:
 
   helloworld: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, with debug_info, not stripped
 
-.. ifconfig:: CONFIG_sdk not in ('PSDKL')
+.. ifconfig:: CONFIG_sdk not in ('PSDKL','j7_foundational')
 
     .. rubric:: Using PThreads
        :name: using-pthreads
@@ -338,7 +338,7 @@ This should yield output like:
       host# ${TOOLCHAIN_PREFIX}gcc -lpthread thread-ex.c -o thread-ex
 
 
-.. ifconfig:: CONFIG_sdk not in ('PSDKL')
+.. ifconfig:: CONFIG_sdk not in ('PSDKL','j7_foundational')
 
     .. rubric:: Configure/Autotools
        :name: configureautotools

@@ -20,7 +20,7 @@ TI microprocessor.
     target filesystem, example applications, toolchain and board support
     package, ease of use scripts and documentation.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     The SDK consists of a development filesystem, a
     target filesystem, example applications, toolchain and board support
@@ -54,7 +54,7 @@ distributions.
        Linux Host PC (using a USB SD Card reader).  The SDK Installer is found
        in the START\_HERE partition of the SD card.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     .. rubric:: Downloading the SDK installer
        :name: downloading-the-sdk-installer
@@ -72,7 +72,7 @@ distributions.
     (probably the Downloads directory if downloaded or the START\_HERE
     partition mounted from the SD Card) and run the following commands:
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     Make sure that the execute permissions are set. Bring up a terminal
     window and change directories to where the installer is located
@@ -86,7 +86,7 @@ distributions.
 Alternatively, you can give execute permissions and run the "|__SDK_INSTALL_FILE__|"
 by double clicking on it within your Linux host PC.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     .. note::
        As a part of the installation, the packaging will run a script to configure your
@@ -131,14 +131,14 @@ The default selection of where to install is the user's home directory.
 
     .. Image:: /images/Processor_sdk_select_directory.png
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     .. Image:: /images/Processor_sdk_jacinto_select_directory.png
 
 
 After the installation, refer to section `Setting up host environment <Run_Setup_Scripts.html>`__ for next steps.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
   .. rubric:: Yocto Configuration
      :name: yocto-configuration

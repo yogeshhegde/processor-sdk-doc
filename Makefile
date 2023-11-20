@@ -26,7 +26,7 @@ ifeq ($(DEVFAMILY_UP), AM64X)
  CONFDIR = source/devices/$(DEVFAMILY_UP)
  TAGFILE = configs/$(DEVFAMILY_UP)/$(DEVFAMILY_UP)_tags.py
 else
- ifeq ($(DEVFAMILY_UP), $(filter $(DEVFAMILY_UP), J721E J7200 J721S2 J784S4))
+ ifeq ($(DEVFAMILY_UP), $(filter $(DEVFAMILY_UP), J721E J7200 J721S2 J784S4 AM68 AM69))
   CONFDIR = source/devices/J7_Family/${OS_LOW}
  else
   CONFDIR = source/devices/$(DEVFAMILY_UP)/${OS_LOW}

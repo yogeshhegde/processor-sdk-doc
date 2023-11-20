@@ -25,7 +25,7 @@ directories and files
         ├── Rules.make
         └── setup.sh*
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     .. code-block:: console
 
@@ -73,7 +73,7 @@ Processor SDK devices.
 -  **setup.sh** - Configures the users host system as well as the target
    system for development.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     -  **yocto-build** - This directory allows rebuilding SDK components and
        filesystem using yocto bitbake. Refer to `Building the SDK <Overview_Building_the_SDK.html>`__  section

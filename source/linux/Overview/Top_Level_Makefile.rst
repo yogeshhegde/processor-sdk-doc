@@ -111,7 +111,7 @@ makefile targets.
         host# pip3 install jsonschema
         host# pip3 install pyelftools
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     .. rubric:: Compiler toolchain
        :name: compiler-toolchain
@@ -190,7 +190,7 @@ targets by looking at the **all** target as described in the
 `**Top-Level Targets** <#top-level-targets>`__ section above. Some
 devices will have following additional targets:
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
   -  **sysfw-image** - Builds the system firmware itb file, which is a single
      binary for the system firmware release along with the different board
@@ -400,7 +400,7 @@ the Makefile from the top-level of the SDK.
 
         host# sudo make matrix-gui_install
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL') or CONFIG_part_variant in ('AM65X')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational') or CONFIG_part_variant in ('AM65X')
 
   -  Build the sysfw.
 
@@ -564,7 +564,7 @@ the Makefile from the top-level of the SDK.
 
        host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
   .. ifconfig:: CONFIG_part_variant in ('J7200')
 
