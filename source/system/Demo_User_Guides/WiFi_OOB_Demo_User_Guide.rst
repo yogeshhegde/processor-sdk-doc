@@ -8,7 +8,25 @@ WiFi Out Of Box Demo - User Guide
 Overview
 --------
 
-The |__PART_FAMILY_NAME__| SK board has a WiLink Module (WL1837MODGIMOCT) from TI connected to the MMC0 port of the SoC.
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   The |__PART_FAMILY_DEVICE_NAMES__| SK board has a WiLink Module (WL1837MODGIMOCT) from TI connected to the MMC0 port of the SoC.
+
+.. ifconfig:: CONFIG_part_variant in ('J721E')
+
+   The |__PART_FAMILY_DEVICE_NAMES__| SK board has a has a PCIe M2E Key interface port (J11) which is connected to the MMC0 port
+   of the SoC. Connect the Intel-9260 WiFi card to the PCIe port. The WiFi module can be ordered from https://www.amazon.in/Intel-Wireless-Ac-9260-2230-Gigabit/dp/B079QJQF4Y
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+   The |__PART_FAMILY_DEVICE_NAMES__| SK board has a has a PCIe M2E Key interface port (J11) which is connected to the MMC0 port
+   of the SoC. Connect the Intel-9260 WiFi card to the PCIe port. The WiFi module can be ordered from https://www.amazon.in/Intel-Wireless-Ac-9260-2230-Gigabit/dp/B079QJQF4Y
+
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+   The |__PART_FAMILY_DEVICE_NAMES__| SK board has a has a PCIe M2E Key interface port (J11) which is connected to the MMC0 port
+   of the SoC. Connect the Intel-9260 WiFi card to the PCIe port. The WiFi module can be ordered from https://www.amazon.in/Intel-Wireless-Ac-9260-2230-Gigabit/dp/B079QJQF4Y
+
 Using this, a WiFi Out of Box Demo has been set up such that the board acts as both a WiFi Access
 Point( AP) and a WiFi Station that can connect to an external access point like a router or hotspot, on boot
 up. The board also starts iperf3 automatically on the access point interface and the user can run iperf3 on
@@ -19,13 +37,13 @@ All of the necessary equipment requirement and instructions are provided here.
 Hardware Prerequisites
 ----------------------
 
--  TI |__PART_FAMILY_NAME__| SK
-
+-  TI |__PART_FAMILY_DEVICE_NAMES__| SK
 -  PC (Windows or Linux, to use serial terminal console)
-
 -  PC (Windows or Linux, to connect to the SK board's WiFi AP)
-
 -  SD card (minimum 16GB)
+.. ifconfig:: CONFIG_part_variant in ('J721E','J721S2','J784S4')
+
+   - Intel-9260 WiFi card
 
 .. _Connect-to-WiFi-AP:
 
@@ -36,8 +54,8 @@ Follow the steps below to connect to the WiFi Access Point of the SK board:
 
 1. Power on the board. The SK will start the WiFi Access Point(AP) automatically on system boot.
 
-2. Scan for WiFi network from your phone or PC. Each board has a specific AP SSID. For |__PART_FAMILY_NAME__| SK
-   it will be "\ |__PART_FAMILY_NAME__|\ SK-AP_xxxxxx".
+2. Scan for WiFi network from your phone or PC. Each board has a specific AP SSID. For |__PART_FAMILY_DEVICE_NAMES__| SK
+   it will be "\ |__PART_FAMILY_DEVICE_NAMES__|\ SK-AP_xxxxxx".
 
 3. Connect to this network using the password "tiwilink8".
 
@@ -53,11 +71,19 @@ Follow the steps below to connect to the WiFi Access Point of the SK board:
        :width: 407
        :height: 400
 
-4. Once connected, you can access the Matrix GUI from http://192.168.43.1
+.. ifconfig:: CONFIG_part_variant in ('J721E','J721S2','J784S4')
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
+    .. Image:: /images/j7sk-ap.png
+       :width: 407
+       :height: 400
 
-    5. Also, the benchmark demo can be accessed from http://192.168.43.1:8081
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+   4. Once connected, you can access the Matrix GUI from http://192.168.43.1
+
+   .. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+      5. Also, the benchmark demo can be accessed from http://192.168.43.1:8081
 
 
 Using the board as WiFi Station to connect to external WiFi AP
@@ -113,7 +139,13 @@ following steps:
 
    You will see the connection details displayed like this:
 
-.. figure:: /images/wifi-oob-iw-command.png
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    .. figure:: /images/wifi-oob-iw-command.png
+
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+
+    .. figure:: /images/j7-wifi-oob-iw-command.png
 
 Measuring Througput using iperf3
 --------------------------------

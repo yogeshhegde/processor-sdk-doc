@@ -1,11 +1,15 @@
+.. include:: /_replacevars.rst
+
 .. _Seva-Store-label:
 
 Seva Store - User Guide
 =======================================
 
-.. note::
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-   This page is not relevant for AM62SIP SK
+   .. note::
+
+      This page is not relevant for AM62SIP SK
 
 Overview
 --------
@@ -17,13 +21,13 @@ All of the necessary equipment requirement and instructions are provided here.
 Hardware Prerequisites
 ----------------------
 
--  TI AM62x SK
+-  TI |__PART_FAMILY_DEVICE_NAMES__| SK
 
 -  PC (Windows or Linux, to use serial terminal console)
 
 -  HDMI Monitor (to view the Demo on Display)
 
--  Ethernet Cable (to connect AM62x SK to internet)
+-  Ethernet Cable (to connect |__PART_FAMILY_DEVICE_NAMES__| SK to internet)
 
 -  Keyboard (to enter proxy settings if working under VPN)
 
@@ -40,9 +44,17 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
 
 1. Connect the Display, Ethernet Cable, Mouse & keyboard and Power on the board. The TI Apps Launcher will launch when the Device is fully booted.
 
-.. Image:: /images/ti-apps-launcher.png
-   :width: 950
-   :height: 900
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+   .. Image:: /images/ti-apps-launcher.png
+      :width: 950
+      :height: 900
+
+.. ifconfig:: CONFIG_sdk in ('j7_foundational')
+
+   .. Image:: /images/ti-apps-launcher-j7.png
+      :width: 950
+      :height: 900
 
 2. Once started, you will see an IP Address on the bottom left corner of TI Apps Launcher as shown below. This means your board is successfully connected to Internet.
 
@@ -50,7 +62,7 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
    :width: 467
    :height: 70
 
-.. note:: If you have connected the AM62x SK to a proxy network, then before launching Seva Store you need to configure Docker and System proxies once per SD Card. **To set proxy settings you can click on the Settings button from the Left Hand Side Menu and provide the necessary HTTPS & NO PROXY inputs and click Set Proxy button**. Then, continue with Step 3.
+.. note:: If you have connected the |__PART_FAMILY_DEVICE_NAMES__| SK to a proxy network, then before launching Seva Store you need to configure Docker and System proxies once per SD Card. **To set proxy settings you can click on the Settings button from the Left Hand Side Menu and provide the necessary HTTPS & NO PROXY inputs and click Set Proxy button**. Then, continue with Step 3.
 
    .. Image:: /images/webproxy-settings.jpg
       :width: 950
@@ -135,7 +147,7 @@ show the `Downloading Icon` as shown in the image below.
 
 |
 
-.. note:: The Thermostat Demo Docker Image that we provide is around 2.3 GB. Hence, docker pull time may vary based on your internet speed provided to TI AM62x SK.
+.. note:: The Thermostat Demo Docker Image that we provide is around 2.3 GB. Hence, docker pull time may vary based on your internet speed provided to TI |__PART_FAMILY_DEVICE_NAMES__| SK.
 
 14. Once the Docker Image of `Thermostat Demo` is pulled, the Seva Control Centre will auto launch the demo in full screen as shown below.
 
@@ -172,13 +184,13 @@ show the `Downloading Icon` as shown in the image below.
 How to Launch Seva Store via CLI
 --------------------------------
 
-1. Before Launching Seva-Store via CLI ensure that your AM62x SK is connected to a network. To launch the Seva Store via CLI, run
+1. Before Launching Seva-Store via CLI ensure that your |__PART_FAMILY_DEVICE_NAMES__| SK is connected to a network. To launch the Seva Store via CLI, run
 
    ::
 
        WAYLAND_DISPLAY=wayland-1 XDG_RUNTIME_DIR=/run/user/1000 seva-launcher-aarch64
 
-.. note:: If you have connected the AM62x SK to a proxy network, then before launching Seva Store you need to configure Docker and System proxies. `seva-launcher-aarch64` takes http_proxy and no_proxy as input to help you configure it. **To launch the Seva Store via CLI in a proxy network**, run
+.. note:: If you have connected the |__PART_FAMILY_DEVICE_NAMES__| SK to a proxy network, then before launching Seva Store you need to configure Docker and System proxies. `seva-launcher-aarch64` takes http_proxy and no_proxy as input to help you configure it. **To launch the Seva Store via CLI in a proxy network**, run
 
    ::
 
