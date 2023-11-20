@@ -239,12 +239,23 @@ Repeat this for any additional prompts about /tftpboot files.
 This step will set up minicom (serial communication application) for SDK
 development.
 
-.. code-block:: text
+.. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
-    Which serial port do you want to use with minicom?
-    [ /dev/ttyUSB0 ]
+   .. code-block:: text
 
-For most boards, the default /dev/ttyUSB0 should be selected.
+      Which serial port do you want to use with minicom?
+      [ /dev/ttyUSB2 ]
+
+   For the SK board, the default /dev/ttyUSB2 should be selected.
+
+.. ifconfig:: CONFIG_sdk not in ('j7_foundational')
+
+   .. code-block:: text
+
+      Which serial port do you want to use with minicom?
+      [ /dev/ttyUSB0 ]
+
+   For most boards, the default /dev/ttyUSB0 should be selected.
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
@@ -263,52 +274,66 @@ the Software Development Guide for more information.
     If you are using a USB-to-Serial converter, your port should be
     configured for /dev/ttyUSBx.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    .. rubric:: uboot Setup
-       :name: uboot-setup
+.. rubric:: uboot Setup
+   :name: uboot-setup
 
-    This section will create the necessary u-boot commands to boot up your
-    board.
+This section will create the necessary u-boot commands to boot up your
+board.
 
-    The script will detect your ip address and display it. You can override
-    the detected value by entering an alternate value.
+The script will detect your ip address and display it. You can override
+the detected value by entering an alternate value.
 
-    ::
+::
 
-        This step will set up the u-boot variables for booting the EVM.
-        Autodetected the following ip address of your host, correct it if necessary
-        [ xxx.xxx.xxx.xxx ]
+    This step will set up the u-boot variables for booting the EVM.
+    Autodetected the following ip address of your host, correct it if necessary
+    [ xxx.xxx.xxx.xxx ]
 
-    Next, you will be prompted where you prefer your kernel and file system
-    to be located.
+Next, you will be prompted where you prefer your kernel and file system
+to be located.
 
-    -  Kernel location
+-  Kernel location
 
-       -  TFTP - located on your Host in your designated /tftpboot directory
-       -  SD card - located in the 1st partition named "boot" of your SD
-          card
+   -  TFTP - located on your Host in your designated /tftpboot directory
+   -  SD card - located in the 1st partition named "boot" of your SD
+      card
 
-    -  Filesystem location
+-  Filesystem location
 
-       -  NFS - located on your Host. The location is where the file system
-          was extracted in an earlier step.
-       -  SD card - located on the 2nd partition named "rootfs" of your SD
-          card.
+   -  NFS - located on your Host. The location is where the file system
+      was extracted in an earlier step.
+   -  SD card - located on the 2nd partition named "rootfs" of your SD
+      card.
 
-        .. note::
+   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+      .. note::
             The option of "SD card" is not applicable to K2H/K2K, K2E, and K2L
             platforms. Therefore, please use TFTP/NFS for those keystone2 platforms.
 
-    Next if you have selected TFTP, you will be prompted which uImage you
-    want to boot using TFTP. You will be given a list of existing uImage's
-    and you can type one in from the list or hit <Enter> to select the
-    default option. The default option will be the uImage corresponding to
-    the SDK installation. This will be used in the next step to create the
-    necessary u-boot options to boot up your device.
+Next if you have selected TFTP, you will be prompted which uImage you
+want to boot using TFTP. You will be given a list of existing uImages
+and you can type one in from the list or hit <Enter> to select the
+default option. The default option will be the uImage corresponding to
+the SDK installation. This will be used in the next step to create the
+necessary u-boot options to boot up your device.
 
-    .. rubric:: Load uboot Script
-       :name: load-uboot-script
+.. rubric:: Load uboot Script
+   :name: load-uboot-script
+
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+
+    This section creates a minicom script which will be
+    used by u-boot to provide the necessary commands to boot up in the
+    preferred configuration as specified in previous commands.
+    The created minicom script is stored at the file bin/setupBoard.minicom in the SDK. Use below minicom command and then power on the board to boot through the specified configuration
+
+    .. code-block:: console
+
+       minicom -S bin/setupBoard.minicom
+
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
     This section creates a minicom script or a uEnv.txt file which will be
     used by u-boot to provide the necessary commands to boot up in the
