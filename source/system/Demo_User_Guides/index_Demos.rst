@@ -1,5 +1,7 @@
 .. include:: /_replacevars.rst
 
+.. _oob-demo-applications:
+
 ##################
 Demo Applications
 ##################
