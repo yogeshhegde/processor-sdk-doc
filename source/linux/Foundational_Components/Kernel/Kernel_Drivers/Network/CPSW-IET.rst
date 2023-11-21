@@ -587,6 +587,7 @@ Connect eth0 of AM625-SK to eth1 of J7VCL and eth0 of AM64-SK to eth2 of J7VCL.
     ip link set dev eth2 master br0
     ip link set dev br0 up
     ip link set dev br0 type bridge vlan_filtering 1
+    bridge vlan add dev br0 vid 1 self
     bridge vlan add dev br0 vid 1 pvid untagged self
 
 2. On AM625-SK, create and run the following script:
@@ -708,6 +709,7 @@ Connect eth1 of J7VCL to eth0 of AM625-SK and eth0 of AM64-SK to eth1 of AM625-S
     ip link set dev eth1 master br0
     ip link set dev br0 up
     ip link set dev br0 type bridge vlan_filtering 1
+    bridge vlan add dev br0 vid 1 self
     bridge vlan add dev br0 vid 1 pvid untagged self
 
 2. On J7VCL, create and run the following script:
@@ -858,6 +860,7 @@ J7VCL.
     sleep 2
 
     ip link set dev br0 type bridge vlan_filtering 1
+    bridge vlan add dev br0 vid 100 self
     bridge vlan add dev br0 vid 100 pvid tagged self
     bridge vlan add dev eth1 vid 100 master
     bridge vlan add dev eth2 vid 100 master
@@ -1025,6 +1028,7 @@ AM625-SK.
     sleep 2
 
     ip link set dev br0 type bridge vlan_filtering 1
+    bridge vlan add dev br0 vid 100 self
     bridge vlan add dev br0 vid 100 pvid tagged self
     bridge vlan add dev eth0 vid 100 master
     bridge vlan add dev eth1 vid 100 master
@@ -1226,6 +1230,7 @@ J7VCL.
     sleep 2
 
     ip link set dev br0 type bridge vlan_filtering 1
+    bridge vlan add dev br0 vid 100 self
     bridge vlan add dev br0 vid 100 pvid tagged self
     bridge vlan add dev eth1 vid 100 master
     bridge vlan add dev eth2 vid 100 master
@@ -1396,6 +1401,7 @@ AM625-SK.
     sleep 2
 
     ip link set dev br0 type bridge vlan_filtering 1
+    bridge vlan add dev br0 vid 100 self
     bridge vlan add dev br0 vid 100 pvid tagged self
     bridge vlan add dev eth0 vid 100 master
     bridge vlan add dev eth1 vid 100 master

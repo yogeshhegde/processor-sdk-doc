@@ -163,21 +163,21 @@ Bridge setup
 
 ::
 
-        devlink dev param set platform/8000000.ethernet \
-        name switch_mode value true cmode runtime
+   devlink dev param set platform/8000000.ethernet \
+   name switch_mode value true cmode runtime
 
-	ip link add name br0 type bridge
-	ip link set dev br0 type bridge ageing_time 1000
-	ip link set dev eth0 up
-	ip link set dev eth1 up
-	ip link set dev eth0 master br0
-	ip link set dev eth1 master br0
+   ip link add name br0 type bridge
+   ip link set dev br0 type bridge ageing_time 1000
+   ip link set dev eth0 up
+   ip link set dev eth1 up
+   ip link set dev eth0 master br0
+   ip link set dev eth1 master br0
 
-	[*] bridge vlan add dev br0 vid 1 pvid untagged self
+   [*] bridge vlan add dev br0 vid 1 self
+   [*] bridge vlan add dev br0 vid 1 pvid untagged self
+   [*] if vlan_filtering=1, where default_pvid=1
 
-	[*] if vlan_filtering=1, where default_pvid=1
-
-	Note: Steps [*] are mandatory.
+   Note: Steps [*] are mandatory.
 
 
 Turn On/Off Spanning Tree Protocol (STP)
@@ -185,14 +185,15 @@ Turn On/Off Spanning Tree Protocol (STP)
 
 ::
 
-	ip link set dev br0 type bridge stp_state 1/0
+   ip link set dev br0 type bridge stp_state 1/0
 
 VLAN configuration
 """"""""""""""""""
 
 ::
 
-  bridge vlan add dev br0 vid 1 pvid untagged self <---- add cpu port to VLAN 1
+   bridge vlan add dev br0 vid 1 self <---- add VLAN as a Bridge Entry
+   bridge vlan add dev br0 vid 1 pvid untagged self <---- add cpu port to VLAN 1
 
 This step is mandatory for bridge/default_pvid.
 
@@ -201,15 +202,17 @@ Adding extra VLANs
 
  1. untagged::
 
-	bridge vlan add dev eth0 vid 100 pvid untagged master
-	bridge vlan add dev sw0p2 vid 100 pvid untagged master
-	bridge vlan add dev br0 vid 100 pvid untagged self <---- Add cpu port to VLAN100
+   bridge vlan add dev eth0 vid 100 pvid untagged master
+   bridge vlan add dev sw0p2 vid 100 pvid untagged master
+   bridge vlan add dev br0 vid 100 self <---- add VLAN as a Bridge Entry
+   bridge vlan add dev br0 vid 100 pvid untagged self <---- Add cpu port to VLAN100
 
  2. tagged::
 
-	bridge vlan add dev eth0 vid 100 master
-	bridge vlan add dev sw0p2 vid 100 master
-	bridge vlan add dev br0 vid 100 pvid tagged self <---- Add cpu port to VLAN100
+   bridge vlan add dev eth0 vid 100 master
+   bridge vlan add dev sw0p2 vid 100 master
+   bridge vlan add dev br0 vid 100 self <---- add VLAN as a Bridge Entry
+   bridge vlan add dev br0 vid 100 pvid tagged self <---- Add cpu port to VLAN100
 
 Forwarding Data Bases (FDBs)
 """"""""""""""""""""""""""""
@@ -233,8 +236,8 @@ bridge operation manually add MDB entries as required.
 
 Manually adding MDBs::
 
-  bridge mdb add dev br0 port eth0 grp 239.1.1.1 permanent vid 100
-  bridge mdb add dev br0 port eth0 grp 239.1.1.1 permanent <---- Add on all VLANs
+   bridge mdb add dev br0 port eth0 grp 239.1.1.1 permanent vid 100
+   bridge mdb add dev br0 port eth0 grp 239.1.1.1 permanent <---- Add on all VLANs
 
 Multicast flooding
 """"""""""""""""""
@@ -243,7 +246,7 @@ CPU port mcast_flooding is always on
 
 Turning flooding on/off on switch ports::
 
-  bridge link set dev eth0 mcast_flood on/off
+   bridge link set dev eth0 mcast_flood on/off
 
 Enabling Cut Through forwarding
 """""""""""""""""""""""""""""""
@@ -275,35 +278,36 @@ Here is the commands to setup cut-through for priority 0 traffic
 
 ::
 
- ip link set dev eth0 down
- ip link set dev eth1 down
+   ip link set dev eth0 down
+   ip link set dev eth1 down
 
- devlink dev param set platform/8000000.ethernet name switch_mode value true cmode runtime
+   devlink dev param set platform/8000000.ethernet name switch_mode value true cmode runtime
 
- echo 1 > /sys/kernel/debug/8000000.ethernet/Port1/cut_thru_rx_pri_mask
- echo 1 > /sys/kernel/debug/8000000.ethernet/Port1/cut_thru_tx_pri_mask
- echo 1 > /sys/kernel/debug/8000000.ethernet/Port2/cut_thru_rx_pri_mask
- echo 1 > /sys/kernel/debug/8000000.ethernet/Port2/cut_thru_tx_pri_mask
+   echo 1 > /sys/kernel/debug/8000000.ethernet/Port1/cut_thru_rx_pri_mask
+   echo 1 > /sys/kernel/debug/8000000.ethernet/Port1/cut_thru_tx_pri_mask
+   echo 1 > /sys/kernel/debug/8000000.ethernet/Port2/cut_thru_rx_pri_mask
+   echo 1 > /sys/kernel/debug/8000000.ethernet/Port2/cut_thru_tx_pri_mask
 
- ethtool --set-priv-flags eth0 cut-thru on
- ethtool --set-priv-flags eth1 cut-thru on
+   ethtool --set-priv-flags eth0 cut-thru on
+   ethtool --set-priv-flags eth1 cut-thru on
 
- ip link add name br0 type bridge
- ip link set dev br0 type bridge ageing_time 1000
+   ip link add name br0 type bridge
+   ip link set dev br0 type bridge ageing_time 1000
 
- ip link set dev eth0 up
- sleep 1
- ip link set dev eth1 up
- sleep 1
+   ip link set dev eth0 up
+   sleep 1
+   ip link set dev eth1 up
+   sleep 1
 
- ip link set dev eth0 master br0
- ip link set dev eth1 master br0
- ip link set dev br0 type bridge stp_state 1
- ip link set dev br0 up
+   ip link set dev eth0 master br0
+   ip link set dev eth1 master br0
+   ip link set dev br0 type bridge stp_state 1
+   ip link set dev br0 up
 
- ip addr add 10.0.0.1/8 dev br0
+   ip addr add 10.0.0.1/8 dev br0
 
- bridge vlan add dev br0 vid 1 pvid untagged self
+   bridge vlan add dev br0 vid 1 self
+   bridge vlan add dev br0 vid 1 pvid untagged self
 
 The value being written to cut_thru_rx_pri_mask and cut_thru_tx_pri_mask
 represents the priorties queues for which cut through feature needs to
@@ -315,24 +319,24 @@ taking effect
 
 ::
 
- root@evm:~# ethtool -S eth1 | grep col
+   root@evm:~# ethtool -S eth1 | grep col
      tx_collision_frames: 1796093
      tx_single_coll_frames: 0
      tx_mult_coll_frames: 3
      tx_excessive_collisions: 0
      tx_late_collisions: 0
-  root@evm:~# ethtool -S eth0 | grep col
+   root@evm:~# ethtool -S eth0 | grep col
      tx_collision_frames: 3
      tx_single_coll_frames: 0
      tx_mult_coll_frames: 2002396
      tx_excessive_collisions: 52
      tx_late_collisions: 23
 
- tx_collision_frames:      Enet_Pn_TxCut Enet Port n Cut Thru with and without delay (full-duplex)
- tx_single_coll_frames:    Enet_pn_TxCut_SAF Enet Port n Tx Store and Forward (full-duplex)
- tx_mult_coll_frames:      Enet_Pn_RxCut_NoDelay Enet Port n Rx Cut Thru with no delay (full-duplex)
- tx_excessive_collisions:  Enet_Pn_RxCut_Delay Enet Port n Rx Cut Thru with delay (full-duplex)
- tx_late_collisions:       Enet_Pn_RxCut_SAF Enet Port n Rx Store and Forward (full-duplex)
+   tx_collision_frames:      Enet_Pn_TxCut Enet Port n Cut Thru with and without delay (full-duplex)
+   tx_single_coll_frames:    Enet_pn_TxCut_SAF Enet Port n Tx Store and Forward (full-duplex)
+   tx_mult_coll_frames:      Enet_Pn_RxCut_NoDelay Enet Port n Rx Cut Thru with no delay (full-duplex)
+   tx_excessive_collisions:  Enet_Pn_RxCut_Delay Enet Port n Rx Cut Thru with delay (full-duplex)
+   tx_late_collisions:       Enet_Pn_RxCut_SAF Enet Port n Rx Store and Forward (full-duplex)
 
 Transmit Traffic Control and Rate Limiting
 """"""""""""""""""""""""""""""""""""""""""

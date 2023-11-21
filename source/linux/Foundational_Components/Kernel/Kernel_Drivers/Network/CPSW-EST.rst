@@ -1491,6 +1491,7 @@ Connect eth0 of AM625-SK to J7VCL and eth1 of AM625-SK to eth0 of AM64-SK.
     ip link set dev eth1 master br0
     ip link set dev br0 up
     ip link set dev br0 type bridge vlan_filtering 1
+    bridge vlan add dev br0 vid 1 self
     bridge vlan add dev br0 vid 1 pvid untagged self
     bridge vlan add dev eth0 vid 100 master
     bridge vlan add dev eth1 vid 100 master
@@ -1734,6 +1735,7 @@ Connect eth1 of J7VCL to AM625-SK and eth2 of J7VCL to eth0 of AM64-SK.
     ip link set dev eth2 master br0
     ip link set dev br0 up
     ip link set dev br0 type bridge vlan_filtering 1
+    bridge vlan add dev br0 vid 1 self
     bridge vlan add dev br0 vid 1 pvid untagged self
     bridge vlan add dev eth1 vid 100 master
     bridge vlan add dev eth2 vid 100 master
