@@ -1571,3 +1571,471 @@ Performance and Benchmarks not available in this release.
 
 
 
+======================================
+ RT-linux 09.01.00 Performance Guide
+======================================
+
+.. rubric::  **Read This First**
+   :name: read-this-first-rt-kernel-perf-guide
+
+**All performance numbers provided in this document are gathered using
+following Evaluation Modules unless otherwise specified.**
+
++----------------+---------------------------------------------------------------------------------------------------------------------+
+| Name           | Description                                                                                                         |
++================+=====================================================================================================================+
+| J7200 EVM      | J7200 Evaluation Module rev E2 with ARM running at 2GHz, DDR data rate 2666 MT/S, L3 Cache size 3MB                 |
++----------------+---------------------------------------------------------------------------------------------------------------------+
+
+
+Table:  Evaluation Modules
+
+|
+
+.. rubric::  About This Manual
+   :name: about-this-manual-rt-kernel-perf-guide
+
+This document provides performance data for each of the device drivers
+which are part of the Processor SDK Linux package. This document should be
+used in conjunction with release notes and user guides provided with the
+Processor SDK Linux package for information on specific issues present
+with drivers included in a particular release.
+
+.. rubric::  If You Need Assistance
+   :name: if-you-need-assistance-rt-kernel-perf-guide
+
+For further information or to report any problems, contact
+http://e2e.ti.com/ or http://support.ti.com/
+
+
+System Benchmarks
+-------------------------
+
+LMBench
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+LMBench is a collection of microbenchmarks of which the memory bandwidth 
+and latency related ones are typically used to estimate processor 
+memory system performance. More information about lmbench at 
+http://lmbench.sourceforge.net/whatis_lmbench.html and
+http://lmbench.sourceforge.net/man/lmbench.8.html
+
+  
+**Latency**: lat_mem_rd-stride128-szN, where N is equal to or smaller than the cache
+size at given level measures the cache miss penalty. N that is at least
+double the size of last level cache is the latency to external memory.
+
+**Bandwidth**: bw_mem_bcopy-N, where N is equal to or smaller than the cache size at
+a given level measures the achievable memory bandwidth from software doing
+a memcpy() type operation. Typical use is for external memory bandwidth
+calculation. The bandwidth is calculated as byte read and written counts
+as 1 which should be roughly half of STREAM copy result.
+
+Execute the LMBench with the following:
+
+::
+
+    cd /opt/ltp
+    ./runltp -P j721e-idk-gw -f ddt/lmbench -s LMBENCH_L_PERF_0001
+
+.. csv-table::
+    :header: "Benchmarks","j7200-evm: perf"
+
+    "af_unix_sock_stream_latency (microsec)","20.81"
+    "af_unix_socket_stream_bandwidth (MBs)","1623.79"
+    "bw_file_rd-io-1mb (MB/s)","2711.01"
+    "bw_file_rd-o2c-1mb (MB/s)","1301.36"
+    "bw_mem-bcopy-16mb (MB/s)","2353.63"
+    "bw_mem-bcopy-1mb (MB/s)","3405.22"
+    "bw_mem-bcopy-2mb (MB/s)","2473.06"
+    "bw_mem-bcopy-4mb (MB/s)","2380.48"
+    "bw_mem-bcopy-8mb (MB/s)","2365.11"
+    "bw_mem-bzero-16mb (MB/s)","2341.58"
+    "bw_mem-bzero-1mb (MB/s)","4145.11 (min 3405.22, max 4885.00)"
+    "bw_mem-bzero-2mb (MB/s)","2709.56 (min 2473.06, max 2946.05)"
+    "bw_mem-bzero-4mb (MB/s)","2421.39 (min 2380.48, max 2462.30)"
+    "bw_mem-bzero-8mb (MB/s)","2357.13 (min 2349.14, max 2365.11)"
+    "bw_mem-cp-16mb (MB/s)","988.08"
+    "bw_mem-cp-1mb (MB/s)","3038.13 (min 1286.06, max 4790.19)"
+    "bw_mem-cp-2mb (MB/s)","1968.99 (min 1015.06, max 2922.91)"
+    "bw_mem-cp-4mb (MB/s)","1723.52 (min 992.68, max 2454.36)"
+    "bw_mem-cp-8mb (MB/s)","1662.28 (min 989.12, max 2335.43)"
+    "bw_mem-fcp-16mb (MB/s)","2396.64"
+    "bw_mem-fcp-1mb (MB/s)","4130.11 (min 3375.21, max 4885.00)"
+    "bw_mem-fcp-2mb (MB/s)","2746.68 (min 2547.31, max 2946.05)"
+    "bw_mem-fcp-4mb (MB/s)","2442.05 (min 2421.80, max 2462.30)"
+    "bw_mem-fcp-8mb (MB/s)","2380.85 (min 2349.14, max 2412.55)"
+    "bw_mem-frd-16mb (MB/s)","6225.68"
+    "bw_mem-frd-1mb (MB/s)","5010.20 (min 3375.21, max 6645.19)"
+    "bw_mem-frd-2mb (MB/s)","4486.22 (min 2547.31, max 6425.13)"
+    "bw_mem-frd-4mb (MB/s)","4271.93 (min 2421.80, max 6122.06)"
+    "bw_mem-frd-8mb (MB/s)","4304.17 (min 2412.55, max 6195.79)"
+    "bw_mem-fwr-16mb (MB/s)","2320.86"
+    "bw_mem-fwr-1mb (MB/s)","5717.69 (min 4790.19, max 6645.19)"
+    "bw_mem-fwr-2mb (MB/s)","4674.02 (min 2922.91, max 6425.13)"
+    "bw_mem-fwr-4mb (MB/s)","4288.21 (min 2454.36, max 6122.06)"
+    "bw_mem-fwr-8mb (MB/s)","4265.61 (min 2335.43, max 6195.79)"
+    "bw_mem-rd-16mb (MB/s)","6508.47"
+    "bw_mem-rd-1mb (MB/s)","9989.53 (min 7710.24, max 12268.82)"
+    "bw_mem-rd-2mb (MB/s)","4022.61 (min 975.45, max 7069.77)"
+    "bw_mem-rd-4mb (MB/s)","3706.22 (min 791.14, max 6621.30)"
+    "bw_mem-rd-8mb (MB/s)","3609.94 (min 748.43, max 6471.44)"
+    "bw_mem-rdwr-16mb (MB/s)","752.09"
+    "bw_mem-rdwr-1mb (MB/s)","4606.50 (min 1286.06, max 7926.93)"
+    "bw_mem-rdwr-2mb (MB/s)","1001.20 (min 987.33, max 1015.06)"
+    "bw_mem-rdwr-4mb (MB/s)","894.79 (min 796.89, max 992.68)"
+    "bw_mem-rdwr-8mb (MB/s)","873.82 (min 758.51, max 989.12)"
+    "bw_mem-wr-16mb (MB/s)","745.64"
+    "bw_mem-wr-1mb (MB/s)","7818.59 (min 7710.24, max 7926.93)"
+    "bw_mem-wr-2mb (MB/s)","981.39 (min 975.45, max 987.33)"
+    "bw_mem-wr-4mb (MB/s)","794.02 (min 791.14, max 796.89)"
+    "bw_mem-wr-8mb (MB/s)","753.47 (min 748.43, max 758.51)"
+    "bw_mmap_rd-mo-1mb (MB/s)","9830.38"
+    "bw_mmap_rd-o2c-1mb (MB/s)","1413.93"
+    "bw_pipe (MB/s)","644.50"
+    "bw_unix (MB/s)","1623.79"
+    "lat_connect (us)","41.38"
+    "lat_ctx-2-128k (us)","3.25"
+    "lat_ctx-2-256k (us)","2.57"
+    "lat_ctx-4-128k (us)","3.23"
+    "lat_ctx-4-256k (us)","2.25"
+    "lat_fs-0k (num_files)","439.00"
+    "lat_fs-10k (num_files)","129.00"
+    "lat_fs-1k (num_files)","228.00"
+    "lat_fs-4k (num_files)","238.00"
+    "lat_mem_rd-stride128-sz1000k (ns)","11.24"
+    "lat_mem_rd-stride128-sz125k (ns)","5.57"
+    "lat_mem_rd-stride128-sz250k (ns)","5.57"
+    "lat_mem_rd-stride128-sz31k (ns)","4.66"
+    "lat_mem_rd-stride128-sz50 (ns)","2.00"
+    "lat_mem_rd-stride128-sz500k (ns)","5.58"
+    "lat_mem_rd-stride128-sz62k (ns)","5.57"
+    "lat_mmap-1m (us)","38.00"
+    "lat_ops-double-add (ns)","1.96"
+    "lat_ops-double-div (ns)","9.01"
+    "lat_ops-double-mul (ns)","2.00"
+    "lat_ops-float-add (ns)","1.96"
+    "lat_ops-float-div (ns)","5.51"
+    "lat_ops-float-mul (ns)","2.01"
+    "lat_ops-int-add (ns)","0.50"
+    "lat_ops-int-bit (ns)","0.33"
+    "lat_ops-int-div (ns)","4.01"
+    "lat_ops-int-mod (ns)","4.68"
+    "lat_ops-int-mul (ns)","1.52"
+    "lat_ops-int64-add (ns)","0.50"
+    "lat_ops-int64-bit (ns)","0.33"
+    "lat_ops-int64-div (ns)","3.01"
+    "lat_ops-int64-mod (ns)","5.68"
+    "lat_ops-int64-mul (ns)","2.52"
+    "lat_pagefault (us)","0.55"
+    "lat_pipe (us)","11.11"
+    "lat_proc-exec (us)","493.67"
+    "lat_proc-fork (us)","417.69"
+    "lat_proc-proccall (us)","0.00"
+    "lat_select (us)","12.48"
+    "lat_sem (us)","1.76"
+    "lat_sig-catch (us)","2.83"
+    "lat_sig-install (us)","0.49"
+    "lat_sig-prot (us)","0.44"
+    "lat_syscall-fstat (us)","1.60"
+    "lat_syscall-null (us)","0.38"
+    "lat_syscall-open (us)","150.97"
+    "lat_syscall-read (us)","0.49"
+    "lat_syscall-stat (us)","2.10"
+    "lat_syscall-write (us)","0.42"
+    "lat_tcp (us)","0.78"
+    "lat_unix (us)","20.81"
+    "latency_for_0.50_mb_block_size (nanosec)","5.58"
+    "latency_for_1.00_mb_block_size (nanosec)","5.62 (min 0.00, max 11.24)"
+    "pipe_bandwidth (MBs)","644.50"
+    "pipe_latency (microsec)","11.11"
+    "procedure_call (microsec)","0.00"
+    "select_on_200_tcp_fds (microsec)","12.48"
+    "semaphore_latency (microsec)","1.76"
+    "signal_handler_latency (microsec)","0.49"
+    "signal_handler_overhead (microsec)","2.83"
+    "tcp_ip_connection_cost_to_localhost (microsec)","41.38"
+    "tcp_latency_using_localhost (microsec)","0.78"
+
+
+Table:  **LM Bench Metrics**
+
+
+
+Dhrystone
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Dhrystone is a core only benchmark that runs from warm L1 caches in all
+modern processors. It scales linearly with clock speed. For standard ARM
+cores the DMIPS/MHz score will be identical with the same compiler and flags.
+
+.. csv-table::
+    :header: "Benchmarks","j7200-evm: perf"
+
+    "cpu_clock (MHz)","2000.00"
+    "dhrystone_per_mhz (DMIPS/MHz)","5.70"
+    "dhrystone_per_second (DhrystoneP)","20000000.00"
+
+
+Table:  **Dhrystone Benchmark**
+
+
+
+Whetstone
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table::
+    :header: "Benchmarks","j7200-evm: perf"
+
+    "whetstone (MIPS)","10000.00"
+
+
+Table:  **Whetstone Benchmark**
+
+
+
+Linpack
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Linpack measures peak double precision (64 bit) floating point performance in
+solving a dense linear system.
+
+.. csv-table::
+    :header: "Benchmarks","j7200-evm: perf"
+
+    "linpack (Kflops)","2618867.00"
+
+
+Table:  **Linpack Benchmark**
+
+
+
+NBench
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NBench which stands for Native Benchmark is used to measure macro benchmarks 
+for commonly used operations such as sorting and analysis algorithms.
+More information about NBench at
+https://en.wikipedia.org/wiki/NBench and
+https://nbench.io/articles/index.html
+
+
+.. csv-table::
+    :header: "Benchmarks","j7200-evm: perf"
+
+    "assignment (Iterations)","30.76"
+    "fourier (Iterations)","50468.00"
+    "fp_emulation (Iterations)","214.60"
+    "huffman (Iterations)","2382.70"
+    "idea (Iterations)","7996.00"
+    "lu_decomposition (Iterations)","1338.50"
+    "neural_net (Iterations)","30.07"
+    "numeric_sort (Iterations)","853.41"
+    "string_sort (Iterations)","416.14"
+
+
+Table:  **NBench Benchmarks**
+
+
+
+Stream
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+STREAM is a microbenchmark for measuring data memory system performance without
+any data reuse. It is designed to miss on caches and exercise data prefetcher 
+and speculative accesses.
+It uses double precision floating point (64bit) but in
+most modern processors the memory access will be the bottleneck. 
+The four individual scores are copy, scale as in multiply by constant,
+add two numbers, and triad for multiply accumulate.
+For bandwidth, a byte read counts as one and a byte written counts as one,
+resulting in a score that is double the bandwidth LMBench will show.
+
+.. csv-table::
+    :header: "Benchmarks","j7200-evm: perf"
+
+    "add (MB/s)","5421.70"
+    "copy (MB/s)","4767.00"
+    "scale (MB/s)","4815.60"
+    "triad (MB/s)","5426.20"
+
+
+Table:  **Stream**
+
+
+
+CoreMarkPro
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+CoreMark®-Pro is a comprehensive, advanced processor benchmark that works with
+and enhances the market-proven industry-standard EEMBC CoreMark® benchmark.
+While CoreMark stresses the CPU pipeline, CoreMark-Pro tests the entire processor,
+adding comprehensive support for multicore technology, a combination of integer
+and floating-point workloads, and data sets for utilizing larger memory subsystems.
+
+
+.. csv-table::
+    :header: "Benchmarks","j7200-evm: perf"
+
+    "cjpeg-rose7-preset (workloads/)","81.97"
+    "core (workloads/)","0.78"
+    "coremark-pro ()","2435.28"
+    "linear_alg-mid-100x100-sp (workloads/)","80.65"
+    "loops-all-mid-10k-sp (workloads/)","2.46"
+    "nnet_test (workloads/)","3.65"
+    "parser-125k (workloads/)","10.99"
+    "radix2-big-64k (workloads/)","225.33"
+    "sha-test (workloads/)","156.25"
+    "zip-test (workloads/)","47.62"
+
+
+Table:  **CoreMarkPro**
+
+
+ 
+ 
+
+
+MultiBench
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MultiBench™ is a suite of benchmarks that allows processor and system designers to
+analyze, test, and improve multicore processors. It uses three forms of concurrency:
+Data decomposition: multiple threads cooperating on achieving a unified goal and
+demonstrating a processor’s support for fine grain parallelism.
+Processing multiple data streams: uses common code running over multiple threads and
+demonstrating how well a processor scales over scalable data inputs.
+Multiple workload processing: shows the scalability of general-purpose processing,
+demonstrating concurrency over both code and data.
+MultiBench combines a wide variety of application-specific workloads with the EEMBC
+Multi-Instance-Test Harness (MITH), compatible and portable with most any multicore
+processors and operating systems. MITH uses a thread-based API (POSIX-compliant) to
+establish a common programming model that communicates with the benchmark through an
+abstraction layer and provides a flexible interface to allow a wide variety of
+thread-enabled workloads to be tested.
+
+.. csv-table::
+    :header: "Benchmarks","j7200-evm: perf"
+
+    "4m-check (workloads/)","904.16"
+    "4m-check-reassembly (workloads/)","118.77"
+    "4m-check-reassembly-tcp (workloads/)","90.58"
+    "4m-check-reassembly-tcp-cmykw2-rotatew2 (workloads/)","40.71"
+    "4m-check-reassembly-tcp-x264w2 (workloads/)","2.68"
+    "4m-cmykw2 (workloads/)","309.12"
+    "4m-cmykw2-rotatew2 (workloads/)","59.35"
+    "4m-reassembly (workloads/)","104.17"
+    "4m-rotatew2 (workloads/)","70.27"
+    "4m-tcp-mixed (workloads/)","280.70"
+    "4m-x264w2 (workloads/)","2.73"
+    "idct-4m (workloads/)","34.87"
+    "idct-4mw1 (workloads/)","34.83"
+    "ippktcheck-4m (workloads/)","892.86"
+    "ippktcheck-4mw1 (workloads/)","899.93"
+    "ipres-4m (workloads/)","157.23"
+    "ipres-4mw1 (workloads/)","157.23"
+    "md5-4m (workloads/)","44.17"
+    "md5-4mw1 (workloads/)","44.29"
+    "rgbcmyk-4m (workloads/)","162.34"
+    "rgbcmyk-4mw1 (workloads/)","162.34"
+    "rotate-4ms1 (workloads/)","51.71"
+    "rotate-4ms1w1 (workloads/)","51.60"
+    "rotate-4ms64 (workloads/)","52.30"
+    "rotate-4ms64w1 (workloads/)","52.41"
+    "x264-4mq (workloads/)","1.41"
+    "x264-4mqw1 (workloads/)","1.42"
+
+
+Table:  **Multibench**
+
+
+ 
+ 
+
+ 
+
+
+Boot-time Measurement
+-------------------------
+
+Boot media: MMCSD
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table::
+    :header: "Boot Configuration","j7200-evm: boot time (sec)"
+
+    "Kernel boot time test when bootloader, kernel and sdk-rootfs are in mmc-sd","15.32 (min 15.19, max 15.43)"
+    "Kernel boot time test when init is /bin/sh and bootloader, kernel and sdk-rootfs are in mmc-sd","4.12 (min 4.08, max 4.18)"
+
+Table:  **Boot time MMC/SD**
+
+
+ 
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+PCIe Driver
+-------------------------
+
+PCIe-ETH
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table::
+    :header: "TCP Window Size(Kbytes)","j7200-evm: Bandwidth (Mbits/sec)"
+
+    "8","226.40"
+    "16","224.80"
+    "32","381.60"
+    "64","564.80"
+    "128","733.60"
+    "256","800.00"
+
+Table: **PCI Ethernet**
+
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+  
+
+ 
+
+ 
+Cyclic Test
+-------------------------
+
+# cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0
+policy: fifo: loadavg: 0.24 0.27 0.22 1/169 679
+
+T: 0 (  678) P:80 I:200 C:  13973 Min:      3 Act:    3 Avg:    3 Max:      24
+T: 1 (  679) P:80 I:200 C:  13923 Min:      3 Act:    3 Avg:    3 Max:      13
+
+
+DCAN Driver
+-------------------------
+
+Performance and Benchmarks not available in this release.
+
+    
+
