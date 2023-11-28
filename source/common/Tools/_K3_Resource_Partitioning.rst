@@ -83,6 +83,22 @@ exact range of resources allocated for each host. Each column describes the
 resource ranges assigned for a certain host. Each row describes how different
 hosts consume the given resource.
 
+Bandwidth Limiters configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This module allows the user to generate the date required for configuring the various
+rate limiters available for the SOC. Each rate limiter is expected to be
+connected direcly to a single source VBUSM interface that is being limited. The
+limiter allows the user to impose bandwidth limits for reads or writes, as well
+as limit the maximum outstanding transactions for reads or writes. These limits
+are orthogonal to one another and can be programmed independently.
+
+In the GUI, the user should select a device and enable bandwidth and/or transaction
+limits. The tool will autogenerate a simple address-value pair data structure in
+the **qos_data.c** output file. Then the corresponding registers can be programmed
+with the required limits. This can be used by any software, though it is typically
+handled by the bootloader.
+
 QoS configuration
 ^^^^^^^^^^^^^^^^^
 
