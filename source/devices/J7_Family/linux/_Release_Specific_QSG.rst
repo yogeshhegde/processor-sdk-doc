@@ -26,14 +26,17 @@ Detailed steps are described at :ref:`run-setup-scripts`
 .. rubric:: Hardware EVM setup
    :name: qsg-hardware-evm-setup
 
-.. ifconfig:: CONFIG_part_variant not in ('J784S4')
 
-   The J7 EVM comes with a SoM (System on Chip) based on which J7 variant is being used,
-   a common processor board, a PMIC and a few optional daughter cards.
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+   .. ifconfig:: CONFIG_part_variant not in ('J784S4')
 
-   The J784S4 EVM comes with the main J784S4 EVM board, a PMIC and a few optional daughter cards.
+      The J7 EVM comes with a SoM (System on Chip) based on which J7 variant is being used,
+      a common processor board, a PMIC and a few optional daughter cards.
+
+   .. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+      The J784S4 EVM comes with the main J784S4 EVM board, a PMIC and a few optional daughter cards.
 
 Detailed instructions for EVM setup with image illustration can be found at
 :ref:`hardware-evm-setup`.
@@ -50,17 +53,19 @@ describes pin settings to set the EVM in SD boot mode.
 
    By default, the SD card comes with pre-built Linux SDK binaries flashed.
    This will allow you to quickly verify the EVM functionality with just a Display Port monitor.
+   Insert the SD card with pre-built binaries and boot the EVM. 
 
-   Insert the SD card with pre-built binaries and boot the EVM. After successful bootup,
-   you should see a welcome message on the display wallpaper.
+   .. ifconfig:: CONFIG_sdk in ('j7_foundational')
+
+      Refer to the section :ref:`oob-demo-applications` to run the Out-of-Box demo-applications.
 
 .. rubric:: Flashing release binaries
    :name: qsg-flashing-release-binaries
 
 The SDK Installer packages latest pre-built binaries and filesystem for the target.
 For detailed steps on flashing these binaries on the SD card, refer to the section
-format your SD card and flash all the pre-built binaries from the SDK release,
-:ref:`formatting-sd-card-on-linux`.
+:ref:`processor-sdk-linux-create-sd-card` and flash all the pre-built binaries from
+the SDK release.
 
 You should be able to verify the same out of box demo after flashing the SD card.
 This step should be used only when you want to completely overwrite the card with
@@ -75,19 +80,12 @@ This SDK allows you to build these components and install the built binaries
 for target EVM. This step allows you to verify that your host environment
 is configured correctly, and you can build and install these components.
 
-For detailed instructions on building BSP components, refer to the section
-:ref:`top-level-makefile`.
-You should run the following commands in the installer directory:
-
-* Build all components using *make all*
-* Follow the section *Installing to SD card rootfs*
-* Follow the section *Installing boot binaries*
-
+For detailed instructions on building and installing BSP components, refer to
+the section :ref:`top-level-makefile`.
 After you build and copy all the binaries to your SD card, you can boot the
-EVM with binaries built on your host. Upon successful bootup, you should see
-a different wallpaper on the display. This should confirm that your updates
-are copied correctly in the SD card. Also, you can run the following command
-on the target to verify that you are using the newly-built Linux kernel.
+EVM with binaries built on your host. Upon successful bootup, you can run the
+following command on the target to verify that you are using the newly-built
+Linux kernel.
 
 ::
 

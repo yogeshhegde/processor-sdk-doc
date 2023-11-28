@@ -138,11 +138,3 @@ The default selection of where to install is the user's home directory.
 
 After the installation, refer to section `Setting up host environment <Run_Setup_Scripts.html>`__ for next steps.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
-
-  .. rubric:: Yocto Configuration
-     :name: yocto-configuration
-
-  The Yocto configuration is included within the Linux SDK package at the location configs/processor-sdk-linux-<version>.txt.
-
-  If all that is needed is the Yocto configuration, this can be downloaded directly from the release page.

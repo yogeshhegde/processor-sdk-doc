@@ -221,6 +221,44 @@ The "Build Output" is given relative to the
         | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
         +------------------------------+---------------------------------------------------------------+----------------------------+
 
+.. ifconfig:: CONFIG_sdk in ('j7_foundational')
+
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+   | Target                       | Build Output                                                  | Description                |
+   +==============================+===============================================================+============================+
+   | tisdk-core-bundle            | images/<machine>/tisdk-core-bundle-<machine>.tar.xz           | Full SDK                   |
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+   | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+   | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem   |
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+   | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.tar.xz       | Minimal Target Filesytem   |
+   |                              |                                                               | with docker enabled        |
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+   | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Linux glibc toolchain      |
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+   | mc:k3r5:meta-toolchain-arago | sdk/arago-<arago-version>-<architecture>.sh                   | K3R5 baremetal toolchain   |
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
+
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+   | Target                       | Build Output                                                  | Description                |
+   +==============================+===============================================================+============================+
+   | tisdk-core-bundle            | images/<machine>/tisdk-core-bundle-<machine>.tar.xz           | Full SDK                   |
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+   | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+   | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem   |
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+   | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.tar.xz       | Minimal Target Filesytem   |
+   |                              |                                                               | with docker enabled        |
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+   | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Linux glibc toolchain      |
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+   | mc:k3r5:meta-toolchain-arago | sdk/arago-<arago-version>-<architecture>.sh                   | K3R5 baremetal toolchain   |
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+
 .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     .. rubric:: Platforms
