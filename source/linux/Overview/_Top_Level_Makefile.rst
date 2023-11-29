@@ -2,7 +2,7 @@
 
 .. _top-level-makefile:
 
-Simplified SDK Build using Top-Level Makefile
+Simplified SDK Build Using Top-Level Makefile
 *********************************************
 
 .. http://processors.wiki.ti.com/index.php/Processor_Linux_SDK_Top-Level_Makefile
@@ -15,12 +15,13 @@ be used to build some of the sub-components found within the SDK. This
 Makefile uses the Rules.make file and gives an example of how the
 various components can be built and the parameters to use for |__PART_FAMILY_DEVICE_NAMES__|.
 
-**NOTE:** You should not call this makefile with the
-`environment-setup
-script <Overview/GCC_ToolChain.html#environment-setup-script>`__
-sourced. The sub-component Makefiles will handle sourcing this script
-where appropriate, but some make targets such as the Linux kernel make
-target do not work properly when this script is already sourced.
+.. note::
+
+   You should not call this makefile with the `environment-setup
+   script <Overview/GCC_ToolChain.html#environment-setup-script>`__
+   sourced. The sub-component Makefiles will handle sourcing this script
+   where appropriate, but some make targets such as the Linux kernel make
+   target do not work properly when this script is already sourced.
 
 .. rubric:: Required Host Packages
    :name: makefile-required-packages

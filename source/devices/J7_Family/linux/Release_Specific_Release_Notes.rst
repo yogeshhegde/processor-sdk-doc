@@ -94,7 +94,7 @@ U-Boot
 | Branch: ti-u-boot-2023.04
 | uBoot Tag: 09.01.00.003
 
-| Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 11.3.0)
+| Compiler Information: arm-oe-eabi-gcc (GCC) 11.4.0, aarch64-oe-linux-gcc (GCC) 11.4.0
 |
 
 .. rubric:: Note:
@@ -116,7 +116,7 @@ Kernel
 | Tag: 09.01.00.003
 | Kernel defconfig: defconfig + ti_arm64_prune.config
 
-| Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 11.3.0)
+| Compiler Information: aarch64-oe-linux-gcc (GCC) 11.4.0, GNU ld (GNU Binutils) 2.38.20220708
 |
 
 .. rubric:: Real Time (RT) Linux Kernel
@@ -132,7 +132,7 @@ Kernel
 | Tag: 09.01.00.003-rt
 | Kernel defconfig: defconfig + ti_rt.config + ti_arm64_prune.config
 
-| Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 11.3.0)
+| Compiler Information: aarch64-oe-linux-gcc (GCC) 11.4.0, GNU ld (GNU Binutils) 2.38.20220708
 
 .. rubric:: Note:
 | meta-tisdk Yocto layer contains additional patches for Linux Kernel `here <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tree/recipes-kernel/linux?h=09.01.00.05>`__.

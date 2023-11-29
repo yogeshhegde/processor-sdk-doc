@@ -63,7 +63,7 @@ system shell.
 .. rubric:: Large Swap File
 
 Building large packages, especially several at a time, requires a lot of
-working memory for a computer. For computers with 32 GB or RAM or more, this
+working memory for a computer. For computers with 32 GB of RAM or more, this
 should not be a problem. For computers with less RAM, a swap file of ~16GB may
 be needed to build large packages. Creating a large swap file, or resizing a
 small swap file to be larger will help avoid build errors for large packages.
@@ -124,7 +124,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
        Your tisdk-default-image wic image will be generated in deploy-ti directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.
 
 
-.. note:: While building images via Yocto, if you are facing **locale.Error: unsupported locale setting** error it means your system is trying to use locale setting which was not there. Run the following commands which will setup the locale and try building your target image again.
+.. note:: While building images via Yocto, if you are facing **locale.Error: unsupported locale setting** error, it means your system is trying to use a locale setting which was not there. Run the following commands which will setup the locale and try building your target image again.
 
     ::
 
@@ -156,8 +156,17 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
         . conf/setenv
         MACHINE=<machine> bitbake -k tisdk-default-image
 
-    .. Note::
-        The build will ~250GB of hard disk space for building the tisdk-default-image.
+    .. note::
+
+        The build will use ~250GB of hard disk space for building the tisdk-default-image.
+
+    .. note::
+
+        If your computer is frequently crashing while running the bitbake command, edit the
+        './conf/local.conf' file and set the variables: BB_NUMBER_THREADS and PARALLEL_MAKE
+        to cap the number of threads bitbake can create at a time. By default bitbake tries
+        to automatically figure out and set the maximum values for these variables, on your
+        system, which may lead to errors.
 
 
 Processor SDK Build Reference
