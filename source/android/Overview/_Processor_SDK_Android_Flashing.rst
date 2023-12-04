@@ -133,7 +133,7 @@ Flashing Instruction
             (OR)
 
             # If you are using pre-built binaries from SDK download page
-            cd AM62x_09.00.00_emmc
+            cd AM62x_09.01.00_emmc
             sudo ./flashall.sh --board am62x-sk
 
     .. note::

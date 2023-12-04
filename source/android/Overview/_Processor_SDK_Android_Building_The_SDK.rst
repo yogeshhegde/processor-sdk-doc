@@ -39,7 +39,7 @@ Downloading Sources
 
     ::
 
-        mkdir ~/09_00_00 && cd $_
+        mkdir ~/09_01_00 && cd $_
         export YOUR_PATH=$PWD
 
 Bootloader components
@@ -63,14 +63,14 @@ Kernel
     Fetch the code using ``repo``::
 
         mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
-        repo init -u git://git.ti.com/android/manifest.git -b android13-release -m releases/RLS_09_00_Kernel.xml
+        repo init -u git://git.ti.com/android/manifest.git -b android13-release -m releases/RLS_09_01_Kernel.xml
         repo sync
 
     .. note::
 
         To save same disk space, pass the ``--depth=1`` option to ``repo init``::
 
-            repo init -u git://git.ti.com/android/manifest.git -b android13-release -m releases/RLS_09_00_Kernel.xml --depth=1
+            repo init -u git://git.ti.com/android/manifest.git -b android13-release -m releases/RLS_09_01_Kernel.xml --depth=1
 
 
 Android File System
@@ -81,7 +81,7 @@ Android File System
     Fetch the code using ``repo``::
 
         mkdir ${YOUR_PATH}/ti-aosp-13 && cd $_
-        repo init -u git://git.ti.com/android/manifest.git -b android13-release -m releases/RLS_09_00.xml
+        repo init -u git://git.ti.com/android/manifest.git -b android13-release -m releases/RLS_09_01.xml
         repo sync
 
 
