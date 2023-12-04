@@ -47,7 +47,7 @@ Go in your Android environment then rebuild with ``TARGET_SDCARD_BOOT=true`` bui
 
     ::
 
-        cd ${YOUR_PATH}/ti-aosp-13
+        cd ${YOUR_PATH}/ti-aosp-14
         lunch <BUILD_TARGET>
         m TARGET_SDCARD_BOOT=true
 

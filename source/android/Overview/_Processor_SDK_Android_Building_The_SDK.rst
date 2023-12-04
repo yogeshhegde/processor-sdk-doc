@@ -63,14 +63,14 @@ Kernel
     Fetch the code using ``repo``::
 
         mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
-        repo init -u git://git.ti.com/android/manifest.git -b android13-release -m releases/RLS_09_01_Kernel.xml
+        repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_09_01_Kernel.xml
         repo sync
 
     .. note::
 
         To save same disk space, pass the ``--depth=1`` option to ``repo init``::
 
-            repo init -u git://git.ti.com/android/manifest.git -b android13-release -m releases/RLS_09_01_Kernel.xml --depth=1
+            repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_09_01_Kernel.xml --depth=1
 
 
 Android File System
@@ -80,8 +80,8 @@ Android File System
 
     Fetch the code using ``repo``::
 
-        mkdir ${YOUR_PATH}/ti-aosp-13 && cd $_
-        repo init -u git://git.ti.com/android/manifest.git -b android13-release -m releases/RLS_09_01.xml
+        mkdir ${YOUR_PATH}/ti-aosp-14 && cd $_
+        repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_09_01.xml
         repo sync
 
 
@@ -137,7 +137,7 @@ Bootloader components
             TEE=${YOUR_PATH}/ti-bootloader-aosp/optee_os/out/arm-plat-k3/core/tee-pager_v2.bin \
             BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
 
-    5. Copy the tiboot3.bin, tispl.bin and u-boot.img generated in steps 3 and 4 to ``${YOUR_PATH}/ti-aosp-13/vendor/ti/am62x/bootloader``. If not copied, the prebuilt bootloader binaries already present in vendor/ti/am62x/bootloader will get use by flashall.sh flashing script.
+    5. Copy the tiboot3.bin, tispl.bin and u-boot.img generated in steps 3 and 4 to ``${YOUR_PATH}/ti-aosp-14/vendor/ti/am62x/bootloader``. If not copied, the prebuilt bootloader binaries already present in vendor/ti/am62x/bootloader will get use by flashall.sh flashing script.
 
     .. note ::
         To Build bootloaders for AM62X LP Board please do same step with this defconfig:
@@ -156,7 +156,7 @@ Building everything from scratch
     ::
 
         cd ${YOUR_PATH}/ti-kernel-aosp/
-        export DIST_DIR=${YOUR_PATH}/ti-aosp-13/device/ti/am62x-kernel/kernel/6.1
+        export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/6.1
         tools/bazel run --lto=full //common:ti_dist -- --dist_dir=$DIST_DIR
 
     .. note::
@@ -171,7 +171,7 @@ Rebuilding faster
     ::
 
         cd ${YOUR_PATH}/ti-kernel-aosp/
-        export DIST_DIR=${YOUR_PATH}/ti-aosp-13/device/ti/am62x-kernel/kernel/6.1
+        export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/6.1
         tools/bazel run --config=fast //common:ti_dist -- --dist_dir=$DIST_DIR
 
 
@@ -202,7 +202,7 @@ Android File System
 
     ::
 
-        cd ${YOUR_PATH}/ti-aosp-13
+        cd ${YOUR_PATH}/ti-aosp-14
         lunch <BUILD_TARGET>
         m
 
@@ -225,7 +225,7 @@ AM62X-SK Car user               ``am62x_car-user``
     For userdebug images if you want to enable AVB feature you need to build with ``TARGET_AVB_ENABLE=true`` build args
     ::
 
-        cd ${YOUR_PATH}/ti-aosp-13
+        cd ${YOUR_PATH}/ti-aosp-14
         lunch <BUILD_TARGET>
         m TARGET_AVB_ENABLE=true
 
