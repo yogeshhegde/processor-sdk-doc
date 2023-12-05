@@ -157,7 +157,7 @@ Building everything from scratch
 
         cd ${YOUR_PATH}/ti-kernel-aosp/
         export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/6.1
-        tools/bazel run --lto=full //common:ti_dist -- --dist_dir=$DIST_DIR
+        tools/bazel run //common:ti_dist -- --dist_dir=$DIST_DIR
 
     .. note::
 
