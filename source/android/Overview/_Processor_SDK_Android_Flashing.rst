@@ -9,7 +9,7 @@ DFU Recovery
 It's possible to put the AM62x SK EVM in USB DFU mode, which allows
 loading bootloaders over DFU. This is done via the ``snagboot`` tool.
 
-This is useful for initial flashing or recoverying boards which have broken
+This is useful for initial flashing or recovering boards which have broken
 bootloaders.
 
 Installation and setup
