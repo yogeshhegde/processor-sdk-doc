@@ -50,35 +50,32 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
 4. run ``snagrecover`` for host::
 
+        # If you are using binaries built locally
+        cd out/target/product/am62x
+
+        (OR)
+
+        # If you are using pre-built binaries from SDK download page
+        cd AM62x_09.01.00_emmc
+
+        # for AM62x SK EVM (GP)
         snagrecover -s am625 -f ./am62x-sk-evm.yaml
 
+        # for AM62x SK EVM (HS-FS)
+        snagrecover -s am625 -f ./am62x-sk-evm-hsfs.yaml
 
-    In the serial console, you will see::
+        # for AM62x LP SK EVM (GP)
+        snagrecover -s am625 -f ./am62x-lp-sk-evm.yaml
 
-        SYSFW ABI: 3.1 (firmware rev 0x0009 '9.0.5--v09.00.05 (Kool Koala)')
-        SPL initial stack usage: 1856 bytes
-        Trying to boot from DFU
+        # for AM62x LP SK EVM (HS-FS)
+        snagrecover -s am625 -f ./am62x-lp-sk-evm-hsfs.yaml
 
 
-.. note::
+In the serial console, you will see::
 
-    For AM62x LP variant, or HS-FS boards, edit ``am62x-sk-evm.yaml`` :
-
-        .. code:: yaml
-
-            tiboot3:
-                # for LP boards, use:
-                path: tiboot3-am62x-lp-sk-dfu.bin
-                # for LP with HS-FS:
-                # path: tiboot3-am62x-lp-sk-dfu-hsfs.bin
-                # for HS-FS:
-                # path: tiboot3-am62x-sk-dfu-hsfs.bin
-            tispl:
-                # For LP boards, use:
-                path: tispl-am62x-lp-sk-dfu.bin
-            u-boot:
-                # For LP boards, use:
-                path: u-boot-am62x-lp-sk-dfu.img
+    SYSFW ABI: 3.1 (firmware rev 0x0009 '9.0.5--v09.00.05 (Kool Koala)')
+    SPL initial stack usage: 1856 bytes
+    Trying to boot from DFU
 
 
 5. Setup default U-Boot environment
@@ -86,7 +83,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 .. _step_5_flashing_instructions:
 
     Type ``Ctrl-C`` in the serial console to continue to U-Boot.
-    From there, we can run fastboot to recover with::
+    From there, we should ensure the default U-Boot environment is configured with::
 
         =>  env default -f -a; saveenv;
 
@@ -109,25 +106,24 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
         # If you are using binaries built locally
         cd out/target/product/am62x
-        sudo ./flashall.sh --board am62x-sk
 
         (OR)
 
         # If you are using pre-built binaries from SDK download page
         cd AM62x_09.01.00_emmc
+
+        # for AM62x SK EVM (GP)
         sudo ./flashall.sh --board am62x-sk
 
-.. note::
-    To flash AM62X-LP board you should do::
+        # for AM62x SK EVM (HS-FS)
+        sudo ./flashall.sh --board am62x-sk --hsfs
 
+        # for AM62x LP SK EVM (GP)
         sudo ./flashall.sh --board am62x-lp-sk
 
-.. note::
+        # for AM62x LP SK EVM (HS-FS)
+        sudo ./flashall.sh --board am62x-lp-sk --hsfs
 
-    To Flash HS-FS board use flash script with ``--hsfs`` arg.
-    For example::
-
-        sudo ./flashall.sh --board am62x-sk --hsfs
 
 8. Once the flashing is complete, power off the board
 
