@@ -102,32 +102,24 @@ Bootloader components
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    1. Build ATF
-
-    ::
+    1. Build ATF::
 
         cd ${YOUR_PATH}/ti-bootloader-aosp/arm-trusted-firmware
         make E=0 CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=lite SPD=opteed CFLAGS+="-DK3_PM_SYSTEM_SUSPEND=1"
 
-    2. Build OPTEE-OS
-
-    ::
+    2. Build OPTEE-OS::
 
         cd ${YOUR_PATH}/ti-bootloader-aosp/ti-optee-os
         make PLATFORM=k3 CFG_ARM64_core=y CROSS_COMPILE=arm-none-linux-gnueabihf- CROSS_COMPILE64=aarch64-none-linux-gnu-
 
-    3. Build tiboot3.bin
-
-    ::
+    3. Build tiboot3.bin::
 
         cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
         make ARCH=arm am62x_evm_r5_defconfig
         make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- \
              BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
 
-    4. Build tispl.bin and u-boot.img
-
-    ::
+    4. Build tispl.bin and u-boot.img::
 
         cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
         make ARCH=arm am62x_evm_a53_defconfig
