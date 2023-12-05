@@ -5,18 +5,14 @@ Device Tree Overlay Support
 
 
 It's possible to change the ``dtbo_index`` from the U-Boot shell.
-For example:
-
-.. parsed-literal::
+For example::
 
     env set dtbo_index 1
     saveenv
     reset
 
-To enable multiple DTBOs, pass a space-separated index list. For
-example,
-
-.. parsed-literal::
+To enable multiple DTBOs, pass a space-separated index list.
+For example::
 
     env set dtbo_index '1 2'
 

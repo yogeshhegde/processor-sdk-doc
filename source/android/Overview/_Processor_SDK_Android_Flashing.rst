@@ -37,12 +37,12 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
     .. Image:: ../images/am62x_sk_evm_setup.jpg
 
-1. Change the Boot Mode DIP switches to DFU mode::
+1. Change the boot mode DIP switches to DFU mode::
 
         Boot mode DIP Switch:
         SW1: 11001010 SW2: 00000000
 
-2. Ensure the device is plugged in with USB Host and Debug UART/Serial Debug
+2. Ensure the device is plugged in with USB host and debug UART/serial debug
 
 3. Open a terminal debugger to view console output from the device::
 
@@ -88,17 +88,18 @@ In the serial console, you will see::
         =>  env default -f -a; saveenv;
 
 .. note::
-    If you build with `TARGET_AVB_ENABLE=true` or flash User Images you need to do this command in uboot console::
+    If you build with `TARGET_AVB_ENABLE=true` or flash user images you need to do this command in U-Boot console::
 
         => setenv force_avb "1"; saveenv;
 
 .. note::
 
-    By default No Device-Tree Overlays was selected. Please follow this link to set a `Device Tree Overlays`_
+    By default, no Device-Tree Overlays are selected. Follow this link to set `Device Tree Overlays`_
 
 .. _Device Tree Overlays: ../devices/AM62X/android/Application_Notes_dtbo_support.html
 
-6. Enable fastboot mode on the device through the terminal debugger by executing below command. Before running this command make sure USB-C cable is connected from the host PC to the EVM::
+6. Enable fastboot mode on the device through the terminal debugger by executing below command.
+   Before running this command make sure USB-C cable is connected from the host PC to the EVM::
 
         => fastboot 0
 
@@ -127,7 +128,7 @@ In the serial console, you will see::
 
 8. Once the flashing is complete, power off the board
 
-9. Change Boot mode DIP switches to boot from eMMC user partitions and power cycle the board::
+9. Change boot mode DIP switches to boot from eMMC user partitions and power cycle the board::
 
         Boot mode DIP Switch:
         SW1: 11000010 SW2: 00000000

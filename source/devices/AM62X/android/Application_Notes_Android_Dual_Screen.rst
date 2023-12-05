@@ -2,11 +2,11 @@
 Android Dual Screen Support
 ===========================
 
-This applications Notes contains step to enable Dual Display with Android in mirror mode or extented mode.
+This application note contains steps to enable dual screen with Android in mirror mode or extended mode.
 
 .. note::
 
-	By default android set display in mirroring mode.
+	By default Android configures the displays in mirror mode.
 
 .. note::
 
@@ -15,7 +15,7 @@ This applications Notes contains step to enable Dual Display with Android in mir
 	**Microtips Technology USA (13-101HIEB0HF0-S) 10.1"  WUXGA (1920x1200) TFT LCD panel**
 
 
-How to enable Microtips LVDS Panel on AM62 SK EVM
+How to enable Microtips LVDS panel on AM62 SK EVM
 =================================================
 
 **Steps to enable OLDI Panel DT overlay:**
@@ -23,7 +23,7 @@ How to enable Microtips LVDS Panel on AM62 SK EVM
 #. Follow the `How to enable DT overlays in Android
    <Application_Notes_dtbo_support.html>`__ guide
 
-**Steps to enable Touch on the Microtips Panel on AM625 SK EVM:**
+**Steps to enable touch on the Microtips Panel on AM625 SK EVM:**
 
 **Note**: The following steps are only applicable on AM625 SK EVM revision E3 board.
 
@@ -33,22 +33,22 @@ How to enable Microtips LVDS Panel on AM62 SK EVM
 	.. code-block:: bash
 
 		console:/ $ su
-		console:/ $ rmmod ili210x
-		console:/ $ i2ctransfer -f -y 0 w3@0x3f 0x09 0x1 0x0e
-		console:/ $ i2ctransfer -f -y 0 w6@0x3f 0x08 0x04 0x47 0x50 0x73 0x68
+		console:/ # rmmod ili210x
+		console:/ # i2ctransfer -f -y 0 w3@0x3f 0x09 0x1 0x0e
+		console:/ # i2ctransfer -f -y 0 w6@0x3f 0x08 0x04 0x47 0x50 0x73 0x68
 
 #. Power on the LVDS board
 #. Run the following command:
 
 	.. code-block:: bash
 
-		console:/ $ insmod /vendor/lib/modules/ili210x.ko
+		console:/ # insmod /vendor/lib/modules/ili210x.ko
 
 After re-initializing the module, the touch IC should now be registered as an input and touch should be functional.
 
 .. note::
 
-	This step need to de done each time you reboot board.
+	This step need to de done each time the board reboots.
 
 How to enable Extended Display in Android
 ==========================================
@@ -59,7 +59,7 @@ How to enable Extended Display in Android
 
 **Step to enable Extended Display:**
 
-#. Edit device.mk file to add this:
+#. Edit ``device.mk`` file to add this:
 
 	.. code-block:: makefile
 
@@ -75,6 +75,4 @@ How to enable Extended Display in Android
 
 	Relaunch command from `How to build SDK <../../../android/Overview_Building_the_SDK.html#id3>`_ guide.
 
-#. Follow this `How to flash eMMC <../../../android/Overview_Flashing.html#emmc-flashing>`_ guide to flash Android image.
-
-
+#. Follow this `How to flash eMMC <../../../android/Overview_Flashing.html#emmc-flashing>`_ guide to flash Android images.

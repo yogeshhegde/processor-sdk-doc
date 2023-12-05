@@ -2,7 +2,7 @@
 Building the SDK
 ********************************************
 
-Build PC Setup
+Build PC setup
 ==============
 
 Please refer to the following pages from Android documentation to setup your environment for Android build:
@@ -14,23 +14,23 @@ Please refer to the following pages from Android documentation to setup your env
    guide.
 
 
-**Getting the Repo tool**
+**Getting the repo tool**
 
-You will need the Repo tool to retrieve repositories.
+You will need the ``repo`` tool to retrieve repositories.
 To install it, please refer to this webpage : https://source.android.com/setup/develop#installing-repo
 
 **Getting toolchain for u-boot builds**
 
 Links to download toolchains for building u-boot are mentioned in the SDK download page.
 
-**Install Optee-OS build dependencies**
+**Install OPTEE-OS build dependencies**
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-  Check OPTEE OS docs to know list of dependencies needed to be installed :
+  Check OPTEE-OS docs to know list of dependencies needed to be installed :
   https://optee.readthedocs.io/en/latest/building/prerequisites.html
 
-Downloading Sources
+Downloading sources
 ===================
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
@@ -68,12 +68,12 @@ Kernel
 
     .. note::
 
-        To save same disk space, pass the ``--depth=1`` option to ``repo init``::
+        To save some disk space, pass the ``--depth=1`` option to ``repo init``::
 
             repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_09_01_Kernel.xml --depth=1
 
 
-Android File System
+Android file system
 -------------------
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
@@ -92,9 +92,9 @@ Build Instructions
 
     .. note::
 
-        The Bootloader and Kernel builds below are optional if they are used as is from TI release. Prebuilt copies of these
-        binaries are already part of Android file system sources in ``device/ti/am62x-kernel`` and
-        ``vendor/ti/am62x/bootloader`` folder.
+        The bootloader and kernel builds below are optional if they are used as-is from TI release.
+        Prebuilt copies of these binaries are already part of Android file system sources
+        in ``device/ti/am62x-kernel`` and ``vendor/ti/am62x/bootloader`` folder.
 
 
 Bootloader components
@@ -112,14 +112,14 @@ Bootloader components
         cd ${YOUR_PATH}/ti-bootloader-aosp/ti-optee-os
         make PLATFORM=k3 CFG_ARM64_core=y CROSS_COMPILE=arm-none-linux-gnueabihf- CROSS_COMPILE64=aarch64-none-linux-gnu-
 
-    3. Build tiboot3.bin::
+    3. Build ``tiboot3.bin``::
 
         cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
         make ARCH=arm am62x_evm_r5_defconfig
         make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- \
              BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
 
-    4. Build tispl.bin and u-boot.img::
+    4. Build ``tispl.bin`` and ``u-boot.img``::
 
         cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
         make ARCH=arm am62x_evm_a53_defconfig
@@ -129,10 +129,13 @@ Bootloader components
             TEE=${YOUR_PATH}/ti-bootloader-aosp/optee_os/out/arm-plat-k3/core/tee-pager_v2.bin \
             BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
 
-    5. Copy the tiboot3.bin, tispl.bin and u-boot.img generated in steps 3 and 4 to ``${YOUR_PATH}/ti-aosp-14/vendor/ti/am62x/bootloader``. If not copied, the prebuilt bootloader binaries already present in vendor/ti/am62x/bootloader will get use by flashall.sh flashing script.
+    5. Copy the ``tiboot3.bin``, ``tispl.bin`` and ``u-boot.img`` generated in steps 3 and 4
+       to ``${YOUR_PATH}/ti-aosp-14/vendor/ti/am62x/bootloader``.
+       If not copied, the prebuilt bootloader binaries already present in ``vendor/ti/am62x/bootloader``
+       will get used by ``flashall.sh`` flashing script.
 
     .. note ::
-        To Build bootloaders for AM62X LP Board please do same step with this defconfig:
+        To build bootloaders for AM62X LP board please do same step with this defconfig:
 
             - For step 3 use ``am62x_lpsk_r5_defconfig``
             - For step 4 use ``am62x_lpsk_a53_defconfig`` with same fragment
@@ -153,7 +156,7 @@ Building everything from scratch
 
     .. note::
 
-        Android move on Kleaf bazel build system, AOSP documentation can be read `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and Kleaf documentatation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
+        Android move on Kleaf bazel build system, AOSP documentation can be read `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and Kleaf documentation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
 
 Rebuilding faster
 ~~~~~~~~~~~~~~~~~
@@ -170,7 +173,7 @@ Rebuilding faster
 Defconfig/menuconfig changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The usual (``make menuconfig`` ) is done via `bazel`` command :
+The usual (``make menuconfig`` ) is done via ``bazel`` command :
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -184,7 +187,8 @@ The usual (``make menuconfig`` ) is done via `bazel`` command :
     .. note::
 
            Users must have built the android kernel image prior to building the Android file system.
-           Otherwise pre-built Kernel images present in ``device/ti/am62x-kernel`` will be used to create ``boot.img``
+           Otherwise pre-built kernel images present in ``device/ti/am62x-kernel``
+           will be used to create ``boot.img``
 
 
 Android File System
@@ -213,9 +217,9 @@ AM62X-SK Car user               ``am62x_car-user``
     Default BUILD_TARGET to use is ``am62x-userdebug``
 
 .. note::
-    By default with User images AVB feature was enabled.
-    For userdebug images if you want to enable AVB feature you need to build with ``TARGET_AVB_ENABLE=true`` build args
-    ::
+    By default with user images AVB feature is enabled.
+    For userdebug images, if you want to enable AVB feature you need to build
+    with ``TARGET_AVB_ENABLE=true`` build args::
 
         cd ${YOUR_PATH}/ti-aosp-14
         lunch <BUILD_TARGET>

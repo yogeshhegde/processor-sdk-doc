@@ -9,14 +9,12 @@ SD Card Creation
 =============================
 
 In order to flash the AM62X board's eMMC the fist time, a SD card containing the required bootloaders will have to be used
-to boot into uboot and use fastboot.
+to boot into U-Boot and use fastboot.
 
 Partitioning the SD card
 ------------------------
 
-The SD card has to be partitioned using fdisk and the layout should look like as follow:
-
-::
+The SD card has to be partitioned using fdisk and the layout should look like as follow::
 
     Disk /dev/sda: 30,2 GiB, 32227983360 bytes, 62945280 sectors
     Disk model: Storage Device
@@ -34,9 +32,7 @@ Formatting the SD card partitions
 
 Once partitioned, the boot partition has to be formatted with a FAT filesystem.
 
-Assuming the SD card is /dev/sda:
-
-::
+Assuming the SD card is /dev/sda::
 
     mkfs.vfat /dev/sda1
 
@@ -67,16 +63,16 @@ the images are built from source.
         Boot mode DIP Switch:
         SW1: 11000010 SW2: 01000000
 
-2. Ensure the device is plugged in with USB Host and Debug UART/Serial Debug
+2. Ensure the device is plugged in with USB host and debug UART/serial debug
 
-3. Boot the board with tiboot3.bin, u-boot.img, tispl.bin files in
+3. Boot the board with ``tiboot3.bin``, ``u-boot.img``, ``tispl.bin`` files in
    boot partition of SD card.
 
 4. Open a terminal debugger to view console output from the device::
 
     sudo picocom -b 115200 -r -l /dev/ttyUSB0
 
-5. Stop at u-boot console (interrupt the autoboot countdown) and do below commands to setup Android
+5. Stop at U-Boot console (interrupt the autoboot countdown) and do below commands to setup Android
    partition table::
 
     env default -f -a; saveenv

@@ -10,7 +10,7 @@ Introduction
 The Processor Software Development Kit for Android provides a fundamental software platform for development, deployment and execution of Android-based application and includes the following:
 
    * Bootloader components
-   * Linux Kernel and
+   * Linux kernel and
    * Android file system
 
 
@@ -40,11 +40,11 @@ Following features are enabled/tested in this release for AM62x Android:
 
 * **Boot:** eMMC boot, fastboot based flashing, A/B partition
 * **Security:** Keymaster and gatekeeper implementaton with OP-TEE
-* **Platform:** SELinux Enforced mode with User build, ADB over USB
+* **Platform:** SELinux enforced mode with user build, ADB over USB
 * **Connectivity:** Ethernet, USB touch
-* **Graphics:** GPU accelerated UI with Hwcomposer
-* **Audio:** HDMI Output and Jack Audio Output/Input
-* **Multimedia:** SW Video Decode/Encode, USB Camera Supported
+* **Graphics:** GPU accelerated UI with drm_hwcomposer
+* **Audio:** HDMI output and jack audio output/input
+* **Multimedia:** SW video decode/encode, USB camera supported
 * **Android Baseport:** Support of Generic System Image,
 * **Display:** Support for LVDS panel and dual display (mirroring and extended)
 
@@ -74,7 +74,7 @@ Documentation
 
 - `Getting Started Guide`_ page provides information on getting started with pre-built binaries and booting the Android images on EVM.
 - `Building the SDK`_ page provides information on downloading and building the Android images from sources.
-- `Application Notes`_ page provides Some Application Notes.
+- `Application Notes`_ page provides Application Notes.
 
 .. _Getting Started Guide:  ../../../android/Overview_Getting_Started_Guide.html
 .. _Building the SDK: ../../../android/Overview_Building_the_SDK.html
@@ -84,7 +84,7 @@ Host Support
 ============
 
 The Processor SDK is developed, built and verified on Ubuntu 18.04, 20.04 and 22.04. For all other
-versions of Host support refer to Android documentation.
+versions of host support refer to Android documentation.
 
 
 Known Issues

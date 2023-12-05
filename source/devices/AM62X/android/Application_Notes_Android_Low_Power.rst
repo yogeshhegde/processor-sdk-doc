@@ -2,7 +2,7 @@
 Android Low Power Support
 ===========================
 
-This applications Notes contains step to enable Low Power support in BSP.
+This application note contains steps to enable low power support in BSP.
 
 AM62x has limited support for Low Power Mode (LPM) in current SDK release.
 Since not all peripheral drivers are updated to work across suspend/resume cycle,
@@ -10,17 +10,17 @@ a cut-down version of DT file is provided with limited peripherals and cores ena
 to demonstrate Suspend to RAM (S2R) capability.
 
 .. note::
-	Deep Sleep is currently supported only on AM62x GP Devices and support for HS-FS, HS-SE
+	Deep sleep is currently supported only on AM62x GP Devices and support for HS-FS, HS-SE
 	is still under way.
 
-Supported Low power mode:
+Supported low power mode:
 
-#. **Suspend to RAM (S2R):** All power domains are off except for Wakeup Domain that has Wakeup Co-processor (DM R5) running. DDR is in Self Refresh.
+#. **Suspend to RAM (S2R):** All power domains are off except for wakeup domain that has wakeup co-processor (DM R5) running. DDR is in self refresh.
 
 Switching to LPM demo dts
 -------------------------
 
-LPM demo is only possible with cut-down dtb: k3-am625-sk-lpmdemo.dtb.
+LPM demo is only possible with cut-down dtb: ``k3-am625-sk-lpmdemo.dtb``.
 
 **Steps to switch to LPM DT:**
 
@@ -28,7 +28,7 @@ LPM demo is only possible with cut-down dtb: k3-am625-sk-lpmdemo.dtb.
 
 #. Edit android build system
 
-	- Update `device/ti/am62x` and apply this change:
+	- Update ``device/ti/am62x`` and apply this change:
 
 	.. code-block:: bash
 
@@ -45,12 +45,10 @@ LPM demo is only possible with cut-down dtb: k3-am625-sk-lpmdemo.dtb.
 				device/ti/am62x/ueventd.am62x.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
 
 
-#. At Android prompt, using RTC as wakeup source, test S2R using following cmd
-
-	::
+#. At Android prompt, using RTC as wakeup source, test S2R using following command::
 
 		console:/ $ su
-		console:/ $ rtcwake -s 10 -m mem
+		console:/ # rtcwake -s 10 -m mem
 		wakeup using "mem" from /dev/rtc0 at Mon Feb 27 20:47:02 2023
 		[  171.729145] PM: suspend entry (deep)
 		[  171.737476] Filesystems sync: 0.004 seconds
@@ -87,6 +85,6 @@ LPM demo is only possible with cut-down dtb: k3-am625-sk-lpmdemo.dtb.
 		[  201.595880] android_work: sent uevent USB_STATE=CONFIGURED
 		console:/ $
 
-This puts system to sleep for 10s and then wakes it up via RTC interrupt
+This puts system to sleep for 10s and then wakes it up via RTC interrupt.
 
 More information on `Linux how to low power <https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/latest/exports/docs/linux/How_to_Guides/Target/How_to_suspend_to_ram_on_AM62x.html>`_ guide.
