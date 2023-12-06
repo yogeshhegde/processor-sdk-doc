@@ -2,7 +2,7 @@
 Android on SD Card
 ==================
 
-This applications note contains step to use SD Card instead of eMMC.
+This application note contains steps to use SD Card instead of eMMC.
 
 
 Build U-Boot with this changes

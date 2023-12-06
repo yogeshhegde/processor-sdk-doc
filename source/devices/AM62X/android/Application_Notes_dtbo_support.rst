@@ -2,6 +2,8 @@
 Device Tree Overlay Support
 ===========================
 
+This application note contains steps to configure Device Tree Overlays (DTBO).
+DTBOs can be enabled from U-Boot when extra peripherals are connected to the board.
 
 
 It's possible to change the ``dtbo_index`` from the U-Boot shell.
