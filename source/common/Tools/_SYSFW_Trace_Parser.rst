@@ -1,6 +1,8 @@
-SYSFW Trace Parser
-==================
+Enabling and Parsing SYSFW Trace
+================================
 
+SYSFW Trace Parser
+------------------
 This chapter gives details on how a helper script packaged in the SDK can be
 used to parse the TISCI trace data. For more details on the TIFS trace refer
 to `Trace chapter <https://software-dl.ti.com/tisci/esd/latest/4_trace/trace.html>`__
@@ -55,3 +57,34 @@ Usage of this tool is described below. Current version of trace (Option -Tv) is 
     "sysfw_v2019.03_fail.log","-o","/tmp/out.log","-Tv","0x00000"]);
 
 
+Enabling SYSFW Traces via Board Configuration
+---------------------------------------------
+
+Enabling and disabling of SYSFW traces is controlled by the debug configuration
+settings in the SYSFW Board Configuration. Refer to `TISCI documentation <https://software-dl.ti.com/tisci/esd/latest/3_boardcfg/BOARDCFG.html#design-details-for-system-firmware-debug-console>`__
+for more info on the Board Configuration.
+
+For Linux boot flow, the default SYSFW Board Configuration is present in
+u-boot code under the file path ``board/ti/<board-name>/board-cfg.yaml``.
+The trace configuration is controlled by ``trace_dst_enables`` and
+``trace_src_enables`` values and by default they are disabled.
+
+::
+
+    trace_dst_enables : 0x00
+    trace_src_enables : 0x00
+
+
+To enable traces update the ``trace_dst_enables`` and ``trace_src_enables`` values
+of board-cfg.yaml file according to `boardcfg_dbg_dst_ports <https://software-dl.ti.com/tisci/esd/latest/3_boardcfg/BOARDCFG.html#boardcfg-dbg-dst-ports>`__
+and `boardcfg_dbg_src <https://software-dl.ti.com/tisci/esd/latest/3_boardcfg/BOARDCFG.html#boardcfg-dbg-src>`__
+settings accordingly.
+
+The example below shows values that enable SYSFW traces destination on UART
+and traces from all sources. After making the changes re-build the u-boot binaries
+for the changes to take effect.
+
+::
+
+    trace_dst_enables : 0x01
+    trace_src_enables : 0x1F
