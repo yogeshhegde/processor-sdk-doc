@@ -57,14 +57,14 @@ Flashing SD Card
 ----------------
 
 .. warning::
-    Minimal size for SD card is 16GB
+    Minimal size for SD card is ``16GB``
 
-- Change the Boot Mode DIP switches to SD card boot mode::
+- Change the boot mode DIP switches to SD card boot mode::
 
         Boot mode DIP switch:
         SW1: 11000010 SW2: 01000000
 
-- Go in out dir in android environment and launch this command::
+- Go in out directory in android environment and launch this command::
 
         # If you are using binaries built locally
         cd out/target/product/am62x
@@ -73,4 +73,4 @@ Flashing SD Card
 **flashall.sh script print in your console instruction to do**
 
 .. note::
-    Replace X in ``/dev/sdX/`` by letter corresponding to your SDCard
+    Replace X in ``/dev/sdX/`` by letter corresponding to your SD card

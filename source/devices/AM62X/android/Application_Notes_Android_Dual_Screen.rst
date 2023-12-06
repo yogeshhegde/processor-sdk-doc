@@ -48,12 +48,12 @@ After re-initializing the module, the touch IC should now be registered as an in
 
 .. note::
 
-	This step need to de done each time the board reboots.
+	This step need to be done each time the board reboots.
 
 How to enable Extended Display in Android
 ==========================================
 
-**Step to setup an android build environnement:**
+**Step to setup an android build environment:**
 
 #. Follow the `How to build Android <../../../android/Overview_Building_the_SDK.html#android-file-system>`_ Guide.
 

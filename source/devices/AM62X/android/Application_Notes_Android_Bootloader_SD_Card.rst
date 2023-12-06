@@ -14,7 +14,7 @@ to boot into U-Boot and use fastboot.
 Partitioning the SD card
 ------------------------
 
-The SD card has to be partitioned using fdisk and the layout should look like as follow::
+The SD card has to be partitioned using ``fdisk`` and the layout should look like as follow::
 
     Disk /dev/sda: 30,2 GiB, 32227983360 bytes, 62945280 sectors
     Disk model: Storage Device
@@ -72,7 +72,7 @@ the images are built from source.
 
     sudo picocom -b 115200 -r -l /dev/ttyUSB0
 
-5. Stop at U-Boot console (interrupt the autoboot countdown) and do below commands to setup Android
+5. Stop at U-Boot console (interrupt the auto-boot countdown) and do below commands to setup Android
    partition table::
 
     env default -f -a; saveenv

@@ -4,18 +4,18 @@ Android Low Power Support
 
 This application note contains steps to enable low power support in BSP.
 
-AM62x has limited support for Low Power Mode (LPM) in current SDK release.
+AM62X has limited support for Low Power Mode (LPM) in current SDK release.
 Since not all peripheral drivers are updated to work across suspend/resume cycle,
 a cut-down version of DT file is provided with limited peripherals and cores enabled
 to demonstrate Suspend to RAM (S2R) capability.
 
 .. note::
-	Deep sleep is currently supported only on AM62x GP Devices and support for HS-FS, HS-SE
+	Deep sleep is currently supported only on AM62X GP Devices and support for HS-FS, HS-SE
 	is still under way.
 
 Supported low power mode:
 
-#. **Suspend to RAM (S2R):** All power domains are off except for wakeup domain that has wakeup co-processor (DM R5) running. DDR is in self refresh.
+#. **Suspend to RAM (S2R):** All power domains are off except for wake-up domain that has wake-up co-processor (DM R5) running. DDR is in self refresh.
 
 Switching to LPM demo dts
 -------------------------
@@ -45,7 +45,7 @@ LPM demo is only possible with cut-down dtb: ``k3-am625-sk-lpmdemo.dtb``.
 				device/ti/am62x/ueventd.am62x.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
 
 
-#. At Android prompt, using RTC as wakeup source, test S2R using following command::
+#. At Android prompt, using RTC as wake-up source, test S2R using following command::
 
 		console:/ $ su
 		console:/ # rtcwake -s 10 -m mem
