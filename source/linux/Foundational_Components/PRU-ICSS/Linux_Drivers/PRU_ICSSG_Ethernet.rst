@@ -47,6 +47,7 @@ Features supported
 - Multi-cast HW filtering
 - XDP Native Mode and XDP Generic Mode
 - Cut Through forwarding
+- PHY Interrupt mode for ICSSG2
 
 .. rubric:: **Features not supported**
 
