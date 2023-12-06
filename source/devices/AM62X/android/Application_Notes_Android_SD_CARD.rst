@@ -13,7 +13,9 @@ Download sources
 
 Follow this link to `download bootloader sources`_.
 
-Apply this patch in U-Boot source code::
+Apply this patch in U-Boot source code:
+
+    .. code-block:: diff
 
         diff --git a/configs/am62x_android_a53.config b/configs/am62x_android_a53.config
         index fc949f65d7fe..d50952557192 100644

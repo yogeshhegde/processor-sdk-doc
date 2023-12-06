@@ -30,7 +30,7 @@ LPM demo is only possible with cut-down dtb: ``k3-am625-sk-lpmdemo.dtb``.
 
 	- Update ``device/ti/am62x`` and apply this change:
 
-	.. code-block:: bash
+	.. code-block:: diff
 
 		diff --git a/device.mk b/device.mk
 		index 686e3dbd99b2..d638ecd99390 100644
