@@ -109,7 +109,7 @@ Bootloader components
 
     2. Build OPTEE-OS::
 
-        cd ${YOUR_PATH}/ti-bootloader-aosp/ti-optee-os
+        cd ${YOUR_PATH}/ti-bootloader-aosp/optee_os
         make PLATFORM=k3 CFG_ARM64_core=y CROSS_COMPILE=arm-none-linux-gnueabihf- CROSS_COMPILE64=aarch64-none-linux-gnu-
 
     3. Build ``tiboot3.bin``::
