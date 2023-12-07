@@ -4,13 +4,13 @@ Android Low Power Support
 
 This application note contains steps to enable low power support in BSP.
 
-AM62X has limited support for Low Power Mode (LPM) in current SDK release.
+AM62x has limited support for Low Power Mode (LPM) in current SDK release.
 Since not all peripheral drivers are updated to work across suspend/resume cycle,
 a cut-down version of DT file is provided with limited peripherals and cores enabled
 to demonstrate Suspend to RAM (S2R) capability.
 
 .. note::
-	Deep sleep is currently supported only on AM62X GP Devices and support for HS-FS, HS-SE
+	Deep sleep is currently supported only on AM62x GP Devices and support for HS-FS, HS-SE
 	is still under way.
 
 Supported low power mode:

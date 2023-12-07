@@ -19,7 +19,7 @@ For example::
     env set dtbo_index '1 2'
 
 
-**- AM62X-SK EVM**
+**- AM62x-SK EVM**
 
 The following Device-Tree Overlays are supported:
 
@@ -38,7 +38,7 @@ The following Device-Tree Overlays are supported:
 .. warning::
     LVDS Display is supported only on E3 board revision.
 
-**- AM62X-LP-SK EVM**
+**- AM62x-LP-SK EVM**
 
 The following Device-Tree Overlays are supported:
 

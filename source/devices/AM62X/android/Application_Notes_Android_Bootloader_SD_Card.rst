@@ -8,7 +8,7 @@ from SD Card instead of using snagboot.
 SD Card Creation
 =============================
 
-In order to flash the AM62X board's eMMC the fist time, a SD card containing the required bootloaders will have to be used
+In order to flash the AM62x board's eMMC the fist time, a SD card containing the required bootloaders will have to be used
 to boot into U-Boot and use fastboot.
 
 Partitioning the SD card

@@ -135,7 +135,7 @@ Bootloader components
        will get used by ``flashall.sh`` flashing script.
 
     .. note ::
-        To build bootloaders for AM62X LP board please do same step with this defconfig:
+        To build bootloaders for AM62x LP board please do same step with this defconfig:
 
             - For step 3 use ``am62x_lpsk_r5_defconfig``
             - For step 4 use ``am62x_lpsk_a53_defconfig`` with same fragment

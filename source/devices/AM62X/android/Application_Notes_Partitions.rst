@@ -2,7 +2,7 @@
 eMMC Partition Layout
 =====================
 
-The AM62X board eMMC partition for Android binaries is shown in below table
+The AM62x board eMMC partition for Android binaries is shown in below table
 
 +------------------------+------------------+----------------------------------------------------+
 | **Partition Name**     |  **Flash Media** | Images to flash                                    |
