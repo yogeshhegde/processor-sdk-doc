@@ -53,6 +53,8 @@ Released Oct 2023
 .. rubric:: What's New
    :name: whats-new
 
+.. note:: Generic PRU-ICSS Ethernet is descoped in 09.01.00 release.
+
 Processor SDK 9.1 Release has following new features:
 
  - 2023 LTS Refresh with Stable Kernel 6.1, U-boot 2023.04, Yocto Kirkstone 4.0

@@ -19,6 +19,7 @@ Ordinary Clock (OC), Boundary Clock (BC) And Transparent Clock (TC)
 .. note::
 
    HSR/PRP with PRU-ICSS firmware offload is not supported on AM335x & AM437x.
+   PTP with PRU-ICSS Ethernet is not supported on AM335x & AM437x SDK 9.1.
 
 Features supported
 
