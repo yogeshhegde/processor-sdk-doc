@@ -5,6 +5,7 @@ Device Tree Overlay Support
 This application note contains steps to configure Device Tree Overlays (DTBO).
 DTBOs can be enabled from U-Boot when extra peripherals are connected to the board.
 
+DTBOs are **board specific**.
 
 It's possible to change the ``dtbo_index`` from the U-Boot shell.
 For example::
@@ -46,4 +47,14 @@ The following Device-Tree Overlays are supported:
 |dtbo_index |  description                                                         |
 +-----------+----------------------------------------------------------------------+
 |    4      |   Microtips Technology USA 10.1"  WUXGA (1920x1200) OLDI panel       |
++-----------+----------------------------------------------------------------------+
+
+**- Beagle Play**
+
++-----------+----------------------------------------------------------------------+
+|dtbo_index |  description                                                         |
++-----------+----------------------------------------------------------------------+
+|    5      |   Digilent PCam 5C OV5640 Camera                                     |
++-----------+----------------------------------------------------------------------+
+|    6      |   TEVI-OV5640C-S84-IR-RPI Camera                                     |
 +-----------+----------------------------------------------------------------------+

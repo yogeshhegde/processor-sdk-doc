@@ -3,6 +3,12 @@
 Flashing Instruction
 ********************************************
 
+These instructions are for the AM62x SK EVM.
+
+For flashing the Beagle Play, see the `dedicated application note`_.
+
+.. _dedicated application note: ../devices/AM62X/android/Application_Notes_BeaglePlay.html
+
 DFU Recovery
 ============
 

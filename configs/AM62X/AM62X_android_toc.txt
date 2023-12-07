@@ -15,3 +15,4 @@ devices/AM62X/android/Application_Notes_Android_SD_CARD
 devices/AM62X/android/Application_Notes_Android_Dual_Screen
 devices/AM62X/android/Application_Notes_Android_Low_Power
 devices/AM62X/android/Application_Notes_Simple_UI_App
+devices/AM62X/android/Application_Notes_BeaglePlay

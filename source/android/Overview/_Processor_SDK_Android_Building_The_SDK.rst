@@ -137,8 +137,14 @@ Bootloader components
     .. note ::
         To build bootloaders for AM62x LP board please do same step with this defconfig:
 
-            - For step 3 use ``am62x_lpsk_r5_defconfig``
-            - For step 4 use ``am62x_lpsk_a53_defconfig`` with same fragment
+            - For step 3, use ``am62x_lpsk_r5_defconfig``
+            - For step 4, use ``am62x_lpsk_a53_defconfig`` with same fragment
+
+    .. note ::
+        To build bootloaders for the Beagle Play, follow same steps but change the defconfigs:
+
+            - For step 3, use ``am62x_evm_r5_defconfig`` with ``am625_beagleplay_r5.config`` and ``am625_beagleplay_android_r5.config``
+            - For step 4, use ``am62x_evm_a53_defconfig`` with ``am625_beagleplay_a53.config``, ``am62x_android_a53.config`` and ``am625_beagleplay_android_a53.config``
 
 Kernel
 ------
@@ -147,6 +153,8 @@ Building everything from scratch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    The kernel is compatible with all AM62x boards, such as the SK EVM and the Beagle Play.
 
     ::
 
@@ -227,3 +235,8 @@ The recommended ``BUILD_TARGET`` to use is ``am62x-userdebug``.
         m TARGET_AVB_ENABLE=true
 
 **After building all components, refer to instruction in next section for flashing the images to EVM**
+
+The android images generated for the AM62X-SK EVM are compatible with the Beagle Play board.
+For flashing the Beagle Play, see the `dedicated application note`_.
+
+.. _dedicated application note: ../devices/AM62X/android/Application_Notes_BeaglePlay.html
