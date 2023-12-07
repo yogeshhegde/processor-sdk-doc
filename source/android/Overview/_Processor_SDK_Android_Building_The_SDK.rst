@@ -156,7 +156,9 @@ Building everything from scratch
 
     .. note::
 
-        Android move on Kleaf bazel build system, AOSP documentation can be read `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and Kleaf documentation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
+        Android uses Kleaf, a Bazel-based build system to build the kernel.
+        AOSP documentation can be found `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and
+        Kleaf documentation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
 
 Rebuilding faster
 ~~~~~~~~~~~~~~~~~
