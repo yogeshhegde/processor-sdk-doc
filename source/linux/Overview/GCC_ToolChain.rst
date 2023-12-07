@@ -100,7 +100,7 @@ architectures found in Processor SDK.
     +--------------------------+--------------+-------------------------------------------------------------------------+
     | arm-linux-gnueabihf-     | ARMv7        | am335x-evm, am437x-evm                                                  |
     +--------------------------+--------------+-------------------------------------------------------------------------+
-    | aarch64-none-linux-gnu-  | ARMv8        | am65xx-evm, am62xx-evm, am62xx-lp-evm, am64xx-evm                       |
+    | aarch64-none-linux-gnu-  | ARMv8        | am65xx-evm, am62xx-evm, am62xx-lp-evm, am64xx-evm, am62pxx-evm          |
     +--------------------------+--------------+-------------------------------------------------------------------------+
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
