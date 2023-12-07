@@ -215,8 +215,7 @@ AM62X-SK Car userdebug          ``am62x_car-userdebug``
 AM62X-SK Car user               ``am62x_car-user``
 ============================= ============================
 
-.. note::
-    Default BUILD_TARGET to use is ``am62x-userdebug``
+The recommended ``BUILD_TARGET`` to use is ``am62x-userdebug``.
 
 .. note::
     By default with user images AVB feature is enabled.
