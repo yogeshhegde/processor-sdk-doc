@@ -13,26 +13,26 @@
 
 Replacement Variables
 ---------------------
-'__PART_FAMILY_NAME__'           : 'Jacinto'
+'__PART_FAMILY_NAME__'           : 'Sitara'
 '__PART_FAMILY_DEVICE_NAMES__'   : 'AM65X'
-'__PRODUCT_LINE_NAME__'          : 'Jacinto'
+'__PRODUCT_LINE_NAME__'          : 'Sitara MPU'
 '__SDK_BUILD_MACHINE__'          : 'am65xx-evm'
 '__SDK_FULL_NAME__'              : 'Processor SDK Linux AM65xx'
 '__SDK_SHORT_NAME__'             : 'PSDK'
-'__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-[platform]-<version>-Linux-x86-Install.bin'
-'__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-[platformName]-evm-<version>'
+'__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-am65xx-evm-<version>-Linux-x86-Install.bin'
+'__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-am65xx-evm-<version>'
 '__SDK_DOWNLOAD_URL__'           : '`AM65xx-Linux-SDK-Download-page <http://software-dl.ti.com/processor-sdk-linux/esd/AM65X/latest/index_FDS.html>`__'
-'__LINUX_UBUNTU_VERSION_LONG__'  : '18.04 (64-bit)'
-'__LINUX_UBUNTU_VERSION_SHORT__' : '18.04'
+'__LINUX_UBUNTU_VERSION_LONG__'  : '22.04 (64-bit)'
+'__LINUX_UBUNTU_VERSION_SHORT__' : '22.04'
 '__OPTEE_PLATFORM_FLAVOR__'      : 'am65x'
-'__RTOS_UBUNTU_VERSION_LONG__'   : '18.04 (64-bit)'
+'__RTOS_UBUNTU_VERSION_LONG__'   : '22.04 (64-bit)'
 '__WINDOWS_SUPPORTED_LONG__'     : '7 (64-bit)'
 '__FEATURINGMATRIX__'            : \
 '__SYSFW_CORE_NAME__'            : 'DMSC'
 
 Configuration Values
 --------------------
-'CONFIG_part_family'      : 'J7_family'
+'CONFIG_part_family'      : 'AM65X_family'
 'CONFIG_part_variant'     : 'AM65X'
 'CONFIG_sdk'              : 'PLSDK'
 'CONFIG_icss_support'     : 'yes'

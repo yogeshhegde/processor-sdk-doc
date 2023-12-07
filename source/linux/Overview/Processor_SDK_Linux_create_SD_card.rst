@@ -36,6 +36,17 @@ This section provides guides to create SD cards for the following use cases:
 
              host# sudo cp /media/$USER/boot/tiboot3-am6*-hs-evm.bin /media/$USER/boot/tiboot3.bin
 
+
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+   .. note:: After flashing the wic image on the SD-Card, it will boot on **SR2 GP** devices by default.
+
+         To boot on **SR2 HS-SE**, run the following command:
+         ::
+
+             host# sudo cp /media/$USER/boot/tiboot3-am65x_sr2-hs-evm.bin /media/$USER/boot/tiboot3.bin
+             host# sudo cp /media/$USER/boot/sysfw-am65x_sr2-hs-evm.itb /media/$USER/boot/sysfw.itb
+
 .. _processor-sdk-linux-create-sd-card-using-balena:
 
 Create SD Card using balenaEtcher
