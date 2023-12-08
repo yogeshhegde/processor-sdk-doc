@@ -796,15 +796,13 @@ CPSW / PRU Ethernet Selection
 
     ::
 
-      setenv bootcmd ‘run findfdt; run envboot;run init_${boot}; run get_kern_${boot}; run get_fdt_${boot};setenv name_overlays ti/k3-am642-evm-icssg1-dualemac.dtbo; run get_overlay_${boot}; run run_kern’'
+      setenv bootcmd 'run findfdt; run envboot;run init_${boot}; run get_kern_${boot}; run get_fdt_${boot};setenv name_overlays k3-am642-evm-icssg1-dualemac.dtbo; run get_overlay_${boot}; run run_kern'
 
     To use MII interface the k3-am642-evm-icssg1-dualemac-mii.dtbo overlay file has to be applied using the following command in uboot.
 
     ::
 
-      setenv bootcmd ‘run findfdt; run envboot;run init_${boot}; run get_kern_${boot}; run get_fdt_${boot};setenv name_overlays ti/k3-am642-evm-icssg1-dualemac-mii.dtbo; run get_overlay_${boot}; run run_kern’'
-
-    To save this in uboot, run ``saveenv``. This will make sure that the overlay is persistent across boots and PRU Ethernet is selected by default after every boot.
+      setenv bootcmd 'run findfdt; run envboot;run init_${boot}; run get_kern_${boot}; run get_fdt_${boot};setenv name_overlays k3-am642-evm-icssg1-dualemac-mii.dtbo; run get_overlay_${boot}; run run_kern'
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
