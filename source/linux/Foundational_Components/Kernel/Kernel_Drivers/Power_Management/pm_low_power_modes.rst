@@ -148,3 +148,11 @@ MCU Only mode using one of the supported wakeup sources.
 
 Limitations
 ===========
+
+HWRNG support on GP devices is incompatible with Deep Sleep and MCU Only
+modes. To test LPM on GP devices, HWRNG has to be unloaded one-time
+before running the Suspend-to-RAM command:
+
+::
+
+   root@evm:@~# modprobe -r optee_rng
