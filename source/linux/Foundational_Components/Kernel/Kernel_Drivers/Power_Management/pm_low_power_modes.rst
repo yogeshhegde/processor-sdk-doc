@@ -146,6 +146,76 @@ on the MCU UART (in most cases it will be /dev/ttyUSB3)
 Refer to the :ref:`Wakeup Sources<pm_wakeup_sources>` section for information on how to wakeup the device from
 MCU Only mode using one of the supported wakeup sources.
 
+
+Partial I/O
+===========
+
+In Partial I/O, only the I/O pins and a small digital logic in the CANUART I/O
+Bank are active, while the rest of the SoC is turned off. The user can
+use the I/O pins to aggregate multiple I/O wakeup events and toggle
+PMIC_LPM_EN pin to enable PMIC or discrete power solution when an I/O
+wakeup event is triggered.
+
+.. note::
+
+   The system looses nearly all its state as DDR is also turned-off.
+   Partial I/O is comparable with a Linux poweroff state.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   .. note::
+
+      Only AM62 LP-SK EVM supports Partial I/O mode.
+
+The reference implementation in this SDK implements Partial I/O as a
+poweroff state. On poweroff, Linux ti_sci driver checks the potential
+Partial I/O wakeup sources for being enabled. If one of the wakeup
+sources is found to be enabled, Partial I/O is entered instead of poweroff.
+
+The following wakeup sources have been configured for Partial I/O:
+mcu_uart0, mcu_mcan0, and mcu_mcan1. Partial I/O mode can only be tested
+when `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=ti-linux-6.1.y-cicd#n329>`__
+overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
+
+After Linux boots, the MCAN wakeup for Partial I/O is enabled using the
+wake on PHY activity option of ethtool. For example, the following
+command enables can0 wakeup:
+
+::
+
+   root@evm:~# ethtool -s can0 wol p
+
+To enable UART wakeup:
+
+::
+
+   root@evm:~# echo enabled > /sys/class/tty/ttyS0/device/power/wakeup
+
+With at least one of the wakeup sources enabled, Partial I/O mode can be
+entered with the following command:
+
+::
+
+   root@evm:~# poweroff 
+
+At this point, Linux kernel will go through its poweroff process and
+the console output will stop at the following lines:
+
+::
+
+   [   51.698039] systemd-shutdown[1]: Powering off.
+   [   51.769478] reboot: Power down
+
+The system has entered Partial I/O and can only be woken up with an
+activity on the I/O pin programmed for wakeup. For example, if can0
+wakeup was enabled, grounding Pin 22 of J8 MCU Header will wakeup the
+system and it will go through a normal Linux boot process.
+
+.. note::
+
+   The capability to detect whether system is resuming from Partial I/O
+   or doing a normal cold boot will be added in future release.
+
 Limitations
 ===========
 
