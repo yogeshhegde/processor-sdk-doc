@@ -1,0 +1,100 @@
+.. include:: /_replacevars.rst
+
+.. _download-and-install-sdk:
+
+Download and Install the SDK
+======================================
+
+The |__SDK_FULL_NAME__| Installer will install the necessary components
+to start Linux development on the TI microprocessor.
+
+**The** |__SDK_FULL_NAME__| **Release supports installer only for Linux machine.**
+
++----------------------------------------------+----------------------------------------------------------------------+
+| **Installer Details**                        | **Installers Name**                                                  |
++----------------------------------------------+----------------------------------------------------------------------+
+| PSDK Linux AM62Px Installer (Linux version)  | ti-processor-sdk-linux-am62pxx-evm-<version>-Linux-x86-Install.bin   |
++----------------------------------------------+----------------------------------------------------------------------+
+
+Use Linux installer for complete source package, tools, prebuilt-image, filesystems,
+etc for product development.
+
+From a windows machine, you can only flash a SD card. This can be done without
+installing the SDK. Use balenaEtcher to flash SD card from windows machine.
+
+The |__SDK_FULL_NAME__| includes the ARM GCC toolchain.
+The |__SDK_FULL_NAME__| was built and tested against a specific Linux
+Distribution name and version, Ubuntu |__LINUX_UBUNTU_VERSION_SHORT__|.
+Note that this **does not** prevent the user from installing the SDK on other Linux
+distributions.
+
+.. rubric:: Downloading the SDK installer
+   :name: downloading-the-sdk-installer
+
+You can download the latest |__SDK_FULL_NAME__| installer from the
+|__SDK_DOWNLOAD_URL__|.
+
+.. rubric:: How to Run the SDK Installer in Linux
+   :name: how-to-run-the-sdk-installer-linux
+
+Make sure that the execute permissions are set. Bring up a terminal
+window and change directories to where the installer is located
+(probably the Downloads directory) and run the following commands:
+
+.. parsed-literal::
+
+    # For AM62Px (am62pxx-evm) Installer
+    chmod +x ./ti-processor-sdk-linux-am62pxx-evm-<version>-Linux-x86-Install.bin
+    ./ti-processor-sdk-linux-am62pxx-evm-<version>-Linux-x86-Install.bin
+
+Alternatively, you can give execute permissions and run the SDK Installer
+by double clicking on it within your Linux host PC.
+
+.. note::
+   As a part of the installation, the installer will run a script to configure your
+   environment and extract the Linux devkit. This will cause the installation to
+   continue for roughly a minute even after it shows that it has reached 100%.
+
+.. note::
+   If nothing seems to happen, your computer may be running a 32-bit version of
+   its operating system. The installer is 64-bit, and will not execute properly.
+
+**Package Overview**
+
+This AM62Px Software development kit contains Linux device drivers, sample examples and
+application specific demos.  The SDK has the below folder structure
+
+
++--------------------------+---------------------------------------------------------+
+| **Folder Name**          | **Description**                                         |
++--------------------------+---------------------------------------------------------+
+| bin                      | set-up scripts, SD card image creation script           |
+|                          |                                                         |
++--------------------------+---------------------------------------------------------+
+| board-support            | Linux board supported packages (prebuilt-images, tools, |
+|                          | Linux kernel, u-boot, jailhouse in source)              |
++--------------------------+---------------------------------------------------------+
+| licenses                 | License files                                           |
+|                          |                                                         |
++--------------------------+---------------------------------------------------------+
+| manifest                 | Manifest files                                          |
+|                          |                                                         |
++--------------------------+---------------------------------------------------------+
+| filesystem               | Prebuilt Filesystems (tar images for am62pxx-evm)       |
+|                          |                                                         |
++--------------------------+---------------------------------------------------------+
+| linux-devkit             | Linux development kit (tools, compilers etc.)           |
+|                          |                                                         |
++--------------------------+---------------------------------------------------------+
+| external-toolchain-dir   | External GCC ARM 32-bit and 64-bit toolchains           |
+|                          |                                                         |
++--------------------------+---------------------------------------------------------+
+| example-applications     | Sample examples and application specific demos          |
+|                          |                                                         |
++--------------------------+---------------------------------------------------------+
+| makerules                | Contains make rules for all the top level Makefile      |
+|                          | targets                                                 |
++--------------------------+---------------------------------------------------------+
+
+Refer :ref:`Release Notes <Release-note-label>` for complete feature-set and further details
+

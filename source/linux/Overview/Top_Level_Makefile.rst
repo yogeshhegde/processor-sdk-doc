@@ -98,7 +98,7 @@ makefile targets.
 
         host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools swig
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM64X' )
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X' )
 
     ::
 
@@ -135,7 +135,7 @@ defined
 -  **<target>** - This is the build target which will compile the
    release version of the component.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM64X')
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X')
 
     -  **<target>_stage** - This target will copy the component to
        <TISDK_path>/board-support/built-images folder.
@@ -209,7 +209,7 @@ devices will have following additional targets:
 
     **oprofile-example** - Build System profiler
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X')
 
     **ti-img-rogue-driver** - Build GPU Kernel module.
 
@@ -238,7 +238,7 @@ The following examples demonstrate how to use the top-level Makefile for
 some common tasks. All of the examples below assume that you are calling
 the Makefile from the top-level of the SDK.
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM64X')
+.. ifconfig:: CONFIG_part_variant not in ('AM62PX', 'AM62X', 'AM64X')
 
     -  Build Everything
 
@@ -271,7 +271,7 @@ the Makefile from the top-level of the SDK.
 
     host# make linux
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM64X' )
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X' )
 
    - Copy FitImage, Linux Kernel Image and boot-binaries to built-images folder
 
@@ -359,7 +359,7 @@ the Makefile from the top-level of the SDK.
 
     host# make am-benchmarks_install
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM64X' )
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X' )
 
     -  Build the ARM Benchmarks
 
@@ -449,7 +449,7 @@ the Makefile from the top-level of the SDK.
 
       host# make sysfw-image_install
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X')
+.. ifconfig:: CONFIG_part_variant not in ('AM62PX', 'AM64X', 'AM62X')
 
     -  Build u-boot
 
@@ -463,7 +463,7 @@ the Makefile from the top-level of the SDK.
 
         host# make u-boot_clean
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM64X', 'AM62X')
 
     -  Build u-boot
 
@@ -597,14 +597,14 @@ the Makefile from the top-level of the SDK.
 .. rubric:: Installing boot binaries
    :name: installing-boot-binaries
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM64X')
+.. ifconfig:: CONFIG_part_variant not in ('AM62PX', 'AM62X', 'AM64X')
 
     All the install targets copy the files in the rootfs pointed by the DESTDIR variable.
     *make install* command only copies the files in rootfs. If you have built either of
     system firmware or u-boot, you should copy these binaries in the boot partition of
     the SD card. e.g. run following to copy boot binaries in SD card boot partition.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM64X')
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X')
 
    All the install targets copy the files in the rootfs pointed by the DESTDIR variable.
    Run following commands to copy boot binaries in SD card boot partition.
