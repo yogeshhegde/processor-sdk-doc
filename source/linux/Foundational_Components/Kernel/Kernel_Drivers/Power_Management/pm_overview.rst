@@ -5,17 +5,19 @@ Power Management Overview
 
 .. rubric:: Power Management Overview
 
-Power management is a wide reaching topic and reducing the power a
-system uses is handled by a number of drivers and techniques. Power
-Management can broadly be classified into two categories: Dynamic/Active
-Power management and Idle Power Management.
+Reducing the power consumption of a device for a specific use-case
+requires coordination between multiple software and hardware frameworks.
+Power Management techniques can broadly be classified into two categories:
+Dynamic Power Management and Static Power Management.
 
-.. rubric:: Dynamic Power Management Techniques
+.. rubric:: Dynamic Power Management
 
-Dynamic or active Power management techniques reduce the active power
-consumption by an SoC when the system is active and performing tasks.
+Dynamic Power Management techniques reduce the active power
+consumption of the SoC when the system is actively performing tasks.
+Dynamic PM also optimizes the idle power consumption in between tasks,
+when an individual device or CPU is idle for relatively short duration.
 
-The dynamic power management features enables on |__PART_FAMILY_DEVICE_NAMES__| are as follows:
+The dynamic power management features enabled on |__PART_FAMILY_DEVICE_NAMES__| are as follows:
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
@@ -31,16 +33,20 @@ The dynamic power management features enables on |__PART_FAMILY_DEVICE_NAMES__| 
 
     #. Dynamic Frequency Scaling
     #. CPUIdle
+    #. Runtime PM
 
-.. rubric:: Idle Power Management Techniques
+.. rubric:: Static Power Management
 
-This ensures the system is drawing minimum power when in idle state i.e
-no use-case is running. This is accomplished by turning off as many
-peripherals as that are not in use.
+Static Power Management ensures the SoC is drawing minimum power when
+no use-case is running and the system is inactive for relatively long
+duration. This is accomplished by leveraging the low power modes supported
+by the SoC and the `System Sleep States <https://docs.kernel.org/admin-guide/pm/sleep-states.html>`__
+supported by the Linux kernel.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX')
 
-    The idle power management features on AM62X are:
+    The static power management features on |__PART_FAMILY_DEVICE_NAMES__| are:
 
-    #. Deep Sleep (Suspend-to-RAM)
+    #. Deep Sleep
     #. MCU Only Mode
+    #. Partial I/O
