@@ -66,7 +66,7 @@ Currently, the following modes are supported in the SDK with the native ethernet
     | For enabling native ethernet, the am65-cpsw-nuss driver has to be included in the kernel build.
     | The native ethernet features are enabled by applying device-tree overlays at U-Boot.
     | To apply an overlay at U-Boot save the following command in the uEnv.txt file:
-    |   **name_overlays="ti/<overlay-file-name>"**
+    |   **name_overlays="<overlay-file-name>"**
     | where <overlay-file-name> is the corresponding overlay file from the table above.
 
 For RGMII mode, the GESI expansion card's overlay may be used.
