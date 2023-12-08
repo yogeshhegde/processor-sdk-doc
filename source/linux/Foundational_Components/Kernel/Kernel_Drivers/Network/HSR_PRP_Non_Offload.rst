@@ -1,8 +1,8 @@
 .. include:: /_replacevars.rst
 
-=======
-HSR PRP
-=======
+===================
+HSR PRP Non-Offload
+===================
 
 .. rubric:: **Introduction**
 
@@ -124,96 +124,6 @@ Please make sure that the IP address on both the platforms are unique
 
 With the above configuration, if a ping is run between the two platforms on the
 HSR/PRP interface, the ping will continue even if one of the connections is removed.
-
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
-
-  .. rubric:: **Linux HSR Offload Support**
-
-  HSR framework in linux allows offloading certain functionalities to the
-  device and port-to-port forwarding in one such offloadable functionality. The
-  ICSSG HSR firmware supports port-to-port forwarding and this allows to offload the forwarding capability from HSR driver in software to the PRU-ICSSG.
-
-  The below script automates setting up HSR interface with the port-to-port
-  forwarding offloaded.
-
-  ::
-
-    #!/bin/sh
-
-    #For non offload - sh hsr_setup.sh hsr_sw <INTF_A> <INTF_B> <HSR_INTF_IP_ADDR>
-    #For offload - sh hsr_setup.sh hsr_hw <INTF_A> <INTF_B> <HSR_INTF_IP_ADDR>
-
-    if [ "$#" != "4" ]
-    then
-            echo "$0 <hsr_sw/hsr_hw> <intf1> <intf2> <ip addr>"
-            exit
-    fi
-
-    if [ "$1" != "hsr_sw" ] && [ "$1" != "hsr_hw" ]
-    then
-            echo "$0 <hsr_sw|hsr_hw>"
-            exit
-    fi
-
-    if=hsr0
-
-    ifa=$2
-    ifb=$3
-
-    ip=$4
-    mac=`ifconfig $ifa | grep ether | cut -d " " -f 10`
-
-    device="platform/"
-    device+=`dmesg | grep $ifa | grep icssg-prueth | grep -m 1 "Link is Up" | awk '{print $4}'`
-
-    echo "ip=$ip"
-    echo "if=$if"
-    echo "mac=$mac"
-    echo "slave-a=$ifa"
-    echo "slave-b=$ifb"
-    echo "device=$device"
-
-    ip link delete hsr0  2> /dev/null
-
-    ip link set $ifa down
-    ip link set $ifb down
-    sleep 1
-
-    if [ "$1" == "hsr_hw" ]
-    then
-            ethtool -k $ifa | grep hsr
-            ethtool -K $ifa hsr-fwd-offload on
-            ethtool -k $ifa | grep hsr
-
-            ethtool -k $ifb | grep hsr
-            ethtool -K $ifb hsr-fwd-offload on
-            ethtool -k $ifb | grep hsr
-
-            devlink dev param set $device name hsr_offload_mode value true cmode runtime
-    fi
-
-    ip link set dev $ifa address $mac
-    ip link set dev $ifb address $mac
-
-    ip link set $ifa up
-    sleep 1
-
-    ip link set $ifb up
-    sleep 1
-
-    ip link add name $if type hsr slave1 $ifa slave2 $ifb supervision 45 version 1
-
-    sleep 3
-
-    ip addr add $ip/24 dev $if
-    ip link set $if up
-
-  To create HSR interface with IP address 192.168.2.20 using eth1 and eth2 and
-  port-to-port forwarding offloaded, run the script by passing the arguments as below
-
-  ::
-
-    sh ./<script_filename.sh> hsr_hw eth1 eth2 192.168.2.20
 
 .. rubric:: *VLAN*
 
