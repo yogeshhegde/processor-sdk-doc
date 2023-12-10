@@ -43,10 +43,10 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 08.06.00
+Release 09.01.00
 ==================
 
-Released March 2023
+Released December 2023
 
 Supported Platforms
 =====================================
@@ -61,87 +61,78 @@ Build Information
 
 U-Boot
 -------------------------
-
-| Head Commit: dce39357567f6833db98ff9867eae97f4f7fc700 default.avbkey: fix 0 key size
-| Date: Wed Mar 1 10:55:12 CDT 2023
-| uBoot Version: 2021.01
-| uBoot Description: cicd.dunfell.202303090400
+| Head Commit: c1c2bdf272561724f531fe8e7a649ef687d1a67e board: ti: am62x/am62ax: Update MCU GPIO interrupt allocation in board config
+| Date: 2023-12-01 08:20:03 -0600
+| uBoot Version: 2023.04
+| uBoot Description: 09.01.00.007
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: cicd.dunfell.202303090400
-| uBoot Tag: cicd.dunfell.202303090400
-
-| Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
+| Branch: ti-u-boot-2023.04
+| uBoot Tag: 09.01.00.007
 |
+
 
 Kernel
 -------------------------
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 2c23e6c538c879e380401ae4b236f54020618eaa Merged TI feature connectivity into ti-linux-5.10.y-cicd
-| Date: Thu Feb 23 13:09:34 CDT 2023
-| Kernel Version: 5.10.168
-| Kernel Description: 08.06.00.007
+| Head Commit: 5da2f861d7d06b97ea386294469e1644b18666fc arm64: dts: ti: k3-am62p: add dll delay mapping for MMC1/MMC2
+| Date: 2023-12-01 08:19:54 -0600
+| Kernel Version: 6.1.46
+| Kernel Description: 09.01.00.007
 
-| Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-linux-5.10.y
-| Tag: 08.06.00.007
-| Kernel defconfig: ti_sdk_arm64_release_defconfig
-
-| Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
+| Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
+| Branch: ti-linux-6.1.y
+| Tag: 09.01.00.007
+| use-kernel-config=defconfig
+| config-fragment=kernel/configs/ti_arm64_prune.config
 |
+
 
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: c1a12919117a6978f40e723d6e0c67c744e026b9 Merge branch 'ti-rt-linux-5.10.y-cicd' into ti-rt-linux-5.10.y
-| Date: Thu Feb 23 16:06:31 CDT 2023
-| Kernel Version: 5.10.168
-| RT Kernel Version: 5.10.168-rt62
-| Kernel Description: 08.06.00.007-rt
+| Head Commit: b4f1767f9ebaadcb85e2b10eadc5b168a2a7cdb4 Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
+| Date: 2023-12-01 08:19:57 -0600
+| Kernel Version: 6.1.46-rt13
+| Kernel Description: 09.01.00.007-rt
 
-| Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-rt-linux-5.10.y
-| Tag: 08.06.00.007-rt
-| Kernel defconfig: ti_sdk_arm64_rt_release_defconfig
-
-| Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
+| Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
+| Branch: ti-rt-linux-6.1.y
+| Tag: 09.01.00.007-rt
+| use-kernel-config=defconfig
+| config-fragment=config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 |
+
 
 Yocto
 ------------------------
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 27ff52dd415164ffce84a5c316c5475225860f46 ti-k3-secdev: CI/CD Auto-Merger: cicd.dunfell.202303021800
-| Date: 2023-02-08
-| Version: dunfell-3.1
-
+| Head Commit: 30d69054de6902a65d22e8e8da149099ddc0573f CI/CD Auto-Merger: cicd.kirkstone.202311301712
+| Date: 2023-12-01 08:20:04 -0600
+| Version: Kirkstone-4.0
 | Clone: git://git.yoctoproject.org/meta-ti
-| Branch: dunfell
-| Release Tag: cicd.dunfell.202303090400
+| Branch: kirkstone
+| Release Tag: 09.01.00.007
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 07a4d8f3320f9574676e9a3055912fb69c7dce7a ltp-ddt: CI/CD Auto-Merger: cicd.dunfell.202303090400
-| Date: 2023-03-09
-| Version: dunfell-3.1
-
+| Head Commit: ec4e55b66242388a4d7e91544e6b084409af97dd CI/CD Auto-Merger: cicd.kirkstone.202311301712
+| Date: 2023-12-01 08:19:42 -0600
+| Version: Kirkstone-4.0
 | Clone: git://git.yoctoproject.org/meta-arago
-| Branch: dunfell
-| Release Tag: cicd.dunfell.202303090400
+| Branch: kirkstone
+| Release Tag: 09.01.00.007
 |
+
 
 .. rubric:: meta-processor-sdk
 
-| Head Commit: 01876dc32daf5a31a643d26f7935d6cd35187d08 ti-tisdk-setup: Remove setup.sh TFTP Fix patch for AM65
-| Date: 2023-03-25
-
-| Clone: git://git.ti.com/processor-sdk/meta-processor-sdk.git
-| Branch: dunfell
-|
+TBD
 
 
 

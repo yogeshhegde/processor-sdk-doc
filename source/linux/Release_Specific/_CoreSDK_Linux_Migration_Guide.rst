@@ -49,29 +49,18 @@ Processor CoreSDK Sitara 09.00 Refresh
 - Platforms Supported : AM335x(GP, HS), AM437x (GP, HS)
 - Tag Info: 09.01.00.001
 
-
-.. note::
-
-    - For U-Boot builds, k3-image-gen and core-secdev-k3 are no longer needed
-      as **binman** is used instead. Please refer to :ref:`U-Boot build
-      instructions<Build-U-Boot-label>` for the updated steps.
-
-    - For Linux builds, generic ``defconfig`` is used instead of custom
-      fragments. Please refer to `linux users guide
-      <../../../linux/Foundational_Components_Kernel_Users_Guide.html#preparing-to-build>`__
-      for build instructions.
-
-Processor CoreSDK Jacinto 09.00
--------------------------------
-- This is the first release in the 2023 LTS stream, with new versions of Kernel, U-boot, toolchain and Yocto branch.
+Processor CoreSDK Sitara 09.00 Refresh
+--------------------------------------
+- This is the fourth release in the 2023 LTS stream, with new versions of Kernel, U-boot, toolchain and Yocto branch.
 - Kernel 6.1
 - U-Boot 2023.04
-- Toolchain GCC 11.2
-- ATF 2.8+
-- OPTEE 3.20
+- ATF 2.9+
+- OPTEE 4.0
+- Toolchain GCC 11.4
 - Yocto Kirkstone/4.0
-- Graphics DDK 23.1
-- Platforms Supported : J721E, J7200, J721S2, J784S4, AM68, AM69
+- Graphics DDK 1.17
+- Platforms Supported : AM65x(GP, HS)
+- Tag Info: 09.01.00.007
 
 .. note::
 
@@ -83,3 +72,4 @@ Processor CoreSDK Jacinto 09.00
       fragments. Please refer to `linux users guide
       <../../../linux/Foundational_Components_Kernel_Users_Guide.html#preparing-to-build>`__
       for build instructions.
+
