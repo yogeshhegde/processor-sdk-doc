@@ -261,6 +261,7 @@ Linux Known Issues
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 5, 10, 70, 35
 
+   "LCPD-37152","am654x-idk","ICSSG: IET FPE mac verify fails",""
    "LCPD-36622","am654x-evm,am654x-idk,am654x-hsevm,am64xx-evm","Errata i2028: USB3.0 Host and Device Non-Functional",""
    "LCPD-32868","am654x-idk,am64xx-evm","Kernel crash from PRU auto-forwarding packet",""
    "LCPD-24718","am654x-evm,am654x-idk","am654x hwspinlock test failing",""
@@ -276,8 +277,6 @@ Linux Known Issues
    "LCPD-22959","am654x-evm","UART Read/Write tests at baud rate 115200 fails",""
    "LCPD-22947","am654x-evm","Alsa performance test fails [waiting for TF]",""
    "LCPD-22892","am654x-evm,am654x-idk,am64xx-evm","icssg: due to FW bug both interfaces has to be loaded always",""
-   "LCPD-22324","am654x-idk","ICSSG port does not drop packets with SA matching interface MAC",""
-   "LCPD-20014","am654x-evm,am654x-idk,am654x-hsevm","remoteproc: TX_PRU: IRQ vring, IRQ kick not found error message on console",""
    "LCPD-19580","am654x-evm","am654- unable to select a mode (sdhci?)",""
    "LCPD-18665","am654x-evm,am654x-idk","Am65x Pg2: Board cannot do soft reboot when booting from SD card",""
    "LCPD-18297","am654x-evm","AM6: OV5640: 176x144 does not work",""
