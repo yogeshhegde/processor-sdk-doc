@@ -97,7 +97,7 @@ Software Architecture
 Building Blocks
 ---------------
 
--  **User Interface:** The GUI was built by using `GUI Composer <https://dev.ti.com/gc/designer/help/GC_UserGuide_v2/index.html>`__. The
+-  **User Interface:** The GUI was built by using `GUI Composer <https://dev.ti.com/gc/v2/>`__. The
    Benchmark Demo is the second page where inputs and outputs can be
    accessed.
 
