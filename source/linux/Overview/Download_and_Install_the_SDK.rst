@@ -39,8 +39,7 @@ distributions.
 
     There are two ways you can get the installer:
 
-    1. From a file downloaded from the `SDK download
-       page <http://www.ti.com/lsds/ti/tools-software/processor_sw.page>`_.
+    1. From a file downloaded from the |__SDK_DOWNLOAD_URL__|.
        This will always host the latest version of SDK.
 
        .. note::
