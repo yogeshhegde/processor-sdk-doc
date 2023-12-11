@@ -112,39 +112,52 @@ Bootloader components
         cd ${YOUR_PATH}/ti-bootloader-aosp/optee_os
         make PLATFORM=k3 CFG_ARM64_core=y CROSS_COMPILE=arm-none-linux-gnueabihf- CROSS_COMPILE64=aarch64-none-linux-gnu-
 
-    3. Build ``tiboot3.bin``::
 
-        cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
-        make ARCH=arm am62x_evm_r5_defconfig
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- \
-             BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
+    3. Build ``tiboot3.bin``:
 
-    4. Build ``tispl.bin`` and ``u-boot.img``::
+      .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
-        make ARCH=arm am62x_evm_a53_defconfig
-        make ARCH=arm am62x_android_a53.config
-        make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- \
-            BL31=${YOUR_PATH}/ti-bootloader-aosp/arm-trusted-firmware/build/k3/lite/release/bl31.bin \
-            TEE=${YOUR_PATH}/ti-bootloader-aosp/optee_os/out/arm-plat-k3/core/tee-pager_v2.bin \
-            BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
+            ::
+
+             cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
+             make ARCH=arm am62x_evm_r5_defconfig
+             make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- \
+                 BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
+
+
+    4. Build ``tispl.bin`` and ``u-boot.img``:
+
+      .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+            ::
+
+             cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
+             make ARCH=arm am62x_evm_a53_defconfig
+             make ARCH=arm am62x_android_a53.config
+             make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- \
+                 BL31=${YOUR_PATH}/ti-bootloader-aosp/arm-trusted-firmware/build/k3/lite/release/bl31.bin \
+                 TEE=${YOUR_PATH}/ti-bootloader-aosp/optee_os/out/arm-plat-k3/core/tee-pager_v2.bin \
+                 BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
+
 
     5. Copy the ``tiboot3.bin``, ``tispl.bin`` and ``u-boot.img`` generated in steps 3 and 4
        to ``${YOUR_PATH}/ti-aosp-14/vendor/ti/am62x/bootloader``.
        If not copied, the prebuilt bootloader binaries already present in ``vendor/ti/am62x/bootloader``
        will get used by ``flashall.sh`` flashing script.
 
-    .. note ::
-        To build bootloaders for AM62x LP board please do same step with this defconfig:
+    .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-            - For step 3, use ``am62x_lpsk_r5_defconfig``
-            - For step 4, use ``am62x_lpsk_a53_defconfig`` with same fragment
+        .. note ::
+            To build bootloaders for AM62x LP board please do same step with this defconfig:
 
-    .. note ::
-        To build bootloaders for the Beagle Play, follow same steps but change the defconfigs:
+                - For step 3, use ``am62x_lpsk_r5_defconfig``
+                - For step 4, use ``am62x_lpsk_a53_defconfig`` with same fragment
 
-            - For step 3, use ``am62x_evm_r5_defconfig`` with ``am625_beagleplay_r5.config`` and ``am625_beagleplay_android_r5.config``
-            - For step 4, use ``am62x_evm_a53_defconfig`` with ``am625_beagleplay_a53.config``, ``am62x_android_a53.config`` and ``am625_beagleplay_android_a53.config``
+        .. note ::
+            To build bootloaders for the Beagle Play, follow same steps but change the defconfigs:
+
+                - For step 3, use ``am62x_evm_r5_defconfig`` with ``am625_beagleplay_r5.config`` and ``am625_beagleplay_android_r5.config``
+                - For step 4, use ``am62x_evm_a53_defconfig`` with ``am625_beagleplay_a53.config``, ``am62x_android_a53.config`` and ``am625_beagleplay_android_a53.config``
 
 Kernel
 ------
@@ -214,16 +227,18 @@ Android File System
 
 Where ``BUILD_TARGET`` is listed in the table below :
 
-============================= ============================
-Android Build type            Build target
-============================= ============================
-AM62X-SK Tablet userdebug       ``am62x-userdebug``
-AM62X-SK Tablet user            ``am62x-user``
-AM62X-SK Car userdebug          ``am62x_car-userdebug``
-AM62X-SK Car user               ``am62x_car-user``
-============================= ============================
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-The recommended ``BUILD_TARGET`` to use is ``am62x-userdebug``.
+    ============================= ============================
+    Android Build type            Build target
+    ============================= ============================
+    AM62X-SK Tablet userdebug       ``am62x-userdebug``
+    AM62X-SK Tablet user            ``am62x-user``
+    AM62X-SK Car userdebug          ``am62x_car-userdebug``
+    AM62X-SK Car user               ``am62x_car-user``
+    ============================= ============================
+
+    The recommended ``BUILD_TARGET`` to use is ``am62x-userdebug``.
 
 .. note::
     By default with user images AVB feature is enabled.
@@ -236,7 +251,9 @@ The recommended ``BUILD_TARGET`` to use is ``am62x-userdebug``.
 
 **After building all components, refer to instruction in next section for flashing the images to EVM**
 
-The android images generated for the AM62X-SK EVM are compatible with the Beagle Play board.
-For flashing the Beagle Play, see the `dedicated application note`_.
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-.. _dedicated application note: ../devices/AM62X/android/Application_Notes_BeaglePlay.html
+    The android images generated for the AM62X-SK EVM are compatible with the Beagle Play board.
+    For flashing the Beagle Play, see the `dedicated application note`_.
+
+    .. _dedicated application note: ../devices/AM62X/android/Application_Notes_BeaglePlay.html
