@@ -82,7 +82,6 @@ linux/Foundational_Components/PRU-ICSS-Linux-Drivers
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RemoteProc
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RPMsg
 linux/Foundational_Components/PRU-ICSS/RPMsg_Quick_Start_Guide
-linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU-ICSS_Ethernet
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/pru-sw-uart
 linux/Foundational_Components/PRU-ICSS-Hardware
 linux/Foundational_Components/PRU-ICSS/PRU-EVMs
@@ -104,7 +103,6 @@ linux/Foundational_Components/Machine_Learning/tflite
 linux/Foundational_Components/Machine_Learning/neo
 linux/Foundational_Components/Machine_Learning/tvm
 linux/Industrial_Protocols
-linux/Industrial_Protocols_ICSS_Dual_EMAC
 linux/Industrial_Protocols_PTP
 linux/Industrial_Protocols_RSTP
 linux/Industrial_Protocols_CCLINK
