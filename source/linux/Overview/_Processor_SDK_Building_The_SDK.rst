@@ -392,8 +392,6 @@ The "Build Output" is given relative to the
         +---------------+-----------------------------------------------------------------------------------------+
         | am65xx-evm    | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module    |
         +---------------+-----------------------------------------------------------------------------------------+
-        | am65xx-hs-evm | AM65x HS Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module |
-        +---------------+-----------------------------------------------------------------------------------------+
 
     .. ifconfig:: CONFIG_part_variant in ('Gen')
 
@@ -471,9 +469,7 @@ The "Build Output" is given relative to the
         +---------------+-----------------------------------------------------------------------------------------+
         | am65xx-evm    | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module    |
         +---------------+-----------------------------------------------------------------------------------------+
-        | am65xx-hs-evm | AM65x HS Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module |
-        +---------------+-----------------------------------------------------------------------------------------+
-
+        
     .. ifconfig:: CONFIG_part_variant in ('Gen')
 
         +---------------+--------------------------------------------------------------------------------------+
