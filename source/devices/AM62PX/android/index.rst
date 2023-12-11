@@ -15,3 +15,4 @@ Processor SDK Android Software Developer's Guide
    :numbered:
 
    /android/Overview
+   /devices/AM62PX/android/Release_Specific
