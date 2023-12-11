@@ -36,7 +36,12 @@ Install snagboot following the `official instructions <https://github.com/bootli
 
       Follow `AM62x Initial Flashing on SD card`_ if you encounter issues with Snagboot.
 
+    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+      Follow `AM62Px Initial Flashing on SD card`_ if you encounter issues with Snagboot.
+
 .. _AM62x Initial Flashing on SD card: ../devices/AM62X/android/Application_Notes_Android_Bootloader_SD_Card.html
+.. _AM62Px Initial Flashing on SD card: ../devices/AM62PX/android/Application_Notes_Android_Bootloader_SD_Card.html
 
 eMMC flashing
 ==============
@@ -85,6 +90,20 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
           # for AM62x LP SK EVM (HS-FS)
           snagrecover -s am625 -f ./am62x-lp-sk-evm-hsfs.yaml
 
+  .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+        ::
+
+          # If you are using binaries built locally
+          cd out/target/product/am62p
+
+          (OR)
+
+          # If you are using pre-built binaries from SDK download page
+          cd AM62Px_09.01.00_emmc
+
+          snagrecover -s am625 -f ./am62px-sk-evm-hsfs.yaml
+
 
 In the serial console, you will see::
 
@@ -113,7 +132,12 @@ In the serial console, you will see::
 
       By default, no Device-Tree Overlays are selected. Follow this link to set `AM62x Device Tree Overlays`_
 
+    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+      By default, no Device-Tree Overlays are selected. Follow this link to set `AM62Px Device Tree Overlays`_
+
 .. _AM62x Device Tree Overlays: ../devices/AM62X/android/Application_Notes_dtbo_support.html
+.. _AM62Px Device Tree Overlays: ../devices/AM62PX/android/Application_Notes_dtbo_support.html
 
 6. Enable fastboot mode on the device through the terminal debugger by executing below command.
    Before running this command make sure USB-C cable is connected from the host PC to the EVM::
@@ -146,6 +170,19 @@ In the serial console, you will see::
           # for AM62x LP SK EVM (HS-FS)
           sudo ./flashall.sh --board am62x-lp-sk --hsfs
 
+  .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+        ::
+
+          # If you are using binaries built locally
+          cd out/target/product/am62p
+
+          (OR)
+
+          # If you are using pre-built binaries from SDK download page
+          cd AM62Px_09.01.00_emmc
+
+          sudo ./flashall.sh --board am62px-sk
 
 8. Once the flashing is complete, power off the board
 

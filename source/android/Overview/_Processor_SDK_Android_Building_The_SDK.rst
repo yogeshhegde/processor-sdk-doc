@@ -25,7 +25,7 @@ Links to download toolchains for building u-boot are mentioned in the SDK downlo
 
 **Install OPTEE-OS build dependencies**
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
   Check OPTEE-OS docs to know list of dependencies needed to be installed :
   https://optee.readthedocs.io/en/latest/building/prerequisites.html
@@ -33,7 +33,7 @@ Links to download toolchains for building u-boot are mentioned in the SDK downlo
 Downloading sources
 ===================
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
     Create a folder for downloading all sources
 
@@ -45,7 +45,7 @@ Downloading sources
 Bootloader components
 ---------------------
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
     ::
 
@@ -58,7 +58,7 @@ Bootloader components
 Kernel
 ------
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X' 'AM62PX')
 
     Fetch the code using ``repo``::
 
@@ -76,7 +76,7 @@ Kernel
 Android file system
 -------------------
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
     Fetch the code using ``repo``::
 
@@ -88,7 +88,7 @@ Android file system
 Build Instructions
 ==================
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
     .. note::
 
@@ -100,7 +100,7 @@ Build Instructions
 Bootloader components
 ---------------------
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
     1. Build ATF::
 
@@ -124,6 +124,15 @@ Bootloader components
              make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- \
                  BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
 
+      .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+            ::
+
+             cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
+             make ARCH=arm am62px_evm_r5_defconfig
+             make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- \
+                 BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
+
 
     4. Build ``tispl.bin`` and ``u-boot.img``:
 
@@ -139,6 +148,18 @@ Bootloader components
                  TEE=${YOUR_PATH}/ti-bootloader-aosp/optee_os/out/arm-plat-k3/core/tee-pager_v2.bin \
                  BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
 
+
+      .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+            ::
+
+             cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
+             make ARCH=arm am62px_evm_a53_defconfig
+             make ARCH=arm am62x_android_a53.config
+             make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- \
+                 BL31=${YOUR_PATH}/ti-bootloader-aosp/arm-trusted-firmware/build/k3/lite/release/bl31.bin \
+                 TEE=${YOUR_PATH}/ti-bootloader-aosp/optee_os/out/arm-plat-k3/core/tee-pager_v2.bin \
+                 BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
 
     5. Copy the ``tiboot3.bin``, ``tispl.bin`` and ``u-boot.img`` generated in steps 3 and 4
        to ``${YOUR_PATH}/ti-aosp-14/vendor/ti/am62x/bootloader``.
@@ -169,6 +190,8 @@ Building everything from scratch
 
     The kernel is compatible with all AM62x boards, such as the SK EVM and the Beagle Play.
 
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
     ::
 
         cd ${YOUR_PATH}/ti-kernel-aosp/
@@ -184,7 +207,7 @@ Building everything from scratch
 Rebuilding faster
 ~~~~~~~~~~~~~~~~~
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
     ::
 
@@ -198,14 +221,14 @@ Defconfig/menuconfig changes
 
 The usual (``make menuconfig`` ) is done via ``bazel`` command :
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
     ::
 
         cd ${YOUR_PATH}/ti-kernel-aosp/
         tools/bazel run //common:ti_config -- menuconfig
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
     .. note::
 
@@ -217,7 +240,7 @@ The usual (``make menuconfig`` ) is done via ``bazel`` command :
 Android File System
 -------------------
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
     ::
 
@@ -239,6 +262,19 @@ Where ``BUILD_TARGET`` is listed in the table below :
     ============================= ============================
 
     The recommended ``BUILD_TARGET`` to use is ``am62x-userdebug``.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    ============================= ============================
+    Android Build type            Build target
+    ============================= ============================
+    AM62PX-SK Tablet userdebug       ``am62p-userdebug``
+    AM62PX-SK Tablet user            ``am62p-user``
+    AM62PX-SK Car userdebug          ``am62p_car-userdebug``
+    AM62PX-SK Car user               ``am62p_car-user``
+    ============================= ============================
+
+    The recommended ``BUILD_TARGET`` to use is ``am62p-userdebug``.
 
 .. note::
     By default with user images AVB feature is enabled.
