@@ -132,7 +132,13 @@ Yocto
 
 .. rubric:: meta-processor-sdk
 
-TBD
+| Head Commit: 42754bc35ebc89ee4d4816247df00a23186f37f5 recipes-core: tisdk-core-bundle: Enable packaging GPU sources for AM62P
+| Date: 2023-11-06 00:22:59 -0600
+| Version: Kirkstone-4.0
+| Clone:  https://git.ti.com/git/processor-sdk/meta-processor-sdk.git
+| Branch: kirkstone
+| Release Tag: 09.01.00.007-AM65X
+|
 
 
 
