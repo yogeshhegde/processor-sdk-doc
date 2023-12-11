@@ -20,7 +20,7 @@ built in the SDK installed by default. This can be built using Yocto and install
 into the filesystem on target.
 
 Make sure that you have setup the Yocto build environment for this. Refer to
-`Building the SDK <Overview_Building_the_SDK.html>`__ section for all details.
+`Building the SDK <../../Overview_Building_the_SDK.html>`__ section for all details.
 
 Once the Yocto build is setup, use bitbake to build the specific package ipc-lld-fw
 as shown below:
