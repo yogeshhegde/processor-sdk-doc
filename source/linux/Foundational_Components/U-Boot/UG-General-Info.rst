@@ -158,8 +158,13 @@ Build U-Boot
 
     	Go `here <../../../devices/AM64X/Overview/Download_and_Install_the_SDK.html>`__ to download and install the SDK.
 
-    TI-u-boot is included in the SDK in <path to tisdk>/board-support. Ensure that the u-boot version matches the
-    :ref:`release-specific-build-information-u-boot`.
+    .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+        TI-u-boot is included in the SDK in <path to tisdk>/board-support. Ensure that the u-boot version matches the :ref:`release-specific-build-information-u-boot`.
+
+    .. ifconfig:: CONFIG_sdk not in ('PLSDK')
+
+        TI-u-boot is included in the SDK in <path to tisdk>/board-support. Ensure that the u-boot version matches the version found in the U-Boot release notes: :ref:`u-boot-release-notes`.
 
     .. rubric:: Setting the tool chain path
 
@@ -188,6 +193,8 @@ Build U-Boot
 
        .. code-block:: console
 
+          $ cd <path to u-boot dir>
+
           R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am65x_evm_r5_defconfig O=<output directory>/r5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
@@ -201,6 +208,8 @@ Build U-Boot
        *on HS*
 
        .. code-block:: console
+
+          $ cd <path to u-boot dir>
 
           R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am65x_hs_evm_r5_defconfig O=<output directory>/r5
@@ -227,6 +236,8 @@ Build U-Boot
 
        .. code-block:: console
 
+          $ cd <path to u-boot dir>
+
           R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j721e_evm_r5_defconfig O=<output directory>/r5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
@@ -247,6 +258,8 @@ Build U-Boot
         +----------------------------+---------------------------------+--------------------------------+
 
        .. code-block:: console
+
+          $ cd <path to u-boot dir>
 
           R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j7200_evm_r5_defconfig O=<output directory>/r5
@@ -294,6 +307,8 @@ Build U-Boot
 
         .. code-block:: console
 
+          $ cd $UBOOT_DIR
+
           R5
           To build tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am64x_evm_r5_defconfig O=$UBOOT_DIR/out/r5
@@ -318,6 +333,8 @@ Build U-Boot
 
         .. code-block:: console
 
+          $ cd <path to u-boot dir>
+
           R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j721s2_evm_r5_defconfig O=<output directory>/r5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
@@ -341,6 +358,8 @@ Build U-Boot
         +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
 
        .. code-block:: console
+
+          $ cd <path to u-boot dir>
 
           R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j784s4_evm_r5_defconfig O=<output directory>/r5
@@ -390,6 +409,8 @@ Build U-Boot
             <path-to-tisdk>/board-support/prebuilt-images/am62xx-evm to use the pre-built binaries that come in the pre-built SDK (bl31.bin for BL31, bl32.bin for TEE).
 
         .. code-block:: console
+
+          $ cd $UBOOT_DIR
 
           R5
           To build tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
@@ -451,6 +472,8 @@ Build U-Boot
             <path-to-tisdk>/board-support/prebuilt-images to use the pre-built binaries that come in the pre-built SDK (bl31.bin for BL31, bl32.bin for TEE).
 
         .. code-block:: console
+
+          $ cd $UBOOT_DIR
 
           R5
           To build tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
