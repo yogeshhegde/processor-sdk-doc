@@ -1,16 +1,17 @@
+.. include:: /_replacevars.rst
+
 How to playback audio over HDMI
 ===============================
 
-SK-AM62 and SK-AM62A support audio playback over HDMI. This requires shorting a
-jumper on the board, and applying an additional DT overlay (.dtbo) file:
-``k3-am625-sk-hdmi-audio.dtbo``.
+SK-|__PART_FAMILY_DEVICE_NAMES__| supports audio playback over HDMI. This
+requires shorting a jumper on the board, and applying an additional DT overlay
+(.dtbo) file: ``k3-am62x-sk-hdmi-audio.dtbo``.
 
 **Steps to enable audio over HDMI:**
 
 #. Toggle the FET switch that shares audio lines between the 3.5mm Jack and
-   HDMI connector. For this you have to short the **J24** jumper on the
-   SK-AM62, or the **J12** jumper on the SK-AM62A, at the location marked
-   below:
+   HDMI connector. For this you have to short a jumper on the
+   SK-|__PART_FAMILY_DEVICE_NAMES__|, at the location marked below:
 
     .. Image:: ../../../images/AM62x_HDMI_Audio_Jumper.jpg
             :scale: 10%
@@ -27,7 +28,7 @@ jumper on the board, and applying an additional DT overlay (.dtbo) file:
 
     .. code-block:: text
 
-        name_overlays=ti/k3-am625-sk-hdmi-audio.dtbo
+        name_overlays=k3-am62x-sk-hdmi-audio.dtbo
 
 #. Finally, reboot the board and playback a .WAV or raw PCM data using aplay:
 

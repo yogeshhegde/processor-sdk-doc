@@ -1,3 +1,5 @@
+.. include:: /_replacevars.rst
+
 .. _howto_dt_overlays:
 
 How to enable DT overlays in linux
@@ -24,7 +26,7 @@ The Processor SDK (PSDK) Linux supports various features in the form of device-t
 
         $ ls arch/arm64/boot/dts/ti/k3-<required-soc>-*.dtbo
 
-#. Copy this DT overlay file to the boot directory of the root partition of the SD card.
+#. Copy this DT overlay file to the ``boot/dtb/ti`` directory of the root partition of the SD card.
 
     ::
 
@@ -34,8 +36,6 @@ The Processor SDK (PSDK) Linux supports various features in the form of device-t
 
     ::
 
-        name_overlays=ti/k3-<overlay-1>.dtbo ti/k3-<overlay-2>.dtbo ti/k3-<overlay-3>.dtbo
+        name_overlays=k3-<overlay-1>.dtbo k3-<overlay-2>.dtbo k3-<overlay-3>.dtbo
 
-#. Unmount and eject the SD card. Plug it on the AM62 SK EVM and power on the EVM.
-
-This will enable the required overlays on top of the AM62 SK EVM.
+#. Unmount and eject the SD card. Plug it back in the |__PART_FAMILY_DEVICE_NAMES__| board and turn the board on.
