@@ -668,9 +668,9 @@ Board-specific instructions
 
         amixer -c j721ecpbanalog sset 'codec1 Master' 141  # Master Playback volume for p1/2/3/4 jack
 
-.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62AX_family')
+.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62AX_family', 'AM62PX_family')
 
-    .. rubric:: SK-AM62x, SK-AM62Ax
+    .. rubric:: SK-AM62x, SK-AM62Ax, SK-AM62Px
        :name: sk-am62x
 
     | The board uses **tlv320aic3106 codec** connected through **McASP1
@@ -792,7 +792,7 @@ Additional Information
     #. `Interfacing DRA7xx Audio to Analog Codecs
        <http://www.ti.com/lit/an/sprac09a/sprac09a.pdf>`__
 
-.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family', 'AM62AX_family')
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family', 'AM62AX_family', 'AM62PX_family')
 
     #. `Tools and Techniques for Audio Debugging
        <https://www.ti.com/lit/an/sprac10/sprac10.pdf>`__
@@ -800,7 +800,7 @@ Additional Information
 .. rubric:: Audio hardware codecs
    :name: additional-information-audio-hardware-codecs
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM62X_family', 'AM62AX_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM62X_family', 'AM62AX_family', 'AM62PX_family')
 
     #. `TLV320AIC31 - Low-Power Stereo CODEC with HP
        Amplifier <http://www.ti.com/lit/ds/symlink/tlv320aic31.pdf>`__
