@@ -181,7 +181,7 @@ Below overlay is an example for adding the overlay nodes:
 Enabling camera sensors
 =========================
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X','AM62PX')
 
     SK-AM62 supports the following 15-pin FFC compatible camera modules with
     **OV5640** sensor:
@@ -199,11 +199,11 @@ Enabling camera sensors
     ::
 
         # For Digilent PCam5C or ALINX AN5641
-        setenv name_overlays ti/k3-am625-sk-csi2-ov5640.dtbo
+        setenv name_overlays k3-am62x-sk-csi2-ov5640.dtbo
         boot
 
         # For Technexion TEVI-OV5640
-        setenv name_overlays ti/k3-am625-sk-csi2-tevi-ov5640.dtbo
+        setenv name_overlays k3-am62x-sk-csi2-tevi-ov5640.dtbo
         boot
 
     Once the overlay is applied, you can confirm that the sensor is being
@@ -304,7 +304,7 @@ Enabling camera sensors
 
         # Direct KMS Sink
         $ systemctl stop weston
-        $ gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! queue ! kmssink driver-name=tidss
+        $ gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! queue ! kmssink driver-name=tidss plane-properties=s,zpos=1
 
     You can also replace v4l2src with libcamerasrc above if you want to test
     different sensor-supported resolutions like 480p, 720p etc.
@@ -416,11 +416,11 @@ Enabling camera sensors
     ::
 
         # For OV2312 connected on Fusion board RX Port 0:
-        setenv name_overlays ti/k3-am62a7-sk-fusion.dtbo ti/k3-fpdlink-ov2312-0-0.dtbo
+        setenv name_overlays k3-am62a7-sk-fusion.dtbo k3-fpdlink-ov2312-0-0.dtbo
         boot
 
         # For RCM IMX390 connected on Fusion board RX Port 0:
-        setenv name_overlays ti/k3-am62a7-sk-fusion.dtbo ti/k3-fpdlink-imx390-rcm-0-0.dtbo
+        setenv name_overlays k3-am62a7-sk-fusion.dtbo k3-fpdlink-imx390-rcm-0-0.dtbo
         boot
 
     To enable camera connected to the 22-pin FFC connector, enable the sensor
@@ -429,7 +429,7 @@ Enabling camera sensors
     ::
 
         # For IMX219 connected to 22-pin FFC connector
-        setenv name_overlays ti/k3-am62a7-sk-csi2-imx219.dtbo
+        setenv name_overlays k3-am62x-sk-csi2-imx219.dtbo
         boot
 
     For more details on building or applying overlays permanently, refer to the
@@ -557,9 +557,9 @@ Enabling camera sensors
     ::
 
         $ gst-launch-1.0 v4l2src device=/dev/video-rpi-cam0 io-mode=5 ! video/x-bayer,width=1640,height=1232,format=rggb10 ! \
-        tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/dcc_viss_10b_1640x1232.bin \
-        sink_0::dcc-2a-file=/opt/imaging/imx219/dcc_2a_10b_1640x1232.bin sink_0::device=/dev/v4l-rpi-subdev0 format-msb=9 ! \
-        video/x-raw,format=NV12 ! queue ! kmssink driver-name=tidss
+        tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/linear/dcc_viss_10b_1640x1232.bin \
+        sink_0::dcc-2a-file=/opt/imaging/imx219/linear/dcc_2a_10b_1640x1232.bin sink_0::device=/dev/v4l-rpi-subdev0 format-msb=9 ! \
+        video/x-raw,format=NV12 ! queue ! kmssink driver-name=tidss plane-properties=s,zpos=1
 
     If the sensor is configured to capture at some other resolution or format
     (e.g. 1080p RAW8 mode) you can edit the above pipeline with the new width,
@@ -568,9 +568,9 @@ Enabling camera sensors
     ::
 
         $ gst-launch-1.0 v4l2src device=/dev/video-rpi-cam0 io-mode=5 ! video/x-bayer,width=1920,height=1080,format=bggr ! \
-        tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/dcc_viss_1920x1080.bin \
-        sink_0::dcc-2a-file=/opt/imaging/imx219/dcc_2a_1920x1080.bin sink_0::device=/dev/v4l-rpi-subdev0 ! \
-        video/x-raw,format=NV12 ! queue ! kmssink driver-name=tidss
+        tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/linear/dcc_viss_1920x1080.bin \
+        sink_0::dcc-2a-file=/opt/imaging/imx219/linear/dcc_2a_1920x1080.bin sink_0::device=/dev/v4l-rpi-subdev0 ! \
+        video/x-raw,format=NV12 ! queue ! kmssink driver-name=tidss plane-properties=s,zpos=1
 
     For OV2312 use mosaic to display both streams together:
 
@@ -580,20 +580,20 @@ Enabling camera sensors
         $ gst-launch-1.0 \
         v4l2src device=/dev/video-ov2312-rgb-cam0 io-mode=5 ! video/x-bayer, width=1600, height=1300, format=bggi10 ! queue leaky=2 ! \
         tiovxisp sensor-name=SENSOR_OV2312_UB953_LI \
-        dcc-isp-file=/opt/imaging/ov2312/dcc_viss.bin \
-        sink_0::dcc-2a-file=/opt/imaging/ov2312/dcc_2a.bin sink_0::device=/dev/v4l-ov2312-subdev0 format-msb=9 \
+        dcc-isp-file=/opt/imaging/ov2312/linear/dcc_viss.bin \
+        sink_0::dcc-2a-file=/opt/imaging/ov2312/linear/dcc_2a.bin sink_0::device=/dev/v4l-ov2312-subdev0 format-msb=9 \
         sink_0::pool-size=8 src::pool-size=8 ! \
         video/x-raw, format=NV12, width=1600, height=1300 ! queue ! mosaic.sink_0 \
         v4l2src device=/dev/video-ov2312-ir-cam0 io-mode=5 ! video/x-bayer, width=1600, height=1300, format=bggi10 ! queue leaky=2 ! \
         tiovxisp sensor-name=SENSOR_OV2312_UB953_LI \
-        dcc-isp-file=/opt/imaging/ov2312/dcc_viss.bin \
-        sink_0::dcc-2a-file=/opt/imaging/ov2312/dcc_2a.bin format-msb=9 sink_0::pool-size=8 src_0::pool-size=8 ! \
+        dcc-isp-file=/opt/imaging/ov2312/linear/dcc_viss.bin \
+        sink_0::dcc-2a-file=/opt/imaging/ov2312/linear/dcc_2a.bin format-msb=9 sink_0::pool-size=8 src_0::pool-size=8 ! \
         video/x-raw, format=GRAY8, width=1600, height=1300 ! videoconvert ! \
         video/x-raw, format=NV12 ! queue ! mosaic.sink_1 \
         tiovxmosaic name=mosaic \
         sink_0::startx="<0>" sink_0::starty="<0>" sink_0::widths="<640>" sink_0::heights="<480>" \
         sink_1::startx="<640>" sink_1::starty="<480>" sink_1::widths="<640>" sink_1::heights="<480>" ! \
-        queue ! kmssink driver-name=tidss
+        queue ! kmssink driver-name=tidss plane-properties=s,zpos=1
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
