@@ -1,3 +1,5 @@
+.. _howto_dt_overlays:
+
 How to enable DT overlays in linux
 ==================================
 
