@@ -1,14 +1,14 @@
 # Device Family name
-fam_name = 'AM62X'
+fam_name = 'AM62PX'
 
 # Project name and HTML title
 sdk_product = 'null' #todo: remove after the new structure is used for all device families
 
-project = u'Processor SDK Android for AM62x'
-html_title = 'Processor SDK AM62x Documentation'
+project = u'Processor SDK Android for AM62Px'
+html_title = 'Processor SDK AM62Px Documentation'
 
 # The master toctree document.
-master_doc = 'devices/AM62X/android/index'
+master_doc = 'devices/AM62PX/android/index'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.

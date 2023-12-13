@@ -36,7 +36,7 @@ What's new
 Release Features
 ----------------
 
-Following features are enabled/tested in this release for AM62x Android:
+Following features are enabled/tested in this release for AM62Px Android:
 
 * **Boot:** eMMC boot, fastboot based flashing, A/B partition
 * **Security:** Keymaster and gatekeeper implementaton with OP-TEE
@@ -64,9 +64,9 @@ SDK Components and Versions
 +------------------------------------+-------------------------------------------------------------------------------+
 | **GCC Toolchain**                  | GNU Toolchain for the A-profile Architecture 11.3 (rel2)                      |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Base Linux SDK**                 | PROCESSOR-SDK-LINUX-AM62X 09.01.08                                            |
+| **Base Linux SDK**                 | PROCESSOR-SDK-LINUX-AM62PX 09.01.08                                           |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Hardware Supported**             | AM62X-SK / AM62X-LP / AM62B-P1 / Beagle Play                                  |
+| **Hardware Supported**             | AM62PX-SK                                                                     |
 +------------------------------------+-------------------------------------------------------------------------------+
 
 Documentation
