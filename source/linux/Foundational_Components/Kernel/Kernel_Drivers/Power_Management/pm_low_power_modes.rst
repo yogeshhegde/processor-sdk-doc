@@ -8,16 +8,21 @@ Overview
 ========
 
 The following sections describe a high-level description of the different low power modes of the
-device. If your application requires power management, you must determine which
+device. If your application requires inactive power management, you must determine which
 low power mode described below satisfies your requirements. Each mode must be evaluated
 based on power consumption and latency (the time it takes to wakeup to Active mode) requirements. Specific
-values are detailed in the device-specific data sheet. As part of it's SDK offering,
-Texas Instruments has added support for Deep Sleep and MCU Only modes.
+values are detailed in the device-specific data sheet. As part of this SDK offering,
+Texas Instruments has added support for the following low power modes:
 
-Suspend-to-RAM (Deep Sleep)
-=========================
+#. Deep Sleep
+#. MCU Only
+#. Partial I/O
 
-Deep Sleep AKA Suspend to RAM is a low-power mode that allows an embedded device
+
+Deep Sleep
+==========
+
+Deep Sleep AKA Suspend-to-RAM is a low-power mode that allows an embedded device
 to retain its state in RAM while the processor is turned off.
 This can save a significant amount of power, especially in devices that are
 battery-powered.
@@ -30,51 +35,91 @@ The benefits of using deep sleep in embedded devices:
    reducing the amount of time that the processor is idle. This is because the processor can
    be kept in a low-power state when it is not needed.
 
-Inorder to enter deep sleep, use the following command:
+In order to enter deep sleep, use the following command:
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm:~# echo mem > /sys/power/state
-    [   45.902923] PM: suspend entry (deep)
-    [   45.906725] Filesystems sync: 0.000 seconds
-    [   45.924512] remoteproc remoteproc0: stopped remote processor 5000000.m4fss
-    [   45.931827] Freezing user space processes
-    [   45.937861] Freezing user space processes completed (elapsed 0.001 seconds)
-    [   45.944868] OOM killer disabled.
-    [   45.948087] Freezing remaining freezable tasks
-    [   45.953924] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
-    [   45.961330] printk: Suspending console(s) (use no_console_suspend to debug)
-    [   45.988085] Disabling non-boot CPUs ...
-    [   45.990243] psci: CPU1 killed (polled 0 ms)
-    [   45.992334] psci: CPU2 killed (polled 4 ms)
-    [   45.994977] psci: CPU3 killed (polled 0 ms)
+   ::
+
+      root@am62xx-evm:~# echo mem > /sys/power/state
+      [   45.902923] PM: suspend entry (deep)
+      [   45.906725] Filesystems sync: 0.000 seconds
+      [   45.924512] remoteproc remoteproc0: stopped remote processor 5000000.m4fss
+      [   45.931827] Freezing user space processes
+      [   45.937861] Freezing user space processes completed (elapsed 0.001 seconds)
+      [   45.944868] OOM killer disabled.
+      [   45.948087] Freezing remaining freezable tasks
+      [   45.953924] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+      [   45.961330] printk: Suspending console(s) (use no_console_suspend to debug)
+      [   45.988085] Disabling non-boot CPUs ...
+      [   45.990243] psci: CPU1 killed (polled 0 ms)
+      [   45.992334] psci: CPU2 killed (polled 4 ms)
+      [   45.994977] psci: CPU3 killed (polled 0 ms)
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+   ::
+
+      root@am62axx-evm:~# echo mem > /sys/power/state
+      [   47.558246] PM: suspend entry (deep)
+      [   47.562456] Filesystems sync: 0.000 seconds
+      [   47.597364] remoteproc remoteproc1: stopped remote processor 79000000.r5f
+      [   47.604640] Freezing user space processes
+      [   47.614313] Freezing user space processes completed (elapsed 0.005 seconds)
+      [   47.623448] OOM killer disabled.
+      [   47.627420] Freezing remaining freezable tasks
+      [   47.633363] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+      [   47.640783] printk: Suspending console(s) (use no_console_suspend to debug)
+      [   47.662936] omap8250 2800000.serial: PM domain pd:146 will not be powered off
+      [   47.669305] Disabling non-boot CPUs ...
+      [   47.671283] psci: CPU1 killed (polled 0 ms)
+      [   47.674127] psci: CPU2 killed (polled 4 ms)
+      [   47.676794] psci: CPU3 killed (polled 0 ms)
 
 This partially indicates that linux has finished it's deep sleep sequence.
 For further confirmation, one can take a look at the TP25/PMIC_LPM_EN pin on the EVM
 (after programming the PMCTRL_SYS register (0x43018080) to 0x15). Here, if the pin is 3.3V when active and
 0V when in deep sleep.
+
 Refer to the :ref:`Wakeup Sources<pm_wakeup_sources>` section for information on how to wakeup the device from
-Deep Sleep.
+Deep Sleep mode using one of the supported wakeup sources.
 
 
-MCU Only Mode
-=============
+MCU Only
+========
 
-Similar to Deep Sleep, with the major distinction being that the MCU M4 core is kept alive.
-The benefits of using MCU Only Mode:
+.. _pm_mcu_only:
+
+Similar to Deep Sleep, with the major distinction being that the MCU core is kept alive to run applications.
+The benefits of using MCU Only mode:
 
 #. Low power consumption: MCU Only mode can save a significant amount of power, especially in battery-powered
    devices. This is because The rest of the SoC status is the same as Deep Sleep and DDR is in self-refresh.
 #. Run background tasks: This mode can be used to run background tasks that do not require the full power of the system.
-   For example, you could use the firmware on the MCU M4 core to run a watchdog timer, a sensor polling loop,
+   For example, you could use the firmware on the MCU core to run a watchdog timer, a sensor polling loop,
    or a network communication task.
 #. Respond to interrupts: This allows the system to still respond to external events, while it is in a low-power state.
 
-To enter MCU Only mode, enable MCU M4 as a wakeup source in linux:
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   To enter MCU Only mode, enable MCU M4 core as a wakeup source in linux:
+
+   ::
+
+      root@am62xx-evm:~# echo enabled > /sys/bus/platform/devices/5000000.m4fss/power/wakeup
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+   To enter MCU Only mode, enable MCU R5 core as a wakeup source in linux:
+
+   ::
+
+      root@am62axx-evm:~# echo enabled > /sys/bus/platform/devices/79000000.r5f/power/wakeup
+
+Now, the SoC can be suspended using the following command:
 
 ::
 
-    root@am62xx-evm:~# echo enabled > /sys/bus/platform/devices/5000000.m4fss/power/wakeup
     root@am62xx-evm:~# echo mem > /sys/power/state
     [  175.651151] PM: suspend entry (deep)
     [  175.655444] Filesystems sync: 0.000 seconds
@@ -90,59 +135,94 @@ To enter MCU Only mode, enable MCU M4 as a wakeup source in linux:
     [  175.959326] psci: CPU2 killed (polled 0 ms)
     [  175.962024] psci: CPU3 killed (polled 4 ms)
 
-
-Now, on the MCU UART (in most cases it will be /dev/ttyUSB3)
-These logs should be printed:
+Once the SoC enters MCU Only mode, the following log should be printed
+on the MCU UART (in most cases it will be /dev/ttyUSB3)
 
 ::
 
     [IPC RPMSG ECHO] Suspend request to MCU-only mode received
     [IPC RPMSG ECHO] Press any key on this terminal to resume the kernel from MCU only mode
-    ## Press any key here and it will trigger a wakeup
-    [IPC RPMSG ECHO] Main domain resumed due to MCU UART
 
-On linux side, you'll see the device resumes after this:
+Refer to the :ref:`Wakeup Sources<pm_wakeup_sources>` section for information on how to wakeup the device from
+MCU Only mode using one of the supported wakeup sources.
+
+
+Partial I/O
+===========
+
+In Partial I/O, only the I/O pins and a small digital logic in the CANUART I/O
+Bank are active, while the rest of the SoC is turned off. The user can
+use the I/O pins to aggregate multiple I/O wakeup events and toggle
+PMIC_LPM_EN pin to enable PMIC or discrete power solution when an I/O
+wakeup event is triggered.
+
+.. note::
+
+   The system looses nearly all its state as DDR is also turned-off.
+   Partial I/O is comparable with a Linux poweroff state.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   .. note::
+
+      Only AM62 LP-SK EVM supports Partial I/O mode.
+
+The reference implementation in this SDK implements Partial I/O as a
+poweroff state. On poweroff, Linux ti_sci driver checks the potential
+Partial I/O wakeup sources for being enabled. If one of the wakeup
+sources is found to be enabled, Partial I/O is entered instead of poweroff.
+
+The following wakeup sources have been configured for Partial I/O:
+mcu_uart0, mcu_mcan0, and mcu_mcan1. Partial I/O mode can only be tested
+when `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=ti-linux-6.1.y-cicd#n329>`__
+overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
+
+After Linux boots, the MCAN wakeup for Partial I/O is enabled using the
+wake on PHY activity option of ethtool. For example, the following
+command enables can0 wakeup:
 
 ::
 
-    [  175.962955] Enabling non-boot CPUs ...
-    [  175.963349] Detected VIPT I-cache on CPU1
-    [  175.963445] GICv3: CPU1: found redistributor 1 region 0:0x00000000018a0000
-    [  175.963511] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
-    [  175.964446] CPU1 is up
-    [  175.964691] Detected VIPT I-cache on CPU2
-    [  175.964735] GICv3: CPU2: found redistributor 2 region 0:0x00000000018c0000
-    [  175.964776] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
-    [  175.965475] CPU2 is up
-    [  175.965734] Detected VIPT I-cache on CPU3
-    [  175.965782] GICv3: CPU3: found redistributor 3 region 0:0x00000000018e0000
-    [  175.965830] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
-    [  175.966775] CPU3 is up
-    [  175.967452] ti-sci 44043000.system-controller: ti_sci_resume: wakeup source: 0x90
-    [  175.978673] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 19
-    [  175.987680] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
-    [  175.987710] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
-    [  175.994440] am65-cpsw-nuss 8000000.ethernet eth1: PHY [8000f00.mdio:01] driver [TI DP83867] (irq=POLL)
-    [  175.994453] am65-cpsw-nuss 8000000.ethernet eth1: configuring for phy/rgmii-rxid link mode
-    [  176.258903] OOM killer enabled.
-    [  176.262045] Restarting tasks ... done.
-    [  176.273194] random: crng reseeded on system resumption
-    [  176.278516] k3-m4-rproc 5000000.m4fss: received echo reply from 5000000.m4fss
-    [  176.285808] PM: suspend exit
+   root@evm:~# ethtool -s can0 wol p
+
+To enable UART wakeup:
+
+::
+
+   root@evm:~# echo enabled > /sys/class/tty/ttyS0/device/power/wakeup
+
+With at least one of the wakeup sources enabled, Partial I/O mode can be
+entered with the following command:
+
+::
+
+   root@evm:~# poweroff 
+
+At this point, Linux kernel will go through its poweroff process and
+the console output will stop at the following lines:
+
+::
+
+   [   51.698039] systemd-shutdown[1]: Powering off.
+   [   51.769478] reboot: Power down
+
+The system has entered Partial I/O and can only be woken up with an
+activity on the I/O pin programmed for wakeup. For example, if can0
+wakeup was enabled, grounding Pin 22 of J8 MCU Header will wakeup the
+system and it will go through a normal Linux boot process.
+
+.. note::
+
+   The capability to detect whether system is resuming from Partial I/O
+   or doing a normal cold boot will be added in future release.
 
 Limitations
 ===========
 
-The Crypto Module fails to work after suspend resume and the issue will be addressed in a future release.
-As a result of this, we get these error messages in the resume logs:
+HWRNG support on GP devices is incompatible with Deep Sleep and MCU Only
+modes. To test LPM on GP devices, HWRNG has to be unloaded one-time
+before running the Suspend-to-RAM command:
 
 ::
 
-   ...
-   [ 3768.463588] CPU3 is up
-   [ 3768.464240] ti-sci 44043000.system-controller: ti_sci_resume: wakeup source: 0x50
-   [ 3768.472102] ti-udma 485c0000.dma-controller: pktdma_alloc_chan_resources: chan0 invalid direction (0)
-   [ 3768.472124] ti-udma 485c0000.dma-controller: PM: dpm_run_callback(): udma_pm_resume+0x0/0xb4 returns -22
-   [ 3768.472149] ti-udma 485c0000.dma-controller: PM: failed to resume early: error -22
-   [ 3768.475822] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 19
-   ...
+   root@evm:@~# modprobe -r optee_rng
