@@ -26,7 +26,7 @@ Processor SDK 09.00
 
     - For Linux builds, generic ``defconfig`` is used instead of custom
       fragments. Please refer to `linux users guide
-      <../../linux/Foundational_Components_Kernel_Users_Guide.html#preparing-to-build>`__
+      <../../../linux/Foundational_Components_Kernel_Users_Guide.html#preparing-to-build>`__
       for build instructions.
 
 Processor SDK Linux AM64X 08.xx Releases

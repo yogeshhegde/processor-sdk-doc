@@ -331,4 +331,4 @@ respectively. They can be obtained from the NAND device node specification in
 the board's device tree file.
 
 Information on creating a UBIFS image and NAND flashing can be found
-`here <Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND.html#nand-based-file-system>`__.
+`here <../Kernel/Kernel_Drivers/Storage/NAND.html#nand-based-file-system>`__.

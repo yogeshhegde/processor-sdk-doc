@@ -15,9 +15,7 @@ solutions.
    /linux/Overview_Building_the_SDK
    /linux/Overview_Directory_Structure_Overview
    /linux/Overview_Software_Stack
-   /linux/Overview_PSDKLA_PSDKRA_Summary
    /linux/Overview_Technical_Support
    /linux/Overview_Training
    /linux/Overview_GPLv3_Disclaimer
    /linux/Overview/GCC_ToolChain
-

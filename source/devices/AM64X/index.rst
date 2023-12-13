@@ -11,12 +11,12 @@ Processor SDK AM64X Software Developer's Guide
    :hidden:
    :numbered:
 
-   Overview
-   Release_Specific
+   /devices/AM64X/linux/Overview
+   /devices/AM64X/linux/Release_Specific
    /linux/Foundational_Components
    /linux/How_to_Guides
-   index_RTOS
-   index_Applications
+   /devices/AM64X/index_RTOS
+   /devices/AM64X/index_Applications
    /linux/Documentation_Tarball
 
 |
