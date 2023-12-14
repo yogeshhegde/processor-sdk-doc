@@ -462,6 +462,50 @@ Build U-Boot
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62ax_evm_a53_defconfig O=$UBOOT_DIR/out/a53
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+        +-----------------------------+----------------------------------+----------------------------------------+-----------------------------------------+
+        |  Board                      |            SD Boot               |            USB DFU                     |               USB MSC                   |
+        +=============================+==================================+========================================+=========================================+
+        |    AM62PX SK                |    am62px\_evm\_r5\_defconfig    |    am62px\_evm\_r5\_usbdfu\_defconfig  |    am62px\_evm\_r5\_usbmsc\_defconfig   |
+        |                             |    am62px\_evm\_a53\_defconfig   |    am62px\_evm\_a53\_defconfig         |    am62px\_evm\_a53\_defconfig          |
+        +-----------------------------+----------------------------------+----------------------------------------+-----------------------------------------+
+
+        .. note::
+
+          Where to get the sources:
+
+            - ti-u-boot version: :ref:`u-boot-release-notes`
+            - ti-linux-firmware version: :ref:`ti-linux-fw-release-notes`
+            - TF-A version: :ref:`tf-a-release-notes`
+            - OP-TEE version: :ref:`optee-release-notes`
+
+        .. code-block:: console
+
+          $ export UBOOT_DIR=<path-to-ti-u-boot>
+          $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
+          $ export TFA_DIR=<path-to-arm-trusted-firmware>
+          $ export OPTEE_DIR=<path-to-ti-optee-os>
+
+        .. note::
+
+            The instructions below assume all binaries are built manually. For instructions to build bl31.bin go to: :ref:`foundational-components-optee`.
+            For instructions to build tee-pager_v2.bin (bl32.bin) go to: :ref:`foundational-components-atf`. BINMAN_INDIRS can point to
+            <path-to-tisdk>/board-support/prebuilt-images to use the pre-built binaries that come in the pre-built SDK (bl31.bin for BL31, bl32.bin for TEE).
+
+        .. code-block:: console
+
+          R5
+          To build tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62px_evm_r5_defconfig O=$UBOOT_DIR/out/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+
+          A53
+          To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin, tee-pager_v2.bin.
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62px_evm_a53_defconfig O=$UBOOT_DIR/out/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+
+
 .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX')
 
      .. note::
@@ -474,7 +518,7 @@ Build U-Boot
 
       BINMAN_INDIRS is used to fetch the DM binary from <path to ti-linux-firmware>/ti-dm/ and SYSFW binaries from <path to ti-linux-firmware>/ti-sysfw/. If using the SDK, BINMAN_INDIRS can point to <path to SDK>/board-support/prebuilt-images. Else any folder where DM is located in <path to folder>/ti-dm/ and SYSFW binaries are present in <path to folder>/ti-sysfw/ can be used. Please make sure to use the absolute path.
 
-.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'J721S2' , 'J784S4')
+.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4')
 
     .. rubric:: Target Images
         :name: target-images
@@ -611,6 +655,13 @@ Build U-Boot
        * HS-SE
 
          * tiboot3-am62ax-hs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+       * HS-FS
+
+         * tiboot3-am62px-hs-fs-evm.bin from <output directory>/r5
          * tispl.bin, u-boot.img from <output directory>/a53
 
 
@@ -895,7 +946,7 @@ Image Formats
                     | +-------------------+ |
                     +-----------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX')
+    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
        - tiboot3.bin:
 
@@ -1363,7 +1414,7 @@ Boot Flow
             |                        |                       |                       |                       |
             +------------------------------------------------------------------------+-----------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62X')
+    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
         .. code-block:: text
 
@@ -1679,7 +1730,7 @@ The SRAM memory layout explains the memory used for Bootloader's operation.
             │                                      │
             └──────────────────────────────────────┘0x43c3ffff
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+    .. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62PX')
 
         .. code-block:: console
 

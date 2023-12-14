@@ -36,10 +36,10 @@ found on the SDK download page or in the installed directory as indicated below.
 -  Linux Manifest:  "/docs/software_manifest.html"
 
 
-Release 09.00.00
+Release 09.01.00
 ================
 
-Released on October 2023
+Released on December 2023
 
 What's new
 ------------------
@@ -73,14 +73,15 @@ U-Boot
 .. rubric:: u-boot
    :name: u-boot
 
-| Head Commit: 9390b636e8e292a85f236b4f1c70feb0ad8299cc arm: dts: k3-am64-main: Add ITAP delay values in Device Tree"
-| Date: 2023-10-07 06:39:59 -0500
+| Head Commit: b0d717b732ee28e446baf94522b3491e590f7fbb configs: am62*_r5_usbmsc_defconfig: Set SPL_STACK_R_MALLOC_SIMPLE_LEN to 2M
+| Date: 2023-12-06 19:02:00 -0600
 | uBoot Version: 2023.04
-| uBoot Description: 09.00.00.011
+| uBoot Description: 09.01.00.008
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2023.04
-| uBoot Tag: 09.00.00.011
+| uBoot Tag: 09.01.00.008
 |
+
 
 .. _tf-a-release-notes:
 
@@ -96,21 +97,21 @@ TF-A
 
 OP-TEE
 ------------------
-| Head Commit: 8e74d47616a20eaa23ca692f4bbbf917a236ed94 Update CHANGELOG for 3.20.0
+| Head Commit: 2a5b1d1232f582056184367fb58a425ac7478ec6 Update CHANGELOG for 4.0.0
 | Repo: https://github.com/OP-TEE/optee_os/
 | Branch: master
-| Tag: 3.20.0
+| Tag: 4.0.0
 |
 
 .. _ti-linux-fw-release-notes:
 
 Ti-linux-firmware
 ------------------
-| Head Commit: f903ca69b36c5a991728867153bf2e10cac35f6c Merge branch 'main' of git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware into ti-linux-firmware
-| Date: 2023-07-04 09:03:52 -0500
+| Head Commit: 9ee2fedb1fb4815f54310dd872d34faf9948c7c1 ti-dm: Update display sharing firmware for am62px
+| Date: 2023-12-06 19:01:59 -0600
 | Clone: https://git.ti.com/cgit/processor-firmware/ti-linux-firmware
 | Branch: ti-linux-firmware
-| Tag: 09.00.00.011
+| Tag: 09.01.00.008
 |
 
 Kernel
@@ -119,14 +120,14 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit:  3ec3755134e2a6c107b43e335fa32c958a2fe5f6 Revert "HACK: arm64: dts: ti: k3-j721s2-common-proc-board: Disable DSI"
-| Date: 2023-10-07 06:39:48 -0500
+| Head Commit: 247b2535b24894d5ac7f3d8cfc3b48edb7214cc0 configs: ti_rt.config: disable CPU hotplug
+| Date: 2023-12-06 19:01:53 -0600
 | Kernel Version: 6.1.46
-| Kernel Description: 09.00.00.011
+| Kernel Description: 09.01.00.008
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.1.y
-| Tag: 09.00.00.011
+| Tag: 09.01.00.008
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config
 |
@@ -134,14 +135,12 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit:  4a3a5f9a7567d507b37b51980516ce26b34b353e Merge branch 'ti-linux-6.1.y-cicd' of git://git.ti.com/ti-linux-kernel/ti-linux-kernel into ti-rt-linux-6.1.y-cicd
-| Date: 2023-10-07 06:39:51 -0500
+| Head Commit: b871cdee8c31b877177e4e9d626d1d424052e32e Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
+| Date: 2023-12-07 17:52:13 -0600
 | Kernel Version: 6.1.46-rt13
-| Kernel Description: 09.00.00.011-rt
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-6.1.y
-| Tag: 09.00.00.011-rt
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 |

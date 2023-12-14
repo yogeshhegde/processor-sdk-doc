@@ -36,10 +36,10 @@ found on the SDK download page or in the installed directory as indicated below.
 -  Linux Manifest:  "/docs/software_manifest.html"
 
 
-Release 09.00.00
+Release 09.01.00
 ================
 
-Released on July 2023
+Released on December 2023
 
 What's new
 ----------
@@ -68,13 +68,13 @@ U-Boot
 .. rubric:: u-boot
    :name: u-boot
 
-| Head Commit: 24098ea90dbaac7b16958e2f7d9f7a412ef1522a configs: am64: Fix booting of fitImage on AM64x"
-| Date: 2023-07-07 08:52:25 -0500
+| Head Commit: b0d717b732ee28e446baf94522b3491e590f7fbb configs: am62*_r5_usbmsc_defconfig: Set SPL_STACK_R_MALLOC_SIMPLE_LEN to 2M
+| Date: 2023-12-06 19:02:00 -0600
 | uBoot Version: 2023.04
-| uBoot Description: 09.00.00.006
+| uBoot Description: 09.01.00.008
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2023.04
-| uBoot Tag: 09.00.00.006
+| uBoot Tag: 09.01.00.008
 
 | Compiler Information:
 | - arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu
@@ -85,31 +85,31 @@ U-Boot
 
 TF-A
 ------------------
-| Head Commit: 2fcd408bb3a6756767a43c073c597cef06e7f2d5 feat(ti): do not handle EAs in EL3
+| Head Commit: d7a7135d32a8c7da004c0c19b75bd4e2813f9759 fix(ti): fix TISCI API changes during refactor
 | Repo: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
 | Branch: master
-| Tag: 2.8+
+| Tag: 2.9+
 |
 
 .. _optee-release-notes:
 
 OP-TEE
 ------------------
-| Head Commit: 8e74d47616a20eaa23ca692f4bbbf917a236ed94 Update CHANGELOG for 3.20.0
+| Head Commit: 2a5b1d1232f582056184367fb58a425ac7478ec6 Update CHANGELOG for 4.0.0
 | Repo: https://github.com/OP-TEE/optee_os/
 | Branch: master
-| Tag: 3.20.0
+| Tag: 4.0.0
 |
 
 .. _ti-linux-fw-release-notes:
 
 Ti-linux-firmware
 ------------------
-| Head Commit: 6572c6e7cad584f9bb891076ab6ba06aa062edbb ti-dm: Update firmware to 09.00.06a for J7200
-| Date: 2023-07-04 09:03:52 -0500
+| Head Commit: 9ee2fedb1fb4815f54310dd872d34faf9948c7c1 ti-dm: Update display sharing firmware for am62px
+| Date: 2023-12-06 19:01:59 -0600
 | Clone: https://git.ti.com/cgit/processor-firmware/ti-linux-firmware
 | Branch: ti-linux-firmware
-| Tag: 09.00.00.006
+| Tag: 09.01.00.008
 |
 
 
@@ -118,32 +118,27 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 40c32565ca0e213fb653570cc618408ee8e9c6cf arm64: dts: ti: k3-am64-main: Add ITAP delay values in Device Tree
-| Date: 2023-07-07 08:51:44 -0500
-| Kernel Version: 6.1.33
-| Kernel Description: 09.00.00.006
+| Head Commit: 247b2535b24894d5ac7f3d8cfc3b48edb7214cc0 configs: ti_rt.config: disable CPU hotplug
+| Date: 2023-12-06 19:01:53 -0600
+| Kernel Version: 6.1.46
+| Kernel Description: 09.01.00.008
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.1.y
-| Tag: 09.00.00.006
+| Tag: 09.01.00.008
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config
-
-| Compiler Information:
-| - arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu
-| - arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf
+|
 
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: 685e77152461bd6b791500f717bec62d17c1b36d Merge branch 'ti-linux-6.1.y-cicd' of git://git.ti.com/ti-linux-kernel/ti-linux-kernel into ti-rt-linux-6.1.y-cicd
-| Date: 2023-07-07 08:51:50 -0500
-| Kernel Version: 6.1.33-rt11
-| Kernel Description: 09.00.00.006-rt
+| Head Commit: b871cdee8c31b877177e4e9d626d1d424052e32e Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
+| Date: 2023-12-07 17:52:13 -0600
+| Kernel Version: 6.1.46-rt13
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-6.1.y
-| Tag: 09.00.00.006-rt
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 

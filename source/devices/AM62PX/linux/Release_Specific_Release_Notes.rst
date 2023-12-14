@@ -132,14 +132,12 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: 833521d9b354beb95bac8b37bfc211495d73d36c Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
-| Date: 2023-12-06 19:01:56 -0600
+| Head Commit: b871cdee8c31b877177e4e9d626d1d424052e32e Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
+| Date: 2023-12-07 17:52:13 -0600
 | Kernel Version: 6.1.46-rt13
-| Kernel Description: 09.01.00.008-rt
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-6.1.y
-| Tag: 09.01.00.008-rt
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 |

@@ -84,6 +84,11 @@ See :ref:`here <release-specific-supported-platforms-and-versions>` for a list o
 Build Information
 =====================================
 
+.. _u-boot-release-notes:
+.. _optee-release-notes:
+.. _tf-a-release-notes:
+.. _ti-linux-fw-release-notes:
+
 U-Boot
 -------------------------
 | Head Commit: c1c2bdf272561724f531fe8e7a649ef687d1a67e board: ti: am62x/am62ax: Update MCU GPIO interrupt allocation in board config
