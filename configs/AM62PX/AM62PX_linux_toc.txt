@@ -131,13 +131,14 @@ linux/How_to_Guides_Developer_Notes
 linux/How_to_Guides/Host/K3_Resource_Partitioning_Tool
 linux/How_to_Guides/Host/How_to_Setup_and_Debug_using_Lauterbach
 linux/How_to_Guides/Host/SYSFW_Trace_Parser
-i#linux/How_to_Guides/Host/Minimal_Platform_Development
+#linux/How_to_Guides/Host/Minimal_Platform_Development
 linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
 #linux/How_to_Guides/Target/How_to_flash_emmc_device   # We do not support this for now
 #linux/How_to_Guides/Target/How_to_suspend_to_ram_on_AM62x
 linux/How_to_Guides/Target/How_to_test_MCAN_on_AM62x
 linux/How_to_Guides/Target/How_to_enable_DT_overlays_in_linux
 linux/How_to_Guides/Target/How_to_playback_audio_over_HDMI
+linux/How_to_Guides/Target/How_to_enable_display_sharing_between_remotecore_and_Linux
 #linux/How_to_Guides/Target/How_to_enable_Microtips_LVDS_Panel_on_AM62_SK_EVM
 linux/How_to_Guides/Target/How_to_Use_K3Conf_Tool
 linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
