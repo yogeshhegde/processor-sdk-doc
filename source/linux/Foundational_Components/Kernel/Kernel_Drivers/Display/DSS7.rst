@@ -108,6 +108,11 @@ SoC Family: |__PART_FAMILY_DEVICE_NAMES__|
     | DSS7       |  DPI, DP, DSI | 2 x VIDL, 2 x VID | 4          |
     +------------+---------------+-------------------+------------+
 
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    The DSS7 hardware also supports resource sharing across multiple processing cores with separate register region per sub-component and interrupt duplication for each processing core, thus allowing independent context update for the associated pipelines.
+
+    .. Image:: /images/DSS7_resource_paritioning_HW.png
 
 Driver Architecture
 ===================
@@ -204,6 +209,59 @@ Supported Features
 
 - Gamma table
 
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+ **Display Sharing mode**
+
+ The display sharing solution at Linux side is designed in such a way that the underlying kernel framework takes care of the display sharing functionality without requiring any updates
+ in user-space API. This ensures that existing display server based windowing systems and display applications can leverage display in shared mode directly without any additional update or handling. The DSS resources can be partitioned across multiple processing cores by setting the ti,dss-sharing-mode and associated properties in the device-tree. A static resource partitioning scheme is designed where each of the DSS resources are given attributes related to sharing and ownership as desribed below :
+
+ 1. *Display controller register region (Common or Common1 register space)* :
+   .. line-block::
+
+ Each processing core is given separate register region for controlling the display, with only one of the processing cores having access to global configuration region, Also each processing core has access only to the corresponding register region owned by it with other register regions completely inaccessible to it. The processing core running Linux can be assigned one of the available display controller register spaces using the "ti,dss-shared-mode-common" device-tree property.
+
+ 2. *Video Pipeline* :
+   .. line-block::
+
+ This resource also can be exclusively owned by only one processing core, thus remaining completely inaccesible to other processing cores which are not owning it, so there is no sharing possible for this resource actually. The processing core running Linux can be assigned one or more of the available video pipelines using "ti,dss-shared-mode-plane" device-tree property. The relative z-order of planes owned by processing core running Linux can be set using ti,dss-shared-mode-plane-zorder.
+
+ 3. *Video Port* :
+   .. line-block::
+
+ A video port can drive multiple video pipelines which are being independently controlled by different processing cores, so it can act as shared resource too where although only one of the processing cores has an exclusive write access to it but any other processing cores which are owning the Video piplines driven by this video port can be given read-only access to this Video Port's register space.
+
+ To summarize, this resource can have exclusive ownership attribute with write access to only one processing core but shared attribute for other processing cores which are provided read-only access, but this is for only those processing cores which are using this video port for driving their video pipelines. The read-only access also helps such processing cores to determine the video port configuration like screen width, screen height e.t.c directly from video port registers without any communication requirement with the processing core owning this video port. The corresponding overlay managers associated with this video port are automatically given same ownership and sharing attributes.
+
+ The processing core running Linux can be assigned one or more of the available video ports either with read only access (i.e with only shared attribute) or write access (i.e. with exclusive ownership attribute), but for both the cases the driver enumerates corresponding connectors and video encoders attached to this video port thus making the full display pipeline visible to end user.
+
+ The device-tree property "ti,dss-shared-mode-vp" can be used by processing core running Linux to enlist one or more video ports being used by it and the ownership related information can be set using ti,dss-shared-mode-owned-vp device-tree property.
+
+ To summarize, below is the list of device-tree properties which can be added to display node, using these properties one can set up a resource paritioning scheme tailored as per the desired end use-case::
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   .. code-block:: console
+
+     ti,dss-shared-mode :  Enable display sharing mode
+     ti,dss-shared-mode-planes : Enumerate Display planes owned by Linux
+     ti,dss-shared-mode-vp :  Enumerate Video Ports being used to control above planes
+     ti,dss-shared-mode-owned-vp : Specify which of the above Video Ports are actually owned by Linux , i.e. those video ports for which Linux has write access
+     ti,dss-shared-mode-common : Specify which of the common region i.e register space should be used by Linux for programming the DSS.
+     ti,dss-shared-mode-plane-zorder : Specify the relative plane ordering for the planes owned by Linux
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   .. note::
+
+      For display sharing mode to work with chosen resource paritioning between Linux and remote core, the remote core needs to be running appropriate firmware which programs the display hardware by supporting this resource paritioning scheme.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+ More detailed description of these properties can be found at:
+ `Display device-tree file <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/display/ti/ti,am65x-dss.yaml?h=09.01.00.008>`__
+ Also there is a how-to guide available for dss sharing which walks through different examples for resource paritioning using these device-tree properties :
+ `How to enable dss sharing between remote core and Linux <../../../../How_to_Guides/Target/How_to_enable_display_sharing_between_remotecore_and_Linux.html>`__
 
 Unsupported Features/Limitations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
