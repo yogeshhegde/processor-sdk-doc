@@ -15,11 +15,11 @@ Building a Debian Image requires:
 
 There are several opensource tools available for generating the RootFS in a chroot environment. Such as debootstrap (now deprecated), mmdebstrap (complex), bdebstrap (simple wrapper on top of mmdebstrap).
 
-``ti-bdebstrap`` is a set of scripts that builds upon the ``bdebstrap`` tool to create custom Debian images for TI platforms. This includes creating the ``bdebstrap`` chroot environment itself, installing essential and useful TI and non-TI packages, setting the configuations, Building the U-Boot etc.
+`ti-bdebstrap <https://github.com/TexasInstruments/ti-debpkgs>`__ is a set of scripts that builds upon the ``bdebstrap`` tool to create custom Debian images for TI platforms. This includes creating the ``bdebstrap`` chroot environment itself, installing essential and useful TI and non-TI packages, setting up the configuations, Building the U-Boot etc.
 
 In other words, ``ti-bdebstrap`` offers users an easy way to create a full-fledged Debian image for supported TI platforms, using a single command. Once the image is built, the user can directly flash it onto a SD card.
 
-TI currently supports building Debian Bookworm Images for AM62x and AM64x platforms.
+TI currently supports building Debian Bookworm Images for AM62Px, AM62x and AM64x platforms.
 
 Usage
 =====
@@ -46,8 +46,9 @@ Repository Structure
     ├── builds.toml
     ├── configs
     │   ├── bdebstrap_configs
-    │   │   ├── bookworm-default.yaml
-    │   │   └── bullseye-default.yaml
+    │   │   ├── am62-bookworm.yaml
+    │   │   ├── am62p-bookworm.yaml
+    │   │   ├── am64-bookworm.yaml
     │   ├── bsp_sources.toml
     │   └── machines.toml
     ├── LICENSE
@@ -92,9 +93,8 @@ Building images using ``ti-bdebstrap`` involves the following steps:
 
     1. install the pre-requisite packages
     2. get the scripts using ``git clone``
-    3. run the ``build.sh`` script and supply it a build name
+    3. run the ``build.sh`` script and with required build config as argument.
     4. flashing the image into a SD card
-    5. installing ti-img-rogue-driver (and any other dkms-built out-of-tree kernel modules) after booting
 
 Install Pre-requisite Packages
 ------------------------------
@@ -131,10 +131,18 @@ Finally, install ``toml-cli``:
 
     pip3 install toml-cli
 
-Running the Scripts
+.. note::
+
+   Since the build script is run as `root` user, toml-cli should also be installed with `sudo` for `root` user to be able to access it.
+
+.. note::
+
+   The scripts internally handle toolchain downloads based on Host architecture. So the same steps can be followed on both `arm` and `x86_64` hosts.
+
+Building the Image
 -------------------
 
-To run the scripts, you must run the ``build.sh`` script:
+To build an image, you need to run the ``build.sh`` script:
 
 .. code-block::
 
@@ -142,15 +150,13 @@ To run the scripts, you must run the ``build.sh`` script:
 
 The ``<build-name>`` must be one present inside ``builds.toml`` file.
 
-Example: to build ``am62x_bookworm_09.00.00.006``, run:
+Example: to build for ``am62-bookworm-09.01.00.008``, run:
 
 .. code-block::
 
-    sudo ./build.sh am62x_bookworm_09.00.00.006
+    sudo ./build.sh am62-bookworm-09.01.00.008
 
-Output is then stored in ``build/am62x_bookworm_09.00.00.006``. The logs are in ``logs/am62x_bookworm_09.00.00.006.log``.
-
-**Note:** Use the above config only if you are building on the Target which is already running Debian. If you are building on any other target, use configs which has ``no-km``. This ensures to not install any Out of tree kernel modules.
+Output is then stored in ``build/am62-bookworm-09.01.00.008``. The logs are in ``logs/am62-bookworm-09.01.00.008.log``.
 
 Flash Image to SD Card
 ----------------------
@@ -162,33 +168,11 @@ Syntax:
 
     sudo ./create-sdcard.sh <build-name>
 
-For example, if the image is am62x_bookworm_09.00.00.006, type:
+For example, if the image is am62-bookworm-09.01.00.008, type:
 
 .. code-block::
 
-    sudo ./create-sdcard.sh am62x_bookworm_09.00.00.006
+    sudo ./create-sdcard.sh am62-bookworm-09.01.00.008
 
-Doing this will flash the am62x_bookworm_09.00.00.006 image to the SD card.
+Doing this will flash the am62-bookworm-09.01.00.008 image to the SD card.
 
-Post-Build:
------------
-
-Untar the build/<build>.tar.gz file and flash the rootfs and boot partitions into a SD card.
-
-Following that, you should have a basic Debian system set up. However, this system does not yet contain any out-of-tree kernel modules. Therefore they need to be installed after booting in.
-
-At the very least, you should install the `ti-img-rogue-driver` to enable display. Use the following command:
-
-.. code-block::
-
-    apt install ti-img-rogue-driver
-
-To load the driver, reboot.
-
-Once rebooted, the driver should work. To verify that it is loaded, type:
-
-.. code-block::
-
-    lsmod | grep pvr
-
-If you see output of pvrsrvkm driver, it means that the driver has loaded correctly.

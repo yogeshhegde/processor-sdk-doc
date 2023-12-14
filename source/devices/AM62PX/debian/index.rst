@@ -7,17 +7,17 @@ Debian Developer's Guide
 .. rubric:: Welcome to the Debian Developer's Guide
    :name: welcome-to-the-debian-developers-guide
 
-.. include:: _Debian_Developers_Guide.rst
+.. include:: /debian/_Debian_Developers_Guide.rst
 
 .. toctree::
    :maxdepth: 5
    :hidden:
    :numbered:
 
-   Overview
+   /debian/Overview
    Getting_Started_Guide
-   Building_Debian_Image
-   Building_Debian_Packages
+   /debian/Building_Debian_Image
+   /debian/Building_Debian_Packages
 
 |
 

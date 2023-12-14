@@ -1,10 +1,11 @@
 .. _overview-getting-started:
+.. include:: /_replacevars.rst
 
 ***************************
 Getting Started with Debian
 ***************************
 
-The SD card Image tisdk-debian-bookworm-<machine> provided on the `release page <https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-AM62X>`__ is all you need to get started and explore Debian on TI microprocessors.
+The SD card Image tisdk-debian-bookworm-<machine> provided on the |__SDK_DOWNLOAD_URL__| is all you need to get started and explore Debian on TI microprocessors.
 
 The Debian Image provided has all the basic packages required to boot with weston as default window manager. The user can install any new package using inbuilt 'apt' utility
 and customize the filesystem as required.
@@ -51,7 +52,7 @@ Create SD Card using balenaEtcher
 
 Set the EVM to SD card Boot mode
 --------------------------------
-The simplest way to run Linux on the SK EVM is through an SD card. For that, the EVM will need to be configured for SD card boot. Refer to `AM62x SK EVM User's Guide <https://www.ti.com/tool/SK-AM62>`__ for detailed information about boot mode configurations. For quick reference, the figure below shows the boot mode switch setting for SD card boot.
+The simplest way to run Linux on the SK EVM is through an SD card. For that, the EVM will need to be configured for SD card boot. Refer to `AM62Px SK EVM User's Guide <https://www.ti.com/tool/SK-AM62P-LP>`__ for detailed information about boot mode configurations. For quick reference, the figure below shows the boot mode switch setting for SD card boot.
 
 .. Image:: /images/AM62x_SD_boot.jpg
 
@@ -63,7 +64,7 @@ After approximately 20 seconds, the board should boot to weston home screen.
 
 .. Image:: /images/debian_homescreen.png
 
-You've successfully booted Debian on AM62x.
+You've successfully booted Debian on AM62Px.
 
 To verify the distro, try running ``neofetch`` on the terminal. Click on the terminal icon on the top-left corner to open the weston-terminal and run neofetch. The output of the command can be observed on the screen as shown below.
 
@@ -80,7 +81,7 @@ Do an ``apt update`` to make sure that the proxy is properly set and apt recogni
 
 To install any package available on Debian Standard Package Archive and TI Package Archive use ``apt install``.
 
-As an example to install and run ``sl`` package.
+As an example to install and run ``fortune`` package.
 
 .. Image:: /images/debian_apt_install.png
 

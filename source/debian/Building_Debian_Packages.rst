@@ -65,11 +65,8 @@ To add a package, follow the following steps:
 .. code-block::
 
     git_repo # link from which to clone
-    package_name # name of the package
-    package_version # version of the package
-    package_full # "${package-name}-${package-verion}"
     custom_build # set it to true if entire build process must be in version.sh
     require_root # set it to true if root privileges required for this package
-    last_tested_commit # the last commit which has been tested and works
 
-If ``custom_build`` is true, then the entire build process is run by ``run_custom_build`` function defined in the ``version.sh`` file. Look at ``ti-linux-kernel`` package for an example of this.
+If ``custom_build`` is true, then the entire build process can be defined in ``run_custom_build`` function in ``version.sh`` file. This will not run any other generic steps to build the deb packages. Refer ``ti-linux-kernel`` package for reference implementation.
+
