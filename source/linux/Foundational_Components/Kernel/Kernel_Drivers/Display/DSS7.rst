@@ -12,7 +12,7 @@ This page gives a basic description of DSS (Display SubSystem) hardware, the Lin
 Supported Devices
 =================
 
-There are many DSS IP versions, all of which support slightly different set of features. DSS versions up to 5 are supported by the omapdrm driver, and DSS versions 6 and up are supported by the tidss driver. This document covers DSS6, DSS7-L, and DSS7-UL which are used on the following TI SoCs or SoC families: K2G, AM65x, AM62x, AM62Ax, J721E, J721S2, J784S4.
+There are many DSS IP versions, all of which support slightly different set of features. DSS versions up to 5 are supported by the omapdrm driver, and DSS versions 6 and up are supported by the tidss driver. This document covers DSS6, DSS7-L, and DSS7-UL which are used on the following TI SoCs or SoC families: K2G, AM65x, AM62x, AM62Ax, AM62Px, J721E, J721S2, J784S4.
 
 
 Hardware Architecture
@@ -29,12 +29,19 @@ In addition to the SoC's DSS, boards often contain external display bridges (for
 
     .. Image:: /images/DSS7_HW.png
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM65X', 'AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM65X', 'AM62AX', 'AM62PX')
 
     .. Image:: /images/DSS7Lite_HW.png
 
 
-The above image gives an overview of the DSS hardware. The arrows show how pipelines are connected to overlay managers, which are further connected to video-ports, which finally create an encoded pixel stream for display on the LCD or monitor.
+The above image gives an overview of the DSS hardware.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    - The AM62PX SoC has 2 instances of the DSS7-UL, connected to different display peripherals, inside the SoC.
+    - **Note:** The Video Pipelines from one instance of DSS **cannot** overlay image planes via the Overlay Managers of another DSS.
+
+The arrows show how pipelines are connected to overlay managers, which are further connected to video-ports, which finally create an encoded pixel stream for display on the LCD or monitor.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
@@ -110,6 +117,15 @@ SoC Family: |__PART_FAMILY_DEVICE_NAMES__|
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
+    +------------+---------------+-------------------+------------+
+    | DSS version| Outputs       | Pipes             | Video ports|
+    +============+===============+===================+============+
+    | 2x DSS7-UL |OLDI, DPI, DSI | 2x VID, 2x VIDL   | 4          |
+    +------------+---------------+-------------------+------------+
+
+    Note that while there are 4 video pipes and ports available, only 3 display streams can be
+    output at any given time, as there are only 3 PLLs that generate independent pixel clocks.
+
     The DSS7 hardware also supports resource sharing across multiple processing cores with separate register region per sub-component and interrupt duplication for each processing core, thus allowing independent context update for the associated pipelines.
 
     .. Image:: /images/DSS7_resource_paritioning_HW.png
@@ -134,7 +150,7 @@ Supported Features
 
     - **DisplayPort**
         - SST
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4', 'AM62PX')
 
     - **MIPI DSI**
         - 4 Lane MIPI DSI output
@@ -148,11 +164,17 @@ Supported Features
     - **Open LVDS Display Interface (OLDI)**
         -  Single Link OLDI
         -  Dual Link OLDI
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    - **Open LVDS Display Interface (OLDI)**
+        -  Single Link OLDI
+        -  Dual Link OLDI
+        -  2x Single Link Independent OLDI
 
 **EVM Outputs**
 ^^^^^^^^^^^^^^^
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'J721E', 'J721S2', 'J784S4')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J721E', 'J721S2', 'J784S4')
 
     - **HDMI Output**
         - DPI output from SoC converted to HDMI via HDMI encoders on Starter-Kit (SK) EVMs.
@@ -177,6 +199,16 @@ Supported Features
     - **Open LVDS Display Interface (OLDI)**
         -  Single Link OLDI output from the SoC directly.
         -  Dual Link OLDI output from the SoC directly.
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    - **Open LVDS Display Interface (OLDI)**
+        -  Single Link OLDI output from the SoC directly.
+        -  Dual Link OLDI output from the SoC directly.
+        -  2x Single Link Independent OLDI output from the SoC directly.
+
+    - **MIPI DSI**
+        - 4 Lane MIPI DSI output from the SoC directly.
+        - The connector is compatible with 22 pin RPi DSI Connector.
 
 Driver Architecture
 ===================
@@ -280,10 +312,11 @@ Unsupported Features/Limitations
     - MIPI DBI/RFBI
     - Interlace
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM65X', 'AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM65X', 'AM62AX', 'AM62PX')
 
         - **DisplayPort (MHDP)**
             - The SoC doesn't support the MHDP IP, and doesn't provide the DP output.
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM65X', 'AM62AX')
 
         - **MIPI DSI**
             - The SoC doesn't support the DSI / DPHY-Tx, and doesn't provide the MIPI DSI output.
@@ -366,6 +399,35 @@ Another option is kms++, a C++11 library for kernel mode setting which includes 
     https://github.com/tomba/kmsxx
 
 
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    For the AM62PX SoC, there are 2 instances of the DSS7-UL controller, and so will be the number
+    of driver instances available. The AM62P5-SK EVM supports Hot Plug Detect for the HDMI output,
+    which is currently served from the first DSS instance (DSS0). For the OLDI and DSI outputs, the
+    devicetree (DT) overlays can be used to enable them. The OLDI output, configured as Dual-Link in
+    the DT overlay, is sourced from DSS0, while the DSI output gets sourced from the DSS1. Either
+    DSS instance can be enabled from the DT sources, simultaneously or otherwise. To enable these
+    displays on AM62P5-SK, refer the `How to enable DT overlays in linux
+    <../../../../How_to_Guides/Target/How_to_enable_DT_overlays_in_linux.html>`__ guide, and enable the
+    ``k3-am62p5-sk-microtips-mf101hie-panel.dtbo`` DT overlay for OLDI output, and
+    ``k3-am62p5-sk-dsi-rpi-7inch-panel.dtbo`` DT overlay for the DSI output.
+
+    In the event, where a multi display is enabled on the AM62P5-SK EVM, with each DSS instance
+    supporting at-least one display output, there will be two instances of tidss driver, and by
+    extension, the drm framework driver, running on the platform. The GUI applications can capture
+    them through the DRI card instances. Usually, the DSS0 will be /dev/dri/card0. The DSS1 however,
+    can either be /dev/dri/card1 or /dev/dri/card2, depending on whether or not the GPU is enabled
+    on the platform. The GPU, if present, associates with the card1, which leaves card2 for DSS1.
+    In a case where GPU driver is not present, DSS1 will take up card1.
+
+    - **Note:** Most display applications and windowing managers are programmed in such a way that
+    they can only access a display DRM card (card0) and a GPU DRM card (card1). This is why, the
+    second DSS instance, will not show up running Weston or any framebuffer application, even when
+    GPU is not present, in which case the windowing manager will only use card0. This makes DSS1
+    completely available for a 2nd DRM Master. This can be a custom display application, helping out
+    in the most niche of use-cases.
+
+
 Testing tidss
 -------------
 
@@ -390,6 +452,25 @@ kmstest from kms++ is a good tool for testing tidss features. Note that any othe
     Plane 0/@31: 0,0-640x480
       Fb 63 640x480-XR24
   press enter to exit
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+  When enabled, the second DSS instance can be tested as follows. Note that if the GPU entity is present, DSS1 will become card2, as GPU will assume the card1 instanciation.
+
+  .. code-block:: console
+
+    $ kmsprint --device=/dev/dri/card2
+    Connector 0 (40) DSI-1 (connected)
+      Encoder 0 (39) NONE
+        Crtc 0 (38) 800x480 28.569 800/48/32/80 480/3/7/6 60 (60.00)
+          Plane 0 (31) fb-id: 48 (crtcs: 0) 0,0 800x480 -> 0,0 800x480 (AR12 AB12 RA12 RG16 BG16 AR15 AB15 AR24 AB24 RA24 BA24 RG24 BG24 AR30 AB30 XR12 XB12 RX12 XR15 XB15 XR24 XB24 RX24 BX24 XR30 XB30 YUYV UYVY NV12)
+            FB 48 800x480
+    $ kmstest --device=/dev/dri/card2
+    Connector 0/@40: DSI-1
+      Crtc 0/@38: 800x480 28.569 800/48/32/80/- 480/3/7/6/- 60 (60.00) 0xa 0x48
+      Plane 0/@31: 0,0-800x480
+        Fb 49 800x480-XR24
+    press enter to exit
 
 tidss properties
 ----------------
