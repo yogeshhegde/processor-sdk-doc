@@ -1,34 +1,24 @@
 devices/AM64X/index
-devices/AM64X/Overview
-devices/AM64X/Overview_Getting_Started_Guide
-devices/AM64X/Overview/
-devices/AM64X/Overview/Download_and_Install_the_SDK
 
-linux/Overview
+devices/AM64X/linux/Overview
+devices/AM64X/linux/Overview_Getting_Started_Guide
+devices/AM64X/linux/Overview/Download_and_Install_the_SDK
+linux/Overview/Processor_SDK_Linux_create_SD_card
+linux/Overview/Top_Level_Makefile
 linux/Overview_Building_the_SDK
 linux/Overview_Directory_Structure_Overview
 linux/Overview_Technical_Support
 linux/Overview_Training
 linux/Overview_GPLv3_Disclaimer
-linux/Overview/Top_Level_Makefile
-linux/Overview/Processor_SDK_Linux_create_SD_card
 linux/Overview/GCC_ToolChain
 
-linux/Release_Specific
-linux/Release_Specific_Yocto_layer_Configuration
-linux/Release_Specific/Layer_Configuration
-
-devices/AM64X/Release_Specific
-devices/AM64X/Release_Specific_Release_Notes
-devices/AM64X/Release_Specific_Migration_Guide
-devices/AM64X/Release_Specific_Kernel_Performance_Guide
-devices/AM64X/index_Linux
-devices/AM64X/index_RTOS
-devices/AM64X/index_Applications
-devices/AM64X/Linux_Overview
-devices/AM64X/Linux_Release_Notes
-devices/AM64X/Linux_Performance_Guide
-devices/AM64X/RT_Linux_Performance_Guide
+devices/AM64X/linux/Release_Specific
+devices/AM64X/linux/Release_Specific_Release_Notes
+devices/AM64X/linux/Release_Specific_Yocto_layer_Configuration
+devices/AM64X/linux/Release_Specific_Migration_Guide
+devices/AM64X/linux/Release_Specific_Kernel_Performance_Guide
+devices/AM64X/linux/Linux_Performance_Guide
+devices/AM64X/linux/RT_Linux_Performance_Guide
 
 linux/Foundational_Components
 linux/Foundational_Components_U-Boot
@@ -104,6 +94,25 @@ linux/Foundational_Components/PRU-ICSS-Hardware
 linux/Foundational_Components/PRU-ICSS/PRU-EVMs
 linux/Foundational_Components/PRU-ICSS-Training
 linux/Foundational_Components/PRU-ICSS-Firmware-Development
+common/PRU-ICSS/Getting_Started_with_PSSP
+common/PRU-ICSS/Header_Files
+common/PRU-ICSS/INTC_Configuration
+common/PRU-ICSS/Overview
+common/PRU-ICSS/PRU-Cape-Building-Demos
+common/PRU-ICSS/PRU-Cape-Getting-Started-Guide
+common/PRU-ICSS/PRU-Cape-Hardware-User-Guide
+common/PRU-ICSS/PRU-Getting-Started-Labs
+common/PRU-ICSS/PRU-Getting-Started-Labs_Lab1
+common/PRU-ICSS/PRU-Getting-Started-Labs_Lab2
+common/PRU-ICSS/PRU-Getting-Started-Labs_Lab2_cCode
+common/PRU-ICSS/PRU-Getting-Started-Labs_Lab2_assemblyCode
+common/PRU-ICSS/PRU-Getting-Started-Labs_Lab2_mixedCandAssembly
+common/PRU-ICSS/PRU-Getting-Started-Labs_Lab3
+common/PRU-ICSS/PRU-Getting-Started-Labs_Lab4
+common/PRU-ICSS/PRU-Getting-Started-Labs_Lab4_TIRTOS
+common/PRU-ICSS/PRU-Getting-Started-Labs_Lab5
+common/PRU-ICSS/PRU-Hands-on-Labs
+common/PRU-ICSS/Resource_Tables
 linux/Foundational_Components/Sysfw
 
 linux/How_to_Guides
@@ -124,27 +133,10 @@ linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
 linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
 linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
 
-common/PRU-ICSS/Getting_Started_with_PSSP
-common/PRU-ICSS/Header_Files
-common/PRU-ICSS/INTC_Configuration
-common/PRU-ICSS/Overview
-common/PRU-ICSS/PRU-Cape-Building-Demos
-common/PRU-ICSS/PRU-Cape-Getting-Started-Guide
-common/PRU-ICSS/PRU-Cape-Hardware-User-Guide
-common/PRU-ICSS/PRU-Getting-Started-Labs
-common/PRU-ICSS/PRU-Getting-Started-Labs_Lab1
-common/PRU-ICSS/PRU-Getting-Started-Labs_Lab2
-common/PRU-ICSS/PRU-Getting-Started-Labs_Lab2_cCode
-common/PRU-ICSS/PRU-Getting-Started-Labs_Lab2_assemblyCode
-common/PRU-ICSS/PRU-Getting-Started-Labs_Lab2_mixedCandAssembly
-common/PRU-ICSS/PRU-Getting-Started-Labs_Lab3
-common/PRU-ICSS/PRU-Getting-Started-Labs_Lab4
-common/PRU-ICSS/PRU-Getting-Started-Labs_Lab4_TIRTOS
-common/PRU-ICSS/PRU-Getting-Started-Labs_Lab5
-common/PRU-ICSS/PRU-Hands-on-Labs
-common/PRU-ICSS/Resource_Tables
+devices/AM64X/index_RTOS
+
+devices/AM64X/index_Applications
 
 system/Demo_User_Guides/Benchmark_Demo_User_Guide
-system/Demo_User_Guides/WiFi_OOB_Demo_User_Guide
 
 linux/Documentation_Tarball

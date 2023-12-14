@@ -22,17 +22,12 @@ $(info ROOTDIR is $(ROOTDIR))
 $(info DEVFAMILY is $(DEVFAMILY_UP))
 FAMILYSETUPFILE = python-scripts/family_setup.py
 
-ifeq ($(DEVFAMILY_UP), AM64X)
- CONFDIR = source/devices/$(DEVFAMILY_UP)
- TAGFILE = configs/$(DEVFAMILY_UP)/$(DEVFAMILY_UP)_tags.py
-else
- ifeq ($(DEVFAMILY_UP), $(filter $(DEVFAMILY_UP), J721E J7200 J721S2 J784S4 AM68 AM69))
+ifeq ($(DEVFAMILY_UP), $(filter $(DEVFAMILY_UP), J721E J7200 J721S2 J784S4 AM68 AM69))
   CONFDIR = source/devices/J7_Family/${OS_LOW}
- else
+else
   CONFDIR = source/devices/$(DEVFAMILY_UP)/${OS_LOW}
- endif
- TAGFILE = configs/$(DEVFAMILY_UP)/$(DEVFAMILY_UP)_${OS_LOW}_tags.py
 endif
+TAGFILE = configs/$(DEVFAMILY_UP)/$(DEVFAMILY_UP)_${OS_LOW}_tags.py
 
 $(info TAGFILE is $(TAGFILE))
 $(info CONFDIR is $(CONFDIR))
