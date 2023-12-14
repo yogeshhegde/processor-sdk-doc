@@ -123,6 +123,9 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
        Your tisdk-default-image wic image will be generated in deploy-ti directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.
 
+    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+        .. note:: If trying to build tisdk-display-cluster image, Add ``DISPLAY_CLUSTER_ENABLE=1`` at the end of `conf/local.conf` file before running bitbake.
 
 .. note:: While building images via Yocto, if you are facing **locale.Error: unsupported locale setting** error, it means your system is trying to use a locale setting which was not there. Run the following commands which will setup the locale and try building your target image again.
 
@@ -213,7 +216,7 @@ The "Build Output" is given relative to the
         | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
         +------------------------------+---------------------------------------------------------------+----------------------------+
 
-    .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
+    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
         +------------------------------+---------------------------------------------------------------+----------------------------+
         | Target                       | Build Output                                                  | Description                |
@@ -222,6 +225,10 @@ The "Build Output" is given relative to the
         +------------------------------+---------------------------------------------------------------+----------------------------+
         | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
         +------------------------------+---------------------------------------------------------------+----------------------------+
+        | tisdk-display-cluster-image  | images/<machine>/tisdk-display-cluster-image-<machine>.tar.xz | Display Cluster Filesystem |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+        | tisdk-jailhouse-image        | images/<machine>/tisdk-jailhouse-image-<machine>.tar.xz       | Jailhouse Filesystem       |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
         | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem   |
         +------------------------------+---------------------------------------------------------------+----------------------------+
         | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.tar.xz       | Minimal Target Filesytem   |
@@ -229,6 +236,26 @@ The "Build Output" is given relative to the
         +------------------------------+---------------------------------------------------------------+----------------------------+
         | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
         +------------------------------+---------------------------------------------------------------+----------------------------+
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+        | Target                       | Build Output                                                  | Description                |
+        +==============================+===============================================================+============================+
+        | tisdk-core-bundle            | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+        | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+        | tisdk-jailhouse-image        | images/<machine>/tisdk-jailhouse-image-<machine>.tar.xz       | Jailhouse Filesystem       |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+        | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem   |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+        | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.tar.xz       | Minimal Target Filesytem   |
+        |                              |                                                               | with docker enabled        |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+        | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
@@ -365,6 +392,14 @@ The "Build Output" is given relative to the
         | am64xx-evm    | AM64x EVM - HS-FS, HS-SE                      |
         +---------------+-----------------------------------------------+
 
+    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+        +---------------+-----------------------------------------------+
+        | **MACHINE**   | **Supported EVMs**                            |
+        +---------------+-----------------------------------------------+
+        | am62pxx-evm   | AM62Px EVM - HS-FS, HS-SE                     |
+        +---------------+-----------------------------------------------+
+
     .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
         +------------------+--------------------------------------------+
@@ -448,6 +483,14 @@ The "Build Output" is given relative to the
         | **MACHINE**   | **Supported EVMs**                            |
         +---------------+-----------------------------------------------+
         | am64xx-evm    | AM64x EVM - HS-FS, HS-SE                      |
+        +---------------+-----------------------------------------------+
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+        +---------------+-----------------------------------------------+
+        | **MACHINE**   | **Supported EVMs**                            |
+        +---------------+-----------------------------------------------+
+        | am62pxx-evm   | AM62Px EVM - HS-FS, HS-SE                     |
         +---------------+-----------------------------------------------+
 
     .. ifconfig:: CONFIG_part_variant in ('AM62X')

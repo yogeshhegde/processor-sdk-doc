@@ -65,52 +65,13 @@ by double clicking on it within your Linux host PC.
    If nothing seems to happen, your computer may be running a 32-bit version of
    its operating system. The installer is 64-bit, and will not execute properly.
 
-**Package Overview**
-
-This AM62x Software development kit contains Linux device drivers, sample examples and
-application specific demos.  The SDK has the below folder structure
-
-
-+--------------------------+---------------------------------------------------------+
-| **Folder Name**          | **Description**                                         |
-+--------------------------+---------------------------------------------------------+
-| bin                      | set-up scripts, SD card image creation script           |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| board-support            | Linux board supported packages (prebuilt-images, tools, |
-|                          | Linux kernel, u-boot, jailhouse in source)              |
-+--------------------------+---------------------------------------------------------+
-| licenses                 | License files                                           |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| manifest                 | Manifest files                                          |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| filesystem               | Prebuilt Filesystems (tar images for am62xx-evm and     |
-|                          | am62xx-lp-evm or am62xxsip-evm)                         |
-+--------------------------+---------------------------------------------------------+
-| linux-devkit             | Linux development kit (tools, compilers etc.)           |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| external-toolchain-dir   | External GCC ARM 32-bit and 64-bit toolchains           |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| example-applications     | Sample examples and application specific demos          |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| makerules                | Contains make rules for all the top level Makefile      |
-|                          | targets                                                 |
-+--------------------------+---------------------------------------------------------+
-
-Refer :ref:`Release Notes <Release-note-label>` for complete feature-set and further details
-
 
 **MCU+ SDK for RTOS/NO-RTOS**
 
 .. note::
    Processor SDK Linux AM62x contains only the Linux specific source and application intended
    to runs on A53/Linux core. For R5F and RTOS/NO-RTOS side source and applications, refer **MCU+ SDK**
-   package `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/09_00_00_19/exports/docs/api_guide_am62x/index.html>`__.
+   package `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/09_01_00_39/exports/docs/api_guide_am62x/index.html>`__.
 
 **Instructions to set-up CCS**
 

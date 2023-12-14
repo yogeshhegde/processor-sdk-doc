@@ -19,14 +19,3 @@ Processor SDK 09.01
 - Yocto Kirkstone/4.0
 - Platforms Supported : AM62Px (HS-FS)
 
-.. note::
-
-    - For U-Boot builds, k3-image-gen and core-secdev-k3 are no longer needed
-      as **binman** is used instead. Please refer to :ref:`U-Boot build
-      instructions<Build-U-Boot-label>` for the updated steps.
-
-    - For Linux builds, generic ``defconfig`` is used instead of custom
-      fragments. Please refer to `linux users guide
-      <../../../linux/Foundational_Components_Kernel_Users_Guide.html#preparing-to-build>`__
-      for build instructions.
-

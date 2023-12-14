@@ -59,42 +59,14 @@ by double clicking on it within your Linux host PC.
    If nothing seems to happen, your computer may be running a 32-bit version of
    its operating system. The installer is 64-bit, and will not execute properly.
 
-**Package Overview**
 
-This AM62Px Software development kit contains Linux device drivers, sample examples and
-application specific demos.  The SDK has the below folder structure
+**MCU+ SDK for RTOS/NO-RTOS**
 
+.. note::
+   Processor SDK Linux AM62Px contains only the Linux specific source and application intended
+   to runs on A53/Linux core. For R5F and RTOS/NO-RTOS side source and applications, refer **MCU+ SDK**
+   package `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/09_01_00_39/exports/docs/api_guide_am62px/index.html>`__.
 
-+--------------------------+---------------------------------------------------------+
-| **Folder Name**          | **Description**                                         |
-+--------------------------+---------------------------------------------------------+
-| bin                      | set-up scripts, SD card image creation script           |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| board-support            | Linux board supported packages (prebuilt-images, tools, |
-|                          | Linux kernel, u-boot, jailhouse in source)              |
-+--------------------------+---------------------------------------------------------+
-| licenses                 | License files                                           |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| manifest                 | Manifest files                                          |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| filesystem               | Prebuilt Filesystems (tar images for am62pxx-evm)       |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| linux-devkit             | Linux development kit (tools, compilers etc.)           |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| external-toolchain-dir   | External GCC ARM 32-bit and 64-bit toolchains           |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| example-applications     | Sample examples and application specific demos          |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| makerules                | Contains make rules for all the top level Makefile      |
-|                          | targets                                                 |
-+--------------------------+---------------------------------------------------------+
+**Instructions to set-up CCS**
 
-Refer :ref:`Release Notes <Release-note-label>` for complete feature-set and further details
-
+-  Refer `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/09_01_00_39/exports/docs/api_guide_am62px/CCS_SETUP_PAGE.html>`__

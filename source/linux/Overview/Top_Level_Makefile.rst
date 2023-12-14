@@ -198,16 +198,12 @@ devices will have following additional targets:
      jailhouse tools and cell configs. Applicable for only platforms with
      Hypervisor support enabled.
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'AM62PX')
 
 
     **arm-benchmarks** - Build the ARM Benchmarks
 
     **cryptodev** - Build module for cryptographic hardware accelerators.
-
-    **pru-icss** - Build the PRU-ICSS driver.
-
-    **oprofile-example** - Build System profiler
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X')
 
@@ -220,11 +216,6 @@ devices will have following additional targets:
 .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM65X')
 
    **ti-sgx-ddk-km** - Build GPU Kernel module.
-
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
-
-    **matrix-gui** - Build matrix GUI sources.
-
 
 Along with these targets, there might be additional targets for different
 external kernel modules. This list is different for each platform.

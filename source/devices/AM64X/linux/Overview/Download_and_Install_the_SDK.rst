@@ -63,46 +63,6 @@ Double click on the installer to begin installation.
    If nothing seems to happen, your computer may be running a 32-bit version of
    its operating system. The installer is 64-bit, and will not execute properly.
 
-**Package Overview**
-
-This AM64x Software development kit contains Linux device drivers, sample examples and
-application specific demos.  The SDK has the below folder structure
-
-
-+--------------------------+---------------------------------------------------------+
-| **Folder Name**          | **Description**                                         |
-+--------------------------+---------------------------------------------------------+
-| bin                      | set-up scripts, SD card image creation script           |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| board-support            | Linux board supported packages (prebuilt-images, tools, |
-|                          | Linux kernel, u-boot, jailhouse in source)              |
-+--------------------------+---------------------------------------------------------+
-| licenses                 | License files                                           |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| manifest                 | Manifest files                                          |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| filesystem               | Prebuilt Filesystems (tar images for am62xx-evm and     |
-|                          | am62xx-lp-evm)                                          |
-+--------------------------+---------------------------------------------------------+
-| linux-devkit             | Linux development kit (tools, compilers etc.)           |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| external-toolchain-dir   | External GCC ARM 32-bit and 64-bit toolchains           |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| example-applications     | Sample examples and application specific demos          |
-|                          |                                                         |
-+--------------------------+---------------------------------------------------------+
-| makerules                | Contains make rules for all the top level Makefile      |
-|                          | targets                                                 |
-+--------------------------+---------------------------------------------------------+
-
-
-Refer :ref:`Release Notes <Release-note-label>` for complete feature-set and further details
-
 
 **MCU+ SDK for RTOS/NO-RTOS**
 

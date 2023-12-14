@@ -24,4 +24,5 @@ Hardware EVM Setup
    How_to_Guides/Hardware_Setup_with_CCS/J784S4_EVM_Hardware_Setup
    How_to_Guides/Hardware_Setup_with_CCS/AM69_SK_Hardware_Setup
    How_to_Guides/Hardware_Setup_with_CCS/AM62x_EVM_Hardware_Setup
+   How_to_Guides/Hardware_Setup_with_CCS/AM62Px_EVM_Hardware_Setup
    How_to_Guides/Hardware_Setup_with_CCS/AM64x_EVM_Hardware_Setup
