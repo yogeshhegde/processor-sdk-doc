@@ -34,13 +34,22 @@ Where <hash> is the OPTEE commit shown here: :ref:`tf-a-release-notes`.
 
 .. rubric:: Building ATF
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'AM62AX', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
 
     .. code-block:: console
 
         $ export TFA_DIR=<path-to-arm-trusted-firmware>
         $ cd $TFA_DIR
         $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 TARGET_BOARD=lite SPD=opteed
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
+    .. code-block:: console
+
+        $ export TFA_DIR=<path-to-arm-trusted-firmware>
+        $ cd $TFA_DIR
+        $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 K3_PM_SYSTEM_SUSPEND=1 TARGET_BOARD=lite SPD=opteed
+
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
