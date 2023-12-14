@@ -76,7 +76,7 @@ The TI Apps Launcher launches on Linux startup. Follow the below instructions to
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-   .. Image:: /images/ti-apps-launcher.png
+   .. Image:: /images/ti-apps-launcher-home.png
       :width: 950
       :height: 900
 
@@ -95,21 +95,11 @@ ____________________________
 
       Industrial HMI on AM62xSIP SK varies from the one documented here. This is only valid for AM62x SK and AM62x-LP SK.
 
-1. To launch the Industrial HMI demo, click on the `Industrial HMI` button on the left panel.
+1. To launch the Industrial HMI demo, click on the `Industrial HMI` button on the left menu.
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-   .. Image:: /images/industrial-hmi-button.jpg
-      :width: 407
-      :height: 400
-   |
-.. note:: It takes around 3-5 seconds for Industrial HMI to start.
-
-2. By default, the Industrial HMI demo starts in **Auto** mode as shown below.
-
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-   .. Image:: /images/industrial-hmi.png
+   .. Image:: /images/ti-apps-launcher-hmi.png
       :width: 950
       :height: 900
 
@@ -119,79 +109,79 @@ ____________________________
       :width: 950
       :height: 900
 
-3. You can click on the Auto-Manual slider button to switch modes.
+2. You can click on the Auto-Manual slider button to switch modes.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+3. In Manual mode, you can use the **^** and **v** buttons of each motor to control the RPM.
 
-   .. Image:: /images/industrial-hmi-auto-manual.jpg
+.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62PX')
+
+    Launching the Live Camera
+    _________________________
+
+    1. Ensure you have enabled the camera sensors which you have connected to TI |__PART_FAMILY_DEVICE_NAMES__| SK. Refer `this <../../linux/Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX.html#enabling-camera-sensors>`__ to know the list of camera modules supported and how to enable the sensor overlays for them.
+
+    2. To launch the Live Camera demo, click on the `Live Camera` button on the left panel.
+
+    .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+       .. Image:: /images/live-camera-button.jpg
+          :width: 407
+          :height: 400
+
+    .. note:: It takes around 3-5 seconds for Live Camera to start.
+
+    3. The Live Camera demo starts streaming the output of the camera connected in the centre window of TI Apps Launcher. The image below is captured using USB Camera.
+
+    .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+       .. Image:: /images/live-camera.png
+          :width: 950
+          :height: 900
+
+    .. ifconfig:: CONFIG_sdk in ('j7_foundational')
+
+       .. Image:: /images/live-camera-j7.png
+          :width: 950
+          :height: 900
+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   Video Playback
+   ______________
+
+   1. AM62Px has hardware codecs which are capable of encoding and decoding H.246 and H.265 Videos.
+
+   2. Click on the 'Video Playback' button on the left menu to start the app.
+
+   3. This app plays the H.264 video stream which is pre-packaged in the filesystem.
+
+   4. To switch to H.265 video stream, click on the H.265 button available at the bottom of main window.
+
+   .. Image:: /images/ti-apps-launcher-video-playback.png
       :width: 950
       :height: 900
 
-4. In Manual mode, you can use the **^** and **v** buttons of each motor to control the RPM.
-
-Launching the Live Camera
-_________________________
-
-1. Ensure you have enabled the camera sensors which you have connected to TI |__PART_FAMILY_DEVICE_NAMES__| SK. Refer `this <../../linux/Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX.html#enabling-camera-sensors>`__ to know the list of camera modules supported and how to enable the sensor overlays for them.
-
-2. To launch the Live Camera demo, click on the `Live Camera` button on the left panel.
-
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-   .. Image:: /images/live-camera-button.jpg
-      :width: 407
-      :height: 400
-
-.. note:: It takes around 3-5 seconds for Live Camera to start.
-
-3. The Live Camera demo starts streaming the output of the camera connected in the centre window of TI Apps Launcher. The image below is captured using USB Camera.
-
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-   .. Image:: /images/live-camera.png
-      :width: 950
-      :height: 900
-
-.. ifconfig:: CONFIG_sdk in ('j7_foundational')
-
-   .. Image:: /images/live-camera-j7.png
-      :width: 950
-      :height: 900
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
    Launching the ARM Analytics Demo
    ________________________________
 
    .. note::
 
-      ARM Analytics Demo is only supported on AM62x SK and AM62x-LP SK. AM62xSIP doesn't support it.
+      ARM Analytics Demo is only supported on AM62x SK, AM62x-LP SK and AM62PX. AM62SIP doesn't support it.
 
-   1. AM62x SDK now supports ARM Analytics with pre-existing demos showcasing Object Detection, Face Detection and Image Classification.
+   1. This app tries to showcase the ARM optimized models for Object Detection, Face Detection and Image Classification.
 
    2. To launch the ARM Analytics demo, click on the `ARM Analytics` button on the left panel.
 
-   .. Image:: /images/arm-analytics-icon.jpg
-      :width: 407
-      :height: 400
+   .. Image:: /images/ti-apps-launcher-arm-analytics.png
+      :width: 950
+      :height: 900
 
    3. By default, the ARM Analytics demo shows the results of **Object Detection** Model on existing data.
 
-   .. Image:: /images/object-detection.png
-      :width: 950
-      :height: 900
-
-   4. Click on the `Face Detection` button to check the results of **Face Detection** Model on existing data.
-
-   .. Image:: /images/face-detection.png
-      :width: 950
-      :height: 900
-
-   5. Click on the `Image Classification` button to check the results of **Image Classification** Model on existing data.
-
-   .. Image:: /images/image-classification.png
-      :width: 950
-      :height: 900
+   4. To test **Face Detection** or **Image Classification**, Click on the respective buttons available at the bottom of the main window.
 
 Launching the Benchmarks Demo
 _____________________________
@@ -208,23 +198,13 @@ _____________________________
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-   .. Image:: /images/benchmark-icon.jpg
-      :width: 407
-      :height: 400
-
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
    3. User will now see the list of Benchmarks available to test on TI |__PART_FAMILY_DEVICE_NAMES__|. Click on the `play button` infront of the benchmark you like to test. The image below is captured while running the `glmark2`.
 
-   .. Image:: /images/benchmark-glmark2.png
+   .. Image:: /images/ti-apps-launcher-benchmarks-glmark2.png
       :width: 950
-      :height: 400
+      :height: 900
 
-   4. You will see the updated values of FPS & Score metrices getting populated.
-
-   .. Image:: /images/benchmark-glmark2-updated.png
-      :width: 950
-      :height: 400
+   4. Once after the entire benchmark has been run, the FPS & Score will get populated in the table.
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
@@ -246,25 +226,11 @@ __________________________________
 
 1. The GPU Performance demo allows users to vary the GPU loads using glmark2. Click on the `GPU Performance` button on the left panel.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-   .. Image:: /images/gpu-performance-icon.jpg
-      :width: 407
-      :height: 400
-
-2. Now you can vary the GPU Loads by clicking on the various numbers you see on `GPU Load Levels Bar`.
+2. Now you can choose the GPU Load Level from the buttons available on the right. Choose from '0' which is no load to '4' max load.
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-   .. Image:: /images/gpu-performance-home.png
-      :width: 950
-      :height: 900
-
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-   3. The image below is captured while running the `glmark2` with **GPU Load Level as 1**.
-
-   .. Image:: /images/gpu-performance-demo.png
+   .. Image:: /images/ti-apps-launcher-gpu-performance.png
       :width: 950
       :height: 900
 
@@ -276,7 +242,7 @@ __________________________________
       :width: 950
       :height: 900
 
-4. You will see the updated values of FPS & Score metrices getting populated.
+4. You will see the updated values of FPS & Score metrices getting populated in the table.
 
 Launching the Seva Store
 ________________________
@@ -328,7 +294,7 @@ _____________________________
 
 3. Click `x` to close the Firefox Browser.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
    Launching the 3D Demo
    _____________________
@@ -339,13 +305,9 @@ _____________________________
 
    1. Click on the `3D Demo` button on the left panel.
 
-   .. Image:: /images/3d-icon.jpg
-      :width: 407
-      :height: 400
-
    2. Click `Launch` button to launch the 3D Demo by Imagination. By default, you would see the Skinning Model running on the screen.
 
-   .. Image:: /images/3d-demo.png
+   .. Image:: /images/ti-apps-launcher-3d-demo.png
       :width: 950
       :height: 900
 
@@ -356,15 +318,9 @@ _________________________
 
 1. The Settings button on the left panel can be used to set docker's systemd-proxy and system proxy if your TI |__PART_FAMILY_DEVICE_NAMES__| SK is connected to a VPN.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-   .. Image:: /images/settings-icon.jpg
-      :width: 407
-      :height: 400
-
 2. Once the user clicks on the Settings button, it will ask for a HTTPS Proxy and No proxy values.
 
-.. Image:: /images/settings.png
+.. Image:: /images/ti-apps-launcher-settings.png
    :width: 950
    :height: 900
 
@@ -384,13 +340,21 @@ The source code is available at `TI Apps Launcher <https://github.com/TexasInstr
 
 2. Go to the root of TI Apps Launcher repository and run the following command to build the application.
 
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+      ::
+
+         $ qmake "SOURCES += configs/am62pxx-evm.cpp" "DEFINES += SOC_AM62P" ./ti-apps-launcher.pro ; make
+
+      |
+
    .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
       ::
 
-         $ qmake "SOURCES += configs/am62xx-evm.cpp" "DEFINES += SOC_AM62"; make # For AM62x SK
-         $ qmake "SOURCES += configs/am62xx-lp-evm.cpp" "DEFINES += SOC_AM62_LP"; make # For AM62x LP SK
-         $ qmake "SOURCES += configs/am62xxsip-evm.cpp" "DEFINES += SOC_AM62_LP"; make # For AM62xSIP SK
+         $ qmake "SOURCES += configs/am62xx-evm.cpp" "DEFINES += SOC_AM62" ./ti-apps-launcher.pro ; make # For AM62x SK
+         $ qmake "SOURCES += configs/am62xx-lp-evm.cpp" "DEFINES += SOC_AM62_LP" ./ti-apps-launcher.pro ; make # For AM62x LP SK
+         $ qmake "SOURCES += configs/am62xxsip-evm.cpp" "DEFINES += SOC_AM62_LP" ./ti-apps-launcher.pro ; make # For AM62xSIP SK
 
       |
 
