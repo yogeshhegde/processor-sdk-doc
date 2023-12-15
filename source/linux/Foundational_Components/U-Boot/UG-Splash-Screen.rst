@@ -263,56 +263,48 @@ Enable following kconfigs to support **8bit** RLE compressed image.
 
 Flicker free display across boot stages and Linux Kernel
 --------------------------------------------------------
-  .. line-block::
 
- 1. AM62x 9.1 SDK release supports flicker free display with splash screen displayed persistently across all the bootloader stages starting from A53 SPL to U-boot proper using a bloblist based scheme, where framebuffer related information like size of framebuffer, address of framebuffer are passed from A53 SPL to U-boot proper using Video Bloblist.
-  .. line-block::
+#. AM62x 9.1 SDK release supports flicker free display with splash screen displayed persistently across all the bootloader stages starting from A53 SPL to U-boot proper using a bloblist based scheme, where framebuffer related information like size of framebuffer, address of framebuffer are passed from A53 SPL to U-boot proper using Video Bloblist.
 
- 2. It also supports persistent splash screen display while operating system is booting up, along with seamless transition to Linux Boot logo and thereafter to psplash boot animation using a simple-framebuffer based approach as described below :
-  .. line-block::
+#. It also supports persistent splash screen display while operating system is booting up, along with seamless transition to Linux Boot logo and thereafter to psplash boot animation using a simple-framebuffer based approach as described below :
 
- 3. To make sure that splash screen remains persistent while Linux Kernel boots up, framebuffer region was marked as reserved in linux device tree arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi by defining the video frame-buffer address and size as shown below :
-  .. line-block::
+#. To make sure that splash screen remains persistent while Linux Kernel boots up, framebuffer region was marked as reserved in linux device tree arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi by defining the video frame-buffer address and size as shown below :
 
-.. code-block:: dts
+    .. code-block:: dts
 
-      framebuffer: framebuffer@ff700000 {
-             reg = <0x00 0xff700000 0x00 0x008ca000>;
-             no-map;
-      };
+          framebuffer: framebuffer@ff700000 {
+                 reg = <0x00 0xff700000 0x00 0x008ca000>;
+                 no-map;
+          };
 
+#. To enable seamless transition from bootloader splash screen to Linux boot logo and thereafter to Psplash based boot animation, simple-framebuffer driver was enabled in arch/arm64/configs/defconfig along with adding a device-tree node for simple-framebuffer describing the framebuffer context at arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi:
 
- 4. To enable seamless transition from bootloader splash screen to Linux boot logo and thereafter to Psplash based boot animation, simple-framebuffer driver was enabled in arch/arm64/configs/defconfig along with adding a device-tree node for simple-framebuffer describing the framebuffer context at arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi:
-  .. line-block::
-.. code-block:: c
+    .. code-block:: c
 
-      CONFIG_FB_SIMPLE=y
+          CONFIG_FB_SIMPLE=y
+    .. code-block:: dts
 
-.. code-block:: dts
+           framebuffer0: framebuffer@0 {
+                 compatible = "simple-framebuffer";
+                 power-domains = <&k3_pds 186 TI_SCI_PD_EXCLUSIVE>;
+                 clocks = <&k3_clks 186 6>,
+                 <&k3_clks 186 0>,
+                 <&k3_clks 186 2>;
+                 display = <&dss>;
+                 reg = <0x00 0xff700000 0x00 0x008ca000>;
+                 width = <1920>;
+                 height = <1200>;
+                 stride = <(1920 * 4)>;
+                 format = "x8r8g8b8";
+           };
+    .. note::
 
-       framebuffer0: framebuffer@0 {
-             compatible = "simple-framebuffer";
-             power-domains = <&k3_pds 186 TI_SCI_PD_EXCLUSIVE>;
-             clocks = <&k3_clks 186 6>,
-             <&k3_clks 186 0>,
-             <&k3_clks 186 2>;
-             display = <&dss>;
-             reg = <0x00 0xff700000 0x00 0x008ca000>;
-             width = <1920>;
-             height = <1200>;
-             stride = <(1920 * 4)>;
-             format = "x8r8g8b8";
-       };
+       More information regarding simple-framebuffer can be viewed at `simple-framebuffer device-tree binding doc <https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/display/simple-framebuffer.yaml>`_
 
-.. note::
+       Even if a non-linux based custom bootloader is used to display splash screen before transitioning to Linux, the framebuffer related information can be updated in aforementioned device-tree nodes to enable seamless and flicker free transition during operating system bootup along with reduced memory footprint.
 
-   More information regarding simple-framebuffer can be viewed at `simple-framebuffer device-tree binding doc <https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/display/simple-framebuffer.yaml>`_
+#. The above scheme also ensures that bootloader allocated framebuffer region is re-used by Linux kernel for displaying the boot logo and animation even before linux kernel loads the display driver, thus    giving a seamless experience during transition.
 
-   Even if a non-linux based custom bootloader is used to display splash screen before transitioning to Linux, the framebuffer related information can be updated in aforementioned device-tree nodes to enable seamless and flicker free transition during operating system bootup along with reduced memory footprint.
-.. line-block::
-
- 5. The above scheme also ensures that bootloader allocated framebuffer region is re-used by Linux kernel for displaying the boot logo and animation even before linux kernel loads the display driver, thus    giving a seamless experience during transition.
-.. line-block::
 
 Flicker free and persistent display until display server
 --------------------------------------------------------
