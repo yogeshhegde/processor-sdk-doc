@@ -19,12 +19,12 @@ Download and install Processer SDK Installer. For steps refer :ref:`download-and
 
 **Clone repository**
 
-Clone the sources from `here <https://git.ti.com/cgit/processor-sdk/uboot-flash-writer/tree/?h=uboot-flash-writer_v2>`__.
+Clone the sources from `here <https://git.ti.com/git/processor-sdk/uboot-flash-writer.git>`__.
 
 ::
     
     git clone https://git.ti.com/git/processor-sdk/uboot-flash-writer.git
-    git checkout uboot-flash-writer_v2
+    git checkout master
 
 
 Important files
@@ -120,7 +120,7 @@ Additionallly, these changes can also be done:
 
 ::
     
-    To make sure board doesnt use saved environment variables after boot.
+    To make sure board does not use saved environment variables after boot.
     
         Add below line.
         CONFIG_ENV_IS_NOWHERE=y
@@ -139,6 +139,14 @@ change is needed in Rules.make file present in the top level of SDK.
     ::                                                                          
                                                                               
         UBOOT_MACHINE_R5=am62x_evm_r5_usbdfu_defconfig
+
+        # For AM62X LP
+
+        UBOOT_MACHINE_R5=am62x_lpsk_r5_usbdfu_defconfig
+
+        # For AM62X SIP
+
+        UBOOT_MACHINE_R5=am62x_evm_r5_usbdfu_defconfig am62xsip_sk_r5.config
                                                                              
 .. ifconfig:: CONFIG_part_variant in ('AM64X')                                  
 
@@ -150,7 +158,13 @@ change is needed in Rules.make file present in the top level of SDK.
                                                                                  
     ::                                                                          
                                                                                 
-        UBOOT_MACHINE_R5=am62ax_evm_r5_usbdfu_defconfig    
+        UBOOT_MACHINE_R5=am62ax_evm_r5_usbdfu_defconfig
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+    
+        UBOOT_MACHINE_R5=am62px_evm_r5_usbdfu_defconfig
 
 Generate the bootloader images for DFU boot using top-level makefile by running 
 following commands on the terminal from the top-level of the SDK.
@@ -197,10 +211,11 @@ Preparing the Flash Configuration file
 * Edit the configuration file `flash-files.cfg` to list the commands for each of the files to be flashed.
 * For each config line, prepare the following three arguments separated by space.
 * Edit the path of files to be flashed using  -file=${path}.
-* Edit the operation using --operation=${flash-nor|flash-emmc|flash-nand}.
-* The operations flash-nor is used to flash the SPI NOR.
-* The operations flash-nand is used to flash the SPI NAND.
-* The operations flash-emmc is used to flash the eMMC.
+* Edit the operation using --operation=${flash-nor|flash-emmc|flash-nand|flash-gpmc_nand}.
+* The operation flash-nor is used to flash the SPI NOR.
+* The operation flash-nand is used to flash the SPI NAND.
+* The operation flash-emmc is used to flash the eMMC.
+* The operation flash-gpmc_nand is used to flash the GPMC NAND.
 * Edit the offset using --offset=${hex_address}.
 
 
@@ -226,10 +241,20 @@ Change the working directory in terminal to flash writer tool directory i.e.
 
 **Flash to eMMC**
 
-eMMC needs to be partitioned before running the script. For steps
-refer :ref:`partitioning-eMMC-from-uboot`.
+Flashing to eMMC needs and additional attributes named `--attributes` in flash
+configuration file. The key `--attributes` is only valid for eMMC and has the 
+following value:
 
-After the eMMC is partitioned, flash to eMMC can be done without error.
+::
+
+    --attributes="<raw|part>,<hwpart>,<partid>"
+
+- Use `raw` for raw flashing to any offset of any hardware partition in eMMC. If `raw`
+  is used, only `hwpart` is required and the third parameter `partid` should be set to `-`.
+- Use `part` for raw flashing to a partition defined in GPT or DOS partition table. If `part`
+  is used, both `hwpart` & `partid` are required.
+- It should be noted using `part` requires a partition table already in the respective
+  hardware partition in eMMC. For steps refer :ref:`partitioning-eMMC-from-uboot`.
 
 In the config file, specify operation as 
 
@@ -265,6 +290,20 @@ In the config file, specify operation as
 ::
     
     --operation=flash-nand
+
+Run following command in Linux or Windows host to start the flash tool.
+
+::
+
+    $ ${PYTHON} dfu_flash.py -d <device> -t <type> -c <cfg file>
+
+**Flash to GPMC NAND**
+
+In the config file, specify operation as
+
+::
+
+    --operation=flash-gpmc_nand
 
 Run following command in Linux or Windows host to start the flash tool.
 

@@ -23,25 +23,27 @@ are located at
 
     ::
 
-        <TI_SDK_PATH>/bin/uart_uniflash/am64xx-evm/
+        <TI_SDK_PATH>/bin/uart_uniflash/bin/am64xx-evm/
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
     ::
 
-        <TI_SDK_PATH>/bin/uart_uniflash/am62xx-evm/
+        <TI_SDK_PATH>/bin/uart_uniflash/bin/am62xx-evm/
+        <TI_SDK_PATH>/bin/uart_uniflash/bin/am62xx-lp-evm/
+        <TI_SDK_PATH>/bin/uart_uniflash/bin/am62xxsip-evm/
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
     ::
 
-        <TI_SDK_PATH>/bin/uart_uniflash/am62axx-evm/
+        <TI_SDK_PATH>/bin/uart_uniflash/bin/am62axx-evm/
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-   .. note::
+   ::
 
-        This documentation note is applicable only for am62xx-evm and am62xx-lp-evm.
+        <TI_SDK_PATH>/bin/uart_uniflash/bin/am62pxx-evm/
 
 Requirements on Host PC
 -----------------------
@@ -83,7 +85,7 @@ Example.
 
     --file=<path to file>/tiboot3.bin --operation=flash --flash-offset=0x0
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X','AM64X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X','AM64X','AM62PX')
 
     **Flash configuration file for flashing to OSPI NOR**
 
