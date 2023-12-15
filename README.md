@@ -72,8 +72,9 @@ Update submodule:
 * "GEN" (representing General family not listed above)
 * "CORESDK" (representing CORESDK)
 
-**Note**: Please use script `bin/check-warn.sh` to check for new build warnings
-          and fix them before submitting pull-requests.
+**Note**: Please use script `bin/check-warn.sh` or the `make lint` target
+          to check for new build warnings and fix them before submitting
+          pull-requests.
 
 ### HTML Page Output
 
