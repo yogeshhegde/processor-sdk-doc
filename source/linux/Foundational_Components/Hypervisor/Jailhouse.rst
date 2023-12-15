@@ -1,3 +1,5 @@
+.. include:: /_replacevars.rst
+
 Jailhouse
 =========
 
@@ -38,15 +40,16 @@ Jailhouse consists of three parts:
 The tools helps in enabling the hypervisor on the device at runtime, in creating a cell, to load inmate a binary,
 to run the inmate binary and to stop the hypervisor itself.
 
-Enabling hypervisor on AM62x platform
--------------------------------------
+Enabling hypervisor on |__PART_FAMILY_DEVICE_NAMES__| platform
+--------------------------------------------------------------
 
-Jailhouse is an example of Asynchronous Multiprocessing (AMP) architecture. When we boot Linux on AM62x, which has 4 ARM cores, Linux uses the
-all four cores. After we enable hypervisor it moves Linux to the root-cell. The
-root cell still uses the all ARM cores. When we create a new cell (ex. for linux-demo),
-hypervisor calls cpu_down() for the ARM1,ARM2 and ARM3 core, leaving ARM0 for
-Linux.The new cell will use the three ARM cores and hardware resources dedicated
-for this cell in the cell configuration file.
+Jailhouse is an example of Asynchronous Multiprocessing (AMP) architecture. When we boot Linux on |__PART_FAMILY_DEVICE_NAMES__|, 
+which has 4 ARM cores, Linux uses the all four cores. After we enable hypervisor 
+it moves Linux to the root-cell. The root cell still uses the all ARM cores. 
+When we create a new cell (ex. for linux-demo), hypervisor calls cpu_down() 
+for the ARM1,ARM2 and ARM3 core, leaving ARM0 for Linux.The new cell will use 
+the three ARM cores and hardware resources dedicated for this cell in the cell 
+configuration file.
 
 The open source Jailhouse project from https://github.com/siemens/jailhouse is integrated in Yocto build environment.
 
@@ -58,16 +61,18 @@ The open source Jailhouse project from https://github.com/siemens/jailhouse is i
 - U-Boot port for Jailhouse can be found here `U-Boot git.ti <https://git.ti.com/cgit/processor-sdk/u-boot/>`__. This repository contains the fix for error
   message during boot after memory for Jailhouse is reserved in device tree.
 
-Building Jailhouse Image for AM62x platform
--------------------------------------------
+Building Jailhouse Image for |__PART_FAMILY_DEVICE_NAMES__| platform
+--------------------------------------------------------------------
 
-The list of components which should be built to get Jailhouse Image for AM62x are:
+The list of components which should be built to get Jailhouse Image for |__PART_FAMILY_DEVICE_NAMES__| are:
 
 * U-Boot ( tiboot3.bin, tispl.bin, u-boot.img ).
 * Kernel ( with Jailhouse and shared memory module ).
 * Filesystem for root cell and RAM filesystem for inmate.
 
-There are two options to build Jailhouse Image, one is using open source Yocto build environment with public repositories mentioned above or the other method is to use sources and makefile from TI Processors SDK installer.
+There are two options to build Jailhouse Image, one is using open source Yocto build 
+environment with public repositories mentioned above or the other method is to 
+use sources and makefile from TI Processors SDK installer.
 
 Building Jailhouse Image using Yocto
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -81,36 +86,40 @@ jailhouse-image) using Yocto build environment are as listed below :
 
     $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
     $ cd tisdk
-    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-09.00.00-config.txt
+    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-09.01.00-config.txt
     $ cd build
     $ . conf/setenv
-    $ export TOOLCHAIN_PATH_ARMV7=$HOME/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf
-    $ export TOOLCHAIN_PATH_ARMV8=$HOME/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu
-    $ echo 'TI_EXTRAS="tie-jailhouse"' >> local.conf
-    $ MACHINE=am62xx-evm bitbake -k tisdk-jailhouse-image
+    $ echo 'TI_EXTRAS="tie-jailhouse"' >> conf/local.conf
+    $ MACHINE=<machine> bitbake -k tisdk-jailhouse-image
 
-The bitbake command mentioned in the last line above builds the tisdk-jailhouse-image, the image can be located at tisdk/build/arago-tmp-default-glibc/deploy/images/am62xx-evm.
+The bitbake command mentioned in the last line above builds the tisdk-jailhouse-image, 
+the image can be located at tisdk/build/deploy-ti/images/|__SDK_BUILD_MACHINE__|.
 
-This image includes a host cell filesystem Image based on arago 'default' filesystem, boot partition with bootloader binaries and kernel Image with Jailhouse components and
-uio_ivshmem kernel module for shared memory applications. The filesystem image also contains a RAM filesystem (cpio) which gets mounted by kernel booting on an inmate cell.
+This image includes a host cell filesystem Image based on arago 'default' filesystem, 
+boot partition with bootloader binaries and kernel Image with Jailhouse components and
+uio_ivshmem kernel module for shared memory applications. The filesystem image 
+also contains a RAM filesystem (cpio) which gets mounted by kernel booting on an 
+inmate cell.
 
 Building Jailhouse using TI SDK Installer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The latest Processor SDK Linux AM62x installer is available on
-https://www.ti.com/tool/PROCESSOR-SDK-AM62X.
+The latest Processor SDK Linux |__PART_FAMILY_DEVICE_NAMES__| installer is available on |__SDK_DOWNLOAD_URL__|.
 
-The installer should be downloaded on a Linux ubuntu host machine. The steps to install the sources using installer are:
+The installer should be downloaded on a Linux ubuntu host machine. The steps to 
+install the sources using installer are:
 
 ::
 
-    chmod +x ./ti-processor-sdk-linux-am62xx-evm-<version>-Linux-x86-Install.bin
-    ./ti-processor-sdk-linux-am62xx-evm-<version>-Linux-x86-Install.bin
+    chmod +x ./ti-processor-sdk-linux-<machine>-<version>-Linux-x86-Install.bin
+    ./ti-processor-sdk-linux-<machine>-<version>-Linux-x86-Install.bin
 
 
-Create an SD card with prepackaged filesystem image by following instructions from the link :ref:`processor-sdk-linux-create-sd-card-with-custom-images`.
+Create an SD card with prepackaged filesystem image by following instructions from 
+the link :ref:`processor-sdk-linux-create-sd-card-with-custom-images`.
 
-The Jailhouse kernel sources, Jailhouse firmware and u-boot bootloader sources can be customized or modified and then built using the steps given below.
+The Jailhouse kernel sources, Jailhouse firmware and u-boot bootloader sources 
+can be customized or modified and then built using the steps given below.
 
 Jailhouse sources are located at $TI_SDK_PATH/board-support/extra-drivers/jailhouse
 directory. The top level SDK Makefile has the *jailhouse_clean*, *jailhouse* and
@@ -124,10 +133,11 @@ The exact commands are:
     make jailhouse
     make jailhouse_install DESTDIR=<root partition of target>
 
-These commands can be used to install Jailhouse kernel module, firmware and management tools in the target filesystem.
+These commands can be used to install Jailhouse kernel module, firmware and 
+management tools in the target filesystem.
 
 The kernel and u-boot sources for Jailhouse image are located at
-$TI_SDK_PATH/board-support/linux-extras and $TI_SDK_PATH/board-support/uboot-extras.
+$TI_SDK_PATH/board-support/linux-extras-* and $TI_SDK_PATH/board-support/uboot-extras-*.
 These targets can be build and installed using top-level Makefile.
 
 Below commands can be used to install kernel image and modules to root of the target
@@ -151,57 +161,89 @@ of target.
 Generate SD Card Image for Jailhouse
 ------------------------------------
 
-You can download the tisdk-jailhouse-image-am62xx-evm.wic.xz from here
-https://www.ti.com/tool/PROCESSOR-SDK-AM62X. After that you need to flash the
-tisdk-jailhouse-image-am62xx-evm.wic.xz to a SD Card. Various ways to flash wic
-image on SD card are mentioned here :ref:`processor-sdk-linux-create-sd-card`.
+You can download the tisdk-jailhouse-image-|__SDK_BUILD_MACHINE__|.wic.xz from here |__SDK_DOWNLOAD_URL__|.
+
+After that you need to flash the tisdk-jailhouse-image-|__SDK_BUILD_MACHINE__|.wic.xz 
+to a SD Card. Various ways to flash wic image on SD card are mentioned 
+here :ref:`processor-sdk-linux-create-sd-card`.
 
 Booting the SD Card Image
 -------------------------
 
-After the tisdk-jailhouse-image-am62xx-evm.wic.xz is flashed to SD Card. Change
-the boot mode pins in AM62x board for SD Card boot.
+After the tisdk-jailhouse-image-|__SDK_BUILD_MACHINE__|.wic.xz is flashed to SD Card. Change
+the boot mode pins in |__PART_FAMILY_DEVICE_NAMES__| board for SD Card boot.
 
 ::
 
     SW1[1:8] = 11000010 and SW2[1:8] = 01000000
 
-Insert the SD Card in SD Card slot in AM62x board. Use a USB Micro-B cable to
-connect the host PC to the USB Micro-B interface for UART on the EVM then power
-on the board, the following logs can be observed on the terminal window:
+Insert the SD Card in SD Card slot in |__PART_FAMILY_DEVICE_NAMES__| board. Use a 
+USB Micro-B cable to connect the host PC to the USB Micro-B interface for UART 
+on the EVM then power on the board, the following logs can be observed on the terminal window:
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    U-Boot SPL 2023.04-g765cab112d (Jul 11 2023 - 11:12:53 +0000)
-    SYSFW ABI: 3.1 (firmware rev 0x0009 '9.0.5--v09.00.05 (Kool Koala)')
-    SPL initial stack usage: 13376 bytes
-    Trying to boot from MMC2
-    Authentication passed
-    Authentication passed
-    Authentication passed
-    Authentication passed
-    Authentication passed
-    Starting ATF on ARM64 core...
+    ::
 
-    ...
+        U-Boot SPL 2023.04-g4acc8decd8 (Dec 07 2023 - 05:53:54 +0000)
+        SYSFW ABI: 3.1 (firmware rev 0x0009 '9.1.8--v09.01.08 (Kool Koala)')
+        SPL initial stack usage: 13384 bytes
+        Trying to boot from MMC2
+        Authentication passed
+        Authentication passed
+        Authentication passed
+        Authentication passed
+        Authentication passed
+        Starting ATF on ARM64 core...
+        ...
 
 
-     _____                    _____           _         _
-    |  _  |___ ___ ___ ___   |  _  |___ ___  |_|___ ___| |_
-    |     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
-    |__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|
+         _____                    _____           _         _
+        |  _  |___ ___ ___ ___   |  _  |___ ___  |_|___ ___| |_
+        |     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
+        |__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|
               |___|                    |___|
 
-    Arago Project am62xx-evm -
+        Arago Project am62xx-evm -
 
-    Arago 2023.04 am62xx-evm -
+        Arago 2023.10 am62xx-evm -
 
-    am62xx-evm login:
+        am62xx-evm login:
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        U-Boot SPL 2023.04-g4acc8decd8 (Dec 07 2023 - 05:53:54 +0000)
+        SYSFW ABI: 3.1 (firmware rev 0x0009 '9.1.8--v09.01.08 (Kool Koala)')
+        SPL initial stack usage: 13384 bytes
+        Trying to boot from MMC2
+        Authentication passed
+        Authentication passed
+        Authentication passed
+        Authentication passed
+        Authentication passed
+        Starting ATF on ARM64 core...
+
+        ...
+
+
+         _____                    _____           _         _
+        |  _  |___ ___ ___ ___   |  _  |___ ___  |_|___ ___| |_
+        |     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
+        |__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|
+              |___|                    |___|
+
+        Arago Project am62pxx-evm -
+
+        Arago 2023.10 am62pxx-evm -
+
+        am62pxx-evm login:
 
 Pre-built components in Jailhouse Image
 ---------------------------------------
-The target filesystem on AM62x platform will consists of the following
-Jailhouse components:
+The target filesystem on |__PART_FAMILY_DEVICE_NAMES__| platform will consists 
+of the following Jailhouse components:
 
 #. jailhouse.ko  : kernel module at
    /lib/modules/<linux_kernel_version>/extra/driver directory;
@@ -221,49 +263,97 @@ below:
 
 - Enable Jailhouse
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse cell enable <root cell config>
+    ::
+
+        root@am62xx-evm: jailhouse cell enable <root cell config>
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse cell enable <root cell config>
 
 - To create a new cell
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-  root@am62xx-evm: jailhouse cell create <inmate cell config>
+    ::
+
+        root@am62xx-evm: jailhouse cell create <inmate cell config>
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse cell create <inmate cell config>
 
 - To list the running cell(s)
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse cell list
+    ::
+
+        root@am62xx-evm: jailhouse cell list
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse cell list
 
 -  Stop inmate cell
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse cell shutdown <id or name of inmate cell>
+    ::
+
+        root@am62xx-evm: jailhouse cell shutdown <id or name of inmate cell>
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse cell shutdown <id or name of inmate cell>
 
 -  Destroy cell
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse cell destroy <id or name of inmate cell>
+    ::
+
+        root@am62xx-evm: jailhouse cell destroy <id or name of inmate cell>
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse cell destroy <id or name of inmate cell>
 
 -  Disable Jailhouse
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse disable
+    ::
 
-Running Jailhouse Demos on AM62x
---------------------------------
+        root@am62xx-evm: jailhouse disable
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse disable
+
+Running Jailhouse Demos on |__PART_FAMILY_DEVICE_NAMES__|
+---------------------------------------------------------
 
 **Host Setup**
 
-Flash tisdk-jailhouse-image-am62xx-evm.wic.xz to SD card using balena and boot
-AM62x from the SD card. As we will be running two instances ,two terminals are
-required. Connect one terminal to the primary UART (e.g. /dev/ttyUSB0) and the
-other to the secondary UART (e.g. /dev/ttyUSB1).
+Flash tisdk-jailhouse-image-|__SDK_BUILD_MACHINE__|.wic.xz to SD card using balena 
+and boot |__PART_FAMILY_DEVICE_NAMES__| from the SD card. As we will be running 
+two instances ,two terminals are required. Connect one terminal to the primary 
+UART (e.g. /dev/ttyUSB0) and the other to the secondary UART (e.g. /dev/ttyUSB1).
 
 Running Linux Demo
 ^^^^^^^^^^^^^^^^^^
@@ -275,53 +365,111 @@ the demo are:
 
 - First enable Jailhouse
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am625-sk.cell
+    ::
+
+        root@am62xx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am625-sk.cell
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am62p5-sk.cell
 
 - Create an inmate cell for linux
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse cell create /usr/share/jailhouse/cells/k3-am625-sk-linux-demo.cell
+    ::
+
+        root@am62xx-evm: jailhouse cell create /usr/share/jailhouse/cells/k3-am625-sk-linux-demo.cell
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse cell create /usr/share/jailhouse/cells/k3-am62p5-sk-linux-demo.cell
 
 -  Load the required inmate binaries
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse cell load k3-am625-sk-linux-demo /usr/libexec/jailhouse/linux-loader.bin -a 0x0 -s "kernel=0xe0200000 dtb=0xe0000000" -a 0x1000 /boot/Image -a 0xe0200000 /boot/tisdk-tiny-image-am62xx-evm.cpio -a 0xe294a000 /usr/share/jailhouse/inmate-k3-am625-sk.dtb -a 0xe0000000
+    ::
 
-linux-loader.bin is a small application provided and built by Jailhouse source
-tree to run inmates. As you can see (-a 0x0) it is loaded to virtual address 0x0.
-"-s "kernel=0xe0200000 dtb=0xe0000000" -a 0x1000" - is the linux_loader argument
-loaded as string to virtual address 0x1000, which instructs the linux-loader to
-branch to the those addresses. Kernel Image is loaded to the virtual address
-0xe0200000, tiny image ramfs to 0xe294a000 and device tree for inmate to 0xe0000000.
+        root@am62xx-evm: jailhouse cell load k3-am625-sk-linux-demo /usr/libexec/jailhouse/linux-loader.bin -a 0x0 -s "kernel=0xe0200000 dtb=0xe0000000" -a 0x1000 /boot/Image -a 0xe0200000 /boot/tisdk-tiny-image-am62xx-evm.cpio -a 0xe294a000 /usr/share/jailhouse/inmate-k3-am625-sk.dtb -a 0xe0000000
+
+    linux-loader.bin is a small application provided and built by Jailhouse source
+    tree to run inmates. As you can see (-a 0x0) it is loaded to virtual address 0x0.
+    "-s "kernel=0xe0200000 dtb=0xe0000000" -a 0x1000" - is the linux_loader argument
+    loaded as string to virtual address 0x1000, which instructs the linux-loader to
+    branch to the those addresses. Kernel Image is loaded to the virtual address
+    0xe0200000, tiny image ramfs to 0xe294a000 and device tree for inmate to 0xe0000000.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    linux-loader.bin is a small application provided and built by Jailhouse source
+    tree to run inmates. As you can see (-a 0x0) it is loaded to virtual address 0x0.
+    "-s "kernel=0x9e0200000 dtb=0x9e0000000" -a 0x1000" - is the linux_loader argument
+    loaded as string to virtual address 0x1000, which instructs the linux-loader to
+    branch to the those addresses. Kernel Image is loaded to the virtual address
+    0x9e0200000, tiny image ramfs to 0x9e21e0000 and device tree for inmate to 0x9e0000000.
+
+    ::
+
+        root@am62pxx-evm: jailhouse cell load k3-am62p5-sk-linux-demo /usr/libexec/jailhouse/linux-loader.bin -a 0x0 -s "kernel=0x9e0200000 dtb=0x9e0000000" -a 0x1000 /boot/Image -a 0x9e0200000 /boot/tisdk-tiny-initramfs-am62pxx-evm.cpio -a 0x9e21e0000 /usr/share/jailhouse/inmate-k3-am62p5-sk.dtb -a 0x9e0000000
 
 -  Start inmate cell
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse cell start k3-am625-sk-linux-demo
+    ::
+
+        root@am62xx-evm: jailhouse cell start k3-am625-sk-linux-demo
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse cell start k3-am62p5-sk-linux-demo
 
 - Now, on the secondary terminal, verify that the inmate kernel has booted with RAM filesystem.
   Also note that the /dev/ttySX number used for root cell and inmate may or may not match.
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    [  OK  ] Finished Record Runlevel Change in UTMP.
+    ::
 
-    _____                    _____           _         _
-    |  _  |___ ___ ___ ___   |  _  |___ ___  |_|___ ___| |_
-    |     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
-    |__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|
+        [  OK  ] Finished Record Runlevel Change in UTMP.
+
+         _____                    _____           _         _
+        |  _  |___ ___ ___ ___   |  _  |___ ___  |_|___ ___| |_
+        |     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
+        |__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|
               |___|                    |___|
 
-    Arago Project am62xx-evm -
+        Arago Project am62xx-evm -
 
-    Arago 2023.04 am62xx-evm -
+        Arago 2023.04 am62xx-evm -
 
-    am62xx-evm login: root
+        am62xx-evm login: root
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        [  OK  ] Finished Record Runlevel Change in UTMP.
+
+        |  _  |___ ___ ___ ___   |  _  |___ ___  |_|___ ___| |_
+        |     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
+        |__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|
+            |___|                    |___|
+ 
+        Arago Project am62pxx-evm -
+ 
+        Arago 2023.04 am62pxx-evm -
+ 
+        am62pxx-evm login: root
 
 The Linux demo (i.e Two Guest VMs) can be started using the 'linux-demo.sh' script
 in that folder. There is no such script for the bare-metal demos but the commands
@@ -333,13 +481,13 @@ Adding custom demos or applications in Inmate Filesystem
 Custom demos can also be run in inmate after copying the required files in RAM filesystem.
 This can be done using following steps:-
 
-- Extract the tisdk-tiny-image-am62xx-evm.cpio file in a seperate folder(ex. temp) in
+- Extract the tisdk-tiny-initramfs-image-|__SDK_BUILD_MACHINE__|.cpio file in a seperate folder(ex. temp) in
   linux host PC. This file is present in /media/$USER/root/boot/ or from output from
   yocto build.
 
 ::
 
-    $ cpio -iv < <path to cpio>/tisdk-tiny-image-am62xx-evm.cpio
+    $ cpio -iv < <path to cpio>/tisdk-tiny-initramfs-image-<machine>.cpio
 
 - Copy the your demo/app to folder where cpio is extracted
 
@@ -351,7 +499,7 @@ This can be done using following steps:-
 
 ::
 
-    $ find . | sort | cpio --reproducible -o -H newc -R root:root > <path you want to save your new cpio>/tisdk-tiny-image-am62xx-evm.cpio
+    $ find . | sort | cpio --reproducible -o -H newc -R root:root > <path you want to save your new cpio>/tisdk-tiny-initramfs-image-<machine>.cpio
 
 Running Shared Memory Demo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -363,16 +511,16 @@ shared memory regions are reserved in the DTB for cross-cell communication.
 
 For shared-memory demo we can use ivshmem-demo application located at tools/demos
 in Jailhouse source directory. ivshmem-demo application is already packaged in root.
-You can use following steps to copy this demo in the tisdk-tiny-image-am62xx-evm.cpio
-filesystem packaged in Jailhouse image.
+You can use following steps to copy this demo in the 
+tisdk-tiny-initramfs-image-|__SDK_BUILD_MACHINE__|.cpio filesystem packaged in Jailhouse image.
 
-- Extract the tisdk-tiny-image-am62xx-evm.cpio file in a seperate folder(ex. temp) in
+- Extract the tisdk-tiny-initramfs-image-|__SDK_BUILD_MACHINE__|.cpio file in a seperate folder(ex. temp) in
   linux host PC. This file is present in /media/$USER/root/boot/ or from output from
   yocto build.
 
 ::
 
-    $ cpio -iv < <path to cpio>/tisdk-tiny-image-am62xx-evm.cpio
+    $ cpio -iv < <path to cpio>/tisdk-tiny-initramfs-image-<machine>.cpio
 
 - Copy the ivshmem-demo from Jailhouse source directory folder where cpio is extracted
 
@@ -384,13 +532,13 @@ filesystem packaged in Jailhouse image.
 
 ::
 
-    $ find . | sort | cpio --reproducible -o -H newc -R root:root > <path you want to save your new cpio>/tisdk-tiny-image-am62xx-evm.cpio
+    $ find . | sort | cpio --reproducible -o -H newc -R root:root > <path you want to save your new cpio>/tisdk-tiny-initramfs-image-<machine>.cpio
 
 - Copy the newly generated cpio file in SD card root/boot directory
 
 ::
 
-    $ sudo cp <path to new cpio>/tisdk-tiny-image-am62xx-evm.cpio /media/$USER/root/boot/
+    $ sudo cp <path to new cpio>/tisdk-tiny-initramfs-image-|__SDK_BUILD_MACHINE__|.cpio /media/$USER/root/boot/
 
 Boot the Jailhouse image and run the linux demo script. After both root and
 linux inmate are is started. Check whether the device node exists. Run /dev/uio0
@@ -400,80 +548,162 @@ Run ivshmem-demo on both root and inmate cell
 
 - Root cell
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm:/usr/share/jailhouse# ivshmem-demo
-    ID = 0
-    Maximum peers = 3
-    state[0] = 1
-    state[1] = 0
-    state[2] = 3
-    rw[0] = 0
-    rw[1] = -1
-    rw[2] = 1
-    in@0x0000 = 0
-    in@0x2000 = -1
-    in@0x4000 = -1
+    ::
 
-    Sending interrupt 1 to peer 1
+        root@am62xx-evm:/usr/share/jailhouse# ivshmem-demo
+        ID = 0
+        Maximum peers = 3
+        state[0] = 1
+        state[1] = 0
+        state[2] = 3
+        rw[0] = 0
+        rw[1] = -1
+        rw[2] = 1
+        in@0x0000 = 0
+        in@0x2000 = -1
+        in@0x4000 = -1
 
-    Sending interrupt 1 to peer 1
+        Sending interrupt 1 to peer 1
 
-    Sending interrupt 1 to peer 1
+        Sending interrupt 1 to peer 1
 
-    Sending interrupt 1 to peer 1
+        Sending interrupt 1 to peer 1
 
-    Interrupt #1
-    state[0] = 1
-    state[1] = 0
-    state[2] = 0
-    rw[0] = 1
-    rw[1] = -1
-    rw[2] = 1
-    in@0x0000 = 10
-    in@0x2000 = -1
-    in@0x4000 = -1
+        Sending interrupt 1 to peer 1
+
+        Interrupt #1
+        state[0] = 1
+        state[1] = 0
+        state[2] = 0
+        rw[0] = 1
+        rw[1] = -1
+        rw[2] = 1
+        in@0x0000 = 10
+        in@0x2000 = -1
+        in@0x4000 = -1
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    ::
+
+        root@am62pxx-evm:/usr/share/jailhouse# ivshmem-demo
+        ID = 0
+        Maximum peers = 3
+        state[0] = 1
+        state[1] = 0
+        state[2] = 3
+        rw[0] = 0
+        rw[1] = -1
+        rw[2] = 1
+        in@0x0000 = 0
+        in@0x2000 = -1
+        in@0x4000 = -1
+
+        Sending interrupt 1 to peer 1
+
+        Sending interrupt 1 to peer 1
+
+        Sending interrupt 1 to peer 1
+
+        Sending interrupt 1 to peer 1
+
+        Interrupt #1
+        state[0] = 1
+        state[1] = 0
+        state[2] = 0
+        rw[0] = 1
+        rw[1] = -1
+        rw[2] = 1
+        in@0x0000 = 10
+        in@0x2000 = -1
+        in@0x4000 = -1
+
 
 - Inmate cell
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm:/home# ./ivshmem-demo
-    main program startedID = 2
-    Maximum peers = 3
-    state[0] = 0
-    state[1] = 0
-    state[2] = 3
-    rw[0] = -1
-    rw[1] = -1
-    rw[2] = 0
-    in@0x0000 = �
-    in@0x2000 = -1
-    in@0x4000 = -1
+    ::
 
-    Sending interrupt 3 to peer 0
+        root@am62xx-evm:/home# ./ivshmem-demo
+        main program startedID = 2
+        Maximum peers = 3
+        state[0] = 0
+        state[1] = 0
+        state[2] = 3
+        rw[0] = -1
+        rw[1] = -1
+        rw[2] = 0
+        in@0x0000 = �
+        in@0x2000 = -1
+        in@0x4000 = -1
 
-    Sending interrupt 3 to peer 0
+        Sending interrupt 3 to peer 0
 
-    Interrupt #1
-    state[0] = 1
-    state[1] = 0
-    state[2] = 3
-    rw[0] = 0
-    rw[1] = -1
-    rw[2] = 1
-    in@0x0000 =
-    in@0x2000 = -1
-    in@0x4000 = -1
+        Sending interrupt 3 to peer 0
 
-    Sending interrupt 3 to peer 0
+        Interrupt #1
+        state[0] = 1
+        state[1] = 0
+        state[2] = 3
+        rw[0] = 0
+        rw[1] = -1
+        rw[2] = 1
+        in@0x0000 =
+        in@0x2000 = -1
+        in@0x4000 = -1
 
-    Sending interrupt 3 to peer 0
+        Sending interrupt 3 to peer 0
 
-    Sending interrupt 3 to peer 0
+        Sending interrupt 3 to peer 0
 
-    Sending interrupt 3 to peer 0
-    ^C
+        Sending interrupt 3 to peer 0
+
+        Sending interrupt 3 to peer 0
+        ^C
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm:/home# ./ivshmem-demo                                   
+        main program startedID = 2                                              
+        Maximum peers = 3                                                       
+        state[0] = 0                                                            
+        state[1] = 0                                                            
+        state[2] = 3                                                            
+        rw[0] = -1                                                              
+        rw[1] = -1                                                              
+        rw[2] = 0                                                               
+        in@0x0000 = �                                                           
+        in@0x2000 = -1                                                          
+        in@0x4000 = -1                                                          
+                                                                              
+        Sending interrupt 3 to peer 0                                           
+                                                                              
+        Sending interrupt 3 to peer 0                                           
+                                                                              
+        Interrupt #1                                                            
+        state[0] = 1                                                            
+        state[1] = 0                                                            
+        state[2] = 3                                                            
+        rw[0] = 0                                                               
+        rw[1] = -1                                                              
+        rw[2] = 1                                                               
+        in@0x0000 =                                                             
+        in@0x2000 = -1                                                          
+        in@0x4000 = -1                                                          
+                                                                             
+        Sending interrupt 3 to peer 0                                           
+                                                                    
+        Sending interrupt 3 to peer 0                                           
+                                                                              
+        Sending interrupt 3 to peer 0                                           
+                                                                              
+        Sending interrupt 3 to peer 0                                           
+        ^C                                           
 
 You can see interrupts will be received in both inmate and root cell. Also, check
 the values using cat /proc/interrupts | grep uio.
@@ -522,6 +752,42 @@ binary and start it. If you need to run different binaries that requires differe
 resources, you need to shutdown the running cell, destroy it, create a new one
 with required resources, load a new binary and start it.
 
+
+Running Ethernet Demo
+^^^^^^^^^^^^^^^^^^^^^
+
+This application demonstrates how to use IVSHMEM Ethernet to communicate with another 
+linux inmate cell in the Jailhouse hypervisor. Configure the eth1 in root cell and eth0 in
+inmate cell and ping.
+
+- In inmate cell
+
+::
+
+    $ ifconfig enp0s1 192.168.0.2
+
+- In root cell
+
+::
+
+    $ ifconfig enP1p0s1 192.168.0.3
+
+Ping enp0s1 using enP1p0s1 #ping 192.168.0.2 in root cell or ping enP1p0s1 using enp0s1 
+ping 192.168.0.3 in inmate cell.
+
+Ex. ping to inmate cell from root cell
+
+::
+
+    $ ping 192.168.0.2
+    PING 192.168.0.2 (192.168.0.2): 56 data bytes
+    64 bytes from 192.168.0.2: seq=0 ttl=64 time=0.707 ms
+    64 bytes from 192.168.0.2: seq=1 ttl=64 time=0.373 ms
+    64 bytes from 192.168.0.2: seq=2 ttl=64 time=0.355 ms
+    64 bytes from 192.168.0.2: seq=3 ttl=64 time=0.308 ms
+    64 bytes from 192.168.0.2: seq=4 ttl=64 time=0.285 ms
+    64 bytes from 192.168.0.2: seq=5 ttl=64 time=0.352 ms
+
 Running Baremetal Demos
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -534,27 +800,59 @@ demos are common for all Jailhouse platforms.
 
 - Enable Jailhouse
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am625-sk.cell
+    ::
+
+        root@am62xx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am625-sk.cell
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am62p5-sk.cell
 
 - Create a inmate cell  
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse cell create /usr/share/jailhouse/cells/k3-am625-sk-inmate-demo.cell
+    ::
+
+        root@am62xx-evm: jailhouse cell create /usr/share/jailhouse/cells/k3-am625-sk-inmate-demo.cell
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse cell create /usr/share/jailhouse/cells/k3-am62p5-sk-inmate-demo.cell
 
 - load uart-demo.bin in inmate cell
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse cell load inmate-demo /usr/share/jailhouse/inmates/uart-demo.bin
+    ::
+
+        root@am62xx-evm: jailhouse cell load inmate-demo /usr/share/jailhouse/inmates/uart-demo.bin
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse cell load inmate-demo /usr/share/jailhouse/inmates/uart-demo.bin
 
 - Start inmate cell
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse cell start inmate-demo
+    ::
+
+        root@am62xx-evm: jailhouse cell start inmate-demo
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse cell start inmate-demo 
 
 - You will see UART demo running in secondary terminal for inmate
 
@@ -573,27 +871,60 @@ demos are common for all Jailhouse platforms.
 
 - Enable Jailhouse
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am625-sk.cell
+    ::
+
+        root@am62xx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am625-sk.cell
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am62p5-sk.cell
 
 - Create a inmate cell
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse cell create /usr/share/jailhouse/cells/k3-am625-sk-inmate-demo.cell
+    ::
+
+        root@am62xx-evm: jailhouse cell create /usr/share/jailhouse/cells/k3-am625-sk-inmate-demo.cell
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse cell create /usr/share/jailhouse/cells/k3-am62p5-sk-inmate-demo.cell
+
 
 - Load gic-demo.bin in inmate cell
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse cell load inmate-demo /usr/share/jailhouse/inmates/gic-demo.bin
+    ::
+
+        root@am62xx-evm: jailhouse cell load inmate-demo /usr/share/jailhouse/inmates/gic-demo.bin
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse cell load inmate-demo /usr/share/jailhouse/inmates/gic-demo.bin
 
 - Start inmate cell
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    root@am62xx-evm: jailhouse cell start inmate-demo
+    ::
+
+        root@am62xx-evm: jailhouse cell start inmate-demo
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+
+        root@am62pxx-evm: jailhouse cell start inmate-demo
 
 - You will see GIC demo running in secondary terminal inmate
 
@@ -619,13 +950,25 @@ This memory has to be reserved statically. Following example shows reservation o
 518MB physical memory for hypervisor, inmates and also shared memory region for
 cross-cell communication.
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    hyp_mem: jailhouse@dfa00000 {
-			reg = <0x0 0xdfa00000 0x0 0x20600000>; /* For jailhouse */
+    ::
+
+        hyp_mem: jailhouse@dfa00000 {
+			    reg = <0x0 0xdfa00000 0x0 0x20600000>;
+			    alignment = <0x1000>;
+			    no-map;
+	    };
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    ::
+
+        hyp_mem: jailhouse@9dfa00000 {
+			reg = <0x00000009 0xdfa00000 0x0 0x20600000>;
 			alignment = <0x1000>;
 			no-map;
-	};
+		};
 
 Hardware Modules Reservation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -661,42 +1004,112 @@ gets compiled to "*.cell" file. The hypervisor uses the "cell" file to create a
 cell. The cell configuration describes memory regions and their attributes which
 will be used by the cell,
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    .mem_regions = {
-		/* IVSHMEM shared memory regions for 00:00.0 (demo) */
+    ::
+
+        .mem_regions = {
+		    /* IVSHMEM shared memory regions for 00:00.0 (demo)
+		    {
+			    .phys_start = 0xdfa00000,
+			    .virt_start = 0xdfa00000,
+			    .size = 0x10000,
+			    .flags = JAILHOUSE_MEM_READ,
+		    },
+		    {
+			    .phys_start = 0xdfa10000,
+			    .virt_start = 0xdfa10000,
+			    .size = 0x10000,
+			    .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE,
+		    },
+		    /* Peer 0  {
+			    .phys_start = 0xdfa20000,
+			    .virt_start = 0xdfa20000,
+			    .size = 0x10000,
+			    .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE,
+		    },
+		    /* Peer 1  {
+			    .phys_start = 0xdfa30000,
+			    .virt_start = 0xdfa30000,
+			    .size = 0x10000,
+			    .flags = JAILHOUSE_MEM_READ,
+		    },
+		    /* Peer 2  {
+			    .phys_start = 0xdfa40000,
+			    .virt_start = 0xdfa40000,
+			    .size = 0x10000,
+			    .flags = JAILHOUSE_MEM_READ,
+		    },
+		    /* IVSHMEM shared memory region for 00:01.0 
+		    JAILHOUSE_SHMEM_NET_REGIONS(0xdfb00000, 0),
+		    {
+			    .phys_start = 0x01810000,
+			    .virt_start = 0x01810000,
+			    .size = 0x00070000,
+			    .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+				    JAILHOUSE_MEM_IO,
+		    },
+		    {
+			    .phys_start = 0x018a0000,
+			    .virt_start = 0x018a0000,
+			    .size = 0x00060000,
+			    .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+				    JAILHOUSE_MEM_IO,
+		    },
+		    /* RAM  {
+			    .phys_start = 0x80000000,
+			    .virt_start = 0x80000000,
+			    .size = 0x5fa00000,
+			    .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+				    JAILHOUSE_MEM_EXECUTE,
+		    },
+		    /* RAM. Reserved for inmates {
+			    .phys_start = 0xe0000000,
+			    .virt_start = 0xe0000000,
+			    .size = 0x20000000,
+			    .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+				JAILHOUSE_MEM_EXECUTE,
+		    },
+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    ::
+        
+        .mem_regions = {
+		/* IVSHMEM shared memory regions for 00:00.0 (demo)
 		{
-			.phys_start = 0xdfa00000,
-			.virt_start = 0xdfa00000,
+			.phys_start = 0x9dfa00000,
+			.virt_start = 0x9dfa00000,
 			.size = 0x10000,
 			.flags = JAILHOUSE_MEM_READ,
 		},
 		{
-			.phys_start = 0xdfa10000,
-			.virt_start = 0xdfa10000,
+			.phys_start = 0x9dfa10000,
+			.virt_start = 0x9dfa10000,
 			.size = 0x10000,
 			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE,
 		},
-		/* Peer 0 */ {
-			.phys_start = 0xdfa20000,
-			.virt_start = 0xdfa20000,
+		/* Peer 0 {
+			.phys_start = 0x9dfa20000,
+			.virt_start = 0x9dfa20000,
 			.size = 0x10000,
 			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE,
 		},
-		/* Peer 1 */ {
-			.phys_start = 0xdfa30000,
-			.virt_start = 0xdfa30000,
+		/* Peer 1 {
+			.phys_start = 0x9dfa30000,
+			.virt_start = 0x9dfa30000,
 			.size = 0x10000,
 			.flags = JAILHOUSE_MEM_READ,
 		},
-		/* Peer 2 */ {
-			.phys_start = 0xdfa40000,
-			.virt_start = 0xdfa40000,
+		/* Peer 2 {
+			.phys_start = 0x9dfa40000,
+			.virt_start = 0x9dfa40000,
 			.size = 0x10000,
 			.flags = JAILHOUSE_MEM_READ,
 		},
-		/* IVSHMEM shared memory region for 00:01.0 */
-		JAILHOUSE_SHMEM_NET_REGIONS(0xdfb00000, 0),
+		/* IVSHMEM shared memory region for 00:01.0 
+		JAILHOUSE_SHMEM_NET_REGIONS(0x9dfb00000, 0),
 		{
 			.phys_start = 0x01810000,
 			.virt_start = 0x01810000,
@@ -711,20 +1124,28 @@ will be used by the cell,
 			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
 				JAILHOUSE_MEM_IO,
 		},
-		/* RAM */ {
+		/* RAM {
 			.phys_start = 0x80000000,
 			.virt_start = 0x80000000,
-			.size = 0x5fa00000,
+			.size = 0x80000000,
 			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
 				JAILHOUSE_MEM_EXECUTE,
 		},
-		/* RAM. Reserved for inmates */ {
-			.phys_start = 0xe0000000,
-			.virt_start = 0xe0000000,
+		/* RAM {
+			.phys_start = 0x880000000,
+			.virt_start = 0x880000000,
+			.size = 0x15fa00000,
+			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+				JAILHOUSE_MEM_EXECUTE,
+		},
+		/* RAM. Reserved for inmates {
+			.phys_start = 0x9e0000000,
+			.virt_start = 0x9e0000000,
 			.size = 0x20000000,
 			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
 				JAILHOUSE_MEM_EXECUTE,
 		},
+    
 
 bitmap of CPU cores dedicated for the cell,
 
@@ -781,12 +1202,23 @@ and some other parameters. That is for all the cells.
 In addition to that the root cell also allocates the physical memory for the
 hypervisor.
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    .hypervisor_memory = {
-		.phys_start = 0xdfc00000,
-		.size = 0x400000,
-	},
+    ::
+
+        .hypervisor_memory = {
+		    .phys_start = 0xdfc00000,
+		    .size = 0x400000,
+    	},
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   ::
+        
+        .hypervisor_memory = {
+			.phys_start = 0x9dfc00000,
+			.size = 0x400000,
+		},
 
 The "memory regions" section is used by hypervisor to create the second stage
 MMU translation table.
