@@ -24,7 +24,7 @@ to create the embedded system from “scratch” :
 -  Other components needed to build an embedded system that don’t fit neatly into one of the above buckets
 -  Reference Examples, benchmarks
 
-This release supports High Security - Field Securable (HS-FS) devices. For migration guide and other info, refer :ref:`HS-Migration-Guide`
+This release supports High Security - Field Securable (HS-FS) devices.
 
 Licensing
 =========
@@ -44,21 +44,23 @@ Released on December 2023
 What's new
 ------------------
 
-Processor SDK Linux AM62Px Release has following new features:
+**Processor SDK Linux AM62Px Release has following new features:**
 
-- New improved OOB experience
-- Kirkstone filesystem on Yocto based distribution
-- Binman Migration across all K3 platforms for Uboot builds
-- HS-FS Default Boot Experience for AM62Px
+  - Boot modes: UART, SD/eMMC, OSPI, NFS, USB (DFU,MSC)
+  - Kernel: I2C, GPIO, SPI, MMC, DSS, CSI, McASP, SA3UL, IPC, VTM, RTC, MCAN, eQEP, Rpi Overlay
+  - Power Management: DeepSleep, MCU-Only and Partial IO mode
+  - Connectivity: CPSW, USB Host and Device Mode
+  - GPU BXS, VPU Wave521CL
+  - OOB: DSS Sharing Digital Cluster
 
-Major Refresh of component version:
+**Component version:**
 
-- Kernel 6.1
-- U-Boot 2023.04
-- Toolchain GCC 11.4
-- ATF 2.9+
-- OPTEE 4.0
-- Graphics DDK 23.2
+  - Kernel 6.1
+  - U-Boot 2023.04
+  - Toolchain GCC 11.4
+  - ATF 2.9+
+  - OPTEE 4.0
+  - Graphics DDK 23.2
 
 Build Information
 =================
@@ -166,40 +168,87 @@ Yocto
 | Release Tag: 09.01.00.008
 |
 
+.. rubric:: meta-tisdk
+   :name: meta-tisdk
+
+| Head Commit: 9131d1afc1b69d423786d100bc346949f4426b08 Fix 62x/62p build for jailhouse and RT build
+| Date: 2023-12-13 04:19:26 -0600
+
+| Clone: git://git.ti.com/ti-sdk-linux/meta-tisdk.git
+| Branch: kirkstone
+| Release Tag: 09.01.00.08
+|
+
 Issues Tracker
 ==============
 
 Errata Workarounds Available in this Release
---------------------------------------------
+------------------------------------------------
 .. csv-table::
-   :header: "Record ID", "Platform", "Title", "Workaround"
-   :widths: 15, 30, 60, 35
+   :header: "Record ID", "Title", "Platform"
+   :widths: 15, 30, 150
+
+NONE
 
 |
 
 U-Boot Known Issues
--------------------
+------------------------
 .. csv-table::
    :header: "Record ID", "Platform", "Title", "Workaround"
-   :widths: 15, 30, 60, 35
+   :widths: 15, 30, 70, 30
 
+NONE
 
 |
 
-Linux Kernel Known Issues
--------------------------
+Linux Known Issues
+---------------------------
 .. csv-table::
-    :header: "Record ID", "Platform", "Title", "Workaround"
-    :widths: 15, 30, 60, 35
+   :header: "Record ID", "Platform", "Title", "Workaround"
+   :widths: 5, 10, 70, 35
+
+   "LCPD-37194","am62pxx_sk-fs,am62pxx_sk-se,am62pxx-zebu","AM62P: DSI Color shift",""
+   "LCPD-37150","am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am62xx-sk","am62: i2c bus speed test is failing",""
+   "LCPD-37141","am62xx_sk-fs,am62xx_lp_sk-fs,am62axx_sk-fs,am62pxx_sk-fs","AM62x: Sync up USB R5 defconfigs with main R5 defconfig",""
+   "LCPD-36950","am62xx_sk-fs,am62axx_sk-fs,am62pxx_sk-fs","crypto openssl performance test fail",""
+   "LCPD-36801","am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se","USB-DFU boot test fail incorrect configuration",""
 
 |
 
-Linux SDK Known Issues
+Issues found and closed on this release that may be applicable to prior releases
+-----------------------------------------------------------------------------------
+.. csv-table::
+   :header: "Record ID", "Title", "Platform"
+   :widths: 15, 70, 20
+
+   "LCPD-37161","Boot: Add Crypto performance tests to 9.1 testsplan","am62pxx_sk-fs"
+   "LCPD-37158","Boot: Add MMCSD performance tests to 9.1 testsplan","am62xx_sk-fs,am62xx_lp_sk-fs,am62axx_sk-fs,am62xxsip_sk-fs,am62pxx_sk-fs"
+   "LCPD-37157","Add ARM performance benchmarks to 9.1 testplans","am62xx_sk-fs,am62xx_lp_sk-fs,am62axx_sk-fs,am62xxsip_sk-fs,am62pxx_sk-fs"
+   "LCPD-37151","am62: am64: i2c set/get tests are failing","am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am62xx-sk"
+   "LCPD-37095","SDK: Linux: Add DD52 speed mode for MMC0","am62pxx_sk-fs,am62pxx_sk-se"
+   "LCPD-37094","SDK: Linux: Enable HS400 speed mode for MMC0","am62pxx_sk-fs,am62pxx_sk-se"
+   "LCPD-37046","SDK: Fix DMA drain buffer size","am62xx_sk-fs,beagleplay-gp,am62xx_lp_sk-fs,am62axx_sk-fs,am62xxsip_sk-fs,am62pxx_sk-fs"
+   "LCPD-37029","AM62: Suspend / Resume Test Failure: 29000000.mailbox failed to suspend","am62xx_sk-fs,am62xx_sk-se,am62axx_sk-fs,am62pxx_sk-fs"
+   "LCPD-36989","AM62P: eMMC HS400 fails","am62pxx_sk-fs"
+   "LCPD-36984","AM62: USB driver does not configure USB0_PHY_CTRL_CORE _VOLTAGE","am62xx_sk-fs,am62xx_sk-se,beagleplay-gp,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am62lxx_evm-fs,am62lxx_evm-se"
+   "LCPD-36944","AM62P: OSPI tests fails ","am62pxx_sk-fs"
+   "LCPD-36943","AM62P: eMMC boot fails","am62pxx_sk-fs"
+   "LCPD-36942","AM62P: CPUFreq unit test fail","am62pxx_sk-fs"
+   "LCPD-36847","doc: ltp-ddt documentation is not upto date","am64xx-hsevm,am62xx_sk-fs,am62axx_sk-fs,am62pxx_sk-fs,am68_sk-fs,am69_sk-fs,j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm"
+   "LCPD-36764","CSI: Wrong pixelformat in saved frames for YUYV","am62xx_sk-fs,am62xx_sk-se,beagleplay-gp,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se"
+   "LCPD-36588","eMMC boot fails after flashing via USB DFU","am62pxx_sk-fs"
+
+|
+
+Linux SDK known issues
 ----------------------
 .. csv-table::
-   :header: "Record ID", "Platform", "Title", "Workaround"
-   :widths: 15, 30, 60, 35
+    :header: "Record ID", "Title", "Platform"
+    :widths: 15, 70, 20
 
-
+    "LCPD-37207","Docker is disabled in RT Linux","am64xx-hssk, am62xx_lp_sk-fs, am62xxsip_sk-fs, am62pxx_sk-fs"
+    "SITSW-3462","Jailhouse: Ivshmem-net driver throws errors while loading jailhouse","am62xx-sk, am62p-sk"
 
 |
+
