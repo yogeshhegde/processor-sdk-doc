@@ -10,7 +10,7 @@ following Evaluation Modules unless otherwise specified.**
 +----------------+---------------------------------------------------------------------------------------------------+
 | Name           | Description                                                                                       |
 +================+===================================================================================================+
-| AM62Px SK      | AM62Px Evaluation Module rev E1 with ARM running at 1.4GHz, DDR data rate 3200MT/s                |
+| AM62Px SK      | AM62P Starter Kit rev E1 with ARM running at 1200MHz, LPDDR4 data rate 3200 MT/S                  |
 +----------------+---------------------------------------------------------------------------------------------------+
 
 Table:  Evaluation Modules
@@ -45,14 +45,17 @@ approximating application performance.
 
 Test command for running stress-ng and cyclictest together
 
-``stress-ng -c 4 --cpu-method all &``
+``stress-ng --cpu-method=all -c 4 &``
 
-``cyclictest -m -Sp80 -i400 -h400 -q -D1h``
+``cyclictest -m -Sp98 -D6h -h400 -i200 -q``
 
 .. csv-table::
-    :header: "Latencies","am62pxx_sk:per-core"
+    :header: "Latencies","am62pxx_sk-fs:per-core"
 
-    "Minimum (usec)",",,,"
-    "Average (usec)",",,,"
-    "Maximum (usec)",",,,"
+    "Minimum (usec)","4,4,4,4"
+    "Average (usec)","5,5,5,6"
+    "Maximum (usec)","41,45,43,44"
+ 
+
+Table:  **Stress-ng and Cyclic Test**
 

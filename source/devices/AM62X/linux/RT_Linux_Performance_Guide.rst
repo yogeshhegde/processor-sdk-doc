@@ -10,7 +10,7 @@ following Evaluation Modules unless otherwise specified.**
 +----------------+---------------------------------------------------------------------------------------------------+
 | Name           | Description                                                                                       |
 +================+===================================================================================================+
-| AM62x EVM      | AM62x Evaluation Module rev E2 and E3 with ARM running at 1.4 GHz, DDR data rate 1600 MT/S        |
+| AM62x EVM      | AM62x Starter Kit rev A with ARM running at 1400 MHz, DDR4 data rate 1600 MT/S        |
 +----------------+---------------------------------------------------------------------------------------------------+
 | AM62x SK LP    | AM62x LP Starter Kit rev E1 with ARM running at 1250 MHz, LPDDR4 data rate 1600 MT/S              |
 +----------------+---------------------------------------------------------------------------------------------------+
@@ -20,20 +20,23 @@ Table:  Evaluation Modules
 |
 
 .. rubric::  About This Manual
+   :name: about-this-manual-rt-kernel-perf-guide
 
 This document provides performance data for each of the device drivers
-which are part of the Process SDK Linux package. This document should be
+which are part of the Processor SDK Linux package. This document should be
 used in conjunction with release notes and user guides provided with the
-Process SDK Linux package for information on specific issues present
+Processor SDK Linux package for information on specific issues present
 with drivers included in a particular release.
 
 .. rubric::  If You Need Assistance
+   :name: if-you-need-assistance-rt-kernel-perf-guide
 
 For further information or to report any problems, contact
 http://e2e.ti.com/ or http://support.ti.com/
 
+
 Stress-ng and Cyclic Test
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 stress-ng (next-generation) will stress test a embedded platform in various selectable ways.
 It was designed to exercise various physical subsystems as well as the various
@@ -47,14 +50,17 @@ approximating application performance.
 
 Test command for running stress-ng and cyclictest together
 
-``stress-ng -c 4 --cpu-method all &``
+``stress-ng --cpu-method=all -c 4 &``
 
-``cyclictest -m -Sp80 -i400 -h400 -q -D1h``
+``cyclictest -m -Sp98 -D6h -h400 -i200 -q``
 
 .. csv-table::
     :header: "Latencies","am62xx_sk:per-core"
 
-    "Minimum (usec)","6,6,6,6"
-    "Average (usec)","8,9,8,8"
-    "Maximum (usec)","67,62,63,74"
+     "Minimum (usec)","4,4,4,4"
+    "Average (usec)","5,5,5,5"
+    "Maximum (usec)","55,62,71,61"
+ 
+
+Table:  **Stress-ng and Cyclic Test**
 
