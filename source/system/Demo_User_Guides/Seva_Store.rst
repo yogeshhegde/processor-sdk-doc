@@ -46,7 +46,7 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-   .. Image:: /images/ti-apps-launcher.png
+   .. Image:: /images/ti-apps-launcher-home.png
       :width: 950
       :height: 900
 
@@ -102,9 +102,17 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
 
 8. The Seva Design Gallery page launches in the second tab of the browser as shown below.
 
-.. Image:: /images/seva-design-gallery.png
-   :width: 950
-   :height: 900
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   .. Image:: /images/seva-design-gallery.png
+      :width: 950
+      :height: 900
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   .. Image:: /images/seva-design-gallery-am62p.png
+      :width: 950
+      :height: 900
 
 9. Currently we have the Thermostat Demo Docker Image hosted on Seva Design Gallery. To launch the Thermostat Demo, click on the `Launch` Button as shown below.
 
@@ -114,9 +122,9 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
 
 |
 
-10. After Clicking Launch Button, switch to the first tab (i.e. Seva Control Centre) by clicking on it.
+10. After Clicking Launch Button, you will see a popup which asks user to switch to the first tab (i.e. Seva Control Centre) to run the Demo.
 
-.. Image:: /images/seva-first-tab.jpg
+.. Image:: /images/seva-design-gallery-popup.png
    :width: 950
    :height: 700
 
@@ -165,21 +173,12 @@ show the `Downloading Icon` as shown in the image below.
 
 |
 
-16. Now click on the Stop Icon as shown below to stop the `Thermostat Demo`.
-
-.. Image:: /images/demo-stop.jpg
-   :width: 950
-   :height: 900
-
-17. To launch another demo, you can follow from **Step 6**.
+16. To launch another demo, you can follow from **Step 6**.
 
 |
 
-18. To close the Seva Store Application and return back to TI Apps Launcher, close the Firefox browser and then click on Stop Button which you see on the centre of the ti-apps-launcher screen.
+17. To close the Seva Store Application and return back to TI Apps Launcher, close the Firefox browser.
 
-.. Image:: /images/seva-store-stop.jpg
-   :width: 950
-   :height: 900
 
 How to Launch Seva Store via CLI
 --------------------------------

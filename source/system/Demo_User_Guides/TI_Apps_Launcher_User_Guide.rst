@@ -247,19 +247,13 @@ __________________________________
 Launching the Seva Store
 ________________________
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
    .. note::
 
       Seva Store is not supported on AM62xSIP due to it's memory constraints.
 
 1. |__PART_FAMILY_DEVICE_NAMES__| SDK now supports Seva Store. Seva Store is TI developed Demo Gallery Tool which allows users to Download and Install demos on the go. Developers can host their Demos as Docker Images on any public Docker Registry and link them to Seva Design Gallery. Refer `Seva Store - User Guide <Seva_Store.html>`__ to know more about Seva Store.
-
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-   .. Image:: /images/seva-store-icon.jpg
-      :width: 407
-      :height: 400
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
@@ -270,19 +264,13 @@ ________________________
 Launching the Firefox Browser
 _____________________________
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
    .. note::
 
       Firefox Browser is not supported on AM62xSIP due to it's memory constraints.
 
 1. |__PART_FAMILY_DEVICE_NAMES__| SDK now supports Firefox ESR Browser. Click on the `Firefox` button on the left panel.
-
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-   .. Image:: /images/firefox-icon.jpg
-      :width: 407
-      :height: 400
 
 2. Click `Launch` button to launch the Firefox Browser. The Browser launches with `TI Arm-based processors page <https://www.ti.com/microcontrollers-mcus-processors/arm-based-processors/overview.html>`__ as the first tab by default.
 
