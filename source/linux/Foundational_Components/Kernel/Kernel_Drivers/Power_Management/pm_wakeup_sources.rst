@@ -335,6 +335,104 @@ Once the system has entered Deep Sleep or MCU Only mode as shown in the
 :ref:`LPM section<lpm_modes>`, wakeup from MAIN GPIO1_10 can be triggered
 by grounding Pin 33 on J3 User Expansion Connector.
 
+USB Wakeup methods
+=================
+
+System wakeup is possible through the USB events in both Host and Device mode.
+
+Host Mode Wakeup Events
+***********************
+
+The USB wakeup events in Host mode are described below:
+
+Wakeup via a device connect event
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+
+Now plug in a USB device to one of the port on the board and the system should wakeup. Post wakeup, the device would show up enumerated.
+This can be checked by below command before and after suspending and waking up the system.
+
+::
+
+  # lsusb -t
+
+Wakeup via a device disconnect event
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Plug in a USB device to one of the port on the board and check that the device is enumerated by executing the below command.
+
+::
+
+  # lsusb -t
+
+Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+
+Once the system is suspended, disconnect the USB device from the board and this should wakeup the system.
+And device would not show up in list of USB enumerated devices. This can be verified by executing
+
+::
+
+  # lsusb -t
+
+Via Remote wakeup event
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use a device that supports USB suspend/resume and ensure that the USB device can suspend and resume correctly.
+For a example a Logitech USB keyboard that supports suspend/resume. Follow below steps to check whether the keyboard is capable
+to trigger a remote wakeup event to system.
+
+Assuming the USB keyboard device is at /sys/bus/usb/devices/1-1/, enable USB autosuspend and wakeup
+
+::
+
+   # echo auto > /sys/bus/usb/devices/1-1/power/control
+   # echo enabled > /sys/bus/usb/devices/1-1/power/wakeup
+
+Allow for two seconds of inactivity and check the runtime power status of the keyboard.
+It should show "suspended", indicating that the keyboard has entered into suspend state.
+
+::
+
+  # cat /sys/bus/usb/devices/1-1/power/runtime_status
+
+Now press a key on the keyboard and check the runtime power status and it would come back to "active".
+
+::
+
+  # cat /sys/bus/usb/devices/1-1/power/runtime_status
+
+Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+
+And once in suspended state, trigger system wakeup via remote wakeup event by typing keys on the keyboard. The system would wakeup.
+And USB keyboard would still be present in the system's list of USB enumerated devices and this can be verified by executing
+
+::
+
+  # lsusb -t
+
+Device Mode Wakeup Events
+*************************
+
+Wakeup via connect event
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Load a USB gadget driver such as g_zero
+
+::
+
+  # modprobe g_zero
+
+Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+
+Once the system has entered the suspend state, plug a cable from a different Host system to the board's USB DRP port.
+This should wakeup the system and gadget would be enumerated on the Host. Enumeration of the gadget on the Host system can be verified by executing the
+below command on the Host system
+
+::
+
+  HOST:~$ > lsub -t
+
 
 MCU IPC based Wakeup
 ======================
