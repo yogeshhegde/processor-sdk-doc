@@ -4,7 +4,7 @@ Overview
 
 Debian, also known as Debian GNU/Linux, is a Linux distribution composed of free and open-source software, developed by the community-supported Debian Project.
 
-The Linux Debian distribution is enabled for TI's AM62x and AM64x platforms. Few key highlights of this project are:
+The Linux Debian distribution is enabled for TI's AM62Px, AM62x and AM64x platforms. Few key highlights of this project are:
 
 - The Debian filesystem image requires standard packages from debian.org and TI's customizations as .deb packages. The deb packages for the components owned by TI are built using the public sources hosted on respective git repositories and the deb packages are hosted on TI's official PPA repository maintained on `Github/TexasInstruments <https://github.com/TexasInstruments/ti-debpkgs>`__.
 
