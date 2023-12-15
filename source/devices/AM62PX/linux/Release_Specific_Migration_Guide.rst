@@ -13,7 +13,7 @@ Processor SDK Linux AM62PX 09.xx Releases
 Processor SDK 09.01
 -------------------
 
-- This is the first release in the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
+- This is the first release based on the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
 - ATF 2.9+
 - OPTEE 4.0
 - Yocto Kirkstone/4.0
