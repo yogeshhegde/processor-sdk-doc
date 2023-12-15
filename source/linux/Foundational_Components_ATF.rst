@@ -71,6 +71,18 @@ Where <hash> is the OPTEE commit shown here: :ref:`tf-a-release-notes`.
 
 |
 
+.. rubric:: Building ATF with Low Power Modes enabled:
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX')
+
+    .. code-block:: console
+
+        $ export TFA_DIR=<path-to-arm-trusted-firmware>
+        $ cd $TFA_DIR
+        $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 K3_PM_SYSTEM_SUSPEND=1 TARGET_BOARD=lite SPD=opteed
+
+|
+
 .. rubric:: Default load locations
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
