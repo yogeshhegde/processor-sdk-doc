@@ -148,6 +148,7 @@ linux/How_to_Guides/Hardware_Setup_with_CCS/AM62Px_EVM_Hardware_Setup
 
 system/Demo_User_Guides/TI_Apps_Launcher_User_Guide
 system/Demo_User_Guides/Seva_Store
+system/Demo_User_Guides/Display_Cluster_User_Guide
 
 common/PRU-ICSS/Getting_Started_with_PSSP
 common/PRU-ICSS/Header_Files
