@@ -34,22 +34,27 @@ Where <hash> is the OPTEE commit shown here: :ref:`tf-a-release-notes`.
 
 .. rubric:: Building ATF
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM64X')
 
-    .. code-block:: console
+    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX')
 
-        $ export TFA_DIR=<path-to-arm-trusted-firmware>
-        $ cd $TFA_DIR
-        $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 TARGET_BOARD=lite SPD=opteed
+        *With Low Power Modes enabled (default):*
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+            .. code-block:: console
 
-    .. code-block:: console
+                $ export TFA_DIR=<path-to-arm-trusted-firmware>
+                $ cd $TFA_DIR
+                $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 K3_PM_SYSTEM_SUSPEND=1 TARGET_BOARD=lite SPD=opteed
 
-        $ export TFA_DIR=<path-to-arm-trusted-firmware>
-        $ cd $TFA_DIR
-        $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 K3_PM_SYSTEM_SUSPEND=1 TARGET_BOARD=lite SPD=opteed
+    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM64X')
 
+        *Without Low Power Modes enabled:*
+
+            .. code-block:: console
+
+                $ export TFA_DIR=<path-to-arm-trusted-firmware>
+                $ cd $TFA_DIR
+                $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 TARGET_BOARD=lite SPD=opteed
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
@@ -63,23 +68,11 @@ Where <hash> is the OPTEE commit shown here: :ref:`tf-a-release-notes`.
 
         $ make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=j784s4 SPD=opteed K3_USART=0x8
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX', 'J721S2', 'J784S4')
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4')
 
     .. code-block:: console
 
         $ make CROSS_COMPILE=aarch64-linux-gnu- PLAT=k3 TARGET_BOARD=generic SPD=opteed
-
-|
-
-.. rubric:: Building ATF with Low Power Modes enabled:
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX')
-
-    .. code-block:: console
-
-        $ export TFA_DIR=<path-to-arm-trusted-firmware>
-        $ cd $TFA_DIR
-        $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 K3_PM_SYSTEM_SUSPEND=1 TARGET_BOARD=lite SPD=opteed
 
 |
 
