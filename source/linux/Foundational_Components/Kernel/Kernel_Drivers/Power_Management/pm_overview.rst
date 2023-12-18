@@ -29,7 +29,7 @@ The dynamic power management features enabled on |__PART_FAMILY_DEVICE_NAMES__| 
 	#. DVFS
 	#. CPUIdle
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
     #. Dynamic Frequency Scaling
     #. CPUIdle
@@ -43,7 +43,7 @@ duration. This is accomplished by leveraging the low power modes supported
 by the SoC and the `System Sleep States <https://docs.kernel.org/admin-guide/pm/sleep-states.html>`__
 supported by the Linux kernel.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
     The static power management features on |__PART_FAMILY_DEVICE_NAMES__| are:
 

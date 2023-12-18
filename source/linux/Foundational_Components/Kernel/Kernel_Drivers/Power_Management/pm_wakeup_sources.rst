@@ -95,7 +95,18 @@ For example, if you wish to wakeup from Deep Sleep or MCU Only mode in 10 second
 
     ::
 
-        root@am62axx-evm:~# rtcwake -s 10 -m mem -d rtc1
+        root@evm:~# rtcwake -s 10 -m mem -d rtc1
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    ::
+
+        root@evm:~# rtcwake -s 10 -m mem
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62PX')
+
+    ::
+
         rtcwake: wakeup from "mem" using rtc1 at Thu Jan  1 00:01:31 1970
         [   73.746948] PM: suspend entry (deep)
         [   73.750871] Filesystems sync: 0.000 seconds
@@ -140,6 +151,8 @@ For example, if you wish to wakeup from Deep Sleep or MCU Only mode in 10 second
         [   74.176785] virtio_rpmsg_bus virtio1: creating channel rpmsg_chrdev addr 0xe
         [   74.180714] remoteproc remoteproc1: remote processor 79000000.r5f is now up
         [   74.194846] PM: suspend exit
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
     .. note::
 
@@ -447,6 +460,10 @@ from the firmware side, please refer to the relevant documentation:
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
     `MCU+ SDK for AM62Ax <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/latest/exports/docs/api_guide_am62ax/index.html>`__
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    `MCU+ SDK for AM62Px <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/latest/exports/docs/api_guide_am62px/index.html>`__
 
 To use MCU IPC based wakeup, system should be placed into MCU Only mode
 as shown in the :ref:`LPM section<pm_mcu_only>`.

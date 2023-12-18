@@ -24,7 +24,7 @@ The following drivers have been validated for Runtime PM in this release:
 
     DSS, GPU, DPHY, CSI, McASP, OSPI, MCAN.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62PX')
 
     DSS, GPU, McASP, OSPI, MCAN, Video Encoder/Decoder Engine.
 

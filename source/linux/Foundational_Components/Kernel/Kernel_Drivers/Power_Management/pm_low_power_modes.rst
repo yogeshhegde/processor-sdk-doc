@@ -56,11 +56,11 @@ In order to enter deep sleep, use the following command:
       [   45.992334] psci: CPU2 killed (polled 4 ms)
       [   45.994977] psci: CPU3 killed (polled 0 ms)
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM62AX' , 'AM62PX')
 
    ::
 
-      root@am62axx-evm:~# echo mem > /sys/power/state
+      root@evm:~# echo mem > /sys/power/state
       [   47.558246] PM: suspend entry (deep)
       [   47.562456] Filesystems sync: 0.000 seconds
       [   47.597364] remoteproc remoteproc1: stopped remote processor 79000000.r5f
@@ -108,19 +108,19 @@ The benefits of using MCU Only mode:
 
       root@am62xx-evm:~# echo enabled > /sys/bus/platform/devices/5000000.m4fss/power/wakeup
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62PX')
 
    To enter MCU Only mode, enable MCU R5 core as a wakeup source in linux:
 
    ::
 
-      root@am62axx-evm:~# echo enabled > /sys/bus/platform/devices/79000000.r5f/power/wakeup
+      root@evm:~# echo enabled > /sys/bus/platform/devices/79000000.r5f/power/wakeup
 
 Now, the SoC can be suspended using the following command:
 
 ::
 
-    root@am62xx-evm:~# echo mem > /sys/power/state
+    root@evm:~# echo mem > /sys/power/state
     [  175.651151] PM: suspend entry (deep)
     [  175.655444] Filesystems sync: 0.000 seconds
     [  175.667559] Freezing user space processes
