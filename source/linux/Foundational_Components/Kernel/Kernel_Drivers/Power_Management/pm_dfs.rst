@@ -193,7 +193,7 @@ To view supported OPP's (frequency in kHz),
             $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
             750000000 1000000000 1500000000 2000000000
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
         ::
 
@@ -245,14 +245,25 @@ table.
                 };
 
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-        The OPP tables defined in arch/arm64/boot/dts/ti/k3-am625.dtsi
-        allows defining of a different set of OPPs for each different SoC.
+        The OPP table defined in the following files
+        allows defining of a different set of OPPs for each different SoC:
+
+        .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+                arch/arm64/boot/dts/ti/k3-am625.dtsi
+
+        .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+                arch/arm64/boot/dts/ti/k3-am62a7.dtsi
+
+        .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+                arch/arm64/boot/dts/ti/k3-am62p5.dtsi
 
         ::
 
-                /* From arch/arm64/boot/dts/ti/k3-am625.dtsi */
                 a53_opp_table: opp-table {
                         compatible = "operating-points-v2-ti-cpu";
                         opp-shared;
@@ -262,7 +273,6 @@ table.
                                 opp-hz = /bits/ 64 <200000000>;
                                 opp-supported-hw = <0x01 0x0007>;
                                 clock-latency-ns = <6000000>;
-                                opp-suspend;
                         };
 
                         opp-400000000 {
@@ -293,8 +303,32 @@ table.
                                 opp-hz = /bits/ 64 <1250000000>;
                                 opp-supported-hw = <0x01 0x0004>;
                                 clock-latency-ns = <6000000>;
+                                opp-suspend;
                         };
                 };
+
+        .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+                The maximum OPP for A53 requires VDD_CORE to be at 0.85V.
+                It is enabled in the board-specific dts file:
+
+                .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+                        arch/arm64/boot/dts/ti/k3-am625-sk.dts
+
+                .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+                        arch/arm64/boot/dts/ti/k3-am62p5-sk.dts
+
+                ::
+
+                        opp-table {
+                                        opp-1400000000 {
+                                                opp-hz = /bits/ 64 <1400000000>;
+                                                opp-supported-hw = <0x01 0x0004>;
+                                                clock-latency-ns = <6000000>;
+                                        };
+                                };
 
         To disable any of the above OPP's one can simply add
         ::
@@ -305,68 +339,12 @@ table.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-        The OPP tables defined in arch/arm64/boot/dts/ti/k3-am62a7.dtsi
-        allows defining of a different set of OPPs for each different SoC.
-
-        ::
-
-                /* From arch/arm64/boot/dts/ti/k3-am62a7.dtsi */
-                a53_opp_table: opp-table {
-                        compatible = "operating-points-v2-ti-cpu";
-                        opp-shared;
-                        syscon = <&wkup_conf>;
-
-                        opp-200000000 {
-                                opp-hz = /bits/ 64 <200000000>;
-                                opp-supported-hw = <0x01 0x0007>;
-                                clock-latency-ns = <6000000>;
-                        };
-
-                        opp-400000000 {
-                                opp-hz = /bits/ 64 <400000000>;
-                                opp-supported-hw = <0x01 0x0007>;
-                                clock-latency-ns = <6000000>;
-                        };
-
-                        opp-600000000 {
-                                opp-hz = /bits/ 64 <600000000>;
-                                opp-supported-hw = <0x01 0x0007>;
-                                clock-latency-ns = <6000000>;
-                        };
-
-                        opp-800000000 {
-                                opp-hz = /bits/ 64 <800000000>;
-                                opp-supported-hw = <0x01 0x0007>;
-                                clock-latency-ns = <6000000>;
-                        };
-
-                        opp-1000000000 {
-                                opp-hz = /bits/ 64 <1000000000>;
-                                opp-supported-hw = <0x01 0x0006>;
-                                clock-latency-ns = <6000000>;
-                        };
-
-                        opp-1250000000 {
-                                opp-hz = /bits/ 64 <1250000000>;
-                                opp-supported-hw = <0x01 0x0004>;
-                                clock-latency-ns = <6000000>;
-                                opp-suspend;
-                        };
-                };
-
-        To disable any of the above OPP's, add the following line to the
-        corresponding DT node:
-
-        ::
-
-                status = "disabled";
-
         To enable maximum clock rates for A53 and C7x on AM62A7-SK Rev E3
         board, an overlay has to be used as shown below:
 
         ::
 
-                setenv name_overlays= ti/k3-am62a7-sk-e3-max-opp.dtbo
+                setenv name_overlays= k3-am62a7-sk-e3-max-opp.dtbo
 
         This overlay adds the 1.4 GHz OPP for A53 cores and disables all
         the lower OPPs. It also overrides the clock rate for C7x to 1 GHz.
