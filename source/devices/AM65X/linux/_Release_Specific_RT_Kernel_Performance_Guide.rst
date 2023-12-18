@@ -13,7 +13,7 @@ following Evaluation Modules unless otherwise specified.**
 +----------------+---------------------------------------------------------------------------------------------------------------------+
 | Name           | Description                                                                                                         |
 +================+=====================================================================================================================+
-| AM65x EVM      | AM65x Evaluation Module rev 1.0 with ARM running at 800MHz, DDR4-2400 (1600 MT/S), TMDX654GPEVM                     |
+| AM65x EVM      | AM65x Evaluation Module rev 2.0 with ARM running at 800MHz, DDR4-2400 (1600 MT/S), TMDX654IDKEVM                    |
 +----------------+---------------------------------------------------------------------------------------------------------------------+
 
 
@@ -189,9 +189,6 @@ Execute the LMBench with the following:
 Table:  **LM Bench Metrics**
 
 
-
-
-
 Whetstone
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -271,9 +268,6 @@ resulting in a score that is double the bandwidth LMBench will show.
 Table:  **Stream**
 
 
- 
-
-
 MultiBench
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 MultiBench™ is a suite of benchmarks that allows processor and system designers to
@@ -325,10 +319,7 @@ thread-enabled workloads to be tested.
 
 
 Table:  **Multibench**
-
-
  
-
 
 Boot-time Measurement
 -------------------------
@@ -343,10 +334,6 @@ Boot media: MMCSD
     "Kernel boot time test when init is /bin/sh and bootloader, kernel and sdk-rootfs are in mmc-sd","4.45 (min 4.42, max 4.47)"
 
 Table:  **Boot time MMC/SD**
-
-
- 
- 
 
 
 Ethernet
@@ -424,8 +411,6 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 
 - CPSW2g: AM65x
 
-
-
 .. rubric::  TCP Bidirectional Throughput Interrupt Pacing
    :name: CPSW2g-tcp-bidirectional-throughput-interrupt-pacing
 
@@ -481,58 +466,4 @@ Table: **CPSW UDP Ingress Throughput (0% loss)**
     "1518","1472.00","924.97","79.00","40.51","1.74"
 
 Table: **CPSW UDP Ingress Throughput (possible loss)**
-
-|
- 
- 
-
-
-ICSSG Ethernet Driver 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. rubric::  TCP Bidirectional Throughput 
-   :name: tcp-bidirectional-throughput
-
-.. csv-table::
-    :header: "Command Used","am654x-evm: THROUGHPUT (Mbits/sec)","am654x-evm: CPU Load % (LOCAL_CPU_UTIL)"
-
-    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","1094.15","50.29"
-
-Table: **ICSSG TCP Bidirectional Throughput**
-
-|
-
-
-
-
-
-.. csv-table::
-    :header: "Frame Size(bytes)","am654x-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am654x-evm: THROUGHPUT (Mbits/sec)","am654x-evm: Packets Per Second (kPPS)","am654x-evm: CPU Load %"
-
-    "256","210.00","40.49","24.00","13.07"
-
-Table: **ICSSG UDP Ingress Throughput (0% loss)**
-
-|
- 
- 
- 
-  
-
-
-CRYPTO Driver
--------------------------
-
-
-
-
-IPSec Software Performance
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. csv-table::
-    :header: "Algorithm","am654x-evm: Throughput (Mbps)","am654x-evm: Packets/Sec","am654x-evm: CPU Load"
-
-    "aes256","3.00","0.00","42.79"
-
-
 
