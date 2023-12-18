@@ -411,3 +411,54 @@ Now you can access filesystem at /mnt/flash/.
                                      };
                               };
                      };
+
+    .. rubric:: Runtime Power Management
+
+    The OSPI Controller supports runtime power management where it can suspend
+    when there is no activity concerning the OSPI peripheral.
+
+    It suspends after a certain period of inactivity based on the value of
+    CQSPI_AUTOSUSPEND_TIMEOUT which is set to 2000 ms in it's driver spi-cadence-quadspi.c
+
+    ::
+
+            root@am62xx-evm:~# cat /sys/bus/platform/devices/fc40000.spi/power/*
+            2000
+            auto
+            5808
+            suspended
+            112684
+
+    To increase the auto suspend delay value, one can write into the autosuspend_delay_ms
+    sysfs entry like below,
+
+    ::
+
+        echo <delay> > /sys/bus/platform/devices/fc40000.spi/power/autosuspend_delay_ms
+
+    One can verify that OSPI has actually suspended by also looking at the
+    k3conf output as shown below.
+
+    ::
+
+            root@am62xx-evm:~# k3conf dump device 75
+            |------------------------------------------------------------------------------|
+            | VERSION INFO                                                                 |
+            |------------------------------------------------------------------------------|
+            | K3CONF | (version 0.3-nogit built Fri Oct 06 12:20:16 UTC 2023)              |
+            | SoC    | AM62X SR1.0                                                         |
+            | SYSFW  | ABI: 3.1 (firmware version 0x0009 '9.1.8--v09.01.08 (Kool Koala))') |
+            |------------------------------------------------------------------------------|
+
+            |------------------------------------------------------|
+            | Device ID | Device Name           | Device Status    |
+            |------------------------------------------------------|
+            |    75     | AM62X_DEV_FSS0_OSPI_0 | DEVICE_STATE_OFF |
+            |------------------------------------------------------|
+
+
+    This shows that the OSPI controller is actually physically turned off and
+    thus no longer contributing to active power consumed by the system.
+
+    OSPI will resume as soon as a transaction is initiated by a user or the
+    system and doesn't require any external wakeup event to resume.
