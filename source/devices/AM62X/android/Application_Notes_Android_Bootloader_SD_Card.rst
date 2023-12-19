@@ -11,40 +11,47 @@ SD Card Creation
 In order to flash the AM62x board's eMMC the fist time, a SD card containing the required bootloaders will have to be used
 to boot into U-Boot and use fastboot.
 
-Partitioning the SD card
-------------------------
+.. warning::
 
-The SD card has to be partitioned using ``fdisk`` and the layout should look like as follow::
+   Make sure to use the same bootloaders as the release you are flashing.
+   The latest release is ``09.01.00``.
 
-    Disk /dev/sda: 30,2 GiB, 32227983360 bytes, 62945280 sectors
-    Disk model: Storage Device
-    Units: sectors of 1 * 512 = 512 bytes
-    Sector size (logical/physical): 512 bytes / 512 bytes
-    I/O size (minimum/optimal): 512 bytes / 512 bytes
-    Disklabel type: dos
-    Disk identifier: 0x36c2ba10
+Identify the SD Card
+--------------------
 
-    Device     Boot  Start      End  Sectors   Size Id Type
-    /dev/sda1  *      2048   272919   270872 132,3M  c W95 FAT32 (LBA)
+To start, identify your SD card with::
 
-Formatting the SD card partitions
----------------------------------
+  sudo fdisk -l
 
-Once partitioned, the boot partition has to be formatted with a FAT filesystem.
+In this example, the SD card will be: ``/dev/mmcblk0``.
 
-Assuming the SD card is /dev/sda::
+Prepare the SD Card
+-------------------
 
-    mkfs.vfat /dev/sda1
+The preparation of the SD Card is done via the ``flashall.sh`` script.
+Make sure to identify the board model, and the SD card path.
 
-Copying the required bootloaders
---------------------------------
+Then, run::
 
+  # If you are using binaries built locally
+  cd out/target/product/am62x
 
-Once the SD card has been partitioned and formatted, copy the required binaries onto the newly formatted SD partition, either the pre-built ones located in your Android source folder in ``vendor/ti/am62x/bootloader`` or the ones you generated following the build instructions step in the next section.
+  (OR)
 
-These binaries are also present in the pre-built binaries tarball on the SDK download page::
+  # If you are using pre-built binaries from SDK download page
+  cd AM62x_09.01.00_emmc
 
-    tiboot3.bin  tispl.bin  u-boot.img
+  # for AM62x SK EVM (GP)
+  sudo ./flashall.sh --board am62x-sk --sdcard /dev/mmcblk0
+
+  # for AM62x SK EVM (HS-FS)
+  sudo ./flashall.sh --board am62x-sk --hsfs --sdcard /dev/mmcblk0
+
+  # for AM62x LP SK EVM (GP)
+  sudo ./flashall.sh --board am62x-lp-sk --sdcard /dev/mmcblk0
+
+  # for AM62x LP SK EVM (HS-FS)
+  sudo ./flashall.sh --board am62x-lp-sk --hsfs --sdcard /dev/mmcblk0
 
 eMMC flashing
 ==============
@@ -63,18 +70,19 @@ the images are built from source.
         Boot mode DIP Switch:
         SW1: 11000010 SW2: 01000000
 
-2. Ensure the device is plugged in with USB host and debug UART/serial debug
+2. Insert the SD card into the AM62x SK EVM.
 
-3. Boot the board with ``tiboot3.bin``, ``u-boot.img``, ``tispl.bin`` files in
-   boot partition of SD card.
+3. Ensure the device is plugged in with USB host and debug UART/serial debug
 
 4. Open a terminal debugger to view console output from the device::
 
     sudo picocom -b 115200 -r -l /dev/ttyUSB0
 
-5. Stop at U-Boot console (interrupt the auto-boot countdown) and do below commands to setup Android
+5. Boot the board with SD card.
+
+6. Stop at U-Boot console (interrupt the auto-boot countdown) and do below commands to setup Android
    partition table::
 
-    env default -f -a; saveenv
+    => env default -f -a; saveenv
 
 Then, continue following the default :ref:`flashing instructions from step 5<step_5_flashing_instructions>`.
