@@ -282,6 +282,7 @@ Where ``BUILD_TARGET`` is listed in the table below :
     with ``TARGET_AVB_ENABLE=true`` build args::
 
         cd ${YOUR_PATH}/ti-aosp-14
+        source build/envsetup.sh
         lunch <BUILD_TARGET>
         m TARGET_AVB_ENABLE=true
 
