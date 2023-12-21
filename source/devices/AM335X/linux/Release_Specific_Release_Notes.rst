@@ -146,6 +146,43 @@ Kernel
 
 |
 
+Yocto
+------------------
+.. rubric:: meta-ti
+   :name: meta-ti
+
+| Head Commit: 59edb4e886df468edeb683355c36f06004b29925 linux-ti-staging_6.1: CI/CD Auto-Merger: cicd.kirkstone.202310191725
+| Date: 2023-10-20 08:11:47 -0500
+
+| Clone: git://git.yoctoproject.org/meta-ti
+| Branch: kirkstone
+| Release Tag: 09.01.00.001
+|
+
+.. rubric:: meta-arago
+   :name: meta-arago
+
+| Head Commit: a9dcc0583f44bd7a7d8780759c2091b85d280ec2 ltp-ddt: CI/CD Auto-Merger: cicd.kirkstone.202310191725
+| Date: 2023-10-20 08:11:26 -0500
+
+| Clone: git://git.yoctoproject.org/meta-arago
+| Branch: kirkstone
+| Release Tag: 09.01.00.001
+|
+
+.. rubric:: meta-processor-sdk
+   :name: meta-processor-sdk
+
+| Head Commit: 3cbe955ce03d9c25e59e3a401f378132163a3569 recipes-core: matrix: Handle systemd and sysvinit scripts separately
+| Date: 2023-10-31 03:48:05 -0500
+
+| Clone: https://git.ti.com/git/processor-sdk/meta-processor-sdk.git
+| Branch: kirkstone
+| Release Tag: 09.01.00.001
+|
+
+
+
 Issues Tracker
 =====================================
 
