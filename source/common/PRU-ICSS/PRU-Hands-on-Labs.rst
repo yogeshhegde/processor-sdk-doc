@@ -899,8 +899,7 @@ Configure the Kernel
 
       ::
 
-          make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
-          tisdk_am335x-evm_defconfig
+          make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- multi_v7_defconfig ti_multi_v7_prune.config no_smp.config
 
 
 Build the Linux Kernel and remoteproc Driver
