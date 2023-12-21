@@ -3,7 +3,6 @@
 ************************************
 Release Notes for AM335X
 ************************************
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes
 
 Overview
 ========
@@ -96,7 +95,7 @@ U-Boot
 -------------------------
 
 | The U-Boot git repository, branch and commit id can be found below:
-| Based on verson: 2023.04
+| Based on version: 2023.04
 | URL: git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2023.04
 | uBoot Tag: 09.01.00.001
@@ -147,12 +146,155 @@ Kernel
 
 |
 
+Yocto
+------------------
+.. rubric:: meta-ti
+   :name: meta-ti
+
+| Head Commit: 59edb4e886df468edeb683355c36f06004b29925 linux-ti-staging_6.1: CI/CD Auto-Merger: cicd.kirkstone.202310191725
+| Date: 2023-10-20 08:11:47 -0500
+
+| Clone: git://git.yoctoproject.org/meta-ti
+| Branch: kirkstone
+| Release Tag: 09.01.00.001
+|
+
+.. rubric:: meta-arago
+   :name: meta-arago
+
+| Head Commit: a9dcc0583f44bd7a7d8780759c2091b85d280ec2 ltp-ddt: CI/CD Auto-Merger: cicd.kirkstone.202310191725
+| Date: 2023-10-20 08:11:26 -0500
+
+| Clone: git://git.yoctoproject.org/meta-arago
+| Branch: kirkstone
+| Release Tag: 09.01.00.001
+|
+
+.. rubric:: meta-processor-sdk
+   :name: meta-processor-sdk
+
+| Head Commit: 3cbe955ce03d9c25e59e3a401f378132163a3569 recipes-core: matrix: Handle systemd and sysvinit scripts separately
+| Date: 2023-10-31 03:48:05 -0500
+
+| Clone: https://git.ti.com/git/processor-sdk/meta-processor-sdk.git
+| Branch: kirkstone
+| Release Tag: 09.01.00.001
+|
+
+
+
 Issues Tracker
 =====================================
 
-TBD
+Issues opened in previous releases that were closed on this release
+---------------------------------------------------------------------
+.. csv-table::
+   :header: "Record ID", "Title", "Platform"
+   :widths: 15, 70, 20
+
+   "SITSW-706","Top level makefile broken in AM335x & AM437x","am335x-evm,am335x-ice,am335x-sk"
+   "SITSW-703","AM335x SDK 7.3 has misleading information on HSR/PRP support","am335x-ice"
+   "LCPD-24835","ADC_S_FUNC_TSCADC_ONESHOT_0001 fails","am335x-evm"
+   "LCPD-24834","ADC continuous mode test failed ","am335x-evm"
+   "LCPD-24826","Power Manager Runtime is not suspending SERIAL","am335x-evm"
+   "LCPD-24811","LTP test fail- No Timers","am335x-evm"
+   "LCPD-24792","RTC reliable test by using alarm fails","am335x-evm"
+   "LCPD-24786","DRM Stress Test: Test setting different video modes frequently 1000 times fails","am335x-evm"
+   "LCPD-24649","dma-heaps-test fails to build with 5.16-rc3 kernel+","am335x-evm"
+   "LCPD-24239","IPC performance  test","am335x-evm"
+   "LCPD-22828","Convert tps62360-regulator.txt: ""ti,tps62363"" to yaml","am335x-evm"
+   "LCPD-19858","OE: OPTEE label used in SDK is old and wrong","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk"
+   "LCPD-19838","Cryptodev not building against 5.10 kernel","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk"
+   "LCPD-19279","openssl_perf.sh functionality to be included in rootfs (decouple from matrixgui)","am335x-evm"
+   "LCPD-18643","U-Boot: AM335x/AM473x: Both SPI CS signals get asserted","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk"
+   "LCPD-17817","Images created with Proc-SECDEV grow with number of times SECDEV has been used","am335x-hsevm"
+   "LCPD-7366","uboot McSPI driver drives multiple chip selects simultaneously","am335x-evm"
+
 
 |
+
+
+Issues found and closed on this release that may be applicable to prior releases
+-----------------------------------------------------------------------------------
+.. csv-table::
+   :header: "Record ID", "Title", "Platform"
+   :widths: 15, 70, 20
+
+   "SITSW-3404","installer-scripts: Version not auto updated for installer","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,beaglebone-black"
+   "SITSW-3378","systemd-networkd-wait-online service timeouts ","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,beaglebone-black"
+   "SITSW-1649","Create-sdcard.sh: Displays command not found error","am335x-evm,am335x-hsevm,am335x-sk"
+   "LCPD-37016","u-boot NAND boot failure with SDK 9.1 on AM335x EVM","am335x-evm"
+   "LCPD-36892","am335 : Fails to Boot : Halts at ""Starting Kernel"" Stage","am335x-evm,am335x-hsevm"
+   "LCPD-36626","am335x: am43xx: Display and Touchscreen is not functional","am335x-evm,am335x-hsevm,am335x-sk"
+   "LCPD-36625","am335x: kernel crash reported on few boards with default SMP config","am335x-evm,am335x-hsevm"
+   "LCPD-36624","am335x: boot to console root prompt is taking longer","am335x-evm,am335x-hsevm"
+   "LCPD-34990","am335x: initcall sequence failure in u-boot (USB ether init failed)","am335x-evm,am335x-ice,am335x-sk"
+   "LCPD-29349","[AM335x] Write to Write Protected Block on 16GB, 32GB eMMC Causes Timeout and Data Corruption","am335x-evm"
+   "LCPD-28032","AM335x HS Boot Failure","am335x-hsevm"
+   "LCPD-27524","Yocto: SRCIPK Packaging Build Failures for Kernel/U-Boot","am335x-evm,am335x-sk"
+   "LCPD-26692","Hardware + Software IPSec Performance Test Failures","am64xx-evm,am335x-evm"
+
+|
+
+SDK Known Issues
+-----------------
+.. csv-table::
+   :header: "Record ID", "Platform", "Title", "Workaround"
+   :widths: 25, 30, 50, 600
+
+   SITSW-1357,"am335x-evm,am335x-sk","Some of the Matrix QT5 demos (Touch, Thermostat, Browser) are failing",""
+   SITSW-1358,"am335x-evm,am335x-sk","Matrix KMScube demo is failing",""
+   SITSW-1376,"am335x-evm,am335x-sk","Matrix demo does not start until XFRM netlink socket initialization is complete","Reload localhost URL after XFRM netlink socket initialization is completed"
+
+|
+
+.. _release-specific-u-boot-known-issues:
+
+U-Boot Known Issues
+------------------------
+.. csv-table::
+   :header: "Record ID","Platform", "Title","Workaround"
+   :widths: 15, 30, 70, 30
+
+   "LCPD-37017","am335x-evm","u-boot NAND boot failure with SDK 8.2 on AM335x EVM",""
+   "LCPD-19133","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk","Netconsole output corrupted when CONFIG_NETCONSOLE_BUFFER_SIZE >= 281",""
+
+
+|
+
+.. _release-specific-linux-kernel-known-issues:
+
+Linux Kernel Known Issues
+---------------------------
+.. csv-table::
+   :header: "Record ID", "Platform", "Title", "Workaround"
+   :widths: 5, 10, 70, 10
+
+   "LCPD-27472","am335x-evm","DRM stress failed ,Test setting different video modes frequently 1000 times",""
+   "LCPD-25272","am335x-evm","Crypto_M_PERF_openssl_perf_software test Fails",""
+   "LCPD-24728","am335x-evm","Power measurement with Standby/Suspend/Resume failure",""
+   "LCPD-24456","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk","Move IPC validation source from github to git.ti.com",""
+   "LCPD-24302","am335x-evm","The speed test built in to OpenSSL - cryptographic",""
+   "LCPD-24182","am335x-evm,beaglebone-black","Powermgr_xs_func_simple_suspend/standby resume tests",""
+   "LCPD-24104","am335x-evm","nandtest util crashes NAND ubifs filesystem",""
+   "LCPD-23096","am335x-ice","PTP broken with PRU-ETH on AM335x ICEv2",""
+   "LCPD-22417","am335x-evm","No throughput on ipsec aes128 hardware test",""
+   "LCPD-17790","am335x-evm","AM335x: USB Device: 15% performance drop",""
+   "LCPD-17673","am335x-evm,beaglebone-black","No software documentation for the Timer module",""
+   "LCPD-17449","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,beaglebone-black","libasan_preinit.o is missing in devkit",""
+   "LCPD-14855","am335x-evm,am335x-ice,am335x-sk","omap_i2c_prepare_recovery() function can Lock System",""
+   "LCPD-13947","am335x-evm","nativesdk-opkg is broken in the devkit",""
+   "LCPD-10221","am335x-evm","Longer resume times observed on setup with usb device cable",""
+   "LCPD-9455","am335x-evm","Kernel Warning reported for a USB audio device when listing with pulseaudio",""
+   "LCPD-9372","am335x-evm","Nand stress tests failed on a particular am335x-evm board",""
+   "LCPD-8636","am335x-evm","Serial corruption being seen in kernel",""
+   "LCPD-8133","am335x-evm","USB: ""cannot reset"" errors observed sometimes",""
+   "LCPD-7955","am335x-evm","Uncorrectable Bitflip errors seen after switch to SystemD","Workaround to erase the NAND flash completely if flashed with an incompatible flash writer. SystemD tries to mount all partitions and that is the reason this is being seen now."
+   "LCPD-5362","am335x-evm","MUSB: Isoch IN only utilises 50% bandwidth",""
+
+|
+
+
 
 
 .. rubric:: Installation and Usage

@@ -101,7 +101,7 @@ file.
       ::
 
          make ARCH=arm CROSS_COMPILE='arm-linux-gnueabihf-' mrproper
-         make ARCH=arm CROSS_COMPILE='arm-linux-gnueabihf-' tisdk_am335x-evm_defconfig
+         make ARCH=arm CROSS_COMPILE='arm-linux-gnueabihf-' multi_v7_defconfig ti_multi_v7_prune.config no_smp.config
          make ARCH=arm CROSS_COMPILE='arm-linux-gnueabihf-' dtbs
 
 * Test the minimal Hello World Linux Board Port

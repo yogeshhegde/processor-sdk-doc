@@ -148,7 +148,7 @@ as a starting point).
 
     .. code-block:: console
 
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- tisdk_am335x-evm_defconfig
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- multi_v7_defconfig ti_multi_v7_prune.config no_smp.config
 
 ..
   [comment] instructions for 64 bit processors
