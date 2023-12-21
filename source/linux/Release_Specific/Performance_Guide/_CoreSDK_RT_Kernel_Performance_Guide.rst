@@ -399,11 +399,11 @@ Test command for running stress-ng and cyclictest together
 ``cyclictest -m -Sp98 -D6h -h400 -i200 -q``
 
 .. csv-table::
-    :header: "Latencies","am62xx_sk:per-core","am62pxx_sk-fs:per-core", "am64xx-hsevm:per-core"
+    :header: "Latencies","am62xx_sk:per-core","am62pxx_sk-fs:per-core", "am64xx-hsevm:per-core", "am62axx_sk-fs:per-core"
 
-     "Minimum (usec)","4,4,4,4","4,4,4,4","5,5"
-    "Average (usec)","5,5,5,5","5,5,5,6","7,7"
-    "Maximum (usec)","55,62,71,61","41,45,43,44","72,48"
+    "Minimum (usec)","4,4,4,4","4,4,4,4","5,5","4,4,4,4"
+    "Average (usec)","5,5,5,5","5,5,5,6","7,7","5,5,5,5"
+    "Maximum (usec)","55,62,71,61","41,45,43,44","72,48","29,24,35,35"
  
 
 Table:  **Stress-ng and Cyclic Test**
