@@ -12,7 +12,6 @@ devices/AM62X/linux/Release_Specific_Migration_Guide
 devices/AM62X/linux/Release_Specific_Kernel_Performance_Guide
 devices/AM62X/linux/Linux_Performance_Guide
 devices/AM62X/linux/RT_Linux_Performance_Guide
-devices/AM62X/linux/Release_Specific_Workarounds
 devices/AM62X/linux/Release_Specific_Supported_Platforms_and_Versions
 devices/AM62X/linux/Release_Specific_QSG
 
