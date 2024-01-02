@@ -245,6 +245,7 @@ Android File System
     ::
 
         cd ${YOUR_PATH}/ti-aosp-14
+        source build/envsetup.sh
         lunch <BUILD_TARGET>
         m
 

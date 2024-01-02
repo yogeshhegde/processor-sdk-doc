@@ -46,6 +46,7 @@ Follow this link to `build Android image`_.
 Go in your Android environment then rebuild with ``TARGET_SDCARD_BOOT=true`` build args::
 
         cd ${YOUR_PATH}/ti-aosp-14
+        source build/envsetup.sh
         lunch <BUILD_TARGET>
         m TARGET_SDCARD_BOOT=true
 
