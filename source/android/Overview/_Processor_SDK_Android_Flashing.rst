@@ -184,6 +184,12 @@ In the serial console, you will see::
 
           sudo ./flashall.sh --board am62px-sk
 
+.. note::
+
+    If you get ``mcopy`` command not found error on Linux PC, install the ``mtools`` package
+
+    $ apt-get install mtools
+
 8. Once the flashing is complete, power off the board
 
 9. Change boot mode DIP switches to boot from eMMC user partitions and power cycle the board::
