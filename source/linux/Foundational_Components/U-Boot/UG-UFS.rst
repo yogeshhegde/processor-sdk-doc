@@ -2,7 +2,7 @@ UFS
 ---------------------------
 
 Universal Flash Subsystem (UFS) devices show up as scsi devices similar
-to SATA in the `previous section <Foundational_Components_U-Boot.html#sata>`__.
+to SATA in the `previous section <UG-SATA.html>`__.
 One additional command to initialize all ufs devices is:
 
 ::
@@ -27,10 +27,10 @@ Then we can go ahead with 'scsi scan' to see the attached devices:
 |
 
 All the remaining scsi commands detailed in the
-`previous section <Foundational_Components_U-Boot.html#sata>`__ are
+`previous section <UG-SATA.html>`__ are
 also applicable.
 
 For more information about UFS see
-`Kernel UFS Guide <Foundational_Components_Kernel_Drivers.html#ufs>`__.
+`Kernel UFS Guide <../../Foundational_Components/Kernel/Kernel_Drivers/UFS.html>`__.
 
 
