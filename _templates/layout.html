@@ -3,3 +3,8 @@
   <script src="https://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
   {{ super() }}
 {% endblock %}
+
+{%- block extrabody %}
+  {% include "ti_extrabody.html" %}
+  {{ super() }}
+{% endblock %}
