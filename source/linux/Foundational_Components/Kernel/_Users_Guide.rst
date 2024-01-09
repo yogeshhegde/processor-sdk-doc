@@ -63,6 +63,12 @@ to be added to the PATH environment variable
 
       export PATH=<sdk path>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/aarch64-oe-linux:$PATH
 
+   .. note::
+        Optionally, one can use the arm compilers provided from developer.arm.com
+        to build the Linux Kernel.
+        Just use CROSS_COMPILE=aarch64-none-linux-gnu- instead of aarch64-oe-linux-
+        wherever applicable.
+
 The current compiler supported for this release along with download
 location can be found in the release notes for the kernel release.
 
