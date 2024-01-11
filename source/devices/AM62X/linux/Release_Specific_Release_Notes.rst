@@ -44,8 +44,9 @@ Released on December 2023
 What's new
 ------------------
 
-**Processor SDK Linux AM62xSIP Release has following new features:**
+**Processor SDK Linux AM62x Release has following new features:**
 
+  - Significant Improvements to Real-Time Linux Interrupt Latency
   - Kernel: MCAN, eQEP, Rpi Overlay
   - Power Management: Partial IO mode and runtime_pm on OSPI, CSI, MCAN
   - Usecase: Smooth display splash handoff of SPL → Kernel → Weston

@@ -51,6 +51,7 @@ What's new
   - Power Management: DeepSleep, MCU-Only and Partial IO mode
   - Connectivity: CPSW, USB Host and Device Mode
   - GPU BXS, VPU Wave521CL
+  - Significant Improvements to Real-Time Linux Interrupt Latency
   - OOB: DSS Sharing Digital Cluster
 
 **Component version:**

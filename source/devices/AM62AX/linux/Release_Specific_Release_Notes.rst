@@ -45,10 +45,13 @@ What's new
 
 Processor SDK Linux AM62A Release has following new features:
 
-- AM62A: Initial Platform Support (GP, HS-FS, HS-SE with default Boot Experience on HS-FS)
-- U-Boot: OSPI NAND with UBIFS, C7x and R5 Early boot, DFU Flashing, QoS Optimization for DSS and CSI load
-- ATF: v2.8+
-- Kernel: SD/eMMC, SDIO, GPIO, OSPI NAND, USB host and device mode, CSI Support with OV5640, IMX219, IMX390 and OV2312 Sensors, RTC, ePWM, CPSW 3G, IPC R5, IPC C7x, Mailbox, HWspinlock, VPU, SA3UL, Display( HDMI), Wave521 Video Encode and Decode, McASP audio output and capture, MCRC
+- Kernel: MCAN, eQEP
+- IPC: Mailbox, Shared buffer example (C7x, DM R5, MCU R5)
+- UB954 Fusion board support
+- Power Management: DeepSleep, MCU-Only and Partial IO mode
+- Significant Improvements to Real-Time Linux Interrupt Latency
+- Bug Fixes and Stability Improvements
+- OPTEE v4.0, ATF v2.9+ Upgrade
 
 Build Information
 =================
