@@ -39,7 +39,7 @@ Depending on the SoC, the value of n in CPSWng varies as follows:
 The SDK provides support to use the CPSWng ports in two different
 configurations:
 
-#. CPSWng Virtual Client
+#. CPSW Proxy Client
 #. CPSWng Native Ethernet Switch
 
 .. Caution::
@@ -47,23 +47,23 @@ configurations:
     can be enabled for a build.
 
 .. note::
-    | Enabling the CPSWng Virtual Client configuration or the CPSWng Native Ethernet configuration
+    | Enabling the CPSW Proxy Client configuration or the CPSWng Native Ethernet configuration
     | requires applying a Linux device-tree overlay at U-Boot using the **name_overlays** U-Boot environment variable.
-    | For details regarding applying CPSWng Virtual Client overlay, refer :ref:`cpswng_virt_mac_u_boot`.
+    | For details regarding applying CPSW Proxy Client overlay, refer :ref:`cpsw_proxy_client_enable`.
     | For details regarding applying CPSWng Native Ethernet overlay, refer :ref:`cpswng_native_eth_overlays`.
 
-CPSWng Virtual Client
-"""""""""""""""""""""
+CPSW Proxy Client
+"""""""""""""""""
 
 In this configuration, the EthSwitch firmware running on one of the R5F cores
 controls access to the CPSWng subsystem. The other cores have thin client
 drivers running on them to receive data from the EthSwitch firmware. On the
-A core running Linux, the virt-mac driver is responsible for the interaction
-with the EthSwitch firmware.
+A core running Linux, the cpsw-proxy-client driver is responsible for the
+interaction with the EthSwitch firmware.
 
 This configuration allows multiple cores to share the CPSWng ethernet subsystem.
 
-For further details, refer :ref:`cpswng_virt_mac`
+For further details, refer :ref:`cpsw_proxy_client`
 
 CPSWng Native Ethernet Switch
 """""""""""""""""""""""""""""
@@ -80,5 +80,5 @@ For further details, refer :ref:`cpswng_native_ethernet`
 .. toctree::
     :hidden:
 
-    CPSWng_virt_mac
+    CPSW-Proxy-Client
     CPSWng-Native-Ethernet
