@@ -49,7 +49,7 @@ Processor SDK Linux AM62A Release has following new features:
 - IPC: Mailbox, Shared buffer example (C7x, DM R5, MCU R5)
 - UB954 Fusion board support
 - Power Management: DeepSleep, MCU-Only and Partial IO mode
-- Significant Improvements to Real-Time Linux Interrupt Latency
+- Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
 - Bug Fixes and Stability Improvements
 - OPTEE v4.0, ATF v2.9+ Upgrade
 

@@ -46,7 +46,7 @@ What's new
 
 **Processor SDK Linux AM62x Release has following new features:**
 
-  - Significant Improvements to Real-Time Linux Interrupt Latency
+  - Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Kernel: MCAN, eQEP, Rpi Overlay
   - Power Management: Partial IO mode and runtime_pm on OSPI, CSI, MCAN
   - Usecase: Smooth display splash handoff of SPL → Kernel → Weston
