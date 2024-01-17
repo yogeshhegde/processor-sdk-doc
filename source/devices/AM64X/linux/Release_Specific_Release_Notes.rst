@@ -36,13 +36,17 @@ found on the SDK download page or in the installed directory as indicated below.
 -  Linux Manifest:  "/docs/software_manifest.html"
 
 
-Release 09.01.00
+Release 09.02.00
 ================
 
-Released on December 2023
+Released on January 2024
 
 What's new
 ----------
+
+**Processor SDK 9.2 Sitara Release has following Major Updates**
+
+  - Early 9.2 Adapter for Boot Critical fix of SK-AM64B
 
 **Processor SDK 9.1 Sitara Release has following Major Updates**
 
@@ -71,13 +75,13 @@ U-Boot
 .. rubric:: u-boot
    :name: u-boot
 
-| Head Commit: b0d717b732ee28e446baf94522b3491e590f7fbb configs: am62*_r5_usbmsc_defconfig: Set SPL_STACK_R_MALLOC_SIMPLE_LEN to 2M
-| Date: 2023-12-06 19:02:00 -0600
+| Head Commit: a97ca328b3df6abf79c5cc01878290e03131bbba arm: dts: k3-j784s4-main: Add Itap Delay Value For DDR50 speed mode
+| Date: 2024-01-12 09:18:54 -0600
 | uBoot Version: 2023.04
-| uBoot Description: 09.01.00.008
+| uBoot Description: 09.02.00.001
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2023.04
-| uBoot Tag: 09.01.00.008
+| uBoot Tag: 09.02.00.001
 
 
 .. _tf-a-release-notes:
@@ -104,11 +108,11 @@ OP-TEE
 
 Ti-linux-firmware
 ------------------
-| Head Commit: 9ee2fedb1fb4815f54310dd872d34faf9948c7c1 ti-dm: Update display sharing firmware for am62px
-| Date: 2023-12-06 19:01:59 -0600
+| Head Commit: 4cb22050117b5688c3a995eae87e9377101b358e ti-ipc: j722s: Add missing IPC fw
+| Date: 2024-01-12 09:18:48 -0600
 | Clone: https://git.ti.com/cgit/processor-firmware/ti-linux-firmware
 | Branch: ti-linux-firmware
-| Tag: 09.01.00.008
+| Tag: 09.02.00.001
 |
 
 
@@ -117,14 +121,14 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 247b2535b24894d5ac7f3d8cfc3b48edb7214cc0 configs: ti_rt.config: disable CPU hotplug
-| Date: 2023-12-06 19:01:53 -0600
-| Kernel Version: 6.1.46
-| Kernel Description: 09.01.00.008
+| Head Commit: 82d2b827840254248a0444a9c50ab3dc395876cc Merge tag 'v6.1.69' of https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux into ti-linux-6.1.y-cicd
+| Date: 2024-01-12 09:18:40 -0600
+| Kernel Version: 6.1.69
+| Kernel Description: 09.02.00.001
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.1.y
-| Tag: 09.01.00.008
+| Tag: 09.02.00.001
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config
 |
@@ -132,12 +136,13 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: b871cdee8c31b877177e4e9d626d1d424052e32e Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
-| Date: 2023-12-07 17:52:13 -0600
-| Kernel Version: 6.1.46-rt13
+| Head Commit: 0f8de5c40f576fc34dc80b3a32508d9990fd79d4 Merge branch 'ti-linux-6.1.y-cicd' of git://git.ti.com/ti-linux-kernel/ti-linux-kernel into ti-rt-linux-6.1.y-cicd
+| Date: 2024-01-12 09:18:44 -0600
+| Kernel Version: 6.1.69-rt21
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-6.1.y
+| Tag: 09.02.00.001-rt
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 
@@ -147,23 +152,23 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 6ad91a192fa1ab33775a22894a413aefd0b67106 CI/CD Auto-Merger: cicd.kirkstone.202312061239
-| Date: 2023-12-06 19:02:01 -0600
+| Head Commit: 155218f03ee8222eeb02f11ea9bc41135cf28e38 CI/CD Auto-Merger: cicd.kirkstone.202401090400
+| Date: 2024-01-12 09:18:57 -0600
 
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: kirkstone
-| Release Tag: 09.01.00.008
+| Release Tag: 09.02.00.001
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 190e2b58fb6c1e3c658fe2f7afc40a2863007bbc CI/CD Auto-Merger: cicd.kirkstone.202312061239
-| Date: 2023-12-06 19:01:43 -0600
+| Head Commit: 2ac73cbef35b07377d54bce94dca9c06ccb7b2a4 CI/CD Auto-Merger: cicd.kirkstone.202401090400
+| Date: 2024-01-12 09:18:15 -0600
 
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: kirkstone
-| Release Tag: 09.01.00.008
+| Release Tag: 09.02.00.001
 |
 
 .. rubric:: meta-tisdk
@@ -245,6 +250,7 @@ Issues opened in previous releases that were closed on this release
    :header: "Record ID", "Title", "Platform"
    :widths: 15, 70, 20
 
+   "LCPD-37300","AM64x SDK v9.1 SDK Images don't boot on SK-AM64B due to U-Boot using incorrect DTS File from EVM","am64xx-hsevm, am64xx-hssk"
    "LCPD-34852","Few times payload is packed at size boundary by binman ","am654x-evm,am64xx-evm,am62xx_sk-se,j721e-idk-gw,j721s2-evm,j7200-evm"
    "LCPD-34840","AM64: Networking failures including ICSSG","am64xx-hsevm"
    "LCPD-34697","am64x: dtsi: mcu_gpio0 compatible property typo","am64xx-evm,am64xx_sk-fs"
