@@ -48,7 +48,7 @@ What's new
 
   - Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Kernel: MCAN, eQEP, Rpi Overlay
-  - Power Management: Partial IO mode and runtime_pm on OSPI, CSI, MCAN
+  - Power Management: Partial IO mode and runtime_pm on OSPI, CSI, MCAN :ref:`Power Management Overview <Power-Management>`
   - Usecase: Smooth display splash handoff of SPL → Kernel → Weston
   - IPC: Graceful shutdown
   - New improved OOB experience

@@ -1,5 +1,7 @@
 .. include:: /_replacevars.rst
 
+.. _Power-Management:
+
 Power Management Overview
 -------------------------
 
