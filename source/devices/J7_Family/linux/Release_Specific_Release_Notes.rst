@@ -84,6 +84,8 @@ Processor SDK 9.1 Release has following new features:
 Build Information
 =====================================
 
+.. _u-boot-release-notes:
+
 U-Boot
 -------------------------
 | Head Commit: b0d868ee086eb5c96a3d32f72a7cb9670abf5b90 arm: dts: k3-am62p: sync with linux again
