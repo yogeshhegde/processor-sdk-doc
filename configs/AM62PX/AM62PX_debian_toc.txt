@@ -1,5 +1,4 @@
 devices/AM62PX/debian/index
-debian/Debian_SDK_Software_Developers_Guide.rst.inc
 
 debian/Overview
 debian/Overview/Overview_Getting_Started_Guide
