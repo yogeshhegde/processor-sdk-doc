@@ -88,11 +88,6 @@ CAN-Eth Gatway Demo
 .. include:: Examples_and_Demonstrations/_Can_Eth_Gateway_Demo.rst
 
 **********************
-Sercos III Softmaster
-**********************
-.. include:: Examples_and_Demonstrations/Sercos3_Softmaster_Demo.rst.inc
-
-**********************
 Interrupt Latency Benchmark
 **********************
 .. include:: Examples_and_Demonstrations/_Interrupt_Latency_Benchmark.rst
