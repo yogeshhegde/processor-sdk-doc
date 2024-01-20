@@ -95,7 +95,7 @@ EVM Hardware Setup
 
 .. AM65x EVM
 .. ====================================================
-.. include:: ../common/EVM_Hardware_Setup/TMDX654_EVM_Hardware_Setup.rst.inc
+.. include:: ../common/EVM_Hardware_Setup/_TMDX654_EVM_Hardware_Setup.rst
 
 .. AM572x GP EVM Hardware Setup
 .. ====================================================
