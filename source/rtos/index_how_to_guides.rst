@@ -14,10 +14,6 @@ RTOS Customization: using an external input to trigger an interrupt on AM57x
 =======================================================================================================
 .. include:: How_to_Guides/Target/_External_Input_Trigger_Interrupt_AM57x.rst
 
-Run applications from DDR on R5 cores
-=======================================================================================================
-.. include:: How_to_Guides/Target/Run_apps_from_DDR_on_R5.rst
-
 *************
 Host
 *************
