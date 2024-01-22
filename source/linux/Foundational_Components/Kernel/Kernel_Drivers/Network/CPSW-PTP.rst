@@ -96,15 +96,15 @@ CPTS PTP packet timestamping default configuration when enabled
 For more information about PTP clock API and Network timestamping see
 Linux kernel documentation
 
-| `Documentation/ptp/ptp.txt <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/Documentation/ptp/ptp.txt>`__
+| `Documentation/driver-api/ptp.rst  <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/Documentation/driver-api/ptp.rst>`__
 | `include/uapi/linux/ptp\_clock.h <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/include/uapi/linux/ptp_clock.h>`__
 | `Documentation/ABI/testing/sysfs-ptp <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/Documentation/ABI/testing/sysfs-ptp>`__
-| `Documentation/networking/timestamping.txt <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/Documentation/networking/timestamping.txt>`__
-| `Documentation/pps/pps.txt <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/Documentation/pps/pps.txt>`__
+| `Documentation/networking/timestamping.rst <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/Documentation/networking/timestamping.rst>`__
+| `Documentation/driver-api/pps.rst <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/Documentation/driver-api/pps.rst>`__
 |
 | Code examples and tools:
 | `tools/testing/selftests/ptp/testptp.c <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/tools/testing/selftests/ptp/testptp.c>`__
-| `tools/testing/selftests/networking/timestamping/timestamping.c <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/tools/testing/selftests/networking/timestamping/timestamping.c>`__
+| `tools/testing/selftests/net/timestamping.c <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/tools/testing/selftests/net/timestamping.c>`__
 |
 | `Open Source Project linuxptp <http://linuxptp.sourceforge.net/>`__
 | `Linux PPS tools <https://github.com/redlab-i/pps-tools>`__
