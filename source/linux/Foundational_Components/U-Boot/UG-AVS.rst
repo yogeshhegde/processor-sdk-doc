@@ -9,6 +9,7 @@ AVS can be enabled by software after primary boot. In SDK, AVS is enabled by sof
 -  J721E EVM
 -  J7200 EVM
 -  AM65x EVM
+-  J721S2 EVM
 
 Hardware Architecture
 ^^^^^^^^^^^^^^^^^^^^^
