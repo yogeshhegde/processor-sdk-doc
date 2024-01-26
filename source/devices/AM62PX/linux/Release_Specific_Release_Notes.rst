@@ -48,9 +48,10 @@ What's new
 
   - Boot modes: UART, SD/eMMC, OSPI, NFS, USB (DFU,MSC)
   - Kernel: I2C, GPIO, SPI, MMC, DSS, CSI, McASP, SA3UL, IPC, VTM, RTC, MCAN, eQEP, Rpi Overlay
-  - Power Management: DeepSleep, MCU-Only and Partial IO mode
+  - Power Management: DeepSleep, MCU-Only and Partial IO mode :ref:`Power Management Overview <Power-Management>`
   - Connectivity: CPSW, USB Host and Device Mode
   - GPU BXS, VPU Wave521CL
+  - Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - OOB: DSS Sharing Digital Cluster
 
 **Component version:**

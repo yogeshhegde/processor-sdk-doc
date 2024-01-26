@@ -33,6 +33,8 @@ http://e2e.ti.com/ or http://support.ti.com/
 Stress-ng and Cyclic Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _RT-linux-performance:
+
 stress-ng (next-generation) will stress test a embedded platform in various selectable ways.
 It was designed to exercise various physical subsystems as well as the various
 operating system kernel interfaces. stress-ng can also measure test throughput rates;

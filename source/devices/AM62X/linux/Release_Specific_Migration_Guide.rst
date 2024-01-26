@@ -17,7 +17,7 @@ Processor SDK 09.01
 - ATF 2.9+
 - OPTEE 4.0
 - Yocto Kirkstone/4.0
-- Platforms Supported : AM62x (GP, HS-FS, HS-SE), AM62x LP (HS-FS, HS-SE)
+- Platforms Supported : AM62x (GP, HS-FS, HS-SE), AM62x LP (HS-FS, HS-SE), AM62SIP (HS-FS, HS-SE)
 
 Processor SDK 09.00
 -------------------
@@ -38,36 +38,5 @@ Processor SDK 09.00
       fragments. Please refer to `linux users guide
       <../../../linux/Foundational_Components_Kernel_Users_Guide.html#preparing-to-build>`__
       for build instructions.
-
-Processor SDK Linux AM62X 08.xx Releases
-========================================
-
-Processor SDK Sitara 08.06
-------------------------------
-- This is the fourth release of Processor SDK Linux AM62X on 2021 LTS 5.10 kernel, 2021.01 U-Boot
-- ATF 2.8+
-- OPTEE 3.20
-- Yocto Dunfell/3.1
-- Platforms Supported : AM62x (GP, HS-FS, HS-SE) with default boot on HS-FS
-
-Processor SDK 08.05
--------------------
-- This is the third release of Processor SDK Linux AM62X on 2021 LTS 5.10 kernel, 2021.01 U-Boot
-- ATF 2.7+
-- OPTEE 3.19+
-- Yocto Dunfell/3.1
-- Platforms Supported : AM62x
-
-Processor SDK 08.04
--------------------
-- This is the second release of Processor SDK Linux AM62X on 2021 LTS 5.10 kernel, 2021.01 U-Boot
-- ATF 2.7
-- OPTEE 3.18
-- Yocto Dunfell/3.1
-- Platforms Supported : AM62x
-
-Processor SDK 08.03
--------------------
-- This is the first release of Processor SDK Linux AM62X.
 
 .. include:: /linux/Release_Specific/_AM62_Enable_UHS_MMCSD.rst
