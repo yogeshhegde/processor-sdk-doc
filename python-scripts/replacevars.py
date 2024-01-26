@@ -12,7 +12,10 @@ def write_replacevars(app, replacevars):
     replacevarsfile= os.environ.get('ROOTDIR') + "/source/" + "_replacevars.rst"
     replacevarstext = ["\n"]
     for key, val in replacevars.items():
-        replacevarstext.append(f".. |{key}| replace:: {val}\n")
+        if val == "\\":
+            replacevarstext.append(f".. |{key}| unicode:: U+00000\n")
+        else:
+            replacevarstext.append(f".. |{key}| replace:: {val}\n")
     with open(replacevarsfile, 'w', encoding='utf-8') as vars_file:
         replacevarstext.append("\n")
         vars_file.write("\n".join(replacevarstext))
