@@ -80,6 +80,19 @@ The TI Apps Launcher launches on Linux startup. Follow the below instructions to
       :width: 950
       :height: 900
 
+   |
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+        .. note::
+
+            TI-Apps-Launcher on AM62SIP is minimal due to it's memory constraints. This experience on AM62SIP looks like the following.
+
+
+        .. Image:: /images/ti-apps-launcher-home-am62sip.jpg
+          :width: 950
+          :height: 900
+
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
    .. Image:: /images/ti-apps-launcher-j7.png
