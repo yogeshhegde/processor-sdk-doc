@@ -174,12 +174,12 @@ Yocto
 .. rubric:: meta-tisdk
    :name: meta-tisdk
 
-| Head Commit: 9131d1afc1b69d423786d100bc346949f4426b08 Fix 62x/62p build for jailhouse and RT build
-| Date: 2023-12-13 04:19:26 -0600
+| Head Commit: 3d2589b3b9b0d102917a7e0b1cecaf62cd7eba79 conf: arago-source-ipk: Enable source-ipk's of all missing packages for ti33x, ti43x
+| Date: 2023-12-27 11:07:27 -0600
 
 | Clone: git://git.ti.com/ti-sdk-linux/meta-tisdk.git
 | Branch: kirkstone
-| Release Tag: 09.01.00.08
+| Release Tag: 09.02.00.08
 |
 
 
