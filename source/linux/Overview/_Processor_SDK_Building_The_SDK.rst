@@ -125,7 +125,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
     .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-        .. note:: If trying to build tisdk-display-cluster image, Add ``DISPLAY_CLUSTER_ENABLE=1`` at the end of `conf/local.conf` file before running bitbake.
+        .. note:: If trying to build tisdk-display-cluster image, Add ``DISPLAY_CLUSTER_ENABLE="1"`` at the end of `conf/local.conf` file before running bitbake.
 
 .. note:: While building images via Yocto, if you are facing **locale.Error: unsupported locale setting** error, it means your system is trying to use a locale setting which was not there. Run the following commands which will setup the locale and try building your target image again.
 
