@@ -190,6 +190,19 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
         $ apt-get install mtools
 
+  .. warning::
+
+      It's possible that the in-memory partition layout is still from an older system.
+      In that case, we can observe flashing errors similar to::
+
+        writing 'tiboot3'...
+        FAILED (remote: invalid partition or device)
+
+      When that happens:
+
+      1. Reboot into the newfly flashed bootloader with ``$ fastboot reboot bootloader``
+      2. Restart the flashing from :ref:`step 5<step_5_flashing_instructions>`.
+
 8. Once the flashing is complete, power off the board
 
 9. Change boot mode DIP switches to boot from eMMC user partitions and power cycle the board::
