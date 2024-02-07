@@ -105,36 +105,36 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
           snagrecover -s am625 -f ./am62px-sk-evm-hsfs.yaml
 
 
-In the serial console, you will see::
+  In the serial console, you will see::
 
-    SYSFW ABI: 3.1 (firmware rev 0x0009 '9.0.5--v09.00.05 (Kool Koala)')
-    SPL initial stack usage: 1856 bytes
-    Trying to boot from DFU
+      SYSFW ABI: 3.1 (firmware rev 0x0009 '9.0.5--v09.00.05 (Kool Koala)')
+      SPL initial stack usage: 1856 bytes
+      Trying to boot from DFU
 
 
 5. Setup default U-Boot environment
 
 .. _step_5_flashing_instructions:
 
-    Type ``Ctrl-C`` in the serial console to continue to U-Boot.
-    From there, we should ensure the default U-Boot environment is configured with::
+  Type ``Ctrl-C`` in the serial console to continue to U-Boot.
+  From there, we should ensure the default U-Boot environment is configured with::
 
-        =>  env default -f -a; saveenv;
+      =>  env default -f -a; saveenv;
 
-.. note::
-    If you build with `TARGET_AVB_ENABLE=true` or flash user images you need to do this command in U-Boot console::
+  .. note::
+      If you build with `TARGET_AVB_ENABLE=true` or flash user images you need to do this command in U-Boot console::
 
-        => setenv force_avb "1"; saveenv;
+          => setenv force_avb "1"; saveenv;
 
-.. note::
+  .. note::
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62X')
+      .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-      By default, no Device-Tree Overlays are selected. Follow this link to set `AM62x Device Tree Overlays`_
+        By default, no Device-Tree Overlays are selected. Follow this link to set `AM62x Device Tree Overlays`_
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+      .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-      By default, no Device-Tree Overlays are selected. Follow this link to set `AM62Px Device Tree Overlays`_
+        By default, no Device-Tree Overlays are selected. Follow this link to set `AM62Px Device Tree Overlays`_
 
 .. _AM62x Device Tree Overlays: ../devices/AM62X/android/Application_Notes_dtbo_support.html
 .. _AM62Px Device Tree Overlays: ../devices/AM62PX/android/Application_Notes_dtbo_support.html
@@ -184,11 +184,11 @@ In the serial console, you will see::
 
           sudo ./flashall.sh --board am62px-sk
 
-.. note::
+  .. note::
 
-    If you get ``mcopy`` command not found error on Linux PC, install the ``mtools`` package
+      If you get ``mcopy`` command not found error on Linux PC, install the ``mtools`` package::
 
-    $ apt-get install mtools
+        $ apt-get install mtools
 
 8. Once the flashing is complete, power off the board
 
