@@ -19,7 +19,7 @@ Download and install Processer SDK Installer. For steps refer :ref:`download-and
 
 **Clone repository**
 
-Clone the sources from `here <https://git.ti.com/git/processor-sdk/uboot-flash-writer.git>`__.
+Clone the sources from `here <https://git.ti.com/cgit/processor-sdk/uboot-flash-writer/>`__.
 
 ::
     
