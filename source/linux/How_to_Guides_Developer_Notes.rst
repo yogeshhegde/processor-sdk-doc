@@ -32,6 +32,7 @@ Developer Notes
    How_to_Guides/Target/How_to_visualize_statistics_data
    How_to_Guides/Target/How_to_Use_K3Conf_Tool
    How_to_Guides/Target/How_to_enable_display_sharing_between_remotecore_and_Linux
+   How_to_Guides/Target/Runtime_debug_unlock_on_secure_device
    How_to_Guides/FAQ/How_to_Verify_Ipc_Linux_R5
    How_to_Guides/FAQ/How_to_Configure_MSMC_memory
    How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
