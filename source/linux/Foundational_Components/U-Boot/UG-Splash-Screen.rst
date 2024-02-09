@@ -48,7 +48,7 @@ U-boot Proper
 ^^^^^^^^^^^^^
 To enable splash screen at U-boot proper enable following configs in configs/am62x_evm_a53_defconfig.
 
-.. code-block:: c
+.. code-block:: kconfig
 
         CONFIG_SPLASH_SCREEN=y
         CONFIG_SPLASH_SOURCE=y
@@ -58,7 +58,7 @@ To enable splash screen at U-boot proper enable following configs in configs/am6
 If user only want splash screen feature at u-boot proper, user can disable splash screen at A53 SPL
 splash screen using kconfig **CONFIG_SPL_VIDEO**.
 
-.. code-block:: c
+.. code-block:: kconfig
 
          # CONFIG_SPL_VIDEO=y
 
@@ -77,7 +77,7 @@ In U-boot all information for image to be displayed as splash screen is passed t
 defined below. These should be added in the .env file used by the board. For reference
 board/ti/am62x.env .
 
-.. code-block:: c
+.. code-block:: bash
 
       #Name of file to be displayed
       splashfile=ti_logo_414x97_32bpp.bmp.gz
@@ -102,20 +102,20 @@ default OSPI and SD card as source are added for AM62x.
 
 .. code-block:: c
 
-      static struct splash_location default_splash_locations[] = {
-   		{
-   			.name = "sf",
-   			.storage = SPLASH_STORAGE_SF,
-   			.flags = SPLASH_STORAGE_RAW,
-   			.offset = 0x700000,
-   		},
-   		{
-   			.name		= "mmc",
-   			.storage	= SPLASH_STORAGE_MMC,
-   			.flags		= SPLASH_STORAGE_FS,
-   			.devpart	= "1:1",
-   		},
-   	};
+   static struct splash_location default_splash_locations[] = {
+   	{
+   		.name = "sf",
+   		.storage = SPLASH_STORAGE_SF,
+   		.flags = SPLASH_STORAGE_RAW,
+   		.offset = 0x700000,
+   	},
+   	{
+   		.name		= "mmc",
+   		.storage	= SPLASH_STORAGE_MMC,
+   		.flags		= SPLASH_STORAGE_FS,
+   		.devpart	= "1:1",
+   	},
+   };
 
 Change **splashsource** variable to the name of source defined in above struct.
 
@@ -139,7 +139,7 @@ A53 SPL
 ^^^^^^^
 To enable splash screen at A53 SPL enable following configs in configs/am62x_evm_a53_defconfig :
 
-.. code-block:: c
+.. code-block:: kconfig
 
    CONFIG_CMD_BMP=y
    CONFIG_VIDEO=y
@@ -175,7 +175,7 @@ U-boot proper
 ^^^^^^^^^^^^^
 To enable splash screen at u-boot proper enable following configs configs/am62x_evm_a53_defconfig:
 
-.. code-block:: c
+.. code-block:: kconfig
 
    CONFIG_DM_GPIO=y
    CONFIG_CMD_BMP=y
@@ -256,7 +256,7 @@ Display RLE compressed image
 -----------------------------
 Enable following kconfigs to support **8bit** RLE compressed image.
 
-.. code-block:: c
+.. code-block:: kconfig
 
       CONFIG_SPL_VIDEO_BMP_RLE8  #for SPL splash screen
       CONFIG_VIDEO_BMP_RLE8      #for U-boot splash screen
@@ -279,9 +279,10 @@ Flicker free display across boot stages and Linux Kernel
 
 #. To enable seamless transition from bootloader splash screen to Linux boot logo and thereafter to Psplash based boot animation, simple-framebuffer driver was enabled in arch/arm64/configs/defconfig along with adding a device-tree node for simple-framebuffer describing the framebuffer context at arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi:
 
-    .. code-block:: c
+    .. code-block:: kconfig
 
           CONFIG_FB_SIMPLE=y
+
     .. code-block:: dts
 
            framebuffer0: framebuffer@0 {
@@ -297,6 +298,7 @@ Flicker free display across boot stages and Linux Kernel
                  stride = <(1920 * 4)>;
                  format = "x8r8g8b8";
            };
+
     .. note::
 
        More information regarding simple-framebuffer can be viewed at `simple-framebuffer device-tree binding doc <https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/display/simple-framebuffer.yaml>`_
@@ -310,7 +312,7 @@ Flicker free and persistent display until display server
 --------------------------------------------------------
 If user wants to keep the boot animation alive until display server starts up, then they need to manually disable "DRM framebuffer device emulation" feature in arch/arm64/configs/defconfig. This is required since the framebuffer emulation feature disables the simple-framebuffer region and resets the display hardware before taking control of the display.
 
-.. code-block:: c
+.. code-block:: kconfig
 
       # CONFIG_DRM_FBDEV_EMULATION is not set
 
