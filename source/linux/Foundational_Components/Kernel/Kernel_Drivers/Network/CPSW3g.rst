@@ -227,6 +227,12 @@ Manually adding FDBs::
     bridge fdb add aa:bb:cc:dd:ee:ff dev eth0 master vlan 100
     bridge fdb add aa:bb:cc:dd:ee:fe dev sw0p2 master <---- Add on all VLANs
 
+.. note::
+
+   For untagged traffic, the PVID is 1 by default. Therefore to add FDB entry
+   for untagged traffic, the commands mentioned above have to use "vid 1"
+   at the respective places.
+
 Multicast Data Bases (MDBs)
 """""""""""""""""""""""""""
 
@@ -238,6 +244,12 @@ Manually adding MDBs::
 
    bridge mdb add dev br0 port eth0 grp 239.1.1.1 permanent vid 100
    bridge mdb add dev br0 port eth0 grp 239.1.1.1 permanent <---- Add on all VLANs
+
+.. note::
+
+   For untagged traffic, the PVID is 1 by default. Therefore to add MDB entry
+   for untagged traffic, the commands mentioned above have to use "vid 1"
+   at the respective places.
 
 Multicast flooding
 """"""""""""""""""
