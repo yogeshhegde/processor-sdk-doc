@@ -36,7 +36,7 @@ Where <hash> is the OPTEE commit shown here: :ref:`tf-a-release-notes`.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM64X')
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX')
+    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
         *With Low Power Modes enabled (default):*
 
