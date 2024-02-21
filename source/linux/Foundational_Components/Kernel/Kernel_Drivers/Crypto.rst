@@ -18,12 +18,12 @@ devices:
 
 ::
 
-    * AM335X       : MD5, SHA1, SHA224, SHA256, AES, DES
-    * AM437X       : MD5, SHA1, SAH224, SHA256, SHA384, SHA512, AES, DES, DES3DES
-    * AM57x/DRA7   : AES, DES, DES3DES
-    * AM65x/J721e  : AES, DES3DES, SHA1, SHA256, SHA512
-    * J721S2/J784S4: AES, DES3DES, SHA1, SHA256, SHA512
-    * AM64X/AM62X  : AES, SHA256, SHA512
+    * AM335X             : MD5, SHA1, SHA224, SHA256, AES, DES
+    * AM437X             : MD5, SHA1, SAH224, SHA256, SHA384, SHA512, AES, DES, DES3DES
+    * AM57x/DRA7         : AES, DES, DES3DES
+    * AM65x/J721e        : AES, DES3DES, SHA1, SHA256, SHA512
+    * J721S2/J784S4      : AES, DES3DES, SHA1, SHA256, SHA512
+    * AM64X/AM62X/J722S  : AES, SHA256, SHA512
 
 .. rubric:: Building the Drivers
    :name: building-the-drivers
@@ -36,7 +36,7 @@ cryptographic operations.
 .. ifconfig:: CONFIG_crypto in ('sa2ul')
 
     |__PART_FAMILY_DEVICE_NAMES__| SoCs support a hardware accelerator called
-    Security Accelerator 2 Ultra Light (SA2UL) for crypto operations.
+    Security Accelerator 2/3 Ultra Light (SA2UL/SA3UL) for crypto operations.
 
 The kernel configuration has already been set up in the SDK and no further
 configuration is needed for the drivers to be built-in to the kernel.

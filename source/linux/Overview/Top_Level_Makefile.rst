@@ -98,7 +98,7 @@ makefile targets.
 
         host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools swig
 
-.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X' )
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X')
 
     ::
 
@@ -262,7 +262,7 @@ the Makefile from the top-level of the SDK.
 
     host# make linux
 
-.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X' )
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X')
 
    - Copy FitImage, Linux Kernel Image and boot-binaries to built-images folder
 

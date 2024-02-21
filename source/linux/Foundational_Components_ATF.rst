@@ -106,7 +106,7 @@ Where <hash> is the OPTEE commit shown here: :ref:`tf-a-release-notes`.
         | DTB                       | 0x82000000 |
         +---------------------------+------------+
 
-.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'AM62X_family', 'AM62AX_family', 'AM62PX_family')
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J722S')
 
     To change the default load address of these binaries, an adress has to be changed in several source trees. The following
     is an example for AM64x family devices. Other family devices might not at the moment have binman dtsi files associated with

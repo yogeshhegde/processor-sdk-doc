@@ -370,6 +370,29 @@ Build U-Boot
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j784s4_evm_a72_defconfig O=<output directory>/a72
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
+   .. ifconfig:: CONFIG_part_variant in ('J722S')
+
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
+        |  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |           USB DFU              |
+        +============================+=================================+================================+================================+================================+
+        |    J722S EVM               |    j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |
+        |                            |    j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
+
+        .. code-block:: console
+
+          $ cd <path to u-boot dir>
+
+          R5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j722s_evm_r5_defconfig O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+
+
+          A53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j722s_evm_a53_defconfig O=<output directory>/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+
+
 
    .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -541,7 +564,7 @@ Build U-Boot
 
       BINMAN_INDIRS is used to fetch the DM binary from <path to ti-linux-firmware>/ti-dm/ and SYSFW binaries from <path to ti-linux-firmware>/ti-sysfw/. If using the SDK, BINMAN_INDIRS can point to <path to SDK>/board-support/prebuilt-images. Else any folder where DM is located in <path to folder>/ti-dm/ and SYSFW binaries are present in <path to folder>/ti-sysfw/ can be used. Please make sure to use the absolute path.
 
-.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4')
+.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4', 'J722S')
 
     .. rubric:: Target Images
         :name: target-images
@@ -687,11 +710,17 @@ Build U-Boot
          * tiboot3-am62px-hs-fs-evm.bin from <output directory>/r5
          * tispl.bin, u-boot.img from <output directory>/a53
 
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+       * HS-FS
+
+         * tiboot3-j722s-hs-fs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
 
 Image Formats
 ^^^^^^^^^^^^^^^
 
-    .. ifconfig:: CONFIG_part_variant not in ('J7200', 'AM64X', 'J721S2', 'J721E', 'AM62X', 'AM62AX', 'J784S4')
+    .. ifconfig:: CONFIG_part_variant not in ('J7200', 'AM64X', 'J721S2', 'J721E', 'AM62X', 'AM62AX', 'J784S4', 'J722S')
 
        - tiboot3.bin
 
@@ -969,7 +998,7 @@ Image Formats
                     | +-------------------+ |
                     +-----------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S')
 
        - tiboot3.bin:
 
@@ -1437,7 +1466,7 @@ Boot Flow
             |                        |                       |                       |                       |
             +------------------------------------------------------------------------+-----------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S')
 
         .. code-block:: text
 
@@ -1803,3 +1832,42 @@ The SRAM memory layout explains the memory used for Bootloader's operation.
             │    + Extended boot info (3.5 KB)     │
             │                                      │
             └──────────────────────────────────────┘0x43c3ffff
+
+    .. ifconfig:: CONFIG_part_variant in ('J722S')
+
+        .. code-block:: console
+
+            ┌──────────────────────────────────────┐0x43c00000
+            │                                      │
+            │                                      │
+            │               SPL IMAGE              │
+            │            (excluding BSS)           │
+            │            (0x6ce00 B  Max)          │
+            │                                      │
+            ├──────────────────────────────────────┤0x43C6CE00
+            │              EMPTY (0x50 B)          │
+            │                                      │
+            ├──────────────────────────────────────┤0x43C6CE50
+            │                                      │
+            │                                      │
+            │          STACK (0x5000 B Max)        │
+            │                                      │
+            │                                      │
+            ├──────────────────────────────────────┤0x43C71E50
+            │       Global Data (0x1AC B Max)      │
+            │                 (+0x4)               │
+            │                                      │
+            ├──────────────────────────────────────┤0x43C72000
+            │                                      │
+            │            HEAP (0x9000 B Max)       │
+            |                                      |
+            ├──────────────────────────────────────┤0x43C7B000
+            │                                      │
+            │            SPL BSS (0x3000 B)        │
+            │                                      │
+            ├──────────────────────────────────────┤0x43C7E000
+            │                                      │
+            │       ROM Boot parameter table       │
+            │    + Extended boot info (3.5 KB)     │
+            │                                      │
+            └──────────────────────────────────────┘0x43C7F290

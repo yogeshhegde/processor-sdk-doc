@@ -385,6 +385,8 @@ Compiling the Device Tree Binaries
     +-------------------------------------------+--------------------------------------+
     | AM69 SK                                   | k3-am69-sk.dts                       |
     +-------------------------------------------+--------------------------------------+
+    | J722S EVM                                 | k3-j722s-evm.dts                     |
+    +-------------------------------------------+--------------------------------------+
 
     To build an individual device tree file find the name of the dts file
     for the board you are using and replace the .dts extension with .dtb.

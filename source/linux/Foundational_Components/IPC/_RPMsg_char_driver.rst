@@ -141,6 +141,26 @@ rpmsg_char_close()
 		| DSP_c71_3        | 67800000.dsp       | Yes     | DSP core in Main Domain           |
 		+------------------+--------------------+---------+-----------------------------------+
 
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+	The below table lists the device enumerations as defined in the
+	rpmsg_char_library. The validity of the enumerations wrt J722S is also
+	specified.
+
+	.. code-block:: text
+
+		+------------------+--------------------+---------+-----------------------------------+
+		| Enumeration ID   | Device Name        | Valid   | Description                       |
+		+==================+====================+=========+===================================+
+		| R5F_MAIN0_0      | 78400000.r5f       | Yes     | R5F core in Main Domain           |
+		+------------------+--------------------+---------+-----------------------------------+
+		| R5F_MCU0_0       | 79000000.r5f       | Yes     | R5F core in MCU Domain            |
+		+------------------+--------------------+---------+-----------------------------------+
+		| DSP_c71_0        | 7e000000.dsp       | Yes     | DSP core in Main Domain           |
+		+------------------+--------------------+---------+-----------------------------------+
+		| DSP_c71_1        | 7e200000.dsp       | Yes     | DSP core in Main Domain           |
+		+------------------+--------------------+---------+-----------------------------------+
+
 
 .. ifconfig::  CONFIG_part_variant in ('J721E')
 
@@ -432,6 +452,151 @@ SDK wic image filesystem:
 		Receiving message #9: hello there 9!
 
 		Communicated 10 messages successfully on rpmsg-char-13-799
+
+		TEST STATUS: PASSED
+
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+    .. code-block:: console
+
+		root@j722s-evm:~/ti-rpmsg-char/examples# ./rpmsg_char_simple -r 15 -n 10
+		Created endpt device rpmsg-char-15-628, fd = 4 port = 1025
+		Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 15 ...
+
+		Sending message #0: hello there 0!
+		Receiving message #0: hello there 0!
+		Sending message #1: hello there 1!
+		Receiving message #1: hello there 1!
+		Sending message #2: hello there 2!
+		Receiving message #2: hello there 2!
+		Sending message #3: hello there 3!
+		Receiving message #3: hello there 3!
+		Sending message #4: hello there 4!
+		Receiving message #4: hello there 4!
+		Sending message #5: hello there 5!
+		Receiving message #5: hello there 5!
+		Sending message #6: hello there 6!
+		Receiving message #6: hello there 6!
+		Sending message #7: hello there 7!
+		Receiving message #7: hello there 7!
+		Sending message #8: hello there 8!
+		Receiving message #8: hello there 8!
+		Sending message #9: hello there 9!
+		Receiving message #9: hello there 9!
+
+		Communicated 10 messages successfully on rpmsg-char-15-628
+
+		TEST STATUS: PASSED
+		root@j722s-evm:~/ti-rpmsg-char/examples# ./rpmsg_char_simple -r 0 -n 10
+		Created endpt device rpmsg-char-0-630, fd = 4 port = 1025
+		Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 0 ...
+
+		Sending message #0: hello there 0!
+		Receiving message #0: hello there 0!
+		Sending message #1: hello there 1!
+		Receiving message #1: hello there 1!
+		Sending message #2: hello there 2!
+		Receiving message #2: hello there 2!
+		Sending message #3: hello there 3!
+		Receiving message #3: hello there 3!
+		Sending message #4: hello there 4!
+		Receiving message #4: hello there 4!
+		Sending message #5: hello there 5!
+		Receiving message #5: hello there 5!
+		Sending message #6: hello there 6!
+		Receiving message #6: hello there 6!
+		Sending message #7: hello there 7!
+		Receiving message #7: hello there 7!
+		Sending message #8: hello there 8!
+		Receiving message #8: hello there 8!
+		Sending message #9: hello there 9!
+		Receiving message #9: hello there 9!
+
+		Communicated 10 messages successfully on rpmsg-char-0-630
+
+		TEST STATUS: PASSED
+		root@j722s-evm:~/ti-rpmsg-char/examples# ./rpmsg_char_simple -r 2 -n 10
+		Created endpt device rpmsg-char-2-632, fd = 4 port = 1025
+		Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 2 ...
+
+		Sending message #0: hello there 0!
+		Receiving message #0: hello there 0!
+		Sending message #1: hello there 1!
+		Receiving message #1: hello there 1!
+		Sending message #2: hello there 2!
+		Receiving message #2: hello there 2!
+		Sending message #3: hello there 3!
+		Receiving message #3: hello there 3!
+		Sending message #4: hello there 4!
+		Receiving message #4: hello there 4!
+		Sending message #5: hello there 5!
+		Receiving message #5: hello there 5!
+		Sending message #6: hello there 6!
+		Receiving message #6: hello there 6!
+		Sending message #7: hello there 7!
+		Receiving message #7: hello there 7!
+		Sending message #8: hello there 8!
+		Receiving message #8: hello there 8!
+		Sending message #9: hello there 9!
+		Receiving message #9: hello there 9!
+
+		Communicated 10 messages successfully on rpmsg-char-2-632
+
+		TEST STATUS: PASSED
+		root@j722s-evm:~/ti-rpmsg-char/examples# ./rpmsg_char_simple -r 8 -n 10
+		Created endpt device rpmsg-char-8-633, fd = 4 port = 1025
+		Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 8 ...
+
+		Sending message #0: hello there 0!
+		Receiving message #0: hello there 0!
+		Sending message #1: hello there 1!
+		Receiving message #1: hello there 1!
+		Sending message #2: hello there 2!
+		Receiving message #2: hello there 2!
+		Sending message #3: hello there 3!
+		Receiving message #3: hello there 3!
+		Sending message #4: hello there 4!
+		Receiving message #4: hello there 4!
+		Sending message #5: hello there 5!
+		Receiving message #5: hello there 5!
+		Sending message #6: hello there 6!
+		Receiving message #6: hello there 6!
+		Sending message #7: hello there 7!
+		Receiving message #7: hello there 7!
+		Sending message #8: hello there 8!
+		Receiving message #8: hello there 8!
+		Sending message #9: hello there 9!
+		Receiving message #9: hello there 9!
+
+		Communicated 10 messages successfully on rpmsg-char-8-633
+
+		TEST STATUS: PASSED
+		root@j722s-evm:~/ti-rpmsg-char/examples# ./rpmsg_char_simple -r 10 -n 10
+		Created endpt device rpmsg-char-10-634, fd = 4 port = 1025
+		Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 10 ...
+
+		Sending message #0: hello there 0!
+		Receiving message #0: hello there 0!
+		Sending message #1: hello there 1!
+		Receiving message #1: hello there 1!
+		Sending message #2: hello there 2!
+		Receiving message #2: hello there 2!
+		Sending message #3: hello there 3!
+		Receiving message #3: hello there 3!
+		Sending message #4: hello there 4!
+		Receiving message #4: hello there 4!
+		Sending message #5: hello there 5!
+		Receiving message #5: hello there 5!
+		Sending message #6: hello there 6!
+		Receiving message #6: hello there 6!
+		Sending message #7: hello there 7!
+		Receiving message #7: hello there 7!
+		Sending message #8: hello there 8!
+		Receiving message #8: hello there 8!
+		Sending message #9: hello there 9!
+		Receiving message #9: hello there 9!
+
+		Communicated 10 messages successfully on rpmsg-char-10-634
 
 		TEST STATUS: PASSED
 
@@ -790,14 +955,27 @@ Build the kernel module rpmsg_client_sample:
   rpmsg_client_sample comes prepackaged in prebuilt SDK wic images (e.g. tisdk-default-image-j721s2-evm.wic.xz)
   that comes with the release and below example can be directly run (Step 5) if using the prebuilt wic images
 
- #. Set up the kernel config to build the rpmsg client sample. Use menuconfig to
-    verify Kernel hacking > Sample kernel code > Build rpmsg client sample is M:
+#. Set up the kernel config to build the rpmsg client sample.
+
+Use menuconfig to verify Kernel hacking > Sample kernel code > Build rpmsg client sample is M:
 
 ::
 
     $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- distclean
     $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig ti_arm64_prune.config
     $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- menuconfig
+
+.. code-block:: text
+
+        Symbol: SAMPLE_RPMSG_CLIENT [=m]
+          │ Type  : tristate
+          │ Defined at samples/Kconfig:116
+          │   Prompt: Build rpmsg client sample -- loadable modules only
+          │   Depends on: SAMPLES [=y] && RPMSG [=y] && m && MODULES [=y]
+          │   Location:
+          │     -> Kernel hacking
+          │       -> Sample kernel code (SAMPLES [=y])
+          │ (1)     -> Build rpmsg client sample -- loadable modules only (SAMPLE_RPMSG_CLIENT [=m])
 
 #. Make the kernel and modules. Multithreading with –j is optional:
 
@@ -818,9 +996,9 @@ SDK wic image filesystem:
 
 #. Run the example on the board:
 
-.. ifconfig:: CONFIG_part_variant in ('J721S2')
+.. ifconfig:: CONFIG_part_variant in ('J721S2', 'J722S')
 
-	::
+	.. code-block:: console
 
 		root@j721s2-evm:~# modprobe rpmsg_client_sample count=10
 		[ 4736.351359] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: new channel: 0x400 -> 0xd!

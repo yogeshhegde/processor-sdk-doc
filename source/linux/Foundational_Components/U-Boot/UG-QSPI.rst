@@ -629,14 +629,14 @@ documented in U-boot SPI section.
                  |                                 |
                  +---------------------------------+
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4', 'J722S')
 
-    J784S4 is similar to J721S2, only difference being that OSPI0 is muxed
-    externally between a NOR and a NAND flash through a physical switch.
-    OSPI NOR and OSPI NAND can't be used at the same time, they need to be
-    selected by changing a physical configuration switch on the EVM board
-    before driver probes them. CONFIG SW3.1 should be in OFF state to use
-    OSPI NOR, and in ON STATE for OSPI NAND.
+    |__PART_FAMILY_DEVICE_NAMES__| is similar to J721S2, only difference
+    being that OSPI0 is muxed externally between a NOR and a NAND flash
+    through a physical switch. OSPI NOR and OSPI NAND can't be used at the
+    same time, they need to be selected by changing a physical configuration
+    switch on the EVM board before driver probes them. CONFIG SW3.1 should be
+    in OFF state to use OSPI NOR, and in ON STATE for OSPI NAND.
 
     **Flashing images to OSPI NOR flash**
 

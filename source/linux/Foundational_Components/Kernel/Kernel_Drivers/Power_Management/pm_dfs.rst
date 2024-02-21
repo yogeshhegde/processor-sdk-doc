@@ -193,7 +193,7 @@ To view supported OPP's (frequency in kHz),
             $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
             750000000 1000000000 1500000000 2000000000
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S')
 
         ::
 

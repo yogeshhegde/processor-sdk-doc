@@ -1,3 +1,5 @@
+.. include:: /_replacevars.rst
+
 RemoteProc
 ------------
 
@@ -82,6 +84,11 @@ is not supported in U-boot.
 
 Lockstep and Split mode
 ^^^^^^^^^^^^^^^^^^^^^^^
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+    .. note::
+
+        This platform does not have split cores for R5F so below information is just for show.
 
 Cortex-R5F can be used in both lockstep (both cores run same code) and split
 mode (each core runs independently).

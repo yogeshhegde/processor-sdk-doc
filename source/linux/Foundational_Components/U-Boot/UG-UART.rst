@@ -52,7 +52,7 @@ is installed
       $ sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
       $ sb --ymodem $OUT_AXX/u-boot.img > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
 
-.. ifconfig:: CONFIG_part_variant in ('J7200')
+.. ifconfig:: CONFIG_part_variant in ('J7200', 'J722S')
 
    +---------------+---------------+-------------+------------+
    |   WHO         | Loading WHAT  |  HW Module  |  Protocol  |
