@@ -178,3 +178,13 @@ The current PWM settings for ePWM and eCAP(APWM) can be monitored from the debug
     platform/23100000.pwm, 1 PWM device
      pwm-0   ((null)              ): period: 0 ns duty: 0 ns polarity: normal
 
+|
+
+.. rubric:: Testing eHRPWM in TI PSDK
+   :name: testing-ehrpwm
+
+EHRPWM can be tested using the following overlays for each of the following devices:
+
+#. AM62X SK: k3-am625-sk-rpi-hdr-ehrpwm.dtso
+#. AM62AX SK: k3-am62a7-sk-rpi-hdr-ehrpwm.dtso
+#. AM62PX SK: k3-am62p5-sk-rpi-hdr-ehrpwm.dtso
