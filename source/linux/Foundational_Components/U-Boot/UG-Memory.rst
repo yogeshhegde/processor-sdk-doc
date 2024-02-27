@@ -504,6 +504,28 @@ To boot from UDA parition of eMMC. Please set following
   => mmc partconf 0 1 7 1
   => mmc bootbus 0 2 0 0
 
+**Enable warm reset**
+
+On eMMC devices, warm reset will not work if EXT_CSD[162] bit is unset since the reset input signal
+will be ignored. Warm reset is required to be enabled in order to the eMMC to be in a "clean state"
+on power on reset so that ROM can do clean enumeration.
+
+To set the EXT_CSD[162] bit, stop at U-boot prompt and execute the following command:
+
+.. code-block:: console
+
+  => mmc rst-function 0 1
+
+.. warning::
+
+  WARNING : This is a write-once field.
+
+For more information, please refer to the latest U-boot documentation: https://docs.u-boot.org/en/latest/usage/cmd/mmc.html.
+
+|
+
+**Boot kernel from eMMC**
+
 .. note::
 	rootfs is written to the user partition. The user partition is
 	first required to be formatted as a ext4 file system and then the rootfs
