@@ -186,6 +186,21 @@ Information about specific components of PRU projects can be found at
 
 |
 
+U-Boot Software Information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+PRU Ethernet is supported in u-boot. To use PRU Ethernet in u-boot just
+select the ICSSG interface as active ethernet interface. The PRU Ethernet
+interface can ping and act as a dhcp client at u-boot. PRU Ethernet can
+also be used to boot the kernel using tftp.
+
+.. code-block:: text
+
+  setenv ethact icssg1-eth
+
+
+|
+
 .. _pru_overview_examples:
 
 Examples
