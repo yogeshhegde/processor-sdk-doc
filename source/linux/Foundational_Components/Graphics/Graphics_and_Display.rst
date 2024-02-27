@@ -1035,6 +1035,29 @@ The supported Wayland/Weston version brings in the multiple display support in
 extended desktop mode and the ability to drag-and-drop windows from one display
 to the other.
 
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'J722S')
+
+   The |__PART_FAMILY_NAME__| group of devices actually utilizes two separate
+   DSS modules enumerated under two different ``/dev/dri/card*`` devices.
+
+   Unfortunately utilizing multiple card devices is not supported by Weston
+   versions lower than ``11.0.91``. Starting multiple Weston instances can get
+   around this behavior with the caveat that you will need to switch the
+   ``WAYLAND_DISPLAY`` environment variable to point at the instance you want to
+   interact with.
+
+   To start multiple instances of Weston, you will need to manually specify the
+   ``drm-device`` and the ``seat`` like the below command:
+
+   .. code-block:: console
+
+      # weston --seat=seat1 --drm-device=card2
+
+   The first instance of Weston will always use ``seat0`` by default. Peripheral
+   devices will be automatically registered under ``seat0`` unless told
+   otherwise. For more info about multi-seat configuration see:
+
+   https://www.freedesktop.org/wiki/Software/systemd/multiseat/
 
 Starting Weston with Systemd
 ----------------------------
