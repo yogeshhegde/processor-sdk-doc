@@ -7,7 +7,7 @@ PRU-ICSS Serial UART
 
 As of Processor SDK v7.1, Linux supports the PRU UART peripheral within the
 PRU-ICSS, which is based on the industry standard TL16C550.
-The kenrel driver is at drivers/tty/serial/8250/8250_pruss.c.
+The kernel driver is at drivers/tty/serial/8250/8250_pruss.c.
 
 
 .. rubric:: Support Devices
@@ -74,7 +74,7 @@ Once the driver is probed, kernel log shows the following message.
 
 Therefore the device node /dev/ttyS1 is associated to the PRUSS UART, user
 space application can read/write this serial port. For detalls please refer
-to :ref:`kenrel uart driver usage <linux-kernel-omap-uart-driver-usage>`.
+to :ref:`kernel uart driver usage <linux-kernel-omap-uart-driver-usage>`.
 
 .. note::
 
