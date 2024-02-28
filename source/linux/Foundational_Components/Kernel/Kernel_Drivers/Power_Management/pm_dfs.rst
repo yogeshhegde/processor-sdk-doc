@@ -48,7 +48,7 @@ $ make menuconfig
 
 Select CPU Power Management from the main menu.
 
-::
+.. code-block:: text
 
        ...
        ...
@@ -59,7 +59,7 @@ Select CPU Power Management from the main menu.
 
 Select CPU Frequency Scaling as shown here:
 
-::
+.. code-block:: text
 
        ...
        ...
@@ -69,7 +69,7 @@ Select CPU Frequency Scaling as shown here:
 
 All relevant options are listed below:
 
-::
+.. code-block:: text
 
         [*] CPU Frequency scaling
         <*>   CPU frequency translation statistics
@@ -93,7 +93,7 @@ All relevant options are listed below:
         The clock information and the operating-points table need to be added as
         given in the example below.
 
-        ::
+        .. code-block:: dts
 
             /* From arch/arm64/boot/dts/ti/k3-j7200.dtsi */
 
@@ -159,27 +159,27 @@ and scaling_max_freq.
 
 To view available governors,
 
-::
+.. code-block:: console
 
     $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
     conservative userspace powersave ondemand performance
 
 To view current governor,
 
-::
+.. code-block:: console
 
     $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
     ondemand
 
 To set a governor,
 
-::
+.. code-block:: console
 
     $ echo userspace > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 
 To view current OPP (frequency in kHz)
 
-::
+.. code-block:: console
 
     $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq
     2000000000
@@ -188,14 +188,14 @@ To view supported OPP's (frequency in kHz),
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
-        ::
+        .. code-block:: console
 
             $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
             750000000 1000000000 1500000000 2000000000
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S')
 
-        ::
+        .. code-block:: console
 
                 $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
                 200000 400000 600000 800000 1000000 1250000 1400000
@@ -204,7 +204,7 @@ To change OPP (can be done only for userspace governor. If governors
 like ondemand is used, OPP change happens automatically based on the
 system load)
 
-::
+.. code-block:: console
 
     $ echo 1000000000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
 
@@ -220,7 +220,7 @@ table.
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
-        ::
+        .. code-block:: dts
 
             /* From arch/arm64/boot/dts/ti/k3-j7200.dtsi */
 
@@ -262,7 +262,7 @@ table.
 
                 arch/arm64/boot/dts/ti/k3-am62p5.dtsi
 
-        ::
+        .. code-block:: dts
 
                 a53_opp_table: opp-table {
                         compatible = "operating-points-v2-ti-cpu";
@@ -320,7 +320,7 @@ table.
 
                         arch/arm64/boot/dts/ti/k3-am62p5-sk.dts
 
-                ::
+                .. code-block:: dts
 
                         opp-table {
                                         opp-1400000000 {
@@ -331,7 +331,7 @@ table.
                                 };
 
         To disable any of the above OPP's one can simply add
-        ::
+        .. code-block:: dts
 
                 status = "disabled";
 
@@ -342,7 +342,7 @@ table.
         To enable maximum clock rates for A53 and C7x on AM62A7-SK Rev E3
         board, an overlay has to be used as shown below:
 
-        ::
+        .. code-block:: console
 
                 setenv name_overlays= k3-am62a7-sk-e3-max-opp.dtbo
 

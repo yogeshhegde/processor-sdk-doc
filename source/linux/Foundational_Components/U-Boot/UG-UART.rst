@@ -18,7 +18,7 @@ but via Y-MODEM. An example session from the host PC, assuming console
 is on ttyUSB0 and already configured would be and the **lrzsz** package
 is installed
 
-::
+.. code-block:: console
 
     $ sx -kb /path/to/u-boot-spl.bin < /dev/ttyUSB0 > /dev/ttyUSB0
     $ sx -kb --ymodem /path/to/u-boot.img < /dev/ttyUSB0 > /dev/ttyUSB0
@@ -45,7 +45,7 @@ is installed
 
    UART_BOOT_MAIN_UART and UART_BOOT_MCU_UART should be set to serial ports such as /dev/ttyUSBx.
 
-   ::
+   .. code-block:: console
 
       $ sb --xmodem $OUT_R5/tiboot3.bin > $UART_BOOT_MCU_UART < $UART_BOOT_MCU_UART
       $ sb --ymodem $SYSFW_ITB > $UART_BOOT_MCU_UART < $UART_BOOT_MCU_UART
@@ -66,7 +66,7 @@ is installed
 
    UART_BOOT_MAIN_UART and UART_BOOT_MCU_UART should be set to serial ports such as /dev/ttyUSBx.
 
-   ::
+   .. code-block:: console
 
       $ sb --xmodem $OUT_R5/tiboot3.bin > $UART_BOOT_MCU_UART < $UART_BOOT_MCU_UART
       $ sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
@@ -90,7 +90,7 @@ is installed
 
    UART_BOOT_MAIN_UART should be set to serial ports such as /dev/ttyUSBx.
 
-   ::
+   .. code-block:: console
 
       $ sb --xmodem $OUT_R5/tiboot3.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
       $ sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART

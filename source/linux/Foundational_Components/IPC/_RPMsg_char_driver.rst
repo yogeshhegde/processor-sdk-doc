@@ -82,7 +82,7 @@ rpmsg_char_close()
 	rpmsg_char_library. The validity of the enumerations wrt J721S2 is also
 	specified.
 
-	::
+	.. code-block:: text
 
 		+------------------+--------------------+---------+-----------------------------------+
 		| Enumeration ID   | Device Name        | Valid   | Description                       |
@@ -111,7 +111,7 @@ rpmsg_char_close()
 	rpmsg_char_library. The validity of the enumerations wrt J784S4 is also
 	specified.
 
-	::
+	.. code-block:: text
 
 		+------------------+--------------------+---------+-----------------------------------+
 		| Enumeration ID   | Device Name        | Valid   | Description                       |
@@ -168,7 +168,7 @@ rpmsg_char_close()
 	rpmsg_char_library. The validity of the enumerations wrt J721E is also
 	specified.
 
-	::
+	.. code-block:: text
 
 		+------------------+--------------------+---------+-----------------------------------+
 		| Enumeration ID   | Device Name        | Valid   | Description                       |
@@ -200,7 +200,7 @@ rpmsg_char_close()
 	rpmsg_char_library. The validity of the enumerations wrt J7200 is also
 	specified.
 
-	::
+	.. code-block:: text
 
 		+------------------+--------------------+---------+-----------------------------------+
 		| Enumeration ID   | Device Name        | Valid   | Description                       |
@@ -221,7 +221,7 @@ rpmsg_char_close()
 	rpmsg_char_library. The validity of the enumerations wrt AM62x is also
 	specified.
 
-	::
+	.. code-block:: text
 
 		+------------------+--------------------+---------+-----------------------------------+
 		| Enumeration ID   | Device Name        | Valid   | Description                       |
@@ -238,7 +238,7 @@ rpmsg_char_close()
 	rpmsg_char_library. The validity of the enumerations wrt AM62Ax is also
 	specified.
 
-	::
+	.. code-block:: text
 
 		+------------------+--------------------+---------+-----------------------------------+
 		| Enumeration ID   | Device Name        | Valid   | Description                       |
@@ -290,7 +290,7 @@ SDK wic image filesystem:
 
 #. Run the example on the board:
 
-::
+.. code-block:: console
 
   Usage: rpmsg_char_simple [-r <rproc_id>] [-n <num_msgs>] [-d <rpmsg_dev_name] [-p <remote_endpt]
       Defaults: rproc_id: 0 num_msgs: 100 rpmsg_dev_name: NULL remote_endpt: 14
@@ -299,7 +299,7 @@ SDK wic image filesystem:
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-    ::
+    .. code-block:: console
 
 		# MCU R5F<->A72_0 IPC
 		root@j721s2-evm:~# rpmsg_char_simple -r0 -n10
@@ -363,7 +363,7 @@ SDK wic image filesystem:
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
-    ::
+    .. code-block:: console
 
 		# MCU R5F<->A72_0 IPC
 		root@j784s4-evm:~# rpmsg_char_simple -r0 -n10
@@ -602,7 +602,7 @@ SDK wic image filesystem:
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
-    ::
+    .. code-block:: console
 
 		# MCU R5F<->A72_0 IPC
 		root@j721e-evm:~# rpmsg_char_simple -r0 -n10
@@ -726,7 +726,7 @@ SDK wic image filesystem:
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
-    ::
+    .. code-block:: console
 
 		# MCU R5F<->A72_0 IPC
 		root@j7200-evm:~# rpmsg_char_simple -r0 -n10
@@ -790,7 +790,7 @@ SDK wic image filesystem:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-	::
+	.. code-block:: console
 
 		# M4F<->A53_0 IPC
 		root@am62xx-evm:~# rpmsg_char_simple -r 9 -n 10
@@ -853,7 +853,7 @@ SDK wic image filesystem:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-	::
+	.. code-block:: console
 
 		# MCU R5F<->A53_0 IPC
 		root@am62axx-evm:~# rpmsg_char_simple -r0 -n10
@@ -959,7 +959,7 @@ Build the kernel module rpmsg_client_sample:
 
 Use menuconfig to verify Kernel hacking > Sample kernel code > Build rpmsg client sample is M:
 
-::
+.. code-block:: console
 
     $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- distclean
     $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig ti_arm64_prune.config
@@ -979,7 +979,7 @@ Use menuconfig to verify Kernel hacking > Sample kernel code > Build rpmsg clien
 
 #. Make the kernel and modules. Multithreading with –j is optional:
 
-::
+.. code-block:: console
 
     $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- -j8
 
@@ -1088,7 +1088,7 @@ SDK wic image filesystem:
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
-	::
+	.. code-block:: console
 
 		root@j784s4-evm:~# modprobe rpmsg_client_sample count=10
 		[ 1205.514152] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: new channel: 0x401 -> 0xd!
@@ -1226,7 +1226,7 @@ SDK wic image filesystem:
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
-	::
+	.. code-block:: console
 
 		root@j721e-evm:~# modprobe rpmsg_client_sample count=10
 		[ 1441.103962] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: new channel: 0x401 -> 0xd!
@@ -1316,7 +1316,7 @@ SDK wic image filesystem:
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
-	::
+	.. code-block:: console
 
 		root@j7200-evm:~# modprobe rpmsg_client_sample count=10
 		[  700.542444] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: new channel: 0x401 -> 0xd!
@@ -1346,7 +1346,7 @@ SDK wic image filesystem:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-	::
+	.. code-block:: console
 
 		root@am62xx-evm:~# modprobe rpmsg_client_sample count=10
 		[18124.495957] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: new channel: 0x400 -> 0xd!
@@ -1375,7 +1375,7 @@ SDK wic image filesystem:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-	::
+	.. code-block:: console
 
 		root@am62axx-evm:/lib/firmware# modprobe rpmsg_client_sample count=10
 		[ 2081.593551] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: new channel: 0x400 -> 0xd!

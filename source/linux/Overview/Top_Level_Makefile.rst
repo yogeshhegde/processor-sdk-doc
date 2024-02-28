@@ -94,19 +94,19 @@ makefile targets.
 
 .. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM64X')
 
-    ::
+    .. code-block:: console
 
         host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools swig
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X')
 
-    ::
+    .. code-block:: console
 
         host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools swig python3 python3-pip
 
     Following pip packages are also needed for binman in u-boot targets
 
-    ::
+    .. code-block:: console
 
         host# pip3 install jsonschema
         host# pip3 install pyelftools
@@ -121,7 +121,7 @@ makefile targets.
     both the toolchains for ARMv8 and ARMv7. Make sure to update your PATH to
     include the path to toolchain.
 
-    ::
+    .. code-block:: console
 
         GCC92PATH=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu/bin:$HOME/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf/bin
         export PATH=$GCC92PATH:$PATH
@@ -233,19 +233,19 @@ the Makefile from the top-level of the SDK.
 
     -  Build Everything
 
-    ::
+    .. code-block:: console
 
         host# make
 
     -  Clean Everything
 
-    ::
+    .. code-block:: console
 
         host# make clean
 
     -  Install Everything
 
-    ::
+    .. code-block:: console
 
         host# make install
 
@@ -266,7 +266,7 @@ the Makefile from the top-level of the SDK.
 
    - Copy FitImage, Linux Kernel Image and boot-binaries to built-images folder
 
-   ::
+   .. code-block:: console
 
         host# make linux_stage
 
@@ -275,7 +275,7 @@ the Makefile from the top-level of the SDK.
 
     -  Install Linux kernel image and kernel modules to SD card
 
-    ::
+    .. code-block:: console
 
         host# make linux_install
 
@@ -287,7 +287,7 @@ the Makefile from the top-level of the SDK.
 
     -  Install Linux kernel modules and Fitimage to SD card rootfs
 
-    ::
+    .. code-block:: console
 
         host# make linux_install
 
@@ -296,7 +296,7 @@ the Makefile from the top-level of the SDK.
 
 -  Clean Linux
 
-::
+.. code-block:: console
 
     host# make linux_clean
 
@@ -305,23 +305,23 @@ the Makefile from the top-level of the SDK.
     - To build Linux kernel and FitImage for ``am62xx-lp-evm``, pass ``PLATFORM=am62xx-lp-evm``
       argument to make.
 
-    ::
+    .. code-block:: console
 
         host# PLATFORM=am62xx-lp-evm make linux
 
     - make linux_install for ``am62xx-lp-evm``
 
-    ::
+    .. code-block:: console
 
         host# sudo DESTDIR=/media/$USER/rootfs PLATFORM=am62xx-lp-evm make linux_install
 
     - To Build GPU kernel module
 
-    ::
+    .. code-block:: console
 
         host# make ti-img-rogue-driver
 
-    ::
+    .. code-block:: console
 
         Install GPU Kernel Modules
         host# make ti-img-rogue-driver_install
@@ -334,19 +334,19 @@ the Makefile from the top-level of the SDK.
 
  -  Build the ARM Benchmarks
 
- ::
+ .. code-block:: console
 
     host# make am-benchmarks
 
  -  Clean the ARM Benchmarks
 
- ::
+ .. code-block:: console
 
     host# make am-benchmarks_clean
 
  -  Install the ARM Benchmarks
 
- ::
+ .. code-block:: console
 
     host# make am-benchmarks_install
 
@@ -354,19 +354,19 @@ the Makefile from the top-level of the SDK.
 
     -  Build the ARM Benchmarks
 
-    ::
+    .. code-block:: console
 
         host# make arm-benchmarks
 
     -  Clean the ARM Benchmarks
 
-    ::
+    .. code-block:: console
 
         host# make arm-benchmarks_clean
 
     -  Install the ARM Benchmarks
 
-    ::
+    .. code-block:: console
 
         host# sudo make arm-benchmarks_install
 
@@ -374,19 +374,19 @@ the Makefile from the top-level of the SDK.
 
     - Build Matrix-gui sources
 
-    ::
+    .. code-block:: console
 
         host# make matrix-gui
 
     - Clean the Matrix GUI
 
-    ::
+    .. code-block:: console
 
         host# make matrix-gui_clean
 
     - Install the Matrix GUI sources
 
-    ::
+    .. code-block:: console
 
         host# sudo make matrix-gui_install
 
@@ -399,24 +399,24 @@ the Makefile from the top-level of the SDK.
     -  By default, this builds the sysfw for AM65xx PG2.0 GP. To build sysfw for other variants,
        run the following commands
 
-    ::
+    .. code-block:: console
 
         host# cd <installer>/board-support/prebuilt-binaries/
 
     -  To build for AM65xx PG2.0 HS,
-    ::
+    .. code-block:: console
 
         host# wget https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/plain/ti-sysfw/ti-sci-firmware-am65x_sr2-hs-cert.bin?h=cicd.dunfell.202303090400 -o ti-sci-firmware-am65x_sr2-hs-cert.bin
         host# wget https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/plain/ti-sysfw/ti-sci-firmware-am65x_sr2-hs-enc.bin?h=cicd.dunfell.202303090400 -o ti-sci-firmware-am65x_sr2-hs-enc.bin
 
     -  To build for AM65xx PG1.0 HS,
-    ::
+    .. code-block:: console
 
         host# wget https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/plain/ti-sysfw/ti-sci-firmware-am65x-hs-cert.bin?h=cicd.dunfell.202303090400 -o ti-sci-firmware-am65x-hs-cert.bin
         host# wget https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/plain/ti-sysfw/ti-sci-firmware-am65x-hs-enc.bin?h=cicd.dunfell.202303090400 -o ti-sci-firmware-am65x-hs-enc.bin
 
     -  To build for AM65xx PG1.0 GP,
-    ::
+    .. code-block:: console
 
         host# wget https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/plain/ti-sysfw/ti-sci-firmware-am65x-gp.bin?h=cicd.dunfell.202303090400 -o ti-sci-firmware-am65x-gp.bin
 
@@ -424,19 +424,19 @@ the Makefile from the top-level of the SDK.
 
     -  To Build for HS, add `SOC_TYPE=hs` in Rules.make file
 
-  ::
+  .. code-block:: console
 
       host# make sysfw-image
 
   -  Clean the sysfw
 
-  ::
+  .. code-block:: console
 
       host# make sysfw-image_clean
 
   -  Install the sysfw
 
-  ::
+  .. code-block:: console
 
       host# make sysfw-image_install
 
@@ -444,13 +444,13 @@ the Makefile from the top-level of the SDK.
 
     -  Build u-boot
 
-    ::
+    .. code-block:: console
 
         host# make u-boot
 
     -  Clean u-boot
 
-    ::
+    .. code-block:: console
 
         host# make u-boot_clean
 
@@ -458,37 +458,37 @@ the Makefile from the top-level of the SDK.
 
     -  Build u-boot
 
-    ::
+    .. code-block:: console
 
         host# make u-boot
 
     - Build A53
 
-    ::
+    .. code-block:: console
 
         host# make u-boot-a53
 
     - Build R5
 
-    ::
+    .. code-block:: console
 
         host# make u-boot-r5
 
     - Copy boot-binaries to built-images folder
 
-    ::
+    .. code-block:: console
 
         host# make u-boot_stage
 
     - Install boot-binaries to SD card boot partition
 
-    ::
+    .. code-block:: console
 
         host# sudo DESTDIR=/media/$USER/boot make u-boot_install
 
     - Clean u-boot
 
-    ::
+    .. code-block:: console
 
         host# make u-boot_clean
 
@@ -499,13 +499,13 @@ the Makefile from the top-level of the SDK.
 
     - Build u-boot for ``am62xx-lp-evm``
 
-    ::
+    .. code-block:: console
 
         host# make u-boot PLATFORM=am62xx-lp-evm
 
     - Install boot-binaries to SD card boot partition for ``am62xx-lp-evm``
 
-    ::
+    .. code-block:: console
 
         host# sudo DESTDIR=/media/$USER/boot PLATFORM=am62xx-lp-evm make u-boot_install
 
@@ -518,7 +518,7 @@ the Makefile from the top-level of the SDK.
     This requires first building the R5 boot image. This will generate the u-boot-spl.bin. Then build sysfw-image to generate combined boot image.
 
     **For GP**
-    ::
+    .. code-block:: console
 
         host# make u-boot
         host# make sysfw-image DEVICE_TYPE=gp
@@ -526,7 +526,7 @@ the Makefile from the top-level of the SDK.
     The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-gp-evm.bin
 
     **For HS-FS**
-    ::
+    .. code-block:: console
 
         host# make u-boot
         host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
@@ -535,7 +535,7 @@ the Makefile from the top-level of the SDK.
     The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-hs-fs-evm.bin
 
     **For HS-SE**
-    ::
+    .. code-block:: console
 
         host# make u-boot
         host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
@@ -544,13 +544,14 @@ the Makefile from the top-level of the SDK.
     The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-hs-evm.bin
 
     .. note:: If TI_SECURE_DEV_PKG environment variable is not defined, tiboot3.bin can still be built for GP devices. The following errors will occur in K3-Image-Gen build logs when building for HS-FS or HS-SE devices without the TI_SECURE_DEV_PKG environment variable defined and K3-Image-Gen build may fail:
-     ::
+
+    .. code-block:: console
 
        TI_SECURE_DEV_PKG must be set for HS, defaults will not work.  Stop.
 
     To fix the above issue, do the following and rebuild the `sysfw-image`.
 
-    ::
+    .. code-block:: console
 
        host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
 
@@ -562,7 +563,7 @@ the Makefile from the top-level of the SDK.
          This will generate the u-boot-spl.bin.  This file must be copied to the k3-image-gen* folder.
          The tiboot3.bin can then be built from the k3-image-gen* folder.
 
-    ::
+    .. code-block:: console
 
         host# make u-boot-r5
         host# cp board-support/u-boot_build/r5/spl/u-boot-spl.bin board-support/k3-image-gen*/.
@@ -580,7 +581,7 @@ the Makefile from the top-level of the SDK.
     different path to DESTDIR on commandline. e.g. run following for installing
     everything in the SD card rootfs.
 
-    ::
+    .. code-block:: console
 
         host# sudo DESTDIR=/media/$USER/rootfs make install
         #Replace the path to SD card rootfs partition as appropriate
@@ -602,7 +603,7 @@ the Makefile from the top-level of the SDK.
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-    ::
+    .. code-block:: console
 
         host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
         #Replace the path to SD card boot partition as appropriate
@@ -618,19 +619,19 @@ the Makefile from the top-level of the SDK.
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
     **For GP**
-    ::
+    .. code-block:: console
 
         host# sudo cp board-support/k3-image-gen*/tiboot3-am62*-gp-evm.bin /media/$USER/boot/tiboot3.bin
         host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin /media/$USER/boot
 
     **For HS-FS**
-    ::
+    .. code-block:: console
 
         host# sudo cp board-support/k3-image-gen*/tiboot3-am62*-hs-fs-evm.bin /media/$USER/boot/tiboot3.bin
         host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin /media/$USER/boot
 
     **For HS-SE**
-    ::
+    .. code-block:: console
 
         host# sudo cp board-support/k3-image-gen*/tiboot3-am62*-hs-evm.bin /media/$USER/boot/tiboot3.bin
         host# sudo cp board-support/u-boot_build/a53/tispl.bin_HS /media/$USER/boot/tispl.bin
@@ -639,19 +640,19 @@ the Makefile from the top-level of the SDK.
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
     **For GP**
-    ::
+    .. code-block:: console
 
         host# sudo cp board-support/built-images/tiboot3-am62*-gp-evm.bin /media/$USER/boot/tiboot3.bin
         host# sudo cp board-support/built-images/u-boot.img board-support/built-images/tispl.bin /media/$USER/boot
 
     **For HS-FS**
-    ::
+    .. code-block:: console
 
         host# sudo cp board-support/built-images/tiboot3-am62*-hs-fs-evm.bin /media/$USER/boot/tiboot3.bin
         host# sudo cp board-support/built-images/u-boot.img board-support/built-images/tispl.bin /media/$USER/boot
 
     **For HS-SE**
-    ::
+    .. code-block:: console
 
         host# sudo cp board-support/built-images/tiboot3-am62*-hs-evm.bin /media/$USER/boot/tiboot3.bin
         host# sudo cp board-support/built-images/tispl.bin /media/$USER/boot/tispl.bin
@@ -659,7 +660,7 @@ the Makefile from the top-level of the SDK.
 
 .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X')
 
-    ::
+    .. code-block:: console
 
         host# sudo cp board-support/u-boot_build/u-boot.img board-support/u-boot_build/MLO /media/$USER/boot
 
@@ -667,7 +668,7 @@ the Makefile from the top-level of the SDK.
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
     **For GP**
-    ::
+    .. code-block:: console
 
         #Replace the path to SD card boot partition as appropriate
         host# sudo cp board-support/built-images/u-boot.img /media/$USER/boot/u-boot.img
@@ -675,7 +676,7 @@ the Makefile from the top-level of the SDK.
         host# sudo cp board-support/built-images/tiboot3-am64x-gp-evm.bin /media/$USER/boot/tiboot3.bin
 
     **For HS-FS**
-    ::
+    .. code-block:: console
 
         #Replace the path to SD card boot partition as appropriate
         host# sudo cp board-support/built-images/u-boot.img /media/$USER/boot/u-boot.img
@@ -683,7 +684,7 @@ the Makefile from the top-level of the SDK.
         host# sudo cp board-support/built-images/tiboot3-am64x_sr2-hs-fs-evm.bin /media/$USER/boot/tiboot3.bin
 
     **For HS-SE**
-    ::
+    .. code-block:: console
 
         #Replace the path to SD card boot partition as appropriate
         host# sudo cp board-support/built-images/u-boot.img /media/$USER/boot/u-boot.img

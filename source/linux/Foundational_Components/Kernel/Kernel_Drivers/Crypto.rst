@@ -16,7 +16,7 @@ available built-in in the kernel in the current SDK release.
 Following are the Hardware accelerators supported on the following
 devices:
 
-::
+.. code-block:: text
 
     * AM335X             : MD5, SHA1, SHA224, SHA256, AES, DES
     * AM437X             : MD5, SHA1, SAH224, SHA256, SHA384, SHA512, AES, DES, DES3DES
@@ -60,13 +60,13 @@ kernel configuration.
     To check if sa2ul module is properly installed,
     run the below command from the Linux command prompt:
 
-    ::
+    .. code-block:: console
 
         lsmod | grep sa2ul
 
     Output should show something similar to below:
 
-    ::
+    .. code-block:: text
 
         sa2ul 262144 0
 
@@ -84,7 +84,7 @@ kernel configuration.
     Messages printed during bootup will indicate that initialization of the
     crypto modules has taken place.
 
-    ::
+    .. code-block:: console
 
         [    2.120565] omap-sham 53100000.sham: hw accel on OMAP rev 4.3
         [    2.160584] mmc1: BKOPS_EN bit is not set
@@ -107,7 +107,7 @@ kernel configuration.
     Messages printed during bootup will indicate that initialization of the
     RNG module has taken place.
 
-    ::
+    .. code-block:: console
 
         [    1.660514] omap_rng 48310000.rng: OMAP Random Number Generator ver. 20
 
@@ -137,7 +137,7 @@ accelerators is built into the kernel.
 The following shows the command used to query the system for the state of
 the cryptodev module.
 
-    ::
+    .. code-block:: console
 
         root@evm:~# lsmod | grep cryptodev
         cryptodev              11962  0
@@ -146,7 +146,7 @@ The following example demonstrates the OpenSSL built-in speed
 test to demonstrate performance. The addition of the parameter **-engine
 devcrypto** tells OpenSSL to use the Cryptodev driver if it exists.
 
-::
+.. code-block:: console
 
     root@evm:~# openssl speed -evp aes-128-cbc -engine devcrypto
     engine "devcrypto" set.
@@ -167,7 +167,7 @@ devcrypto** tells OpenSSL to use the Cryptodev driver if it exists.
 Using the Linux time -v function gives more information about CPU usage
 during the test.
 
-::
+.. code-block:: console
 
     root@evm:~# time -v openssl speed -evp aes-128-cbc -engine devcrypto
     engine "devcrypto" set.
@@ -211,7 +211,7 @@ When the cryptodev driver is removed, OpenSSL reverts to the software
 implementation of the crypto algorithm. The performance using the
 software only implementation can be compared to the previous test.
 
-::
+.. code-block:: console
 
     root@evm:~# modprobe -r cryptodev
     root@evm:~# time -v openssl speed -evp aes-128-cbc
@@ -261,21 +261,21 @@ built into the kernel. No further configuration is required.
 
     Check that the optee-rng driver is loaded:
 
-    ::
+    .. code-block:: console
 
         root@evm:~# cat /sys/class/misc/hw_random/rng_current
         optee-rng
 
 The hwrng device should now show up in the filesystem.
 
-::
+.. code-block:: console
 
     root@evm:~# ls -l /dev/hwrng
     crw------- 1 root root 10, 183 Jan 1 2000 /dev/hwrng
 
 Use cat on this device to generate random numbers.
 
-::
+.. code-block:: console
 
     root@evm:~# cat /dev/hwrng | od -x
     0000000 b2bd ae08 4477 be48 4836 bf64 5d92 01c9
@@ -290,7 +290,7 @@ Use cat on this device to generate random numbers.
 
 Test the random number generator on the target.
 
-::
+.. code-block:: console
 
     root@evm:~# cat /dev/hwrng | rngtest -c 1000
     rngtest 3
@@ -322,7 +322,7 @@ you can use **rngd** (the random number generator daemon) to feed the
 
 Testing using the tcrypt module:
 
-::
+.. code-block:: console
 
     # modprobe tcrypt mode=500 sec=1
     [ 3006.234145] tcrypt:
@@ -366,7 +366,7 @@ IPSec Testing:
 
 Server side
 
-::
+.. code-block:: console
 
     # iperf3 --server
 
@@ -387,7 +387,7 @@ Server side
 
 Client side
 
-::
+.. code-block:: console
 
     # iperf3 -c 192.168.1.1 -u -b 400.0M -t 10
     Connecting to host 192.168.1.1, port 5201

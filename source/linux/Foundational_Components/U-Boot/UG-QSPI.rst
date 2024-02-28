@@ -111,27 +111,27 @@ documented in U-boot SPI section.
     Setup: Connect the Type C port (USB0 port) of EVM to ubuntu host PC. Make sure
     dfu-util tool is installed and USB0 port is in UFP/DRP mode: SW3[3:4] = 01 or 1x.
 
-    ::
+    .. code-block:: console
 
          #sudo apt-get install dfu-util
 
     From u-boot(for OSPI flash):
 
-    ::
+    .. code-block:: console
 
         U-Boot # env default -a
         U-Boot # setenv dfu_alt_info ${dfu_alt_info_ospi}; dfu 0 sf "0:0:25000000:0"
 
     From u-boot(for QSPI flash):
 
-    ::
+    .. code-block:: console
 
         U-Boot # env default -a
         U-Boot # setenv dfu_alt_info ${dfu_alt_info_ospi}; dfu 0 sf "1:0:40000000:0"
 
     From ubuntu PC: Using dfu-util utilities to flash the binares to OSPI/QSPI flash.
 
-    ::
+    .. code-block:: console
 
         # sudo dfu-util -l
         Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
@@ -147,7 +147,7 @@ documented in U-boot SPI section.
     Flash the binaries to the respective regions using alternate interface
     number (alt=<x>).
 
-    ::
+    .. code-block:: console
 
         # sudo dfu-util -c 1 -i 0 -a 0 -D tiboot3.bin
         # sudo dfu-util -c 1 -i 0 -a 1 -D tispl.bin
@@ -224,20 +224,20 @@ documented in U-boot SPI section.
     Setup: Connect the Type C port (USB0 port) of EVM to ubuntu host PC. Make sure
     dfu-util tool is installed and USB0 port is in UFP/DRP mode: SW3[3:4] = 01 or 1x.
 
-    ::
+    .. code-block:: console
 
          #sudo apt-get install dfu-util
 
     From u-boot:
 
-    ::
+    .. code-block:: console
 
         U-Boot # env default -a
         U-Boot # setenv dfu_alt_info ${dfu_alt_info_ospi}; dfu 0 sf "0:0:25000000:0"
 
     From ubuntu PC: Using dfu-util utilities to flash the binares to QSPI flash.
 
-    ::
+    .. code-block:: console
 
         # sudo dfu-util -l
         Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
@@ -252,7 +252,7 @@ documented in U-boot SPI section.
     Flash the binaries to the respective regions using alternate interface
     number (alt=<x>).
 
-    ::
+    .. code-block:: console
 
         # sudo dfu-util -c 1 -i 0 -a 0 -D tiboot3.bin
         # sudo dfu-util -c 1 -i 0 -a 1 -D tispl.bin
@@ -749,20 +749,20 @@ documented in U-boot SPI section.
     Setup: Connect the Type C port (USB0 port) of EVM to ubuntu host PC. Make sure
     dfu-util tool is installed and USB0 port is in UFP/DRP mode: SW3[3:4] = 01 or 1x.
 
-    ::
+    .. code-block:: console
 
          #sudo apt-get install dfu-util
 
     From u-boot(for OSPI flash):
 
-    ::
+    .. code-block:: console
 
         U-Boot # env default -a
         U-Boot # setenv dfu_alt_info ${dfu_alt_info_ospi}; dfu 0 sf "0:0:25000000:0"
 
     From ubuntu PC: Using dfu-util utilities to flash the binares to OSPI/QSPI flash.
 
-    ::
+    .. code-block:: console
 
         # sudo dfu-util -l
         Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
@@ -779,7 +779,7 @@ documented in U-boot SPI section.
     Flash the binaries to the respective regions using alternate interface
     number (alt=<x>).
 
-    ::
+    .. code-block:: console
 
         # sudo dfu-util -c 1 -i 0 -a 0 -D tiboot3.bin
         # sudo dfu-util -c 1 -i 0 -a 1 -D tispl.bin
@@ -789,7 +789,7 @@ documented in U-boot SPI section.
 
     Memory Layout of QSPI Flash
 
-    ::
+    .. code-block:: text
 
         +----------------+ 0x00000
         |      MLO       |
@@ -830,7 +830,7 @@ documented in U-boot SPI section.
 
     For QSPI\_1 build U-Boot with ``dra7xx_evm_config``
 
-    ::
+    .. code-block:: console
 
         U-Boot # mmc rescan
         U-Boot # fatload mmc 0 ${loadaddr} MLO
@@ -844,7 +844,7 @@ documented in U-boot SPI section.
 
     For QSPI\_4 build U-Boot with ``dra7xx_evm_qspiboot_config``
 
-    ::
+    .. code-block:: console
 
         U-Boot # mmc rescan
         U-Boot # fatload mmc 0 ${loadaddr} MLO
@@ -864,13 +864,13 @@ documented in U-boot SPI section.
     Setup: Connect the usb0 port of EVM to ubuntu host PC. Make sure
     dfu-util tool is installed.
 
-    ::
+    .. code-block:: console
 
          #sudo apt-get install dfu-util
 
     From u-boot:
 
-    ::
+    .. code-block:: console
 
         U-Boot # env default -a
         U-Boot # setenv dfu_alt_info ${dfu_alt_info_qspi}; dfu 0 sf "0:0:64000000:0"
@@ -878,7 +878,7 @@ documented in U-boot SPI section.
     From ubuntu PC: Using dfu-util utilities to flash the binares to QSPI
     flash.
 
-    ::
+    .. code-block:: console
 
         # sudo dfu-util -l
         (C) 2005-2008 by Weston Schmidt, Harald Welte and OpenMoko Inc.
@@ -895,7 +895,7 @@ documented in U-boot SPI section.
     Flash the binaries to the respective regions using alternate interface
     number (alt=<x>).
 
-    ::
+    .. code-block:: console
 
         # sudo dfu-util -c 1 -i 0 -a 0 -D MLO
         # sudo dfu-util -c 1 -i 0 -a 1 -D u-boot.img
@@ -908,7 +908,7 @@ documented in U-boot SPI section.
     The default environment does not contain a QSPI boot command. The
     following example uses the partition table found in the kernel.
 
-    ::
+    .. code-block:: console
 
         U-Boot # sf probe 0
         U-Boot # sf read ${loadaddr} 0x1e0000 0x800000
@@ -930,7 +930,7 @@ documented in U-boot SPI section.
     For QSPI single stage or Falcon mode, the CONFIG\_QSPI\_BOOT shall
     enabled.
 
-    ::
+    .. code-block:: text
 
         Menuconfig->Bood media
            [ ] Support for booting from NAND flash
@@ -948,7 +948,7 @@ documented in U-boot SPI section.
     The QSPI boot uses uImage. Build the kernel uImage. You will need to
     keep the U-Boot tool ``mkimage`` in your ``$PATH``
 
-    ::
+    .. code-block:: console
 
         # make uImage modules dtbs LOADADDR=80008000
 
@@ -956,7 +956,7 @@ documented in U-boot SPI section.
     then add the needed bootargs in chosen node in DTB file, using fdtput
     host utility. For example, for DRA74x EVM:
 
-    ::
+    .. code-block:: console
 
         # fdtput -v -t s arch/arm/boot/dts/dra7-evm.dtb "/chosen" bootargs "console=ttyO0,115200n8 root=<rootfs>"
 
@@ -964,7 +964,7 @@ documented in U-boot SPI section.
 
     From u-boot prompt
 
-    ::
+    .. code-block:: console
 
         => setenv boot_os 1
         => saveenv
@@ -983,7 +983,7 @@ documented in U-boot SPI section.
     | AM335x ICE   | am335x\_evm\_spiboot_defconfig                            |
     +--------------+-----------------------------------------------------------+
 
-    ::
+    .. code-block:: console
 
 	    U-Boot # mmc rescan
 	    U-Boot # sf probe 0
@@ -998,7 +998,7 @@ documented in U-boot SPI section.
     -  AM335X ICE boots from SPI by default. To boot from SD card, erase the
        MLO partition:
 
-    ::
+    .. code-block:: console
 
 	    U-Boot # sf erase 0x0 0x20000
 
@@ -1018,7 +1018,7 @@ documented in U-boot SPI section.
        as easily be loaded via network (documented above) or other interface
        that exists.
 
-    ::
+    .. code-block:: console
 
         U-Boot # mmc rescan
         U-Boot # fatload mmc 0 ${loadaddr} u-boot.bin
@@ -1032,7 +1032,7 @@ documented in U-boot SPI section.
     The default environment does not contain a QSPI boot command. The
     following example uses the partition table found in the kernel.
 
-    ::
+    .. code-block:: console
 
         U-Boot # sf probe 0
         U-Boot # sf read ${loadaddr} 0x1a0000 0x800000

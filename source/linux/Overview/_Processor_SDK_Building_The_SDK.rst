@@ -39,7 +39,7 @@ distribution.
 
     For Ubuntu 22.04, please run the following:
 
-::
+.. code-block:: console
 
     $ sudo apt-get update
     $ # Install packages required for builds
@@ -53,7 +53,7 @@ distribution.
 By default Ubuntu uses "dash" as the default shell for /bin/sh. You must
 reconfigure to use bash by running the following command:
 
-::
+.. code-block:: console
 
     sudo dpkg-reconfigure dash
 
@@ -92,7 +92,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
        Processor SDK image with arago + edge ai filesystem.  See `Build Options`_ for a list of
        additional targets.
 
-       ::
+       .. code-block:: console
 
            $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
            $ cd tisdk
@@ -112,7 +112,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
        Processor SDK image with arago filesystem.  See `Build Options`_ for a list of
        additional targets.
 
-       ::
+       .. code-block:: console
 
            $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
            $ cd tisdk
@@ -129,7 +129,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
 .. note:: While building images via Yocto, if you are facing **locale.Error: unsupported locale setting** error, it means your system is trying to use a locale setting which was not there. Run the following commands which will setup the locale and try building your target image again.
 
-    ::
+    .. code-block:: console
 
         export LC_ALL="en_US.UTF-8"
         export LC_CTYPE="en_US.UTF-8"
@@ -141,18 +141,18 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
     |__SDK_FULL_NAME__| uses the 'oe-layersetup' tool to configure the meta layers. If you do not have the Linux SDK package installed:
-    ::
+    .. code-block:: console
 
         git clone https://git.ti.com/git/arago-project/oe-layersetup.git yocto-build
         cd yocto-build
 
     The Linux SDK package also has the above tool cloned at the top level. If you have it installed:
-    ::
+    .. code-block:: console
 
         cd <SDK INSTALL DIR>/yocto-build
 
     Then run following commands to setup a yocto build for a specific release version and build the 'tisdk-default-image' target.
-    ::
+    .. code-block:: console
 
         ./oe-layertool-setup.sh -f configs/processor-sdk-linux/processor-sdk-linux-<version>.txt
         cd build
@@ -349,7 +349,7 @@ The "Build Output" is given relative to the
         .. rubric:: RT Support
 
         Run the command below, before the bitbake build command, to setup a yocto build with RT Linux Kernel:
-        ::
+        .. code-block:: console
 
             echo "ARAGO_RT_ENABLE = \"1\"" >> conf/local.conf
 

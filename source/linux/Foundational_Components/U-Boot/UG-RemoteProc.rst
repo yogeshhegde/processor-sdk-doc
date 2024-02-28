@@ -21,19 +21,19 @@ initialize individual core based on the DT alias id.
 
 The below command will initialize all the available remote cores:
 
-::
+.. code-block:: console
 
     => rproc init
 
 The below command will initialize just the given remote core
 
-::
+.. code-block:: console
 
    => rproc init <id>
 
 The below command lists all the available/initialized remotecores in a system.
 
-::
+.. code-block:: console
 
    => rproc list
    0 - Name:'r5f@41000000' type:'internal memory mapped' supports: load start stop reset
@@ -53,7 +53,7 @@ Loading
 Once Initialized, remotecores can be loaded with a relevant image. Make sure
 image is loaded only after initializing the core.
 
-::
+.. code-block:: console
 
     => load mmc 1:2 0x90000000 /lib/firmware/j7-main-r5f0_0-fw
     2536540 bytes read in 112 ms (21.6 MiB/s)
@@ -66,7 +66,7 @@ Starting
 
 Successfully loaded remotecore can be started using the following command.
 
-::
+.. code-block:: console
 
     => rproc start 2
 
@@ -75,7 +75,7 @@ Stop
 
 A running remotecore can be stopped using the following command.
 
-::
+.. code-block:: console
 
     => rproc stop 2
 
@@ -113,7 +113,7 @@ Refer to the below example on K3 J784S4 SoC.
 
     arch/arm/dts/k3-j784s4-main.dtsi
 
-    ::
+    .. code-block:: dts
 
         main_r5fss0: r5fss@5c00000 {
             compatible = "ti,j721s2-r5fss";
@@ -129,7 +129,7 @@ Refer to the below example on K3 J784S4 SoC.
 
     arch/arm/dts/k3-j784s4-mcu-wakeup.dtsi
 
-    ::
+    .. code-block:: dts
 
         mcu_r5fss0: r5fss@41000000 {
             compatible = "ti,j721s2-r5fss";
@@ -141,7 +141,7 @@ Refer to the below example on K3 J784S4 SoC.
 
     arch/arm/dts/k3-j784s4-binman.dtsi
 
-    ::
+    .. code-block:: dts
 
         &binman {
             tiboot3-j784s4-gp-evm.bin { # In the case of GP boards
@@ -163,7 +163,7 @@ Refer to the below example on K3 J784S4 SoC.
 
     arch/arm/dts/k3-j784s4-main.dtsi
 
-    ::
+    .. code-block:: dts
 
         main_r5fss0: r5fss@5c00000 {
             compatible = "ti,j721s2-r5fss";
@@ -179,7 +179,7 @@ Refer to the below example on K3 J784S4 SoC.
 
     arch/arm/dts/k3-j784s4-mcu-wakeup.dtsi
 
-    ::
+    .. code-block:: dts
 
         mcu_r5fss0: r5fss@41000000 {
             compatible = "ti,j721s2-r5fss";
@@ -191,7 +191,7 @@ Refer to the below example on K3 J784S4 SoC.
 
     arch/arm/dts/k3-j784s4-binman.dtsi
 
-    ::
+    .. code-block:: dts
 
         &binman {
             tiboot3-j784s4-gp-evm.bin { # In the case of GP boards
@@ -222,21 +222,21 @@ All the firmware images are authenticated while loading from U-boot.
 
 Steps for signing and updating firmware images in filesystem.
 
-.. rubric:: Getting Security Dev Tool
+* Getting Security Dev Tool
 
-::
+    .. code-block:: console
 
-    $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
-    $ export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
+        $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
+        $ export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
 
-.. rubric:: Signing the firmware
+* Export the path for secdev
 
-::
+    .. code-block:: console
 
-    $ ${TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh $FIRMWARE $FIRMWARE.signed
+        $ ${TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh $FIRMWARE $FIRMWARE.signed
 
-.. rubric:: Updating firmware image
+* Updating firmware image
 
-::
+    .. code-block:: console
 
-    $ ln -vfs $FIRMWARE.signed /lib/firmware/j7-main-r5f0_0-fw-sec
+        $ ln -vfs $FIRMWARE.signed /lib/firmware/j7-main-r5f0_0-fw-sec

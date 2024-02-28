@@ -37,8 +37,6 @@ transition to the selected state.
 
     .. rubric:: Source Location
 
-    ::
-
         arch/arm/mach-omap2/pm33xx-core.c
         drivers/soc/ti/pm33xx.c
         drivers/cpuidle/cpuidle-arm.c
@@ -51,7 +49,7 @@ transition to the selected state.
 
     Select CPU Power Management from the main menu.
 
-    ::
+    .. code-block:: text
 
         ...
         ...
@@ -62,7 +60,7 @@ transition to the selected state.
 
     Select CPU Idle as shown here:
 
-    ::
+    .. code-block:: text
 
         ...
         ...
@@ -72,7 +70,7 @@ transition to the selected state.
 
     All relevant options are listed below:
 
-    ::
+    .. code-block:: text
 
             [*] CPU idle PM support
             [ ]   Support multiple cpuidle drivers
@@ -83,7 +81,7 @@ transition to the selected state.
 
     .. rubric:: DT Configuration
 
-    ::
+    .. code-block:: dts
 
         cpus {
                 cpu: cpu0 {
@@ -113,7 +111,7 @@ transition to the selected state.
     It is possible to get statistics about the different C-states during
     runtime, such as how long each state is occupied.
 
-    ::
+    .. code-block:: console
 
         # ls -l /sys/devices/system/cpu/cpu0/cpuidle/state0/
         -r--r--r--    1 root     root         4096 Jan  1 00:02 desc

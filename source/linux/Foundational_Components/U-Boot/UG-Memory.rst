@@ -15,7 +15,7 @@ would be SD and the other would be eMMC. The index of them can vary from
 one class of platforms to the other. For a given platform, the device
 number (device num) can be found in the following way,
 
-::
+.. code-block:: console
 
      U-Boot# mmc list
      sdhci@fa10000: 0 (eMMC)
@@ -31,14 +31,14 @@ of the GPT support in U-Boot to write a GPT partition table to eMMC. In
 this case we need to use the **uuidgen** program on the host to create
 the UUIDs used for the disk and each partition.
 
-::
+.. code-block:: console
 
     $ uuidgen
     ...first uuid...
     $ uuidgen
     ...second uuid...
 
-::
+.. code-block:: console
 
     U-Boot # printenv partitions
     uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
@@ -67,7 +67,7 @@ loaded from **/boot** with the same name as in the kernel.
     you need to write the generated ``u-boot.ais`` image to the SD card
     using ``dd`` command.
 
-    ::
+    .. code-block:: console
 
         $ sudo dd if=u-boot.ais of=/dev/sd<N> seek=117 bs=512 conv=fsync
 
@@ -80,7 +80,7 @@ MMC device and **printenv dfu\_alt\_settings\_mmc** or
 **dfu\_alt\_settings\_emmc** to see how they are mapped and exposed to
 **dfu-util**.
 
-::
+.. code-block:: console
 
     U-Boot# mmc part
 
@@ -112,7 +112,7 @@ written to a FAT filesystem.
 
 To start DFU on the target on the first MMC device:
 
-::
+.. code-block:: console
 
     U-Boot # setenv dfu_alt_info ${dfu_alt_info_mmc}
     U-Boot # dfu 0 mmc 0
@@ -120,20 +120,20 @@ To start DFU on the target on the first MMC device:
 On boards like AM57x GP EVM or BeagleBoard x15, where the second USB
 instance is used as USB client, the dfu command becomes:
 
-::
+.. code-block:: console
 
     U-Boot # dfu 1 mmc 0
 
 Then on the host PC to write **MLO** to an existing boot partition:
 
-::
+.. code-block:: console
 
     $ sudo dfu-util -D MLO -a MLO
 
 On the host PC to overwrite the current boot partition contents with a
 new created on the host FAT filesystem image:
 
-::
+.. code-block:: console
 
     $ sudo dfu-util -D fat.img -a boot
 
@@ -149,7 +149,7 @@ new created on the host FAT filesystem image:
     that the files exist on a SD card. In addition you may wish to write a
     filesystem image to the device, so an example is also provided.
 
-    ::
+    .. code-block:: console
 
         U-Boot # mmc dev 0
         U-Boot # mmc rescan
@@ -185,7 +185,7 @@ variables here are **mmcroot** and **mmcrootfstype**.
     partition. The following commands load the boot images from network and
     write them into the boot0 partition.
 
-    ::
+    .. code-block:: console
 
         U-boot # setenv autoload no
         U-boot # dhcp
@@ -204,7 +204,7 @@ variables here are **mmcroot** and **mmcrootfstype**.
     these are non-volatile configurations that need to be done **once per
     eMMC/board** .
 
-    ::
+    .. code-block:: console
 
         U-boot # mmc bootbus 1 2 0 2
         U-boot # mmc partconf 1 1 1 0
@@ -296,7 +296,7 @@ the zeroth instance of usb,
       applied and U-Boot image needs to be rebuilt to make USB0 port to be
       USB 3.0 host port.
 
-  ::
+  .. code-block:: dts
 
       diff --git a/arch/arm/dts/k3-j721e-common-proc-board-u-boot.dtsi b/arch/arm/dts/k3-j721e-common-proc-board-u-boot.dtsi
       index 50effb4812b2..28986c4d2c2a 100644
@@ -315,7 +315,7 @@ the zeroth instance of usb,
               u-boot,dm-spl;
        };
 
-  ::
+  .. code-block:: dts
 
       diff --git a/arch/arm/dts/k3-j7200-common-proc-board-u-boot.dtsi b/arch/arm/dts/k3-j7200-common-proc-board-u-boot.dtsi
       index 1b0f5658200f..daa05291b4cc 100644
@@ -365,7 +365,7 @@ the zeroth instance of usb,
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
-    ::
+    .. code-block:: dts
 
         diff --git a/arch/arm/dts/k3-am642-evm-u-boot.dtsi b/arch/arm/dts/k3-am642-evm-u-boot.dtsi
         index d066973f89f1..ff8afee09402 100644
@@ -382,7 +382,7 @@ the zeroth instance of usb,
 
 .. ifconfig:: CONFIG_part_family in ('AM62X_family')
 
-    ::
+    .. code-block:: dts
 
         diff --git a/arch/arm/dts/k3-am625-sk-u-boot.dtsi b/arch/arm/dts/k3-am625-sk-u-boot.dtsi
         index 20c24d2fa7a4..2b662653023f 100644
@@ -398,7 +398,7 @@ the zeroth instance of usb,
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-    ::
+    .. code-block:: dts
 
         diff --git a/arch/arm/dts/k3-am654-base-board-u-boot.dtsi b/arch/arm/dts/k3-am654-base-board-u-boot.dtsi
         index fd8f88bd3451..a754400ca122 100644
@@ -536,7 +536,7 @@ For more information, please refer to the latest U-boot documentation: https://d
 
 To boot kernel from eMMC, use the following commands after writing rootfs to user partition:
 
-::
+.. code-block:: console
 
     => setenv mmcdev 0
     => setenv bootpart 0
@@ -621,7 +621,7 @@ Booting Linux from USB storage
          USB subsytem is required to be built into the image. This can be done by making the following changes
          in the configuration used for building kernel,
 
-      ::
+      .. code-block:: text
 
           CONFIG_USB_COMMON=y
           CONFIG_USB=y
@@ -674,7 +674,7 @@ Booting Linux from USB storage
          USB subsytem is required to be built into the image. This can be done by making the following changes
          in the configuration used for building kernel,
 
-      ::
+      .. code-block:: text
 
           CONFIG_USB=y
           CONFIG_USB_XHCI_HCD=y
@@ -718,7 +718,7 @@ Booting Linux from USB storage
     way as an SD/MMC card is, we can utilize the **mmcboot** command to
     boot. To do this, perform the following steps:
 
-    ::
+    .. code-block:: console
 
         U-Boot # usb start
         U-Boot # setenv mmcroot /dev/sda2 ro
@@ -728,7 +728,7 @@ Booting Linux from USB storage
     On K2H/K/E/L EVMs, the USB drivers in Kernel needs to be built-in
     (default modules). The configuration changes are:
 
-    ::
+    .. code-block:: text
 
         CONFIG_USB=y
         CONFIG_USB_XHCI_HCD=y
@@ -747,7 +747,7 @@ Booting Linux from USB storage
     The USB should have boot partition of FAT32 format, and rootfs partition
     of EXT4 format. The boot partition must contain the following images:
 
-    ::
+    .. code-block:: text
 
         keystone-<platform>-evm.dtb
         skern-<platform>.bin
@@ -759,7 +759,7 @@ Booting Linux from USB storage
     The rootfs partition contains the filesystem from ProcSDK release
     package.
 
-    ::
+    .. code-block:: console
 
         # mkdir /mnt/temp
         # mount -t ext4 /dev/sdb2 /mnt/temp
@@ -770,7 +770,7 @@ Booting Linux from USB storage
 
     Set up the following u-boot environment variables:
 
-    ::
+    .. code-block:: console
 
         setenv args_all 'setenv bootargs console=ttyS0,115200n8 rootwait'
         setenv args_usb 'setenv bootargs ${bootargs} rootdelay=3 rootfstype=ext4 root=/dev/sda2 rw'
@@ -804,7 +804,7 @@ Booting Linux from USB storage
     The falcon boot uses ``uImage``. To build the kernel ``uImage``, you
     will need to keep the U-Boot tool ``mkimage`` in your ``$PATH``
 
-    ::
+    .. code-block:: console
 
         # make uImage modules dtbs LOADADDR=80008000
 
@@ -812,7 +812,7 @@ Booting Linux from USB storage
     then add the needed ``bootargs`` in ``chosen`` node in DTB file, using
     ``fdtput`` host utility. For example, for DRA74x EVM:
 
-    ::
+    .. code-block:: console
 
         # fdtput -v -t s arch/arm/boot/dts/dra7-evm.dtb "/chosen" bootargs "console=ttyO0,115200n8 root=<rootfs>"
 
@@ -820,7 +820,7 @@ Booting Linux from USB storage
     the same medium, either the SD or the eMMC. There are two ways to store
     the binaries in the SD (resp. eMMC):
 
-    ::
+    .. code-block:: text
 
         * raw: binaries are stored at fixed offset in the medium
         * fat: binaries are stored as file in a FAT partition
@@ -828,13 +828,13 @@ Booting Linux from USB storage
     To flash binaries to SD or eMMC, you can use DFU. For SD boot, from
     u-boot prompt
 
-    ::
+    .. code-block:: console
 
         => env default -a; setenv dfu_alt_info ${dfu_alt_info_mmc}; dfu 0 mmc 0
 
     For eMMC boot, from u-boot prompt
 
-    ::
+    .. code-block:: console
 
         => env default -a; setenv dfu_alt_info ${dfu_alt_info_emmc}; dfu 0 mmc 1
 
@@ -844,7 +844,7 @@ Booting Linux from USB storage
 
     On the host side: binaries in FAT:
 
-    ::
+    .. code-block:: console
 
         $ sudo dfu-util -D MLO -a MLO
         $ sudo dfu-util -D u-boot.img -a u-boot.img
@@ -853,7 +853,7 @@ Booting Linux from USB storage
 
     raw binaries:
 
-    ::
+    .. code-block:: console
 
         $ sudo dfu-util -D MLO -a MLO.raw
         $ sudo dfu-util -D u-boot.img -a u-boot.img.raw
@@ -865,7 +865,7 @@ Booting Linux from USB storage
     that DFU uses the names "spl-os-image" and "spl-os-args", so this step
     is required in the case of DFU. From u-boot prompt
 
-    ::
+    .. code-block:: console
 
         => setenv falcon_image_file spl-os-image
         => setenv falcon_args_file spl-os-args
@@ -873,7 +873,7 @@ Booting Linux from USB storage
 
     Set the environment variable "boot\_os" to 1. From u-boot prompt
 
-    ::
+    .. code-block:: console
 
         => setenv boot_os 1
         => saveenv
@@ -888,7 +888,7 @@ In some cases issue can be seen while using some SD cards, like
 
 #. Error while trying to initialize,
 
-    ::
+    .. code-block:: console
 
         U-Boot SPL 2021.01-g74fc69c889 (May 19 2022 - 02:44:29 +0000)
         SYSFW ABI: 3.1 (firmware rev 0x0008 '8.3.2--v08.03.02 (Jolly Jellyfi')
@@ -925,7 +925,7 @@ from zero) instance.
        - Limit to SD HS: ``sdhci-caps-mask = <0x00000007 0x00000000>``
        - Limit to SD legacy: ``sdhci-caps-mask = <0x00000007 0x00200000>``
 
-          ::
+          .. code-block:: dts
 
               &sdhci1 {
                   /* SD/MMC */
@@ -943,7 +943,7 @@ from zero) instance.
     - Increasing the delay while power cycling the SD card. This can be done
       by increasing the delay value in the diff indicated below,
 
-        ::
+        .. code-block:: dts
 
             diff --git a/drivers/mmc/mmc.c b/drivers/mmc/mmc.c
             index f486e2a2c364..38cc956b3d53 100644
@@ -963,7 +963,7 @@ from zero) instance.
     - The SD interface supports a bus width of 4. It can be reduced to 1 by
       changing the ``bus-width`` device tree property from 4 to 1.
 
-        ::
+        .. code-block:: dts
 
             diff --git a/arch/arm/dts/k3-am62-main.dtsi b/arch/arm/dts/k3-am62-main.dtsi
             index c06ec7355035..4ab29b6aa4b7 100644
