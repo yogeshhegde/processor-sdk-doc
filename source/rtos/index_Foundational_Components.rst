@@ -103,7 +103,7 @@ MultiProc Module
 
 NameServer Module
 -------------------
-.. include:: /rtos/PDK_Platform_Software/IPC/NameServer_Module.inc
+.. include:: /rtos/PDK_Platform_Software/IPC/_NameServer_Module.rst
 
 
 Optimizing IPC Applications
