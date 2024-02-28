@@ -110,7 +110,7 @@ Multi MAC mode
  This section documents Independent MAC mode of operation with
  CPSW3g.
 
-.. include:: K3-CPSW-common.inc.rst
+.. include:: _K3-CPSW-common.rst
 
 Promiscous Mode
 ===============
