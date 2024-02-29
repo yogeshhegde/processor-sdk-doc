@@ -1255,7 +1255,7 @@ PVRPerfServer.
 For more information please refer to Imagination's upstream documentation on
 PVRTune and PVRPerfServer.
 
-https://docs.imgtec.com/tools-manuals/pvrtune-manual/topics/introduction.html
+https://docs.imgtec.com/tools-manuals/pvrtune-manual/html/pvrtune-manual/topics/introduction.html
 
 PVRCarbon
 ---------
@@ -1269,7 +1269,7 @@ by introducing shim libraries in place of the standard offering for that API.
 This requires a little bit of setup on the target though. Please refer to
 Imagination's upstream target setup guide for the most recent instructions.
 
-https://docs.imgtec.com/tools-manuals/pvrcarbon-manual/topics/pvrcarbon-recorder/opengl-es/linux.html
+https://docs.imgtec.com/tools-manuals/pvrcarbon-manual/html/topics/pvrcarbon-recorder/opengl-es.html
 
 .. |reg|    unicode:: U+000AE .. REGISTERED SIGN
 .. _PowerVR-SDK: https://www.imgtec.com/developers/powervr-sdk-tools/installers/
