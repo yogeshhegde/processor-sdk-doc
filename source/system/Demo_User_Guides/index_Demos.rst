@@ -15,6 +15,7 @@ The SDK supports the following Out-Of-Box demo-applications
    /system/Demo_User_Guides/TI_Apps_Launcher_User_Guide
    /system/Demo_User_Guides/Seva_Store
    /system/Demo_User_Guides/WiFi_OOB_Demo_User_Guide
+   /system/Demo_User_Guides/Chromium_Browser
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
