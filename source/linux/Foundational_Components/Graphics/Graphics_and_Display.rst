@@ -609,7 +609,7 @@ Introduction
 For more information about the supported OpenGL\ |reg| ES and EGL\ |reg|
 extensions see:
 
-- https://docs.imgtec.com/reference-manuals/open-gl-es-extensions/topics/overview.html
+- https://docs.imgtec.com/reference-manuals/open-gl-es-extensions/html/topics/overview.html
 - https://registry.khronos.org/OpenGL/
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_BXS', 'Rogue_AXE')
