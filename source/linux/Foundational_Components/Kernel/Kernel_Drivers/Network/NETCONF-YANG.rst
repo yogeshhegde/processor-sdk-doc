@@ -37,14 +37,14 @@ Below are the steps to build and install the Netopeer Client and its dependencie
 
 **Install the below packages**
 
-::
+.. code-block:: console
 
  sudo apt-get install -y cmake build-essential bison flex libpcre3-dev libpcre2-dev libev-dev libavl-dev libprotobuf-c-dev
  sudo apt-get install -y protobuf-c-compiler swig python-dev lua5.2 pkg-config libpcre++-dev openssl libssl-dev libcrypto++-dev zlib1g-dev
 
 **Install libyang:**
 
-::
+.. code-block:: console
 
  $ git clone https://github.com/CESNET/libyang.git
  $ cd libyang
@@ -56,7 +56,7 @@ Below are the steps to build and install the Netopeer Client and its dependencie
 
 **Install libssh:**
 
-::
+.. code-block:: console
 
  $ git clone https://git.libssh.org/projects/libssh.git
  $ cd libssh
@@ -68,7 +68,7 @@ Below are the steps to build and install the Netopeer Client and its dependencie
 
 **Install libnetconf2:**
 
-::
+.. code-block:: console
 
  $ git clone https://github.com/CESNET/libnetconf2.git
  $ cd libnetconf2
@@ -82,7 +82,7 @@ Below are the steps to build and install the Netopeer Client and its dependencie
 
 **Install sysrepo:**
 
-::
+.. code-block:: console
 
  $ git clone https://github.com/sysrepo/sysrepo.git
  $ cd sysrepo
@@ -96,7 +96,7 @@ Below are the steps to build and install the Netopeer Client and its dependencie
 
 **Install netopeer2:**
 
-::
+.. code-block:: console
 
  $ git clone https://github.com/CESNET/Netopeer2.git
  $ cd Netopeer2
@@ -112,15 +112,23 @@ Generic Execution
 
 1. Once the board is booted up, execute the below command to start the Netopeer Server
 
-::
+.. code-block:: console
 
- $ /etc/init.d/netopeer2-server start
+ $ systemctl start sysrepod.service
+ $ systemctl start netopeer2-serverd.service
+
+The status of the services can be checked using
+
+.. code-block:: console
+
+  $ systemctl status sysrepod.service
+  $ systemctl status netopeer2-serverd.service
 
 **Steps to follow on the Netconf Client side:**
 
 1. Start Netopeer Client
 
-::
+.. code-block:: console
 
  $ netopeer2-cli
 
@@ -128,13 +136,13 @@ Once the client app opens, the prompt will now turn into **>**
 
 2. Connect to the netopeer2-server
 
-::
+.. code-block:: console
 
  > connect --ssh --host <IP_ADDR_OF_SERVER> --login root
 
 3. To query the current configuration any datastore
 
-::
+.. code-block:: console
 
  > get-config --source <DATASTORE>
 
@@ -142,13 +150,13 @@ where DATASTORE could be "running, startup, candidate"
 
 4. To validate the input XML
 
-::
+.. code-block:: console
 
  > validate --src-config=<ABSOLUTE_PATH_TO_CONFIG_XML_FILE>
 
 5. To configure the datastore server by sending the XML file containing the configuration data
 
-::
+.. code-block:: console
 
  > edit-config --target <DATASTORE> --config=<ABSOLUTE_PATH_TO_CONFIG_XML_FILE>
 
@@ -158,13 +166,13 @@ copy-config operation could then be issued to copy the config from one datastore
 
 4. Disconnect from the netopeer2-server
 
-::
+.. code-block:: console
 
  > disconnect
 
 5. Use the help command to list the supported operations
 
-::
+.. code-block:: console
 
   > help
 
@@ -174,7 +182,7 @@ YANG need to be installed on the Netconf Server side and this can be done using 
 
 Steps to install YANG model:
 
-::
+.. code-block:: console
 
  sysrepoctl -i <YANG_FILE>
 
@@ -229,13 +237,21 @@ The demo setup with another |__PART_FAMILY_NAME__| acting as a Netconf Client an
 
 1. Once the board is booted up, execute the below command to start the Netopeer Server
 
-::
+.. code-block:: console
 
- $ /etc/init.d/netopeer2-server start
+ $ systemctl start sysrepod.service
+ $ systemctl start netopeer2-serverd.service
+
+The status of the services can be checked using
+
+.. code-block:: console
+
+ $ systemctl status sysrepod.service
+ $ systemctl status netopeer2-serverd.service
 
 2. Run the **nw-configurator** in the background
 
-::
+.. code-block:: console
 
  $ nw-configurator &
 
@@ -243,28 +259,28 @@ The demo setup with another |__PART_FAMILY_NAME__| acting as a Netconf Client an
 
 a. Show the current qdisc settings
 
-::
+.. code-block:: console
 
  $tc qdisc show dev eth0
 
 b. Run the below commands
 
-::
+.. code-block:: console
 
  # Configure the Tx queues and disable Round Robin mode
- ifconfig eth0 down
- ifconfig eth1 down
- ethtool -L eth0 tx 3
- ethtool --set-priv-flags eth0 p0-rx-ptype-rrobin off
- ifconfig eth0 up
- ifconfig eth1 up
+ $ ifconfig eth0 down
+ $ ifconfig eth1 down
+ $ ethtool -L eth0 tx 3
+ $ ethtool --set-priv-flags eth0 p0-rx-ptype-rrobin off
+ $ ifconfig eth0 up
+ $ ifconfig eth1 up
 
  #sync system time to CPSW CPTS
- phc2sys -s CLOCK_REALTIME -c eth0 -m -O 0 > /dev/null &
+ $ phc2sys -s CLOCK_REALTIME -c eth0 -m -O 0 > /dev/null &
 
 c. Display the updated qdisc settings. The settings will not have any gate schedule entries.
 
-::
+.. code-block:: console
 
  $ tc qdisc show dev eth0
 
@@ -272,7 +288,7 @@ c. Display the updated qdisc settings. The settings will not have any gate sched
 
 1. Start Netopeer Client
 
-::
+.. code-block:: console
 
  $ netopeer-cli
 
@@ -280,14 +296,14 @@ Once the client app opens, the prompt will now become **>**
 
 2. Connect to the netopeer2-server
 
-::
+.. code-block:: console
 
  > connect --ssh --host <IP_ADDR_OF_SERVER> --login root
 
 3. Configure the server by sending the XML file containing the configuration data.
 Create an XML document with the content presented at  `Sample XML based on EST YANG model`_
 
-::
+.. code-block:: console
 
  > edit-config --target running --config=<ABSOLUTE_PATH_TO_CONFIG_XML_FILE>
 
@@ -295,7 +311,7 @@ On success, a **OK** status will be displayed on the netopeer client
 
 Check the updated qdisc settings on the |__PART_FAMILY_NAME__|
 
-::
+.. code-block:: console
 
  $ tc qdisc show dev eth0
 
@@ -305,7 +321,7 @@ Check the updated qdisc settings on the |__PART_FAMILY_NAME__|
 
 2. Cross-compile for |__PART_FAMILY_NAME__| and Receiver executable using:
 
-::
+.. code-block:: console
 
  make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu-
 
@@ -314,7 +330,7 @@ Check the updated qdisc settings on the |__PART_FAMILY_NAME__|
 
 a. Execute the plget tool over eth0 interface
 
-::
+.. code-block:: console
 
  ./plget -m rx-lat -f ipgap -n 128 -i eth0 -t ptpl2 -f hwts
 
@@ -322,7 +338,7 @@ a. Execute the plget tool over eth0 interface
 
 Transmit packets to Receiver
 
-::
+.. code-block:: console
 
  # NOTE: Replace 70:ff:76:1d:8c:08 with the MAC address of Receiver
  ./plget -i eth0 -m pkt-gen -p 3 -t ptpl2 -n 128 -a 70:ff:76:1d:8c:08 -l 512
@@ -331,7 +347,7 @@ Once the packets are transmitted from the |__PART_FAMILY_NAME__|, the logs are r
 
 **Results observed on Receiver:**
 
-::
+.. code-block:: console
 
     hw rx time, us: packets 128:
     relative abs time 1280199778653 ns
@@ -389,7 +405,7 @@ Once the packets are transmitted from the |__PART_FAMILY_NAME__|, the logs are r
 
 **Explanation:**
 
-::
+.. code-block:: console
 
     The entire cycle time is 500us. The gate entries for queues are set in the config XML as below
     Queue 2 - 125us
@@ -404,7 +420,7 @@ Once the packets are transmitted from the |__PART_FAMILY_NAME__|, the logs are r
 Sample XML based on EST YANG model
 ##################################
 
-::
+.. code-block:: console
 
  <bridges xmlns="urn:ieee:std:802.1Q:yang:ieee802-dot1q-bridge">
  	<bridge>
