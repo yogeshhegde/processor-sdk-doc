@@ -40,6 +40,32 @@ Start the U-Boot configuration tool:
         --> Multifunction device drivers
                 <*> AVS class 0 support for K3 devices
 
+.. ifconfig:: CONFIG_part_variant in ('J7200')
+
+
+   Depending on the grade of the device, both OPP_NORMAL and OPP_LOW may be programmed in SOC registers.
+   But only one OPP will be set at boot time.
+
+   For example, the T speed grade can operate A72SS/MSMC at 2 GHz/1GHz or 1 GHz/500 MHz.
+   A72SS/MSMC at 2 GHz/1GHz operation must use OPP_NOM. 
+   A72SS/MSMC at 1 GHz/500 MHz operation can use OPP_NOM or OPP_LOW voltage.
+   Similarly, the E speed grade can operate A72SS/MSMC at a maximum of 1 GHz/500 MHz. 
+   In this case, OPP_NOM or OPP_LOW voltage is allowed.
+
+   By default, AVS driver uses OPP_NORMAL.
+   If AVS values based upon OPP_LOW need to be programmed then select CONFIG_K3_OPP_LOW from menuconfig as shown below:
+  
+
+
+   .. code-block:: console
+
+      $ make menuconfig ARCH=arm
+
+   .. code-block:: menuconfig
+
+      --> ARM architecture
+        -->  Enable OPP_LOW on supported TI K3 SoCs
+
 Driver
 ^^^^^^
 Refer to drivers/misc/k3_avs.c in U-Boot source tree for the AVS driver. The AVS voltage for a supported rail is an eFuse VID value located in its corresponding VTM module register. The supported rails for each device along with register names are listed in the "AVS Support" section of the particular SoC's TRM.
