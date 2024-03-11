@@ -943,7 +943,7 @@ from zero) instance.
     - Increasing the delay while power cycling the SD card. This can be done
       by increasing the delay value in the diff indicated below,
 
-        .. code-block:: dts
+        .. code-block:: diff
 
             diff --git a/drivers/mmc/mmc.c b/drivers/mmc/mmc.c
             index f486e2a2c364..38cc956b3d53 100644
@@ -963,7 +963,7 @@ from zero) instance.
     - The SD interface supports a bus width of 4. It can be reduced to 1 by
       changing the ``bus-width`` device tree property from 4 to 1.
 
-        .. code-block:: dts
+        .. code-block:: diff
 
             diff --git a/arch/arm/dts/k3-am62-main.dtsi b/arch/arm/dts/k3-am62-main.dtsi
             index c06ec7355035..4ab29b6aa4b7 100644
