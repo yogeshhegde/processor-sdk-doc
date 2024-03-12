@@ -167,11 +167,11 @@ included in the sdk filesystem.
 
 .. note::
 
- These instructions are for can0 (first and perhaps only CAN instance
- enabled). If the board has multiple CAN instances enabled then they can
- be referenced by incrementing the CAN instance number. For example 2 CAN
- instances will have can0 and can1.
-
+   These instructions are for mcu_mcan0. If the board has multiple CAN instances
+   enabled then they can be referenced by their CAN dts node names just like
+   mcu_mcan0 here. For example, 2nd instance of CAN in the main domain ( ie
+   main_mcan2 as referenced in the dts ) will be visible as main_mcan2 to the
+   users.
 
 .. rubric:: **Quick Steps**
    :name: quick-steps
@@ -183,19 +183,19 @@ included in the sdk filesystem.
 
 ::
 
-    $ ip link set can0 type can bitrate 1000000
+    $ ip link set mcu_mcan0 type can bitrate 1000000
 
 -  CAN-FD mode
 
 ::
 
-    $ ip link set can0 type can bitrate 1000000 fd on
+    $ ip link set mcu_mcan0 type can bitrate 1000000 fd on
 
 -  CAN-FD mode with bitrate switching
 
 ::
 
-    $ ip link set can0 type can bitrate 1000000 dbitrate 4000000 fd on
+    $ ip link set mcu_mcan0 type can bitrate 1000000 dbitrate 4000000 fd on
 
 .. rubric:: **Start CAN Bus**
    :name: start-can-bus
@@ -206,7 +206,7 @@ Bring up the device using the command:
 
 ::
 
-    $ ip link set can0 up
+    $ ip link set mcu_mcan0 up
 
 |
 
@@ -230,19 +230,19 @@ a. Send CAN 2.0 frame
 
 ::
 
-    $ cansend can0 123#DEADBEEF
+    $ cansend mcu_mcan0 123#DEADBEEF
 
 b. Send CAN FD frame
 
 ::
 
-    $ cansend can0 113##2AAAAAAAA
+    $ cansend mcu_mcan0 113##2AAAAAAAA
 
 c. Send CAN FD frame with BRS
 
 ::
 
-    $ cansend can0 143##1AAAAAAAAA
+    $ cansend mcu_mcan0 143##1AAAAAAAAA
 
 .. rubric:: **Cangen**
    :name: cangen
@@ -260,14 +260,14 @@ a. Full load test with polling, 10 ms timeout
 
 ::
 
-    $ cangen can0 -g 0 -p 10 -x
+    $ cangen mcu_mcan0 -g 0 -p 10 -x
 
 b. fixed CAN ID and length, inc. data, canfd frames with bitrate
 switching
 
 ::
 
-    $ cangen vcan0 -g 4 -I 42A -L 1 -D i -v -v -f -b
+    $ cangen mcu_mcan0 -g 4 -I 42A -L 1 -D i -v -v -f -b
 
 .. rubric:: **Candump**
    :name: candump
@@ -282,7 +282,7 @@ Example:
 
 ::
 
-    $ candump can0
+    $ candump mcu_mcan0
 
 Note: Use Ctrl-C to terminate candump
 
@@ -296,4 +296,14 @@ Stop the can bus by:
 
 ::
 
-    $ ip link set can0 down
+    $ ip link set mcu_mcan0 down
+
+.. note::
+
+   The earlier CAN naming convention had can0 referring to  the first probed CAN instance
+   and can1, can2.. and so on, to the other CAN instances in the order in which
+   they are probed. For example, 2 CAN instances will have names as can0 and can1
+   assigned to them in the linux kernel, based on the order in which they are probed and
+   irrespective of their CAN instance number. If the earlier CAN naming convention is needed,
+   you can revert `cfc97aeb022ddc03f252deebc9021aff449b24c8 <https://git.ti.com/cgit/arago-project/meta-arago
+   /commit/?h=kirkstone&id=cfc97aeb022ddc03f252deebc9021aff449b24c8>`_ commit in meta-arago repository.
