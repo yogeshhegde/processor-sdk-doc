@@ -19,13 +19,13 @@ and this allows to offload these capabilities from HSR driver in software to the
 To enable offloading using below commands
 To enable port-to-port offload
 
-::
+.. code-block:: console
 
   ethtool -K <interface> hsr-fwd-offload on
 
 To enable Tx packet duplication
 
-::
+.. code-block:: console
 
   ethtool -K <interface> hsr-fwd-offload on
   ethtool -K <interface> hsr-dup-offload on
@@ -39,7 +39,7 @@ To enable Tx packet duplication
 The below script sets up an HSR interface with the port-to-port
 forwarding and Tx packet duplication offloaded
 
-::
+.. code-block:: bash
 
   #!/bin/sh
 
@@ -64,10 +64,10 @@ forwarding and Tx packet duplication offloaded
   ifb=$3
 
   ip=$4
-  mac=`ifconfig $ifa | grep ether | cut -d " " -f 10`
+  mac=$(ifconfig "$ifa" | grep ether | cut -d " " -f 10)
 
   device="platform/"
-  device+=`dmesg | grep $ifa | grep icssg-prueth | grep -m 1 "Link is Up" | awk '{print $4}'`
+  device=${device}$(dmesg | grep "$ifa" | grep icssg-prueth | grep -m 1 "Link is Up" | awk '{print $4}')
 
   echo "ip=$ip"
   echo "if=$if"
@@ -76,47 +76,52 @@ forwarding and Tx packet duplication offloaded
   echo "slave-b=$ifb"
   echo "device=$device"
 
+  ip link set hsr0 down
   ip link delete hsr0  2> /dev/null
 
-  ip link set $ifa down
-  ip link set $ifb down
+  ip link set "$ifa" down
+  ip link set "$ifb" down
   sleep 1
 
-  if [ "$1" == "hsr_hw" ]
+  if [ "$1" = "hsr_hw" ]
   then
-          ethtool -k $ifa | grep hsr
-          ethtool -K $ifa hsr-fwd-offload on
-          ethtool -K $ifa hsr-dup-offload on
-          ethtool -k $ifa | grep hsr
+          ethtool -k "$ifa" | grep hsr
+          ethtool -K "$ifa" hsr-fwd-offload on
+          ethtool -K "$ifa" hsr-dup-offload on
+          ethtool -K "$ifa" hsr-tag-ins-offload on
+          ethtool -K "$ifa" hsr-tag-rm-offload on
+          ethtool -k "$ifa" | grep hsr
 
-          ethtool -k $ifb | grep hsr
-          ethtool -K $ifb hsr-fwd-offload on
-          ethtool -K $ifb hsr-dup-offload on
-          ethtool -k $ifb | grep hsr
+          ethtool -k "$ifb" | grep hsr
+          ethtool -K "$ifb" hsr-fwd-offload on
+          ethtool -K "$ifb" hsr-dup-offload on
+          ethtool -K "$ifb" hsr-tag-ins-offload on
+          ethtool -K "$ifb" hsr-tag-rm-offload on
+          ethtool -k "$ifb" | grep hsr
 
-          devlink dev param set $device name hsr_offload_mode value true cmode runtime
+          devlink dev param set "$device" name hsr_offload_mode value true cmode runtime
   fi
 
-  ip link set dev $ifa address $mac
-  ip link set dev $ifb address $mac
+  ip link set dev "$ifa" address "$mac"
+  ip link set dev "$ifb" address "$mac"
 
-  ip link set $ifa up
+  ip link set "$ifa" up
   sleep 1
 
-  ip link set $ifb up
+  ip link set "$ifb" up
   sleep 1
 
-  ip link add name $if type hsr slave1 $ifa slave2 $ifb supervision 45 version 1
+  ip link add name $if type hsr slave1 "$ifa" slave2 "$ifb" supervision 45 version 1
 
   sleep 3
 
-  ip addr add $ip/24 dev $if
+  ip addr add "$ip"/24 dev $if
   ip link set $if up
 
 To create HSR interface with IP address 192.168.2.20 using eth1 and eth2,
 run the script by passing the arguments as below
 
-::
+.. code-block:: console
 
   sh hsr_setup.sh hsr_hw eth1 eth2 192.168.2.20
 
@@ -132,13 +137,13 @@ Multicast MAC address can be added/deleted using ip maddr commands or Linux sock
 
 Show current list of multicast address for the HSR interface
 
-::
+.. code-block:: console
 
   ip maddr show dev <hsr_intf>
 
 Example:
 
-::
+.. code-block:: console
 
   # ip maddr show dev hsr0
   7:      hsr0
@@ -162,13 +167,13 @@ Example:
 
 Add a multicast address
 
-::
+.. code-block:: console
 
   ip maddr add <multicast_mac_addr> dev <hsr_intf>
 
 Example: To add a multicast address and display the list in HSR and slave ports
 
-::
+.. code-block:: console
 
   # ip maddr add 01:80:c4:00:00:0e dev hsr0
   # ip maddr show dev hsr0
@@ -234,14 +239,14 @@ Example: To add a multicast address and display the list in HSR and slave ports
 
 Delete a multicast address
 
-::
+.. code-block:: console
 
   ip maddr del <multicast_mac_addr> dev <hsr_intf>
 
 Example: To delete an added multicast address and dislay the list of HSR and
 slave intefaces.
 
-::
+.. code-block:: console
 
   # ip maddr del 01:80:c4:00:00:0e dev hsr0
 
@@ -314,37 +319,53 @@ A sample test setup is as show below
 
 .. rubric:: Test Procedure
 
-::
+#.  Connect the LAN  cables between the DANH as shown in the Section 1
 
-  1. Connect the LAN  cables between the DANH as shown in the Section 1
+#.  Execute the commands to setup and create HSR interface
 
-  2. Execute the commands to setup and create HSR interface
-     a. To setup HSR non-offload on Node A and Node C,
-        sh hsr_setup.sh hsr_sw <INTF_A> <INTF_B> <HSR_INTF_IP_ADDR>
-     b. To Setup HSR offload on Node B,
-        sh hsr_setup.sh hsr_hw <INTF_A> <INTF_B> <HSR_INTF_IP_ADDR>
+     #. To setup HSR non-offload on Node A and Node C,
 
-  3. Confirm ping across all Nodes
+	.. code-block:: console
+
+           sh hsr_setup.sh hsr_sw <INTF_A> <INTF_B> <HSR_INTF_IP_ADDR>
+
+     #. To Setup HSR offload on Node B,
+
+        .. code-block:: console
+
+           sh hsr_setup.sh hsr_hw <INTF_A> <INTF_B> <HSR_INTF_IP_ADDR>
+
+#.  Confirm ping across all Nodes
+
      a. Node A < - - > Node B
      b. Node B < - - > Node C
      c. Node C < - - > Node A
 
-  4. Disconnect the LAN cable between Node A and Node C
+#.  Disconnect the LAN cable between Node A and Node C
 
-  5. Monitor the CPU usage on Node B
-     mpstat -P ALL 1
+#.  Monitor the CPU usage on Node B
 
-  6. Run iperf3 server on Node C
-     iperf3 -s -i 1
+    .. code-block:: console
 
-  7. Run iperf3 client on Node A for 60 secs
-     iperf3 -c -1 -t 60 <Node_C_IP_Addr>
+       mpstat -P ALL 1
+
+#.  Run iperf3 server on Node C
+
+    .. code-block:: console
+
+       iperf3 -s -i 1
+
+#.  Run iperf3 client on Node A for 60 secs
+
+    .. code-block:: console
+
+       iperf3 -c -1 -t 60 <Node_C_IP_Addr>
 
 .. rubric:: CPU Usage on Node B
 
 CPU usage at Node B found to be negligible
 
-::
+.. code-block:: text
 
   ** Snippet from the continuous stats **
   CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest   %idle
@@ -364,5 +385,5 @@ CPU usage at Node B found to be negligible
 
    * - Sender
      - Receiver
-   * - 475 Mbits/sec
-     - 475 Mbits/sec
+   * - 505 Mbits/sec
+     - 504 Mbits/sec
