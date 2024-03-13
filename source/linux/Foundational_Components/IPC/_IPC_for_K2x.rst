@@ -1,10 +1,10 @@
 Introduction
-############
+============
 
 This article is geared toward 66AK2x users that are running Linux on the Cortex A15. The goal is to help users understand how to gain access to the DSP (c66x) subsystem of the 66AK2x. While the examples used in this guide are specific to K2G, the information provided here applies to all K2x platforms.
 
 Software Dependencies to Get Started
-####################################
+====================================
 
 Prerequisites
 
@@ -66,7 +66,7 @@ The RTOS SDK is installed at the following location:
 |
 
 Multiple Processor Manager
-##########################
+==========================
 
 The Multiple Processor Manager (MPM) module is used to load and run DSP images from the ARM. The following section provides some more detail on the MPM.
 
@@ -95,7 +95,7 @@ The Multiple Processor Manager (MPM) module is used to load and run DSP images f
 .. Image:: /images/MPM_Structure.png
 
 Methods to load and run ELF images using MPM
-*********************************************
+--------------------------------------------
 
 **Using mpmcl utility to manage slave processors**
 
@@ -188,7 +188,7 @@ The segment mapping can be changed using the mpm_config.json and Linux kernel de
 |
 
 Getting Started with IPC Linux Examples
-#######################################
+=======================================
 
 The figure below illustrates how remoteproc/rpmsg driver from ARM Linux
 kernel communicates with IPC driver on slave processor (e.g. DSP) running RTOS.
@@ -203,7 +203,7 @@ point for this effort.
 |
 
 Building the Bundled IPC Examples
-*********************************
+---------------------------------
 
 The instructions to build IPC examples found under ipc_3_xx_xx_xx/examples/66AK2G_linux_elf have been provided in the
 `Processor SDK IPC Quick Start Guide <Foundational_Components_IPC.html#build-ipc-linux-examples>`__.
@@ -232,7 +232,7 @@ Here are the key files that you should see after a successful build:
 |
 
 Running the Bundled IPC Examples
-********************************
+--------------------------------
 
 **NOTE 1**: Before running the IPC examples, any other application already running and using the DSP cores, need to be stopped and disabled.
 In addition, the EVM need to be rebooted so that the cache configuration of the previous firmware downloaded does not affect the execution of the example.
@@ -314,10 +314,10 @@ The following is the expected output:
 |
 
 Understanding the Memory Map
-############################
+============================
 
 Overall Linux Memory Map
-************************
+------------------------
 
 ::
 
@@ -367,10 +367,10 @@ linux/arch/arm/boot/dts/k2g-evm-cmem.dtsi
 |
 
 Changing the DSP Memory Map
-###########################
+===========================
 
 Linux Device Tree
-*****************
+-----------------
 
 The carveouts for the DSP are defined in the Linux dts file. For the K2G EVM, these definitions are located in linux/arch/arm/boot/dts/keystone-k2g-evm.dts
 
@@ -404,14 +404,14 @@ As of Processor SDK 5.2, the Virtque and vring buffers are allocated by the remo
 
 
 Resource Table
-**************
+--------------
 
 The default resource table for K2G is located at ipc_3_xx_xx_xx/packages/ti/ipc/remoteproc/rsc_table_tci6638.h
 
 The resource table contains the definitions of the CMA carveout for the Rpmsg vring buffers.
 
 MPM Config File
-***************
+---------------
 
 The MPM configuration file is a JSON format configuration file and is located in the default root file system release as part of Processor SDK Linux. It is labeled “mpm_config.json” and is located in /etc/mpm.
 
@@ -445,7 +445,7 @@ The following are some details regarding the MPM configuration file:
 		},
 
 Config.bld
-**********
+----------
 
 The config.bld file is used by the IPC examples to configure the external memory map at the application level. It is located in /ipc_3_x_x_x/examples/66AK2G_linux_elf/ex02_messageq/shared/. A linker command file can be used as well, in place of a config.bld file, to place sections into memory.
 
@@ -453,7 +453,7 @@ By default, the ex02_messageq runs from MSMC memory so the config.bld file is no
 
 
 Modifying ex02_messageQ example to run from DDR
-###############################################
+===============================================
 
 As an example, the following section shows how to modify the IPC memory map to run the ex02_messageq example from DDR instead of MSMC.
 
@@ -568,7 +568,7 @@ Now follow the steps in `Running the Bundled IPC Examples`_.
 
 
 Loading DSP images from CCS (without using MPM)
-###############################################
+===============================================
 
 By default, the DSP cores are powered down by u-boot at the time of EVM boot. After kernel is running, MPM can be used to load and run DSP images from Linux command-line/utility.
 
@@ -585,7 +585,7 @@ This will not power down DSPs at startup and CCS/JTAG can connect to the DSP for
 .. note:: The above step is not needed if you want to load DSP cores using MPM and subsequently use CCS to connect to DSP.
 
 MPM Debugging
-#############
+=============
 
 The following are some pointers for MPM debugging.
 
@@ -639,7 +639,7 @@ Where # is the core id starting from 0.
   root@keystone-evm:~#
 
 Detecting crash event in MPM
-****************************
+----------------------------
 
 In the case of a DSP exception, the MPM calls the script provided in JSON config file. The Processor SDK Linux filesystem has a sample script /etc/mpm/crash_callback.sh that sends message to syslog indicating which core crashed. This script can be customized to suit notification needs.
 
@@ -663,7 +663,7 @@ The above command will generate a coredump file with name coredump.out for the D
 
 
 Disable OpenCL Application
-##########################
+==========================
 
 The OpenCL application needs to be disabled since it interferes with the caching properties of the memory region used by our modified example. If it is not disabled, the application will hang at App_create(). It can be disabled by issuing the following command:
 
@@ -677,7 +677,7 @@ After power-cycling the EVM, we can now load and run the example.
 
 
 Frequently Asked Questions
-##########################
+==========================
 
 Q: How to maintain cache coherency
 

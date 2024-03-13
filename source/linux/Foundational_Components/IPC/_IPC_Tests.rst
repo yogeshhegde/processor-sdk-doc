@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Tests
 
 Overview
------------
+========
 
 The IPC product contains unit tests under the following directories.
 
@@ -13,7 +13,7 @@ These are meant to be used as unit tests and documentation of the tests
 are currently sparse.
 
 Linux Unit tests
-^^^^^^^^^^^^^^^^^^^^
+----------------
 
 These tests under linux/src/tests have a Linux host application binary
 and the binaries for the respective slave cores used in the test are
@@ -24,7 +24,7 @@ remoteproc or MPM control procedures, which are specific to the platform
 and are out of scope for this page.
 
 Single thread MessageQ tests
-"""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 MessageQApp: Sends single messages to slave cores and gets messages sent
 back from slave cores.
@@ -66,7 +66,7 @@ For all the DSP cores on K2HK use:
        ./packages/ti/ipc/tests/bin/ti_platforms_evmTCI6638K2K_core0/messageq_single.xe66
 
 Running single Message tests
-'''''''''''''''''''''''''''''
+""""""""""""""""""""""""""""
 
 The following procedures assume that all the relevant slave cores are
 already loaded and running.
@@ -119,7 +119,7 @@ Syntax:
 |
 
 ping_rpmsg
-"""""""""""""
+^^^^^^^^^^
 
 ./linux/src/tests/usr/bin/ping_rpmsg: Sends ping messages and receives
 back messages.
@@ -132,8 +132,8 @@ For example for the ipu1 core on AM57x/DRA7xx use:
 
        ./packages/ti/ipc/tests/bin/ti_platforms_evmDRA7XX_ipu1/ping_rpmsg.xem4
 
-Run ping_rpmsg
-''''''''''''''''''
+Running ping_rpmsg
+""""""""""""""""""
 
 On the linux console run the following command
 
@@ -153,7 +153,7 @@ syntax:
 |
 
 NameServerApp
-""""""""""""""""
+^^^^^^^^^^^^^
 
 ./linux/src/tests/.libs/NameServerApp: NameServer test
 
@@ -165,8 +165,8 @@ For example for the ipu1 core on AM57x/DRA7xx use:
 
        ./packages/ti/ipc/tests/bin/ti_platforms_evmDRA7XX_ipu1/NameServerApp.xem4
 
-Run NameServerApp
-'''''''''''''''''''
+Running NameServerApp
+"""""""""""""""""""""
 
 With the slave processors loaded execute the following command.
 
@@ -177,7 +177,7 @@ With the slave processors loaded execute the following command.
 |
 
 MessageQMulti
-""""""""""""""""
+^^^^^^^^^^^^^
 
 ./linux/src/tests/.libs/MessageQMulti: Sends and receives with multiple
 threads
@@ -191,7 +191,7 @@ For example for the ipu1 core on AM57x/DRA7xx use:
        ./packages/ti/ipc/tests/bin/ti_platforms_evmDRA7XX_ipu1/messageq_multi.xem4
 
 Running MessageQMulti
-''''''''''''''''''''''
+"""""""""""""""""""""
 
 With the slave cores loaded and running. Use the following command to
 run the Linux application.
@@ -205,7 +205,7 @@ run the Linux application.
 |
 
 MessageQMultiMulti
-"""""""""""""""""""
+^^^^^^^^^^^^^^^^^^
 
 ./linux/src/tests/.libs/MessageQMultiMulti: Sends and receives multiple
 messages with multiple threads to multiple cores.
@@ -222,7 +222,7 @@ For example for the ipu1 core on AM57x/DRA7xx use:
        ./packages/ti/ipc/tests/bin/ti_platforms_evmDRA7XX_ipu1/messageq_multimulti.xem4
 
 Running MessageQMultiMulti
-''''''''''''''''''''''''''''
+""""""""""""""""""""""""""
 
 With all the slave cores loaded and running. Use the following command
 to run the Linux application.
@@ -236,7 +236,7 @@ to run the Linux application.
 |
 
 fault
-"""""""
+^^^^^
 
 ./linux/src/tests/.libs/fault: Test fault handling
 
@@ -252,7 +252,7 @@ For example for the ipu1 core on AM57x/DRA7xx use:
        ./packages/ti/ipc/tests/bin/ti_platforms_evmDRA7XX_ipu1/fault.xem4
 
 Running fault
-''''''''''''''
+"""""""""""""
 
 With all the slave cores loaded and running. Use the following command
 to run the Linux application.
@@ -266,7 +266,7 @@ to run the Linux application.
 |
 
 Qnx Unit tests
-^^^^^^^^^^^^^^^^^^^^
+--------------
 
 These tests under qnx/src/tests have a Qnx host application binary and
 the binaries for the respective slave cores used in the test are located
@@ -277,7 +277,7 @@ under packages/ti/ipc/tests.
   ipc binary.
 
 Single thread MessageQ tests
-"""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 MessageQApp: Sends single messages to slave cores and gets messages sent
 back from slave cores.
@@ -309,7 +309,7 @@ Follow the instructions in the Install Guide for how to load images to
 the remote cores.
 
 Running single Message tests
-'''''''''''''''''''''''''''''
+""""""""""""""""""""""""""""
 
 The following procedures assume that all the relevant slave cores are
 already loaded and running.
@@ -343,7 +343,7 @@ Syntax:
        MessageQBench 100 1
 
 NameServerApp
-""""""""""""""""
+^^^^^^^^^^^^^
 
 ./qnx/src/tests/NameServerApp: NameServer test
 
@@ -355,8 +355,8 @@ For example for the ipu1 core on DRA7xx use:
 
        ./packages/ti/ipc/tests/bin/ti_platforms_evmDRA7XX_ipu1/NameServerApp.xem4
 
-Run NameServerApp
-''''''''''''''''''
+Running NameServerApp
+"""""""""""""""""""""
 
 With the slave processors loaded execute the following command.
 
@@ -367,7 +367,7 @@ With the slave processors loaded execute the following command.
 |
 
 MessageQMulti
-""""""""""""""""
+^^^^^^^^^^^^^
 
 ./qnx/src/tests/MessageQMulti: Sends and receives with multiple threads
 
@@ -380,7 +380,7 @@ For example for the ipu1 core on DRA7xx use:
        ./packages/ti/ipc/tests/bin/ti_platforms_evmDRA7XX_ipu1/messageq_multi.xem4
 
 Running MessageQMulti
-''''''''''''''''''''''''
+"""""""""""""""""""""
 
 With the slave cores loaded and running. Use the following command to
 run the Qnx application.
@@ -402,7 +402,7 @@ Syntax:
        MessageQMulti 10 10
 
 Fault
-"""""""
+^^^^^
 
 ./qnx/src/tests/Fault: Test fault handling
 
@@ -415,7 +415,7 @@ For example for the ipu1 core on DRA7xx use:
        ./packages/ti/ipc/tests/bin/ti_platforms_evmDRA7XX_ipu1/fault.xem4
 
 Running fault
-''''''''''''''''
+"""""""""""""
 
 With all the slave cores loaded and running. Use the following command
 to run the Qnx application.
@@ -440,7 +440,7 @@ Syntax:
        Fault -f1 10 2
 
 GateMPApp
-""""""""""
+^^^^^^^^^
 
 ./qnx/src/tests/GateMPApp: Test the GateMP Module
 
@@ -453,7 +453,7 @@ For example for the dsp1 core on DRA7xx use:
        ./packages/ti/ipc/tests/bin/ti_platforms_evmDRA7XX_dsp1/gatempapp.xe66
 
 Running GateMPApp
-'''''''''''''''''''
+"""""""""""""""""
 
 With the DSP1 slave core loaded and running. Use the following command
 to run the Qnx application.
@@ -465,7 +465,7 @@ Syntax:
        GateMPApp
 
 mmrpc_test
-"""""""""""
+^^^^^^^^^^
 
 ./qnx/src/tests/mmrpc_test: Test the MmRpc API
 
@@ -478,7 +478,7 @@ For example for the dsp1 core on DRA7xx use:
        ./packages/ti/ipc/tests/bin/ti_platforms_evmDRA7XX_dsp1/test_omx_ipu1_vayu.xem4
 
 Running mmrpc_test
-""""""""""""""""""""
+""""""""""""""""""
 
 With the slave cores loaded and running. Use the following command to
 run the Qnx application.
