@@ -45,7 +45,7 @@ Hardware Prerequisites
 
    -  TI AM62x SK / TI AM62x-LP SK / TI AM62xSIP SK
 
-.. ifconfig:: CONFIG_part_variant in ('J721S2','J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721S2','J784S4','J722S')
 
    -  TI |__PART_FAMILY_DEVICE_NAMES__| SK
 
@@ -429,6 +429,14 @@ The source code is available at `TI Apps Launcher <https://github.com/TexasInstr
       .. code-block:: console
 
          $ qmake "SOURCES += configs/am69-sk.cpp" "DEFINES += SOC_J784S4"; make
+
+      |
+
+   .. ifconfig:: CONFIG_part_variant in ('J722S')
+
+      .. code-block:: console
+
+         $ qmake "SOURCES += configs/am67-sk.cpp" "DEFINES += SOC_J722S"; make
 
       |
 
