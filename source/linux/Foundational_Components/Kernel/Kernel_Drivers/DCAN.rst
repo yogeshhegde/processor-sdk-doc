@@ -285,10 +285,11 @@ included in the sdk filesystem.
    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
 **NOTE**
-These instructions are for can0 (first and perhaps only CAN instance
-enabled). If the board has multiple CAN instances enabled then they can
-be referenced by incrementing the CAN instance number. For example 2 CAN
-instances will have can0 and can1.
+These instructions are for main_dcan1 which is the 1st instance of CAN in the main domain.
+If the board has multiple CAN instances enabled, then they can be referenced as
+main_dcan\ ``X``\  where X is the CAN instance number just like main_dcan1 here.
+For example, 2nd instance of CAN in the main domain will be visible as main_dcan2
+to the users.
 
 .. raw:: html
 
@@ -306,7 +307,7 @@ Set the bit-rate to 50Kbits/sec using the following command:
 
 ::
 
-    $ ip link set can0 type can bitrate 50000
+    $ ip link set main_dcan1 type can bitrate 50000
 
 -  Set bit-timing (loopback mode)
 
@@ -315,7 +316,7 @@ command
 
 ::
 
-    $ ip link set can0 type can bitrate 50000 loopback on
+    $ ip link set main_dcan1 type can bitrate 50000 loopback on
 
 .. rubric:: **Start CAN Bus**
    :name: start-can-bus
@@ -326,7 +327,7 @@ Bring up the device using the command:
 
 ::
 
-    $ ip link set can0 up
+    $ ip link set main_dcan1 up
 
 .. raw:: html
 
@@ -354,14 +355,14 @@ Transmit 4 bytes with standard packet id number as 0x123
 
 ::
 
-    $ cansend can0 123#DEADBEEF
+    $ cansend main_dcan1 123#DEADBEEF
 
 
 Transmit a sequence of can frames with random IDs and random data.
 
 ::
 
-    $ cangen can0
+    $ cangen main_dcan1
 
 -  Receive packets
 
@@ -369,7 +370,7 @@ Packet reception can be achieve by using candump utility
 
 ::
 
-    $ candump can0
+    $ candump main_dcan1
 
 
 .. rubric:: **Stop CAN Bus**
@@ -377,7 +378,7 @@ Packet reception can be achieve by using candump utility
 
 ::
 
-    $ ip link set can0 down
+    $ ip link set main_dcan1 down
 
 |
 
@@ -390,7 +391,7 @@ Transmit fixed CAN ID and length with an incrementing data
 
 ::
 
-    $ cangen can0 -g 4 -I 42A -L 1 -D i -v -v
+    $ cangen main_dcan1 -g 4 -I 42A -L 1 -D i -v -v
 
 Log only error frames but no data frames
 
@@ -405,7 +406,7 @@ Statistics of CAN device can be seen from these commands
 
 ::
 
-    $ ip -d -s link show can0
+    $ ip -d -s link show main_dcan1
 
 Below command also used to know the details
 
@@ -479,7 +480,17 @@ the previous section
 
 ::
 
-    $ candump can0 -e
+    $ candump main_dcan1 -e
+
+.. note::
+
+   The earlier CAN naming convention had can0 referring to  the first probed CAN instance
+   and can1, can2.. and so on, to the other CAN instances in the order in which
+   they are probed. For example, 2 CAN instances will have names as can0 and can1
+   assigned to them in the linux kernel, based on the order in which they are probed and
+   irrespective of their CAN instance number. If the earlier CAN naming convention is needed,
+   you can revert `cfc97aeb022ddc03f252deebc9021aff449b24c8 <https://git.ti.com/cgit/arago-project/meta-arago
+   /commit/?h=kirkstone&id=cfc97aeb022ddc03f252deebc9021aff449b24c8>`_ commit in meta-arago repository.
 
 |
 
