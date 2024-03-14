@@ -89,7 +89,7 @@ See :ref:`here <release-specific-supported-platforms-and-versions>` for a list o
 Build Information
 =====================================
 
-.. _release-specific-build-information-u-boot:
+.. _u-boot-release-notes:
 
 U-Boot
 -------------------------

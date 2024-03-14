@@ -6,19 +6,16 @@ General Information
 Getting the U-Boot Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| The easiest way to get access to the U-boot source code is by
-  downloading and installing the Processor SDK Linux. Once installed,
-  the U-Boot source code is included in the SDK's board-support
-  directory. For your convenience the sources also includes the U-Boot's
-  git repository including commit history.
-| Alternatively, U-Boot sources can directly be fetched from GIT.
+The easiest way to get access to the U-boot source code is by
+downloading and installing the Processor SDK Linux. Once installed,
+the U-Boot source code is included in the SDK at the path ``<path to tisdk>/board-support``.
+For your convenience the sources also includes the U-Boot's
+git repository including commit history.
 
-  .. ifconfig:: CONFIG_sdk in ('PLSDK')
+Alternatively, U-Boot sources can directly be fetched from GIT. The GIT
+repo URL, branch and commit id can be found in the :ref:`u-boot-release-notes`
+section of the release notes.
 
-      The GIT repo URL, branch and commit id can be found in the
-      :ref:`release-specific-build-information-u-boot` section of the release notes.
-
-|
 
 .. _Build-U-Boot-label:
 
@@ -156,14 +153,6 @@ Build U-Boot
    .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
       Go `here <../../../devices/AM64X/Overview/Download_and_Install_the_SDK.html>`__ to download and install the SDK.
-
-   .. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-      TI-u-boot is included in the SDK in <path to tisdk>/board-support. Ensure that the u-boot version matches the :ref:`release-specific-build-information-u-boot`.
-
-   .. ifconfig:: CONFIG_sdk not in ('PLSDK')
-
-      TI-u-boot is included in the SDK in <path to tisdk>/board-support. Ensure that the u-boot version matches the version found in the U-Boot release notes: :ref:`u-boot-release-notes`.
 
    .. rubric:: Setting the tool chain path
 
