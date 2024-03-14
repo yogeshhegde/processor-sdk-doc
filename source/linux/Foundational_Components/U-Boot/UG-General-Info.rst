@@ -144,7 +144,16 @@ Build U-Boot
          different defconfigs for GP and HS devices. The same build commands will generate images
          for GP, HS-SE and HS-FS devices.
 
+   .. rubric:: Prebuilt Images
+
    Several prebuilt images are required from the TI Processor SDK for building U-Boot on K3 based platforms.
+
+   - TF-A (BL31): Refer to :ref:`foundational-components-atf` for more information
+   - OP-TEE (TEE): Refer to :ref:`foundational-components-optee` for more information
+   - ti-linux-firmware (BINMAN_INDIRS): Prebuilt binaries for DM and SYSFW available `here
+     <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/?h=ti-linux-firmware>`_.
+
+   All of these are available in the SDK at ``<path to tisdk>/board-support/prebuilt-images>``
 
    .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
