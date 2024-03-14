@@ -391,15 +391,16 @@ The TI Apps Launcher is enabled by default in yocto for |__PART_FAMILY_DEVICE_NA
 The source code is available at `TI Apps Launcher <https://github.com/TexasInstruments/ti-apps-launcher/>`__ and can be re-compiled with the following steps
 
 1. To setup the environment, from the root of the SDK installation directory, source `environment-setup` script.
-   ::
 
-        $ source linux-devkit/environment-setup
+   .. code-block:: console
+
+      $ source linux-devkit/environment-setup
 
 2. Go to the root of TI Apps Launcher repository and run the following command to build the application.
 
    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-      ::
+      .. code-block:: console
 
          $ qmake "SOURCES += configs/am62pxx-evm.cpp" "DEFINES += SOC_AM62P" ./ti-apps-launcher.pro ; make
 
@@ -407,7 +408,7 @@ The source code is available at `TI Apps Launcher <https://github.com/TexasInstr
 
    .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-      ::
+      .. code-block:: console
 
          $ qmake "SOURCES += configs/am62xx-evm.cpp" "DEFINES += SOC_AM62" ./ti-apps-launcher.pro ; make # For AM62x SK
          $ qmake "SOURCES += configs/am62xx-lp-evm.cpp" "DEFINES += SOC_AM62_LP" ./ti-apps-launcher.pro ; make # For AM62x LP SK
@@ -417,7 +418,7 @@ The source code is available at `TI Apps Launcher <https://github.com/TexasInstr
 
    .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-      ::
+      .. code-block:: console
 
          $ qmake "SOURCES += configs/am68-sk.cpp" "DEFINES += SOC_J721S2"; make
 
@@ -425,18 +426,21 @@ The source code is available at `TI Apps Launcher <https://github.com/TexasInstr
 
    .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
-      ::
+      .. code-block:: console
 
          $ qmake "SOURCES += configs/am69-sk.cpp" "DEFINES += SOC_J784S4"; make
 
       |
 
 3. Copy the compiled binary to /usr/bin directory of the device
-   ::
 
-        $ scp ti-apps-launcher root@<ip-addr-of-device>:/usr/bin/
+   .. code-block:: console
+
+      $ scp ti-apps-launcher root@<ip-addr-of-device>:/usr/bin/
 
 4. If you have modified the scripts under the ti-apps-launcher scripts directory then copy the same to the device
-   ::
 
-        $ scp -r scripts/ root@<ip-addr-of-device>:/opt/ti-apps-launcher/
+   .. code-block:: console
+
+      $ scp -r scripts/ root@<ip-addr-of-device>:/opt/ti-apps-launcher/
+
