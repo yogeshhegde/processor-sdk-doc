@@ -154,15 +154,17 @@ Build U-Boot
 
       Go `here <../../../devices/AM64X/Overview/Download_and_Install_the_SDK.html>`__ to download and install the SDK.
 
-   .. rubric:: Setting the tool chain path
+   .. rubric:: Setting up the toolchain paths
 
-   Setting the toolchain path is no longer required for Yocto but still required for standalone builds. We strongly recommend
-   using the toolchain that comes with the Processor SDK. The location of the toolchain can be found here: :ref:`location-in-sdk`.
-   If the Processor SDK is not used, the toolchain will need to be downloaded and toolchain path will need to be set, more
-   information can be found here: :ref:`download-arm-toolchains`.
+   Refer to :ref:`yocto-toolchain` section to use the toolchain packaged in the Processor SDK (recommended).
 
+   Refer to :ref:`external-arm-toolchain` to download and setup ARM toolchains, if the Processor SDK is not used.
 
+   In either of the above setups, the u-boot build commands in the next section will assume the below variables are set appropriately.
 
+   - ``CROSS_COMPILE_64``
+   - ``CC_64``
+   - ``CROSS_COMPILE_32``
 
    .. rubric:: Compiling R5 and ARM64 images
 
@@ -187,12 +189,12 @@ Build U-Boot
          $ cd <path to u-boot dir>
 
          R5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am65x_evm_r5_defconfig O=<output directory>/r5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" am65x_evm_r5_defconfig O=<output directory>/r5
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
          A53
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am65x_evm_a53_defconfig O=<output directory>/a53
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am65x_evm_a53_defconfig O=<output directory>/a53
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 
 
@@ -203,13 +205,13 @@ Build U-Boot
          $ cd <path to u-boot dir>
 
          R5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am65x_hs_evm_r5_defconfig O=<output directory>/r5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" am65x_hs_evm_r5_defconfig O=<output directory>/r5
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 
          A53
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am65x_hs_evm_a53_defconfig O=<output directory>/a53
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am65x_hs_evm_a53_defconfig O=<output directory>/a53
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 
 
@@ -230,13 +232,13 @@ Build U-Boot
          $ cd <path to u-boot dir>
 
          R5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j721e_evm_r5_defconfig O=<output directory>/r5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" j721e_evm_r5_defconfig O=<output directory>/r5
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 
          A72
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j721e_evm_a72_defconfig O=<output directory>/a72
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" j721e_evm_a72_defconfig O=<output directory>/a72
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 
    .. ifconfig:: CONFIG_part_variant in ('J7200')
@@ -253,13 +255,13 @@ Build U-Boot
          $ cd <path to u-boot dir>
 
          R5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j7200_evm_r5_defconfig O=<output directory>/r5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" j7200_evm_r5_defconfig O=<output directory>/r5
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 
          A72
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j7200_evm_a72_defconfig O=<output directory>/a72
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" j7200_evm_a72_defconfig O=<output directory>/a72
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 
    .. ifconfig:: CONFIG_part_variant in ('AM64X')
@@ -302,13 +304,13 @@ Build U-Boot
 
          R5
          To build tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am64x_evm_r5_defconfig O=$UBOOT_DIR/out/r5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" am64x_evm_r5_defconfig O=$UBOOT_DIR/out/r5
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
          A53
          To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53.
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am64x_evm_a53_defconfig O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/bl32.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am64x_evm_a53_defconfig O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/bl32.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
    .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
@@ -327,13 +329,13 @@ Build U-Boot
          $ cd <path to u-boot dir>
 
          R5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j721s2_evm_r5_defconfig O=<output directory>/r5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" j721s2_evm_r5_defconfig O=<output directory>/r5
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 
          A72
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j721s2_evm_a72_defconfig O=<output directory>/a72
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" j721s2_evm_a72_defconfig O=<output directory>/a72
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 
    .. ifconfig:: CONFIG_part_variant in ('J784S4')
@@ -353,13 +355,13 @@ Build U-Boot
          $ cd <path to u-boot dir>
 
          R5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j784s4_evm_r5_defconfig O=<output directory>/r5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" j784s4_evm_r5_defconfig O=<output directory>/r5
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 
          A72
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j784s4_evm_a72_defconfig O=<output directory>/a72
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" j784s4_evm_a72_defconfig O=<output directory>/a72
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
    .. ifconfig:: CONFIG_part_variant in ('J722S')
 
@@ -375,17 +377,17 @@ Build U-Boot
          $ cd <path to u-boot dir>
 
          R5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j722s_evm_r5_defconfig O=<output directory>/r5
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" j722s_evm_r5_defconfig O=<output directory>/r5
 
          To build with config fragments
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j722s_evm_r5_defconfig j722s_evm_r5_usbdfu.config O=<output directory>/r5
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" j722s_evm_r5_defconfig j722s_evm_r5_usbdfu.config O=<output directory>/r5
 
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 
          A53
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j722s_evm_a53_defconfig O=<output directory>/a53
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" j722s_evm_a53_defconfig O=<output directory>/a53
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 
 
@@ -434,28 +436,28 @@ Build U-Boot
          To build tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
 
          For AM62X
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62x_evm_r5_defconfig O=$UBOOT_DIR/out/r5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" am62x_evm_r5_defconfig O=$UBOOT_DIR/out/r5
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
          For AM62X LP
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62x_lpsk_r5_defconfig O=$UBOOT_DIR/out/r5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" am62x_lpsk_r5_defconfig O=$UBOOT_DIR/out/r5
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
          For AM62SIP
          NOTE: AM62SIP Uses config fragment model.
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62x_evm_r5_defconfig am62xsip_sk_r5.config O=$UBOOT_DIR/out/r5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" am62x_evm_r5_defconfig am62xsip_sk_r5.config O=$UBOOT_DIR/out/r5
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
          A53
          To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin, tee-pager_v2.bin
 
          For AM62X or AM62SIP
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62x_evm_a53_defconfig O=$UBOOT_DIR/out/a53
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62x_evm_a53_defconfig O=$UBOOT_DIR/out/a53
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
          For AM62X LP
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62x_lpsk_a53_defconfig O=$UBOOT_DIR/out/a53
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62x_lpsk_a53_defconfig O=$UBOOT_DIR/out/a53
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
 
    .. ifconfig:: CONFIG_part_variant in ('AM62AX')
@@ -495,13 +497,13 @@ Build U-Boot
 
          R5
          To build tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62ax_evm_r5_defconfig O=$UBOOT_DIR/out/r5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" am62ax_evm_r5_defconfig O=$UBOOT_DIR/out/r5
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
          A53
          To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin, tee-pager_v2.bin.
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62ax_evm_a53_defconfig O=$UBOOT_DIR/out/a53
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62ax_evm_a53_defconfig O=$UBOOT_DIR/out/a53
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -538,13 +540,13 @@ Build U-Boot
 
          R5
          To build tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62px_evm_r5_defconfig O=$UBOOT_DIR/out/r5
-         $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" am62px_evm_r5_defconfig O=$UBOOT_DIR/out/r5
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
          A53
          To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin, tee-pager_v2.bin.
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62px_evm_a53_defconfig O=$UBOOT_DIR/out/a53
-         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62px_evm_a53_defconfig O=$UBOOT_DIR/out/a53
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
 
 .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX')
