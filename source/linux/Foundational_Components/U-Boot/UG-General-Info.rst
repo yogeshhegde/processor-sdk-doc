@@ -218,55 +218,6 @@ Build U-Boot
 
 
 
-   .. ifconfig:: CONFIG_part_variant in ('J721E')
-
-      +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
-      |  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |         Hyper Flash            |           USB DFU              |
-      +============================+=================================+================================+================================+================================+================================+
-      |    J721E EVM               |    j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |
-      |                            |    j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |
-      +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
-      |    J721E SK                |    j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |                                |                                |
-      |                            |    j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |                                |                                |
-      +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
-
-      .. code-block:: console
-
-         $ cd <path to u-boot dir>
-
-         R5
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" j721e_evm_r5_defconfig O=<output directory>/r5
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
-
-
-         A72
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" j721e_evm_a72_defconfig O=<output directory>/a72
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
-
-
-   .. ifconfig:: CONFIG_part_variant in ('J7200')
-
-      +----------------------------+---------------------------------+--------------------------------+
-      |  Board                     |            SD/eMMC Boot         |           UART boot            |
-      +============================+=================================+================================+
-      |    J7200 EVM               |    j7200\_evm\_r5\_defconfig    |   j7200\_evm\_r5\_defconfig    |
-      |                            |    j7200\_evm\_a72\_defconfig   |   j7200\_evm\_a72\_defconfig   |
-      +----------------------------+---------------------------------+--------------------------------+
-
-      .. code-block:: console
-
-         $ cd <path to u-boot dir>
-
-         R5
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" j7200_evm_r5_defconfig O=<output directory>/r5
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
-
-
-         A72
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" j7200_evm_a72_defconfig O=<output directory>/a72
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
-
-
    .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
       +----------------------------+---------------------------------+---------------------------------+--------------------------------+--------------------------------+
@@ -315,6 +266,28 @@ Build U-Boot
          $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am64x_evm_a53_defconfig O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
          $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/bl32.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
+   .. ifconfig:: CONFIG_part_variant in ('J721E')
+
+      +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
+      |  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |         Hyper Flash            |           USB DFU              |
+      +============================+=================================+================================+================================+================================+================================+
+      |    J721E EVM               |    j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |
+      |                            |    j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |
+      +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
+      |    J721E SK                |    j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |                                |                                |
+      |                            |    j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |                                |                                |
+      +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
+
+   .. ifconfig:: CONFIG_part_variant in ('J7200')
+
+      +----------------------------+---------------------------------+--------------------------------+
+      |  Board                     |            SD/eMMC Boot         |           UART boot            |
+      +============================+=================================+================================+
+      |    J7200 EVM               |    j7200\_evm\_r5\_defconfig    |   j7200\_evm\_r5\_defconfig    |
+      |                            |    j7200\_evm\_a72\_defconfig   |   j7200\_evm\_a72\_defconfig   |
+      +----------------------------+---------------------------------+--------------------------------+
+
+
    .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
       +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
@@ -326,20 +299,6 @@ Build U-Boot
       |    AM68 HS-FS SK           |    j721s2\_evm\_r5\_defconfig   |   j721s2\_evm\_r5\_defconfig   |   j721s2\_evm\_r5\_defconfig   |                                |
       |                            |    j721s2\_evm\_a72\_defconfig  |   j721s2\_evm\_a72\_defconfig  |   j721s2\_evm\_a72\_defconfig  |                                |
       +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
-
-      .. code-block:: console
-
-         $ cd <path to u-boot dir>
-
-         R5
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" j721s2_evm_r5_defconfig O=<output directory>/r5
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
-
-
-         A72
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" j721s2_evm_a72_defconfig O=<output directory>/a72
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
-
 
    .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
@@ -353,45 +312,50 @@ Build U-Boot
       |                            |    j784s4\_evm\_a72\_defconfig  |   j784s4\_evm\_a72\_defconfig  |   j784s4\_evm\_a72\_defconfig  |                                |
       +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
 
-      .. code-block:: console
-
-         $ cd <path to u-boot dir>
-
-         R5
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" j784s4_evm_r5_defconfig O=<output directory>/r5
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
-
-
-         A72
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" j784s4_evm_a72_defconfig O=<output directory>/a72
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
-
    .. ifconfig:: CONFIG_part_variant in ('J722S')
 
       +----------------------------+---------------------------------+--------------------------------+--------------------------------+------------------------------------+
       |  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |           USB DFU                  |
       +============================+=================================+================================+================================+====================================+
       |    J722S EVM               |    j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_usbdfu.config    |
-      |                            |    j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig       |
+     |                            |    j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig       |
       +----------------------------+---------------------------------+--------------------------------+--------------------------------+------------------------------------+
+
+   .. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4')
 
       .. code-block:: console
 
          $ cd <path to u-boot dir>
+         $ PREBUILT_IMAGES=<path to tisdk>/board-support/prebuilt-images
 
          R5
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" j722s_evm_r5_defconfig O=<output directory>/r5
+         $ make ARCH=arm O=<output directory>/r5 <soc>_evm_r5_defconfig
+         $ make ARCH=arm O=<output directory>/r5 CROSS_COMPILE="$CROSS_COMPILE_32" BINMAN_INDIRS=${PREBUILT_IMAGES}
+
+
+         A72
+         $ make ARCH=arm O=<output directory>/a72 <soc>_evm_a72_defconfig
+         $ make ARCH=arm O=<output directory>/a72 CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=${PREBUILT_IMAGES}/bl31.bin TEE=${PREBUILT_IMAGES}/bl32.bin BINMAN_INDIRS=${PREBUILT_IMAGES}
+
+   .. ifconfig:: CONFIG_part_variant in ('J722S')
+
+      .. code-block:: console
+
+         $ cd <path to u-boot dir>
+         $ PREBUILT_IMAGES=<path to tisdk>/board-support/prebuilt-images
+
+         R5
+         $ make ARCH=arm O=<output directory>/r5 j722s_evm_r5_defconfig
 
          To build with config fragments
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" j722s_evm_r5_defconfig j722s_evm_r5_usbdfu.config O=<output directory>/r5
+         $ make ARCH=arm O=<output directory>/r5 j722s_evm_r5_defconfig j722s_evm_r5_usbdfu.config
 
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+         $ make ARCH=arm O=<output directory>/r5 CROSS_COMPILE="$CROSS_COMPILE_32" BINMAN_INDIRS=${PREBUILT_IMAGES}
 
 
          A53
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" j722s_evm_a53_defconfig O=<output directory>/a53
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
-
+         $ make ARCH=arm O=<output directory>/a53 j722s_evm_a53_defconfig
+         $ make ARCH=arm O=<output directory>/a53 CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=${PREBUILT_IMAGES}/bl31.bin TEE=${PREBUILT_IMAGES}/bl32.bin BINMAN_INDIRS=${PREBUILT_IMAGES}
 
 
    .. ifconfig:: CONFIG_part_variant in ('AM62X')
