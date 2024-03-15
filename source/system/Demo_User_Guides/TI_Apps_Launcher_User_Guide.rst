@@ -356,6 +356,25 @@ _________________________
 
 3. Once you enter the necessary values for both HTTPS and No proxy, click on `Set Proxy` to set the proxy configuration.
 
+Power Menu
+__________
+
+1. The top right corner of the TI Apps Launcher is dedicated for the Power Menu.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+    2. The Power Menu supports Shutdown, Reboot, Suspend to RAM and Exit (from TI Apps Launcher) functions.
+
+    .. Image:: /images/ti-apps-launcher-powermenu1.png
+       :height: 400
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62PX')
+
+    2. The Power Menu supports Shutdown, Reboot and Exit (from TI Apps Launcher) functions.
+
+    .. Image:: /images/ti-apps-launcher-powermenu2.png
+       :height: 400
+
 Building the TI Apps Launcher
 -----------------------------
 
