@@ -16,9 +16,9 @@ running on the Raspberry Pi to the TI board.
 TI GPIO Libraries are packaged under ``/opt`` directory. Run the below script
 to build and install the gpio libraries
 
-.. code-block:: bash
+.. code-block:: console
 
-    /opt/edgeai-gst-apps# ./scripts/install_ti_gpio_libs.sh
+   /opt/edgeai-gst-apps# ./scripts/install_ti_gpio_libs.sh
 
 By default, the 40-pin header is not enabled on |__PART_FAMILY_NAME__| SK board. This can be enabled by
 specifying the dtb overlay file ``k3-am62p5-sk-rpi-hdr-ehrpwm.dtbo`` in
