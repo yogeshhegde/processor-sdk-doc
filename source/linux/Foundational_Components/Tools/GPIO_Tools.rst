@@ -30,8 +30,9 @@ Reboot the board after editing and saving the file.
 
 .. _pub_edgeai_default_pin_setup:
 
+***********************************
 40-pin header default configuration
-===================================
+***********************************
 
 The default pin configuration on the |__PART_FAMILY_NAME__| SK board is as follows. Any deviation from this
 needs modifications to the Linux DTBO. The table below lists pin numbers in all three
@@ -69,8 +70,10 @@ SOC  : **TI SOC Naming**
 **NOTE**: Please refer to `SK-AM62P User's Guide <https://www.ti.com/lit/ug/spruja2/spruja2.pdf>`_
 for details on the expansion header pin names and functionality.
 
+************
 Repositories
-============
+************
+
 The Python and CPP projects are hosted on Texas Instruments GitHub. The links to the projects
 are given below. The details on installation and testing can be found in the respective project
 documentation.
@@ -82,8 +85,10 @@ documentation.
 The above repositories are cloned and installed during the yocto build process under ``/opt/``.
 The ``gpiozero`` library is also installed as a part of the yocto build.
 
+*********************
 Additional References
-=====================
+*********************
+
 Please refer to the link below for information on the 40-pin header numbering and naming conventions:
 
 | https://pinout.xyz/#
