@@ -34,6 +34,17 @@ Where <hash> is the OPTEE commit shown here: :ref:`optee-release-notes`.
 
 |
 
+.. rubric:: Setting up the toolchain paths
+
+Refer to :ref:`yocto-toolchain` section to use the toolchain packaged in the Processor SDK (recommended).
+
+Refer to :ref:`external-arm-toolchain` to download and setup ARM toolchains, if the Processor SDK is not used.
+
+In either of the above setups, the OP-TEE build commands in the next section will assume the below variables are set appropriately.
+
+- ``CROSS_COMPILE_64``
+- ``CROSS_COMPILE_32``
+
 .. rubric:: Building OP-TEE OS
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2', 'J784S4')
@@ -45,12 +56,12 @@ Where <hash> is the OPTEE commit shown here: :ref:`optee-release-notes`.
 * Building the OPTEE image
 .. parsed-literal::
 
-    $ make CROSS_COMPILE=arm-none-linux-gnueabihf- CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y
+    $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=k3-|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y
 
 * Building the OPTEE image with debug parameters
 .. parsed-literal::
 
-    $ make CROSS_COMPILE=arm-none-linux-gnueabihf- CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y
+    $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=k3-|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y
 
 .. rubric:: Secure Storage with RPMB (For HS)
 
@@ -77,7 +88,7 @@ E.g. For enabling hybrid mode of RPMB along with REE_FS
 
 .. parsed-literal::
 
-    $ make CROSS_COMPILE64=aarch64-linux-gnu- PLATFORM=k3-|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_REE_FS=y CFG_RPMB_FS=y
+    $ make CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=k3-|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_REE_FS=y CFG_RPMB_FS=y
 
 OPTEE-client also needs to be updated to enable the use of real
 emmc instead of the virtual emmc that is enabled by default
@@ -92,7 +103,7 @@ emmc instead of the virtual emmc that is enabled by default
 
 .. code-block:: console
 
-  $ make CROSS_COMPILE="aarch64-linux-gnu-" PLATFORM=k3 CFG_TEE_SUPP_LOG_LEVEL=2 RPMB_EMU=0 CFG_ARM64_core=y
+  $ make CROSS_COMPILE="$CROSS_COMPILE_64" PLATFORM=k3 CFG_TEE_SUPP_LOG_LEVEL=2 RPMB_EMU=0 CFG_ARM64_core=y
 
 Now update optee-client binary and libraries on your SD card with the generated ones
 in `out/export/usr` folder
