@@ -77,8 +77,7 @@ The TI Apps Launcher launches on Linux startup. Follow the below instructions to
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
    .. Image:: /images/ti-apps-launcher-home.png
-      :width: 950
-      :height: 900
+      :height: 400
 
    |
 
@@ -90,14 +89,13 @@ The TI Apps Launcher launches on Linux startup. Follow the below instructions to
 
 
         .. Image:: /images/ti-apps-launcher-home-am62sip.jpg
-          :width: 950
-          :height: 900
+          :height: 400
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
    .. Image:: /images/ti-apps-launcher-j7.png
-      :width: 950
-      :height: 900
+      :height: 400
+
 
 Launching the Industrial HMI
 ____________________________
@@ -113,23 +111,23 @@ ____________________________
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
    .. Image:: /images/ti-apps-launcher-hmi.png
-      :width: 950
-      :height: 900
+      :height: 400
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
    .. Image:: /images/hmi-demo-j7.png
-      :width: 950
-      :height: 900
+      :height: 400
 
 2. You can click on the Auto-Manual slider button to switch modes.
 
 3. In Manual mode, you can use the **^** and **v** buttons of each motor to control the RPM.
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62PX')
 
-    Launching the Live Camera
-    _________________________
+Launching the Camera App
+________________________
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
 
     1. Ensure you have enabled the camera sensors which you have connected to TI |__PART_FAMILY_DEVICE_NAMES__| SK. Refer `this <../../linux/Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX.html#enabling-camera-sensors>`__ to know the list of camera modules supported and how to enable the sensor overlays for them.
 
@@ -138,7 +136,6 @@ ____________________________
     .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
        .. Image:: /images/live-camera-button.jpg
-          :width: 407
           :height: 400
 
     .. note:: It takes around 3-5 seconds for Live Camera to start.
@@ -148,53 +145,86 @@ ____________________________
     .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
        .. Image:: /images/live-camera.png
-          :width: 950
-          :height: 900
+          :height: 400
 
     .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
        .. Image:: /images/live-camera-j7.png
-          :width: 950
-          :height: 900
+          :height: 400
 
 
-.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+.. ifconfig:: CONFIG_part_variant not in ('AM62X')
 
-   Video Playback
-   ______________
+    1. |__PART_FAMILY_DEVICE_NAMES__| has hardware codecs which are capable of encoding and decoding H.246 and H.265 Videos.
 
-   1. AM62Px has hardware codecs which are capable of encoding and decoding H.246 and H.265 Videos.
+    2. The Camera app supports recording and playback of video in H264 and H265 formats.
 
-   2. Click on the 'Video Playback' button on the left menu to start the app.
+    3. Click on the 'Camera' button on the left menu to start the app.
 
-   3. This app plays the H.264 video stream which is pre-packaged in the filesystem.
+    .. Image:: /images/ti-apps-launcher-camera-button.png
+       :height: 400
 
-   4. To switch to H.265 video stream, click on the H.265 button available at the bottom of main window.
+    4. If a camera is detected, it will start previewing by default.
 
-   .. Image:: /images/ti-apps-launcher-video-playback.png
-      :width: 950
-      :height: 900
+    5. By default, the Codec chosen for recording and playback is H264. If you want to use H265 instead, just toggle the switch on the bottom left corner.
+
+    .. Image:: /images/ti-apps-launcher-camera-codecswitch.png
+       :height: 400
+
+    6. If there are multiple cameras connected, you can switch between them by selecting the preferred camera from Cameras Dropdown.
+
+    7. Once a camera is selected and the preview is visible, you can start recording by clicking on the Record/Stop button right next to the Cameras Dropdown. The Camera preview will still be available while recording.
+
+    8. The status message on the top right will display the filename into which the video is being recorded.
+
+    .. Image:: /images/ti-apps-launcher-camera-recording.png
+       :height: 400
+
+    9. Press the Record/Stop button again to Stop Recording.
+
+    10. To play the recorded videos, Select a video file from the Gallery Dropdown, and click Play Button. The info about the file being played will be displayed on the top left corner.
+
+    .. Image:: /images/ti-apps-launcher-camera-gallery-dropdown.png
+       :height: 400
+
+    .. Image:: /images/ti-apps-launcher-camera-playback.png
+       :height: 400
+
+    11. This player can be used to play any .h264, .h265 and .mp4 (h264 and h265 only) files. To test with other files instead of recorded videos, copy the test files to ``/opt/ti-apps-launcher/gallery/``.
+
+    .. note::
+
+         The Gallery Dropdown filters files based on the name of the file. So the filename must have "h264" or "h265" as substring.
+
+    12. To delete the recorded files, after selecting the file from Dropdown, click Delete Button next to the Play Button.
+
+
+Launching the ARM Analytics Demo
+________________________________
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
-   Launching the ARM Analytics Demo
-   ________________________________
+    .. note::
+
+       ARM Analytics Demo is only supported on AM62x SK, AM62x-LP SK and AM62PX. AM62SIP doesn't support it.
+
+    1. This app tries to showcase the ARM optimized models for Object Detection, Face Detection and Image Classification.
+
+    2. To launch the ARM Analytics demo, click on the `ARM Analytics` button on the left panel.
+
+    .. Image:: /images/ti-apps-launcher-arm-analytics.png
+       :height: 400
+
+    3. By default, the ARM Analytics demo shows the results of **Object Detection** Model on existing data.
+
+    4. To test **Face Detection** or **Image Classification**, Click on the respective buttons available at the bottom of the main window.
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62PX')
 
    .. note::
 
-      ARM Analytics Demo is only supported on AM62x SK, AM62x-LP SK and AM62PX. AM62SIP doesn't support it.
+      This section is not valid for this platform.
 
-   1. This app tries to showcase the ARM optimized models for Object Detection, Face Detection and Image Classification.
-
-   2. To launch the ARM Analytics demo, click on the `ARM Analytics` button on the left panel.
-
-   .. Image:: /images/ti-apps-launcher-arm-analytics.png
-      :width: 950
-      :height: 900
-
-   3. By default, the ARM Analytics demo shows the results of **Object Detection** Model on existing data.
-
-   4. To test **Face Detection** or **Image Classification**, Click on the respective buttons available at the bottom of the main window.
 
 Launching the Benchmarks Demo
 _____________________________
@@ -214,8 +244,7 @@ _____________________________
    3. User will now see the list of Benchmarks available to test on TI |__PART_FAMILY_DEVICE_NAMES__|. Click on the `play button` infront of the benchmark you like to test. The image below is captured while running the `glmark2`.
 
    .. Image:: /images/ti-apps-launcher-benchmarks-glmark2.png
-      :width: 950
-      :height: 900
+      :height: 400
 
    4. Once after the entire benchmark has been run, the FPS & Score will get populated in the table.
 
@@ -224,7 +253,6 @@ _____________________________
    3. User will now see the list of Benchmarks available to test on TI |__PART_FAMILY_DEVICE_NAMES__|. Click on the `play button` infront of the benchmark you like to test. The image below is captured while running the `dhrystone`.
 
    .. Image:: /images/benchmarks-system.png
-      :width: 950
       :height: 400
 
 
@@ -244,16 +272,14 @@ __________________________________
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
    .. Image:: /images/ti-apps-launcher-gpu-performance.png
-      :width: 950
-      :height: 900
+      :height: 400
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
    3. The image below is captured while running the `glmark2` with **GPU Load Level as 3**.
 
    .. Image:: /images/gpu-benchmarks-textures.png
-      :width: 950
-      :height: 900
+      :height: 400
 
 4. You will see the updated values of FPS & Score metrices getting populated in the table.
 
@@ -271,8 +297,7 @@ ________________________
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
    .. Image:: /images/seva-store.png
-      :width: 950
-      :height: 900
+      :height: 400
 
 Launching the Firefox Browser
 _____________________________
@@ -288,17 +313,17 @@ _____________________________
 2. Click `Launch` button to launch the Firefox Browser. The Browser launches with `TI Arm-based processors page <https://www.ti.com/microcontrollers-mcus-processors/arm-based-processors/overview.html>`__ as the first tab by default.
 
 .. Image:: /images/firefox-tab.png
-   :width: 950
-   :height: 900
+   :height: 400
 
 .. note:: It takes approximately 10-12 seconds for Firefox ESR browser to launch.
 
 3. Click `x` to close the Firefox Browser.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
-   Launching the 3D Demo
-   _____________________
+Launching the 3D Demo
+_____________________
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
    .. note::
 
@@ -309,10 +334,15 @@ _____________________________
    2. Click `Launch` button to launch the 3D Demo by Imagination. By default, you would see the Skinning Model running on the screen.
 
    .. Image:: /images/ti-apps-launcher-3d-demo.png
-      :width: 950
-      :height: 900
+      :height: 400
 
    3. You can use mouse buttons or spacebar to pause the 3D Demo and press `ESC` to exit & go back to TI Apps Launcher.
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62PX')
+
+   .. note::
+
+      This section is not valid for this platform.
 
 Using the Settings Button
 _________________________
@@ -322,8 +352,7 @@ _________________________
 2. Once the user clicks on the Settings button, it will ask for a HTTPS Proxy and No proxy values.
 
 .. Image:: /images/ti-apps-launcher-settings.png
-   :width: 950
-   :height: 900
+   :height: 400
 
 3. Once you enter the necessary values for both HTTPS and No proxy, click on `Set Proxy` to set the proxy configuration.
 
