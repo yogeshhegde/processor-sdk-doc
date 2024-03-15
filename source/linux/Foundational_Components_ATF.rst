@@ -32,6 +32,16 @@ Where <hash> is the commit shown here: :ref:`tf-a-release-notes`.
 
 |
 
+.. rubric:: Setting up the toolchain paths
+
+Refer to :ref:`yocto-toolchain` section to use the toolchain packaged in the Processor SDK (recommended).
+
+Refer to :ref:`external-arm-toolchain` to download and setup ARM toolchains, if the Processor SDK is not used.
+
+In either of the above setups, the build commands in the next section will assume the below variables are set appropriately.
+
+- ``CROSS_COMPILE_64``
+
 .. rubric:: Building ATF
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM64X', 'J722S')
@@ -44,7 +54,7 @@ Where <hash> is the commit shown here: :ref:`tf-a-release-notes`.
 
                 $ export TFA_DIR=<path-to-arm-trusted-firmware>
                 $ cd $TFA_DIR
-                $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 K3_PM_SYSTEM_SUSPEND=1 TARGET_BOARD=lite SPD=opteed
+                $ make ARCH=aarch64 CROSS_COMPILE="$CROSS_COMPILE_64" PLAT=k3 K3_PM_SYSTEM_SUSPEND=1 TARGET_BOARD=lite SPD=opteed
 
     .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM64X', 'J722S')
 
@@ -54,25 +64,25 @@ Where <hash> is the commit shown here: :ref:`tf-a-release-notes`.
 
                 $ export TFA_DIR=<path-to-arm-trusted-firmware>
                 $ cd $TFA_DIR
-                $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 TARGET_BOARD=lite SPD=opteed
+                $ make ARCH=aarch64 CROSS_COMPILE="$CROSS_COMPILE_64" PLAT=k3 TARGET_BOARD=lite SPD=opteed
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
     .. code-block:: console
 
-        $ make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=generic SPD=opteed K3_USART=0x8
+        $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3 TARGET_BOARD=generic SPD=opteed K3_USART=0x8
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
     .. code-block:: console
 
-        $ make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=j784s4 SPD=opteed K3_USART=0x8
+        $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3 TARGET_BOARD=j784s4 SPD=opteed K3_USART=0x8
 
 .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4')
 
     .. code-block:: console
 
-        $ make CROSS_COMPILE=aarch64-linux-gnu- PLAT=k3 TARGET_BOARD=generic SPD=opteed
+        $ make CROSS_COMPILE="$CROSS_COMPILE_64" PLAT=k3 TARGET_BOARD=generic SPD=opteed
 
 |
 
