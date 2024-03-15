@@ -2,9 +2,9 @@
 
 .. _pi-hdr-programming:
 
-=============================
+#############################
 RPi 40-pin header programming
-=============================
+#############################
 
 TI |__PART_FAMILY_NAME__| SK development board contain a 40 pin GPIO
 header, similar to the 40 pin header in the Raspberry Pi. These GPIOs can be
