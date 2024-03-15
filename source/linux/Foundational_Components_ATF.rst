@@ -10,7 +10,7 @@ Exception Level 3 (EL3).
 
 ATF is used as the initial start code on ARMv8-A cores for all K3 platforms.
 After setting up the initial core state and applying any needed errata fixes
-it sets up itself as the EL3 monitor handler. After this is installs the secure
+it sets up itself as the EL3 monitor handler. Following that, it installs the secure
 world software (OP-TEE) and passes execution on to either the Linux kernel or U-Boot
 in the non-secure world.
 
@@ -28,15 +28,15 @@ If it is not possible to use pre-build binary, use the following:
     $ git clone https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
     $ git checkout <hash>
 
-Where <hash> is the OPTEE commit shown here: :ref:`tf-a-release-notes`.
+Where <hash> is the commit shown here: :ref:`tf-a-release-notes`.
 
 |
 
 .. rubric:: Building ATF
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM64X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM64X', 'J722S')
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S')
 
         *With Low Power Modes enabled (default):*
 
@@ -46,7 +46,7 @@ Where <hash> is the OPTEE commit shown here: :ref:`tf-a-release-notes`.
                 $ cd $TFA_DIR
                 $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 K3_PM_SYSTEM_SUSPEND=1 TARGET_BOARD=lite SPD=opteed
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM64X')
+    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM64X', 'J722S')
 
         *Without Low Power Modes enabled:*
 
@@ -108,7 +108,7 @@ Where <hash> is the OPTEE commit shown here: :ref:`tf-a-release-notes`.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J722S')
 
-    To change the default load address of these binaries, an adress has to be changed in several source trees. The following
+    To change the default load address of these binaries, an address has to be changed in several source trees. The following
     is an example for AM64x family devices. Other family devices might not at the moment have binman dtsi files associated with
     them but they could in the future.
 
