@@ -3,7 +3,7 @@
 .. _download-and-install-sdk:
 
 Download and Install the SDK
-======================================
+============================
 
 The |__SDK_FULL_NAME__| Installer will install the necessary components
 to start Linux development on the TI microprocessor.
@@ -35,6 +35,15 @@ distributions.
 
 You can download the latest |__SDK_FULL_NAME__| installer from the
 |__SDK_DOWNLOAD_URL__|.
+
+.. rubric:: Required Host Packages to Install the SDK Installer in Linux
+   :name: required-host-packages-to-install-the-sdk-installer-linux
+
+Please run the following command to install all packages required to Install the SDK Installer on Ubuntu |__LINUX_UBUNTU_VERSION_SHORT__|.
+
+.. code-block:: console
+
+    host# sudo apt-get install file fdisk dosfstools
 
 .. rubric:: How to Run the SDK Installer in Linux
    :name: how-to-run-the-sdk-installer-linux
