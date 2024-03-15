@@ -44,12 +44,12 @@ within the kernel tree to fail.
 Compiler
 ^^^^^^^^
 
-Before compiling the kernel or kernel modules the SDK's toolchain needs
-to be added to the PATH environment variable
-
 ..
   [comment] instructions for 32 bit processors
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+
+   Before compiling the kernel or kernel modules the SDK's toolchain needs
+   to be added to the PATH environment variable
 
    .. code-block:: console
 
@@ -59,15 +59,13 @@ to be added to the PATH environment variable
   [comment] instructions for 64 bit processors
 .. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
 
-   .. code-block:: console
+   Refer to :ref:`yocto-toolchain` section to use the toolchain packaged in the Processor SDK (recommended).
 
-      export PATH=<sdk path>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/aarch64-oe-linux:$PATH
+   Refer to :ref:`external-arm-toolchain` to download and setup ARM toolchains, if the Processor SDK is not used.
 
-   .. note::
-        Optionally, one can use the arm compilers provided from developer.arm.com
-        to build the Linux Kernel.
-        Just use CROSS_COMPILE=aarch64-none-linux-gnu- instead of aarch64-oe-linux-
-        wherever applicable.
+   In either of the above setups, the build commands in the next section will assume the below variables are set appropriately.
+
+   - ``CROSS_COMPILE_64``
 
 The current compiler supported for this release along with download
 location can be found in the release notes for the kernel release.
@@ -102,7 +100,7 @@ The command to clean the kernel is:
 
     .. code-block:: console
 
-        make ARCH=arm64 CROSS_COMPILE=aarch64-oe-linux- distclean
+        make ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" distclean
 
 |
 
@@ -133,7 +131,7 @@ a command of the form:
 
     .. code-block:: console
 
-        make ARCH=arm64 CROSS_COMPILE=aarch64-oe-linux- <defconfig>
+        make ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" <defconfig>
 
 Using Default Configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -164,7 +162,7 @@ as a starting point).
 
     .. code-block:: console
 
-        make ARCH=arm64 CROSS_COMPILE=aarch64-oe-linux- defconfig ti_arm64_prune.config
+        make ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" defconfig ti_arm64_prune.config
 
 The config fragments found in <path-to-ti-linux-kernel>/kernel/configs can be used to trim/add
 features when building a kernel that targets only TI EVMs. Append a config fragment to the end
@@ -204,13 +202,13 @@ To invoke the kernel configuration you simply use a command like:
 
     .. code-block:: console
 
-        make ARCH=arm64 CROSS_COMPILE=aarch64-oe-linux- <config type>
+        make ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" <config type>
 
     i.e. for menuconfig the command would look like
 
     .. code-block:: console
 
-        make ARCH=arm64 CROSS_COMPILE=aarch64-oe-linux- menuconfig
+        make ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" menuconfig
 
 Once the configuration window is open you can then select which kernel
 components should be included in the build. Exiting the configuration
@@ -262,7 +260,7 @@ Compiling the Kernel
 
     .. code-block:: console
 
-        make ARCH=arm64 CROSS_COMPILE=aarch64-oe-linux- Image
+        make ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" Image
 
     This will result in a kernel image file being created in the
     arch/arm64/boot/ directory called Image.
@@ -394,7 +392,7 @@ Compiling the Device Tree Binaries
 
     .. code-block:: console
 
-        make DTC_FLAGS=-@ ARCH=arm64 CROSS_COMPILE=aarch64-oe-linux- ti/<dt filename>.dtb
+        make DTC_FLAGS=-@ ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" ti/<dt filename>.dtb
 
     The compiled device tree file with be located in arch/arm64/boot/dts/ti.
 
@@ -403,13 +401,13 @@ Compiling the Device Tree Binaries
 
     .. code-block:: console
 
-        make DTC_FLAGS=-@ ARCH=arm64 CROSS_COMPILE=aarch64-oe-linux- ti/k3-am642-evm.dtb
+        make DTC_FLAGS=-@ ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" ti/k3-am642-evm.dtb
 
     Alternatively, you can build every device tree binary with command
 
     .. code-block:: console
 
-        make ARCH=arm64 CROSS_COMPILE=aarch64-oe-linux- dtbs
+        make ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" dtbs
 
 Compiling the Kernel Modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -436,7 +434,7 @@ Compiling the Kernel Modules
 
     .. code-block:: console
 
-        make ARCH=arm64 CROSS_COMPILE=aarch64-oe-linux- modules
+        make ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" modules
 
 
 This will result in .ko (kernel object) files being placed in the kernel
