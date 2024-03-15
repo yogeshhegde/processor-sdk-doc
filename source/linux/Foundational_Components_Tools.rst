@@ -1,8 +1,8 @@
 .. _foundational-components-tools:
 
-******************
+#####
 Tools
-******************
+#####
 
 There are many tools available to help with Linux development on TI
 platforms. From Code Composer Studio, an Eclipse IDE that can be used
