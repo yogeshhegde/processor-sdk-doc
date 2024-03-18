@@ -1,10 +1,8 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Tools
-
 .. _foundational-components-tools:
 
-******************
+#####
 Tools
-******************
+#####
 
 There are many tools available to help with Linux development on TI
 platforms. From Code Composer Studio, an Eclipse IDE that can be used
@@ -22,4 +20,4 @@ find a variety of help on this page.
    Foundational_Components/Tools/Flash_via_DFU
    Foundational_Components/Tools/Flash_via_Ethernet
    Foundational_Components/Tools/Flash_via_UART
-   /devices/AM62PX/linux/Foundational_Components/Tools/pi_hdr_programming
+   Foundational_Components/Tools/GPIO_Tools
