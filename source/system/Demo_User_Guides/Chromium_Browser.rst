@@ -93,7 +93,7 @@ using the :console:`--disable-gpu` flag:
 
 .. code-block:: console
 
-    $ chromium https://webglsamples.org/aquarium/aquarium.org --start-fullscreen --disable-gpu
+    $ chromium https://webglsamples.org/aquarium/aquarium.html --start-fullscreen --disable-gpu
 
 
 To get raw performance numbers from the GPU, you may want to disable frame sync locking in Chromium. This will tell Chromium never to wait for VSYNC and render as fast as the GPU can achieve.
