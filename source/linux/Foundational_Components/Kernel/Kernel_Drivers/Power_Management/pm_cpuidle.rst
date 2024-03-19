@@ -37,9 +37,9 @@ transition to the selected state.
 
     .. rubric:: Source Location
 
-        arch/arm/mach-omap2/pm33xx-core.c
-        drivers/soc/ti/pm33xx.c
-        drivers/cpuidle/cpuidle-arm.c
+    arch/arm/mach-omap2/pm33xx-core.c
+    drivers/soc/ti/pm33xx.c
+    drivers/cpuidle/cpuidle-arm.c
 
     .. rubric:: Kernel Configuration Options
 
