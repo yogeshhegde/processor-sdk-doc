@@ -155,13 +155,7 @@ Build U-Boot
 
    All of these are available in the SDK at ``<path to tisdk>/board-support/prebuilt-images>``
 
-   .. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-      Go `here <../../../devices/AM62X/linux/Overview/Download_and_Install_the_SDK.html>`__ to download and install the SDK.
-
-   .. ifconfig:: CONFIG_part_variant in ('AM64X')
-
-      Go `here <../../../devices/AM64X/Overview/Download_and_Install_the_SDK.html>`__ to download and install the SDK.
+   Go :ref:`here <download-and-install-sdk>` to download and install the SDK.
 
    .. rubric:: Setting up the toolchain paths
 
