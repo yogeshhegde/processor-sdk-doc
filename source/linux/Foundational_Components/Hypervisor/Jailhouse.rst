@@ -125,6 +125,17 @@ Jailhouse sources are located at $TI_SDK_PATH/board-support/extra-drivers/jailho
 directory. The top level SDK Makefile has the *jailhouse_clean*, *jailhouse* and
 *jailhouse_install* targets which can be used to clean, build and install Jailhouse
 to the target file system using the default configs or after making any required changes.
+
+Following are the additional dependencies needed to be installed in host PC for jailhouse
+build.
+
+::
+
+    sudo apt-get install device-tree-compiler python3-dev
+    
+    Python package:
+    pip3 install Mako
+
 The exact commands are:
 
 ::

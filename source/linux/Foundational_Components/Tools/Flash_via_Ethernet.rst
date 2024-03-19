@@ -5,25 +5,49 @@
 Flash via Ethernet
 ==================
 
-Ethernet is used for peripheral boot and then to flash the files to on-chip memory
+Ethernet is used for peripheral boot and then to flash the files to on board memory
 using DHCP server and TFTP.
+
+Get Tool
+--------
+
+**SDK installer**
+
+Download and install Processer SDK Installer. For steps refer :ref:`download-and-install-sdk`.
+
+**Clone repository**
+
+Clone the sources from `here <https://git.ti.com/cgit/processor-sdk/uboot-flash-writer/>`__.
+
+::
+
+    git clone https://git.ti.com/git/processor-sdk/uboot-flash-writer.git
+    git checkout master
 
 Important files
 ---------------
 
-Environment variable text files are located at
+Environment variable text files are located at following path.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
     ::
-
+		
+        In SDK installer
         <TI_SDK_PATH>/bin/Ethernet_flash/am62xx-evm/
+
+        In source repo
+        tools/Ethernet_flash/bin/am62xx-evm/
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
     ::
-
+		
+        In SDK installer
         <TI_SDK_PATH>/bin/Ethernet_flash/am64xx-evm/
+
+        In source repo
+        tools/Ethernet_flash/bin/am64xx-evm/
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -111,11 +135,28 @@ to be flashed. Ex. to transfer tiboot3.bin over TFTP to EVM
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    Use uEnv_ethernet_emmc_am62xx-evm.txt file as reference.
+    Use uEnv_ethernet_emmc_am62xx-evm.txt file as reference located at following path.
+
+	::
+		
+		In SDK installer
+		<TI_SDK_PATH>/bin/Ethernet_flash/am62xx-evm/uEnv_ethernet_emmc_am62xx-evm.txt
+     
+		In source repo
+		tools/Ethernet_flash/bin/am62xx-evm/uEnv_ethernet_emmc_am62xx-evm.txt
+
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-	Use uEnv_ethernet_emmc_am64xx-evm.txt file as reference.
+	Use uEnv_ethernet_emmc_am64xx-evm.txt file as reference located at following path.
+
+	::
+
+		In SDK installer
+		<TI_SDK_PATH>/bin/Ethernet_flash/am62xx-evm/uEnv_ethernet_emmc_am64xx-evm.txt
+
+		In source repo
+		tools/Ethernet_flash/bin/am62xx-evm/uEnv_ethernet_emmc_am64xx-evm.txt
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X','AM62X')
 
@@ -123,12 +164,37 @@ to be flashed. Ex. to transfer tiboot3.bin over TFTP to EVM
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    Use uEnv_ethernet_ospi-nor_am62xx-evm.txt file as reference.
+    Use uEnv_ethernet_ospi-nor_am62xx-evm.txt file as reference located at following path.
+
+	::
+
+		In SDK installer
+		<TI_SDK_PATH>/bin/Ethernet_flash/am62xx-evm/uEnv_ethernet_emmc_am62xx-evm.txt
+		
+		In source repo
+		tools/Ethernet_flash/bin/am62xx-evm/uEnv_ethernet_emmc_am62xx-evm.txt
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-    Use uEnv_ethernet_ospi-nor_am64xx-evm.txt file as reference.
+    Use uEnv_ethernet_ospi-nor_am64xx-evm.txt file as reference located at following path.
+
+	::
+
+         In SDK installer
+         <TI_SDK_PATH>/bin/Ethernet_flash/am64xx-evm/uEnv_ethernet_ospi-nor_am64xx-evm.txt
+		
+         In source repo
+         tools/Ethernet_flash/bin/am64xx-evm/uEnv_ethernet_ospi-nor_am64xx-evm.txt
 
     **Flash to GPMC NAND**
 
-    Use uEnv_ethernet_gpmc-nand_am64xx-evm.txt file as reference.
+    Use uEnv_ethernet_gpmc-nand_am64xx-evm.txt file as reference located at following path.
+
+	::
+    
+         In SDK installer
+         <TI_SDK_PATH>/bin/Ethernet_flash/am64xx-evm/uEnv_ethernet_gpmc-nand_am64xx-evm.txt
+    
+         In source repo
+         tools/Ethernet_flash/bin/am64xx-evm/uEnv_ethernet_gpmc-nand_am64xx-evm.txt
+

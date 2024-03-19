@@ -670,6 +670,14 @@ the Makefile from the top-level of the SDK.
         host# sudo cp board-support/built-images/tispl.bin /media/$USER/boot/tispl.bin
         host# sudo cp board-support/built-images/u-boot.img /media/$USER/boot/u-boot.img
 
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    **For HS-FS**
+    ::
+
+        host# sudo cp board-support/built-images/tiboot3-am62p*-hs-fs-evm.bin /media/$USER/boot/tiboot3.bin
+        host# sudo cp board-support/built-images/u-boot.img board-support/built-images/tispl.bin /media/$USER/boot
+
 .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X')
 
     .. code-block:: console
