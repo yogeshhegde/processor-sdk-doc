@@ -20,8 +20,6 @@ TI Apps Launcher is a QT Based Application launcher for TI Platforms. Currently,
 
 - Seva Store
 
-- Firefox
-
 - Settings
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
@@ -298,27 +296,6 @@ ________________________
 
    .. Image:: /images/seva-store.png
       :height: 400
-
-Launching the Firefox Browser
-_____________________________
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
-
-   .. note::
-
-      Firefox Browser is not supported on AM62xSIP due to it's memory constraints.
-
-1. |__PART_FAMILY_DEVICE_NAMES__| SDK now supports Firefox ESR Browser. Click on the `Firefox` button on the left panel.
-
-2. Click `Launch` button to launch the Firefox Browser. The Browser launches with `TI Arm-based processors page <https://www.ti.com/microcontrollers-mcus-processors/arm-based-processors/overview.html>`__ as the first tab by default.
-
-.. Image:: /images/firefox-tab.png
-   :height: 400
-
-.. note:: It takes approximately 10-12 seconds for Firefox ESR browser to launch.
-
-3. Click `x` to close the Firefox Browser.
-
 
 Launching the 3D Demo
 _____________________
