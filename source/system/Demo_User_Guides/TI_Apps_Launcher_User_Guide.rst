@@ -3,7 +3,7 @@
 .. _TI-Apps-Launcher-User-Guide-label:
 
 TI Apps Launcher - User Guide
-=======================================
+=============================
 
 Overview
 --------
@@ -19,6 +19,8 @@ TI Apps Launcher is a QT Based Application launcher for TI Platforms. Currently,
 - GPU Performance
 
 - Seva Store
+
+- Chromium
 
 - Settings
 
@@ -271,7 +273,9 @@ __________________________________
 
    .. Image:: /images/ti-apps-launcher-gpu-performance.png
       :height: 400
-
+   
+   3. You will see the updated values of FPS & Score metrices getting populated in the table.
+   
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
    3. The image below is captured while running the `glmark2` with **GPU Load Level as 3**.
@@ -279,7 +283,7 @@ __________________________________
    .. Image:: /images/gpu-benchmarks-textures.png
       :height: 400
 
-4. You will see the updated values of FPS & Score metrices getting populated in the table.
+   4. You will see the updated values of FPS & Score metrices getting populated in the table.
 
 Launching the Seva Store
 ________________________
@@ -290,13 +294,40 @@ ________________________
 
       Seva Store is not supported on AM62xSIP due to it's memory constraints.
 
-1. |__PART_FAMILY_DEVICE_NAMES__| SDK now supports Seva Store. Seva Store is TI developed Demo Gallery Tool which allows users to Download and Install demos on the go. Developers can host their Demos as Docker Images on any public Docker Registry and link them to Seva Design Gallery. Refer `Seva Store - User Guide <Seva_Store.html>`__ to know more about Seva Store.
+1. |__PART_FAMILY_DEVICE_NAMES__| SDK now supports Seva Store. Seva Store is a TI developed demo gallery which allows users to download and install demos on the go. Developers can host their demos as Docker Images on any public Docker Registry and link them to Seva Design Gallery. 
+
+2. Refer :ref:`Seva Store - User Guide <Seva-Store-label>` to know more about Seva Store.
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
    .. Image:: /images/seva-store.png
       :height: 400
 
+Launching the Chromium Browser
+______________________________
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+   .. note::
+
+      Chromium Browser is not supported on AM62xSIP due to it's memory constraints.
+
+1. |__PART_FAMILY_DEVICE_NAMES__| SDK now supports GPU Accelarated Chromium Browser. Click on the Chromium button on the left panel.
+  
+2. Click Launch button to launch the Chromium Browser. The Browser launches with `WebGL Aquarium <https://webglsamples.org/aquarium/aquarium.html>`__ as the first tab by default.
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+      .. Image:: /images/chromium-browser-am62x.png
+         :height: 400   
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+      .. Image:: /images/chromium-browser-am62p.png
+         :height: 400
+      
+3. Refer :ref:`Chromium Browser - User Guide <Chromium_Browser-label>` to know more about Chromium Browser.
+  
 Launching the 3D Demo
 _____________________
 
