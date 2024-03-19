@@ -187,9 +187,8 @@ differences from MCSDK.
 
 -  A copy of Kernel GIT repo is included in the "board-support" folder
    of the Processor SDK Installation
--  For more details, refer to the
-   `Processor\_SDK\_Linux\_U-Boot\_Release\_Notes
-   <Foundational_Components_U-Boot.html#u-boot-release-notes>`__
+-  For more details, refer to the :ref:`Processor SDK Linux U-Boot Release Notes
+   <u-boot-release-notes>`
 
 .. rubric:: Linux Kernel
    :name: linux-kernel-mcsdk-to-procsdk
