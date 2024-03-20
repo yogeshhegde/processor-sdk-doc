@@ -2,14 +2,16 @@
 
 .. _cpsw3g:
 
+######
 CPSW3g
-------
+######
 
 .. contents:: :local:
-    :depth: 3
+   :depth: 3
 
+************
 Introduction
-============
+************
 
 The TI |__PART_FAMILY_DEVICE_NAMES__| family of devices have multi port
 Gigabit Ethernet Switch subsystem. SoCs may have more than 2 external
@@ -42,10 +44,11 @@ supports the following features:
 
 
 .. note::
- Default mode of operation is multiple indpendent MAC ports.
+
+   Default mode of operation is multiple indpendent MAC ports.
 
 Supported platforms
-"""""""""""""""""""
+===================
 
 +-----------+-------------------------------+
 | SoC       | Number of external ports      |
@@ -69,12 +72,12 @@ Supported platforms
         | to enable functionality of the second CPSW port in Linux.
 
 Driver Configuration
-====================
+--------------------
 
 Default SDK build will have these configurations enabled. In case of
 custom builds, please ensure following configs are enabled.
 
-::
+.. code-block:: kconfig
 
     CONFIG_TI_DAVINCI_MDIO
     CONFIG_TI_K3_AM65_CPSW_NUSS
@@ -85,8 +88,8 @@ custom builds, please ensure following configs are enabled.
 
 For further details regarding the above configs, refer:
 
-#. drivers/net/ethernet/ti/Kconfig
-#. drivers/phy/ti/Kconfig
+#. ``drivers/net/ethernet/ti/Kconfig``
+#. ``drivers/phy/ti/Kconfig``
 
 .. rubric:: **Module Build**
    :name: k3-module-build
@@ -94,7 +97,7 @@ For further details regarding the above configs, refer:
 Module build for the cpsw driver is supported. To do this, use option 'm' for above configs, where applicable.
 
 Device tree bindings
-====================
+--------------------
 
 The DT bindings description can be found at:
 
@@ -104,48 +107,53 @@ The DT bindings description can be found at:
 |
 
 Multi MAC mode
-==============
+--------------
 
 .. note::
- This section documents Independent MAC mode of operation with
- CPSW3g.
+
+   This section documents Independent MAC mode of operation with
+   CPSW3g.
 
 .. include:: _K3-CPSW-common.rst
 
 Promiscous Mode
-===============
+---------------
+
 By default promiscous mode is disabled. It can be enabled by using
 the below command.
 
 Please note running a tool like tcpdump will itself enable promiscous
 mode.
 
-::
+.. code-block:: console
 
-     ip link set eth0 promisc on
+   ip link set eth0 promisc on
 
 Set MacAddress manually
-=======================
+-----------------------
+
 While the default MacAddress of the port is obtained from EEPROM, it's
 possible to change the MacAddress manually from shell.
 
-::
+.. code-block:: console
 
-     ip link set dev <eth0> address <macaddress>
+   ip link set dev <eth0> address <macaddress>
 
 Multi port Switch mode
-======================
+----------------------
 
 .. note::
 
- This section documents the Switch mode features available with
- CPSW3g
+   This section documents the Switch mode features available with
+   CPSW3g
 
 The Switch mode can be enabled by configuring devlink driver parameter
-"switch_mode" to 1/true::
+"switch_mode" to 1/true
 
-        devlink dev param set platform/8000000.ethernet \
-        name switch_mode value true cmode runtime
+.. code-block:: console
+
+   devlink dev param set platform/8000000.ethernet \
+   name switch_mode value true cmode runtime
 
 Above setting can be done regardless of the state of Port's netdev
 devices - UP/DOWN, but Port's netdev devices have to be in UP state
@@ -159,9 +167,9 @@ enable marking packets with offload_fwd_mark flag.
 All configuration is implemented via switchdev API.
 
 Bridge setup
-""""""""""""
+^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
    devlink dev param set platform/8000000.ethernet \
    name switch_mode value true cmode runtime
@@ -181,51 +189,57 @@ Bridge setup
 
 
 Turn On/Off Spanning Tree Protocol (STP)
-""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
    ip link set dev br0 type bridge stp_state 1/0
 
 VLAN configuration
-""""""""""""""""""
+^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-   bridge vlan add dev br0 vid 1 self <---- add VLAN as a Bridge Entry
-   bridge vlan add dev br0 vid 1 pvid untagged self <---- add cpu port to VLAN 1
+   bridge vlan add dev br0 vid 1 self # <---- add VLAN as a Bridge Entry
+   bridge vlan add dev br0 vid 1 pvid untagged self # <---- add cpu port to VLAN 1
 
 This step is mandatory for bridge/default_pvid.
 
 Adding extra VLANs
-""""""""""""""""""
+^^^^^^^^^^^^^^^^^^
 
- 1. untagged::
+1. untagged
 
-   bridge vlan add dev eth0 vid 100 pvid untagged master
-   bridge vlan add dev sw0p2 vid 100 pvid untagged master
-   bridge vlan add dev br0 vid 100 self <---- add VLAN as a Bridge Entry
-   bridge vlan add dev br0 vid 100 pvid untagged self <---- Add cpu port to VLAN100
+   .. code-block:: console
 
- 2. tagged::
+      bridge vlan add dev eth0 vid 100 pvid untagged master
+      bridge vlan add dev sw0p2 vid 100 pvid untagged master
+      bridge vlan add dev br0 vid 100 self # <---- add VLAN as a Bridge Entry
+      bridge vlan add dev br0 vid 100 pvid untagged self # <---- Add cpu port to VLAN100
 
-   bridge vlan add dev eth0 vid 100 master
-   bridge vlan add dev sw0p2 vid 100 master
-   bridge vlan add dev br0 vid 100 self <---- add VLAN as a Bridge Entry
-   bridge vlan add dev br0 vid 100 pvid tagged self <---- Add cpu port to VLAN100
+2. tagged
+
+   .. code-block:: console
+
+      bridge vlan add dev eth0 vid 100 master
+      bridge vlan add dev sw0p2 vid 100 master
+      bridge vlan add dev br0 vid 100 self # <---- add VLAN as a Bridge Entry
+      bridge vlan add dev br0 vid 100 pvid tagged self # <---- Add cpu port to VLAN100
 
 Forwarding Data Bases (FDBs)
-""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Forwarding entries for MAC addresses are automatically added on the
 appropriate switch port upon detection as default operation as an
 unmanaged bridge. For managed bridge operation manually add FDB entries
 as required.
 
-Manually adding FDBs::
+Manually adding FDBs
 
-    bridge fdb add aa:bb:cc:dd:ee:ff dev eth0 master vlan 100
-    bridge fdb add aa:bb:cc:dd:ee:fe dev sw0p2 master <---- Add on all VLANs
+.. code-block:: console
+
+   bridge fdb add aa:bb:cc:dd:ee:ff dev eth0 master vlan 100
+   bridge fdb add aa:bb:cc:dd:ee:fe dev sw0p2 master # <---- Add on all VLANs
 
 .. note::
 
@@ -234,16 +248,18 @@ Manually adding FDBs::
    at the respective places.
 
 Multicast Data Bases (MDBs)
-"""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Multicast entries are automatically added on the appropriate switch port
 upon detection as default operation as an unmanaged bridge. For managed
 bridge operation manually add MDB entries as required.
 
-Manually adding MDBs::
+Manually adding MDBs
+
+.. code-block:: console
 
    bridge mdb add dev br0 port eth0 grp 239.1.1.1 permanent vid 100
-   bridge mdb add dev br0 port eth0 grp 239.1.1.1 permanent <---- Add on all VLANs
+   bridge mdb add dev br0 port eth0 grp 239.1.1.1 permanent # <---- Add on all VLANs
 
 .. note::
 
@@ -252,7 +268,7 @@ Manually adding MDBs::
    at the respective places.
 
 Multicast flooding
-""""""""""""""""""
+^^^^^^^^^^^^^^^^^^
 
 CPU port mcast_flooding is always on
 
@@ -260,12 +276,13 @@ Turning flooding on/off on switch ports::
 
    bridge link set dev eth0 mcast_flood on/off
 
-Enabling Cut Through forwarding
-"""""""""""""""""""""""""""""""
+Enabling Cut Through Forwarding (CTF)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. Caution::
+.. caution::
 
-    The Cut Through configuration interface could be changed significantly in the future depending on Linux Kernel mainline development.
+   The Cut Through configuration interface could be changed significantly in the
+   future depending on Linux Kernel mainline development.
 
 Cut Through feature allows forwarding packet from one external port to
 another without being stored in Port FIFOs thus reducing overall latency
@@ -283,12 +300,13 @@ for packet forwarding.
   queues.
 
 .. note::
- Currently per port priority mask is set via debugfs entries. This may
- change in future.
 
-Here is the commands to setup cut-through for priority 0 traffic
+   Currently per port priority mask is set via debugfs entries. This may change
+   in future.
 
-::
+Here is the commands to setup cut-through for priority 0 traffic:
+
+.. code-block:: console
 
    ip link set dev eth0 down
    ip link set dev eth1 down
@@ -329,7 +347,7 @@ With above settings, generate a iperf3 traffic from client on Port1 to
 client on Port 2 and observe the ethtool statistics to see cut through
 taking effect
 
-::
+.. code-block:: console
 
    root@evm:~# ethtool -S eth1 | grep col
      tx_collision_frames: 1796093
@@ -351,26 +369,27 @@ taking effect
    tx_late_collisions:       Enet_Pn_RxCut_SAF Enet Port n Rx Store and Forward (full-duplex)
 
 Transmit Traffic Control and Rate Limiting
-""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The main difference between one port and multi port devices is that TX CPPI channels
 are shared between all network devices while External Ports FIFO are per port.
 The MQPRIO Qdisk can be used to assign different TX CPPI channels to different ports
 and this way improve over all TX performance.
 
-* the configured External Ports Fifos rate should must not be oversubscribed.
+* The configured External Ports Fifos rate should must not be oversubscribed.
   If some Ext. port and Host port both send to the same priority then Ext. Ports
   Fifos rate for this priority has to be set as sum of Ext. and Host port rates
   plus some margin.
 
-.. rubric::  Example Host port ingress with separate TX CPPI channel per port, no QoS
+.. rubric:: Example Host port ingress with separate TX CPPI channel per port, no
+   QoS
 
 * switch mode: on | off
 * Port 1 assigned TX CPPI channel 0
 * Port 2 assigned TX CPPI channel 1
 * TX CPPI channels processing mode: Round Robin
 
-::
+.. code-block:: console
 
    ip link set dev eth0 down
    ip link set dev eth1 down
@@ -383,17 +402,18 @@ and this way improve over all TX performance.
 
 If TX CPPI channels processing mode is Round Robin (p0-rx-ptype-rrobin off) then Rate Limiting should for selected TX CPPI channels.
 
-::
+.. code-block:: console
 
    echo 800 > /sys/class/net/eth0/queues/tx-0/tx_maxrate
    echo 800 > /sys/class/net/eth0/queues/tx-1/tx_maxrate
 
-.. rubric::  Example Host port ingress with separate TX CPPI channel per port and Rate Limiting
+.. rubric:: Example Host port ingress with separate TX CPPI channel per port and
+   Rate Limiting
 
 Linux Host send bulk and rate limited traffic to both ports.
 No traffic switching between P1 and P2.
 
-::
+.. code-block:: text
 
    to Host1│  CPSW3g Host bridge │ to Host2
            │     /    \          │
@@ -424,7 +444,7 @@ No traffic switching between P1 and P2.
 * pri6 traffic mapped to TC1, External Ports FIFO1, cir=200Mbit
 * pri0-5 traffic mapped to TC1, External Ports FIFO0
 
-::
+.. code-block:: console
 
    ip link set dev eth0 down
    ip link set dev eth1 down
@@ -476,12 +496,13 @@ No traffic switching between P1 and P2.
 
 
 
-.. rubric::  Example Bridging with TX CPPI channel and External Ports FIFO shapers
+.. rubric:: Example Bridging with TX CPPI channel and External Ports FIFO
+   shapers
 
 Linux Host send bulk and rate limited traffic to Host 2 (Port 2) pri3 200Mbit and
 Host 1 sends rate limited traffic to Host 2 (Port 2) pri3 200Mbit.
 
-::
+.. code-block:: text
 
    CPSW3g Host bridge │ to Host2
       /    \          │ 200Mbit
@@ -514,7 +535,7 @@ Host 1 sends rate limited traffic to Host 2 (Port 2) pri3 200Mbit.
 
 **CPSW3g Host bridge configuration**
 
-::
+.. code-block:: console
 
    ip link set dev eth0 down
    ip link set dev eth1 down
@@ -558,7 +579,7 @@ Host 1 sends rate limited traffic to Host 2 (Port 2) pri3 200Mbit.
 
 **Host 1 configuration**
 
-::
+.. code-block:: console
 
    ip link add link eth0 name eth0.100 type vlan id 100
    ip link set eth0.100 type vlan egress 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7
@@ -576,7 +597,7 @@ Host 1 sends rate limited traffic to Host 2 (Port 2) pri3 200Mbit.
 
 **Host 2 configuration**
 
-::
+.. code-block:: console
 
    ip link add link eth0 name eth0.100 type vlan id 100
    ip link set eth0.100 type vlan egress 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7
