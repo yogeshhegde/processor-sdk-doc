@@ -3,7 +3,7 @@
 .. _download-and-install-sdk:
 
 Download and Install the SDK
-======================================
+============================
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Installer
 .. rubric:: Overview
@@ -13,24 +13,31 @@ The |__SDK_FULL_NAME__| Installer (|__SDK_INSTALL_FILE__|)
 will install the necessary components to start your development on the
 TI microprocessor.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-    The SDK consists of source for the Matrix App
-    launcher starting point application, a development filesystem, a
-    target filesystem, example applications, toolchain and board support
-    package, ease of use scripts and documentation.
-
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
-
-    The SDK consists of a development filesystem, a
-    target filesystem, example applications, toolchain and board support
-    package, ease of use scripts and documentation.
+The SDK consists of a development filesystem, a
+target filesystem, example applications, toolchain and board support
+package, ease of use scripts and documentation.
 
 The |__SDK_FULL_NAME__| now includes the ARM GCC toolchain.
 The |__SDK_FULL_NAME__| was built and tested against a specific Linux
 Distribution name and version, Ubuntu |__LINUX_UBUNTU_VERSION_SHORT__|.
 Note this **does not** prevent the user from installing the SDK on other Linux
 distributions.
+
+Download & Install the SDK Installer Inside a Container
+-------------------------------------------------------
+
+TI provides a Ubuntu 22.04 based docker image with all the packages that are required to install the SDK Installer.
+
+The Docker image is hosted on `ghcr.io/texasinstruments <https://github.com/TexasInstruments/ti-docker-images/pkgs/container/ubuntu-distro>`__.
+
+Refer `Steps to Run SDK Installer inside a Container <https://github.com/TexasInstruments/ti-docker-images?tab=readme-ov-file#steps-to-run-sdk-installer-inside-container>`__ for a comprehensive guide.
+
+.. note::
+
+    Before starting the container, ensure that you have completed all the Pre-Requisites as mentioned `here <https://github.com/TexasInstruments/ti-docker-images?tab=readme-ov-file#pre-requisites>`__.
+
+Download & Install the SDK Installer on Host
+--------------------------------------------
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 

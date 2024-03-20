@@ -3,13 +3,13 @@
 .. _run-setup-scripts:
 
 Run Setup Scripts
-======================================
+=================
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Setup_Script
 .. rubric:: Overview
    :name: processor-sdk-linux-setup-script-overview
 
-After installation of the SDK on the Linux host, the setup script
+The |__SDK_FULL_NAME__| can be installed either on a Linux host or inside a docker Container that is hosted on `ghcr.io/texasinstruments <https://github.com/TexasInstruments/ti-docker-images/pkgs/container/ubuntu-distro>`__. After installation of the SDK, the setup script
 should be run to prepare the host for software development. Some of
 the tasks require administrator privileges. The script will prompt you
 when these administrator privileges are required. The setup script

@@ -77,8 +77,17 @@ Rules.make file.
 .. rubric:: Makefile
    :name: makefile
 
-The following sections cover the Makefile found in the top-level of the
-|__SDK_FULL_NAME__| package.
+The following sections cover the Makefile found in the top-level of the |__SDK_FULL_NAME__| package. The |__SDK_FULL_NAME__| can be installed either on a Linux host or inside a docker container that is hosted on `ghcr.io/texasinstruments <https://github.com/TexasInstruments/ti-docker-images/pkgs/container/ubuntu-distro>`__.
+
+Steps to follow inside a Docker Container
+-----------------------------------------
+
+- The SD card you wish to create is inserted into the host system and has a size sufficiently large (16GB or larger) to hold at least the bootloaders, kernel and root file system.
+- Refer `Steps to Run SDK Installer inside a Container <https://github.com/TexasInstruments/ti-docker-images?tab=readme-ov-file#steps-to-run-sdk-installer-inside-container>`__.
+- Follow :ref:`this <usage-examples>` to understand the Makefile usage.
+
+Steps to follow on Linux Host
+-----------------------------
 
 .. rubric:: Required Host Packages
    :name: makefile-required-packages
