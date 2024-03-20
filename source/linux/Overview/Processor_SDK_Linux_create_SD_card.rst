@@ -83,8 +83,9 @@ Create SD Card using bmap-tools
 
 1.  Download the default bootable SD card image (WIC file) available on the release page as
     tisdk-default-image-<machine>.wic.xz. The  |__SDK_FULL_NAME__| installer also contains other
-    WIC images that can be flashed to the SD card similarly. Assuming the SDK is installed on a
-    Linux machine at <PSDK\_PATH>, you can find other available WIC images at <PSDK\_PATH>/filesystem/
+    WIC images that can be flashed to the SD card similarly.
+
+    The |__SDK_FULL_NAME__| can be installed either on host or inside a Docker container that is hosted on `ghcr.io/texasinstruments <https://github.com/TexasInstruments/ti-docker-images/pkgs/container/ubuntu-distro>`__. Assuming the SDK is installed at <PSDK\_PATH>, you can find other available WIC images at <PSDK\_PATH>/filesystem/
 
 |
 
@@ -175,6 +176,8 @@ connection to a server.
 
 For this purpose, the |__SDK_FULL_NAME__| package includes a script in the
 **<PSDK\_PATH>/bin** directory named **create-sdcard.sh**.
+
+The |__SDK_FULL_NAME__| can be installed either on Host or Inside a Docker Container that is hosted on `ghcr.io/texasinstruments <https://github.com/TexasInstruments/ti-docker-images/pkgs/container/ubuntu-distro>`__.
 
 The script will give you information about each step, but the following
 section will go over the details for the use cases above and walk you
@@ -371,6 +374,17 @@ Create SD Card with Default Images using script
 The purpose of this section is to cover how to use the
 **create-sdcard.sh** script to populate an SD card that can be used to
 boot the device using the default images that ship with the |__SDK_FULL_NAME__| package.
+
+The |__SDK_FULL_NAME__| can be installed either on host or inside a Docker container that is hosted on `ghcr.io/texasinstruments <https://github.com/TexasInstruments/ti-docker-images/pkgs/container/ubuntu-distro>`__.
+
+**Steps to follow inside a Docker Container**
+
+- The SD card you wish to create is inserted into the host system and has a size sufficiently large (16GB or larger) to hold at least the bootloaders, kernel and root file system.
+- Refer `Steps to Run SDK Installer inside a Container <https://github.com/TexasInstruments/ti-docker-images?tab=readme-ov-file#steps-to-run-sdk-installer-inside-container>`__
+- Start running the script as mentioned in steps 1-4 of :ref:`Create SD card with custom images <processor-sdk-linux-create-sd-card-with-custom-images>` section above.
+- Refer :ref:`Install the Pre-built Images from SDK <choose-install-pre-built-images>`
+
+**Steps to follow on Host**
 
 .. rubric:: 1. Prerequisites
    :name: sd-default-image-prerequisites

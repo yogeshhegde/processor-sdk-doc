@@ -28,8 +28,21 @@ Distribution name and version, Ubuntu |__LINUX_UBUNTU_VERSION_SHORT__|.
 Note that this **does not** prevent the user from installing the SDK on other Linux
 distributions.
 
-.. rubric:: Downloading the SDK installer
-   :name: downloading-the-sdk-installer
+Download & Install the SDK Installer Inside a Container
+-------------------------------------------------------
+
+TI provides a Ubuntu 22.04 based docker image with all the packages that are required to install the SDK Installer.
+
+The Docker image is hosted on `ghcr.io/texasinstruments <https://github.com/TexasInstruments/ti-docker-images/pkgs/container/ubuntu-distro>`__.
+
+Refer `Steps to Run SDK Installer inside a Container <https://github.com/TexasInstruments/ti-docker-images?tab=readme-ov-file#steps-to-run-sdk-installer-inside-container>`__ for a comprehensive guide.
+
+.. note::
+
+    Before starting the container, ensure that you have completed all the Pre-Requisites as mentioned `here <https://github.com/TexasInstruments/ti-docker-images?tab=readme-ov-file#pre-requisites>`__.
+
+Download & Install the SDK Installer on Host
+--------------------------------------------
 
 You can download the latest |__SDK_FULL_NAME__| installer from the
 |__SDK_DOWNLOAD_URL__|.

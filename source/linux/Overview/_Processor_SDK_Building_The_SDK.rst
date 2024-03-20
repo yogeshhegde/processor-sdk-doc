@@ -1,8 +1,8 @@
 .. include:: /_replacevars.rst
 
-************************************
+***************************
 Building the SDK with Yocto
-************************************
+***************************
 
 Introduction
 ============
@@ -18,8 +18,23 @@ SDK along with a reference of Processor SDK specific configurations,
 build targets, and target devices. Also, tips and suggestions are
 provided along with links for more in-depth information.
 
-Quick Start
-===========
+Steps to Run Yocto Builds inside Container
+==========================================
+
+TI provides a Ubuntu 22.04 based docker image with all the packages that are required to start a Yocto Build.
+
+The Docker Image is hosted on `ghcr.io/texasinstruments <https://github.com/TexasInstruments/ti-docker-images/pkgs/container/ubuntu-distro>`__.
+
+Refer `Steps to Run Yocto builds inside a Container <https://github.com/TexasInstruments/ti-docker-images?tab=readme-ov-file#steps-to-run-yocto-builds-inside-container>`__ for a comprehensive guide.
+
+Follow :ref:`Processor SDK Build Reference <processor-sdk-build-reference>` for Layer Configuration and Build Options.
+
+.. note::
+
+    Before starting the container, ensure that you have completed all the Pre-Requisites as mentioned `here <https://github.com/TexasInstruments/ti-docker-images?tab=readme-ov-file#pre-requisites>`__.
+
+Steps to Run Yocto Builds on Host
+=================================
 
 Prerequisites (One-time setup)
 ------------------------------
@@ -171,6 +186,8 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
         to automatically figure out and set the maximum values for these variables, on your
         system, which may lead to errors.
 
+
+.. _processor-sdk-build-reference:
 
 Processor SDK Build Reference
 =============================
