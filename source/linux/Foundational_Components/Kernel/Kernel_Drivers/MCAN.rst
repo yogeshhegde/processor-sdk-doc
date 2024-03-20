@@ -3,7 +3,7 @@
 .. _mcan:
 
 MCAN
----------------------------------
+----
 
 .. rubric:: **Introduction**
    :name: introduction
@@ -181,21 +181,21 @@ included in the sdk filesystem.
 
 -  Set bitrate
 
-::
+.. code-block:: console
 
-    $ ip link set mcu_mcan0 type can bitrate 1000000
+   $ ip link set mcu_mcan0 type can bitrate 1000000
 
 -  CAN-FD mode
 
-::
+.. code-block:: console
 
-    $ ip link set mcu_mcan0 type can bitrate 1000000 fd on
+   $ ip link set mcu_mcan0 type can bitrate 1000000 fd on
 
 -  CAN-FD mode with bitrate switching
 
-::
+.. code-block:: console
 
-    $ ip link set mcu_mcan0 type can bitrate 1000000 dbitrate 4000000 fd on
+   $ ip link set mcu_mcan0 type can bitrate 1000000 dbitrate 4000000 fd on
 
 .. rubric:: **Start CAN Bus**
    :name: start-can-bus
@@ -204,9 +204,9 @@ included in the sdk filesystem.
 
 Bring up the device using the command:
 
-::
+.. code-block:: console
 
-    $ ip link set mcu_mcan0 up
+   $ ip link set mcu_mcan0 up
 
 |
 
@@ -219,30 +219,30 @@ Bring up the device using the command:
 Used to generate a specific can frame. The syntax for cansend is as
 follows:
 
-::
+.. code-block:: text
 
-    <can_id>#{R|data}          for CAN 2.0 frames
-    <can_id>##<flags>{data}    for CAN FD frames
+   <can_id>#{R|data}          for CAN 2.0 frames
+   <can_id>##<flags>{data}    for CAN FD frames
 
 Some examples:
 
 a. Send CAN 2.0 frame
 
-::
+.. code-block:: console
 
-    $ cansend mcu_mcan0 123#DEADBEEF
+   $ cansend mcu_mcan0 123#F00DCAFE
 
 b. Send CAN FD frame
 
-::
+.. code-block:: console
 
-    $ cansend mcu_mcan0 113##2AAAAAAAA
+   $ cansend mcu_mcan0 113##2AAAAAAAA
 
 c. Send CAN FD frame with BRS
 
-::
+.. code-block:: console
 
-    $ cansend mcu_mcan0 143##1AAAAAAAAA
+   $ cansend mcu_mcan0 143##1AAAAAAAAA
 
 .. rubric:: **Cangen**
    :name: cangen
@@ -250,39 +250,39 @@ c. Send CAN FD frame with BRS
 Used to generate frames at equal intervals. The syntax for cangen is as
 follows:
 
-::
+.. code-block:: text
 
-    cangen [options] <CAN interface>
+   cangen [options] <CAN interface>
 
 Some examples:
 
 a. Full load test with polling, 10 ms timeout
 
-::
+.. code-block:: console
 
-    $ cangen mcu_mcan0 -g 0 -p 10 -x
+   $ cangen mcu_mcan0 -g 0 -p 10 -x
 
 b. fixed CAN ID and length, inc. data, canfd frames with bitrate
 switching
 
-::
+.. code-block:: console
 
-    $ cangen mcu_mcan0 -g 4 -I 42A -L 1 -D i -v -v -f -b
+   $ cangen mcu_mcan0 -g 4 -I 42A -L 1 -D i -v -v -f -b
 
 .. rubric:: **Candump**
    :name: candump
 
 Candump is used to display received frames.
 
-::
+.. code-block:: console
 
-    candump [options] <CAN interface>
+   candump [options] <CAN interface>
 
 Example:
 
-::
+.. code-block:: console
 
-    $ candump mcu_mcan0
+   $ candump mcu_mcan0
 
 Note: Use Ctrl-C to terminate candump
 
@@ -294,9 +294,9 @@ https://git.pengutronix.de/cgit/tools/canutils
 
 Stop the can bus by:
 
-::
+.. code-block:: console
 
-    $ ip link set mcu_mcan0 down
+   $ ip link set mcu_mcan0 down
 
 .. note::
 

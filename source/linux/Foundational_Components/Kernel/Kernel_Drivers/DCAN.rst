@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_DCAN_User%27s_Guide
 
 DCAN
----------------------------------
+----
 
 .. rubric:: **Introduction**
    :name: introduction-linux-dcan
@@ -61,18 +61,10 @@ Table:  **DCAN Driver: Acronyms**
 
 Table:  EVMs DCAN Driver is Validated on
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-On AM335x GP EVM CAN does not work by default. The evm must have its
-"Profile Switch" set to 1 to enable CAN support.
-
-.. raw:: html
-
-   </div>
+   On AM335x GP EVM CAN does not work by default. The evm must have its
+   "Profile Switch" set to 1 to enable CAN support.
 
 .. rubric:: **Hardware/Software Changes to Enable CAN Support**
    :name: hardwaresoftware-changes-to-enable-can-support
@@ -217,19 +209,11 @@ GND pin.
 | Example of DCAN header on DRA72 EVM                                      |
 +--------------------------------------------------------------------------+
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Its important for the user to verify which header pin is associated with
-the various CAN signals. Unless there are already silk screens the user
-may need to double check the evm's schematic.
-
-.. raw:: html
-
-   </div>
+   Its important for the user to verify which header pin is associated with
+   the various CAN signals. Unless there are already silk screens the user
+   may need to double check the evm's schematic.
 
 |
 
@@ -279,21 +263,13 @@ There may be other userspace applications that can be used to interact
 with the CAN bus but the SDK supports using Canutils which is already
 included in the sdk filesystem.
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-These instructions are for main_dcan1 which is the 1st instance of CAN in the main domain.
-If the board has multiple CAN instances enabled, then they can be referenced as
-main_dcan\ ``X``\  where X is the CAN instance number just like main_dcan1 here.
-For example, 2nd instance of CAN in the main domain will be visible as main_dcan2
-to the users.
-
-.. raw:: html
-
-   </div>
+   These instructions are for main_dcan1 which is the 1st instance of CAN in the main domain.
+   If the board has multiple CAN instances enabled, then they can be referenced as
+   main_dcan\ ``X``\  where X is the CAN instance number just like main_dcan1 here.
+   For example, 2nd instance of CAN in the main domain will be visible as main_dcan2
+   to the users.
 
 .. rubric:: **Quick Steps**
    :name: quick-steps
@@ -305,18 +281,18 @@ to the users.
 
 Set the bit-rate to 50Kbits/sec using the following command:
 
-::
+.. code-block:: console
 
-    $ ip link set main_dcan1 type can bitrate 50000
+   $ ip link set main_dcan1 type can bitrate 50000
 
 -  Set bit-timing (loopback mode)
 
 Set the bit-rate to 50Kbits/sec in the loopback mode using the following
 command
 
-::
+.. code-block:: console
 
-    $ ip link set main_dcan1 type can bitrate 50000 loopback on
+   $ ip link set main_dcan1 type can bitrate 50000 loopback on
 
 .. rubric:: **Start CAN Bus**
    :name: start-can-bus
@@ -325,23 +301,15 @@ command
 
 Bring up the device using the command:
 
-::
+.. code-block:: console
 
-    $ ip link set main_dcan1 up
+   $ ip link set main_dcan1 up
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The default state when starting a previously powered off CAN device is
-called "Error-Active". So don't worry when you see this command when you
-first start the CAN instance.
-
-.. raw:: html
-
-   </div>
+   The default state when starting a previously powered off CAN device is
+   called "Error-Active". So don't worry when you see this command when you
+   first start the CAN instance.
 
 .. rubric:: **Send or Receive Packets**
    :name: send-or-receive-packets
@@ -353,32 +321,32 @@ utilities.
 
 Transmit 4 bytes with standard packet id number as 0x123
 
-::
+.. code-block:: console
 
-    $ cansend main_dcan1 123#DEADBEEF
+   $ cansend main_dcan1 123#F00DCAFE
 
 
 Transmit a sequence of can frames with random IDs and random data.
 
-::
+.. code-block:: console
 
-    $ cangen main_dcan1
+   $ cangen main_dcan1
 
 -  Receive packets
 
 Packet reception can be achieve by using candump utility
 
-::
+.. code-block:: console
 
-    $ candump main_dcan1
+   $ candump main_dcan1
 
 
 .. rubric:: **Stop CAN Bus**
    :name: stop-can-bus
 
-::
+.. code-block:: console
 
-    $ ip link set main_dcan1 down
+   $ ip link set main_dcan1 down
 
 |
 
@@ -389,30 +357,30 @@ The following are some examples exploring the capabilties of can-utils. See can-
 
 Transmit fixed CAN ID and length with an incrementing data
 
-::
+.. code-block:: console
 
-    $ cangen main_dcan1 -g 4 -I 42A -L 1 -D i -v -v
+   $ cangen main_dcan1 -g 4 -I 42A -L 1 -D i -v -v
 
 Log only error frames but no data frames
 
-::
+.. code-block:: console
 
-    $ candump -l any,0~0,#FFFFFFFF
+   $ candump -l any,0~0,#FFFFFFFF
 
 .. rubric:: **Statistics of CAN**
    :name: statistics-of-can
 
 Statistics of CAN device can be seen from these commands
 
-::
+.. code-block:: console
 
-    $ ip -d -s link show main_dcan1
+   $ ip -d -s link show main_dcan1
 
 Below command also used to know the details
 
-::
+.. code-block:: console
 
-    $ cat /proc/net/can/stats
+   $ cat /proc/net/can/stats
 
 .. rubric:: **Error frame details**
    :name: error-frame-details
@@ -443,9 +411,9 @@ states are listed here:
 
 -  Error warning frame
 
-::
+.. code-block:: text
 
-    <0x004> [8] 00 08 00 00 00 00 60 00
+   <0x004> [8] 00 08 00 00 00 00 60 00
 
 ID for error warning is 0x004 [8] represents 8 bytes have received 0x08
 at 2nd byte represents type of error warning. 0x08 for transmission
@@ -454,20 +422,20 @@ represent tx error count.
 
 -  Error passive frame
 
-::
+.. code-block:: text
 
-    <0x004> [8] 00 10 00 00 00 00 00 64
+   <0x004> [8] 00 10 00 00 00 00 00 64
 
 ID for error passive frame is 0x004 [8] represents 8 bytes have received
 0x10 at 2nd byte represents type of error passive. 0x10 for receive
 error passive, 0x20 for transmission error passive 0x64 at 8th byte
 represent rx error count.
 
--  Buss off state
+-  Bus off state
 
-::
+.. code-block:: text
 
-    <0x040> [8] 00 00 00 00 00 00 00 00
+   <0x040> [8] 00 00 00 00 00 00 00 00
 
 ID for bus-off state is 0x040
 
@@ -478,9 +446,9 @@ candump has the capability to display the error frames along with data
 frames on the console. Some of the error frames details are mentioned in
 the previous section
 
-::
+.. code-block:: console
 
-    $ candump main_dcan1 -e
+   $ candump main_dcan1 -e
 
 .. note::
 
@@ -524,9 +492,9 @@ Four additional drivers are required to utilize all the CAN features:
 -  CAN Gateway/Router (with netlink configuration)
 -  CAN bit-timing calculation
 
-::
+.. code-block:: text
 
-    [*] Networking support ->
+   [*] Networking support ->
        <*|M> CAN bus subsystem support ->
           <*|M> Raw CAN Protocol (raw access with CAN-ID filtering)
           <*|M> Broadcast Manager CAN Protocol (with content filtering)
@@ -537,18 +505,10 @@ Four additional drivers are required to utilize all the CAN features:
                 <*|M>   Bosch C_CAN/D_CAN devices ->
                    <M> Generic Platform Bus based C_CAN/D_CAN driver
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-\*\|M means can be either be built into the kernel or enabled as a
-kernel module.
-
-.. raw:: html
-
-   </div>
+   \*\|M means can be either be built into the kernel or enabled as a
+   kernel module.
 
 |
 
