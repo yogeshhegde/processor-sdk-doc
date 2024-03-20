@@ -10,7 +10,7 @@ following Evaluation Modules unless otherwise specified.**
 +----------------+---------------------------------------------------------------------------------------------------+
 | Name           | Description                                                                                       |
 +================+===================================================================================================+
-| AM62x EVM      | AM62x Starter Kit rev A with ARM running at 1400 MHz, DDR4 data rate 1600 MT/S        |
+| AM62x EVM      | AM62x Starter Kit rev A with ARM running at 1400 MHz, DDR4 data rate 1600 MT/S                    |
 +----------------+---------------------------------------------------------------------------------------------------+
 | AM62x SK LP    | AM62x LP Starter Kit rev E1 with ARM running at 1250 MHz, LPDDR4 data rate 1600 MT/S              |
 +----------------+---------------------------------------------------------------------------------------------------+
