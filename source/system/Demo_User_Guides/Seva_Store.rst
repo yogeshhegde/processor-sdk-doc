@@ -3,7 +3,7 @@
 .. _Seva-Store-label:
 
 Seva Store - User Guide
-=======================================
+=======================
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
@@ -42,13 +42,12 @@ How to Launch Seva Store via TI Apps Launcher
 
 The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI Apps Launcher follow the below instructions.
 
-1. Connect the Display, Ethernet Cable, Mouse & keyboard and Power on the board. The TI Apps Launcher will launch when the Device is fully booted.
+1. Flash an SD card with the **tisdk-default-image**. User can download the tisdk-default-image-|__SDK_BUILD_MACHINE__|.wic.xz image from the SDK download page. Connect the Display, Ethernet Cable, Mouse & keyboard and Power on the board after inserting an SD card. The TI Apps Launcher will launch when the |__PART_FAMILY_DEVICE_NAMES__| SK is fully booted.
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
    .. Image:: /images/ti-apps-launcher-home.png
-      :width: 950
-      :height: 900
+      :height: 400
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
@@ -59,90 +58,77 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
 2. Once started, you will see an IP Address on the bottom left corner of TI Apps Launcher as shown below. This means your board is successfully connected to Internet.
 
 .. Image:: /images/ip-addr.jpg
-   :width: 467
-   :height: 70
+   :height: 400
 
 .. note:: If you have connected the |__PART_FAMILY_DEVICE_NAMES__| SK to a proxy network, then before launching Seva Store you need to configure Docker and System proxies once per SD Card. **To set proxy settings you can click on the Settings button from the Left Hand Side Menu and provide the necessary HTTPS & NO PROXY inputs and click Set Proxy button**. Then, continue with Step 3.
 
    .. Image:: /images/webproxy-settings.jpg
-      :width: 950
-      :height: 900
+      :height: 400
 
 3. After you see an IP Address, Click on the `Seva Store` button from the Left Hand Side Menu to launch Seva Store.
 
 .. Image:: /images/seva-store-icon.jpg
-   :width: 467
    :height: 400
 
 4. Click on the Launch Button which you see in centre.
 
 .. Image:: /images/seva-launch-button.jpg
-   :width: 950
-   :height: 900
+   :height: 400
 
-5. Once you click the Launch Button, a Firefox Browser Container launches in full screen with Seva Control Centre in first tab as shown in the figure below.
+5. Once you click the Launch Button, Chromium browser launches in full screen with Seva Control Centre in first tab as shown in the figure below.
 
 .. Image:: /images/seva-control-center.png
-   :width: 950
-   :height: 900
+   :height: 400
 
-.. note:: It takes approximately **10-12 seconds** for Firefox ESR browser to launch.
+.. note:: It takes approximately **3-4 seconds** for Chromium browser to launch.
 
 6. The Seva Control Centre has a widget in centre which shows the information of Demo you have selected from the Seva Design Gallery. Since, it's a first launch it displayed `No app selected`.
 
 .. Image:: /images/no-app-selected.jpg
-   :width: 777
-   :height: 760
+   :height: 400
 
 7. To Launch a Demo, you first need to visit the Seva Design Gallery. For that you need to click on the Bottom Right Store Icon as shown in Image below.
 
 .. Image:: /images/playstore-icon.jpg
-   :width: 950
-   :height: 900
+   :height: 400
 
 8. The Seva Design Gallery page launches in the second tab of the browser as shown below.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
    .. Image:: /images/seva-design-gallery.png
-      :width: 950
-      :height: 900
+      :height: 400
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
    .. Image:: /images/seva-design-gallery-am62p.png
-      :width: 950
-      :height: 900
+      :height: 400
 
 9. Currently we have the Thermostat Demo Docker Image hosted on Seva Design Gallery. To launch the Thermostat Demo, click on the `Launch` Button as shown below.
 
 .. Image:: /images/demo-launch.jpg
-   :width: 950
-   :height: 700
+   :height: 400
 
 |
 
 10. After Clicking Launch Button, you will see a popup which asks user to switch to the first tab (i.e. Seva Control Centre) to run the Demo.
 
 .. Image:: /images/seva-design-gallery-popup.png
-   :width: 950
-   :height: 700
+   :height: 400
 
 |
 
 11. The Centre Widget of Seva Control Centre which displayed `No app selected` earlier in Step 6 will show the information of demo you have selected now (i.e Thermostat Demo).
 
 .. Image:: /images/demo-widget.jpg
-   :width: 950
-   :height: 900
+   :height: 400
 
 |
 
 12. Click on the `Start Icon` which you see on the Centre Widget to start the Thermostat Demo as shown in the image below.
 
 .. Image:: /images/thermostat-demo-start-icon.jpg
-   :width: 950
-   :height: 900
+   :height: 400
 
 |
 
@@ -150,8 +136,7 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
 show the `Downloading Icon` as shown in the image below.
 
 .. Image:: /images/seva-buffering.png
-   :width: 950
-   :height: 900
+   :height: 400
 
 |
 
@@ -160,44 +145,30 @@ show the `Downloading Icon` as shown in the image below.
 14. Once the Docker Image of `Thermostat Demo` is pulled, the Seva Control Centre will auto launch the demo in full screen as shown below.
 
 .. Image:: /images/thermostat-demo.png
-   :width: 950
-   :height: 900
-
-|
+   :height: 400
 
 15. To close `Thermostat Demo` and come back to Seva Store, click on the cross icon as shown below.
 
 .. Image:: /images/close-thermostat.jpg
-   :width: 950
-   :height: 900
-
-|
+   :height: 400
 
 16. To launch another demo, you can follow from **Step 6**.
 
-|
-
-17. To close the Seva Store Application and return back to TI Apps Launcher, close the Firefox browser.
+17. To close the Seva Store Application and return back to TI Apps Launcher, close the Chromium browser.
 
 
-How to Launch Seva Store via CLI
---------------------------------
+How to Launch Seva Store on Host Browser
+----------------------------------------
 
-1. Before Launching Seva-Store via CLI ensure that your |__PART_FAMILY_DEVICE_NAMES__| SK is connected to a network. To launch the Seva Store via CLI, run
+.. note::
 
-   ::
+    Launching Seva Store on host browser is possible only if the |__PART_FAMILY_DEVICE_NAMES__| SK and host PC are connected to the same local network.
 
-       WAYLAND_DISPLAY=wayland-1 XDG_RUNTIME_DIR=/run/user/1000 seva-launcher-aarch64
+1. Flash an SD card with the **tisdk-default-image**. User can download the tisdk-default-image-|__SDK_BUILD_MACHINE__|.wic.xz image from the SDK downloads page. Connect the Display, Ethernet Cable, Mouse & keyboard and Power on the board after inserting an SD card. The TI Apps Launcher will launch when the |__PART_FAMILY_DEVICE_NAMES__| SK is fully booted. Take a note of the IP address you see on the bottom left corner of TI Apps Launcher as it will be needed to launch Seva Store on host browser.
 
-.. note:: If you have connected the |__PART_FAMILY_DEVICE_NAMES__| SK to a proxy network, then before launching Seva Store you need to configure Docker and System proxies. `seva-launcher-aarch64` takes http_proxy and no_proxy as input to help you configure it. **To launch the Seva Store via CLI in a proxy network**, run
+2. On host PC, launch your preferred browser and enter **http://<your-board-ip-address>:8000/**.
 
-   ::
-
-        WAYLAND_DISPLAY=wayland-1 XDG_RUNTIME_DIR=/run/user/1000 seva-launcher-aarch64 -http_proxy=<A proxy URL> -no_proxy=<A comma-separated list of host names that shouldn't go through any proxy>
-
-2. Once, you run the above command a Firefox Browser Container launches in full screen with Seva Control Centre in first tab.
-
-3. Refer `Step 6 to Step 16`  from :ref:`How-to-Launch-Seva-Store-via-TI-Apps-Launcher` to understand how to use Seva Store to Launch a Demo.
+3. Refer **Step 6 to Step 17** from :ref:`How-to-Launch-Seva-Store-via-TI-Apps-Launcher` to understand how to use Seva Store to Launch a Demo.
 
 How to Create & Host a Docker Image for your Demo
 -------------------------------------------------
