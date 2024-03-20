@@ -372,12 +372,12 @@ Build U-Boot
 
    .. ifconfig:: CONFIG_part_variant in ('J722S')
 
-        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
-        |  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |           USB DFU              |
-        +============================+=================================+================================+================================+================================+
-        |    J722S EVM               |    j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |
-        |                            |    j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |
-        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+------------------------------------+
+        |  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |           USB DFU                  |
+        +============================+=================================+================================+================================+====================================+
+        |    J722S EVM               |    j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_usbdfu.config    |
+        |                            |    j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig       |
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+------------------------------------+
 
         .. code-block:: console
 
@@ -385,6 +385,10 @@ Build U-Boot
 
           R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j722s_evm_r5_defconfig O=<output directory>/r5
+
+          To build with config fragments
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j722s_evm_r5_defconfig j722s_evm_r5_usbdfu.config O=<output directory>/r5
+
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 

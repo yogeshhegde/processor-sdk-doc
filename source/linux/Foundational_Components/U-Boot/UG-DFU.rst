@@ -142,11 +142,51 @@ platform that support USB Peripheral boot mode.
      binary images from Host PC (using dfu-utils tool) to the eMMC, or
      QSPI to fresh/factory boards.
 
-.. ifconfig:: CONFIG_part_family not in ('AM62X_family')
+
+.. ifconfig:: CONFIG_part_family in ('AM62AX_family')
+
+  #. Build the bootloader images using default "am62ax_evm_r5_usbdfu_defconfig"
+     and "am62ax_evm_a53_defconfig" config files. The configs required for
+     DFU boot as well as DFU in U-Boot are already enabled. For instructions
+     to build the bootloader images please refer to :ref:`Build-U-Boot-label`.
+  #. Load the bootloader images tiboot3.bin, tispl.bin and u-boot.img using
+     the dfu-util from host PC.
+  #. Once the U-Boot is up, use DFU command from u-boot to flash the
+     binary images from Host PC (using dfu-utils tool) to the eMMC, QSPI
+     or OSPI to fresh/factory boards.
+
+
+.. ifconfig:: CONFIG_part_family in ('AM62PX_family')
+
+  #. Build the bootloader images using default "am62px_evm_r5_usbdfu_defconfig"
+     and "am62px_evm_a53_defconfig" config files. The configs required for
+     DFU boot as well as DFU in U-Boot are already enabled. For instructions
+     to build the bootloader images please refer to :ref:`Build-U-Boot-label`.
+  #. Load the bootloader images tiboot3.bin, tispl.bin and u-boot.img using
+     the dfu-util from host PC.
+  #. Once the U-Boot is up, use DFU command from u-boot to flash the
+     binary images from Host PC (using dfu-utils tool) to the eMMC, QSPI
+     or OSPI to fresh/factory boards.
+
+
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+  #. Build the bootloader images using default "j722s_evm_r5_defconfig"
+     and the config fragment j722s_evm_r5_usbdfu.config
+     and "j722s_evm_a53_defconfig" config files. The configs required for
+     DFU boot as well as DFU in U-Boot are already enabled. For instructions
+     to build the bootloader images please refer to :ref:`Build-U-Boot-label`.
+  #. Load the bootloader images tiboot3.bin, tispl.bin and u-boot.img using
+     the dfu-util from host PC.
+  #. Once the U-Boot is up, use DFU command from u-boot to flash the
+     binary images from Host PC (using dfu-utils tool) to the eMMC, QSPI
+     or OPSI to fresh/factory boards.
+
+.. ifconfig:: CONFIG_part_family not in ('AM62X_family', 'AM62AX_family', 'AM62PX_family')
 
     .. rubric:: USB Peripheral boot mode on |__PART_FAMILY_DEVICE_NAMES__| EVM (SPL-DFU boot mode)
 
-.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62AX_family', 'AM62PX_family')
 
     .. rubric:: USB Peripheral boot mode on |__PART_FAMILY_DEVICE_NAMES__| SK (SPL-DFU boot mode)
 
@@ -164,6 +204,14 @@ platform that support USB Peripheral boot mode.
     -  Connect EVM's TypeC port (USB0 port) to PC through USB cable
     -  Power on the board
 
+
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+    -  Set SYSBOOT switches to USB Peripheral boot mode (Refer to **Initialization** chapter of TRM for boot switch details)
+    -  Make sure USB0 port in UFP/DRP mode: SW2[2:3] = 01 or 00
+    -  Connect EVM's TypeC port (USB0 port) to PC through USB cable
+    -  Power on the board
+
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
     - Set SYSBOOT switches to USB Peripheral boot mode (Refer to **Initialization** chapter of AM64 TRM for boot switch details)
@@ -177,7 +225,21 @@ platform that support USB Peripheral boot mode.
     - Connect USB Type C DRD Port (J13) on SK board to PC through USB cable
     - Power on the board
 
-.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family', 'AM62X_family')
+
+.. ifconfig:: CONFIG_part_family in ('AM62AX_family')
+
+    - Set SYSBOOT switches to USB DFU boot mode (Refer to **Initialization** chapter of AM62A TRM for boot switch details)
+    - Connect USB Type C DRD Port (J15) on SK board to PC through USB cable
+    - Power on the board
+
+
+.. ifconfig:: CONFIG_part_family in ('AM62PX_family')
+
+    - Set SYSBOOT switches to USB DFU boot mode (Refer to **Initialization** chapter of AM62P TRM for boot switch details)
+    - Connect USB Type C DRD Port (J19) on SK board to PC through USB cable
+    - Power on the board
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family', 'AM62X_family', 'AM62AX_family', 'AM62PX_family')
 
     .. rubric:: On Linux host
 
@@ -231,7 +293,17 @@ platform that support USB Peripheral boot mode.
 
     Send boot images in this order: tiboot3.bin -> sysfw.itb -> tispl.bin -> u-boot.img.
 
-.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'AM62X_family')
+
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+    .. code-block:: text
+
+		Found DFU: [0451:6165] ver=0200, devnum=9, cfg=1, intf=0, path="1-2.2", alt=1, name="SocId", serial="01.00.00.00"
+		Found DFU: [0451:6165] ver=0200, devnum=9, cfg=1, intf=0, path="1-2.2", alt=0, name="bootloader", serial="01.00.00.00"
+
+    Send boot images in this order: tiboot3.bin -> tispl.bin -> u-boot.img
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'AM62X_family', 'AM62AX_family', 'AM62PX_family')
 
     .. code-block:: text
 
@@ -242,7 +314,7 @@ platform that support USB Peripheral boot mode.
 
     .. note:: On Windows, if you face any issues while listing the available DFU Interfaces, try installing/updating the Generic USB DFU Drivers using `Zadig <https://zadig.akeo.ie/>`_.
 
-.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family', 'AM62X_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family', 'AM62X_family', 'AM62AX_family', 'AM62PX_family')
 
     Move to directory containing the images and give the following commands
 
@@ -298,7 +370,8 @@ platform that support USB Peripheral boot mode.
 		host$ sudo dfu-util -R -a tispl.bin -D tispl.bin
 		host$ sudo dfu-util -R  -a u-boot.img -D u-boot.img
 
-.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'AM62X_family')
+
+.. ifconfig:: CONFIG_part_variant in ('J722S')
 
     .. rubric:: On Linux host
 
@@ -310,7 +383,21 @@ platform that support USB Peripheral boot mode.
 		  Found DFU: [0451:6165] ver=0224, devnum=11, cfg=1, intf=0, path="1-2.2", alt=0, name="tispl.bin", serial="UNKNOWN"
 
 		host$ sudo dfu-util -R -a tispl.bin -D tispl.bin
-		host$ sudo dfu-util -R  -a u-boot.img -D u-boot.img
+		host$ sudo dfu-util -R -a u-boot.img -D u-boot.img
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'AM62X_family', 'AM62AX_family', 'AM62PX_family')
+
+    .. rubric:: On Linux host
+
+    .. code-block:: text
+
+		host$ sudo dfu-util -R -a bootloader -D tiboot3.bin
+		host$ sudo dfu-util -l
+		  Found DFU: [0451:6165] ver=0224, devnum=11, cfg=1, intf=0, path="1-2.2", alt=1, name="u-boot.img", serial="UNKNOWN"
+		  Found DFU: [0451:6165] ver=0224, devnum=11, cfg=1, intf=0, path="1-2.2", alt=0, name="tispl.bin", serial="UNKNOWN"
+
+		host$ sudo dfu-util -R -a tispl.bin -D tispl.bin
+		host$ sudo dfu-util -R -a u-boot.img -D u-boot.img
 
     .. rubric:: On Windows host
 
@@ -326,7 +413,7 @@ platform that support USB Peripheral boot mode.
 
     .. note:: On Windows host, if `name` of the DFU Interface doesn't work, use `alt` number instead.
 
-.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family', 'AM62X_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family', 'AM62X_family', 'AM62AX_family', 'AM62PX_family')
 
     At this point, the board should boot to the U-Boot prompt.
 
