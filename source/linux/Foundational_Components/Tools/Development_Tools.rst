@@ -5,24 +5,22 @@ Development Tools
 
 Processor SDK Linux Top-Level Makefile
 -------------------------------------------------
-Please refer to `Top-Level Makefile <../../Overview/Top_Level_Makefile.html>`__ for details.
+
+Please refer to :ref:`Top-Level Makefile <top-level-makefile>` for details.
 
 
 Processor SDK Linux GCC Toolchain
 -------------------------------------------------
-Please refer to `GCC ToolChain <../../Overview/GCC_ToolChain.html>`__ for details.
+Please refer to :ref:`GCC ToolChain <toolchains>` for details.
 
 Creating SD Cards
 -------------------------------------------------
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+Please refer to :ref:`Linux SD Card Creation Guide <processor-sdk-linux-create-sd-card>` for details.
 
-    Please refer to :ref:`formatting-sd-card-on-linux` for details.
-
-.. ifconfig:: CONFIG_sdk not in ('PSDKL','j7_foundational')
-
-    Please refer to `Linux SD Card Creation Guide <../../Overview/Processor_SDK_Linux_create_SD_card.html>`__ for details.
 
 Processor SDK Linux Setup Script
 -------------------------------------------------
-Please refer to `Run Setup Scripts <../../Overview/Run_Setup_Scripts.html>`__ for details.
+
+Please refer to :ref:`Run Setup Scripts <run-setup-scripts>` for details.
+

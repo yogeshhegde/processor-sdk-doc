@@ -1,26 +1,46 @@
 .. include:: /_replacevars.rst
 
+.. _toolchains:
+
 GCC ToolChain
 =============
 
+.. _yocto-toolchain:
+
+Yocto-built SDK Toolchains
+--------------------------
 
 The |__SDK_FULL_NAME__| package contains cross compile toolchains for the ARMv8
-and ARMv7 architectures. These toolchains are used by the top level makefile when
+(:ref:`linux-devkit`) and ARMv7 (:ref:`k3r5-devkit`) architectures. These toolchains
+are used by the :ref:`top level makefile <top-level-makefile>` when
 compiling the binaries for the target. These also package an environment setup
 script that, when sourced, sets all the right variables to compile binaries for
 the target architecture. The toolchains installers are built through the yocto
-build system, same as the target filesystem images themselves. Below sections give
-more details about their usage.
+build system, same as the target filesystem images themselves.
 
+.. rubric:: SDK Toolchain Setup
 
+Below variables need to be setup to be able to compile with the toolchains packaged in the SDK.
+These will be referenced by the build commands of the Foundational Components in this document.
+
+.. code-block:: console
+
+   host# CROSS_COMPILE_64="${SDK_INSTALL_DIR}/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/aarch64-oe-linux/aarch64-oe-linux-"
+   host# SYSROOT_64="${SDK_INSTALL_DIR}/linux-devkit/sysroots/aarch64-oe-linux"
+   host# CC_64="${CROSS_COMPILE_64}gcc --sysroot=${SYSROOT_64}"
+   host# CROSS_COMPILE_32="${SDK_INSTALL_DIR}/k3r5-devkit/sysroots/x86_64-arago-linux/usr/bin/arm-oe-eabi/arm-oe-eabi-"
+
+Below sections give some more details about the contents of these SDK Toolchains
+
+.. _linux-devkit:
 
 linux-devkit
-------------
+^^^^^^^^^^^^
 
 .. rubric:: Overview
 
 The |__SDK_FULL_NAME__| package comes with this toolchain preinstalled at linux-devkit/
-directory within the SDK. Below paths are relative to the <SDK INSTALL DIR> and will be
+directory within the SDK. Below paths are relative to the <SDK_INSTALL_DIR> and will be
 referred to using the first column in the following sections.
 
 .. list-table:: Linux Devkit Contents
@@ -30,13 +50,13 @@ referred to using the first column in the following sections.
    * - Variable
      - Location
      - Description
-   * - TOOLCHAIN_PREFIX
+   * - CROSS_COMPILE_64
      - linux-devkit/sysroots/x86_64-arago-linux/usr/bin/aarch64-oe-linux/aarch64-oe-linux-
      - Cross compiler toolchain for the ARMv8 architecture
-   * - target_sysroot
+   * - SYSROOT_64
      - linux-devkit/sysroots/aarch64-oe-linux/
      - Sysroot with the cross compiled libraries and headers for the ARMv8 architecture with Linux OS
-   * - environment_setup_script
+   * - ENV_SETUP_64
      - linux-devkit/environment-setup-aarch64-oe-linux
      - Shell script that sets environment variables to compile binaries for the ARMv8 linux target
 
@@ -50,15 +70,15 @@ yourself. These libraries include packages from alsa to zlib.
 or a list of the
 libraries you can refer to the software manifest found in the **<SDK
 INSTALL DIR>/manifest** directory or look at the list of libraries
-available in the **<target_sysroot>/usr/lib** directory. You will
+available in the **<SYSROOT_64>/usr/lib** directory. You will
 also find the header files corresponding to these libraries in the
-**<target_sysroot>/usr/include** directory. As
+**<SYSROOT_64>/usr/include** directory. As
 an example if your application wants access to the alsa asound library
 then you can now do the following command:
 
 .. code-block:: console
 
-   host# ${TOOLCHAIN_PREFIX}gcc -lasound app.c -o app.out
+   host# ${CROSS_COMPILE_64}gcc -lasound app.c -o app.out
 
 .. rubric:: Environment-setup script
    :name: environment-setup-script
@@ -66,7 +86,7 @@ then you can now do the following command:
 When cross-compiling packages that use configuration tools and autotools
 there are many settings that are required to make sure that the proper
 cross-compile libraries are used. The **environment-setup** script
-located in the **<SDK INSTALL DIR>/linux-devkit** directory handles this
+located in the **<SDK_INSTALL_DIR>/linux-devkit** directory handles this
 for you. This script exports variables to perform actions such as:
 
 -  Adding the toolchain to the PATH
@@ -80,7 +100,7 @@ is as simple as:
 
 .. code-block:: console
 
-   host# source ${environment_setup_script}
+   host# source ${ENV_SETUP_64}
 
 .. note::
    :name: when-compiling-the-linux-kernel
@@ -124,7 +144,7 @@ libraries.
 
      .. code-block:: console
 
-        host# ${TOOLCHAIN_PREFIX}gcc --sysroot=${target_sysroot} helloworld.c -o helloworld
+        host# ${CROSS_COMPILE_64}gcc --sysroot=${SYSROOT_64} helloworld.c -o helloworld
 
      Be sure to give the correct path to the gcc cross compiler and target
      sysroot as listed earlier.
@@ -134,7 +154,7 @@ libraries.
 
      .. code-block:: console
 
-        host# source ${environment_setup_script}
+        host# source ${ENV_SETUP_64}
         host# ${CC} helloworld.c -o helloworld
 
 3. After the above steps are run you should now have a **helloworld**
@@ -150,14 +170,15 @@ libraries.
 |
 
 
+.. _k3r5-devkit:
 
 k3r5-devkit
------------
+^^^^^^^^^^^
 
 .. rubric:: Overview
 
 The |__SDK_FULL_NAME__| package comes with an ARMv7 toolchain preinstalled at k3r5-devkit/
-directory within the SDK. Below paths are relative to the <SDK INSTALL DIR>.
+directory within the SDK. Below paths are relative to the <SDK_INSTALL_DIR>.
 
 .. list-table:: k3r5 Devkit Contents
    :widths: 20 30 50
@@ -166,16 +187,45 @@ directory within the SDK. Below paths are relative to the <SDK INSTALL DIR>.
    * - Variable
      - Location
      - Description
-   * - TOOLCHAIN_PREFIX
+   * - CROSS_COMPILE_32
      - k3r5-devkit/sysroots/x86_64-arago-linux/usr/bin/arm-oe-eabi/arm-oe-eabi-
      - Cross compiler toolchain for the ARMv7 architecture
-   * - target_sysroot
+   * - SYSROOT_32
      - k3r5-devkit/sysroots/armv7at2hf-vfp-oe-eabi/
      - Sysroot with the cross compiled libraries and headers for the ARMv7 architecture
-   * - environment_setup_script
+   * - ENV_SETUP_32
      - k3r5-devkit/environment-setup-armv7at2hf-vfp-oe-eabi
      - Shell script that sets environment variables to compile binaries for the target
 
 |
 
+
+.. _external-arm-toolchain:
+
+ARM toolchains
+--------------
+
+It is strongly recommended to use the toolchain in the Processor SDK which
+is the version tested for TI platforms. In case the Processor SDK is not
+used, the toolchain can be downloaded and the toolchain path can be set as
+follows.
+
+.. rubric:: Arm Toolchain setup
+
+Download the toolchain from `here <https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads>`__,
+and the version can be found in the :ref:`release notes <u-boot-release-notes>`.
+The following example shows how to download and set toolchain paths
+into a ``<COMPILER_PATH>`` directory in Linux Host using x86_64 architecture.
+The environment variables defined here will be referenced in the build
+commands of the Foundational Components in this document.
+
+.. code-block:: console
+
+   host# COMPILER_PATH=/opt/arm-toolchain
+   host# mkdir -p $COMPILER_PATH
+   host# wget -c https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf.tar.xz -O - | tar -xv -J -C $COMPILER_PATH
+   host# wget -c https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu.tar.xz -O - | tar -xv -J -C $COMPILER_PATH
+   host# CROSS_COMPILE_64=$COMPILER_PATH/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-
+   host# CROSS_COMPILE_32=$COMPILER_PATH/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf/bin/arm-none-linux-gnueabihf-
+   host# CC_64="${CROSS_COMPILE_64}gcc"
 

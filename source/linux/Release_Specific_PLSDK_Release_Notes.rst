@@ -111,7 +111,7 @@ See `here <Release_Specific_Supported_Platforms_and_Versions.html>`__ for a list
 Build Information
 =====================================
 
-.. _release-specific-build-information-u-boot:
+.. _u-boot-release-notes:
 
 U-Boot
 -------------------------
