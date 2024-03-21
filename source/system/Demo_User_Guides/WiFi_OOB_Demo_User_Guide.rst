@@ -12,17 +12,7 @@ Overview
 
    The |__PART_FAMILY_DEVICE_NAMES__| SK board has a WiLink Module (WL1837MODGIMOCT) from TI connected to the MMC0 port of the SoC.
 
-.. ifconfig:: CONFIG_part_variant in ('J721E')
-
-   The |__PART_FAMILY_DEVICE_NAMES__| SK board has a has a PCIe M2E Key interface port (J11) which is connected to the MMC0 port
-   of the SoC. Connect the Intel-9260 WiFi card to the PCIe port. The WiFi module can be ordered from https://www.amazon.in/Intel-Wireless-Ac-9260-2230-Gigabit/dp/B079QJQF4Y
-
-.. ifconfig:: CONFIG_part_variant in ('J721S2')
-
-   The |__PART_FAMILY_DEVICE_NAMES__| SK board has a has a PCIe M2E Key interface port (J11) which is connected to the MMC0 port
-   of the SoC. Connect the Intel-9260 WiFi card to the PCIe port. The WiFi module can be ordered from https://www.amazon.in/Intel-Wireless-Ac-9260-2230-Gigabit/dp/B079QJQF4Y
-
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E','J721S2','J784S4','J722S')
 
    The |__PART_FAMILY_DEVICE_NAMES__| SK board has a has a PCIe M2E Key interface port (J11) which is connected to the MMC0 port
    of the SoC. Connect the Intel-9260 WiFi card to the PCIe port. The WiFi module can be ordered from https://www.amazon.in/Intel-Wireless-Ac-9260-2230-Gigabit/dp/B079QJQF4Y
@@ -41,7 +31,7 @@ Hardware Prerequisites
 -  PC (Windows or Linux, to use serial terminal console)
 -  PC (Windows or Linux, to connect to the SK board's WiFi AP)
 -  SD card (minimum 16GB)
-.. ifconfig:: CONFIG_part_variant in ('J721E','J721S2','J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E','J721S2','J784S4','J722S')
 
    - Intel-9260 WiFi card
 
@@ -71,7 +61,7 @@ Follow the steps below to connect to the WiFi Access Point of the SK board:
        :width: 407
        :height: 400
 
-.. ifconfig:: CONFIG_part_variant in ('J721E','J721S2','J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E','J721S2','J784S4','J722S')
 
     .. Image:: /images/j7sk-ap.png
        :width: 407

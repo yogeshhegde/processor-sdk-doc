@@ -65,6 +65,15 @@ The following platforms and EVMs are supported with Processor SDK.
       |    AM69      | AM69 SK    |   Alpha   | Hardware User's Guide | Y                 |                  |
       +--------------+------------+-----------+-----------------------+-------------------+------------------+
 
+   .. ifconfig:: CONFIG_part_variant in ('J722S')
+
+      +--------------+------------+-----------+-----------------------+-------------------+------------------+
+      | **Platform** | **EVM**    | **Tested  | **Document**          | **Processor SDK   | **Processor SDK  |
+      |              |            | Version** |                       | Linux**           | RTOS**           |
+      +--------------+------------+-----------+-----------------------+-------------------+------------------+
+      |    AM67      | J722S EVM  |   Alpha   | Hardware User's Guide | Y                 |                  |
+      +--------------+------------+-----------+-----------------------+-------------------+------------------+
+
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
    .. ifconfig:: CONFIG_part_variant in ('J721S2')
