@@ -56,15 +56,15 @@ Supported Platforms
 See :ref:`here <release-specific-supported-platforms-and-versions>` for a list of supported platforms and links to more information.
 
 
-Release 09.01.00
+Release 09.02.00
 ==================
 
-Released Nov 2023
+Released March 2024
 
 .. rubric:: What's New
    :name: whats-new
 
-Processor SDK 9.1 Release supports the following platforms:
+Processor SDK 9.2 Release supports the following platforms:
 
   * J721E
   * J7200
@@ -72,14 +72,17 @@ Processor SDK 9.1 Release supports the following platforms:
   * J784S4
   * AM68
   * AM69
+  * J722S
 
-Processor SDK 9.1 Release has following new features:
+Processor SDK 9.2 Release has following new features:
 
-  * This is the Second release in the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
-  * ATF 2.9
-  * OPTEE 4.0.0
+  * This is the Third release on LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
+  * First release on J722S platform
+  * ATF 2.10
+  * OPTEE 4.1.0-51
   * Yocto Kirkstone/4.0
-  * Firewalling support added
+  * MCU core Graceful shutdown support Added
+  * AVS support added for J784S4 and J721S2
 
 Build Information
 =====================================
@@ -88,34 +91,33 @@ Build Information
 
 U-Boot
 -------------------------
-| Head Commit: b0d868ee086eb5c96a3d32f72a7cb9670abf5b90 arm: dts: k3-am62p: sync with linux again
-| Date: Fri Nov 3 04:46:23 2023 +0000
+| Head Commit: d2612223375a25f81068d7a7abd86c08cd129a2c arm: dts: k3-am62p-binman: Move to using ti-dm entry type
+| Date: Wed Mar 13 23:26:09 2024 +0530
 | uBoot Version: 2023.04
-| uBoot Description: 09.01.00.003
+| uBoot Description: 09.02.00.008
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2023.04
-| uBoot Tag: 09.01.00.003
+| uBoot Tag: 09.02.00.008
 
 | Compiler Information: arm-oe-eabi-gcc (GCC) 11.4.0, aarch64-oe-linux-gcc (GCC) 11.4.0
 |
 
-.. rubric:: Note:
-| meta-tisdk Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tree/recipes-bsp/u-boot?h=09.01.00.05>`__.
-|
+| Note:  meta-tisdk Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tree/recipes-bsp/u-boot?h=09.02.00.08>`__.
+
 
 Kernel
 -------------------------
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 7d494fe58c8e5d41a6bd886c9a628a7fff5763f9 arm64: dts: ti: k3-am62p-main: SRAM allocation for VPU
-| Date: Mon Oct 30 12:33:39 2023 -0500
-| Kernel Version: 6.1.46
-| Kernel Description: 09.01.00.003
+| Head Commit: 1c154b1fe4c462d8b383515bb388e289816e4b01 net: ethernet: ti: am65-cpsw/cpts: Add workaround for errata i2401
+| Date: Thu Mar 14 17:24:12 2024 +0530
+| Kernel Version: 6.1.80
+| Kernel Description: 09.02.00.008
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.1.y
-| Tag: 09.01.00.003
+| Tag: 09.02.00.008
 | Kernel defconfig: defconfig + ti_arm64_prune.config
 
 | Compiler Information: aarch64-oe-linux-gcc (GCC) 11.4.0, GNU ld (GNU Binutils) 2.38.20220708
@@ -124,21 +126,19 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: 	eda9974e8513cdd2c5cc20c3c6b851f9977acd4d Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
-| Date: Thu Nov 02 18:16:06 2023 -0500
-| Kernel Version: 6.1.46
-| Kernel Description: 09.01.00.003-rt
+| Head Commit: 871d5629a0ee4ae82d0caf8d57d4f711d54e1465  Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
+| Date: Thu Mar 14 07:57:12 2024 -0500
+| Kernel Version: 6.1.80
+| Kernel Description: 09.02.00.008-rt
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-6.1.y
-| Tag: 09.01.00.003-rt
+| Tag: 09.02.00.008-rt
 | Kernel defconfig: defconfig + ti_rt.config + ti_arm64_prune.config
 
 | Compiler Information: aarch64-oe-linux-gcc (GCC) 11.4.0, GNU ld (GNU Binutils) 2.38.20220708
 
-.. rubric:: Note:
-| meta-tisdk Yocto layer contains additional patches for Linux Kernel `here <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tree/recipes-kernel/linux?h=09.01.00.05>`__.
-|
+| Note: meta-tisdk Yocto layer contains additional patches for Linux Kernel `here <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tree/recipes-kernel/linux?h=09.02.00.08>`__.
 
 
 Yocto
@@ -146,33 +146,33 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 7e404bcf2235b1fcf192269c8d8a25ad02de54c1 linux-ti-staging_6.1: CI/CD Auto-Merger: cicd.kirkstone.202311022105
-| Date: 2023-11-02
+| Head Commit: 2f3de17c1e623d276811d13d3eb11e5734566acd CI/CD Auto-Merger: cicd.kirkstone.202403141157
+| Date: 2024-03-14 11:57:26 -0500
 
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: kirkstone
-| Release Tag: 09.01.00.003
+| Release Tag: 09.02.00.008
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 5fe0223b22e91011d39452464d3a2c6f368789cc ltp-ddt: CI/CD Auto-Merger: cicd.kirkstone.202311022105
-| Date: 2023-11-02
+| Head Commit: 5fe0223b22e91011d39452464d3a2c6f368789cc ltp-ddt: CI/CD Auto-Merger: cicd.kirkstone.202403141157
+| Date: 2024-03-14 11:57:25 -0500
 
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: kirkstone
-| Release Tag: 09.01.00.003
+| Release Tag: 09.02.00.008
 |
 
 .. rubric:: meta-tisdk
 
-| Head Commit: a799cbacc2760216bf889939d677f129370791ac ti-apps-launcher: Update SRCREV to pull in GUI updates
-| Date: 2023-11-27
+| Head Commit: 3d2589b3b9b0d102917a7e0b1cecaf62cd7eba79 conf: arago-source-ipk: Enable source-ipk's of all missing packages for ti33x, ti43x
+| Date: 2023-12-27 11:07:27 -0600
 
 | Clone: git://git.ti.com/ti-sdk-linux/meta-tisdk.git
 | Branch: kirkstone
-| Release Tag: 09.01.00.05
+| Release Tag: 09.02.00.08
 |
 
 Issues Tracker
@@ -184,52 +184,50 @@ Issues opened in previous releases that were closed on this release
   :header: "Record ID", "Title", "Platform"
   :widths: 15, 70, 20
 
-  "LCPD-35085","Docs: Incorrect boot image formats in AHP SDK doc","j784s4-evm"
-  "LCPD-35072","DSI is not working due to wrong clock","am68_sk-fs,j721s2-evm,j784s4-evm"
-  "LCPD-34982","j721s2: Enable ospi nand 8D mode in uboot","j721s2-evm"
-  "LCPD-34935","Reset Performance data for mmc","j721s2-evm,j784s4-evm"
-  "LCPD-34933","BootApp fails to boot linux kernel","j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm"
-  "LCPD-34925","MCSPI: J784S4/J721S2/J7200 RC7 failures","j721e-hsevm,j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm"
-  "LCPD-34907","J721S2/J784S4/AM68/AM69: Display: DSI always comes as connected even when the connector is not plugged","am68_sk-fs,am69_sk-fs,j721s2-evm,j784s4-evm"
-  "LCPD-34904","Watchdog reset is not working in J721E and J7200","j721e-idk-gw,j7200-evm"
-  "LCPD-34890","uboot mmc sd and emmc performance tests failing","am69_sk-fs,j784s4-evm"
-  "LCPD-34884","J784s4/J721S2 OSPI_S_FUNC_ Failure CICD","j721s2-evm,j784s4-evm"
-  "LCPD-34825","img_enc errors while running gstreamer app using encoder","j721e-sk"
-  "LCPD-34756","HDMI_S_FUNC_PLAYBACK_1920x1080 failing om AM68","am68_sk-fs"
-  "LCPD-34711","u-boot dhcp caused data abort failure","am69_sk-fs"
-  "LCPD-34689","CICD failure 	Uboot emmc raw read write performance","j721s2-evm,j784s4-evm"
-  "LCPD-34679","DRU registers are inaccessible on mcu2_0 after uboot boots up","j721e-idk-gw"
-  "LCPD-34519","IPC: IPC_S_FUNC_RPMSG_SAMPLE_CLIENT test failures","am62axx_sk-fs,am62xx-sk,am68_sk-fs,j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm"
-  "LCPD-34516","USBHOST Audio ltp unit test fails","am62xx_sk-fs,am62xx-sk,j721s2-evm,j7200-evm,j784s4-evm"
-  "LCPD-34413","RT Linux: Interrupt latency issue with >200us outliers","am654x-evm,am654x-hsevm,am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_lp_sk-fs,am62axx_sk-fs,am62xx-sk,am64xx_sk-fs,j721e-sk,j721s2-evm,j721s2_evm-fs,j7200-evm,j784s4-evm"
-  "LCPD-34237","U-boot: j7200-sk: Get rid of pinmux and duplication from sk-r5.dts","j7200-evm"
-  "LCPD-34236","U-boot: j721e-sk: Get rid of pinmux and duplication from sk-r5.dts","j721e-sk"
-  "LCPD-34235","U-boot: j721e-evm: Get rid of pinmux and duplication from sk-r5.dts","j721e-idk-gw"
-  "LCPD-34234","U-boot: j721s2-evm: Get rid of pinmux from sk-r5.dts","j721s2-evm,j721s2_evm-fs"
-  "LCPD-34233","U-boot: AM68-SK: Get rid of pinmux from sk-r5.dts","am68_sk-fs"
-  "LCPD-32935","J7: Issue with MCSPI clocking in Linux driver","j721e-idk-gw"
-  "LCPD-32921","CICD failure [UART overrun causes test failure]","j7200-evm"
-  "LCPD-32895","AM69-SK: Lower throughput in MMCSD performance testing","am69_sk-fs"
-  "LCPD-32894","AM69-SK: USB enumeration fails in u-boot","am69_sk-fs"
-  "LCPD-32817","while flashing emmc using dfu still it expecting sysfw.itb though it uses combined boot flow","j721s2-evm,j721s2_evm-fs"
-  "LCPD-32756","Upstream:  Jacinto: Convert docs to RST in U-Boot","j721e-idk-gw,j721s2-evm,j721s2_evm-fs,j7200-evm,j784s4-evm"
-  "LCPD-32656","AM69-SK: PCIe0 enumeration fails","am69_sk-fs,j784s4-evm,j784s4-hsevm"
-  "LCPD-32539","J721S2: Linux crash when we cat pinctrl debugfs node","j721s2-evm,j721s2-hsevm,j721s2_evm-fs"
-  "LCPD-29880","CAN_S_FUNC_MODULAR test fail","am64xx-evm,j721s2-evm,j7200-evm,j784s4-evm"
-  "LCPD-29755","j721e-idk-gw : Can Transmission and Reception Tests Fail","j721e-idk-gw"
-  "LCPD-29680","vxe_enc_probe warning observed while booting with debug options enabled","j721e-evm,j721e-evm-ivi,j721e-idk-gw,j7200-evm"
-  "LCPD-28474","libthread_db and libpthread version mismatch does not allow GDB debug of multi-thread","j721e-sk"
-  "LCPD-26692","Hardware + Software IPSec Performance Test Failures","am64xx-evm,am335x-evm,am43xx-gpevm,am57xx-evm,j721e-idk-gw"
-  "LCPD-25692","linux needs to identify J7ES PG1.1 correctly","j721s2-evm,j721s2-hsevm,j721s2_evm-fs"
-  "LCPD-25322","Docs: J7200: Improve the IPC chapter for ti-rpmsg-char","j7200-evm"
-  "LCPD-25321","Docs: J721E: Improve the IPC chapter for ti-rpmsg-char","j721e-evm,j721e-evm-ivi,j721e-idk-gw"
-  "LCPD-24649","dma-heaps-test fails to build with 5.16-rc3 kernel+","am64xx-evm,am335x-evm,dra71x-evm,j721e-idk-gw"
-  "LCPD-22513","Update SDK doc to include OSPI flashing instruction using dfu-util","j721e-evm,j7200-evm"
-  "LCPD-22512","Update dfu_alt_info_ospi to include flashing of PHY tuning data","j721e-evm,j7200-evm"
-  "LCPD-22319","OpenSSL performance test data out of bounds","am64xx-evm,am62axx_sk-fs,am62xx-sk,j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm"
-  "LCPD-19948","Yocto: stream recipe is incorrect","am57xx-evm,j721e-evm,j721e-idk-gw"
-  "LCPD-19894","UYVY texture test fails due to internal data stream error","j721e-idk-gw,j721s2-evm,j721s2_evm-fs,j784s4-evm"
-  "LCPD-17814","Kingston 16G card could not boot to uboot prompt","j721e-idk-gw"
+  "LCPD-37067","CSI capture is broken on am68 because of some issue in tispl.bin","j721s2-evm"
+  "LCPD-37020","k3-am68-sk-bb-rpi-cam-imx219.dtso uses the wrong reset-gpio pin for cam1","am68_sk-fs"
+  "LCPD-36992","U-Boot: k3-ddrss.c: Missing 'const' on k3_ddrss_ops","am654x-evm,am654x-idk,am654x-hsevm,am64xx-evm,am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_sk-se,beagleplay-gp,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am62lxx_evm-fs,am62lxx_evm-se,am62pxx-zebu,am62lxx-vlab,am62lxx-zebu,am62xx_p0_sk-fs,am64xx_sk-fs,am64xx_evm-se,am64xx_sk-se,am68_sk-fs,am69_sk-fs,beaglebone,bbai,bbai64-gp,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j7200-evm,j7200-hsevm,j784s4-evm,j784s4-hsevm,j722s_evm-fs,J784S4_BASESIM"
+  "LCPD-36991","AM68x: Kernel soft reboot test fails","am68_sk-fs"
+  "LCPD-36871","Alias functionality not working in MCAN driver","j721s2-evm"
+  "LCPD-36848","Occasional SPI-NOR write timeout under high load","am62xx_sk-fs,j721e-idk-gw"
+  "LCPD-36847","doc: ltp-ddt documentation is not upto date","am64xx-hsevm,am62xx_sk-fs,am62axx_sk-fs,am62pxx_sk-fs,am68_sk-fs,am69_sk-fs,j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm"
+  "LCPD-36744","Linux SDK: CPSW: Bridge interface cannot ping in Switch Mode","am64xx-evm,am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_sk-se,am64xx_sk-fs,am64xx_evm-se,am64xx_sk-se,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j7200-evm,j7200-hsevm,j784s4-evm,j784s4-hsevm"
+  "LCPD-36491","ti-u-boot: J784S4: Update ITAP values in device tree","j784s4-evm,j784s4-hsevm"
+  "LCPD-36490","ulinux: J784S4: Update ITAP values in device tree","j784s4-evm,j784s4-hsevm"
+  "LCPD-36489","ti-linux: J784S4: Update ITAP values in device tree","j784s4-evm,j784s4-hsevm"
+  "LCPD-36488","ti-u-boot: J721S2: Update ITAP values in device tree","j721e-hsevm,j721e-idk-gw,j721e-sk"
+  "LCPD-36486","ulinux: J721S2: Update ITAP values in device tree","j721s2-evm,j721s2-hsevm"
+  "LCPD-36485","ti-linux: J721S2: Update ITAP values in device tree","j721s2-evm,j721s2-hsevm"
+  "LCPD-36484","uU: J721E: Update TAP Delay values in device tree","j721e-hsevm,j721e-idk-gw,j721e-sk"
+  "LCPD-36483","ti-u-boot: J721E: Update TAP Delay values in device tree","j721e-hsevm,j721e-idk-gw,j721e-sk"
+  "LCPD-36478","ti-u-boot: J7200: Update ITAP values in device tree","j7200-evm,j7200-hsevm"
+  "LCPD-36477","ulinux: J7200: Update ITAP values in device tree","j7200-evm,j7200-hsevm"
+  "LCPD-36476","ti-linux: j7200: Update ITAP values in device tree","j7200-evm,j7200-hsevm"
+  "LCPD-36362","RGX_S_FUNC_APM Test Failure","j721s2-evm"
+  "LCPD-35761","OpenSSL Performance data on J784S4 is inferior of J721S2","j784s4-evm"
+  "LCPD-35400","wkup i2c0 is not enabled on j721e-sk","j721e-sk"
+  "LCPD-35355","GPU artefacts for short duration on AM69","am69_sk-fs"
+  "LCPD-35096","OPTEE xtest failures","am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am68_sk-fs"
+  "LCPD-35093","Verify failing display mode in Rc7","am68_sk-fs,am69_sk-fs,j721e-idk-gw,j721s2-evm,j784s4-evm"
+  "LCPD-35068","Decoder cropping issue","j721e-idk-gw"
+  "LCPD-35010","CICD test on AM68 and AM69 are running from SD card . ","am68_sk-fs,am69_sk-fs"
+  "LCPD-34959","GPU driver warnings on J* devices and visual artefacts with 9.0 RC7","am68_sk-fs,am69_sk-fs"
+  "LCPD-34945","Graphics SDK Docs: Replace PVRTrace with PVRCarbon","j721e-evm-ivi,j721s2-evm,j784s4-evm"
+  "LCPD-34944","Graphics SDK Docs: Remove link to Processors Wiki","j721e-evm-ivi,j721s2-evm,j784s4-evm"
+  "LCPD-34841","J721S2 USB-C to USB-C connection to SSD fails","j721s2-evm"
+  "LCPD-34801","A72 SPL is not present in deploy directory","j721e-hsevm,j721e-idk-gw,j721s2-evm,j721s2-hsevm,j7200-evm,j7200-hsevm,j784s4-evm,j784s4-hsevm"
+  "LCPD-34422","DSI display have RGB flipping on every boot","am68_sk-fs,bbai,j721s2-evm,j721s2_evm-fs"
+  "LCPD-34242","GPIO_S_FUNC_DIR_IN_ALL_BANK unit test fails","am62xx_sk-fs,am62xxsip_sk-fs,am62xxsip_sk-se,am62xx-sk,am68_sk-fs,am69_sk-fs,j721s2-evm,j7200-evm,j784s4-evm"
+  "LCPD-34212","k3-j721e-sk: Add support for mcu_i2c pins   - REVERTED","j721e-sk"
+  "LCPD-34209","The trace logs appear when the Weston is killed","j721e-evm-ivi"
+  "LCPD-34077","J7AEP MMC SD read throughput is half of J7AHP","am68_sk-fs,j721s2-evm,j721s2_evm-fs"
+  "LCPD-29699","J721E tidss fails to keep in sync with displays requesting resolutions > 2k","j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j721e-sk"
+  "LCPD-29525","Documentation for MCAN missing in the SDK","j7200-evm,j7200-hsevm"
+  "LCPD-29521","R5 remote proc load does'nt guarentee CPU0 vs CPU1 sequencing","j721e-idk-gw,j784s4-evm"
+  "LCPD-25262","j721s2-evm : cpuhotplug06 fails  ","j721s2-evm,j721s2_evm-fs"
+  "LCPD-24502","j721e-evm-ivi Universal Planes fails (Impact 1)","j721e-evm-ivi,j721e-idk-gw"
+  "LCPD-17543","Some cpuhotplug tests failed","j721e-evm,j721e-evm-ivi,j721e-idk-gw,j784s4-evm"
+  "LCPD-17284","remoteproc/k3-r5: Cores are started out-of-order when core 0 file size >> core 1 file size","j721e-evm,j721e-evm-ivi,j721e-idk-gw"
 
 |
 
@@ -239,58 +237,32 @@ Issues found and closed on this release that may be applicable to prior releases
   :header: "Record ID", "Title", "Platform"
   :widths: 15, 70, 20
 
-  "LCPD-35028","J7200 perf data is equal to 8.6 but test mark as pass due to old data","j7200-evm"
-  "LCPD-34966","rpmsg_ctrl device mapping errors see with 6.1 kernel","am62axx_sk-fs,am62xx-lp-sk,am62xx-sk,am62xx_sk-fs,am64xx-evm,am64xx-sk,j721e-evm-ivi,j721e-idk-gw,j721e-sk,j721s2-evm,j784s4-evm"
-  "LCPD-34963","RPi camera does not work with AM68A","am68_sk-fs"
-  "LCPD-34928","LTP-DDT: DISPLAY: 09.00 test failing due to weston not being killed","j721e-idk-gw,j721s2-evm,j784s4-evm"
-  "LCPD-34923","u-boot: ospi: j721e: OSPI boot failure including DFU","j721e-idk-gw"
-  "LCPD-34919","OSPI Performance benchmark are not at par with SDK 8.6","j721e-idk-gw,j7200-evm"
-  "LCPD-34909","USBHOST Audio ltp unit test fails","am69_sk-fs"
-  "LCPD-34908","J721S2: 09.00.00.003: Display: all test cases are failing","j721s2-evm"
-  "LCPD-34889","Test to update emmc using dfu fails","j784s4-evm"
-  "LCPD-34852","Few times payload is packed at size boundary by binman ","am62xx_sk-se,am64xx-evm,am654x-evm,j721e-idk-gw,j721s2-evm,j7200-evm"
-  "LCPD-34848","Rproc init fails on some boots","j721e-evm-ivi,j721e-idk-gw,j721e-sk,j721s2-evm,j784s4-evm"
-  "LCPD-34839","eMMC raw boot failure ","j7200-evm"
-  "LCPD-34794","AM68-SK does not have mhdp but its node is there in dts","am68_sk-fs"
-  "LCPD-34692","U-Boot Debug Tips: Section 3.1.2.1 broken link leading to U-boot User's Guide","j721e-idk-gw,j721e-sk,j721s2-evm,j784s4-evm"
-  "LCPD-34678","GCC ToolChain: Typo in export path foot note ","j721e-idk-gw"
-  "LCPD-34673","display: j784s4,j721s2,j721e: display tests are failing as pykms module is missing in kirkstone builds (python 3.10)","j721e-idk-gw,j721s2-evm,j784s4-evm"
-  "LCPD-34669","J7200 [Regression reboot test failing TPS] ","j7200-evm"
-  "LCPD-34668","CMA buffer size is fixed to 32MB in tiL6.1. Multimedia needs significantly more than that. Add DT node to increase the size.","j721e-idk-gw,j721e-sk,j721s2-evm,j784s4-evm"
-  "LCPD-34667","J721E: Audio: 09.00.00.001: tests are failing due to missing configs","j721e-idk-gw"
-  "LCPD-34661","j721e: R5Fs configured in lockstep mode instead of split mode ","j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j721e-sk,j721e-vlab"
-  "LCPD-34660","CONFIG_DRM_TI_TFP410 Not enabled in ti-linux-6.1","j721e-sk"
-  "LCPD-34649","Wave521CL encoder kernel panic issue","j721s2-evm"
-  "LCPD-34646","TDA4VM: Status of standalone tests tienc_encode and tidec_decode","j721e-idk-gw"
-  "LCPD-34645","TDA4VH: gstreamer rtp stream cannot be played","j721s2-evm"
-  "LCPD-34592","DISTRO BOOT: Not enabled on all Jacinto Platforms","j721s2-evm,j721s2-hsevm,j7200-evm,j784s4-evm,j784s4-hsevm"
-  "LCPD-34584","j721s2: hs boot test failure","j721s2-evm,j721s2_evm-fs"
-  "LCPD-34544","J784s4: OPTEE: Missing documentation to set the UART instance","j784s4-evm"
-  "LCPD-34534","j7200: OSPI_S_PERF_RAW_READ test fails","j7200-evm"
-  "LCPD-34533","Random failure [j7200: ETH : CPSW2G : functional test failure of ETH_CPSW2g_Unicast]","j7200-evm"
-  "LCPD-34527","j721e: CI/CD boot failure with PMIC node","j721e-idk-gw,j7200-evm"
-  "LCPD-34519","IPC: IPC_S_FUNC_RPMSG_SAMPLE_CLIENT test failures","am62axx_sk-fs,am62xx-sk,am68_sk-fs,j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm"
-  "LCPD-34368","SDK: J721S2: MAIN CPSW2G RGMII Clock Frequency is incorrect","j721s2-evm,j721s2-hsevm,j721s2_evm-fs"
-  "LCPD-34302","TDA4VH: Memory leak in encoder driver/GStreamer","j784s4-evm"
-  "LCPD-34300","J721E Multimedia documentation improvements","j721e-idk-gw,j721s2-evm,j721s2_evm-fs,j784s4-evm"
-  "LCPD-34292","j784s4: OSPI failures with Rx DMA not available","j784s4-evm"
-  "LCPD-34213","CI/CD failure (OSPI read performance fails sometimes) ","j7200-evm"
-  "LCPD-34201","Wrong Mapping of tifs-sram@1f0000 in k3-j721s2-main.dtsi","j721s2-evm,j721s2_evm-fs,j784s4-evm"
-  "LCPD-34190","The last CPSW port enumerated does not untag inner VLAN tag in header","j7200-evm,j784s4-evm"
-  "LCPD-34127","Serdes4 Lane definitions are missing","j784s4-evm"
-  "LCPD-34126","AHP stability test (Kernel boot 1000 times)","j784s4-evm"
-  "LCPD-34092","Add developer notes section in Linux SDK documentation to point users to k3conf","j721e-hsevm"
-  "LCPD-34091","U-Boot: Add missing documentation about Adaptive Voltage Scaling(AVS)","j721s2-evm,j721s2_evm-fs"
-  "LCPD-32971","CICD failure ( j784s4-evm Application exited with non-zero value.)","j784s4-evm"
-  "LCPD-32929","CI/CD failure (J721e,VENC warning while using DMA)","j721e-hsevm"
-  "LCPD-32928","CICD failure (Could not find an active interface implemented by cpsw2g to run test, VCL)","j7200-evm"
-  "LCPD-32927","CICD (Second UART timeout while boot, VCL)","j7200-evm"
-  "LCPD-32925","CICD [Eth performance test on VCL)","j7200-evm"
-  "LCPD-32922","CI/CD failure (Kernel panic in CPSW SW stack)","j784s4-evm"
-  "LCPD-32919","CICD failure PCIe Serror on n/w and NVME // was remote proc failed due to nw is not available ","j7200-evm,j784s4-evm"
-  "LCPD-32899","CI/CD failure report [eMMC performance out of bound]","j721s2-evm,j721s2_evm-fs,j7200-evm,j784s4-evm"
-  "LCPD-32853","j721s2: xSPI/QSPI boot fails when trying to read 4 bytes data from NOR flash in SPL","j721s2-evm,j721s2_evm-fs"
-  "LCPD-32835","./setup.sh fails due to missing PLATFORM=j7200-evm in Rules.make","j7200-evm"
+  "LCPD-37698","J722S : Few Display tests are not working ","j722s_evm-fs"
+  "LCPD-37672","AM69: MHDP: CRTC Sync lost issue and 4k not working","am69_sk-fs"
+  "LCPD-37625","Linux CPSW Proxy Client: Fix complier warnings","am62xx_sk-fs,am62xx_lp_sk-fs,am62axx_sk-fs,am62pxx_sk-fs,j721e-hsevm,j721e-idk-gw,j7200-evm,j7200-hsevm,j784s4-evm,j784s4-hsevm"
+  "LCPD-37610","J722S HDMI not negotiating 1080p with monitor","j722s_evm-fs"
+  "LCPD-37597","Uart Testcase Failing for j722s","j722s_evm-fs"
+  "LCPD-37547","J721E: infotainment dt overlay is missing in 09.01","j721e-evm-ivi"
+  "LCPD-37536","J722s: MMCSD is running in legacy mode.but should support for uhs mode ","j722s_evm-fs"
+  "LCPD-37513","J722S DSS does not seem to be enabled in the DT - display does not work","j722s_evm-fs"
+  "LCPD-37487","SMMU support for PCIe RC - failure","j721e-idk-gw,j721e-sk"
+  "LCPD-37435","J721s2: QSPI test not getting bootloaders","j721e-idk-gw,j721s2-evm,j784s4-evm"
+  "LCPD-37434","Coremark pro test undefined capture","j721s2-evm"
+  "LCPD-37432","AM68_SK: I2C_S_FUNC_I2C_SPEED: I2C bus 4 speed could not get from booting log","am68_sk-fs,j721s2-evm,j722s_evm-fs"
+  "LCPD-37341","Wave5 Encoder Memory Leak","am62axx_sk-fs,am62pxx_sk-fs,am68_sk-fs,am69_sk-fs,j721s2-evm,j784s4-evm"
+  "LCPD-37340","Qt DMA bug with CSI cameras","am62xx_sk-fs,j721e-idk-gw,j721s2-evm,j784s4-evm"
+  "LCPD-37330","Correct Pinmux for uarts","j721e-idk-gw,j721e-sk,j721s2-evm,j7200-evm,j784s4-evm"
+  "LCPD-37307","J7AEP: Multi camera capture test failing","j721s2-evm"
+  "LCPD-37261","Firmwares missing in ti-linux-firmware-next branch for J722S","j722s_evm-fs"
+  "LCPD-37248","[J721s2] ""0x"" missing in the device tree bootargs earlycon","j721s2-evm"
+  "LCPD-37221","[U-BOOT] [J721s2] Panic occurs when DRAM 1 is disabled","j721s2-evm,j784s4-evm"
+  "LCPD-37198","J7AEN: Emmc Fails to write in 8 bus width in uboot","j722s_evm-fs"
+  "LCPD-37189","ti-linux: Building kernel shows a bunch of warnings","j721e-idk-gw"
+  "LCPD-37182","Processor SDK Linux for AM69: Kernel UFS Guide link in section ""3.1.1.11. UFS"" is broken","am68_sk-fs,am69_sk-fs,j721e-hsevm,j721s2-evm,j7200-evm,j784s4-evm"
+  "LCPD-37148","Increase number of threads for ticsirx instances 1 and 2 ","am69_sk-fs"
+  "LCPD-37147","SDK doc still references pinmux, should be SysConfig","am68_sk-fs,am69_sk-fs,j721e-sk,j721s2-evm,j7200-evm,j784s4-evm"
+  "LCPD-37145","U-Boot build instructions needs update","j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm"
+  "LCPD-37134","Docs: steps for MSMC configuration as L3 vs SRAM need update","am68_sk-fs,am69_sk-fs,j721e-sk,j721s2-evm,j721s2_evm-fs,j784s4-evm"
 
 |
 
@@ -319,11 +291,11 @@ U-Boot Known Issues
   :header: "Record ID", "Title", "Platform", "Workaround"
   :widths: 15, 30, 70, 30
 
-  "LCPD-36745","u-boot: spl: spl_image_info has no member named fdt_addr","j721e-idk-gw,j7200-evm",""
-  "LCPD-36491","ti-u-boot: J784S4: Update ITAP values in device tree","j784s4-evm,j784s4-hsevm",""
-  "LCPD-36488","ti-u-boot: J721S2: Update ITAP values in device tree","j721e-hsevm,j721e-idk-gw,j721e-sk",""
-  "LCPD-36483","ti-u-boot: J721E: Update TAP Delay values in device tree","j721e-hsevm,j721e-idk-gw,j721e-sk",""
-  "LCPD-36478","ti-u-boot: J7200: Update ITAP values in device tree","j7200-evm,j7200-hsevm",""
+  "LCPD-37696"," ECC Support failure ","am68_sk-fs,am69_sk-fs,j721s2-evm,j784s4-evm",""
+  "LCPD-37689","SPL/U-Boot: NOR flash boot mode support using OSPI controller","j722s_evm-fs",""
+  "LCPD-37660","J721E: U-Boot does not support booting SR1.1 HS-FS and SR2.0 HS-TIDK SoCs","j721e-hsevm",""
+  "LCPD-37623","Board intermittently fails to acquire DHCP address","am68_sk-fs",""
+  "LCPD-36993","U-Boot: lpddr4.c: Error handling missing failure cases","am654x-evm,am654x-idk,am654x-hsevm,am64xx-evm,am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_sk-se,beagleplay-gp,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am62lxx_evm-fs,am62lxx_evm-se,am62pxx-zebu,am62lxx-vlab,am62lxx-zebu,am62xx_p0_sk-fs,am64xx_sk-fs,am64xx_evm-se,am64xx_sk-se,am68_sk-fs,am69_sk-fs,beaglebone,bbai,bbai64-gp,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j7200-evm,j7200-hsevm,j784s4-evm,j784s4-hsevm,j722s_evm-fs,J784S4_BASESIM",""
   "LCPD-34106","SPL: USB DFU Boot fails on J721S2 EVM on upstream U-Boot(also ti-u-boot-2023.04)","j721s2-evm,j721s2_evm-fs",""
   "LCPD-24108","U-Boot: TISCI config ring fail traces seen in OSPI boot mode on J721E","j721e-evm,j721e-evm-ivi,j721e-idk-gw",""
   "LCPD-22904","U-boot: Update EMIFtool for i2244:DDR: Valid stop value must be defined for write DQ VREF training","j721e-idk-gw,j7200-evm",""
@@ -338,83 +310,76 @@ Linux Known Issues
   :header: "Record ID", "Title", "Platform", "Workaround"
   :widths: 5, 10, 70, 35
 
+  "LCPD-37727","Testcase for graceful shutdown of remoteprocs","am69_sk-fs,j784s4-evm",""
+  "LCPD-37725","CICD: DRM KMS test failure","j722s_evm-fs",""
+  "LCPD-37706","J722S : RTC test failure","j722s_evm-fs",""
+  "LCPD-37705","J722S : crypto perf failure ","j722s_evm-fs",""
+  "LCPD-37704","J722S : i2c test failing ","j722s_evm-fs",""
+  "LCPD-37702","J722S : Crypto perf (ipsec) test failed ","j722s_evm-fs",""
+  "LCPD-37701","J722S : UART flow control test failing in SDK 9.2 RC8 ","j722s_evm-fs",""
+  "LCPD-37700","J722S : Audio support missing ","j722s_evm-fs",""
+  "LCPD-37699","J722S : SPI tests are not working due to overlay","j722s_evm-fs",""
+  "LCPD-37692","Displayport testcases are failing on AM69 platform","am69_sk-fs",""
+  "LCPD-37690","UFS test case failing on J784S4","j784s4-evm",""
+  "LCPD-37683","SDK developmer notes points to non-existing README file","j721e-idk-gw",""
+  "LCPD-37663","SDK: CSI2RX IMX390 sensor test pattern generation is faulty","j721e-idk-gw,j721s2-evm,j784s4-evm,j722s_evm-fs",""
+  "LCPD-37662","Capability gap coming as failure","am68_sk-fs",""
+  "LCPD-37661","CAN transmission performance tests are failing.","j721s2-evm",""
+  "LCPD-37624","SK-AM68: Weston fails to start after reducing boot time by setting bootdelay=0 and adding quiet to args_mmc","am68_sk-fs",""
+  "LCPD-37622","J721E EVM 9.0 SDK HDMI grabber not detected while using DP-to-HDMI adapter","j721e-evm-ivi",""
+  "LCPD-37611","IPC: LTP Test failure for j784s4-evm platform (Regression)","am69_sk-fs,j784s4-evm",""
+  "LCPD-37605","Boot from QSPI is failing","j721e-idk-gw,j721s2-evm,j784s4-evm",""
+  "LCPD-37584","CPSW native IP and MAC functional test failure ","j722s_evm-fs",""
+  "LCPD-37528","Setup script fails with bad substitution error when attempting to connect using minicom ","j721e-sk",""
+  "LCPD-37507","DSS causes a freeze of processes every 10 seconds for about 200ms","am68_sk-fs,j722s_evm-fs",""
+  "LCPD-37493","emmc boot is broken in Test farm ","j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm,j722s_evm-fs",""
+  "LCPD-37438","Docs: Update CAN interface names","am654x-evm,am62xx_sk-fs,am335x-evm,dra7xx-evm,j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm",""
+  "LCPD-37433","AM68_SK: DDR frequency handshake issue","am68_sk-fs",""
+  "LCPD-37410","CAN interface removed from 9.x SDK for SK-TDA4VM","j721e-sk",""
+  "LCPD-37387","NFS failure leads to stress test failure.","am68_sk-fs,j721s2-evm",""
+  "LCPD-37326","SDK performance guide calls out DCAN benchmarks","am69_sk-fs",""
+  "LCPD-37281","PCIe EP to RC examples do not use DMA","j784s4-evm",""
+  "LCPD-37231","USBHOST_S_FUNC_VIDEO_320_240 failing on J7200 CICD","j7200-evm",""
+  "LCPD-37214","Crypto_M_PERF_openssl_perf_hardware_acceleration	failure on AM68 and am69_sk","am68_sk-fs,am69_sk-fs",""
+  "LCPD-37199","TPS6594: Error IRQ trap reach ilim, overcurrent for","j721e-idk-gw,j721s2-evm",""
+  "LCPD-37186","J7AEN R5 SPL: DMA fails in R5 SPL","j722s_evm-fs",""
+  "LCPD-37015","Add comments about necessity of HPD pin for J721S2 display port","j721s2-evm",""
+  "LCPD-36990","j7200: USB audio test fail inconsistently","j7200-evm",""
   "LCPD-36952","Add support for J721S2 PG 1.1 in uboot","j721s2-evm",""
   "LCPD-36930","Add tests uart dma","j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm",""
-  "LCPD-36885","j7200: TSN TAS Test Failure","j7200-evm",""
   "LCPD-36863","OPTEE/ATF are not protected by c7x","am68_sk-fs,j721e-hsevm,j7200-hsevm",""
-  "LCPD-36848","J721E: Occasional SPI-NOR write timeout under high load","am62xx_sk-fs,j721e-idk-gw",""
-  "LCPD-36847","doc: ltp-ddt documentation is not upto date","am64xx-hsevm,am62xx_sk-fs,am62axx_sk-fs,am62pxx_sk-fs,am68_sk-fs,am69_sk-fs,j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm",""
   "LCPD-36841","TDA4VM/J721e: An indirect write completion error occurred in the linux OSPI driver","j721e-evm,j721e-idk-gw",""
   "LCPD-36794","j7200-evm: eth firmware floods network with dhcp packets  ","j7200-evm",""
   "LCPD-36760","Customer Issue: MHDP compatibility issue","am69_sk-fs,j784s4-evm",""
   "LCPD-36748","M4F clock reported incorrectly with k3conf","am68_sk-fs,am69_sk-fs",""
-  "LCPD-36744","Linux SDK: CPSW: Bridge interface cannot ping in Switch Mode","am64xx-evm,am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_sk-se,am64xx_sk-fs,am64xx_evm-se,am64xx_sk-se,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j7200-evm,j7200-hsevm,j784s4-evm,j784s4-hsevm",""
   "LCPD-36609","j7200: UART DMA fails immediately without Flow control enabled","j7200-evm",""
-  "LCPD-36494","Migrate to OPTEE 4.0.0 to address PSIRT","am62xx_sk-fs,am62axx_sk-fs,am64xx_sk-fs,j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm",""
-  "LCPD-36489","ti-linux: J784S4: Update ITAP values in device tree","j784s4-evm,j784s4-hsevm",""
-  "LCPD-36485","ti-linux: J721S2: Update ITAP values in device tree","j721s2-evm,j721s2-hsevm",""
-  "LCPD-36476","ti-linux: j7200: Update ITAP values in device tree","j7200-evm,j7200-hsevm",""
   "LCPD-36474","J721s2 incorrect autogen generated data","j721s2-evm",""
   "LCPD-36472","USB Audio Device not Found","j7200-evm",""
   "LCPD-36386","IPSEC connection failure on automated setup in testfarm","j721e-idk-gw",""
-  "LCPD-35400","wkup i2c0 is not enabled on j721e-sk","j721e-sk",""
   "LCPD-35353","ti-rpmsg-char instability observed when using SafeRTOS firmware with multiple endpoints","j721e-idk-gw",""
   "LCPD-35340","Modify Uart Testcase","j721s2-evm,j784s4-evm",""
   "LCPD-35311","Perf data is not getting updated in SDK 9.0 for OSPI","j721s2-evm,j784s4-evm",""
-  "LCPD-35097","OSPI Boot failing on AM69","am69_sk-fs",""
-  "LCPD-35096","OPTEE Runtime security Support : Secure Storage","am68_sk-fs",""
   "LCPD-35094","IPsec benchmark failing in SDK 9.0 RC7","j721e-idk-gw",""
-  "LCPD-35093","Verify failing display mode in Rc7","am68_sk-fs,am69_sk-fs,j721e-idk-gw,j721s2-evm,j784s4-evm",""
   "LCPD-35092","Over all test infra/script update for CSI testing","am68_sk-fs,am69_sk-fs,j721e-idk-gw,j721s2-evm,j784s4-evm",""
   "LCPD-35087","OSPI Performance benchmark are not at par with SDK 8.6","j721e-idk-gw,j7200-evm",""
-  "LCPD-35069","DFU boot fails on test farm but works locally ok","j721e-idk-gw,j784s4-evm",""
+  "LCPD-35069","DFU boot fails on AHP ","j721e-idk-gw,j784s4-evm",""
   "LCPD-35029","IPC test case script update ","am68_sk-fs,am69_sk-fs,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j721e-sk,j7200-evm,j784s4-evm,j784s4-hsevm",""
   "LCPD-35027","J7 Power off is not working","j721e-idk-gw,j721s2-evm,j7200-evm",""
-  "LCPD-35010","CICD test on AM68 and AM69 are running from SD card . ","am68_sk-fs,am69_sk-fs",""
   "LCPD-34988","Weston on DP display on AM68 SKs","am68_sk-fs",""
   "LCPD-34920","Kernel: UBIFS test failing on J721E","j721e-idk-gw",""
-  "LCPD-34801","A72 SPL is not present in deploy directory","j721e-hsevm,j721e-idk-gw,j721s2-evm,j721s2-hsevm,j7200-evm,j7200-hsevm,j784s4-evm,j784s4-hsevm",""
   "LCPD-34792","UBIFS fails in OSPI NAND boot","am62xx-lp-sk,j721s2-evm",""
+  "LCPD-34619","k3conf reports wrong error information while setting the clock frequency","j7200-evm",""
   "LCPD-34590","AM69x: CICD next failures of unit tests across components","am69_sk-fs",""
   "LCPD-34589","AM68x: CICD next failures of unit tests across components","am68_sk-fs",""
-  "LCPD-34242","GPIO_S_FUNC_DIR_IN_ALL_BANK unit test fails","am62xx_sk-fs,am62xxsip_sk-fs,am62xxsip_sk-se,am62xx-sk,am68_sk-fs,am69_sk-fs,j721s2-evm,j7200-evm,j784s4-evm",""
   "LCPD-34048","PCIe: AFS bit in PCIE_CORE_RP_I_PCIE_CAP_2 register is not set,","j721s2-evm,j721s2_evm-fs,j7200-evm",""
-  "LCPD-29521","R5 remote proc load does'nt guarentee CPU0 vs CPU1 sequencing","j721e-evm,j784s4-evm",""
   "LCPD-28861","J721e/j7200: MCU/WKUP UART as console. The output gets garbled after sysfw/dm load ","j721e-evm,j7200-evm",""
   "LCPD-28250","J7AEP: QSPI Write corrupted when the first operation after powerup is erase","j721s2-evm,j721s2_evm-fs",""
   "LCPD-25304","J7AEP: USB: USB 3.0 devices not getting enumerated in high speed","j721s2-evm,j721s2_evm-fs",""
-  "LCPD-25262","j721s2-evm : cpuhotplug06 fails  ","j721s2-evm,j721s2_evm-fs",""
   "LCPD-25195","j721s2-evm: audio device is not found","j721s2-evm,j721s2_evm-fs",""
   "LCPD-24725","PCIE RC Link fails when linux prints are made quiet","j721e-idk-gw",""
   "LCPD-24595","j721e-idk-gw USB Suspend/Resume with RTC Wakeup fail (Impact 1)","am64xx-evm,am64xx_sk-fs,j721e-idk-gw,j721e-sk,j7200-evm",""
-  "LCPD-24589","no new usb reported on host after g_multi ","am335x-evm,am57xx-evm,j721e-idk-gw",""
-  "LCPD-24502","j721e-evm-ivi Universal Planes fails (Impact 1)","j721e-evm-ivi,j721e-idk-gw",""
+  "LCPD-24589","no new usb reported on host after g_multi ","am57xx-evm,j721e-idk-gw",""
   "LCPD-24456","Move IPC validation source from github to git.ti.com","am654x-evm,am654x-idk,am654x-hsevm,am64xx-evm,am64xx-hsevm,am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am62xx-sk,am64xx_sk-fs,beaglebone,bbai,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j7200-evm,j7200-hsevm,omapl138-lcdk",""
-  "LCPD-24198","J721e-sk stress boot test fails","j721e-sk",""
-  "LCPD-22715","i2232: DDR: Controller postpones more than allowed refreshes after frequency change","am62xx-sk,am62xx_sk-fs,am62xx_sk-se,j721e-idk-gw,j721s2-evm,j721s2_evm-fs,j7200-evm","Workaround 1:
-  Disable dynamic frequency change by programing DFS_ENABLE = 0
-
-
-  Workaround 2:
-    If switching frequency, program the register field values as follows:
-
-    if (old_freq/new_freq >= 7) {
-      if (PBR_EN==1) {  // Per-bank refresh is enabled
-        AREF_HIGH_THRESHOLD = 19
-        AREF_NORM_THRESHOLD = 18
-        AREF_PBR_CONT_EN_THRESHOLD = 1
-        AREF_CMD_MAX_PER_TREF = 8
-      }
-      else {  // Per-bank refresh is disabled
-         AREF_HIGH_THRESHOLD = 18
-         AREF_NORM_THRESHOLD = 17
-         AREF_CMD_MAX_PER_TREF = 8
-      }
-    } else {
-       AREF_HIGH_THRESHOLD = 21
-       AREF_CMD_MAX_PER_TREF = 8
-    }
-  "
   "LCPD-22339","PCI-E USBCARD, ETHCARD don't indicate 2-lane support with lspci","j721e-idk-gw,j7200-evm",""
   "LCPD-20653","ltp: kernel syscall tests fail","am654x-idk,am335x-evm,am43xx-gpevm,j721e-idk-gw",""
   "LCPD-19739","AM65 shutdown error","am654x-idk,j7200-evm",""
@@ -424,9 +389,6 @@ Linux Known Issues
   "LCPD-19084","Few SD cards not enumerating in Kernel with Alpha EVM","j721e-idk-gw",""
   "LCPD-19068","DSS: Disabling a layer connected to Overlay may result in synclost during the next frame","j721e-evm,j721e-evm-ivi,j721e-idk-gw",""
   "LCPD-18790","eMMC tests failed on J7 rev E2 EVM","j721e-idk-gw",""
-  "LCPD-17543","Some cpuhotplug tests failed","j721e-evm,j721e-evm-ivi,j721e-idk-gw",""
-  "LCPD-17421","CPSW9G: Can't bring up interface over NFS","j721e-idk-gw",""
-  "LCPD-17284","remoteproc/k3-r5: Cores are started out-of-order when core 0 file size >> core 1 file size","j721e-evm,j721e-evm-ivi,j721e-idk-gw",""
   "LCPD-17172","Uboot USBhost: Sandisk Extreme USB 3.0 msc stick could not be detected at second time","j721e-idk-gw",""
   "LCPD-17171","Uboot dhcp occasionally failed","j721e-idk-gw",""
   "LCPD-17017","J7: DSS underflows seen on various use cases","j721e-evm-ivi,j721e-idk-gw",""
@@ -448,6 +410,15 @@ There are no known issues in this release in the Linux RT Kernel.
 
 Change Requests
 ===============
+
+SDK features descoped from 9.2 release
+--------------------------------------
+.. csv-table::
+  :header: "ID", "Head Line", "Platform", "Original Fix Version", "New Fix Version"
+  :widths: 20, 90, 90, 20, 20
+
+  JACINTOREQ-3970 ,Linux SDK shall support MSMC: Security Firewall, "J784S4", 09.02.00 ,10.00.00
+  JACINTOREQ-5042 ,AM69/J784S4 Linux SDK shall support cpufreq [opp], "AM69, J784S4", 09.02.00 ,10.00.00
 
 SDK features scoped in 9.1 release
 --------------------------------------
