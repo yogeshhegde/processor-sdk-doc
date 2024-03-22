@@ -4,12 +4,10 @@ Boot Sequence
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
-    The J721E boot sequence is shown in the U-boot board README file for J721E (u-boot/board/ti/j721e/README).
+    The J721E boot sequence is shown in the U-boot documentation file for J721E (doc/board/ti/j721e_evm.rst).
 
     Please refer back to the particular U-boot component branch and version information for this release:
-
-    :ref:`release-specific-sdk-components-versions`
-
+    :ref:`u-boot-release-notes`
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
