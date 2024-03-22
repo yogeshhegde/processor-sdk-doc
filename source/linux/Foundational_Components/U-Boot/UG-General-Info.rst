@@ -528,6 +528,12 @@ Build U-Boot
 
       BINMAN_INDIRS is used to fetch the DM binary from <path to ti-linux-firmware>/ti-dm/ and SYSFW binaries from <path to ti-linux-firmware>/ti-sysfw/. If using the SDK, BINMAN_INDIRS can point to <path to SDK>/board-support/prebuilt-images. Else any folder where DM is located in <path to folder>/ti-dm/ and SYSFW binaries are present in <path to folder>/ti-sysfw/ can be used. Please make sure to use the absolute path.
 
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4', 'J722S')
+
+   .. note::
+
+      It is also possible to pick up a custom DM binary by adding TI_DM argument pointing to the file. If not provided, it defaults to picking up the DM binary from BINMAN_INDIRS. This is only applicable to devices that utilize split firmware.
+
 .. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4', 'J722S')
 
    .. rubric:: Target Images
