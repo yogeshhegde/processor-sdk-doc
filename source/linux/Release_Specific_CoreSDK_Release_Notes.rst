@@ -20,55 +20,42 @@ Please refer to the software manifest, which outlines the licensing
 status for all packages included in the prebuilt binaries location.
 
 
-Release 09.01.00
+Release 09.02.00
 ==================
 
-Released December 2023
+Released March 2024
 
 .. rubric:: What's New
    :name: whats-new
 
-**Processor SDK 9.1 Sitara Release supports the following platforms**
-  * tag: 09.01.00.008
-       * AM62Px (HS-FS, HS-SE)
+**Processor SDK 9.2 Sitara Release supports the following platforms**
+  * tag: 09.02.00.009
+       * AM62Px (HS-FS)
        * AM62x ( GP, HS-FS, HS-SE)
        * AM62x LP (HS-FS, HS-SE)
        * AM62SIP ( HS-FS, HS-SE)
        * AM64x 2.0 (HS-FS)
        * AM62A (HS-FS, HS-SE)
 
-  * tag: 09.01.00.007
-      * AM65x 2.0 (GP, HS-SE)
-**Processor SDK 9.1 Sitara Release has following Major Updates**
+**Processor SDK 9.2 Sitara Release has following Major Updates**
   * LTS Refresh with Stable Kernel 6.1, U-boot 2023.04, Yocto Dunfell 4.0
-  * RT Latency Performance Improvements
-  * AM62P First Public Release
-  * Graphics: DDK 23.2 Upgrade
+  * Single and multi-bit DDR ECC support
+  * MMC Highspeed tuning and Performance Improvements
+  * Graphics: DDK 23.3 Upgrade
+  * GPU Accelerated Chromium Browser support
+  * Optimized Boot Configuration
   * Bug Fixes and Stability Improvements
 **AM62P**
-  * Boot modes: UART, SD/eMMC, OSPI, NFS, USB (DFU,MSC)
-  * Kernel: I2C, GPIO, SPI, MMC, DSS, CSI, McASP, SA3UL, IPC, VTM, RTC, MCAN, eQEP, Rpi Overlay
-  * Power Management: DeepSleep, MCU-Only and Partial IO mode  
-  * Connectivity: CPSW, USB Host and Device Mode
-  * GPU BXS, VPU Wave521CL
-  * Usecase : DSS Sharing Digital Cluster
+  * Stable DDR config update
+  * A53 SPL Splash Screen support
+  * DSI support
 **AM62A**
-  * U-Boot: Remoteproc boot with C7x
-  * Kernel: MCAN, eQEP
-  * IPC: Mailbox, Shared buffer example (C7x, DM R5, MCU R5)
-  * UB954 Fusion board support
-  * Power Management: DeepSleep, MCU-Only and Partial IO mode 
+  * Mini Fusion board support
+  * LI OX05B1S Sensor support
 **AM62**
-  * Kernel: MCAN, eQEP, Rpi Overlay  
-  * Power Management: Partial IO mode and runtime_pm on OSPI, CSI, MCAN
-  * Usecase: Smooth display splash handoff of SPL → Kernel → Weston
-  * IPC: Graceful shutdown
+  * Kernel: eQEP
 **AM64**
-  * Kernel: GPMC NAND
-  * IPC: Graceful Shutdown
-  * Connectivity: HSR Tx Packet Duplication offload, Cut-thru support in switch mode
-**AM65**
-  * PRU-ICSSG: Multicast filtering in EMAC mode, Tx/Rx coalescing and Dump IET Statistic via ethtool
+  * Kernel: eQEP
 
 
 Build Information
@@ -76,13 +63,13 @@ Build Information
 
 U-Boot
 -------------------------
-| Head Commit: b0d717b732ee28e446baf94522b3491e590f7fbb configs: am62*_r5_usbmsc_defconfig: Set SPL_STACK_R_MALLOC_SIMPLE_LEN to 2M
-| Date: 2023-12-06 19:02:00 -0600
+| Head Commit: f9b966c674731a1a29a20a8e143c61d4e046f13c configs: am62x_android_a53.config: Disable splashscreen
+| Date: 2024-03-21 08:39:16 -0500
 | uBoot Version: 2023.04
-| uBoot Description: 09.01.00.008
+| uBoot Description: RC Release 09.02.00.009
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2023.04
-| uBoot Tag: 09.01.00.008
+| uBoot Tag: 09.02.00.009
 |
 
 
@@ -91,14 +78,14 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 247b2535b24894d5ac7f3d8cfc3b48edb7214cc0 configs: ti_rt.config: disable CPU hotplug
-| Date: 2023-12-06 19:01:53 -0600
-| Kernel Version: 6.1.46
-| Kernel Description: 09.01.00.008
+| Head Commit: 2e423244f8c09173a344e7069f0fe2bdf26cccee net: ethernet: ti: icssg-prueth: Fix RX frame drops in XDP
+| Date: 2024-03-21 08:39:05 -0500
+| Kernel Version: 6.1.80
+| Kernel Description: RC Release 09.02.00.009
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.1.y
-| Tag: 09.01.00.008
+| Tag: 09.02.00.009
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config
 |
@@ -107,14 +94,14 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: 833521d9b354beb95bac8b37bfc211495d73d36c Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
-| Date: 2023-12-06 19:01:56 -0600
-| Kernel Version: 6.1.46-rt13
-| Kernel Description: 09.01.00.008-rt
+| Head Commit: 3c08dbfd7bfd83c247ad1ee4ddb989260c150af1 Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
+| Date: 2024-03-21 08:39:09 -0500
+| Kernel Version: 6.1.80-rt26
+| Kernel Description: RC Release 09.02.00.009-rt
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-6.1.y
-| Tag: 09.01.00.008-rt
+| Tag: 09.02.00.009-rt
 | use-kernel-config=defconfig
 | config-fragment=config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 |
@@ -126,23 +113,23 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 6ad91a192fa1ab33775a22894a413aefd0b67106 CI/CD Auto-Merger: cicd.kirkstone.202312061239
-| Date: 2023-12-06 19:02:01 -0600
+| Head Commit: 376a2143533c6497b4e79304eccca2a630784436 CI/CD Auto-Merger: cicd.kirkstone.202403201028
+| Date: 2024-03-21 08:39:18 -0500
 
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: kirkstone
-| Release Tag: 09.01.00.008
+| Release Tag: 09.02.00.009
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 190e2b58fb6c1e3c658fe2f7afc40a2863007bbc CI/CD Auto-Merger: cicd.kirkstone.202312061239
-| Date: 2023-12-06 19:01:43 -0600
+| Head Commit: 98f178314931635c8641d1394dfd4341b86b6be2 CI/CD Auto-Merger: cicd.kirkstone.202403201028
+| Date: 2024-03-21 08:38:40 -0500
 
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: kirkstone
-| Release Tag: 09.01.00.008
+| Release Tag: 09.02.00.009
 |
 
 Issues Tracker

@@ -12,6 +12,22 @@ of the Processor SDK for Linux.
 Processor CoreSDK 09.xx Releases
 ================================
 
+
+Processor CoreSDK Sitara 09.02
+------------------------------
+
+- Tag Info: 09.02.00.009
+- This is the sixth and final release in the 2023 LTS stream, with new versions of Kernel, U-boot, toolchain and Yocto branch.
+- Platforms Supported : AM62Px (HS-FS, HS-SE), AM62x ( GP, HS-FS, HS-SE), AM62x LP (HS-FS, HS-SE), AM62SIP ( HS-FS, HS-SE), AM64x 2.0 (HS-FS), AM62A (HS-FS, HS-SE)
+- Kernel 6.1.80
+- U-Boot 2023.04
+- ATF 2.10
+- OPTEE 4.1
+- Toolchain GCC 11.4
+- Yocto Kirkstone/4.0
+- Graphics DDK 23.3
+
+
 Processor CoreSDK Sitara 09.01
 ------------------------------
 
