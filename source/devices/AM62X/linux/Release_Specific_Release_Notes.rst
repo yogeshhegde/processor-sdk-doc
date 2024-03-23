@@ -35,33 +35,33 @@ found on the SDK download page or in the installed directory as indicated below.
 
 -  Linux Manifest:  "/docs/software_manifest.html"
 
-
-Release 09.01.00
+Release 09.02.00
 ================
 
-Released on December 2023
+Released on March 2024
 
 What's new
 ------------------
 
-**Processor SDK Linux AM62x Release has following new features:**
+**Processor SDK Linux AM62X Release has following new features:**
 
-  - Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
-  - Kernel: MCAN, eQEP, Rpi Overlay
-  - Power Management: Partial IO mode and runtime_pm on OSPI, CSI, MCAN :ref:`Power Management Overview <Power-Management>`
-  - Usecase: Smooth display splash handoff of SPL → Kernel → Weston
-  - IPC: Graceful shutdown
-  - New improved OOB experience
-  - Bug fixes and Improvements
+  - Kernel: MMC Highspeed tuning and Performance Improvements
+  - RT Kernel : Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
+  - DDR: Stable Config Update, Single and multi-bit DDR ECC Support
+  - Power Management: DeepSleep, MCU-Only and Partial IO mode :ref:`Power Management Overview <Power-Management>`
+  - OOB: GPU Accelerated Chromium Browser Support
+  - Bug Fixes and Stability Improvements
 
-**Major Refresh of component version:**
 
-  - Kernel 6.1
+**Component version:**
+
+  - Kernel 6.1.80
+  - RT Kernel 6.1.80-rt26
   - U-Boot 2023.04
   - Toolchain GCC 11.4
-  - ATF 2.9+
-  - OPTEE 4.0
-  - Graphics DDK 23.2
+  - ATF 2.10
+  - OPTEE 4.1
+  - Graphics DDK 23.3
 
 Build Information
 =================
@@ -74,45 +74,44 @@ U-Boot
 .. rubric:: u-boot
    :name: u-boot
 
-| Head Commit: b0d717b732ee28e446baf94522b3491e590f7fbb configs: am62*_r5_usbmsc_defconfig: Set SPL_STACK_R_MALLOC_SIMPLE_LEN to 2M
-| Date: 2023-12-06 19:02:00 -0600
+| Head Commit: f9b966c674731a1a29a20a8e143c61d4e046f13c configs: am62x_android_a53.config: Disable splashscreen
+| Date: 2024-03-21 08:39:16 -0500
 | uBoot Version: 2023.04
-| uBoot Description: 09.01.00.008
+| uBoot Description: RC Release 09.02.00.009
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2023.04
-| uBoot Tag: 09.01.00.008
+| uBoot Tag: 09.02.00.009
 |
-
 
 .. _tf-a-release-notes:
 
 TF-A
 ------------------
-| Head Commit: d7a7135d32a8c7da004c0c19b75bd4e2813f9759 fix(ti): fix TISCI API changes during refactor
+| Head Commit: 00f1ec6b8740ccd403e641131e294aabacf2a48b Merge changes from topic "revert-ti-dm-workaround" into integration
 | Repo: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
 | Branch: master
-| Tag: 2.9+
+| Tag: 2.10
 |
 
 .. _optee-release-notes:
 
 OP-TEE
 ------------------
-| Head Commit: 2a5b1d1232f582056184367fb58a425ac7478ec6 Update CHANGELOG for 4.0.0
+| Head Commit: 012cdca49db398693903e05c42a254a3a0c0d8f2 plat-k3: drivers: sec_proxy: increment while reading trail bytes
 | Repo: https://github.com/OP-TEE/optee_os/
 | Branch: master
-| Tag: 4.0.0
+| Tag: 4.1.0
 |
 
 .. _ti-linux-fw-release-notes:
 
-Ti-linux-firmware
+ti-linux-firmware
 ------------------
-| Head Commit: 9ee2fedb1fb4815f54310dd872d34faf9948c7c1 ti-dm: Update display sharing firmware for am62px
-| Date: 2023-12-06 19:01:59 -0600
+| Head Commit: 553da6850e271b579b569725ce9c58a1a6d7c849 ti-dm: Update firmware for j784s4
+| Date: 2024-03-21 08:39:13 -0500
 | Clone: https://git.ti.com/cgit/processor-firmware/ti-linux-firmware
 | Branch: ti-linux-firmware
-| Tag: 09.01.00.008
+| Tag: 09.02.00.009
 |
 
 Kernel
@@ -121,14 +120,14 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 247b2535b24894d5ac7f3d8cfc3b48edb7214cc0 configs: ti_rt.config: disable CPU hotplug
-| Date: 2023-12-06 19:01:53 -0600
-| Kernel Version: 6.1.46
-| Kernel Description: 09.01.00.008
+| Head Commit: 2e423244f8c09173a344e7069f0fe2bdf26cccee net: ethernet: ti: icssg-prueth: Fix RX frame drops in XDP
+| Date: 2024-03-21 08:39:05 -0500
+| Kernel Version: 6.1.80
+| Kernel Description: RC Release 09.02.00.009
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.1.y
-| Tag: 09.01.00.008
+| Tag: 09.02.00.009
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config
 |
@@ -136,14 +135,16 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: b871cdee8c31b877177e4e9d626d1d424052e32e Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
-| Date: 2023-12-07 17:52:13 -0600
-| Kernel Version: 6.1.46-rt13
+| Head Commit: 3c08dbfd7bfd83c247ad1ee4ddb989260c150af1 Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
+| Date: 2024-03-21 08:39:09 -0500
+| Kernel Version: 6.1.80-rt26
+| Kernel Description: RC Release 09.02.00.009-rt
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-6.1.y
+| Tag: 09.02.00.009-rt
 | use-kernel-config=defconfig
-| config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
+| config-fragment=config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 |
 
 Yocto
@@ -151,23 +152,23 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 6ad91a192fa1ab33775a22894a413aefd0b67106 CI/CD Auto-Merger: cicd.kirkstone.202312061239
-| Date: 2023-12-06 19:02:01 -0600
+| Head Commit: 376a2143533c6497b4e79304eccca2a630784436 CI/CD Auto-Merger: cicd.kirkstone.202403201028
+| Date: 2024-03-21 08:39:18 -0500
 
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: kirkstone
-| Release Tag: 09.01.00.008
+| Release Tag: 09.02.00.009
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 190e2b58fb6c1e3c658fe2f7afc40a2863007bbc CI/CD Auto-Merger: cicd.kirkstone.202312061239
-| Date: 2023-12-06 19:01:43 -0600
+| Head Commit: 98f178314931635c8641d1394dfd4341b86b6be2 CI/CD Auto-Merger: cicd.kirkstone.202403201028
+| Date: 2024-03-21 08:38:40 -0500
 
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: kirkstone
-| Release Tag: 09.01.00.008
+| Release Tag: 09.02.00.009
 |
 
 .. rubric:: meta-tisdk
