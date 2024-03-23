@@ -15,8 +15,9 @@ Processor SDK 09.02
 -------------------
 
 - This is the third release based on the 2023 LTS stream
-- This is a 09.02 Early Adapter version to resolve a critical SK-AM64B U-boot Failure.
-- Also includes Stable kernel Upgrade to 6.1.69
+- ATF 2.10
+- OPTEE 4.1
+- Yocto Kirkstone/4.0
 - Platforms Supported : AM64x 2.0 (HS-FS) : `EVM <https://www.ti.com/tool/TMDS64EVM>`__ , `SK <https://www.ti.com/tool/SK-AM64B>`__
 
 Processor SDK 09.01
