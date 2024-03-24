@@ -1,3 +1,5 @@
+.. _Uboot-splash-label:
+
 U-boot Splash Screen
 ====================
 A splash screen is an introductory screen that user sees over display when device boots up.

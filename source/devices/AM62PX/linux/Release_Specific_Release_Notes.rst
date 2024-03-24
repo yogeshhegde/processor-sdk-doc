@@ -46,7 +46,7 @@ What's new
 
 **Processor SDK Linux AM62Px Release has following new features:**
 
-  - U-Boot: A53 SPL Splash Screen support
+  - U-Boot: A53 SPL Splash Screen support :ref:`A53 SPL Splash Overview <Uboot-splash-label>`
   - Kernel: DSI Support, MMC Highspeed tuning and Performance Improvements
   - RT Kernel : Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - DDR: Stable Config Update, Single and multi-bit DDR ECC Support
