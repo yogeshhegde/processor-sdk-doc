@@ -72,7 +72,6 @@ Rules.make file.
    Linux kernel sources, which is used by components such as out-of-tree
    kernel drivers to find the Linux kernel Makefiles and headers.
 
-|
 
 .. rubric:: Makefile
    :name: makefile
@@ -101,7 +100,7 @@ makefile targets.
         * AM62x installer supports ``am62xx-evm`` and ``am62xx-lp-evm`` platforms. ``am62xx-evm`` is the default platform for the toplevel Makefile. To build for ``am62xx-lp-evm``, pass ``PLATFORM=am62xx-lp-evm`` as argument to make.
         * No special arguments are needed to build for ``am62xxsip-evm`` in AM62xSIP Installer.
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM64X')
+.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM64X', 'AM62PX')
 
     .. code-block:: console
 
@@ -113,12 +112,11 @@ makefile targets.
 
         host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools swig python3 python3-pip
 
-    Following pip packages are also needed for binman in u-boot targets
+    Following pip packages are also needed for jailhouse & binman in u-boot targets
 
     .. code-block:: console
 
-        host# pip3 install jsonschema
-        host# pip3 install pyelftools
+        host# pip3 install jsonschema pyelftools PyYAML Mako
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
