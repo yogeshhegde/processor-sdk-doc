@@ -161,7 +161,7 @@ reference devicetree file included with the `Linux
 kernel  <../../Foundational_Components_Kernel_Users_Guide.html>`__.
 
 Some devices will have a generic format that is intended for use with
-`U-Boot <../../Foundational_Components_U-Boot.html#u-boot-user-s-guide>`__.
+:ref:`U-Boot <u-boot-user-guide>`.
 These devices require pin multiplexing to be done once, in isolation,
 and while executing from SRAM. U-boot takes care of this by applying pin
 configurations while the MLO file (secondary bootloader) executes from
@@ -202,8 +202,7 @@ U-boot.
    :name: processor-sdk-linux
 
 Recompiling u-boot is required after making updates. Instructions are
-available in the
-`Linux\_Core\_U-Boot\_User's\_Guide <../../Foundational_Components_U-Boot.html#u-boot-user-s-guide>`__.
+available in the :ref:`Linux Core U-Boot User's Guide <u-boot-user-guide>`.
 Compiling the devicetree dts to dtb is also required after making
 updates. Instructions are available in the `Linux Kernel Users
 Guide <../../Foundational_Components_Kernel_Users_Guide.html#compiling-the-sources>`__.

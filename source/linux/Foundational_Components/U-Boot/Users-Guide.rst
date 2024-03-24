@@ -1,3 +1,6 @@
+
+.. _u-boot-user-guide:
+
 ############
 User's Guide
 ############

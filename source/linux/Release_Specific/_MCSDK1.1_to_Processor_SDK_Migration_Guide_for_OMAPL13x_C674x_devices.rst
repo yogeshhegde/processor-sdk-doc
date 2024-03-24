@@ -65,10 +65,9 @@ development.
 
       $ sudo dd if=u-boot.ais of=/dev/sd<N> seek=117 bs=512 conv=fsync
 
--  For more details, refer to `Processor SDK U-Boot Release
-   Notes <Foundational_Components_U-Boot.html#u-boot-release-notes>`__
-   and `Processor SDK U-Boot User’s
-   Guide <Foundational_Components_U-Boot.html#u-boot-user-s-guide>`__
+- For more details, refer to :ref:`Processor SDK U-Boot Release Notes
+  <u-boot-release-notes>` and :ref:`Processor SDK U-Boot User’s Guide
+  <u-boot-user-guide>`
 
 .. rubric:: Linux Kernel
    :name: linux-kernel-mcsdk-to-procsdk-omapl1
