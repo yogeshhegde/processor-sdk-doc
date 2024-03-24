@@ -49,7 +49,7 @@ What's new
   - RT Kernel : Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - DDR: Stable Config Update, Single and multi-bit DDR ECC Support
   - Power Management: DeepSleep, MCU-Only and Partial IO mode :ref:`Power Management Overview <Power-Management>`
-  - OOB: GPU Accelerated Chromium Browser Support
+  - OOB: GPU Accelerated Chromium Browser Support :ref:`Chromium Browser <Chromium_Browser-label>`
   - Bug Fixes and Stability Improvements
 
 
