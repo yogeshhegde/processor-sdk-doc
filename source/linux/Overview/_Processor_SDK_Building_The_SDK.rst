@@ -138,6 +138,10 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
        Your tisdk-default-image wic image will be generated in deploy-ti directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.
 
+    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+       .. note:: The tisdk-default-image now includes Chromium by default, which may increase the build time. If you prefer not to build Chromium, you can remove the `meta-browser layer` from the oeconfig-file before running oe-layertool-setup.sh. However, if you are building the tisdk-default-image specifically to try out the TI Apps Launcher out-of-the-box (OOB), it is not recommended to remove the meta-browser layer. The TI Apps Launcher relies on Chromium and removing the layer may impact its functionality. Keep the meta-browser layer intact for the best OOB experience.
+
     .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
         .. note:: If trying to build tisdk-display-cluster image, Add ``DISPLAY_CLUSTER_ENABLE="1"`` at the end of `conf/local.conf` file before running bitbake.
