@@ -28,7 +28,7 @@ Developer Notes
    How_to_Guides/Target/How_to_test_MCAN_on_AM62x
    How_to_Guides/Target/How_to_enable_DT_overlays_in_linux
    How_to_Guides/Target/How_to_playback_audio_over_HDMI
-   How_to_Guides/Target/How_to_enable_Microtips_LVDS_Panel_on_AM62_SK_EVM
+   How_to_Guides/Target/How_to_enable_Microtips_LVDS_Panel
    How_to_Guides/Target/How_to_visualize_statistics_data
    How_to_Guides/Target/How_to_Use_K3Conf_Tool
    How_to_Guides/Target/How_to_enable_display_sharing_between_remotecore_and_Linux
