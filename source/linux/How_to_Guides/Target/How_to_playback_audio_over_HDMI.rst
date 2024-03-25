@@ -16,9 +16,8 @@ requires shorting a jumper on the board, and applying an additional DT overlay
     .. Image:: ../../../images/AM62x_HDMI_Audio_Jumper.jpg
             :scale: 10%
 
-#. Follow the `How to enable DT overlays in linux
-   <How_to_enable_DT_overlays_in_linux.html>`__ guide for steps on building
-   and adding the overlay in your SD card.
+#. Follow the :ref:`How to enable DT overlays in linux <howto_dt_overlays>`
+   guide for steps on building and adding the overlay in your SD card.
 
     (You may skip this step if the overlay is already present in
     ``/boot/dtb/ti`` under the root partition of your SD card)
@@ -36,8 +35,7 @@ requires shorting a jumper on the board, and applying an additional DT overlay
 
         aplay <path to wav file>
 
-    You can also check out the `Audio Linux Driver Guide
-    <../../Foundational_Components/Kernel/Kernel_Drivers/Audio.html>`__ for
+    You can also check out the :ref:`Audio Linux Driver Guide <Audio_User_Guide>` for
     more information on using ``aplay``.
 
 
