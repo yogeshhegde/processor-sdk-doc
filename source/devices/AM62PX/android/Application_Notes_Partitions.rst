@@ -29,7 +29,7 @@ The AM62Px board eMMC partition for Android binaries is shown in below table
 +--------------------------+------------------+----------------------------------------------------+
 | **dtbo_a**               | eMMC             | dtbo.img or dtbo-unsigned.img (list of overlays)   |
 +--------------------------+------------------+----------------------------------------------------+
-| **dtbo_b**               | eMMC             | dtbo.img or dtbo-unsigned.img                      |
+| **dtbo_b**               | eMMC             | dtbo.img or dtbo-unsigned.img slot b               |
 +--------------------------+------------------+----------------------------------------------------+
 | **vbmeta_a**             | eMMC             | vbmeta.img (With AVB feature or user images)       |
 +--------------------------+------------------+----------------------------------------------------+
