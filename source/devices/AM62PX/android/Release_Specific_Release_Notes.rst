@@ -83,7 +83,7 @@ Documentation
 Host Support
 ============
 
-The Processor SDK is developed, built and verified on Ubuntu 18.04, 20.04 and 22.04. For all other
+The Processor SDK is developed, built and verified on Ubuntu 20.04 and 22.04. For all other
 versions of host support refer to Android documentation.
 
 

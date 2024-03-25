@@ -29,7 +29,6 @@ Install snagboot following the `official instructions <https://github.com/bootli
 
 .. note::
 
-    Snagboot requires at least Python 3.8, meaning that it can't run on Ubuntu 18.04 releases.
     If Snagboot cannot be installed, it's possible boot the initial bootloaders from an SD card.
 
     .. ifconfig:: CONFIG_part_variant in ('AM62X')
