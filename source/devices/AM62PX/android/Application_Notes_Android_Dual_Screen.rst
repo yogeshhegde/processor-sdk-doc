@@ -4,15 +4,14 @@ Android Dual Screen Support
 
 This application note contains steps to enable dual screen with Android in mirror mode or extended mode.
 
+
+The following panel is currently supported with the AM62Px SK EVM board:
+
+- **Microtips Technology USA (13-101HIEB0HF0-S) 10.1"  WUXGA (1920x1200) TFT LCD panel**
+
 .. note::
 
 	By default Android configures the displays in mirror mode.
-
-.. note::
-
-	The following panel is currently supported with the AM62Px SK EVM board.
-
-	**Microtips Technology USA (13-101HIEB0HF0-S) 10.1"  WUXGA (1920x1200) TFT LCD panel**
 
 
 How to enable Microtips LVDS panel on AM62Px SK EVM
