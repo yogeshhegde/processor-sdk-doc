@@ -22,10 +22,10 @@ status for all packages included in this release. The manifest can be
 found on the SDK download page.
 
 
-Release 09.01.00
+Release 09.02.00
 ================
 
-Released on December 2023
+Released on March 2024
 
 What's new
 ----------
