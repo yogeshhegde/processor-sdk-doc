@@ -41,7 +41,7 @@ Then, run::
   # If you are using pre-built binaries from SDK download page
   cd AM62Px_09.02.00_emmc
 
-  sudo ./flashall.sh --board am62px-sk --sdcard /dev/mmcblk0
+  sudo ./flashall.sh --board am62px-sk --bootloader --sdcard /dev/mmcblk0
 
 eMMC flashing
 ==============
