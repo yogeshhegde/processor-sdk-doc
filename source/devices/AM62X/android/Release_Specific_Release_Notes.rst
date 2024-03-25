@@ -39,13 +39,13 @@ Release Features
 Following features are enabled/tested in this release for AM62x Android:
 
 * **Boot:** eMMC boot, fastboot based flashing, A/B partition
-* **Security:** Keymaster and gatekeeper implementaton with OP-TEE
+* **Security:** Keymint and gatekeeper implementation with OP-TEE
 * **Platform:** SELinux enforced mode with user build, ADB over USB
 * **Connectivity:** Ethernet, USB touch
 * **Graphics:** GPU accelerated UI with drm_hwcomposer
 * **Audio:** HDMI output and jack audio output/input
 * **Multimedia:** SW video decode/encode, USB camera, CSI camera
-* **Android Baseport:** Support of Generic System Image,
+* **Android Baseport:** Support of Generic System Image
 * **Display:** Support for LVDS panel and dual display (mirroring and extended)
 
 SDK Components and Versions
