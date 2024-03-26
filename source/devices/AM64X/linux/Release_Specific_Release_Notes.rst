@@ -180,14 +180,15 @@ Yocto
 
 
 Issues Tracker
-=====================================
+==============
 
 Errata Workarounds Available in this Release
-------------------------------------------------
+--------------------------------------------
 .. csv-table::
    :header: "Record ID", "Title", "Platform"
    :widths: 15, 30, 150
 
+   "LCPD-37352","CDNS: USB2 PHY locks up due to short suspend","am64xx-evm"
    "LCPD-32825","PCIe: ls -al /dev/disk/by-id shows no nvme device","am64xx-hsevm"
    "LCPD-27886","USART: Erroneous clear/trigger of timeout interrupt","am64xx-evm,am62axx_sk-fs,am62xxsip_sk-fs,am62xxsip_sk-se,am62xx-sk,j721e-idk-gw,j7200-evm,j784s4-evm,j784s4-hsevm"
    "LCPD-25264","BCDMA: Blockcopy Gets Corrupted if TR Read Responses Interleave with Source Data Fetch","am64xx-evm,am64xx-hsevm,am64xx_sk-fs"
@@ -195,96 +196,57 @@ Errata Workarounds Available in this Release
 
 |
 
-U-Boot Known Issues
-------------------------
-.. csv-table::
-   :header: "Record ID", "Platform", "Title", "Workaround"
-   :widths: 15, 30, 70, 30
-
-   "LCPD-28503","am64xx-evm,am62xx_sk-fs,am62xx_sk-se,am62xx-sk,am64xx_sk-fs","Need to sync up DTS files between u-boot and kernel for at least AM62x, possibly other boards too",""
-   "LCPD-25540","am64xx-hsevm,am64xx_sk-fs","AM64: u-boot: usb host boot failed",""
-
-|
-
-Linux Known Issues
----------------------------
+Known Issues
+------------
 .. csv-table::
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 5, 10, 70, 35
 
-   "LCPD-37197","am64xx-evm,am64xx-hsevm","AM64x: ENET ICSSG: Firmware is not updating the Host Port statistics",""
-   "LCPD-36975","am64xx-evm","HSR Error: 8021q: VLANs not supported on device.",""
+   "LCPD-37389","am64xx-evm,am64xx-hssk,am62xx_sk-fs,am62xxsip_sk-fs,am62pxx_sk-fs,am64xx_sk-fs,am64xx_sk-se","Building Kernel from sources doesn't cover list of dependencies",""
+   "LCPD-37388","am64xx-hssk,am62xx_sk-fs,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am64xx_sk-fs,am64xx_evm-se","Building U-Boot from sources doesn't cover list of dependencies",""
+   "LCPD-36993","am654x-evm,am654x-idk,am654x-hsevm,am64xx-evm,am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_sk-se,beagleplay-gp,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am62lxx_evm-fs,am62lxx_evm-se,am62pxx-zebu,am62lxx-vlab,am62lxx-zebu,am62xx_p0_sk-fs,am64xx_sk-fs,am64xx_evm-se,am64xx_sk-se,am68_sk-fs,am69_sk-fs,beaglebone,bbai,bbai64-gp,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j7200-evm,j7200-hsevm,j784s4-evm,j784s4-hsevm,j722s_evm-fs,J784S4_BASESIM","U-Boot: lpddr4.c: Error handling missing failure cases",""
+   "LCPD-36985","am64xx-hsevm","AM64 Yocto SDK UG: Invalid eMMC Programming Steps in U-Boot Section",""
+   "LCPD-36981","am64xx-evm,am64xx-hsevm","AM64x missing DMTimer support",""
    "LCPD-36876","am64xx-hsevm","running linuxptp (ptp4l, phc_ctl or ts2phc, setting clock) it will cause PPS incoherence",""
-   "LCPD-36804","am64xx-evm,am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am64xx_sk-fs,am64xx_evm-se,am64xx_sk-se","IPC performance test fail - modprobe fails",""
-   "LCPD-36622","am654x-evm,am654x-idk,am654x-hsevm,am64xx-evm","Errata i2028: USB3.0 Host and Device Non-Functional",""
+   "LCPD-36414","am64xx-evm,am62xx_sk-fs","Performance numbers for NOR, eMMC missing in doc",""
    "LCPD-36361","am64xx-hsevm,am62xxsip_sk-se","Boot failure over UART",""
+   "LCPD-36358","am64xx-evm","am64x: eth2 link fails to come up for test_nway test",""
    "LCPD-35352","am64xx-evm,am64xx_sk-fs","AM64x dts file calls SYNC2_OUT the wrong name",""
    "LCPD-35022","am64xx-hsevm","AM64x: Benchmark OOB doesn't show any load on A53 and R5 (core 0) with latest ti-rpmsg-char v6.1",""
-   "LCPD-32868","am654x-idk,am64xx-evm","Kernel crash from PRU auto-forwarding packet",""
-   "LCPD-27871","am64xx-evm","GPMC NAND driver misleading error",""
+   "LCPD-29861","am64xx-evm,am64xx-hsevm,am64xx-hssk,am64xx_sk-fs","AM64x: IPC tests fail",""
+   "LCPD-25540","am64xx-hsevm,am64xx_sk-fs","AM64: u-boot: usb host boot failed",""
    "LCPD-25494","am64xx-evm","AM64 EVM TSN IET tests is failing",""
    "LCPD-24823","am64xx-evm,am64xx_sk-fs","Clarify Single-Core usage in ti,k3-r5f-rproc.yaml",""
    "LCPD-24595","am64xx-evm,am64xx_sk-fs,j721e-idk-gw,j721e-sk,j7200-evm","j721e-idk-gw USB Suspend/Resume with RTC Wakeup fail (Impact 1)",""
    "LCPD-24537","am654x-evm,am64xx-evm,am64xx-hsevm","am654x-idk nslookup times out when all netwokring interfaces are active",""
    "LCPD-24456","am654x-evm,am654x-idk,am654x-hsevm,am64xx-evm,am64xx-hsevm,am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am62xx-sk,am64xx_sk-fs,beaglebone,bbai,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j7200-evm,j7200-hsevm,omapl138-lcdk","Move IPC validation source from github to git.ti.com",""
-   "LCPD-24288","am64xx-evm,am64xx-hsevm","am64xx-evm NCM/ACM network performance test crashes with RT images",""
+   "LCPD-24448","am64xx-evm,am64xx-hsevm","Verify IPC kernel: main-r5f0(s)/main-r5f1(s)",""
    "LCPD-22912","am64xx-evm","am64xx-evm SMP dual core test fails sporadically",""
    "LCPD-22892","am654x-evm,am654x-idk,am64xx-evm","icssg: due to FW bug both interfaces has to be loaded always",""
    "LCPD-22834","am64xx-evm","am64xx-evm stress boot test fails",""
-   "LCPD-22215","am64xx-evm","PCIE NVM card stops enumerating on am64xx after some time",""
-   "LCPD-20705","am64xx-evm","USB stick attached to PCIe USB card is not enumerated",""
    "LCPD-20105","am64xx-evm","AM64x: Kernel: ADC: RX DMA channel request fails",""
-   "LCPD-20006","am64xx-evm","AM64x: remoteproc may be stuck in the start phase after a few times of stop/start",""
-   "LCPD-18854","am64xx-evm,dra71x-evm,dra76x-evm","ov5640 sensor capture fails for raw format capture",""
 
 |
 
 Issues opened in previous releases that were closed on this release
----------------------------------------------------------------------
+-------------------------------------------------------------------
 
 .. csv-table::
    :header: "Record ID", "Title", "Platform"
    :widths: 15, 70, 20
 
-   "LCPD-37300","AM64x SDK v9.1 SDK Images don't boot on SK-AM64B due to U-Boot using incorrect DTS File from EVM","am64xx-hsevm, am64xx-hssk"
-   "LCPD-34852","Few times payload is packed at size boundary by binman ","am654x-evm,am64xx-evm,am62xx_sk-se,j721e-idk-gw,j721s2-evm,j7200-evm"
-   "LCPD-34840","AM64: Networking failures including ICSSG","am64xx-hsevm"
-   "LCPD-34697","am64x: dtsi: mcu_gpio0 compatible property typo","am64xx-evm,am64xx_sk-fs"
-   "LCPD-34687","MMC itapdly sel values are not specified in kernel DTS","am64xx-evm,am64xx_sk-fs"
-   "LCPD-34686","MMC itapdly sel values are not specified in uboot DTS","am64xx-evm,am62axx_sk-fs"
-   "LCPD-34583","AM64x: some sdcards boot fail in u-boot","am64xx-evm,am64xx_sk-fs"
-   "LCPD-34548","k3-image-gen generate error messages","am64xx-evm"
-   "LCPD-34413","RT Linux: Interrupt latency issue with >200us outliers","am654x-evm,am654x-hsevm,am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_lp_sk-fs,am62axx_sk-fs,am62xx-sk,am64xx_sk-fs,j721e-sk,j721s2-evm,j721s2_evm-fs,j7200-evm,j784s4-evm"
-   "LCPD-34258","Upstream: kernel: Bug: ""ti,j721e-esm"" should be described  bindings and devicetree update","am654x-evm,am654x-idk,am64xx-evm,am64xx_sk-fs,am68_sk-fs,am69_sk-fs,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2_evm-fs,j7200-evm,j784s4-evm"
-   "LCPD-32958","AM6xx/J7: Issue with MCSPI clocking in Linux driver","am654x-evm,am654x-idk,am654x-hsevm,am64xx-evm,am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xx-lp-sk,am62xx-sk,am64xx_sk-fs"
-   "LCPD-32946","RT Linux: PRU Ethernet link down causes kernel crash","am654x-evm,am654x-idk,am64xx-evm"
-   "LCPD-32825","PCIe: ls -al /dev/disk/by-id shows no nvme device","am64xx-hsevm"
-   "LCPD-32823","ICSS firmware does not process Rx packets once Min error frame is received","am654x-idk,am64xx-evm"
-   "LCPD-32815","Packet get truncated on Transmit side when high traffic is applied","am654x-idk,am64xx-evm"
-   "LCPD-29880","CAN_S_FUNC_MODULAR test fail","am64xx-evm,j721s2-evm,j7200-evm,j784s4-evm"
-   "LCPD-29854","MCU UART TX baud rate is doubled","am64xx-evm,am64xx-hsevm,am64xx-hssk,am64xx_sk-fs"
-   "LCPD-29739","AM64: NAND device not detected in U-boot","am64xx-hsevm"
-   "LCPD-29651","AM64: NAND Flash device not detected","am64xx-hsevm"
-   "LCPD-29597","AM64x: dts: main_rti nodes are defined twice","am64xx-evm"
-   "LCPD-29588","CPSW documentation: Time Sync Router no longer firewalled","am654x-evm,am654x-idk,am64xx-evm,am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62axx_sk-fs,am62xx-lp-sk,am62xx-sk,am64xx_sk-fs"
-   "LCPD-29508","AM64x: EMMC speed test fails: MMC not running on HS400 mode","am64xx-evm,am64xx-hsevm,am64xx_sk-fs"
-   "LCPD-29500","AM64x: ETH CPSW2g TAS: tests fail with undefined method error","am64xx-evm,am64xx-hsevm,am64xx_sk-fs"
-   "LCPD-29499","AM64x: ETH CPSW2g TAS: tests fail with queue 0 did not increase","am64xx-evm,am64xx-hsevm,am64xx_sk-fs"
-   "LCPD-29498","AM64x: ETH CPSW2g TAS: Invalid traffic schedule","am64xx-evm,am64xx-hsevm,am64xx_sk-fs"
-   "LCPD-29446","Linux SDK docs should explicitly state what peripherals are supported","am654x-evm,am654x-idk,am64xx-evm,am62xx_sk-fs,am62xx_sk-se,am335x-evm,am335x-ice,am335x-sk,am43xx-gpevm,am437x-idk,am437x-sk,am62xx-sk,am64xx_sk-fs"
-   "LCPD-29442","Docs: AM62x-SK: Kernel User Guide uses tisdk_am64xx defconfigs","am62xx_sk-fs,am62xx_sk-se,am62xx-sk"
-   "LCPD-29362","AM64x EVM Devicetree should disable unused MCU peripherals","am64xx-evm,am64xx_sk-fs"
-   "LCPD-29305","AM64x Uboot SRAM addresses are outdated","am64xx-evm,am64xx_sk-fs"
-   "LCPD-28688","AM62x Kernel User Guide: Document AM62x default kernel config","am64xx-evm,am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62axx_sk-fs,am62xx-lp-sk,am62xx-sk,am64xx_sk-fs"
-   "LCPD-28672","CPSW: Add more details about driver config","am64xx-evm,am62xx_sk-fs,am62xx_sk-se,am62axx_sk-fs,am62xx-sk,am64xx_sk-fs"
-   "LCPD-28660","AM64x: tiboot3.bin generated by U-Boot build is confusing users","am64xx-evm,am64xx-hsevm,am64xx_sk-fs"
-   "LCPD-26692","Hardware + Software IPSec Performance Test Failures","am64xx-evm,am335x-evm,am43xx-gpevm,am57xx-evm,j721e-idk-gw"
-   "LCPD-24649","dma-heaps-test fails to build with 5.16-rc3 kernel+","am64xx-evm,am335x-evm,dra71x-evm,j721e-idk-gw"
-   "LCPD-23020","am64xx-evm: U-Boot PHY autonegotiation failed 2 out of 100 times","am64xx-evm"
-   "LCPD-23011","Missing u-boot README file for AM64x","am64xx-evm,am62xx_sk-fs,am62xx_sk-se,am62xx-sk,am64xx_sk-fs"
-   "LCPD-22931","RemoteProc documentation missing","am654x-evm,am654x-idk,am64xx-evm,am64xx_sk-fs"
-   "LCPD-22319","OpenSSL performance test data out of bounds","am64xx-evm,am62axx_sk-fs,am62xx-sk,j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm"
-   "LCPD-20038","OPTEE test applications are missing from rootfs","am64xx-hsevm"
+   "LCPD-37742","AM64x: uboot eMMC speed check test fails","am64xx-evm,am64xx-hsevm,am64xx-hssk"
+   "LCPD-37721","ICSSG : RX Frame Drop during XDP ","am654x-idk,am64xx-evm,am64xx-hsevm"
+   "LCPD-37524","ti-rpmsg-char: remove references to ti.ipc4.ping-pong ","am654x-evm,am654x-idk,am64xx-evm,am62xx_sk-fs,am62axx_sk-fs,am62pxx_sk-fs"
+   "LCPD-37503","Multicast filtering with HSR non-offload does not work","am64xx-evm"
+   "LCPD-37501","HSR two board setup requires running hsr setup script twice","am64xx-evm,am64xx-hsevm"
+   "LCPD-37500","Multicast filtering with HSR does not work after running HSR hw offload setup twice","am64xx-evm"
+   "LCPD-37352","CDNS: USB2 PHY locks up due to short suspend","am64xx-evm"
+   "LCPD-37327","eMMC: Doc and testcase update needed to enable RST_FUNCTION for warm reboot","am654x-evm,am654x-idk,am654x-hsevm,am64xx-evm,am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_sk-se,beagleplay-gp,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am62lxx_evm-fs,am62lxx_evm-se"
+   "LCPD-37309","Search is broken, never completes in 9.1 Linux SDKs","am64xx-evm,am64xx-hsevm,am62xx_sk-fs,am64xx_sk-fs"
+   "LCPD-37300","AM64x SDK v9.1 SDK Images don't boot on SK-AM64B due to U-Boot using incorrect DTS File from EVM","am64xx-hsevm,am64xx-hssk"
+   "LCPD-37223","AM64x: ICSSG1 MII mode isn't working","am64xx-evm,am64xx-hsevm"
+   "LCPD-37207","Docker is disabled in RT Linux","am64xx-hssk,am62xx_lp_sk-fs,am62xxsip_sk-fs,am62pxx_sk-fs"
 
 |
 
@@ -294,34 +256,28 @@ Issues found and closed on this release that may be applicable to prior releases
    :header: "Record ID", "Title", "Platform"
    :widths: 15, 70, 20
 
-   "LCPD-37151","am62: am64: i2c set/get tests are failing","am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am62xx-sk"
+   "LCPD-37084","AM64x : GPMC NAND Boot ","am64xx-evm,am64xx-hsevm,am64xx-hssk,am64xx_evm-se"
+   "LCPD-36992","U-Boot: k3-ddrss.c: Missing 'const' on k3_ddrss_ops","am654x-evm,am654x-idk,am654x-hsevm,am64xx-evm,am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_sk-se,beagleplay-gp,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am62lxx_evm-fs,am62lxx_evm-se,am62pxx-zebu,am62lxx-vlab,am62lxx-zebu,am62xx_p0_sk-fs,am64xx_sk-fs,am64xx_evm-se,am64xx_sk-se,am68_sk-fs,am69_sk-fs,beaglebone,bbai,bbai64-gp,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j7200-evm,j7200-hsevm,j784s4-evm,j784s4-hsevm,j722s_evm-fs,J784S4_BASESIM"
+   "LCPD-36868","AM64x MMC1 HS OTAPSEL value is incorrect in kernel device tree","am64xx-evm,am64xx-hsevm,am64xx-hssk"
    "LCPD-36850","HSR switching offload firmware needs to be loaded twice","am64xx-hsevm"
    "LCPD-36847","doc: ltp-ddt documentation is not upto date","am64xx-hsevm,am62xx_sk-fs,am62axx_sk-fs,am62pxx_sk-fs,am68_sk-fs,am69_sk-fs,j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm"
+   "LCPD-36842","ETH_XS_FUNC_ICSSG_TESTS_SPEED Fails","am64xx-hsevm"
    "LCPD-36744","Linux SDK: CPSW: Bridge interface cannot ping in Switch Mode","am64xx-evm,am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_sk-se,am64xx_sk-fs,am64xx_evm-se,am64xx_sk-se,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j7200-evm,j7200-hsevm,j784s4-evm,j784s4-hsevm"
    "LCPD-36645","AM64X: Linux HSR - Multicast filtering support","am64xx-evm"
-   "LCPD-36621","K3: OPENSSL: Fix testcases and make it platform specific","am62xx_sk-se,am62axx_sk-fs,am64xx_sk-fs,am68_sk-fs,am69_sk-fs,j721e-idk-gw,j721e-sk,j721s2-evm,j7200-hsevm,j784s4-evm"
-   "LCPD-36587","U-Boot: CPSW: Phy-Mode not configured correctly for ports","am64xx-evm,am64xx-hsevm,am62xx_sk-fs,am62xx_sk-se,am64xx_sk-fs,am64xx_sk-se"
-   "LCPD-36549","ICSSG: Ping to bridge not working in switch mode","am654x-idk,am64xx-hsevm"
-   "LCPD-36494","Migrate to OPTEE 4.0.0 to address PSIRT","am62xx_sk-fs,am62axx_sk-fs,am64xx_sk-fs,j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm"
-   "LCPD-36473","ICSSG UDP Performance Failure","am64xx-hsevm"
-   "LCPD-36287","Doc: Update Toolchain documentation to 11.2+","am62xx_sk-fs,am64xx_sk-fs,j721e-idk-gw"
-   "LCPD-35300","Doc Bugs - Link/Add TISCI chapters and remove MSMC chapter ","am64xx-hsevm,am62xx_sk-fs"
+   "LCPD-36395","MMC delaybuffer duration, DLL / delay chain select, and DLL Ref Frequency are not programmed to PHY_CTRL5 register","am64xx-evm,am64xx_sk-fs"
    "LCPD-35108","AM64x: eMMC boot fails using flashed using DFU ","am64xx-evm"
-   "LCPD-35033","AM64: ICSSG VLAN testcase is failing in 9.0-rc6","am64xx-hsevm"
-   "LCPD-34994","AM64x: fitImage not booting","am64xx-hsevm"
-   "LCPD-34993","AM64x: sf probe fails on hs-fs","am64xx-hsevm"
-   "LCPD-34992","AM64x DFU Boot fails with signed images","am64xx-hsevm"
-   "LCPD-34966","rpmsg_ctrl device mapping errors see with 6.1 kernel","am64xx-evm,am62xx_sk-fs,am62axx_sk-fs,am62xx-lp-sk,am62xx-sk,am64xx_sk-fs,j721e-evm-ivi,j721e-idk-gw,j721e-sk,j721s2-evm,j784s4-evm"
-
-|
-
-Linux SDK known issues
-----------------------
-.. csv-table::
-    :header: "Record ID", "Title", "Platform"
-    :widths: 15, 70, 20
-
-    "LCPD-37207","Docker is disabled in RT Linux","am64xx-hssk, am62xx_lp_sk-fs, am62xxsip_sk-fs, am62pxx_sk-fs"
+   "LCPD-35096","OPTEE xtest failures","am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am68_sk-fs"
+   "LCPD-34800","eMMC itapdly sel is not programmed to PHY_CTRL4 register","am64xx-evm,am64xx_sk-fs"
+   "LCPD-34780","DT property ti,driver-strength-ohm is only applicable to AM64x MMC0","am64xx-evm,am62xx_sk-fs,am62xx_lp_sk-fs,am62axx_sk-fs,am62xx-lp-sk,am62xx-sk,am64xx_sk-fs"
+   "LCPD-32868","Kernel crash from PRU auto-forwarding packet","am654x-idk,am64xx-evm"
+   "LCPD-32640","Kernel HSR does not work on base image (same command works on default)","am64xx-evm"
+   "LCPD-32481","AM64x: Environment variables for DFU to NAND","am64xx-evm,am64xx-hsevm"
+   "LCPD-29597","AM64x: dts: main_rti nodes are defined twice","am64xx-evm"
+   "LCPD-29489","M4F Core should be able to load data to OC_SRAM","am64xx-evm,am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62xx-lp-sk,am62xx-sk,am64xx_sk-fs"
+   "LCPD-29445","AM62ax: MCAN CAN_S_FUNC_MODULAR test is failing","am64xx-evm,am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se"
+   "LCPD-24288","am64xx-evm NCM/ACM network performance test crashes with RT images","am64xx-evm,am64xx-hsevm"
+   "LCPD-23011","Missing u-boot README file for AM64x","am64xx-evm,am62xx_sk-fs,am62xx_sk-se,am62xx-sk,am64xx_sk-fs"
+   "LCPD-20006","AM64x: remoteproc may be stuck in the start phase after a few times of stop/start","am64xx-evm"
 
 |
 
