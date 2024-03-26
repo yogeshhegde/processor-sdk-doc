@@ -6,13 +6,10 @@ SPI
 .. rubric:: **Introduction**
    :name: introduction-linux-spi
 
--  Serial interface
-
--  Synchronous
-
--  Master-slave configuration
-
--  Data Exchange - DMA/PIO
+- Serial interface
+- Synchronous
+- Master-slave configuration
+- Data Exchange - DMA/PIO
 
 .. rubric:: SOC Specific Information
    :name: soc-specific-information
@@ -74,7 +71,7 @@ The specific peripheral driver to enable depends on the SoC being used.
 .. rubric:: Enabling McSPI Driver
    :name: enabling-mcspi-driver
 
-.. code-block:: text
+.. code-block:: kconfig
 
     Device Drivers  --->
        [*] SPI support
@@ -85,7 +82,7 @@ The specific peripheral driver to enable depends on the SoC being used.
    .. rubric:: Enabling DaVinci Driver
       :name: enabling-davinci-driver
 
-   .. code-block:: text
+   .. code-block:: kconfig
 
       Device Drivers  --->
          [*] SPI support
@@ -127,7 +124,7 @@ chips that are located on TI's evms.
 .. rubric:: Kernel Configuration
    :name: kernel-configuration-1
 
-.. code-block:: text
+.. code-block:: kconfig
 
     Device Drivers  --->
        <*> Memory Technology Device (MTD) support  --->
@@ -144,13 +141,13 @@ particular SPI NOR partition is simple. A user simply needs to view the
 list of mtd devices along with its name. Below command will provide this
 information:
 
-.. code-block:: text
+.. code-block:: console
 
     cat /proc/mtd
 
 An example of this output performed on the AM571x IDK EVM can be seen below.
 
-.. code-block:: text
+.. code-block:: console
 
     dev:    size   erasesize  name
     mtd0: 00040000 00010000 "QSPI.SPL"
@@ -168,7 +165,7 @@ hex) are determined within the specific board's device tree file.
 
 Erasing a NOR partition can be performed by using the below command:
 
-.. code-block:: text
+.. code-block:: console
 
     flash_erase /dev/mtdX 0 0
 
@@ -183,7 +180,7 @@ The below step copies 8KiB from /dev/mtd2 partition (u-boot env) to
 /dev/mtd4 partition and reads the 8KiB image from /dev/mtd4 to a file
 and checks the md5sum. The md5sum of test.img and test1.img should be same.
 
-.. code-block:: text
+.. code-block:: console
 
     cd /tmp
     dd if=/dev/mtd2 of=test.img bs=8k count=1
@@ -201,7 +198,7 @@ simple means to send and receive SPI messages the spidev driver can be
 used. Spidev provides a user space accessible means to communicate with
 the SPI interface. Latest documentation regarding spidev driver can be
 found
-`here <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/spi/spidev>`__.
+`here <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/spi/spidev.rst>`__.
 
 Spidev allows users to interact with the spi interface in a variety of
 programming languages that can communicate with kernel ioctls.
@@ -209,7 +206,7 @@ programming languages that can communicate with kernel ioctls.
 .. rubric:: Kernel Configuration
    :name: kernel-configuration-2
 
-.. code-block:: text
+.. code-block:: kconfig
 
     Device Drivers  --->
        [*] SPI support
@@ -221,7 +218,7 @@ Below is an example of the device tree settings a user would use to
 enable the spidev driver. Like most drivers for a peripheral, the spidev
 driver is listed as a subnode of the main SPI peripheral driver.
 
-.. code-block:: text
+.. code-block:: dts
 
     &spi1 {
             status = "okay";
@@ -255,7 +252,7 @@ show a C application interacting with the SPI peripheral.
    the same overlay can be used with minor modifications to update for the PSIL
    thread id.Run the following commands in u-boot console to load the overlays:
 
-   .. code-block:: text
+   .. code-block:: console
 
     => setenv name_overlays k3-j7200-mcspi-loopback.dtbo
     => boot
