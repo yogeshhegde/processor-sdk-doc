@@ -17,31 +17,39 @@ SPI
 .. rubric:: SOC Specific Information
    :name: soc-specific-information
 
-+--------------+-----------+
-| SoC Family   | Driver    |
-+==============+===========+
-| AM335x       | McSPI     |
-+--------------+-----------+
-| AM437x       | McSPI     |
-+--------------+-----------+
-| DRA7x        | McSPI     |
-+--------------+-----------+
-| J721E        | McSPI     |
-+--------------+-----------+
-| J7200        | McSPI     |
-+--------------+-----------+
-| J721S2       | McSPI     |
-+--------------+-----------+
-| AM62X        | McSPI     |
-+--------------+-----------+
-| 66AK2Gx      | McSPI     |
-+--------------+-----------+
-| 66AK2Lx      | Davinci   |
-+--------------+-----------+
-| 66AK2Hx      | Davinci   |
-+--------------+-----------+
-| 66AK2E       | Davinci   |
-+--------------+-----------+
+.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62AX_family', 'AM64X_family', 'AM62PX_family')
+
+   +------------------------+-----------+
+   | SoC Family             | Driver    |
+   +========================+===========+
+   | |__PART_FAMILY_NAME__| | McSPI     |
+   +------------------------+-----------+
+
+.. ifconfig:: CONFIG_part_family not in ('AM62X_family', 'AM62AX_family', 'AM64X_family', 'AM62PX_family')
+
+   +--------------+-----------+
+   | SoC Family   | Driver    |
+   +==============+===========+
+   | AM335x       | McSPI     |
+   +--------------+-----------+
+   | AM437x       | McSPI     |
+   +--------------+-----------+
+   | DRA7x        | McSPI     |
+   +--------------+-----------+
+   | J721E        | McSPI     |
+   +--------------+-----------+
+   | J7200        | McSPI     |
+   +--------------+-----------+
+   | J721S2       | McSPI     |
+   +--------------+-----------+
+   | 66AK2Gx      | McSPI     |
+   +--------------+-----------+
+   | 66AK2Lx      | Davinci   |
+   +--------------+-----------+
+   | 66AK2Hx      | Davinci   |
+   +--------------+-----------+
+   | 66AK2E       | Davinci   |
+   +--------------+-----------+
 
 .. rubric:: Features Not Supported
    :name: SPI-features-not-supported
@@ -72,13 +80,15 @@ The specific peripheral driver to enable depends on the SoC being used.
        [*] SPI support
           [*] McSPI driver for OMAP
 
-.. rubric:: Enabling DaVinci Driver
-   :name: enabling-davinci-driver
+.. ifconfig:: CONFIG_part_family not in ('AM62X_family', 'AM62AX_family', 'AM64X_family', 'AM62PX_family')
 
-.. code-block:: text
+   .. rubric:: Enabling DaVinci Driver
+      :name: enabling-davinci-driver
 
-    Device Drivers  --->
-       [*] SPI support
+   .. code-block:: text
+
+      Device Drivers  --->
+         [*] SPI support
           [*] Texas Instruments DaVinci/DA8x/OMAP-L/AM1x SoC SPI controller
 
 .. rubric:: SPI Driver Usecases
@@ -90,27 +100,29 @@ drivers along with their documentation can be found within the kernel
 sources. The below section attempts to provide information on SPI based
 chips that are located on TI's evms.
 
-.. rubric:: Flash Storage
-   :name: flash-storage
+.. ifconfig:: CONFIG_part_family not in ('AM62X_family', 'AM62AX_family', 'AM64X_family', 'AM62PX_family')
 
-.. note::
-    This section is not to be confused with flash storage through
-    the QSPI/OSPI modules.
+   .. rubric:: Flash Storage
+      :name: flash-storage
 
-.. rubric:: Boards with SPI Flash
-   :name: boards-with-spi-flash
+   .. note::
+      This section is not to be confused with flash storage through
+      the QSPI/OSPI modules.
 
-+------------------+--------------------+--------------+
-| EVM              | Part #             | Flash Size   |
-+==================+====================+==============+
-| AM335x ICE EVM   | W25Q64             | 8 MB         |
-+------------------+--------------------+--------------+
-| K2E EVM          | N25Q128A11ESF40F   | 16 MB        |
-+------------------+--------------------+--------------+
-| K2HK EVM         | N25Q128A11ESF40F   | 16 MB        |
-+------------------+--------------------+--------------+
-| K2L EVM          | N25Q128A11ESF40F   | 16 MB        |
-+------------------+--------------------+--------------+
+   .. rubric:: Boards with SPI Flash
+      :name: boards-with-spi-flash
+
+   +------------------+--------------------+--------------+
+   | EVM              | Part #             | Flash Size   |
+   +==================+====================+==============+
+   | AM335x ICE EVM   | W25Q64             | 8 MB         |
+   +------------------+--------------------+--------------+
+   | K2E EVM          | N25Q128A11ESF40F   | 16 MB        |
+   +------------------+--------------------+--------------+
+   | K2HK EVM         | N25Q128A11ESF40F   | 16 MB        |
+   +------------------+--------------------+--------------+
+   | K2L EVM          | N25Q128A11ESF40F   | 16 MB        |
+   +------------------+--------------------+--------------+
 
 .. rubric:: Kernel Configuration
    :name: kernel-configuration-1
