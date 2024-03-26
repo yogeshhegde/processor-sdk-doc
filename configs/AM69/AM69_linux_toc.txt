@@ -123,5 +123,6 @@ system/Demo_User_Guides/index_Demos
 system/Demo_User_Guides/TI_Apps_Launcher_User_Guide
 system/Demo_User_Guides/Seva_Store
 system/Demo_User_Guides/WiFi_OOB_Demo_User_Guide
+system/Demo_User_Guides/Chromium_Browser
 
 linux/How_to_Guides/Host/Program_MMC_boot_media
