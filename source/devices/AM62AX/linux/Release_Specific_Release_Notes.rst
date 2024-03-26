@@ -51,6 +51,7 @@ What's new
   - RT Kernel : Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - DDR: Stable Config Update, Single and multi-bit DDR ECC Support
   - Bug Fixes and Stability Improvements
+  - DM Firmware: PLL Configuration sequence updated to latest recommendation
 
 **Component version:**
 
@@ -60,6 +61,8 @@ What's new
   - Toolchain GCC 11.4
   - ATF 2.10
   - OPTEE 4.1
+  - TIFS Firmware v09.02.07
+  - DM Firmware 09.02.00.24
 
 Build Information
 =================

@@ -49,6 +49,8 @@ What's new
   - Kernel: MMC Highspeed tuning and Performance Improvements
   - RT Kernel : Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Bug Fixes and Stability Improvements
+  - DMSC Firmware: PLL Configuration sequence updated to latest recommendation
+  - DMSC Firmware: No longer re-initializing ICSSG clocks
 
 **Component version:**
 
@@ -58,6 +60,7 @@ What's new
   - Toolchain GCC 11.4
   - ATF 2.10
   - OPTEE 4.1
+  - DMSC Firmware v09.02.07
 
 Build Information
 =====================================

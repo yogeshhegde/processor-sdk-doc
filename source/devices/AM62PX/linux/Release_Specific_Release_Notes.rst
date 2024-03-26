@@ -53,6 +53,9 @@ What's new
   - Power Management: DeepSleep, MCU-Only and Partial IO mode :ref:`Power Management Overview <Power-Management>`
   - OOB: GPU Accelerated Chromium Browser Support :ref:`Chromium Browser <Chromium_Browser-label>`
   - Bug Fixes and Stability Improvements
+  - PM: MCU Only mode and Partial I/O mode
+  - DM Firmware: PLL Configuration sequence updated to latest recommendation
+  - TIFS: HSM infrastructure updates
 
 
 **Component version:**
@@ -64,6 +67,8 @@ What's new
   - ATF 2.10
   - OPTEE 4.1
   - Graphics DDK 23.3
+  - TIFS Firmware v09.02.07
+  - DM Firmware 09.02.00.24
 
 Build Information
 =================
