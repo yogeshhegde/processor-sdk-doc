@@ -410,10 +410,10 @@ Enabling camera sensors
     Applying sensor overlays
     ------------------------
 
-    To enable FPDLink cameras you will need to apply the device tree overlays
-    for both the fusion board and the sensor at U-boot prompt:
+    To enable FPDLink/V3Link cameras you will need to apply the device tree
+    overlays for both the deserializer board and the sensor at U-boot prompt:
 
-    ::
+    .. code-block:: text
 
         # For OV2312 connected on Fusion board RX Port 0:
         setenv name_overlays k3-am62a7-sk-fusion.dtbo k3-fpdlink-ov2312-0-0.dtbo
@@ -423,10 +423,14 @@ Enabling camera sensors
         setenv name_overlays k3-am62a7-sk-fusion.dtbo k3-fpdlink-imx390-rcm-0-0.dtbo
         boot
 
+        # For V3Link IMX219 module connected to V3Link fusion's RX Port 0:
+        setenv name_overlays k3-am62x-sk-csi2-v3link-fusion.dtbo k3-v3link-imx219-0-0.dtbo
+        boot
+
     To enable camera connected to the 22-pin FFC connector, enable the sensor
     overlay at U-boot prompt:
 
-    ::
+    .. code-block:: text
 
         # For IMX219 connected to 22-pin FFC connector
         setenv name_overlays k3-am62x-sk-csi2-imx219.dtbo
