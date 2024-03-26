@@ -1,8 +1,8 @@
 .. _Release-note-label:
 
-************************************
+#############
 Release Notes
-************************************
+#############
 
 Overview
 ========
@@ -41,7 +41,7 @@ Release 09.02.00
 Released on March 2024
 
 What's new
-------------------
+----------
 
 **Processor SDK Linux AM62X Release has following new features:**
 
@@ -69,7 +69,7 @@ Build Information
 .. _u-boot-release-notes:
 
 U-Boot
-------------------
+------
 
 .. rubric:: u-boot
    :name: u-boot
@@ -86,7 +86,7 @@ U-Boot
 .. _tf-a-release-notes:
 
 TF-A
-------------------
+----
 | Head Commit: 00f1ec6b8740ccd403e641131e294aabacf2a48b Merge changes from topic "revert-ti-dm-workaround" into integration
 | Repo: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
 | Branch: master
@@ -96,7 +96,7 @@ TF-A
 .. _optee-release-notes:
 
 OP-TEE
-------------------
+------
 | Head Commit: 012cdca49db398693903e05c42a254a3a0c0d8f2 plat-k3: drivers: sec_proxy: increment while reading trail bytes
 | Repo: https://github.com/OP-TEE/optee_os/
 | Branch: master
@@ -106,7 +106,7 @@ OP-TEE
 .. _ti-linux-fw-release-notes:
 
 ti-linux-firmware
-------------------
+-----------------
 | Head Commit: 553da6850e271b579b569725ce9c58a1a6d7c849 ti-dm: Update firmware for j784s4
 | Date: 2024-03-21 08:39:13 -0500
 | Clone: https://git.ti.com/cgit/processor-firmware/ti-linux-firmware
@@ -115,7 +115,7 @@ ti-linux-firmware
 |
 
 Kernel
-------------------
+------
 
 .. rubric:: Linux Kernel
    :name: linux-kernel
@@ -148,7 +148,7 @@ Kernel
 |
 
 Yocto
-------------------
+-----
 .. rubric:: meta-ti
    :name: meta-ti
 
@@ -174,19 +174,34 @@ Yocto
 .. rubric:: meta-tisdk
    :name: meta-tisdk
 
-| Head Commit: 9131d1afc1b69d423786d100bc346949f4426b08 Fix 62x/62p build for jailhouse and RT build
-| Date: 2023-12-13 04:19:26 -0600
+| Head Commit: e2d81f687261309de3441917c53c5a282a4f3e1b jailhouse: Update SRCREV
+| Date: 2024-03-22 07:49:05 -0500
 
 | Clone: git://git.ti.com/ti-sdk-linux/meta-tisdk.git
 | Branch: kirkstone
-| Release Tag: 09.01.00.08
+| Release Tag: 09.02.01.09
 |
 
+.. rubric:: meta-edgeai
+   :name: meta-edgeai
+
+| Head Commit: 80b2a8ea999c39f4ee7a951a67b218c3e0a1d6c4 ti-edgeai-firmware: Update SRCREV to get updated j722s FWs 9.2 RC3 tag
+| Date: 2024-03-21 13:12:49 -0500
+
+| Clone: https://git.ti.com/git/edgeai/meta-edgeai.git
+| Branch: kirkstone
+| Release Tag: 09.02.00.03
+|
+
+.. note::
+
+    meta-edgeai layer is not applicable in case of AM62SIP (i.e. am62xxsip-evm)
+
 Issues Tracker
-=====================================
+==============
 
 Errata Workarounds Available in this Release
-------------------------------------------------
+--------------------------------------------
 .. csv-table::
    :header: "Record ID", "Title", "Platform"
    :widths: 15, 30, 150
@@ -197,7 +212,7 @@ Errata Workarounds Available in this Release
 |
 
 U-Boot Known Issues
-------------------------
+-------------------
 .. csv-table::
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 15, 30, 70, 30
@@ -210,7 +225,7 @@ U-Boot Known Issues
 |
 
 Linux Known Issues
----------------------------
+------------------
 .. csv-table::
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 5, 10, 70, 35
@@ -253,7 +268,7 @@ Linux Known Issues
 |
 
 Issues opened in previous releases that were closed on this release
----------------------------------------------------------------------
+-------------------------------------------------------------------
 
 .. csv-table::
    :header: "Record ID", "Title", "Platform"
@@ -309,7 +324,7 @@ Issues opened in previous releases that were closed on this release
 |
 
 Issues found and closed on this release that may be applicable to prior releases
------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 .. csv-table::
    :header: "Record ID", "Title", "Platform"
    :widths: 15, 70, 20
