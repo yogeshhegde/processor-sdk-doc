@@ -78,6 +78,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_runtime_
 linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_low_power_modes
 linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_wakeup_sources
 linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_sw_arch
+linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_debug
 linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
 linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
 #linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
