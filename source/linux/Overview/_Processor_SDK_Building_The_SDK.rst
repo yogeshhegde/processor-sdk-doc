@@ -99,52 +99,98 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
 .. ifconfig:: CONFIG_part_family not in ('General_family')
 
- .. ifconfig:: CONFIG_sdk in ('PLSDK')
+   .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+      .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-       The final command below will build the **tisdk-edgeai-image**, which is the
-       Processor SDK image with arago + edge ai filesystem.  See `Build Options`_ for a list of
-       additional targets.
+         The final command below will build the **tisdk-edgeai-image**, which is the
+         Processor SDK image with arago + edge ai filesystem.  See `Build Options`_ for a list of
+         additional targets.
 
-       .. code-block:: console
+         .. code-block:: console
 
-           $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
-           $ cd tisdk
-           $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-08.06.00-config.txt
-           $ cd build
-           $ . conf/setenv
-           $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
-           $ export TI_SECURE_DEV_PKG_K3=`pwd`/core-secdev-k3
-           $ MACHINE=am62axx-evm bitbake -k tisdk-edgeai-image
-
-       Your tisdk-edgeai-image wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.
+            $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+            $ cd tisdk
+            $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-08.06.00-config.txt
+            $ cd build
+            $ . conf/setenv
+            $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
+            $ export TI_SECURE_DEV_PKG_K3=`pwd`/core-secdev-k3
+            $ MACHINE=am62axx-evm bitbake -k tisdk-edgeai-image
 
 
-   .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
+      .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
 
-       The final command below will build the **tisdk-default-image**, which is the
-       Processor SDK image with arago filesystem.  See `Build Options`_ for a list of
-       additional targets.
+         The final command below will build the **tisdk-default-image**, which is the
+         Processor SDK image with arago filesystem.  See `Build Options`_ for a list of
+         additional targets.
 
-       .. code-block:: console
+         .. code-block:: console
 
-           $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
-           $ cd tisdk
-           $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
-           $ cd build
-           $ . conf/setenv
-           $ MACHINE=<machine> bitbake -k tisdk-default-image
+            $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+            $ cd tisdk
+            $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
+            $ cd build
+            $ . conf/setenv
+            $ MACHINE=<machine> bitbake -k tisdk-default-image
 
-       Your tisdk-default-image wic image will be generated in deploy-ti directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
-       .. note:: The tisdk-default-image now includes Chromium by default, which may increase the build time. If you prefer not to build Chromium, you can remove the `meta-browser layer` from the oeconfig-file before running oe-layertool-setup.sh. However, if you are building the tisdk-default-image specifically to try out the TI Apps Launcher out-of-the-box (OOB), it is not recommended to remove the meta-browser layer. The TI Apps Launcher relies on Chromium and removing the layer may impact its functionality. Keep the meta-browser layer intact for the best OOB experience.
+   |__SDK_FULL_NAME__| uses the 'oe-layersetup' tool to configure the meta layers. If you do not have the Linux SDK package installed:
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+   .. code-block:: console
 
-        .. note:: If trying to build tisdk-display-cluster image, Add ``DISPLAY_CLUSTER_ENABLE="1"`` at the end of `conf/local.conf` file before running bitbake.
+      git clone https://git.ti.com/git/arago-project/oe-layersetup.git yocto-build
+      cd yocto-build
+
+   The Linux SDK package also has the above tool cloned at the top level. If you have it installed:
+
+   .. code-block:: console
+
+      cd <SDK INSTALL DIR>/yocto-build
+
+   Then run following commands to setup a yocto build for a specific release version and build the 'tisdk-default-image' target.
+
+   .. code-block:: console
+
+      ./oe-layertool-setup.sh -f configs/processor-sdk-linux/processor-sdk-linux-<version>.txt
+      cd build
+      . conf/setenv
+      MACHINE=<machine> bitbake -k tisdk-default-image
+
+Your newly built wic image will be generated in deploy-ti directory. Use :ref:`Linux SD Card Creation Guide <processor-sdk-linux-create-sd-card>` to flash this image on the SD-Card.
+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   .. note:: If trying to build tisdk-display-cluster image, Add ``DISPLAY_CLUSTER_ENABLE="1"`` at the end of `conf/local.conf` file before running bitbake.
+
+.. ifconfig:: CONFIG_sdk in ('j7_foundational') or CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+   .. note::
+
+      The tisdk-default-image now includes Chromium by default, which may increase the build
+      time. If you prefer not to build Chromium, you can remove the `meta-browser` layer from
+      the oeconfig-file before running oe-layertool-setup.sh. However, if you are building the
+      tisdk-default-image specifically to try out the TI Apps Launcher out-of-the-box (OOB),
+      it is not recommended to remove the meta-browser layer. The TI Apps Launcher relies on
+      Chromium and removing the layer may impact its functionality. Keep the meta-browser layer
+      intact for the best OOB experience.
+
+.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+
+   .. note::
+
+      The build will use ~250GB of hard disk space for building the tisdk-default-image.
+
+   .. note::
+
+      If your computer is frequently crashing while running the bitbake command, edit the
+      './conf/local.conf' file and set the variables: BB_NUMBER_THREADS and PARALLEL_MAKE
+      to cap the number of threads bitbake can create at a time. By default bitbake tries
+      to automatically figure out and set the maximum values for these variables, on your
+      system, which may lead to errors.
 
 .. note:: While building images via Yocto, if you are facing **locale.Error: unsupported locale setting** error, it means your system is trying to use a locale setting which was not there. Run the following commands which will setup the locale and try building your target image again.
 
@@ -156,40 +202,6 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
         export LANG=en_US.UTF-8
         export LANGUAGE=en_US.UTF-8
         ulimit -n 4096
-
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
-
-    |__SDK_FULL_NAME__| uses the 'oe-layersetup' tool to configure the meta layers. If you do not have the Linux SDK package installed:
-    .. code-block:: console
-
-        git clone https://git.ti.com/git/arago-project/oe-layersetup.git yocto-build
-        cd yocto-build
-
-    The Linux SDK package also has the above tool cloned at the top level. If you have it installed:
-    .. code-block:: console
-
-        cd <SDK INSTALL DIR>/yocto-build
-
-    Then run following commands to setup a yocto build for a specific release version and build the 'tisdk-default-image' target.
-    .. code-block:: console
-
-        ./oe-layertool-setup.sh -f configs/processor-sdk-linux/processor-sdk-linux-<version>.txt
-        cd build
-        . conf/setenv
-        MACHINE=<machine> bitbake -k tisdk-default-image
-
-    .. note::
-
-        The build will use ~250GB of hard disk space for building the tisdk-default-image.
-
-    .. note::
-
-        If your computer is frequently crashing while running the bitbake command, edit the
-        './conf/local.conf' file and set the variables: BB_NUMBER_THREADS and PARALLEL_MAKE
-        to cap the number of threads bitbake can create at a time. By default bitbake tries
-        to automatically figure out and set the maximum values for these variables, on your
-        system, which may lead to errors.
-
 
 .. _processor-sdk-build-reference:
 
@@ -372,6 +384,7 @@ The "Build Output" is given relative to the
         .. rubric:: RT Support
 
         Run the command below, before the bitbake build command, to setup a yocto build with RT Linux Kernel:
+
         .. code-block:: console
 
             echo "ARAGO_RT_ENABLE = \"1\"" >> conf/local.conf
