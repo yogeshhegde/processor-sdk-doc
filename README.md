@@ -19,14 +19,6 @@ OR you can use a docker container like the following:
 
     $ git clone ssh://git@bitbucket.itg.ti.com/processor-sdk/processor-sdk-doc.git
 
-### Install the theme files from swtoolsdev
-
-Update submodule:
-
-    $ cd processor-sdk-doc
-    $ git submodule init
-    $ git submodule update
-
 ### Build on Ubuntu
 
 #### Build linux documentatin
