@@ -13,9 +13,9 @@ Overview
 
             * Use the SDK to build a separate "flasher" image which can be transferred
               from the host PC via Ethernet to program the eMMC device.
-.. ifconfig:: CONFIG_part_variant in ('J721S2')
+.. ifconfig:: CONFIG_part_variant in ('J721S2','AM64X')
 
-        This documentation provide the steps for building flasher Image with initramfs-based boot support and programming
+        This documentation provides the steps for building flasher image with initramfs-based boot support and programming
         the MMC device via CPSW Ethernet connection to a Linux host PC. This solution will work with a completely blank
         board / SK and can be used as a base to create a custom production programming solution.
 
@@ -26,6 +26,13 @@ Overview
 
 What is Needed
 --------------
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+    
+   * The most current `Processor SDK for Linux <https://www.ti.com/tool/PROCESSOR-SDK-AM64X>`__ installed 
+     on the host Linux PC used for development
+   * SK-AM64B or AM64-EVM board and an ethernet cable to connect the board to the host PC
+   * A 12V and 5V power supply compatible with the AM64-EVM and SK-AM64B respectively.
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
         * The most current `Processor SDK for Linux
@@ -95,7 +102,22 @@ First we need to create the flasher image with smaller filesystem on the host PC
 
             ls -l tisdk-tiny-image-j721s2-evm/
 
-init should now be linked to sbin/init
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    * Refer to prerequisites and steps for Yocto build for an Ubuntu host: :ref:`Host Setup - ubuntu (Recommended)`.
+
+    After the Yocto enviroment is setup, use the below step to build the Initramfs Image:
+    
+    .. code-block:: console
+
+        MACHINE=<machine> bitbake -k tisdk-tiny-initramfs
+
+    The bitbake command mentioned in the last line above builds the tisdk-tiny-initramfs
+    cpio which can be located at deploy-ti/images/am64xx-evm.
+
+.. ifconfig:: CONFIG_part_variant not in ('AM64X')
+
+    init should now be linked to sbin/init
 
 * Navigate to your linux repository to build flasher Image
 ::
@@ -123,6 +145,10 @@ init should now be linked to sbin/init
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
                         * Set CONFIG_INITRAMFS_SOURCE = <Processor-SDK>/filesystem/tisdk-tiny-image-j721s2-evm
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+        * Set CONFIG_INITRAMFS_SOURCE = <path to cpio>/tisdk-tiny-initramfs-am64xx-evm.cpio
 
 Select General setup:
 
@@ -159,6 +185,13 @@ Select General setup:
 
 
      |
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    .. Image:: /images/menuconfig.png
+        :height: 300px
+        :width: 400px
+
 Exit menuconfig and save the new configuration
 
 * Build the Kernel
@@ -188,6 +221,10 @@ Target Images
 
                 * Copy tiboot3-j721s2-hs-fs-evm.bin, tispl.bin and u-boot.img files from <Processor-SDK>/board-support/prebuilt-images/ to the ~/tftpboot directory
         * Rename tiboot3-j721s2-* as tiboot3.bin inside ~/tftpboot
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    * Copy tiboot3.bin, tispl.bin and u-boot.img files from <Processor-SDK>/board-support/prebuilt-images/am64xx-evm/ to the ~/tftpboot directory
 
 * Populating rootfs into the TFTP home directory.
 
@@ -231,6 +268,29 @@ Now that the flash image has been created we can now flash the SK
               => mmc partconf 0 1 1 1
               => mmc bootbus 0 2 0 0
 
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    * For creating eMMC boot partiton refer :ref:`here <partitioning-eMMC-from-uboot>`
+
+    * For writing bootloaders into eMMC boot partition
+      
+      .. code-block:: text
+
+        mmc dev 0 1
+        tftp ${loadaddr} tiboot3.bin
+        mmc write ${loadaddr} 0x0 0x400
+        tftp ${loadaddr} tispl.bin
+        mmc write ${loadaddr} 0x800 0x1000
+        tftp ${loadaddr} u-boot.img
+        mmc write ${loadaddr} 0x1800 0x2000
+
+    * To give the ROM access to the boot partition, the following commands must be used for the first time:
+      
+      .. code-block:: text
+
+        mmc partconf 0 1 1 1
+        mmc bootbus 0 2 0 0
+    
 * Enter command to boot Linux using initramfs image from TFTP server
   ::
       run findfdt
@@ -273,3 +333,19 @@ Now that the flash image has been created we can now flash the SK
        dd if=tisdk-default-image-j721s2-evm.wic.xz of=/dev/mmcblk1
 
   * Now reboot the board with SD boot mode and verify that it boots successfully
+
+* Enter the following command on Host PC's Linux shell to transfer the wic image          
+                                                                                
+.. ifconfig:: CONFIG_part_variant in ('AM64X')                                 
+                                                                                
+    .. code-block:: console                                                                          
+                                                                                
+       tftp -b 1468 -g -r tisdk-default-image-am64xx-evm.wic.xz <SERVER_IP>     
+                                                                                
+  * Flash the image into MMC-SD 
+    
+    .. code-block:: console                                                                          
+                                                                                
+       dd if=tisdk-default-image-am64xx-evm.wic.xz of=/dev/mmcblk1
+                                                                               
+  * Now reboot the board with SD boot mode and verify that it boots successfully 
