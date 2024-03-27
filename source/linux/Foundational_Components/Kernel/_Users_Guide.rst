@@ -160,9 +160,17 @@ as a starting point).
 
     For example, to apply the recommended kernel configuration for K3 devices, use:
 
+    For Linux,
+
     .. code-block:: console
 
         make ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" defconfig ti_arm64_prune.config
+
+    For RT-Linux,
+
+    .. code-block:: console
+
+        make ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" defconfig ti_rt.config
 
 The config fragments found in <path-to-ti-linux-kernel>/kernel/configs can be used to trim/add
 features when building a kernel that targets only TI EVMs. Append a config fragment to the end
