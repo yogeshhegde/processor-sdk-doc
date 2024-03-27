@@ -74,22 +74,25 @@ The TI Apps Launcher launches on Linux startup. Follow the below instructions to
 
 2. Insert the flashed SD card to the board, connect the display, mouse, ethernet cable, keyboard and power on the TI |__PART_FAMILY_DEVICE_NAMES__| SK. The TI Apps Launcher will launch automatically when the device is fully booted.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-   .. Image:: /images/ti-apps-launcher-home.png
+   .. Image:: /images/ti-apps-launcher-home-am62x.png
+      :height: 400
+
+   .. note::
+
+     TI-Apps-Launcher on AM62SIP is minimal due to it's memory constraints. This experience on AM62SIP looks like the following.
+
+
+     .. Image:: /images/ti-apps-launcher-home-am62sip.jpg
+        :height: 400
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   .. Image:: /images/ti-apps-launcher-home-am62px.png
       :height: 400
 
    |
-
-   .. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-        .. note::
-
-            TI-Apps-Launcher on AM62SIP is minimal due to it's memory constraints. This experience on AM62SIP looks like the following.
-
-
-        .. Image:: /images/ti-apps-launcher-home-am62sip.jpg
-          :height: 400
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
