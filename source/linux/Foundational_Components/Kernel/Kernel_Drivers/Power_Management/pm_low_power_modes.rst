@@ -77,7 +77,7 @@ In order to enter deep sleep, use the following command:
       [   47.676794] psci: CPU3 killed (polled 0 ms)
 
 This partially indicates that linux has finished it's deep sleep sequence.
-For further confirmation, one can take a look at the TP25/PMIC_LPM_EN pin on the EVM
+For further confirmation, one can take a look at the PMIC_LPM_EN pin on the EVM
 (after programming the PMCTRL_SYS register (0x43018080) to 0x15). Here, if the pin is 3.3V when active and
 0V when in deep sleep.
 
@@ -179,17 +179,27 @@ overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_over
 
 After Linux boots, the MCAN wakeup for Partial I/O is enabled using the
 wake on PHY activity option of ethtool. For example, the following
-command enables can0 wakeup:
+command enables mcu_mcan0 wakeup:
 
 ::
 
-   root@evm:~# ethtool -s can0 wol p
+   root@evm:~# ethtool -s mcu_mcan0 wol p
+
+To enable mcu_mcan1 wakeup:
+
+::
+
+   root@evm:~# ethtool -s mcu_mcan1 wol p
 
 To enable UART wakeup:
 
 ::
 
    root@evm:~# echo enabled > /sys/class/tty/ttyS0/device/power/wakeup
+
+.. note::
+
+   UART wakeup from Partial I/O is currently being debugged on the EVM.
 
 With at least one of the wakeup sources enabled, Partial I/O mode can be
 entered with the following command:
@@ -207,7 +217,7 @@ the console output will stop at the following lines:
    [   51.769478] reboot: Power down
 
 The system has entered Partial I/O and can only be woken up with an
-activity on the I/O pin programmed for wakeup. For example, if can0
+activity on the I/O pin programmed for wakeup. For example, if mcu_mcan0
 wakeup was enabled, grounding Pin 22 of J8 MCU Header will wakeup the
 system and it will go through a normal Linux boot process.
 
