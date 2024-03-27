@@ -82,7 +82,7 @@ their names. This information can then be used to set formats and frame rates on
 various elements for the pipeline. For example, below command can be used to set
 1920x1080 @ 30fps UYVY format on the sensor node:
 
-::
+.. code-block:: console
 
     media-ctl --set-v4l2 '"sensor-name 9-0012":0 [fmt:UYVY8_2X8/1920x1080@1/30]'
 
@@ -91,7 +91,7 @@ context (/dev/videoX) needs to be set separately. This can be done while
 starting the capture with yavta for example. The below command can be run next
 to start capturing the video stream to a file called "capture":
 
-::
+.. code-block:: console
 
     yavta -c -Fcapture -s 1920x1080 -f UYVY /dev/video0
 
@@ -103,7 +103,7 @@ It is often useful to see the pipeline visually. media-ctl can print the
 pipeline as a dot graph which can then be converted to an image for viewing. The
 below set of commands can achieve this:
 
-::
+.. code-block:: console
 
     media-ctl --print-dot | dot -Tpng > graph.png
 
@@ -129,7 +129,7 @@ it should be added in as an overlay.
 
 Below overlay is an example for adding the overlay nodes:
 
-::
+.. code-block:: dts
 
     // SPDX-License-Identifier: GPL-2.0
     /*
@@ -196,7 +196,8 @@ Enabling camera sensors
     ------------------------
 
     During bootup stop at u-boot prompt by pressing any key and enable camera devicetree overlay:
-    ::
+
+    .. code-block:: text
 
         # For Digilent PCam5C or ALINX AN5641
         setenv name_overlays k3-am62x-sk-csi2-ov5640.dtbo
@@ -209,7 +210,7 @@ Enabling camera sensors
     Once the overlay is applied, you can confirm that the sensor is being
     probed by checking the output of lsmod or the media graph:
 
-    ::
+    .. code-block:: console
 
         $ lsmod | grep ov5640
         ov5640                 36864  1
@@ -246,13 +247,13 @@ Enabling camera sensors
     frames from the sensor using any tool compliant with v4l2 apis. For example
     you can use libcamera to capture 20 frames @ 480p:
 
-    ::
+    .. code-block:: console
 
         $ cam -c1 --stream width=640,height=480,pixelformat=UYVY -C20
 
     You can also capture at other sensor-supported resolutions:
 
-    ::
+    .. code-block:: console
 
         # List supported resolutions
         $ cam -c1 -I
@@ -261,7 +262,7 @@ Enabling camera sensors
 
     To save the raw YUV frames to SD card for viewing later use the -F option:
 
-    ::
+    .. code-block:: console
 
         $ cam -c1 --stream width=640,height=480,pixelformat=UYVY -C20 -F#.uyvy
         $ ls *.uyvy
@@ -275,7 +276,7 @@ Enabling camera sensors
     they require manual configuration using media-ctl if you want to stream at
     a different resolution and formats than the default (640x480 UYVY):
 
-    ::
+    .. code-block:: console
 
         $ yavta -s 640x480 -f UYVY /dev/video0 -c20
         ....
@@ -288,7 +289,7 @@ Enabling camera sensors
         wakes up from runtime suspend state. To make it work reliably on every
         attempt, you can **disable runtime PM** for the sensor:
 
-        ::
+        .. code-block:: console
 
             $ echo "on" > /sys/devices/platform/bus@f0000/20020000.i2c/i2c-2/i2c-4/4-003c/power/control
 
@@ -297,7 +298,7 @@ Enabling camera sensors
 
     If a display (HDMI or LVDS) is connected then use the following steps to view the camera frames:
 
-    ::
+    .. code-block:: console
 
         # As a window within weston desktop
         $ gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! autovideosink
@@ -309,7 +310,7 @@ Enabling camera sensors
     You can also replace v4l2src with libcamerasrc above if you want to test
     different sensor-supported resolutions like 480p, 720p etc.
 
-    ::
+    .. code-block:: console
 
         $ gst-launch-1.0 libcamerasrc ! video/x-raw, width=1024, height=768, format=UYVY ! autovideosink
 
@@ -324,7 +325,7 @@ Enabling camera sensors
     For example, you can start streaming from camera using any of the above
     methods and then suspend to RAM for 5 seconds using the following command:
 
-    ::
+    .. code-block:: console
 
         $ rtcwake -s 5 -m mem
 
@@ -447,7 +448,7 @@ Enabling camera sensors
     Once the overlay is applied, you can confirm that the sensor is being
     probed by checking the output of lsmod or the media graph:
 
-    ::
+    .. code-block:: console
 
         $ lsmod | grep imx219
         imx219                 24576  1
@@ -479,7 +480,7 @@ Enabling camera sensors
     The sensor and other subdevs (for example FPDLink ser/deser) should
     automatically get configured by the initialization script on the SD card:
 
-    ::
+    .. code-block:: text
 
         CSI Camera 0 detected
             device = /dev/video-rpi-cam0
@@ -493,7 +494,7 @@ Enabling camera sensors
     <#utilities-to-interact-with-the-driver>`__. For example you can switch to
     10-bit 1080p capture on IMX219 using:
 
-    ::
+    .. code-block:: console
 
         $ media-ctl --set-v4l2 '"imx219 4-0010":0[fmt:SRGGB10_1X10/1920x1080]'
 
@@ -504,7 +505,7 @@ Enabling camera sensors
     frames from the sensor using any tool compliant with v4l2 apis. For example
     you can use yavta to capture 100 frames from IMX219 @ 1232p:
 
-    ::
+    .. code-block:: console
 
         $ yavta -s 1640x1232 -f SRGGB10 /dev/video-rpi-cam0 -c100
         Device /dev/video-rpi-cam0 opened.
@@ -525,7 +526,7 @@ Enabling camera sensors
     By default the frames are copied over to DDR and discarded later. You can
     optionally save a few frames to the SD card for debugging purposes:
 
-    ::
+    .. code-block:: console
 
         $ yavta -s 1640x1232 -f SRGGB10 /dev/video-rpi-cam0 -c5 -Fframe-#.bin
         ....
@@ -552,13 +553,13 @@ Enabling camera sensors
     You may have to stop the display server (weston) before running the below
     pipelines:
 
-    ::
+    .. code-block:: console
 
         $ systemctl stop weston.service
 
     Use the following pipeline for IMX219 1232p RAW10 mode:
 
-    ::
+    .. code-block:: console
 
         $ gst-launch-1.0 v4l2src device=/dev/video-rpi-cam0 io-mode=5 ! video/x-bayer,width=1640,height=1232,format=rggb10 ! \
         tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/linear/dcc_viss_10b_1640x1232.bin \
@@ -569,7 +570,7 @@ Enabling camera sensors
     (e.g. 1080p RAW8 mode) you can edit the above pipeline with the new width,
     height, format and dcc-\*-file parameters:
 
-    ::
+    .. code-block:: console
 
         $ gst-launch-1.0 v4l2src device=/dev/video-rpi-cam0 io-mode=5 ! video/x-bayer,width=1920,height=1080,format=bggr ! \
         tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/linear/dcc_viss_1920x1080.bin \
@@ -578,7 +579,7 @@ Enabling camera sensors
 
     For OV2312 use mosaic to display both streams together:
 
-    ::
+    .. code-block:: console
 
         # Mosaic of RGB and IR streams
         $ gst-launch-1.0 \
@@ -613,7 +614,7 @@ Enabling camera sensors
     To enable FPDLink cameras you will need to apply the device tree overlays
     for both the fusion board and the sensor at U-boot prompt:
 
-    ::
+    .. code-block:: text
 
         # For single RCM IMX390 connected to RX port 0 on Fusion board EVM on J721E CPB:
         # FPDLink IMX390 camera overlays are named according to the port connected in the following
@@ -628,7 +629,7 @@ Enabling camera sensors
     To enable IMX219 camera connected to the 22-pin FFC connectoron J721E SK,
     enable the sensor overlay at U-boot prompt:
 
-    ::
+    .. code-block:: text
 
         # For IMX219 connected to 15-pin FFC connector
         => setenv name_overlays k3-j721e-sk-rpi-cam-imx219.dtbo
@@ -653,7 +654,7 @@ Enabling camera sensors
     To enable FPDLink cameras you will need to apply the device tree overlays
     for both the fusion board and the sensor at U-boot prompt:
 
-    ::
+    .. code-block:: text
 
         # For single RCM IMX390 connected to RX port 0 on Fusion board EVM on J721S2 CPB:
         # FPDLink IMX390 camera overlays are named according to the port connected in the following
@@ -668,7 +669,7 @@ Enabling camera sensors
     To enable IMX219 camera connected to the 22-pin FFC connectoron AM68A SK,
     enable the sensor overlay at U-boot prompt:
 
-    ::
+    .. code-block:: text
 
         # For IMX219 connected to 22-pin FFC connector
         => setenv name_overlays k3-am68-sk-bb-rpi-cam-imx219.dtbo
@@ -693,7 +694,7 @@ Enabling camera sensors
     To enable FPDLink cameras you will need to apply the device tree overlays
     for both the fusion board and the sensor at U-boot prompt:
 
-    ::
+    .. code-block:: text
 
         # For single RCM IMX390 connected to RX port 0 on Fusion board EVM on J721S2 CPB:
         # FPDLink IMX390 camera overlays are named according to the port connected in the following
@@ -708,7 +709,7 @@ Enabling camera sensors
     To enable IMX219 camera connected to the 22-pin FFC connectoron AM69A SK,
     enable the sensor overlay at U-boot prompt:
 
-    ::
+    .. code-block:: text
 
         # For IMX219 connected to 22-pin FFC connector
         => setenv name_overlays k3-am69-sk-rpi-cam-imx219.dtbo
