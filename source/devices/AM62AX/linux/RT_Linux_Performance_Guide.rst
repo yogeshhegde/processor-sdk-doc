@@ -30,7 +30,6 @@ with drivers included in a particular release.
 For further information or to report any problems, contact
 http://e2e.ti.com/ or http://support.ti.com/
 
-
 System Benchmarks
 -------------------------
 
@@ -60,9 +59,4 @@ Test command for running stress-ng and cyclictest together
 
     "Minimum (usec)","4,4,4,4"
     "Average (usec)","5,5,5,5"
-    "Maximum (usec)","29,24,35,35"
-
-
-Table:  **Stress-ng and Cyclic Test**
-
-
+    "Maximum (usec)","35,30,31,31"
