@@ -150,7 +150,7 @@ Supported Features
 
     - **DisplayPort**
         - SST
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4', 'AM62PX', 'J722S')
 
     - **MIPI DSI**
         - 4 Lane MIPI DSI output
@@ -209,11 +209,6 @@ Supported Features
     - **MIPI DSI**
         - 4 Lane MIPI DSI output from the SoC directly.
         - The connector is compatible with 22 pin RPi DSI Connector.
-.. ifconfig:: CONFIG_part_variant in ('J722S')
-
-    - **DisplayPort Output**
-        - DisplayPort output from SoC directly.
-        - DSI output from SoC converted to DP via DSI-to-DP encoder on board.
 
 Driver Architecture
 ===================
