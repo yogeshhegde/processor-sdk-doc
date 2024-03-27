@@ -23,7 +23,7 @@ Prerequisites
 
 -  Processor SDK Linux for AM62Px |__SDK_DOWNLOAD_URL__|.
 -  `Processor SDK MCU+ for
-   AM62Px <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM62PX>`__
+   AM62Px <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM62P>`__
 
 .. note::
    Please be sure that you have the same version number

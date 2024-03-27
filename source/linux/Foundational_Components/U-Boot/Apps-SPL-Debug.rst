@@ -50,7 +50,7 @@ Before the symbols are loaded, a test code will be added to the SPL code. The te
 
 If a user is working with AM335x/AM437x/AM57xx, the test code could be added in the "early_system_init" function in the file <ti_sdk_dir>/board-support/<u-boot_version>/arch/arm/mach-omap2/hwinit-common.c. The location of the test code on all platforms will vary based on the section of the SPL we are trying to debug.
 
-#. There are two methods of compiling Uboot: `method1 <Top_Level_Makefile.html>`__ and `method2 <Foundational_Components_U-Boot.html#build-and-boot-flow-on-32-bit-platforms>`__. Both methods will generate the necessary symbol file required for SPL debugging.
+#. There are two methods of compiling Uboot: :ref:`method1 <top-level-makefile>` and :ref:`method2 <Build-U-Boot-label>`. Both methods will generate the necessary symbol file required for SPL debugging.
 
 #. On AM335x/AM437x/AM57xx, the symbol file is located in the following directory "<ti_sdk_dir>/board-support/<u-boot_version>/spl/u-boot-spl". For AM654x, the symbol file is located in the following directory "<ti_sdk_dir>/board-support/u-boot_build/r5/spl/u-boot-spl".
 
