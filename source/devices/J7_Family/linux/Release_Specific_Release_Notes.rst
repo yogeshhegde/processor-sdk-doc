@@ -36,7 +36,7 @@ addition, see :ref:`Processor SDK Linux GPLv3 Disclaimer <overview-gplv3-disclai
 
 
 Documentation
-===============
+=============
 -  :ref:`Processor SDK Linux Software Developer's Guide <linux-index>`: Provides information on features, functions, delivery package and,
    compile tools for the Processor SDK Linux release. This also provides
    detailed information regarding software elements and software
@@ -52,12 +52,12 @@ Documentation
 
 
 Supported Platforms
-=====================================
+===================
 See :ref:`here <release-specific-supported-platforms-and-versions>` for a list of supported platforms and links to more information.
 
 
 Release 09.02.00
-==================
+================
 
 Released March 2024
 
@@ -85,12 +85,12 @@ Processor SDK 9.2 Release has following new features:
   * AVS support added for J784S4 and J721S2
 
 Build Information
-=====================================
+=================
 
 .. _u-boot-release-notes:
 
 U-Boot
--------------------------
+------
 | Head Commit: d2612223375a25f81068d7a7abd86c08cd129a2c arm: dts: k3-am62p-binman: Move to using ti-dm entry type
 | Date: Wed Mar 13 23:26:09 2024 +0530
 | uBoot Version: 2023.04
@@ -102,11 +102,15 @@ U-Boot
 | Compiler Information: arm-oe-eabi-gcc (GCC) 11.4.0, aarch64-oe-linux-gcc (GCC) 11.4.0
 |
 
-| Note:  meta-tisdk Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tree/recipes-bsp/u-boot?h=09.02.00.08>`__.
+.. note::
 
+   meta-tisdk Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tree/recipes-bsp/u-boot?h=REL.J7.09.02.00.04>`__.
+
+
+.. _kernel-release-notes:
 
 Kernel
--------------------------
+------
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
@@ -138,11 +142,47 @@ Kernel
 
 | Compiler Information: aarch64-oe-linux-gcc (GCC) 11.4.0, GNU ld (GNU Binutils) 2.38.20220708
 
-| Note: meta-tisdk Yocto layer contains additional patches for Linux Kernel `here <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tree/recipes-kernel/linux?h=09.02.00.08>`__.
+.. note::
+
+   meta-tisdk Yocto layer contains additional patches for Linux Kernel `here <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tree/recipes-kernel/linux?h=REL.J7.09.02.00.04>`__.
+
+.. _tf-a-release-notes:
+
+TF-A
+----
+| Head Commit: 00f1ec6b8740ccd403e641131e294aabacf2a48b Merge changes from topic 
+  "revert-ti-dm-workaround" into integration
+| Repo: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
+| Branch: master
+| Version: 2.10
+|
+
+.. _optee-release-notes:
+
+OP-TEE
+------
+| Head Commit: 012cdca49db398693903e05c42a254a3a0c0d8f2 plat-k3: drivers: sec_proxy: increment while
+  reading trail bytes
+| Repo: https://github.com/OP-TEE/optee_os/
+| Branch: master
+| Version: 4.1.0
+|
+
+.. _ti-linux-fw-release-notes:
+
+ti-linux-firmware
+-----------------
+| Head Commit: edbfc3e540c9f426feb51db6a466a9015ada4dd0 ti-dm: Update display sharing firmware for am62px
+| Date: 2024-03-13 08:58:19 -0500
+| Clone: https://git.ti.com/cgit/processor-firmware/ti-linux-firmware
+| Branch: ti-linux-firmware
+| Tag: 09.02.00.008
+|
+
 
 
 Yocto
-------------------------
+-----
 .. rubric:: meta-ti
    :name: meta-ti
 
@@ -167,19 +207,18 @@ Yocto
 
 .. rubric:: meta-tisdk
 
-| Head Commit: 3d2589b3b9b0d102917a7e0b1cecaf62cd7eba79 conf: arago-source-ipk: Enable source-ipk's of all missing packages for ti33x, ti43x
-| Date: 2023-12-27 11:07:27 -0600
-
+| Head Commit: e2d81f687261309de3441917c53c5a282a4f3e1b jailhouse: Update SRCREV
+| Date: 2024-03-22 07:50:48 -0500
 | Clone: git://git.ti.com/ti-sdk-linux/meta-tisdk.git
 | Branch: kirkstone
-| Release Tag: 09.02.00.08
+| Release Tag: REL.J7.09.02.00.04
 |
 
 Issues Tracker
-=====================================
+==============
 
 Issues opened in previous releases that were closed on this release
----------------------------------------------------------------------
+-------------------------------------------------------------------
 .. csv-table::
   :header: "Record ID", "Title", "Platform"
   :widths: 15, 70, 20
@@ -232,7 +271,7 @@ Issues opened in previous releases that were closed on this release
 |
 
 Issues found and closed on this release that may be applicable to prior releases
------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 .. csv-table::
   :header: "Record ID", "Title", "Platform"
   :widths: 15, 70, 20
@@ -267,7 +306,7 @@ Issues found and closed on this release that may be applicable to prior releases
 |
 
 Errata Workarounds Available in this Release
-------------------------------------------------
+--------------------------------------------
 .. csv-table::
   :header: "Record ID", "Title", "Platform"
   :widths: 15, 30, 150
@@ -286,7 +325,7 @@ Errata Workarounds Available in this Release
 |
 
 U-Boot Known Issues
-------------------------
+-------------------
 .. csv-table::
   :header: "Record ID", "Title", "Platform", "Workaround"
   :widths: 15, 30, 70, 30
@@ -305,7 +344,7 @@ U-Boot Known Issues
 |
 
 Linux Known Issues
----------------------------
+------------------
 .. csv-table::
   :header: "Record ID", "Title", "Platform", "Workaround"
   :widths: 5, 10, 70, 35
@@ -421,7 +460,7 @@ SDK features descoped from 9.2 release
   JACINTOREQ-5042 ,AM69/J784S4 Linux SDK shall support cpufreq [opp], "AM69, J784S4", 09.02.00 ,10.00.00
 
 SDK features scoped in 9.1 release
---------------------------------------
+----------------------------------
 .. csv-table::
   :header: "ID", "Head Line", "Platform", "Original Fix Version", "New Fix Version"
   :widths: 20, 90, 90, 20, 20
