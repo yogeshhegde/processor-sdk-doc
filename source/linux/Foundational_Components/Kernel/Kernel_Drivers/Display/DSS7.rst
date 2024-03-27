@@ -154,7 +154,55 @@ Supported Features
 
     - **MIPI DSI**
         - 4 Lane MIPI DSI output
-        - **Note:** The colors of the DSI display are expected to cyclically shift between 2 sets, RGB -> GBR and RGB -> BRG. It is a known bug.
+
+	.. note::
+		- **Color Shift Issue**
+
+		The colors of the DSI display are expected to appear shifted between 2 sets of color
+		variations, RGB -> GBR and RGB -> BRG. It is a known bug. The DSI sinks that TI EVMs
+		support are limited in number - TI-SN65DSI86 (DSI to eDP bridge) and Toshiba TC358762
+		(DSI to DPI bridge for RPi Panel). The DSI Display will sometimes (approx 2 or 3 reboots
+		out of 10) shift colors for the first frame.
+
+		The default sequence of enabling of display pipeline (when it comes to DSI) in ti-linux
+		looks like this, **DSI -> DSS -> DSI sink**.
+
+		However, for platforms that use RPi DSI panel, a workaround was found to even get the
+		first frame to display correct colors. The enabling sequence is simply updated to,
+		**DSI -> DSI Sink -> DSS**.
+
+		Refer to patch `HACK: drm/bridge: tc358762: Implement early_enable and late_disable
+		<https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/commit/?h=ti-linux-6.1.y&id=e7783666046f44196c5a09aa8fe7e005d8d39047>`__.
+
+		Implementing the same workaround **does not** work for TI-SN65DSI86.
+
+		Since there are only 2 DSI sinks, there is no decipherable pattern that can predict on
+		which *other* DSI sinks might the issue show itself. Customers using customized non-TI
+		EVMs are advised to refer to the patch above and implement the same for their DSI sink
+		drivers (DRM Bridges).
+
+		There is a chance that it may not work (the same way it doesn't work with TI-SN65DSI86),
+		and there is a different workaround for that.
+
+		GUI applications may or may not always show the first frames as color-shifted. But in the
+		case they do, following workaround is suggested to get back to normal colors without
+		having to reboot the board.
+
+			1. Exit the GUI application.
+			2. Run kmstest and exit.
+			3. Restart the GUI application.
+
+		Running kmstest will trigger another modeset of the display pipeline, and the colors will
+		appear correct from then on.
+
+		- **PLL Lock Warning**
+
+		Whenever the kernel begins displaying anything on the DSI output, the first attempt will
+		dump a kernel warning. It's about the PLL not getting locked before timeout, during
+		stream enable of DSI. The warning only comes once, because it uses "WARN_ON_ONCE", but
+		the PLL is not locked during every stream enable. However, it does not seem to be a
+		factor with the color shifts. Nor does it otherwise affect the display in any manner.
+
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
     - **Open LVDS Display Interface (OLDI)**
