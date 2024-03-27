@@ -15,6 +15,7 @@ The following wakeup sources are supported in this SDK release:
 #. MCU (WKUP) GPIO
 #. Main I/O Daisy Chain (Main GPIO and Main UART)
 #. USB Wakeup
+#. WKUP UART
 #. MCU IPC (for MCU Only mode)
 #. CAN UART (for Partial I/O mode)
 
@@ -167,7 +168,7 @@ by configuring the MCU GPIO controller as a wakeup source.
 In ideal scenarios, The firmware running on MCU core is responsible for configuring MCU GPIO's as a wakeup source.
 However, if the application design doesn't rely too much on the MCU firmware then
 linux can be used to configure the MCU GPIOs as a wakeup source. You can refer to the mcu_gpio_key node in
-`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=ti-linux-6.1.y-cicd#n329>`__
+`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=ti-linux-6.1.y#n329>`__
 and use it as a template to configure the MCU GPIO of your choice as a wakeup capable GPIO.
 
 A brief guide to configuring an MCU GPIO as wakeup:
@@ -226,7 +227,7 @@ source and send a wakeup interrupt to the Device Manager. To understand the role
 please refer to :ref:`S/W Architecture of System Suspend<pm_sw_arch>`
 
 MCU GPIO wakeup can only be tested when
-`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=ti-linux-6.1.y-cicd#n329>`__
+`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=ti-linux-6.1.y#n329>`__
 overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
 Once the system has entered Deep Sleep or MCU Only mode as shown in the
@@ -268,7 +269,7 @@ Main UART
 *********
 
 The way to configure UART as an I/O daisy chain wakeup, refer to the
-main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=ti-linux-6.1.y-cicd#n329>`_
+main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=ti-linux-6.1.y#n329>`_
 
 ::
 
@@ -331,10 +332,10 @@ configuration and working of these frameworks have been covered under
 the MCU GPIO and Main UART sections.
 
 The reference configuration for Main GPIO wakeup can be found under
-gpio_key node in `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=ti-linux-6.1.y-cicd#n329>`__
+gpio_key node in `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=ti-linux-6.1.y#n329>`__
 
 Main GPIO wakeup can only be tested when
-`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=ti-linux-6.1.y-cicd#n329>`__
+`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=ti-linux-6.1.y#n329>`__
 overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
 To use main_gpio as a wakeup source, ensure gpio is a wake-irq in /proc/interrupts:
@@ -347,6 +348,27 @@ To use main_gpio as a wakeup source, ensure gpio is a wake-irq in /proc/interrup
 Once the system has entered Deep Sleep or MCU Only mode as shown in the
 :ref:`LPM section<lpm_modes>`, wakeup from MAIN GPIO1_10 can be triggered
 by grounding Pin 33 on J3 User Expansion Connector.
+
+WKUP UART
+=========
+
+The UART in WKUP domain is capable of waking up the system from Deep
+Sleep and MCU Only modes.
+
+In order to use WKUP UART as a wakeup source, it needs to be configured
+in a generic way using the ti-sysc interconnect target module driver.
+The reference configuration can be found under target-module in
+`k3-am62-wakeup.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62-wakeup.dtsi?h=ti-linux-6.1.y#n11>`__
+
+WKUP UART is generally available on the third serial port
+(/dev/ttyUSB2) and by default it only shows output from DM R5.
+
+Once the system has entered Deep Sleep or MCU Only mode as shown in the
+:ref:`LPM section<lpm_modes>`, wakeup from WKUP UART can be triggered
+by doing *any key press* on the WKUP UART terminal. No output will be
+visible on the WKUP UART terminal, but Linux resume messages will be
+printed on the MAIN UART terminal.
+
 
 USB Wakeup methods
 =================
