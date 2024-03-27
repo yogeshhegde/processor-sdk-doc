@@ -190,7 +190,7 @@ See the devicetree bindings documentation for more details: `Documentation/devic
 	[    0.000000] cma: Reserved 32 MiB at 0x00000000fe000000
 
 .. note:: The reserved memory sizes listed above are provided as a reference only and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
-          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi?h=ti-linux-6.1.y'
+          https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi?h=ti-linux-6.1.y
 
 By default the first 1MB of each pool is used for the Virtio and Vring buffers
 used to communicate with the remote processor core. The remaining carveout is
@@ -288,6 +288,6 @@ arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi
 .. warning:: Be careful not to overlap carveouts!
 
 .. note:: The reserved memory sizes listed above are provided as a reference only and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
-          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi?h=ti-linux-6.1.y'
+          https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi?h=ti-linux-6.1.y
 
 .. include:: Foundational_Components/IPC/_RPMsg_char_driver.rst
