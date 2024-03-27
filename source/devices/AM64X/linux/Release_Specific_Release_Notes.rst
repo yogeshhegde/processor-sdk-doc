@@ -227,6 +227,8 @@ Known Issues
    "LCPD-22892","am654x-evm,am654x-idk,am64xx-evm","icssg: due to FW bug both interfaces has to be loaded always",""
    "LCPD-22834","am64xx-evm","am64xx-evm stress boot test fails",""
    "LCPD-20105","am64xx-evm","AM64x: Kernel: ADC: RX DMA channel request fails",""
+   "SYSFW-6432","am62x,am62ax,am62px,am64x,am65x","Set device API doesn't return Error when PD is in transition state",""
+   "SYSFW-6426","am62x,am62ax,am62px,am64x,am65x","Ownership of a firewall region can be transferred to an invalid host",""
 
 |
 
@@ -249,6 +251,11 @@ Issues opened in previous releases that were closed on this release
    "LCPD-37300","AM64x SDK v9.1 SDK Images don't boot on SK-AM64B due to U-Boot using incorrect DTS File from EVM","am64xx-hsevm,am64xx-hssk"
    "LCPD-37223","AM64x: ICSSG1 MII mode isn't working","am64xx-evm,am64xx-hsevm"
    "LCPD-37207","Docker is disabled in RT Linux","am64xx-hssk,am62xx_lp_sk-fs,am62xxsip_sk-fs,am62pxx_sk-fs"
+   "SYSFW-6763","TISCI_MSG_SET_DEVICE_RESETS message returns success for invalid device reset range","am62x,am62ax,am62px"
+   "SYSFW-7056","Implement New PLL sequence Proposed by HW team","am62x,am62ax,am62px,am64x"
+   "SYSFW-6941","TISCI_MSG_SYS_RESET fails for negative testcase","am62x,am62ax,am62px"
+   "SYSFW-6892","TISCI Clock api returns success for invalid Clock ID","am62x,am62ax,am62px,am64x,am65x"
+   "SYSFW-6903","REF_DEF Value must be 1 for proper PLL operations","am64x"
 
 |
 
