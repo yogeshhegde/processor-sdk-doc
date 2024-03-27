@@ -15,3 +15,4 @@ Power Management
    Power_Management/pm_low_power_modes
    Power_Management/pm_wakeup_sources
    Power_Management/pm_sw_arch
+   Power_Management/pm_debug
