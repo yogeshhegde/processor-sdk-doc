@@ -438,9 +438,7 @@ Enabling camera sensors
         boot
 
     For more details on building or applying overlays permanently, refer to the
-    `How to enable DT overlays in linux
-    <../../../../How_to_Guides/Target/How_to_enable_DT_overlays_in_linux.html>`__
-    guide.
+    :ref:`How to enable DT overlays in linux <howto_dt_overlays>` guide.
 
     Configuring media pipeline
     --------------------------
@@ -636,9 +634,7 @@ Enabling camera sensors
         => boot
 
     For more details on building or applying overlays permanently, refer to the
-    `How to enable DT overlays in linux
-    <../../../../How_to_Guides/Target/How_to_enable_DT_overlays_in_linux.html>`__
-    guide.
+    :ref:`How to enable DT overlays in linux <howto_dt_overlays>` guide.
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
@@ -676,9 +672,7 @@ Enabling camera sensors
         => boot
 
     For more details on building or applying overlays permanently, refer to the
-    `How to enable DT overlays in linux
-    <../../../../How_to_Guides/Target/How_to_enable_DT_overlays_in_linux.html>`__
-    guide.
+    :ref:`How to enable DT overlays in linux <howto_dt_overlays>` guide.
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
@@ -716,6 +710,4 @@ Enabling camera sensors
         => boot
 
     For more details on building or applying overlays permanently, refer to the
-    `How to enable DT overlays in linux
-    <../../../../How_to_Guides/Target/How_to_enable_DT_overlays_in_linux.html>`__
-    guide.
+    :ref:`How to enable DT overlays in linux <howto_dt_overlays>` guide.
