@@ -15,6 +15,7 @@ The following wakeup sources are supported in this SDK release:
 #. MCU (WKUP) GPIO
 #. Main I/O Daisy Chain (Main GPIO and Main UART)
 #. USB Wakeup
+#. WKUP UART
 #. MCU IPC (for MCU Only mode)
 #. CAN UART (for Partial I/O mode)
 
@@ -347,6 +348,27 @@ To use main_gpio as a wakeup source, ensure gpio is a wake-irq in /proc/interrup
 Once the system has entered Deep Sleep or MCU Only mode as shown in the
 :ref:`LPM section<lpm_modes>`, wakeup from MAIN GPIO1_10 can be triggered
 by grounding Pin 33 on J3 User Expansion Connector.
+
+WKUP UART
+=========
+
+The UART in WKUP domain is capable of waking up the system from Deep
+Sleep and MCU Only modes.
+
+In order to use WKUP UART as a wakeup source, it needs to be configured
+in a generic way using the ti-sysc interconnect target module driver.
+The reference configuration can be found under target-module in
+`k3-am62-wakeup.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62-wakeup.dtsi?h=ti-linux-6.1.y-cicd#n11>`__
+
+WKUP UART is generally available on the third serial port
+(/dev/ttyUSB2) and by default it only shows output from DM R5.
+
+Once the system has entered Deep Sleep or MCU Only mode as shown in the
+:ref:`LPM section<lpm_modes>`, wakeup from WKUP UART can be triggered
+by doing *any key press* on the WKUP UART terminal. No output will be
+visible on the WKUP UART terminal, but Linux resume messages will be
+printed on the MAIN UART terminal.
+
 
 USB Wakeup methods
 =================
