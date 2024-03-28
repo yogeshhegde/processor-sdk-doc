@@ -60,7 +60,7 @@ Execute the LMBench with the following:
     cd /opt/ltp
     ./runltp -P j721e-idk-gw -f ddt/lmbench -s LMBENCH_L_PERF_0001
 
-.. csv-table:: LMBench Benchmarks
+.. csv-table::
     :header: "Benchmarks","am62axx_sk-fs: perf"
 
     "af_unix_sock_stream_latency (microsec)","24.82"
@@ -191,7 +191,7 @@ Execute the benchmark with the following:
 
     runDhrystone
 
-.. csv-table:: Dhrystone Benchmarks
+.. csv-table::
     :header: "Benchmarks","am62axx_sk-fs: perf"
 
     "cpu_clock (MHz)","1250.00"
@@ -208,7 +208,7 @@ Execute the benchmark with the following:
 
     runWhetstone
 
-.. csv-table:: Whetstone Benchmarks
+.. csv-table::
     :header: "Benchmarks","am62axx_sk-fs: perf"
 
     "whetstone (MIPS)","5000.00"
@@ -218,7 +218,7 @@ Linpack
 Linpack measures peak double precision (64 bit) floating point performance in
 solving a dense linear system.
 
-.. csv-table:: Linpack Benchmarks
+.. csv-table::
     :header: "Benchmarks","am62axx_sk-fs: perf"
 
     "linpack (Kflops)","517380.00"
@@ -241,7 +241,7 @@ Execute the benchmark with the following:
 
     stream_c
 
-.. csv-table:: Stream Benchmarks
+.. csv-table::
     :header: "Benchmarks","am62axx_sk-fs: perf"
 
     "add (MB/s)","2488.60"
@@ -257,7 +257,7 @@ While CoreMark stresses the CPU pipeline, CoreMark-Pro tests the entire processo
 adding comprehensive support for multicore technology, a combination of integer
 and floating-point workloads, and data sets for utilizing larger memory subsystems.
 
-.. csv-table:: CoreMarkPro Benchmarks
+.. csv-table::
     :header: "Benchmarks","am62axx_sk-fs: perf"
 
     "cjpeg-rose7-preset (workloads/)","36.63"
@@ -288,7 +288,7 @@ establish a common programming model that communicates with the benchmark throug
 abstraction layer and provides a flexible interface to allow a wide variety of
 thread-enabled workloads to be tested.
 
-.. csv-table:: Multibench Benchmarks
+.. csv-table::
     :header: "Benchmarks","am62axx_sk-fs: perf"
 
     "4m-check (workloads/)","362.06"
@@ -328,7 +328,7 @@ Boot-time Measurement
 Boot media: MMCSD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: Boot time MMCSD
+.. csv-table::
     :header: "Boot Configuration","am62axx_sk-fs: boot time (sec)"
 
     "Kernel boot time test when init is /bin/sh and bootloader, kernel and sdk-rootfs are in mmc-sd","3.93 (min 3.91, max 3.96)"
@@ -405,13 +405,12 @@ Running the following commands will trigger netperf clients to measure UDP burst
 CPSW/CPSW2g/CPSW3g Ethernet Driver 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- CPSW3g: AM64x, AM62x, AM62ax, AM62px
-
+- CPSW3g: AM62ax
 
 .. rubric::  TCP Bidirectional Throughput 
    :name: CPSW2g-tcp-bidirectional-throughput
 
-.. csv-table:: CPSW2g TCP Bidirectional Throughput
+.. csv-table::
     :header: "Command Used","am62axx_sk-fs: THROUGHPUT (Mbits/sec)","am62axx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
     "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1861.15","83.19"
@@ -432,7 +431,7 @@ EMMC Driver
 AM62AXX-SK
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: EMMC EXT4 FIO 1G
+.. csv-table::
     :header: "Buffer size (bytes)","am62axx_sk-fs: Write EXT4 Throughput (Mbytes/sec)","am62axx_sk-fs: Write EXT4 CPU Load (%)","am62axx_sk-fs: Read EXT4 Throughput (Mbytes/sec)","am62axx_sk-fs: Read EXT4 CPU Load (%)"
 
     "1m","57.70","26.54","175.00","28.29"
@@ -456,7 +455,7 @@ MMC/SD Driver
 AM62AXX-SK
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: MMC EXT4 FIO 1G
+.. csv-table::
     :header: "Buffer size (bytes)","am62axx_sk-fs: Write EXT4 Throughput (Mbytes/sec)","am62axx_sk-fs: Write EXT4 CPU Load (%)","am62axx_sk-fs: Read EXT4 Throughput (Mbytes/sec)","am62axx_sk-fs: Read EXT4 CPU Load (%)"
 
     "1m","28.00","26.14","87.00","27.10"
@@ -477,7 +476,9 @@ UBoot MMC/SD Driver
 AM62AXX-SK
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: UBOOT MMCSD FAT
+Table:  **UBOOT MMCSD FAT**
+
+.. csv-table::
     :header: "File size (bytes in hex)","am62axx_sk-fs: Write Throughput (Kbytes/sec)","am62axx_sk-fs: Read Throughput (Kbytes/sec)"
 
     "400000","18703.20","20177.34"
@@ -492,7 +493,9 @@ CRYPTO Driver
 OpenSSL Performance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: OpenSSL Performance
+Table:  **OpenSSL Performance**
+
+.. csv-table::
     :header: "Algorithm","Buffer Size (in bytes)","am62axx_sk-fs: throughput (KBytes/Sec)"
 
     "aes-128-cbc","1024","24477.35"
@@ -544,7 +547,9 @@ OpenSSL Performance
     "sha512","64","2167.55"
     "sha512","8192","55050.24"
 
-.. csv-table:: OpenSSL CPU Load
+Table:  **OpenSSL CPU Load**
+
+.. csv-table::
     :header: "Algorithm","am62axx_sk-fs: CPU Load"
 
     "aes-128-cbc","33.00"
@@ -556,8 +561,7 @@ OpenSSL Performance
     "sha256","97.00"
     "sha512","97.00"
 
-Listed for each algorithm are the code snippets used to run each
-  benchmark test.
+Listed for each algorithm are the code snippets used to run each benchmark test.
 
 ::
 
@@ -566,7 +570,41 @@ Listed for each algorithm are the code snippets used to run each
 IPSec Software Performance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: IPSec Software Performance
+.. csv-table::
     :header: "Algorithm","am62axx_sk-fs: Throughput (Mbps)","am62axx_sk-fs: Packets/Sec","am62axx_sk-fs: CPU Load"
 
     "aes128","345.80","30.00","74.23"
+
+Low Power Performance
+-------------------------
+
+Table:  **Deep sleep**
+
+.. csv-table::
+    :header: "Rail name","Rail voltage(V)","am62axx_sk-fs"
+
+    "vdd_core","0.85","14.66"
+    "vddr_core","0.85","1.80"
+    "soc_dvdd_3v3","3.30","4.04"
+    "soc_dvdd_1v8","1.80","1.91"
+    "vdda_1v8","1.80","10.71"
+    "vdd_lpddr4/vdd_ddr4","1.10","3.68"
+    "Total"," ","36.79"
+
+Table:  **MCU only**
+
+.. csv-table::
+    :header: "Rail name","Rail voltage(V)","am62axx_sk-fs"
+
+    "vdd_core","0.85","198.21"
+    "vddr_core","0.85","3.08"
+    "soc_dvdd_3v3","3.30","9.55"
+    "soc_dvdd_1v8","1.80","1.80"
+    "vdda_1v8","1.80","19.12"
+    "vdd_lpddr4/vdd_ddr4","1.10","3.37"
+    "Total"," ","235.12"
+
+Partial I/O Data
+- All voltage rails were measured to be near 0V
+
+Further optimizations are possible for these low power modes. Please refer to the AM62x Power Consumption App Note (https://www.ti.com/lit/pdf/spradg1)
