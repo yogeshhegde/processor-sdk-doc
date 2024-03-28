@@ -485,8 +485,9 @@ Exception: ALE table dumped as raw array of ALE records (3 * u32 per record).
            0x0060:         38 00 00 00 00 00 00 00 3c 00 00 00 00 00 00 00
            ...
 
+################
 Interrupt pacing
-""""""""""""""""
+################
 
 The Interrupt pacing (IRQ coalescing) based on hrtimers for RX/TX data path separately can be enabled by following ethtool commands (min value is 20us).
 
@@ -610,11 +611,14 @@ Example, CPTS registers dump::
         0003d044:reg(00000000)
         0003d048:reg(00000000)
 
+########################################################
 Errata: i2329 MDIO interface corruption (CPSW and PRUSS)
-========================================================
+########################################################
 
+***********
 Description
-"""""""""""
+***********
+
 It is possible that the MDIO interface of all instances of CPSW and PRUSS peripherals (if present) returns corrupt read data on MDIO reads (e.g. returning stale or previous data), or sends incorrect data on MDIO writes.  It is also possible that the MDIO interface becomes unavailable until the next peripheral reset (either by LPSC reset or global device reset with reset isolation disabled in case of CPSW).
 
 Possible system level manifestations of this issue could be (1) erroneous ethernet PHY link down status (2) inability to properly configure an ethernet PHY over MDIO (3) incorrect PHY detection (e.g. wrong address) (4) read or write timeouts when attempting to configure PHY over MDIO.
@@ -661,8 +665,9 @@ The most common issue with Linux is observation of following prints in the kerne
     am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
     am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
 
+***********************************
 Workaround for TI SDK Version > 8.4
-"""""""""""""""""""""""""""""""""""
+***********************************
 
 MDIO protocol can be emulated by reading and writing to the appropriate bits within
 the MDIO_MANUAL_IF_REG register of the MDIO peripheral to directly manipulate the

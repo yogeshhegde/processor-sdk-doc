@@ -71,8 +71,9 @@ Supported platforms
         |  **setenv name_overlays k3-am62a7-sk-ethernet-dc01.dtbo**
         | to enable functionality of the second CPSW port in Linux.
 
+********************
 Driver Configuration
---------------------
+********************
 
 Default SDK build will have these configurations enabled. In case of
 custom builds, please ensure following configs are enabled.
@@ -96,8 +97,9 @@ For further details regarding the above configs, refer:
 
 Module build for the cpsw driver is supported. To do this, use option 'm' for above configs, where applicable.
 
+********************
 Device tree bindings
---------------------
+********************
 
 The DT bindings description can be found at:
 
@@ -106,8 +108,9 @@ The DT bindings description can be found at:
 |   `Documentation/devicetree/bindings/net/ti,k3-am654-cpts.yaml <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-5.10.y/Documentation/devicetree/bindings/net/ti,k3-am654-cpts.yaml>`__
 |
 
+**************
 Multi MAC mode
---------------
+**************
 
 .. note::
 
@@ -115,9 +118,11 @@ Multi MAC mode
    CPSW3g.
 
 .. include:: _K3-CPSW-common.rst
+   :parser: rst
 
+***************
 Promiscous Mode
----------------
+***************
 
 By default promiscous mode is disabled. It can be enabled by using
 the below command.
@@ -129,8 +134,9 @@ mode.
 
    ip link set eth0 promisc on
 
+***********************
 Set MacAddress manually
------------------------
+***********************
 
 While the default MacAddress of the port is obtained from EEPROM, it's
 possible to change the MacAddress manually from shell.
@@ -139,8 +145,9 @@ possible to change the MacAddress manually from shell.
 
    ip link set dev <eth0> address <macaddress>
 
+**********************
 Multi port Switch mode
-----------------------
+**********************
 
 .. note::
 
@@ -167,7 +174,7 @@ enable marking packets with offload_fwd_mark flag.
 All configuration is implemented via switchdev API.
 
 Bridge setup
-^^^^^^^^^^^^
+============
 
 .. code-block:: console
 
@@ -189,14 +196,14 @@ Bridge setup
 
 
 Turn On/Off Spanning Tree Protocol (STP)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+========================================
 
 .. code-block:: console
 
    ip link set dev br0 type bridge stp_state 1/0
 
 VLAN configuration
-^^^^^^^^^^^^^^^^^^
+==================
 
 .. code-block:: console
 
@@ -206,7 +213,7 @@ VLAN configuration
 This step is mandatory for bridge/default_pvid.
 
 Adding extra VLANs
-^^^^^^^^^^^^^^^^^^
+==================
 
 1. untagged
 
@@ -227,7 +234,7 @@ Adding extra VLANs
       bridge vlan add dev br0 vid 100 pvid tagged self # <---- Add cpu port to VLAN100
 
 Forwarding Data Bases (FDBs)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+============================
 
 Forwarding entries for MAC addresses are automatically added on the
 appropriate switch port upon detection as default operation as an
@@ -248,7 +255,7 @@ Manually adding FDBs
    at the respective places.
 
 Multicast Data Bases (MDBs)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===========================
 
 Multicast entries are automatically added on the appropriate switch port
 upon detection as default operation as an unmanaged bridge. For managed
@@ -268,7 +275,7 @@ Manually adding MDBs
    at the respective places.
 
 Multicast flooding
-^^^^^^^^^^^^^^^^^^
+==================
 
 CPU port mcast_flooding is always on
 
@@ -277,7 +284,7 @@ Turning flooding on/off on switch ports::
    bridge link set dev eth0 mcast_flood on/off
 
 Enabling Cut Through Forwarding (CTF)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=====================================
 
 .. caution::
 
@@ -369,7 +376,7 @@ taking effect
    tx_late_collisions:       Enet_Pn_RxCut_SAF Enet Port n Rx Store and Forward (full-duplex)
 
 Transmit Traffic Control and Rate Limiting
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==========================================
 
 The main difference between one port and multi port devices is that TX CPPI channels
 are shared between all network devices while External Ports FIFO are per port.
