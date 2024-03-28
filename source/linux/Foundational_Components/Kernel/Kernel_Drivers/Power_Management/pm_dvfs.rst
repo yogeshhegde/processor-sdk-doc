@@ -1,5 +1,6 @@
+####
 DVFS
-----
+####
 
 .. rubric:: Overview
 

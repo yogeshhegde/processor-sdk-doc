@@ -1,11 +1,12 @@
 .. _pm_sw_arch:
 
-##############
+##################################
 S/W Architecture of System Suspend
-##############
+##################################
 
+********
 Overview
-========
+********
 
 In AM62, Deep Sleep is the state of the SoC in which it consumes very low power
 overall yet it is not completely shut off. During Deep Sleep, Certain IPs
@@ -15,8 +16,9 @@ refresh to allow context saving.
 
 This document explains the overall high level Software Flow of deep sleep in AM62x.
 
+*****************************
 System diagram and components
-=============================
+*****************************
 
 .. Image:: /images/AM62x_Deep_Sleep_Flow.png
 
@@ -25,7 +27,7 @@ Above diagram has software sequence for how deep sleep (ie. Suspend to RAM) work
 SK-AM62 ( Read more on the Starter Kit `here <https://www.ti.com/tool/SK-AM62>`__ ).
 
 Deep Sleep Entry:
-*****************
+=================
 
 #. The user first instructs the System to Suspend. This triggers a suspend
    sequence from linux side (which runs on the A53 cluster of the SoC).
@@ -76,7 +78,7 @@ Deep Sleep Entry:
    an interrupt that will act as the wakeup signal.
 
 Deep Sleep Exit:
-****************
+================
 
 #. External async wakeup from wake source triggers the DM to resume.
 #. The DM brings MAIN Domain out of reset.
@@ -93,8 +95,9 @@ Deep Sleep Exit:
    I/O isolation is disabled. This allows the pads to be re-connected to their respective controllers
    and allow the device to function normally post resume.
 
+******************
 Learning Resources
-==================
+******************
 
 #. `AM62x Technical Reference Manual <https://www.ti.com/lit/pdf/spruiv7>`__
 #. `Technical White Paper on Enabling Low Power on AM62x <https://www.ti.com/lit/wp/sprad41/sprad41.pdf>`__

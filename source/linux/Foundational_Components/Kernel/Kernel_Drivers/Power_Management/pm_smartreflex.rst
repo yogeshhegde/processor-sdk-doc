@@ -1,5 +1,6 @@
+############
 Smart Reflex
-------------
+############
 
 	.. rubric:: Overview
 

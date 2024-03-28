@@ -1,11 +1,12 @@
 .. _lpm_modes:
 
-##############
+###############
 Low Power Modes
-##############
+###############
 
+********
 Overview
-========
+********
 
 The following sections describe a high-level description of the different low power modes of the
 device. If your application requires inactive power management, you must determine which
@@ -19,8 +20,9 @@ Texas Instruments has added support for the following low power modes:
 #. Partial I/O
 
 
+**********
 Deep Sleep
-==========
+**********
 
 Deep Sleep AKA Suspend-to-RAM is a low-power mode that allows an embedded device
 to retain its state in RAM while the processor is turned off.
@@ -85,8 +87,9 @@ Refer to the :ref:`Wakeup Sources<pm_wakeup_sources>` section for information on
 Deep Sleep mode using one of the supported wakeup sources.
 
 
+********
 MCU Only
-========
+********
 
 .. _pm_mcu_only:
 
@@ -147,8 +150,9 @@ Refer to the :ref:`Wakeup Sources<pm_wakeup_sources>` section for information on
 MCU Only mode using one of the supported wakeup sources.
 
 
+***********
 Partial I/O
-===========
+***********
 
 In Partial I/O, only the I/O pins and a small digital logic in the CANUART I/O
 Bank are active, while the rest of the SoC is turned off. The user can
@@ -226,8 +230,9 @@ system and it will go through a normal Linux boot process.
    The capability to detect whether system is resuming from Partial I/O
    or doing a normal cold boot will be added in future release.
 
+***********
 Limitations
-===========
+***********
 
 HWRNG support on GP devices is incompatible with Deep Sleep and MCU Only
 modes. To test LPM on GP devices, HWRNG has to be unloaded one-time

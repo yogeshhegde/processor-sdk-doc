@@ -2,8 +2,9 @@
 
 .. _Power-Management:
 
+#########################
 Power Management Overview
--------------------------
+#########################
 
 .. rubric:: Power Management Overview
 

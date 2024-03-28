@@ -2,8 +2,9 @@
 Suspend/Resume
 ##############
 
+********
 Overview
-========
+********
 
 The user can deliberately force the system to low power state. There are
 various levels: Suspend to memory(RAM), Suspend to disk, etc. Certains
@@ -151,7 +152,7 @@ during boot even though there is no specific driver for these pins:
                             ...
 
 CM3 Firmware
-------------
+============
 
 Suspend on am335x and am437x depends on interaction between the Linux
 kernel and the wkup\_m3, so there are several requirements when building
@@ -323,7 +324,7 @@ been properly loaded, the following message will be displayed:
         PM: CM3 Firmware Version = 0x191
 
 CM3 Firmware Linux Kernel Interface
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------
 
 The kernel interface to the CM3 firmware is through the wkup\_m3\_rproc
 driver, which is used to load and boot the CM3 firmware, and the
@@ -352,7 +353,7 @@ Source Location:
 responsible for communicating with the CM3 firmware.
 
 Debugging Techniques
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 Debugging suspend and resume issues can be inherently difficult because
 by nature portions of the processor may be clock gated or powered down,
@@ -370,7 +371,7 @@ To aid your debugging efforts, the following resources are available:
 |
 
 RTC-Only and RTC+DDR Mode
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 RTC-Only and RTC+DDR modes are only supported on AM437x devices.
 
@@ -406,7 +407,7 @@ be toggled and ``ti,vtt-gpio-pin`` indicates which pin within GPIO0 is
 connected to the VTT regulator to control it.
 
 IO Isolation Control
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 Many of the pins on AM437x have the ability to configure both normal and
 sleep states. Because of this it is possible to use any pin with a
@@ -454,7 +455,7 @@ value provided in the ``ddr3_vtt_toggle_default`` pinctrl entry.
             };
 
 Deep Sleep Voltage Scaling
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 
 It is possible to scale the voltages on both the MPU and CORE supply
 rails down to 0.95V while we are in DeepSleep once powerdomains are shut
@@ -556,7 +557,7 @@ voltage to the rail.
 |
 
 Simple Example
-^^^^^^^^^^^^^^
+--------------
 
 Single message for both sleep and wake sequence (from
 bin/am335x-evm-scale-data.bin).
@@ -583,7 +584,7 @@ Explanation of values:
     02 2d 25 2b # Length of message, evm i2c bus addr, then message (i2c reg 0x25, write value 0x2b)
 
 Advanced Example
-^^^^^^^^^^^^^^^^
+----------------
 
 Multiple messages on sleep and wake sequence (from
 bin/am43x-evm-scale-data.bin).
