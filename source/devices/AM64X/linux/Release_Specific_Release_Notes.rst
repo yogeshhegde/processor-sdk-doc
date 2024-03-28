@@ -51,6 +51,7 @@ What's new
   - Bug Fixes and Stability Improvements
   - DMSC Firmware: PLL Configuration sequence updated to latest recommendation
   - DMSC Firmware: No longer re-initializing ICSSG clocks
+  - HSR Tx Tag Insertion and Rx Tag Removal offload on ICSSG
 
 **Component version:**
 
@@ -207,10 +208,12 @@ Known Issues
    "LCPD-37795","am62axx_sk-fs,am62pxx_sk-fs,am64xx_sk-fs","RAM size not updated, when ECC is enabled","https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?&id=26c81a4d5b31"
    "LCPD-37389","am64xx-evm,am64xx-hssk,am62xx_sk-fs,am62xxsip_sk-fs,am62pxx_sk-fs,am64xx_sk-fs,am64xx_sk-se","Building Kernel from sources doesn't cover list of dependencies",""
    "LCPD-37388","am64xx-hssk,am62xx_sk-fs,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am64xx_sk-fs,am64xx_evm-se","Building U-Boot from sources doesn't cover list of dependencies",""
+   "LCPD-37197","am64xx-evm, am64xx-hsevm","AM64x: ICSSG: Firmware is not updating the Host Port statistics",""
    "LCPD-36993","am654x-evm,am654x-idk,am654x-hsevm,am64xx-evm,am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_sk-se,beagleplay-gp,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am62lxx_evm-fs,am62lxx_evm-se,am62pxx-zebu,am62lxx-vlab,am62lxx-zebu,am62xx_p0_sk-fs,am64xx_sk-fs,am64xx_evm-se,am64xx_sk-se,am68_sk-fs,am69_sk-fs,beaglebone,bbai,bbai64-gp,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j7200-evm,j7200-hsevm,j784s4-evm,j784s4-hsevm,j722s_evm-fs,J784S4_BASESIM","U-Boot: lpddr4.c: Error handling missing failure cases",""
    "LCPD-36985","am64xx-hsevm","AM64 Yocto SDK UG: Invalid eMMC Programming Steps in U-Boot Section",""
    "LCPD-36981","am64xx-evm,am64xx-hsevm","AM64x missing DMTimer support",""
    "LCPD-36876","am64xx-hsevm","running linuxptp (ptp4l, phc_ctl or ts2phc, setting clock) it will cause PPS incoherence",""
+   "LCPD-36864","am64xx-evm","ICSSG1 is not working in Debian but working in Yocto",""
    "LCPD-36414","am64xx-evm,am62xx_sk-fs","Performance numbers for NOR, eMMC missing in doc",""
    "LCPD-36361","am64xx-hsevm,am62xxsip_sk-se","Boot failure over UART",""
    "LCPD-36358","am64xx-evm","am64x: eth2 link fails to come up for test_nway test",""
@@ -252,6 +255,7 @@ Issues opened in previous releases that were closed on this release
    "LCPD-37300","AM64x SDK v9.1 SDK Images don't boot on SK-AM64B due to U-Boot using incorrect DTS File from EVM","am64xx-hsevm,am64xx-hssk"
    "LCPD-37223","AM64x: ICSSG1 MII mode isn't working","am64xx-evm,am64xx-hsevm"
    "LCPD-37207","Docker is disabled in RT Linux","am64xx-hssk,am62xx_lp_sk-fs,am62xxsip_sk-fs,am62pxx_sk-fs"
+   "LCPD-32640","Kernel HSR does not work on base image (same command works on default)","am64xx-evm"
    "SYSFW-6763","TISCI_MSG_SET_DEVICE_RESETS message returns success for invalid device reset range","am62x,am62ax,am62px"
    "SYSFW-7056","Implement New PLL sequence Proposed by HW team","am62x,am62ax,am62px,am64x"
    "SYSFW-6941","TISCI_MSG_SYS_RESET fails for negative testcase","am62x,am62ax,am62px"
@@ -280,7 +284,6 @@ Issues found and closed on this release that may be applicable to prior releases
    "LCPD-34800","eMMC itapdly sel is not programmed to PHY_CTRL4 register","am64xx-evm,am64xx_sk-fs"
    "LCPD-34780","DT property ti,driver-strength-ohm is only applicable to AM64x MMC0","am64xx-evm,am62xx_sk-fs,am62xx_lp_sk-fs,am62axx_sk-fs,am62xx-lp-sk,am62xx-sk,am64xx_sk-fs"
    "LCPD-32868","Kernel crash from PRU auto-forwarding packet","am654x-idk,am64xx-evm"
-   "LCPD-32640","Kernel HSR does not work on base image (same command works on default)","am64xx-evm"
    "LCPD-32481","AM64x: Environment variables for DFU to NAND","am64xx-evm,am64xx-hsevm"
    "LCPD-29597","AM64x: dts: main_rti nodes are defined twice","am64xx-evm"
    "LCPD-29489","M4F Core should be able to load data to OC_SRAM","am64xx-evm,am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62xx-lp-sk,am62xx-sk,am64xx_sk-fs"
