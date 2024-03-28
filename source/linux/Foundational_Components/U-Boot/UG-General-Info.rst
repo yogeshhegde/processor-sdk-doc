@@ -331,7 +331,7 @@ Build U-Boot
       |  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |           USB DFU                  |
       +============================+=================================+================================+================================+====================================+
       |    J722S EVM               |    j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_usbdfu.config    |
-     |                            |    j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig       |
+      |                            |    j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig       |
       +----------------------------+---------------------------------+--------------------------------+--------------------------------+------------------------------------+
 
    .. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4')
