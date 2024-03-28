@@ -102,6 +102,7 @@ linux/How_to_Guides/Target/How_to_enable_DT_overlays_in_linux
 linux/How_to_Guides/Target/How_to_flash_emmc_device
 linux/How_to_Guides/Target/How_to_visualize_statistics_data
 linux/How_to_Guides/Target/How_to_Use_K3Conf_Tool
+linux/How_to_Guides/Target/How_to_Tune_Real_Time_Linux
 linux/How_to_Guides/FAQ/How_to_Verify_Ipc_Linux_R5
 linux/How_to_Guides/FAQ/How_to_Configure_MSMC_memory
 linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
