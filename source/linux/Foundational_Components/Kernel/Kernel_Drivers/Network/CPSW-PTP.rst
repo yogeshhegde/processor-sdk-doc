@@ -476,6 +476,17 @@ PPS can now be tested using testptp and ppstest tools::
        source 0 - assert 198.000000700, sequence: 7 - clear  0.000000000, sequence: 0
        source 0 - assert 199.000000700, sequence: 8 - clear  0.000000000, sequence: 0
 
+.. note::
+
+   When using PPS signal along with PTP, the ptp4l application has to be
+   rerun **before** enabling the PPS signal. This is required in order to
+   ensure that the PPS signal remains in sync with the PHC which in turn
+   is synchronized with the PTP master clock via the ptp4l application.
+   If the ptp4l application is run **after** enabling the PPS signal, then
+   the PPS signal will **not** be in sync with the PHC. Additionally, if the
+   ptp4l application is stopped and rerun at any point in time, then the
+   command to generate the PPS signal also has to be rerurn accordingly.
+
 Setup
 ------
 
