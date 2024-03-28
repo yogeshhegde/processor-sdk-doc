@@ -191,30 +191,44 @@ Limitations
 Performance
 -----------
 
-Performance of Aquarium/MotionMarkv1.3
+**Performance of WebGL Aquarium**
 
-Standard Javascript/WebGL benchmarks available at these URLS:
-
-https://webglsamples.org/aquarium/aquarium.html
+Standard WebGL benchmarks available at these URLS: https://webglsamples.org/aquarium/aquarium.html
 
 Run as the weston user with the command line :console:`chromium https://webglsamples.org/aquarium/aquarium.html --start-fullscreen`
 
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-        +---------------------------------+-----------------------------------------------------------------------+
-        | **Platform**                    | **Performance FPS**                                                   |
-        +---------------------------------+-----------------------------------------------------------------------+
-        | |__PART_FAMILY_DEVICE_NAMES__|  | 40 @ 1080p60                                                          |
-        +---------------------------------+-----------------------------------------------------------------------+
+        +---------------------------------+----------------------+------------------------------------------------+
+        | **Platform**                    | **Performance FPS**  | **GPU Utilisation**                            |
+        +---------------------------------+----------------------+------------------------------------------------+
+        | |__PART_FAMILY_DEVICE_NAMES__|  | 40 @ 1080p60         | 72%                                            |
+        +---------------------------------+----------------------+------------------------------------------------+
+
+    .. note::
+
+          GPU Utilisation is captured using,
+
+          .. code-block:: console
+
+              root@am62pxx-evm:~# cat /sys/kernel/debug/pvr/status
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        +---------------------------------+-----------------------------------------------------------------------+
-        | **Platform**                    | **Performance FPS**                                                   |
-        +---------------------------------+-----------------------------------------------------------------------+
-        | |__PART_FAMILY_DEVICE_NAMES__|  | 9 @ 1080p60                                                           |
-        +---------------------------------+-----------------------------------------------------------------------+
+        +---------------------------------+----------------------+------------------------------------------------+
+        | **Platform**                    | **Performance FPS**  | **GPU Utilisation**                            |
+        +---------------------------------+----------------------+------------------------------------------------+
+        | |__PART_FAMILY_DEVICE_NAMES__|  | 9 @ 1080p60          | 100%                                           |
+        +---------------------------------+----------------------+------------------------------------------------+
+
+       .. note::
+
+          GPU Utilisation is captured using,
+
+          .. code-block:: console
+
+              root@am62xx-evm:~# cat /sys/kernel/debug/pvr/status
 
 .. ifconfig:: CONFIG_part_variant in ('J722S')
 
@@ -240,8 +254,9 @@ Run as the weston user with the command line :console:`chromium https://webglsam
         | |__PART_FAMILY_DEVICE_NAMES__|  | 60 @ 1080p60                                                          |
         +---------------------------------+-----------------------------------------------------------------------+
 
+**Performance of MotionMarkv1.3**
 
-https://browserbench.org/MotionMark/
+Standard Javascript benchmarks available at these URLS: https://browserbench.org/MotionMark/
 
 Run as the weston user with the command line :console:`chromium https://browserbench.org/MotionMark/ --start-fullscreen`
 use the mouse to click the "Run Benchmark" button.
