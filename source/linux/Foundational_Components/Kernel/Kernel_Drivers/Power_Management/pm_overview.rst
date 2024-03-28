@@ -24,19 +24,19 @@ The dynamic power management features enabled on |__PART_FAMILY_DEVICE_NAMES__| 
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
-	-  MPU DVFS
-	-  SmartReflex
+   -  MPU DVFS
+   -  SmartReflex
 
 .. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
-	#. DVFS
-	#. CPUIdle
+   #. DVFS
+   #. CPUIdle
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-    #. Dynamic Frequency Scaling
-    #. CPUIdle
-    #. Runtime PM
+   #. Dynamic Frequency Scaling
+   #. CPUIdle
+   #. Runtime PM
 
 .. rubric:: Static Power Management
 
@@ -48,8 +48,8 @@ supported by the Linux kernel.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-    The static power management features on |__PART_FAMILY_DEVICE_NAMES__| are:
+   The static power management features on |__PART_FAMILY_DEVICE_NAMES__| are:
 
-    #. Deep Sleep
-    #. MCU Only Mode
-    #. Partial I/O
+   #. Deep Sleep
+   #. MCU Only Mode
+   #. Partial I/O

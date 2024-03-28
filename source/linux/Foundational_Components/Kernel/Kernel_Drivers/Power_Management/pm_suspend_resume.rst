@@ -27,34 +27,34 @@ configuration tool using:
 
 ::
 
-        $ make menuconfig
+   $ make menuconfig
 
 Select *Power management options* from the main menu.
 
 ::
 
-        ...
-        ...
-        Kernel Features  --->
-        Boot options  --->
-        CPU Power Management  --->
-        Floating point emulation  --->
-        Userspace binary formats  --->
-        Power management options  --->
-        [*] Networking support  --->
-        Device Drivers  --->
-        ...
-        ...
+   ...
+   ...
+   Kernel Features  --->
+   Boot options  --->
+   CPU Power Management  --->
+   Floating point emulation  --->
+   Userspace binary formats  --->
+   Power management options  --->
+   [*] Networking support  --->
+   Device Drivers  --->
+   ...
+   ...
 
 Select *Suspend to RAM and standby* to toggle the power management
 support.
 
 ::
 
-        [*] Suspend to RAM and standby
-        -*- Run-time PM core functionality
-        ...
-        < > Advanced Power Management Emulation
+   [*] Suspend to RAM and standby
+   -*- Run-time PM core functionality
+   ...
+   < > Advanced Power Management Emulation
 
 And then build the kernel as usual.
 
@@ -73,37 +73,37 @@ pinctrl state for normal operation:
 
 ::
 
-    davinci_mdio_default: davinci_mdio_default {
-            pinctrl-single,pins = <
-                    /* MDIO */
-                    0x148 (PIN_INPUT_PULLUP | SLEWCTRL_FAST | MUX_MODE0)    /* mdio_data.mdio_data */
-                    0x14c (PIN_OUTPUT_PULLUP | MUX_MODE0)                   /* mdio_clk.mdio_clk */
-            >;
-    };
+   davinci_mdio_default: davinci_mdio_default {
+      pinctrl-single,pins = <
+         /* MDIO */
+         0x148 (PIN_INPUT_PULLUP | SLEWCTRL_FAST | MUX_MODE0)    /* mdio_data.mdio_data */
+         0x14c (PIN_OUTPUT_PULLUP | MUX_MODE0)                   /* mdio_clk.mdio_clk */
+      >;
+   };
 
 In order to define a sleep state for the same device, another pinctrl
 state can be defined:
 
 ::
 
-    davinci_mdio_sleep: davinci_mdio_sleep {
-            pinctrl-single,pins = <
-                    /* MDIO reset value */
-                    0x148 (PIN_INPUT_PULLDOWN | MUX_MODE7)
-                    0x14c (PIN_INPUT_PULLDOWN | MUX_MODE7)
-            >;
-    };
+   davinci_mdio_sleep: davinci_mdio_sleep {
+      pinctrl-single,pins = <
+         /* MDIO reset value */
+         0x148 (PIN_INPUT_PULLDOWN | MUX_MODE7)
+         0x14c (PIN_INPUT_PULLDOWN | MUX_MODE7)
+      >;
+   };
 
 The driver then defines the sleep state in addition to the default
 state:
 
 ::
 
-    &davinci_mdio {
-            pinctrl-names = "default", "sleep";
-            pinctrl-0 = <&davinci_mdio_default>;
-            pinctrl-1 = <&davinci_mdio_sleep>;
-            ...
+   &davinci_mdio {
+      pinctrl-names = "default", "sleep";
+      pinctrl-0 = <&davinci_mdio_default>;
+      pinctrl-1 = <&davinci_mdio_sleep>;
+      ...
 
 Although the driver core handles selection of the default state during
 the initial probe of the driver, some extra work may be needed within
@@ -142,14 +142,14 @@ during boot even though there is no specific driver for these pins:
 
 ::
 
-    &am43xx_pinmux {
-             pinctrl-names = "default";
-             pinctrl-0 = <&unused_wireless>;
-             ...
-             unused_pins: unused_pins {
-                     pinctrl-single,pins = <
-                            0x80    (PIN_INPUT_PULLDOWN | MUX_MODE7) /* gpmc_csn1.mmc1_clk */
-                            ...
+   &am43xx_pinmux {
+      pinctrl-names = "default";
+      pinctrl-0 = <&unused_wireless>;
+      ...
+      unused_pins: unused_pins {
+         pinctrl-single,pins = <
+            0x80    (PIN_INPUT_PULLDOWN | MUX_MODE7) /* gpmc_csn1.mmc1_clk */
+            ...
 
 CM3 Firmware
 ============
@@ -161,20 +161,20 @@ are required when building a kernel to support suspend:
 
 ::
 
-    # Firmware Loading from rootfs
-    CONFIG_FW_LOADER_USER_HELPER=y
-    CONFIG_FW_LOADER_USER_HELPER_FALLBACK=y
+   # Firmware Loading from rootfs
+   CONFIG_FW_LOADER_USER_HELPER=y
+   CONFIG_FW_LOADER_USER_HELPER_FALLBACK=y
 
-    # AMx3 Power Config Options
-    CONFIG_MAILBOX=y
-    CONFIG_OMAP2PLUS_MBOX=y
-    CONFIG_WKUP_M3_RPROC=y
-    CONFIG_SOC_TI=y
-    CONFIG_WKUP_M3_IPC=y
-    CONFIG_TI_EMIF_SRAM=y
-    CONFIG_AMX3_PM=y
+   # AMx3 Power Config Options
+   CONFIG_MAILBOX=y
+   CONFIG_OMAP2PLUS_MBOX=y
+   CONFIG_WKUP_M3_RPROC=y
+   CONFIG_SOC_TI=y
+   CONFIG_WKUP_M3_IPC=y
+   CONFIG_TI_EMIF_SRAM=y
+   CONFIG_AMX3_PM=y
 
-    CONFIG_RTC_DRV_OMAP=y
+   CONFIG_RTC_DRV_OMAP=y
 
 Note that it is also possible to build all of the options under
 `` AMx3 Power Config Options `` as modules if desired. Finally, do not
@@ -194,7 +194,7 @@ To enter DeepSleep0 enter the following at the command line:
 
 ::
 
-        $ echo mem > /sys/power/state
+   $ echo mem > /sys/power/state
 
 From here, the system will enter DeepSleep0. At any point, triggering
 one of the aforementioned wake-up sources will cause the kernel to
@@ -203,24 +203,24 @@ cycle should look like this:
 
 ::
 
-        $ echo mem > /sys/power/state
-        $ PM: Syncing filesystems ... done.
-        $ Freezing user space processes ... (elapsed 0.007 seconds) done.
-        $ Freezing remaining freezable tasks ... (elapsed 0.006 seconds) done.
-        $ Suspending console(s) (use no_console_suspend to debug)
-        $ PM: suspend of devices complete after 194.787 msecs
-        $ PM: late suspend of devices complete after 14.477 msecs
-        $ PM: noirq suspend of devices complete after 17.849 msecs
-        $ Disabling non-boot CPUs ...
-        $ PM: Successfully put all powerdomains to target state
-        $ PM: Wakeup source UART
-        $ PM: noirq resume of devices complete after 39.113 msecs
-        $ PM: early resume of devices complete after 10.180 msecs
-        $ net eth0: initializing cpsw version 1.12 (0)
-        $ net eth0: phy found : id is : 0x4dd074
-        $ PM: resume of devices complete after 368.844 msecs
-        $ Restarting tasks ... done
-        $
+   $ echo mem > /sys/power/state
+   $ PM: Syncing filesystems ... done.
+   $ Freezing user space processes ... (elapsed 0.007 seconds) done.
+   $ Freezing remaining freezable tasks ... (elapsed 0.006 seconds) done.
+   $ Suspending console(s) (use no_console_suspend to debug)
+   $ PM: suspend of devices complete after 194.787 msecs
+   $ PM: late suspend of devices complete after 14.477 msecs
+   $ PM: noirq suspend of devices complete after 17.849 msecs
+   $ Disabling non-boot CPUs ...
+   $ PM: Successfully put all powerdomains to target state
+   $ PM: Wakeup source UART
+   $ PM: noirq resume of devices complete after 39.113 msecs
+   $ PM: early resume of devices complete after 10.180 msecs
+   $ net eth0: initializing cpsw version 1.12 (0)
+   $ net eth0: phy found : id is : 0x4dd074
+   $ PM: resume of devices complete after 368.844 msecs
+   $ Restarting tasks ... done
+   $
 
 It is also possible to enter standby sleep with the possibility to use
 additional wake sources and have a faster resume time while using
@@ -229,7 +229,7 @@ command line:
 
 ::
 
-        $ echo standby > /sys/power/state
+   $ echo standby > /sys/power/state
 
 A successful cycle through standby sleep should look the same as
 DeepSleep0.
@@ -239,7 +239,7 @@ in the log:
 
 ::
 
-        $ PM: Could not transition all powerdomains to target state
+   $ PM: Could not transition all powerdomains to target state
 
 This is usually due to clocks that have not properly been shut off
 within the PER powerdomain. Make sure that all clocks within CM\_PER are
@@ -277,43 +277,43 @@ enter the kernel configuration by typing:
 
 ::
 
-    $ make menuconfig
+   $ make menuconfig
 
 Select *Device Drivers* from the main menu.
 
 ::
 
-    ...
-    ...
-    Kernel Features  --->
-    Boot options  --->
-    CPU Power Management  --->
-    Floating point emulation  --->
-    Userspace binary formats  --->
-    Power management options  --->
-    [*] Networking support  --->
-    Device Drivers  --->
-    ...
-    ...
+   ...
+   ...
+   Kernel Features  --->
+   Boot options  --->
+   CPU Power Management  --->
+   Floating point emulation  --->
+   Userspace binary formats  --->
+   Power management options  --->
+   [*] Networking support  --->
+   Device Drivers  --->
+   ...
+   ...
 
 Select Generic Driver Options
 
 ::
 
-    Generic Driver Options
-    CBUS support
-    ...
-    ...
+   Generic Driver Options
+   CBUS support
+   ...
+   ...
 
 Configure the name of the PM firmware and the location as shown below
 
 ::
 
-    ...
-    -*- Userspace firmware loading support
-    [*] Include in-kernel firmware blobs in the kernel binary
-    (am335x-pm-firmware.elf) External firmware blobs to build into the kernel binary
-    (firmware) Firmware blobs root directory
+   ...
+   -*- Userspace firmware loading support
+   [*] Include in-kernel firmware blobs in the kernel binary
+   (am335x-pm-firmware.elf) External firmware blobs to build into the kernel binary
+   (firmware) Firmware blobs root directory
 
 The CM3 firmware is needed for all idle low power modes on am335x and
 am437x and for cpuidle on am335x. During boot, if the CM3 firmware has
@@ -321,7 +321,7 @@ been properly loaded, the following message will be displayed:
 
 ::
 
-        PM: CM3 Firmware Version = 0x191
+   PM: CM3 Firmware Version = 0x191
 
 CM3 Firmware Linux Kernel Interface
 -----------------------------------
@@ -377,7 +377,7 @@ RTC-Only and RTC+DDR modes are only supported on AM437x devices.
 
 .. ifconfig:: CONFIG_part_family in ('AM437X_family')
 
-	 Please refer to :doc:`pm_rtc_ddr` for details.
+   Please refer to :doc:`pm_rtc_ddr` for details.
 
 .. rubric:: DDR3 VTT Regulator Toggling
 
@@ -397,10 +397,10 @@ within the board device tree file.
 
 ::
 
-    &wkup_m3_ipc {
-            ti,needs-vtt-toggle;
-            ti,vtt-gpio-pin = <7>;
-    };
+   &wkup_m3_ipc {
+      ti,needs-vtt-toggle;
+      ti,vtt-gpio-pin = <7>;
+   };
 
 ``ti,needs-vtt-toggle`` is used to indicate that the vtt regulator must
 be toggled and ``ti,vtt-gpio-pin`` indicates which pin within GPIO0 is
@@ -434,25 +434,25 @@ value provided in the ``ddr3_vtt_toggle_default`` pinctrl entry.
 
 ::
 
-            &am43xx_pinmux {
-                    pinctrl-names = "default";
-                    pinctrl-0 = <&ddr3_vtt_toggle_default>;
+   &am43xx_pinmux {
+      pinctrl-names = "default";
+      pinctrl-0 = <&ddr3_vtt_toggle_default>;
 
-                    ddr3_vtt_toggle_default: ddr_vtt_toggle_default {
-                    pinctrl-single,pins = <
-                            0x25C (DS0_PULL_UP_DOWN_EN | PIN_OUTPUT_PULLUP |
-                                   DS0_FORCE_OFF_MODE | MUX_MODE7)>;
-                    };
-                    ...
-            };
+      ddr3_vtt_toggle_default: ddr_vtt_toggle_default {
+      pinctrl-single,pins = <
+         0x25C (DS0_PULL_UP_DOWN_EN | PIN_OUTPUT_PULLUP |
+                DS0_FORCE_OFF_MODE | MUX_MODE7)>;
+      };
+      ...
+   };
 
-            wkup_m3_ipc: wkup_m3_ipc@1324 {
-                    compatible = "ti,am4372-wkup-m3-ipc";
-                    ...
-                    ...
-                    '''ti,set-io-isolation;'''
-                    ...
-            };
+   wkup_m3_ipc: wkup_m3_ipc@1324 {
+      compatible = "ti,am4372-wkup-m3-ipc";
+      ...
+      ...
+      '''ti,set-io-isolation;'''
+      ...
+   };
 
 Deep Sleep Voltage Scaling
 --------------------------
@@ -491,11 +491,11 @@ with the ``ti,scale-data-fw`` property of a board file like so:
 
 ::
 
-    /* From arch/arm/boot/dts/am437x-gp-evm.dts */
-    &wkup_m3_ipc {
-            ...
-            ti,scale-data-fw = "am43x-evm-scale-data.bin";
-    };
+   /* From arch/arm/boot/dts/am437x-gp-evm.dts */
+   &wkup_m3_ipc {
+      ...
+      ti,scale-data-fw = "am43x-evm-scale-data.bin";
+   };
 
 The wkup\_m3\_ipc driver at\ ``drivers/soc/ti/wkup_m3_ipc.c`` handles
 loading this binary to the proper data region of the CM3 and then
@@ -566,22 +566,22 @@ Raw binary data using xxd:
 
 ::
 
-    a0274052local@uda0274052:~/git-repos/amx3-cm3$ xxd bin/am335x-evm-scale-data.bin
-    0000000: 0c57 0006 0034 022d 251f 0034 022d 252b  .W...4.-%..4.-%+
+   a0274052local@uda0274052:~/git-repos/amx3-cm3$ xxd bin/am335x-evm-scale-data.bin
+   0000000: 0c57 0006 0034 022d 251f 0034 022d 252b  .W...4.-%..4.-%+
 
 Explanation of values:
 
 ::
 
-    0c57        # Magic number
-    00      # Offset from first byte after header to sleep section
-    06      # Offset from first byte after header to wake section
+   0c57        # Magic number
+   00      # Offset from first byte after header to sleep section
+   06      # Offset from first byte after header to wake section
 
-    0034        # Sleep sequence section, starts with two bytes to describe i2c bus in khz (100)
-    02 2d 25 1f # Length of message, evm i2c bus addr, then message (i2c reg 0x25, write value 0x1f)
+   0034        # Sleep sequence section, starts with two bytes to describe i2c bus in khz (100)
+   02 2d 25 1f # Length of message, evm i2c bus addr, then message (i2c reg 0x25, write value 0x1f)
 
-    0034        # Wake sequence section, starts with two bytes to describe i2c bus in khz (100)
-    02 2d 25 2b # Length of message, evm i2c bus addr, then message (i2c reg 0x25, write value 0x2b)
+   0034        # Wake sequence section, starts with two bytes to describe i2c bus in khz (100)
+   02 2d 25 2b # Length of message, evm i2c bus addr, then message (i2c reg 0x25, write value 0x2b)
 
 Advanced Example
 ----------------
@@ -593,30 +593,30 @@ Raw binary data using xxd:
 
 ::
 
-    amx3-cm3$ xxd bin/am43x-evm-scale-data.bin
-    0000000: 0c57 0012 0034 0224 106b 0224 168a 0224  .W...4.$.k.$...$
-    0000010: 1067 0224 1a86 0034 0224 106b 0224 1699  .g.$...4.$.k.$..
-    0000020: 0224 1067 0224 1a86                      .$.g.$..
+   amx3-cm3$ xxd bin/am43x-evm-scale-data.bin
+   0000000: 0c57 0012 0034 0224 106b 0224 168a 0224  .W...4.$.k.$...$
+   0000010: 1067 0224 1a86 0034 0224 106b 0224 1699  .g.$...4.$.k.$..
+   0000020: 0224 1067 0224 1a86                      .$.g.$..
 
 Explanation of values:
 
 ::
 
-    0C 57           # Magic number 0x0C57
-    00          # Offset, starting after header, to sleep sequence
-    12          # Offset, starting after header, to wake sequence
+   0C 57           # Magic number 0x0C57
+   00          # Offset, starting after header, to sleep sequence
+   12          # Offset, starting after header, to wake sequence
 
-    0034            # Sleep sequence section, starts with two bytes to describe i2c bus in khz (100)
-    02 24 10 6b     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x10, write 0x6b)
-    02 24 16 8a     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x16, write 0x8a)
-    02 24 10 67     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x10, write 0x67)
-    02 24 1a 86     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x1a, write 0x86)
+   0034            # Sleep sequence section, starts with two bytes to describe i2c bus in khz (100)
+   02 24 10 6b     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x10, write 0x6b)
+   02 24 16 8a     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x16, write 0x8a)
+   02 24 10 67     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x10, write 0x67)
+   02 24 1a 86     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x1a, write 0x86)
 
-    0034            # Wake sequence section, starts with two bytes to describe i2c bus in khz (100)
-    02 24 10 6b     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x10, write 0x6b)
-    02 24 16 99     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x16, write 0x99)
-    02 24 10 67     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x10, write 0x67)
-    02 24 1a 86     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x1a, write 0x86)
+   0034            # Wake sequence section, starts with two bytes to describe i2c bus in khz (100)
+   02 24 10 6b     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x10, write 0x6b)
+   02 24 16 99     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x16, write 0x99)
+   02 24 10 67     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x10, write 0x67)
+   02 24 1a 86     # msg length 0x02, to i2c addr 0x24, message is (i2c reg 0x1a, write 0x86)
 
 |
 
