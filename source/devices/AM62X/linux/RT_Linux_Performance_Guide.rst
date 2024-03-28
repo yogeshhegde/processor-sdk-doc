@@ -34,8 +34,6 @@ with drivers included in a particular release.
 For further information or to report any problems, contact
 http://e2e.ti.com/ or http://support.ti.com/
 
-
-
 Stress-ng and Cyclic Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -60,10 +58,6 @@ Test command for running stress-ng and cyclictest together
 .. csv-table::
     :header: "Latencies","am62xx_sk:per-core"
 
-     "Minimum (usec)","4,4,4,4"
+    "Minimum (usec)","4,4,4,4"
     "Average (usec)","5,5,5,5"
-    "Maximum (usec)","55,62,71,61"
- 
-
-Table:  **Stress-ng and Cyclic Test**
-
+    "Maximum (usec)","33,63,46,52"
