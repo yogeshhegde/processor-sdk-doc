@@ -22,10 +22,10 @@ status for all packages included in this release. The manifest can be
 found on the SDK download page.
 
 
-Release 09.01.00
+Release 09.02.00
 ================
 
-Released on December 2023
+Released on March 2024
 
 What's new
 ----------
@@ -39,13 +39,13 @@ Release Features
 Following features are enabled/tested in this release for AM62Px Android:
 
 * **Boot:** eMMC boot, fastboot based flashing, A/B partition
-* **Security:** Keymaster and gatekeeper implementaton with OP-TEE
+* **Security:** Keymint and gatekeeper implementation with OP-TEE
 * **Platform:** SELinux enforced mode with user build, ADB over USB
 * **Connectivity:** Ethernet, USB touch
 * **Graphics:** GPU accelerated UI with drm_hwcomposer
 * **Audio:** HDMI output and jack audio output/input
-* **Multimedia:** SW video decode/encode, USB camera, CSI camera
-* **Android Baseport:** Support of Generic System Image,
+* **Multimedia:** SW video encode, :ref:`HW video decode (h264, hevc) <Android Multimedia Wave5>`, USB camera, CSI camera
+* **Android Baseport:** Support of Generic System Image
 * **Display:** Support for LVDS panel and dual display (mirroring and extended)
 
 SDK Components and Versions
@@ -56,7 +56,7 @@ SDK Components and Versions
 +====================================+===============================================================================+
 | **Android**                        | Android 14 / Android 14 Car                                                   |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Linux Kernel**                   | Linux 6.1.43                                                                  |
+| **Linux Kernel**                   | Linux 6.1.68                                                                  |
 +------------------------------------+-------------------------------------------------------------------------------+
 | **Linux Kernel Toolchain**         | clang-r487747c                                                                |
 +------------------------------------+-------------------------------------------------------------------------------+
@@ -64,7 +64,7 @@ SDK Components and Versions
 +------------------------------------+-------------------------------------------------------------------------------+
 | **GCC Toolchain**                  | GNU Toolchain for the A-profile Architecture 11.3 (rel2)                      |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Base Linux SDK**                 | PROCESSOR-SDK-LINUX-AM62PX 09.01.08                                           |
+| **Base Linux SDK**                 | PROCESSOR-SDK-LINUX-AM62PX 09.02.09                                           |
 +------------------------------------+-------------------------------------------------------------------------------+
 | **Hardware Supported**             | AM62PX-SK                                                                     |
 +------------------------------------+-------------------------------------------------------------------------------+
@@ -83,7 +83,7 @@ Documentation
 Host Support
 ============
 
-The Processor SDK is developed, built and verified on Ubuntu 18.04, 20.04 and 22.04. For all other
+The Processor SDK is developed, built and verified on Ubuntu 20.04 and 22.04. For all other
 versions of host support refer to Android documentation.
 
 
@@ -92,6 +92,12 @@ Known Issues
 
 +----------------+-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+---------------+
 | **Issues**     | **Description**                                                       | **Post Release Fix**                                                                                                      | **Component** |
++----------------+-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+---------------+
+| **SITSW-4289** | OTA via SystemUpdaterSample fails                                     | N/A                                                                                                                       | N/A           |
++----------------+-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+---------------+
+| **SITSW-4268** | Android: Seek operation not functional                                | N/A                                                                                                                       | N/A           |
++----------------+-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+---------------+
+| **SITSW-4272** | Codec2 HAL encode is not functional                                   | N/A                                                                                                                       | N/A           |
 +----------------+-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+---------------+
 | **SITSW-1387** | Mcasp: Buffer underflow console messages seen                         | N/A                                                                                                                       | N/A           |
 +----------------+-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+---------------+

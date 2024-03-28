@@ -29,7 +29,6 @@ Install snagboot following the `official instructions <https://github.com/bootli
 
 .. note::
 
-    Snagboot requires at least Python 3.8, meaning that it can't run on Ubuntu 18.04 releases.
     If Snagboot cannot be installed, it's possible boot the initial bootloaders from an SD card.
 
     .. ifconfig:: CONFIG_part_variant in ('AM62X')
@@ -76,7 +75,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
           (OR)
 
           # If you are using pre-built binaries from SDK download page
-          cd AM62x_09.01.00_emmc
+          cd AM62x_09.02.00_emmc
 
           # for AM62x SK EVM (GP)
           snagrecover -s am625 -f ./am62x-sk-evm.yaml
@@ -100,7 +99,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
           (OR)
 
           # If you are using pre-built binaries from SDK download page
-          cd AM62Px_09.01.00_emmc
+          cd AM62Px_09.02.00_emmc
 
           snagrecover -s am625 -f ./am62px-sk-evm-hsfs.yaml
 
@@ -156,7 +155,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
           (OR)
 
           # If you are using pre-built binaries from SDK download page
-          cd AM62x_09.01.00_emmc
+          cd AM62x_09.02.00_emmc
 
           # for AM62x SK EVM (GP)
           sudo ./flashall.sh --board am62x-sk
@@ -180,7 +179,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
           (OR)
 
           # If you are using pre-built binaries from SDK download page
-          cd AM62Px_09.01.00_emmc
+          cd AM62Px_09.02.00_emmc
 
           sudo ./flashall.sh --board am62px-sk
 
