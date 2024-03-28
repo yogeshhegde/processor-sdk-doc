@@ -203,6 +203,7 @@ Known Issues
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 15, 70, 10, 25
 
+   "LCPD-37795","am62axx_sk-fs,am62pxx_sk-fs,am64xx_sk-fs","RAM size not updated, when ECC is enabled","https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?&id=26c81a4d5b31"
    "LCPD-37543","am62axx_sk-fs","AM62A Yocto SDK UG: OSPI U-Boot Section Incomplete (PHY Calibration, Programming, etc.)",""
    "LCPD-37377","am62xx_lp_sk-fs,am62axx_sk-fs,am62axx_sk-se","Doc: U-Boot: No documentation for OSPI NAND",""
    "LCPD-37373","am62axx_sk-fs","wave5 VPU page-faults on poison memory address during long test",""
