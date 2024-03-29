@@ -19,33 +19,43 @@ Then, the following steps are required:
 
 1. Make sure the board is powered down. No SD card is present.
 
-2. Plug in the serial connector to view debug logs. In a terminal, open::
+2. Plug in the serial connector to view debug logs. In a terminal, open:
 
-      sudo picocom -b 115200 -r -l /dev/ttyUSB0
+   .. code-block:: console
+
+      $ sudo picocom -b 115200 -r -l /dev/ttyUSB0
 
 3. Hold the ``USR`` button. While holding the button, insert ``USB`` cable from PC to board.
 
 4. Wait for DFU mode to come up. DFU mode is a backup boot mode for the Beagle Play.
-   To check if the device enumerates via DFU, run ``dfu-util -l``::
+   To check if the device enumerates via DFU, run ``dfu-util -l``:
+
+   .. code-block:: console
 
       $ dfu-util -l
 
       Found DFU: [0451:6165] ver=0200, devnum=99, cfg=1, intf=0, path="1-1", alt=1, name="SocId", serial="01.00.00.00"
       Found DFU: [0451:6165] ver=0200, devnum=99, cfg=1, intf=0, path="1-1", alt=0, name="bootloader", serial="01.00.00.00"
 
-5. Run ``snagrecover`` to load the bootloaders::
+5. Run ``snagrecover`` to load the bootloaders:
+
+   .. code-block:: console
 
       # run from out/target/product/am62x
       $ snagrecover -s am625 -f ./am625-beagleplay.yaml
 
-   The debug console will show::
+   The debug console will show:
 
-     Press SPACE to abort autoboot in 2 seconds
-     =>
+   .. code-block:: console
+
+      Press SPACE to abort autoboot in 2 seconds
+      =>
 
 6. In the debug console, hit the SPACE key to halt in U-Boot
 
-7. Make sure the default U-Boot environment is configured::
+7. Make sure the default U-Boot environment is configured:
+
+   .. code-block:: console
 
       => env default -a -f
       => saveenv
@@ -54,7 +64,9 @@ Then, the following steps are required:
 
       => fastboot usb 0
 
-9. Run the flashing script::
+9. Run the flashing script:
+
+   .. code-block:: console
 
       # run from out/target/product/am62x
       $ sudo ./flashall.sh --board am625-beagleplay

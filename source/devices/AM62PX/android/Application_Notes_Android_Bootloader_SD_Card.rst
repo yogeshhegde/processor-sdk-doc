@@ -19,9 +19,11 @@ to boot into U-Boot and use fastboot.
 Identify the SD Card
 --------------------
 
-To start, identify your SD card with::
+To start, identify your SD card with:
 
-  sudo fdisk -l
+.. code-block:: console
+
+   $ sudo fdisk -l
 
 In this example, the SD card will be: ``/dev/mmcblk0``.
 
@@ -31,17 +33,19 @@ Prepare the SD Card
 The preparation of the SD Card is done via the ``flashall.sh`` script.
 Make sure to identify the board model, and the SD card path.
 
-Then, run::
+Then, run:
 
-  # If you are using binaries built locally
-  cd out/target/product/am62p
+.. code-block:: console
 
-  (OR)
+   # If you are using binaries built locally
+   $ cd out/target/product/am62p
 
-  # If you are using pre-built binaries from SDK download page
-  cd AM62Px_09.02.00_emmc
+   (OR)
 
-  sudo ./flashall.sh --board am62px-sk --bootloader --sdcard /dev/mmcblk0
+   # If you are using pre-built binaries from SDK download page
+   $ cd AM62Px_09.02.00_emmc
+
+   $ sudo ./flashall.sh --board am62px-sk --bootloader --sdcard /dev/mmcblk0
 
 eMMC flashing
 ==============
@@ -64,15 +68,19 @@ the images are built from source.
 
 3. Ensure the device is plugged in with USB host and debug UART/serial debug
 
-4. Open a terminal debugger to view console output from the device::
+4. Open a terminal debugger to view console output from the device:
 
-    sudo picocom -b 115200 -r -l /dev/ttyUSB0
+   .. code-block:: console
+
+      $ sudo picocom -b 115200 -r -l /dev/ttyUSB0
 
 5. Boot the board with SD card.
 
 6. Stop at U-Boot console (interrupt the auto-boot countdown) and do below commands to setup Android
-   partition table::
+   partition table:
 
-    => env default -f -a; saveenv
+   .. code-block:: console
+
+      => env default -f -a; saveenv
 
 Then, continue following the default :ref:`flashing instructions from step 5<step_5_flashing_instructions>`.

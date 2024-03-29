@@ -15,9 +15,9 @@ Using Prebuilt binaries
 
     Extract the contents of the pre-built images tarball and follow the procedure mentioned in `Flashing Instruction`_ page to flash these binaries to the EVM.
 
-    ::
+    .. code-block:: console
 
-        tar -zxvf AM62x_XX.YY.ZZ_emmc.tgz
+       $ tar -zxvf AM62x_XX.YY.ZZ_emmc.tgz
 
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
@@ -26,9 +26,9 @@ Using Prebuilt binaries
 
     Extract the contents of the pre-built images tarball and follow the procedure mentioned in `Flashing Instruction`_ page to flash these binaries to the EVM.
 
-    ::
+    .. code-block:: console
 
-        tar -zxvf AM62Px_XX.YY.ZZ_emmc.tgz
+       $ tar -zxvf AM62Px_XX.YY.ZZ_emmc.tgz
 
 .. _Flashing Instruction: Overview_Flashing.html
 

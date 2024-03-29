@@ -59,49 +59,51 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
 2. Ensure the device is plugged in with USB host and debug UART/serial debug
 
-3. Open a terminal debugger to view console output from the device::
+3. Open a terminal debugger to view console output from the device:
 
-        sudo picocom -b 115200 -r -l /dev/ttyUSB0
+   .. code-block:: console
+
+      $ sudo picocom -b 115200 -r -l /dev/ttyUSB0
 
 4. run ``snagrecover`` for host
 
   .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        ::
+     .. code-block:: console
 
-          # If you are using binaries built locally
-          cd out/target/product/am62x
+        # If you are using binaries built locally
+        $ cd out/target/product/am62x
 
-          (OR)
+        (OR)
 
-          # If you are using pre-built binaries from SDK download page
-          cd AM62x_09.02.00_emmc
+        # If you are using pre-built binaries from SDK download page
+        $ cd AM62x_09.02.00_emmc
 
-          # for AM62x SK EVM (GP)
-          snagrecover -s am625 -f ./am62x-sk-evm.yaml
+        # for AM62x SK EVM (GP)
+        $ snagrecover -s am625 -f ./am62x-sk-evm.yaml
 
-          # for AM62x SK EVM (HS-FS)
-          snagrecover -s am625 -f ./am62x-sk-evm-hsfs.yaml
+        # for AM62x SK EVM (HS-FS)
+        $ snagrecover -s am625 -f ./am62x-sk-evm-hsfs.yaml
 
-          # for AM62x LP SK EVM (GP)
-          snagrecover -s am625 -f ./am62x-lp-sk-evm.yaml
+        # for AM62x LP SK EVM (GP)
+        $ snagrecover -s am625 -f ./am62x-lp-sk-evm.yaml
 
-          # for AM62x LP SK EVM (HS-FS)
-          snagrecover -s am625 -f ./am62x-lp-sk-evm-hsfs.yaml
+        # for AM62x LP SK EVM (HS-FS)
+        $ snagrecover -s am625 -f ./am62x-lp-sk-evm-hsfs.yaml
 
   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-        ::
+     .. code-block:: console
 
-          # If you are using binaries built locally
-          cd out/target/product/am62p
+        # If you are using binaries built locally
+        $ cd out/target/product/am62p
 
-          (OR)
+        (OR)
 
-          # If you are using pre-built binaries from SDK download page
-          cd AM62Px_09.02.00_emmc
+        # If you are using pre-built binaries from SDK download page
+        $ cd AM62Px_09.02.00_emmc
 
-          snagrecover -s am625 -f ./am62px-sk-evm-hsfs.yaml
+        $ snagrecover -s am625 -f ./am62px-sk-evm-hsfs.yaml
 
 
   In the serial console, you will see::
@@ -116,14 +118,19 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 .. _step_5_flashing_instructions:
 
   Type ``Ctrl-C`` in the serial console to continue to U-Boot.
-  From there, we should ensure the default U-Boot environment is configured with::
+  From there, we should ensure the default U-Boot environment is configured with:
 
-      =>  env default -f -a; saveenv;
+  .. code-block:: console
+
+     => env default -f -a; saveenv;
 
   .. note::
-      If you build with `TARGET_AVB_ENABLE=true` or flash user images you need to do this command in U-Boot console::
 
-          => setenv force_avb "1"; saveenv;
+     If you build with `TARGET_AVB_ENABLE=true` or flash user images you need to do this command in U-Boot console:
+
+     .. code-block:: console
+
+        => setenv force_avb "1"; saveenv;
 
   .. note::
 
@@ -139,55 +146,59 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 .. _AM62Px Device Tree Overlays: ../devices/AM62PX/android/Application_Notes_dtbo_support.html
 
 6. Enable fastboot mode on the device through the terminal debugger by executing below command.
-   Before running this command make sure USB-C cable is connected from the host PC to the EVM::
+   Before running this command make sure USB-C cable is connected from the host PC to the EVM:
 
-        => fastboot 0
+   .. code-block:: console
+
+      => fastboot 0
 
 7. From the host PC run the ``flashall.sh`` script to start flashing the binaries to eMMC:
 
   .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        ::
+     .. code-block:: console
 
-          # If you are using binaries built locally
-          cd out/target/product/am62x
+        # If you are using binaries built locally
+        $ cd out/target/product/am62x
 
-          (OR)
+        (OR)
 
-          # If you are using pre-built binaries from SDK download page
-          cd AM62x_09.02.00_emmc
+        # If you are using pre-built binaries from SDK download page
+        $ cd AM62x_09.02.00_emmc
 
-          # for AM62x SK EVM (GP)
-          sudo ./flashall.sh --board am62x-sk
+        # for AM62x SK EVM (GP)
+        $ sudo ./flashall.sh --board am62x-sk
 
-          # for AM62x SK EVM (HS-FS)
-          sudo ./flashall.sh --board am62x-sk --hsfs
+        # for AM62x SK EVM (HS-FS)
+        $ sudo ./flashall.sh --board am62x-sk --hsfs
 
-          # for AM62x LP SK EVM (GP)
-          sudo ./flashall.sh --board am62x-lp-sk
+        # for AM62x LP SK EVM (GP)
+        $ sudo ./flashall.sh --board am62x-lp-sk
 
-          # for AM62x LP SK EVM (HS-FS)
-          sudo ./flashall.sh --board am62x-lp-sk --hsfs
+        # for AM62x LP SK EVM (HS-FS)
+        $ sudo ./flashall.sh --board am62x-lp-sk --hsfs
 
   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-        ::
+     .. code-block:: console
 
-          # If you are using binaries built locally
-          cd out/target/product/am62p
+        # If you are using binaries built locally
+        $ cd out/target/product/am62p
 
-          (OR)
+        (OR)
 
-          # If you are using pre-built binaries from SDK download page
-          cd AM62Px_09.02.00_emmc
+        # If you are using pre-built binaries from SDK download page
+        $ cd AM62Px_09.02.00_emmc
 
-          sudo ./flashall.sh --board am62px-sk
+        $ sudo ./flashall.sh --board am62px-sk
 
   .. note::
 
-      If you get ``mcopy`` command not found error on Linux PC, install the ``mtools`` package::
+      If you get ``mcopy`` command not found error on Linux PC, install the ``mtools`` package:
 
-        $ apt-get install mtools
+      .. code-block:: console
+
+         $ apt-get install mtools
 
   .. warning::
 
@@ -214,13 +225,15 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 Flashing the kernel
 ===================
 
-In order to flash a new kernel, the new boot image should be flashed::
+In order to flash a new kernel, the new boot image should be flashed:
 
-        adb reboot bootloader
-        < Wait for bootloader reboot >
+.. code-block:: console
 
-        cd <PATH/TO/BOOT/IMAGE>
-        fastboot flash boot boot.img
-        fastboot reboot
+   $ adb reboot bootloader
+   < Wait for bootloader reboot >
+
+   $ cd <PATH/TO/BOOT/IMAGE>
+   $ fastboot flash boot boot.img
+   $ fastboot reboot
 
 The board should boot with the new kernel build.

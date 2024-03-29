@@ -29,7 +29,9 @@ Enable Suspend/Resume support
       				device/ti/am62x/init.am62x.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_PLATFORM).usb.rc \
       				device/ti/am62x/ueventd.am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc
 
-#. At Android prompt, using RTC as wake-up source, test S2R using following command::
+#. At Android prompt, using RTC as wake-up source, test S2R using following command:
+
+   .. code-block:: console
 
     console:/ $ su
     console:/ # rtcwake -s 10 -m mem

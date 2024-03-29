@@ -28,7 +28,7 @@ How to enable Microtips LVDS panel on AM62 SK EVM
 #. Power off the LVDS board by disconnecting the 12V barrel jack (do not power off the SK EVM)
 #. Run the following commands from the Linux prompt:
 
-   .. code-block:: bash
+   .. code-block:: console
 
       console:/ $ su
       console:/ # rmmod ili210x
@@ -38,7 +38,7 @@ How to enable Microtips LVDS panel on AM62 SK EVM
 #. Power on the LVDS board
 #. Run the following command:
 
-   .. code-block:: bash
+   .. code-block:: console
 
       console:/ # insmod /vendor/lib/modules/ili210x.ko
 

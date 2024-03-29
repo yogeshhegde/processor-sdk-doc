@@ -29,42 +29,48 @@ Using ``atest``
 Android provides all kind of tests to test the media framework.
 We can run a sample playback via ``atest`` from a development tree.
 
-::
+.. code-block:: console
 
    # Standard Android build commands
-   cd ${YOUR_PATH}/ti-aosp-14
-   source build/envsetup.sh
-   lunch am62p-userdebug
+   $ cd ${YOUR_PATH}/ti-aosp-14
+   $ source build/envsetup.sh
+   $ lunch am62p-userdebug
 
    # install the required media files, downloads from network
-   cts/tests/tests/media/player/
-   ./copy_media.sh
-   cd -
+   $ cts/tests/tests/media/player/
+   $ ./copy_media.sh
+   $ cd -
 
    # run the playback test
-   atest android.media.player.cts.MediaPlayerTest#testLocalVideo_MP4_H264_480x360_500kbps_25fps_AAC_Stereo_128kbps_44110Hz
+   $ atest android.media.player.cts.MediaPlayerTest#testLocalVideo_MP4_H264_480x360_500kbps_25fps_AAC_Stereo_128kbps_44110Hz
 
 Using Gallery
 -------------
 
 To play test videos, we can also use the Gallery app.
 
-First, download the Big Buck Bunny test videos::
+First, download the Big Buck Bunny test videos:
+
+.. code-block:: console
 
    # 1080p, 60FPS, h264
-   wget http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_60fps_normal.mp4
+   $ wget http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_60fps_normal.mp4
 
    # 4k, 30FPS, h264
-   wget http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_2160p_30fps_normal.mp4
+   $ wget http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_2160p_30fps_normal.mp4
 
-Then, push them in the ``Movies`` folder::
+Then, push them in the ``Movies`` folder:
 
-   adb push bbb_sunflower_1080p_60fps_normal.mp4 /sdcard/Movies
-   adb push bbb_sunflower_2160p_30fps_normal.mp4 /sdcard/Movies
+.. code-block:: console
 
-Finally, reboot the board::
+   $ adb push bbb_sunflower_1080p_60fps_normal.mp4 /sdcard/Movies
+   $ adb push bbb_sunflower_2160p_30fps_normal.mp4 /sdcard/Movies
 
-   adb reboot
+Finally, reboot the board:
+
+.. code-block:: console
+
+   $ adb reboot
 
 Then run the Gallery app from the UI and play the videos.
 
@@ -75,11 +81,13 @@ List available codecs
 ---------------------
 
 ``dumpsys`` can be used to list the available codecs on an Android system.
-To check that the v4l2 codecs are available, run::
+To check that the v4l2 codecs are available, run:
+
+.. code-block:: console
 
    $ adb shell dumpsys media.player | grep -A 10 v4l2
 
-::
+.. code-block:: console
 
       Decoder "c2.v4l2.avc.decoder" supports
         aliases: []
@@ -110,7 +118,9 @@ Verbose logcat logging
 ----------------------
 
 The logs in logcat from ``v4l2_codec2`` are not very verbose by default.
-To enable more logs, ``v4l2_codec2`` should be rebuild. It's possible to enable all logs with::
+To enable more logs, ``v4l2_codec2`` should be rebuild. It's possible to enable all logs with:
 
-   cd ~/src/ti-aosp-14/external/v4l2_codec2
-   sed -i 's#//\#define LOG_NDEBUG 0#\#define LOG_NDEBUG 0#' *.cpp
+.. code-block:: console
+
+   $ cd ~/src/ti-aosp-14/external/v4l2_codec2
+   $ sed -i 's#//\#define LOG_NDEBUG 0#\#define LOG_NDEBUG 0#' *.cpp

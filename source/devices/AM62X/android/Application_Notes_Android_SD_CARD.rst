@@ -43,12 +43,14 @@ Build Android
 -------------
 
 Follow this link to `build Android image`_.
-Go in your Android environment then rebuild with ``TARGET_SDCARD_BOOT=true`` build args::
+Go in your Android environment then rebuild with ``TARGET_SDCARD_BOOT=true`` build args:
 
-        cd ${YOUR_PATH}/ti-aosp-14
-        source build/envsetup.sh
-        lunch <BUILD_TARGET>
-        m TARGET_SDCARD_BOOT=true
+.. code-block:: console
+
+   $ cd ${YOUR_PATH}/ti-aosp-14
+   $ source build/envsetup.sh
+   $ lunch <BUILD_TARGET>
+   $ m TARGET_SDCARD_BOOT=true
 
 
 .. _download Bootloader sources: ../../../android/Overview_Building_the_SDK.html#bootloader-components
@@ -67,11 +69,12 @@ Flashing SD Card
         Boot mode DIP switch:
         SW1: 11000010 SW2: 01000000
 
-- Go in out directory in android environment and launch this command::
+- Go in out directory in android environment and launch this command:
 
-        # If you are using binaries built locally
-        cd out/target/product/am62x
-        sudo ./flashall.sh --board="am62x-sk" --sdcard="/dev/sdX"
+  .. code-block:: console
+
+     $ cd out/target/product/am62x
+     $ sudo ./flashall.sh --board="am62x-sk" --sdcard="/dev/sdX"
 
 **flashall.sh script print in your console instruction to do**
 
