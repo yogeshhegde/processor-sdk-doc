@@ -57,6 +57,6 @@ Test command for running stress-ng and cyclictest together
 .. csv-table::
     :header: "Latencies","am62axx_sk-fs:per-core"
 
-    "Minimum (usec)","4,4,4,4"
-    "Average (usec)","5,5,5,5"
-    "Maximum (usec)","35,30,31,31"
+    "Minimum (usec)","5,5"
+    "Average (usec)","7,8"
+    "Maximum (usec)","60,50"

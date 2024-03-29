@@ -64,7 +64,7 @@ Execute the LMBench with the following:
     cd /opt/ltp
     ./runltp -P j721e-idk-gw -f ddt/lmbench -s LMBENCH_L_PERF_0001
 
-.. csv-table:: LMBench Benchmarks
+.. csv-table::
     :header: "Benchmarks","am62xx_lp_sk-fs: perf","am62xx_sk-fs: perf","am62xxsip_sk-fs: perf"
 
     "af_unix_sock_stream_latency (microsec)","24.64","22.49","21.85"
@@ -195,7 +195,7 @@ Execute the benchmark with the following:
 
     runDhrystone
 
-.. csv-table:: Dhrystone Benchmarks
+.. csv-table::
     :header: "Benchmarks","am62xx_lp_sk-fs: perf","am62xx_sk-fs: perf","am62xxsip_sk-fs: perf"
 
     "cpu_clock (MHz)","1250.00","1400.00","1400.00"
@@ -212,7 +212,7 @@ Execute the benchmark with the following:
 
     runWhetstone
 
-.. csv-table:: Whetstone Benchmarks
+.. csv-table::
     :header: "Benchmarks","am62xx_lp_sk-fs: perf","am62xx_sk-fs: perf","am62xxsip_sk-fs: perf"
 
     "whetstone (MIPS)","5000.00","10000.00","5000.00"
@@ -222,10 +222,31 @@ Linpack
 Linpack measures peak double precision (64 bit) floating point performance in
 solving a dense linear system.
 
-.. csv-table:: Linpack Benchmarks
+.. csv-table::
     :header: "Benchmarks","am62xx_lp_sk-fs: perf","am62xx_sk-fs: perf","am62xxsip_sk-fs: perf"
 
     "linpack (Kflops)","516446.00","574713.00","579906.00"
+
+NBench
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NBench which stands for Native Benchmark is used to measure macro benchmarks
+for commonly used operations such as sorting and analysis algorithms.
+More information about NBench at
+https://en.wikipedia.org/wiki/NBench and
+https://nbench.io/articles/index.html
+
+.. csv-table::
+    :header: "Benchmarks","am62xx_lp_sk-fs: perf","am62xx_sk-fs: perf","am62xxsip_sk-fs: perf"
+
+    "assignment (Iterations)","12.38","13.90","13.93"
+    "fourier (Iterations)","20211.00","22639.00","22640.00"
+    "fp_emulation (Iterations)","82.42","92.34","92.34"
+    "huffman (Iterations)","1044.00","1169.00","1169.40"
+    "idea (Iterations)","3075.50","3444.90","3444.90"
+    "lu_decomposition (Iterations)","475.71","533.67","535.06"
+    "neural_net (Iterations)","7.87","8.82","8.82"
+    "numeric_sort (Iterations)","533.57","595.13","588.49"
+    "string_sort (Iterations)","147.27","164.94","164.96"
 
 Stream
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -245,7 +266,7 @@ Execute the benchmark with the following:
 
     stream_c
 
-.. csv-table:: Stream Benchmarks
+.. csv-table::
     :header: "Benchmarks","am62xx_lp_sk-fs: perf","am62xx_sk-fs: perf","am62xxsip_sk-fs: perf"
 
     "add (MB/s)","1374.40","1450.20","1728.10"
@@ -261,7 +282,9 @@ While CoreMark stresses the CPU pipeline, CoreMark-Pro tests the entire processo
 adding comprehensive support for multicore technology, a combination of integer
 and floating-point workloads, and data sets for utilizing larger memory subsystems.
 
-.. csv-table:: CoreMarkPro Benchmarks
+Table:  **CoreMarkPro Benchmarks**
+
+.. csv-table::
     :header: "Benchmarks","am62xx_lp_sk-fs: perf","am62xx_sk-fs: perf","am62xxsip_sk-fs: perf"
 
     "cjpeg-rose7-preset (workloads/)","37.31","41.84","42.02"
@@ -275,8 +298,9 @@ and floating-point workloads, and data sets for utilizing larger memory subsyste
     "sha-test (workloads/)","71.94","80.65","81.30"
     "zip-test (workloads/)","18.87","20.83","21.74"
 
+Table:  **CoreMarkProTwoCore Benchmarks**
 
-.. csv-table:: CoreMarkProTwoCore Benchmarks
+.. csv-table::
     :header: "Benchmarks","am62xx_lp_sk-fs: perf","am62xx_sk-fs: perf","am62xxsip_sk-fs: perf"
 
     "cjpeg-rose7-preset (workloads/)","74.07","82.64","84.03"
@@ -307,7 +331,7 @@ establish a common programming model that communicates with the benchmark throug
 abstraction layer and provides a flexible interface to allow a wide variety of
 thread-enabled workloads to be tested.
 
-.. csv-table:: Multibench Benchmarks
+.. csv-table::
     :header: "Benchmarks","am62xx_lp_sk-fs: perf","am62xx_sk-fs: perf","am62xxsip_sk-fs: perf"
 
     "4m-check (workloads/)","272.36","306.67","363.16"
@@ -347,11 +371,35 @@ Boot-time Measurement
 Boot media: MMCSD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: Boot time MMCSD
+.. csv-table::
     :header: "Boot Configuration","am62xx_sk-fs: boot time (sec)"
 
     "Kernel boot time test when bootloader, kernel and sdk-rootfs are in mmc-sd","18.06 (min 17.90, max 18.15)"
     "Kernel boot time test when init is /bin/sh and bootloader, kernel and sdk-rootfs are in mmc-sd","3.45 (min 3.42, max 3.47)"
+
+|
+
+ALSA SoC Audio Driver
+-------------------------
+
+#. Access type - RW\_INTERLEAVED
+#. Channels - 2
+#. Format - S16\_LE
+#. Period size - 64
+
+.. csv-table::
+    :header: "Sampling Rate (Hz)","am62xx_lp_sk-fs: Throughput (bits/sec)","am62xx_lp_sk-fs: CPU Load (%)","am62xx_sk-fs: Throughput (bits/sec)","am62xx_sk-fs: CPU Load (%)","am62xxsip_sk-fs: Throughput (bits/sec)","am62xxsip_sk-fs: CPU Load (%)"
+
+    "8000","255998.00","0.11","256000.00","0.11","255998.00","0.22"
+    "11025","352797.00","0.17","352799.00","0.18","352798.00","0.17"
+    "16000","511997.00","0.59","512000.00","0.13","511997.00","0.13"
+    "22050","705596.00","0.29","705601.00","0.29","705596.00","0.28"
+    "24000","705594.00","0.30","705599.00","0.28","705596.00","0.28"
+    "32000","1023990.00","0.18","1023997.00","0.17","1023993.00","0.19"
+    "44100","1411187.00","0.45","1411197.00","0.47","1411190.00","0.42"
+    "48000","1535987.00","0.20","1535997.00","0.21","1535989.00","0.21"
+    "88200","2822372.00","0.95","2822392.00","0.83","2822377.00","0.79"
+    "96000","3071969.00","2.63","3071989.00","0.42","3071974.00","0.38"
 
 |
 
@@ -363,12 +411,12 @@ Glmark2
 
 Run Glmark2 and capture performance reported (Score). All display outputs (HDMI, Displayport and/or LCD) are connected when running these tests
 
-.. csv-table:: Glmark2 Performance
+.. csv-table::
     :header: "Benchmark","am62xx_lp_sk-fs: Score","am62xx_sk-fs: Score","am62xxsip_sk-fs: Score"
 
     "Glmark2-DRM","35.00","40.00","38.00"
     "Glmark2-Wayland","201.00","219.00","213.00"
-    "Glmark2-Wayland 1920x1080","219.00"
+    "Glmark2-Wayland 1920x1080","62.00","219.00"
 
 |
 
@@ -442,12 +490,12 @@ Running the following commands will trigger netperf clients to measure UDP burst
 CPSW/CPSW2g/CPSW3g Ethernet Driver 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- CPSW3g: AM64x, AM62x, AM62ax, AM62px
+- CPSW3g: AM62x
 
 .. rubric::  TCP Bidirectional Throughput 
    :name: CPSW2g-tcp-bidirectional-throughput
 
-.. csv-table:: CPSW2g TCP Bidirectional Throughput
+.. csv-table::
     :header: "Command Used","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
     "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1778.41","66.34","1778.47","64.23","1830.66","64.38"
@@ -455,7 +503,7 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 .. rubric::  TCP Bidirectional Throughput Interrupt Pacing
    :name: CPSW2g-tcp-bidirectional-throughput-interrupt-pacing
 
-.. csv-table:: CPSW2g TCP Bidirectional Throughput Interrupt Pacing
+.. csv-table::
     :header: "Command Used","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
     "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1669.02","52.26","1442.31","43.05","1403.67","41.42"
@@ -463,7 +511,9 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 .. rubric::  UDP Throughput
    :name: CPSW2g-udp-throughput-0-loss
 
-.. csv-table:: CPSW2g UDP Egress Throughput 0 loss
+Table:  **CPSW2g UDP Egress Throughput 0 loss**
+
+.. csv-table::
     :header: "Frame Size(bytes)","am62xx_lp_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: Packets Per Second (kPPS)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: Packets Per Second (kPPS)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: Packets Per Second (kPPS)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
     "64","18.00","16.96","118.00","40.50","18.00","18.25","127.00","39.96","18.00","19.33","134.00","41.03"
@@ -472,7 +522,9 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
     "1024","978.00","847.62","108.00","39.26","978.00","934.04","119.00","45.48","978.00","934.84","119.00","43.37"
     "1518","1472.00","955.66","81.00","38.92","1472.00","955.09","81.00","34.42","1472.00","955.84","81.00","36.69"
 
-.. csv-table:: CPSW2g UDP Ingress Throughput 0 loss
+Table:  **CPSW2g UDP Ingress Throughput 0 loss**
+
+.. csv-table::
     :header: "Frame Size(bytes)","am62xx_lp_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: Packets Per Second (kPPS)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: Packets Per Second (kPPS)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: Packets Per Second (kPPS)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
     "64","18.00","6.42","45.00","26.15","18.00","1.71","12.00","10.98","18.00","5.64","39.00","20.43"
@@ -481,7 +533,9 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
     "1024","978.00","482.73","62.00","29.08","978.00","932.64","119.00","42.34","978.00","935.75","120.00","41.89"
     "1518","1472.00","951.32","81.00","41.59","1472.00","955.58","81.00","40.11","1472.00","910.69","77.00","39.46"
 
-.. csv-table:: CPSW2g UDP Ingress Throughput possible loss
+Table:  **CPSW2g UDP Ingress Throughput possible loss**
+
+.. csv-table::
     :header: "Frame Size(bytes)","am62xx_lp_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: Packets Per Second (kPPS)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_lp_sk-fs: Packet Loss %","am62xx_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: Packets Per Second (kPPS)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: Packet Loss %","am62xxsip_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: Packets Per Second (kPPS)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: Packet Loss %"
 
     "64","18.00","25.40","176.00","38.75","61.81","18.00","27.35","190.00","38.81","47.47","18.00","29.74","207.00","38.40","74.76"
@@ -498,7 +552,7 @@ UBoot QSPI/OSPI Driver
 AM62XX-SK
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: UBOOT QSPI or OSPI
+.. csv-table::
     :header: "File size (bytes in hex)","am62xxsip_sk-fs: Write Throughput (Kbytes/sec)","am62xxsip_sk-fs: Read Throughput (Kbytes/sec)"
 
     "400000","387.81","195047.62"
@@ -522,7 +576,7 @@ EMMC Driver
 AM62XX-SK
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: EMMC EXT4 FIO 1G
+.. csv-table::
     :header: "Buffer size (bytes)","am62xx_sk-fs: Write EXT4 Throughput (Mbytes/sec)","am62xx_sk-fs: Write EXT4 CPU Load (%)","am62xx_sk-fs: Read EXT4 Throughput (Mbytes/sec)","am62xx_sk-fs: Read EXT4 CPU Load (%)"
 
     "1m","59.70","1.26","175.00","1.55"
@@ -530,7 +584,7 @@ AM62XX-SK
     "4k","51.50","18.42","55.80","17.37"
     "256k","59.60","1.66","174.00","2.11"
 
-.. csv-table:: EMMC EXT4 FIO 1G
+.. csv-table::
     :header: "Buffer size (bytes)","am62xx_lp_sk-fs: Write EXT4 Throughput (Mbytes/sec)","am62xx_lp_sk-fs: Write EXT4 CPU Load (%)","am62xx_lp_sk-fs: Read EXT4 Throughput (Mbytes/sec)","am62xx_lp_sk-fs: Read EXT4 CPU Load (%)"
 
     "1m","57.50","1.32","175.00","2.04"
@@ -538,7 +592,7 @@ AM62XX-SK
     "4k","51.50","19.91","56.60","19.32"
     "256k","57.60","1.93","174.00","2.54"
 
-.. csv-table:: EMMC EXT4 FIO 1G
+.. csv-table::
     :header: "Buffer size (bytes)","am62xxsip_sk-fs: Write EXT4 Throughput (Mbytes/sec)","am62xxsip_sk-fs: Write EXT4 CPU Load (%)","am62xxsip_sk-fs: Read EXT4 Throughput (Mbytes/sec)","am62xxsip_sk-fs: Read EXT4 CPU Load (%)"
 
     "1m","90.30","2.12","172.00","1.84"
@@ -554,11 +608,29 @@ UBoot EMMC Driver
 AM62XX-SK
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: UBOOT EMMC RAW
+Table:  **UBOOT EMMC RAW**
+
+.. csv-table::
     :header: "File size (bytes in hex)","am62xx_sk-fs: Write Throughput (Kbytes/sec)","am62xx_sk-fs: Read Throughput (Kbytes/sec)"
 
     "2000000","57186.74","169782.38"
     "4000000","57387.04","173375.66"
+
+Table:  **UBOOT EMMC RAW**
+
+.. csv-table::
+    :header: "File size (bytes in hex)","am62xx_lp_sk-fs: Write Throughput (Kbytes/sec)","am62xx_lp_sk-fs: Read Throughput (Kbytes/sec)"
+
+    "2000000","58202.49","168907.22"
+    "4000000","58566.58","172918.21"
+
+Table:  **UBOOT EMMC RAW**
+
+.. csv-table::
+    :header: "File size (bytes in hex)","am62xxsip_sk-fs: Write Throughput (Kbytes/sec)","am62xxsip_sk-fs: Read Throughput (Kbytes/sec)"
+
+    "2000000","97523.81","143091.70"
+    "4000000","97234.42","175229.95"
 
 |
 
@@ -576,7 +648,7 @@ MMC/SD Driver
 AM62XX-SK
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: MMC EXT4 FIO 1G
+.. csv-table::
     :header: "Buffer size (bytes)","am62xx_sk-fs: Write EXT4 Throughput (Mbytes/sec)","am62xx_sk-fs: Write EXT4 CPU Load (%)","am62xx_sk-fs: Read EXT4 Throughput (Mbytes/sec)","am62xx_sk-fs: Read EXT4 CPU Load (%)"
 
     "1m","20.00","0.70","85.70","0.87"
@@ -584,13 +656,21 @@ AM62XX-SK
     "4k","5.79","2.50","22.10","6.83"
     "256k","19.90","0.82","83.00","1.34"
 
-.. csv-table:: MMC EXT4 FIO 1G
+.. csv-table::
     :header: "Buffer size (bytes)","am62xx_lp_sk-fs: Write EXT4 Throughput (Mbytes/sec)","am62xx_lp_sk-fs: Write EXT4 CPU Load (%)","am62xx_lp_sk-fs: Read EXT4 Throughput (Mbytes/sec)","am62xx_lp_sk-fs: Read EXT4 CPU Load (%)"
 
     "1m","13.40","0.68","90.70","1.35"
     "4m","15.80","0.56","90.90","1.08"
     "4k","5.29","2.86","15.50","5.79"
     "256k","13.30","0.72","88.00","1.48"
+
+.. csv-table::
+    :header: "Buffer size (bytes)","am62xxsip_sk-fs: Write EXT4 Throughput (Mbytes/sec)","am62xxsip_sk-fs: Write EXT4 CPU Load (%)","am62xxsip_sk-fs: Read EXT4 Throughput (Mbytes/sec)","am62xxsip_sk-fs: Read EXT4 CPU Load (%)"
+
+    "1m","43.00","1.05","87.60","0.96"
+    "4m","42.60","0.85","87.50","1.02"
+    "4k","3.55","1.65","16.50","4.98"
+    "256k","39.80","1.00","85.50","1.09"
 
 The performance numbers were captured using the following:
 
@@ -605,7 +685,9 @@ UBoot MMC/SD Driver
 AM62XX-SK
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: UBOOT MMCSD FAT
+Table:  **UBOOT MMCSD FAT**
+
+.. csv-table::
     :header: "File size (bytes in hex)","am62xxsip_sk-fs: Write Throughput (Kbytes/sec)","am62xxsip_sk-fs: Read Throughput (Kbytes/sec)"
 
     "400000","40156.86","63015.38"
@@ -620,7 +702,9 @@ CRYPTO Driver
 OpenSSL Performance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: OpenSSL Performance
+Table:  **OpenSSL Performance**
+
+.. csv-table::
     :header: "Algorithm","Buffer Size (in bytes)","am62xxsip_sk-fs: throughput (KBytes/Sec)"
 
     "aes-128-cbc","1024","24669.18"
@@ -672,7 +756,9 @@ OpenSSL Performance
     "sha512","64","2151.08"
     "sha512","8192","60377.77"
 
-.. csv-table:: OpenSSL CPU Load
+Table:  **OpenSSL CPU Load**
+
+.. csv-table::
     :header: "Algorithm","am62xxsip_sk-fs: CPU Load"
 
     "aes-128-cbc","37.00"
@@ -693,10 +779,44 @@ Listed for each algorithm are the code snippets used to run each benchmark test.
 IPSec Software Performance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: IPSec Software Performance
+.. csv-table::
     :header: "Algorithm","am62xx_lp_sk-fs: Throughput (Mbps)","am62xx_lp_sk-fs: Packets/Sec","am62xx_lp_sk-fs: CPU Load","am62xx_sk-fs: Throughput (Mbps)","am62xx_sk-fs: Packets/Sec","am62xx_sk-fs: CPU Load","am62xxsip_sk-fs: Throughput (Mbps)","am62xxsip_sk-fs: Packets/Sec","am62xxsip_sk-fs: CPU Load"
 
     "3des","62.60","5.00","25.12","70.20","6.00","25.08","70.10","6.00","25.14"
     "aes128","240.30","21.00","46.55","267.40","23.00","46.90","270.00","24.00","46.98"
     "aes192","240.60","21.00","46.60","276.90","24.00","47.30","274.50","24.00","47.19"
     "aes256","274.00","24.00","47.04"
+
+Low Power Performance
+-------------------------
+
+Table:  **Deep sleep**
+
+.. csv-table::
+    :header: "Rail name","Rail voltage(V)","am62xx_sk-fs"
+
+    "vdd_core","0.85","9.82"
+    "vddr_core","0.85","n/a"
+    "soc_dvdd_3v3","3.30","6.33"
+    "soc_dvdd_1v8","1.80","4.00"
+    "vdda_1v8","1.80","1.80"
+    "vdd_lpddr4/vdd_ddr4","1.10","8.60"
+    "Total"," ","30.55"
+
+Table:  **MCU only**
+
+.. csv-table::
+    :header: "Rail name","Rail voltage(V)","am62xx_sk-fs"
+
+    "vdd_core","0.85","107.97"
+    "vddr_core","0.85","n/a"
+    "soc_dvdd_3v3","3.30","5.02"
+    "soc_dvdd_1v8","1.80","4.80"
+    "vdda_1v8","1.80","10.80"
+    "vdd_lpddr4/vdd_ddr4","1.10","8.06"
+    "Total"," ","136.66"
+
+Partial I/O Data
+- All voltage rails were measured to be near 0V
+
+Further optimizations are possible for these low power modes. Please refer to the AM62x Power Consumption App Note (https://www.ti.com/lit/pdf/spradg1)

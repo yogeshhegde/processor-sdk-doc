@@ -62,7 +62,7 @@ Execute the LMBench with the following:
     cd /opt/ltp
     ./runltp -P j721e-idk-gw -f ddt/lmbench -s LMBENCH_L_PERF_0001
 
-.. csv-table:: LMBench Benchmarks
+.. csv-table::
     :header: "Benchmarks","am64xx-hsevm: perf"
 
     "af_unix_sock_stream_latency (microsec)","38.71"
@@ -187,7 +187,7 @@ Dhrystone is a core only benchmark that runs from warm L1 caches in all
 modern processors. It scales linearly with clock speed. For standard ARM
 cores the DMIPS/MHz score will be identical with the same compiler and flags.
 
-.. csv-table:: Dhrystone Benchmarks
+.. csv-table::
     :header: "Benchmarks","am64xx-hsevm: perf"
 
     "cpu_clock (MHz)","1000.00"
@@ -197,7 +197,7 @@ cores the DMIPS/MHz score will be identical with the same compiler and flags.
 Whetstone
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: Whetstone Benchmarks
+.. csv-table::
     :header: "Benchmarks","am64xx-hsevm: perf"
 
     "whetstone (MIPS)","5000.00"
@@ -207,10 +207,31 @@ Linpack
 Linpack measures peak double precision (64 bit) floating point performance in
 solving a dense linear system.
 
-.. csv-table:: Linpack Benchmarks
+.. csv-table::
     :header: "Benchmarks","am64xx-hsevm: perf"
 
     "linpack (Kflops)","408974.00"
+
+NBench
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NBench which stands for Native Benchmark is used to measure macro benchmarks
+for commonly used operations such as sorting and analysis algorithms.
+More information about NBench at
+https://en.wikipedia.org/wiki/NBench and
+https://nbench.io/articles/index.html
+
+.. csv-table::
+    :header: "Benchmarks","am64xx-hsevm: perf"
+
+    "assignment (Iterations)","9.84"
+    "fourier (Iterations)","16093.00"
+    "fp_emulation (Iterations)","65.58"
+    "huffman (Iterations)","830.57"
+    "idea (Iterations)","2448.30"
+    "lu_decomposition (Iterations)","379.43"
+    "neural_net (Iterations)","6.27"
+    "numeric_sort (Iterations)","424.72"
+    "string_sort (Iterations)","117.24"
 
 Stream
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -224,7 +245,7 @@ add two numbers, and triad for multiply accumulate.
 For bandwidth, a byte read counts as one and a byte written counts as one,
 resulting in a score that is double the bandwidth LMBench will show.
 
-.. csv-table:: Stream Benchmarks
+.. csv-table::
     :header: "Benchmarks","am64xx-hsevm: perf"
 
     "add (MB/s)","1628.80"
@@ -240,8 +261,7 @@ While CoreMark stresses the CPU pipeline, CoreMark-Pro tests the entire processo
 adding comprehensive support for multicore technology, a combination of integer
 and floating-point workloads, and data sets for utilizing larger memory subsystems.
 
-
-.. csv-table:: CoreMarkPro Benchmarks
+.. csv-table::
     :header: "Benchmarks","am64xx-hsevm: perf"
 
     "cjpeg-rose7-preset (workloads/)","29.76"
@@ -281,7 +301,7 @@ Test command for running stress-ng and cyclictest together
 
     "Minimum (usec)","5,5"
     "Average (usec)","7,8"
-    "Maximum (usec)","47,51"
+    "Maximum (usec)","60,50"
 
 |
 
@@ -360,7 +380,7 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 .. rubric::  TCP Bidirectional Throughput 
    :name: CPSW2g-tcp-bidirectional-throughput
 
-.. csv-table:: CPSW2g TCP Bidirectional Throughput
+.. csv-table::
     :header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
     "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","206.32","25.60"
@@ -368,7 +388,7 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 .. rubric::  TCP Bidirectional Throughput Interrupt Pacing
    :name: CPSW2g-tcp-bidirectional-throughput-interrupt-pacing
 
-.. csv-table:: CPSW2g TCP Bidirectional Throughput Interrupt Pacing
+.. csv-table::
     :header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
     "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","195.02","25.61"
@@ -376,7 +396,9 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 .. rubric::  UDP Throughput 
    :name: CPSW2g-udp-throughput-0-loss
 
-.. csv-table:: CPSW2g UDP Egress Throughput 0 loss
+Table:  **CPSW2g UDP Egress Throughput 0 loss*
+
+.. csv-table::
     :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
     "64","18.00","12.84","89.00","89.30"
@@ -385,7 +407,9 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
     "1024","978.00","612.26","78.00","92.33"
     "1518","1472.00","484.25","41.00","51.18"
 
-.. csv-table:: CPSW2g UDP Ingress Throughput 0 loss
+Table:  **CPSW2g UDP Ingress Throughput 0 loss**
+
+.. csv-table::
     :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
     "64","18.00","1.20","8.00","8.13"
@@ -394,7 +418,9 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
     "1024","978.00","61.81","8.00","9.68"
     "1518","1472.00","94.21","8.00","8.98"
 
-.. csv-table:: CPSW2g UDP Ingress Throughput possible loss
+Table:  **CPSW2g UDP Ingress Throughput possible loss**
+
+.. csv-table::
     :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)","am64xx-hsevm: Packet Loss %"
 
     "64","18.00","19.22","133.00","76.55","77.05"
@@ -409,7 +435,7 @@ ICSSG Ethernet Driver
 .. rubric::  TCP Bidirectional Throughput 
    :name: tcp-bidirectional-throughput
 
-.. csv-table:: ICSSG TCP Bidirectional Throughput
+.. csv-table::
     :header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
     "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","213.08","50.04"
@@ -417,12 +443,16 @@ ICSSG Ethernet Driver
 .. rubric::  TCP Bidirectional Throughput Interrupt Pacing
    :name: ICSSG-tcp-bidirectional-throughput-interrupt-pacing
 
-.. csv-table:: ICSSG TCP Bidirectional Throughput Interrupt Pacing
+Table:  **ICSSG TCP Bidirectional Throughput Interrupt Pacing**
+
+.. csv-table::
     :header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
     "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","215.37","36.31"
 
-.. csv-table:: ICSSG UDP Ingress Throughput 0 loss
+Table:  **ICSSG UDP Ingress Throughput 0 loss**
+
+.. csv-table::
     :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load %"
 
     "64","18.00","2.28","16.00","11.19"
@@ -438,7 +468,7 @@ PCIe Driver
 PCIe-ETH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: PCIe Ethernet performance
+.. csv-table::
     :header: "TCP Window Size(Kbytes)","am64xx-hsevm: Bandwidth (Mbits/sec)"
 
     "8","0.00"
@@ -454,7 +484,7 @@ PCIe-NVMe-SSD
 AM64xx-EVM
 """""""""""""""""""""""""""
 
-.. csv-table:: PCIE SSD EXT4 FIO 10G
+.. csv-table::
     :header: "Buffer size (bytes)","am64xx-hsevm: Write EXT4 Throughput (Mbytes/sec)","am64xx-hsevm: Write EXT4 CPU Load (%)","am64xx-hsevm: Read EXT4 Throughput (Mbytes/sec)","am64xx-hsevm: Read EXT4 CPU Load (%)"
 
     "1m","373.00","16.28","398.00","11.37"
@@ -483,7 +513,7 @@ EMMC Driver
 AM64XX-EVM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: EMMC EXT4 FIO 1G
+.. csv-table::
     :header: "Buffer size (bytes)","am64xx-hsevm: Write EXT4 Throughput (Mbytes/sec)","am64xx-hsevm: Write EXT4 CPU Load (%)","am64xx-hsevm: Read EXT4 Throughput (Mbytes/sec)","am64xx-hsevm: Read EXT4 CPU Load (%)"
 
     "1m","61.40","3.37","175.00","5.71"
@@ -507,7 +537,7 @@ MMC/SD Driver
 AM64XX-EVM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: MMC EXT4 FIO 1G
+.. csv-table::
     :header: "Buffer size (bytes)","am64xx-hsevm: Write EXT4 Throughput (Mbytes/sec)","am64xx-hsevm: Write EXT4 CPU Load (%)","am64xx-hsevm: Read EXT4 Throughput (Mbytes/sec)","am64xx-hsevm: Read EXT4 CPU Load (%)"
 
     "1m","18.80","1.51","85.30","3.54"
@@ -528,7 +558,9 @@ CRYPTO Driver
 OpenSSL Performance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: OpenSSL Performance
+Table:  **OpenSSL Performance**
+
+.. csv-table::
     :header: "Algorithm","Buffer Size (in bytes)","am64xx-hsevm: throughput (KBytes/Sec)"
 
     "aes-128-cbc","1024","23718.91"
@@ -580,7 +612,9 @@ OpenSSL Performance
     "sha512","64","1613.40"
     "sha512","8192","42068.65"
 
-.. csv-table:: OpenSSL CPU Load
+Table:  **OpenSSL CPU Load**
+
+.. csv-table::
     :header: "Algorithm","am64xx-hsevm: CPU Load"
 
     "aes-128-cbc","45.00"
@@ -601,7 +635,7 @@ Listed for each algorithm are the code snippets used to run each benchmark test.
 IPSec Software Performance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: IPSec Software Performance
+.. csv-table::
     :header: "Algorithm","am64xx-hsevm: Throughput (Mbps)","am64xx-hsevm: Packets/Sec","am64xx-hsevm: CPU Load"
 
     "3des","52.10","4.00","51.72"

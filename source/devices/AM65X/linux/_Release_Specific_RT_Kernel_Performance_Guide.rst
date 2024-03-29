@@ -63,7 +63,7 @@ Execute the LMBench with the following:
     cd /opt/ltp
     ./runltp -P j721e-idk-gw -f ddt/lmbench -s LMBENCH_L_PERF_0001
 
-.. csv-table:: LMBench Benchmarks
+.. csv-table::
     :header: "Benchmarks","am654x-evm: perf"
 
     "af_unix_sock_stream_latency (microsec)","73.33"
@@ -185,7 +185,7 @@ Execute the LMBench with the following:
 Whetstone
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: Whetstone Benchmarks
+.. csv-table::
     :header: "Benchmarks","am654x-evm: perf"
 
     "whetstone (MIPS)","3333.30"
@@ -195,7 +195,7 @@ Linpack
 Linpack measures peak double precision (64 bit) floating point performance in
 solving a dense linear system.
 
-.. csv-table:: Linpack Benchmarks
+.. csv-table::
     :header: "Benchmarks","am654x-evm: perf"
 
     "linpack (Kflops)","327968.00"
@@ -208,7 +208,7 @@ More information about NBench at
 https://en.wikipedia.org/wiki/NBench and
 https://nbench.io/articles/index.html
 
-.. csv-table:: NBench Benchmarks
+.. csv-table::
     :header: "Benchmarks","am654x-evm: perf"
 
     "assignment (Iterations)","7.88"
@@ -233,7 +233,7 @@ add two numbers, and triad for multiply accumulate.
 For bandwidth, a byte read counts as one and a byte written counts as one,
 resulting in a score that is double the bandwidth LMBench will show.
 
-.. csv-table:: Stream Benchmarks
+.. csv-table::
     :header: "Benchmarks","am654x-evm: perf"
 
     "add (MB/s)","1590.10"
@@ -258,7 +258,7 @@ establish a common programming model that communicates with the benchmark throug
 abstraction layer and provides a flexible interface to allow a wide variety of
 thread-enabled workloads to be tested.
 
-.. csv-table:: Multibench Benchmarks
+.. csv-table::
     :header: "Benchmarks","am654x-evm: perf"
 
     "4m-check (workloads/)","314.70"
@@ -298,7 +298,7 @@ Boot-time Measurement
 Boot media: MMCSD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: Boot time MMCSD
+.. csv-table::
     :header: "Boot Configuration","am654x-evm: boot time (sec)"
 
     "Kernel boot time test when bootloader, kernel and sdk-rootfs are in mmc-sd","18.19 (min 17.30, max 19.42)"
@@ -382,7 +382,7 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 .. rubric::  TCP Bidirectional Throughput Interrupt Pacing
    :name: CPSW2g-tcp-bidirectional-throughput-interrupt-pacing
 
-.. csv-table:: CPSW2g TCP Bidirectional Throughput Interrupt Pacing
+.. csv-table::
     :header: "Command Used","am654x-evm: THROUGHPUT (Mbits/sec)","am654x-evm: CPU Load % (LOCAL_CPU_UTIL)"
 
     "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1385.92","33.09"
@@ -390,7 +390,9 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 .. rubric::  UDP Throughput 
    :name: CPSW2g-udp-throughput-0-loss
 
-.. csv-table:: CPSW2g UDP Egress Throughput 0 loss
+Table:  **CPSW2g UDP Egress Throughput 0 loss**
+
+.. csv-table::
     :header: "Frame Size(bytes)","am654x-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am654x-evm: THROUGHPUT (Mbits/sec)","am654x-evm: Packets Per Second (kPPS)","am654x-evm: CPU Load % (LOCAL_CPU_UTIL)"
 
     "64","18.00","10.59","74.00","46.60"
@@ -399,7 +401,9 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
     "1024","978.00","612.40","78.00","44.89"
     "1518","1472.00","788.20","67.00","47.67"
 
-.. csv-table:: CPSW2g UDP Ingress Throughput 0 loss
+Table:  **CPSW2g UDP Ingress Throughput 0 loss**
+
+.. csv-table::
     :header: "Frame Size(bytes)","am654x-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am654x-evm: THROUGHPUT (Mbits/sec)","am654x-evm: Packets Per Second (kPPS)","am654x-evm: CPU Load % (LOCAL_CPU_UTIL)"
 
     "64","18.00","3.61","25.00","12.00"
@@ -407,7 +411,9 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
     "256","210.00","44.01","26.00","13.19"
     "1518","1472.00","317.95","27.00","14.15"
 
-.. csv-table:: CPSW2g UDP Ingress Throughput possible loss
+Table:  **CPSW2g UDP Ingress Throughput possible loss**
+
+.. csv-table::
     :header: "Frame Size(bytes)","am654x-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am654x-evm: THROUGHPUT (Mbits/sec)","am654x-evm: Packets Per Second (kPPS)","am654x-evm: CPU Load % (LOCAL_CPU_UTIL)","am654x-evm: Packet Loss %"
 
     "64","18.00","14.53","101.00","41.73","51.72"
@@ -421,7 +427,7 @@ ICSSG Ethernet Driver
 .. rubric::  TCP Bidirectional Throughput 
    :name: tcp-bidirectional-throughput
 
-.. csv-table:: ICSSG TCP Bidirectional Throughput
+.. csv-table::
     :header: "Command Used","am654x-evm: THROUGHPUT (Mbits/sec)","am654x-evm: CPU Load % (LOCAL_CPU_UTIL)"
 
     "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","1071.12","48.59"
@@ -429,12 +435,16 @@ ICSSG Ethernet Driver
 .. rubric::  TCP Bidirectional Throughput Interrupt Pacing
    :name: ICSSG-tcp-bidirectional-throughput-interrupt-pacing
 
-.. csv-table:: ICSSG TCP Bidirectional Throughput Interrupt Pacing
+Table:  **ICSSG TCP Bidirectional Throughput Interrupt Pacing**
+
+.. csv-table::
     :header: "Command Used","am654x-evm: THROUGHPUT (Mbits/sec)","am654x-evm: CPU Load % (LOCAL_CPU_UTIL)"
 
     "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","1111.40","49.09"
 
-.. csv-table:: ICSSG UDP Ingress Throughput 0 loss
+Table:  **ICSSG UDP Ingress Throughput 0 loss**
+
+.. csv-table::
     :header: "Frame Size(bytes)","am654x-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am654x-evm: THROUGHPUT (Mbits/sec)","am654x-evm: Packets Per Second (kPPS)","am654x-evm: CPU Load %"
 
     "256","210.00","32.59","19.00","10.54"
@@ -447,7 +457,7 @@ PCIe Driver
 PCIe-ETH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: PCIe Ethernet performance
+.. csv-table::
     :header: "TCP Window Size(Kbytes)","am654x-evm: Bandwidth (Mbits/sec)"
 
     "128","0.00"
@@ -461,7 +471,7 @@ CRYPTO Driver
 IPSec Software Performance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. csv-table:: IPSec Software Performance
+.. csv-table::
     :header: "Algorithm","am654x-evm: Throughput (Mbps)","am654x-evm: Packets/Sec","am654x-evm: CPU Load"
 
     "aes256","0.60","0.00","31.42"
