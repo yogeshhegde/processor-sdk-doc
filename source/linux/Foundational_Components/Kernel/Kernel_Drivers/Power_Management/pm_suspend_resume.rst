@@ -25,13 +25,13 @@ Suspend/resume can be enable or disabled within the kernel using the
 same method for all parts. To configure suspend/resume, enter the kernel
 configuration tool using:
 
-::
+.. code-block:: console
 
    $ make menuconfig
 
 Select *Power management options* from the main menu.
 
-::
+.. code-block:: menuconfig
 
    ...
    ...
@@ -49,7 +49,7 @@ Select *Power management options* from the main menu.
 Select *Suspend to RAM and standby* to toggle the power management
 support.
 
-::
+.. code-block:: menuconfig
 
    [*] Suspend to RAM and standby
    -*- Run-time PM core functionality
@@ -71,7 +71,7 @@ device which allow for selection of the MUXMODE of the pin and the
 operation of the internal pull resistor. Typically a device defines it's
 pinctrl state for normal operation:
 
-::
+.. code-block:: dts
 
    davinci_mdio_default: davinci_mdio_default {
       pinctrl-single,pins = <
@@ -84,7 +84,7 @@ pinctrl state for normal operation:
 In order to define a sleep state for the same device, another pinctrl
 state can be defined:
 
-::
+.. code-block:: dts
 
    davinci_mdio_sleep: davinci_mdio_sleep {
       pinctrl-single,pins = <
@@ -97,7 +97,7 @@ state can be defined:
 The driver then defines the sleep state in addition to the default
 state:
 
-::
+.. code-block:: dts
 
    &davinci_mdio {
       pinctrl-names = "default", "sleep";
@@ -140,7 +140,7 @@ a pinctrl state for unused pins and then assigning it directly the the
 pinctrl node itself in the board device tree so the state is configured
 during boot even though there is no specific driver for these pins:
 
-::
+.. code-block:: dts
 
    &am43xx_pinmux {
       pinctrl-names = "default";
@@ -159,7 +159,7 @@ kernel and the wkup\_m3, so there are several requirements when building
 the Linux kernel to ensure this will work. The following config options
 are required when building a kernel to support suspend:
 
-::
+.. code-block:: kconfig
 
    # Firmware Loading from rootfs
    CONFIG_FW_LOADER_USER_HELPER=y
@@ -192,7 +192,7 @@ are supported from DeepSleep0
 
 To enter DeepSleep0 enter the following at the command line:
 
-::
+.. code-block:: console
 
    $ echo mem > /sys/power/state
 
@@ -201,25 +201,25 @@ one of the aforementioned wake-up sources will cause the kernel to
 resume and the board to exit DeepSleep0. A successful suspend/resume
 cycle should look like this:
 
-::
+.. code-block:: console
 
    $ echo mem > /sys/power/state
-   $ PM: Syncing filesystems ... done.
-   $ Freezing user space processes ... (elapsed 0.007 seconds) done.
-   $ Freezing remaining freezable tasks ... (elapsed 0.006 seconds) done.
-   $ Suspending console(s) (use no_console_suspend to debug)
-   $ PM: suspend of devices complete after 194.787 msecs
-   $ PM: late suspend of devices complete after 14.477 msecs
-   $ PM: noirq suspend of devices complete after 17.849 msecs
-   $ Disabling non-boot CPUs ...
-   $ PM: Successfully put all powerdomains to target state
-   $ PM: Wakeup source UART
-   $ PM: noirq resume of devices complete after 39.113 msecs
-   $ PM: early resume of devices complete after 10.180 msecs
-   $ net eth0: initializing cpsw version 1.12 (0)
-   $ net eth0: phy found : id is : 0x4dd074
-   $ PM: resume of devices complete after 368.844 msecs
-   $ Restarting tasks ... done
+     PM: Syncing filesystems ... done.
+     Freezing user space processes ... (elapsed 0.007 seconds) done.
+     Freezing remaining freezable tasks ... (elapsed 0.006 seconds) done.
+     Suspending console(s) (use no_console_suspend to debug)
+     PM: suspend of devices complete after 194.787 msecs
+     PM: late suspend of devices complete after 14.477 msecs
+     PM: noirq suspend of devices complete after 17.849 msecs
+     Disabling non-boot CPUs ...
+     PM: Successfully put all powerdomains to target state
+     PM: Wakeup source UART
+     PM: noirq resume of devices complete after 39.113 msecs
+     PM: early resume of devices complete after 10.180 msecs
+     net eth0: initializing cpsw version 1.12 (0)
+     net eth0: phy found : id is : 0x4dd074
+     PM: resume of devices complete after 368.844 msecs
+     Restarting tasks ... done
    $
 
 It is also possible to enter standby sleep with the possibility to use
@@ -227,7 +227,7 @@ additional wake sources and have a faster resume time while using
 slightly more power. To enter standby sleep, enter the following at the
 command line:
 
-::
+.. code-block:: console
 
    $ echo standby > /sys/power/state
 
@@ -237,9 +237,9 @@ DeepSleep0.
 In the event that a cycle fails, the following message will be present
 in the log:
 
-::
+.. code-block:: text
 
-   $ PM: Could not transition all powerdomains to target state
+   PM: Could not transition all powerdomains to target state
 
 This is usually due to clocks that have not properly been shut off
 within the PER powerdomain. Make sure that all clocks within CM\_PER are
@@ -275,13 +275,13 @@ accomplish this, first make sure you have placed
 ``am335x-pm-firmware.elf`` under ``<KERNEL SOURCE>/firmware``. Then
 enter the kernel configuration by typing:
 
-::
+.. code-block:: console
 
    $ make menuconfig
 
 Select *Device Drivers* from the main menu.
 
-::
+.. code-block:: menuconfig
 
    ...
    ...
@@ -298,7 +298,7 @@ Select *Device Drivers* from the main menu.
 
 Select Generic Driver Options
 
-::
+.. code-block:: menuconfig
 
    Generic Driver Options
    CBUS support
@@ -307,7 +307,7 @@ Select Generic Driver Options
 
 Configure the name of the PM firmware and the location as shown below
 
-::
+.. code-block:: menuconfig
 
    ...
    -*- Userspace firmware loading support
@@ -319,7 +319,7 @@ The CM3 firmware is needed for all idle low power modes on am335x and
 am437x and for cpuidle on am335x. During boot, if the CM3 firmware has
 been properly loaded, the following message will be displayed:
 
-::
+.. code-block:: text
 
    PM: CM3 Firmware Version = 0x191
 
@@ -395,7 +395,7 @@ use this to toggle a pin to control the VTT regulator. This is handled
 by the wakeup M3 processor and gets defined inside the device node
 within the board device tree file.
 
-::
+.. code-block:: dts
 
    &wkup_m3_ipc {
       ti,needs-vtt-toggle;
@@ -432,7 +432,7 @@ The ``ti,set-io-isolation`` flag below in the ``wkup_m3_ipc`` node tells
 the CM3 firmware to place the IO's in isolation and actually trigger the
 value provided in the ``ddr3_vtt_toggle_default`` pinctrl entry.
 
-::
+.. code-block:: dts
 
    &am43xx_pinmux {
       pinctrl-names = "default";
@@ -489,7 +489,7 @@ contains scale data binaries for these platforms:
 The name of the binary to use is specified in the wkup\_m3\_ipc node
 with the ``ti,scale-data-fw`` property of a board file like so:
 
-::
+.. code-block:: dts
 
    /* From arch/arm/boot/dts/am437x-gp-evm.dts */
    &wkup_m3_ipc {
@@ -564,14 +564,14 @@ bin/am335x-evm-scale-data.bin).
 
 Raw binary data using xxd:
 
-::
+.. code-block:: console
 
    a0274052local@uda0274052:~/git-repos/amx3-cm3$ xxd bin/am335x-evm-scale-data.bin
    0000000: 0c57 0006 0034 022d 251f 0034 022d 252b  .W...4.-%..4.-%+
 
 Explanation of values:
 
-::
+.. code-block:: text
 
    0c57        # Magic number
    00      # Offset from first byte after header to sleep section
@@ -591,7 +591,7 @@ bin/am43x-evm-scale-data.bin).
 
 Raw binary data using xxd:
 
-::
+.. code-block:: console
 
    amx3-cm3$ xxd bin/am43x-evm-scale-data.bin
    0000000: 0c57 0012 0034 0224 106b 0224 168a 0224  .W...4.$.k.$...$
@@ -600,7 +600,7 @@ Raw binary data using xxd:
 
 Explanation of values:
 
-::
+.. code-block:: text
 
    0C 57           # Magic number 0x0C57
    00          # Offset, starting after header, to sleep sequence

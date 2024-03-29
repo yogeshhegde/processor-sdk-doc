@@ -51,7 +51,7 @@ $ make menuconfig
 
 Select CPU Power Management from the main menu.
 
-::
+.. code-block:: menuconfig
 
    ...
    ...
@@ -62,7 +62,7 @@ Select CPU Power Management from the main menu.
 
 Select CPU Frequency Scaling as shown here:
 
-::
+.. code-block:: menuconfig
 
    ...
    ...
@@ -72,7 +72,7 @@ Select CPU Frequency Scaling as shown here:
 
 All relevant options are listed below:
 
-::
+.. code-block:: menuconfig
 
    [*] CPU Frequency scaling
    <*>   CPU frequency translation statistics
@@ -96,7 +96,7 @@ given in the example below. The voltage source needs to be hooked to the
 cpu0 node. As given below cpu0-supply needs to be mapped to the right
 regulator node by looking at the schematics.
 
-::
+.. code-block:: dts
 
    /* From arch/arm/boot/dts/am4372.dtsi */
 
@@ -138,34 +138,34 @@ the ondemand governor is selected.
 
 To view available governors,
 
-::
+.. code-block:: console
 
    $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
    conservative userspace powersave ondemand performance
 
 To view current governor,
 
-::
+.. code-block:: console
 
    $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
    ondemand
 
 To set a governor,
 
-::
+.. code-block:: console
 
    $ echo userspace > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 
 To view current OPP (frequency in kHz)
 
-::
+.. code-block:: console
 
    $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq
    720000
 
 To view supported OPP's (frequency in kHz),
 
-::
+.. code-block:: console
 
    $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
    275000 500000 600000 720000
@@ -174,7 +174,7 @@ To change OPP (can be done only for userspace governor. If governors
 like ondemand is used, OPP change happens automatically based on the
 system load)
 
-::
+.. code-block:: console
 
    $ echo 275000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
 
@@ -194,7 +194,7 @@ tables in the DT files. These files allow defining of a different set of
 OPPs for each different SoC, and also selective, automatic enabling
 based on what is detected to be supported by the specific SoC in use.
 
-::
+.. code-block:: dts
 
    /* From arch/arm/boot/dts/am4372.dtsi */
 
@@ -253,7 +253,7 @@ taking place if the system has been designed to use a single voltage.
 
    Supported OPPs:
 
-   ::
+   .. code-block:: text
 
       /* kHz    uV */
       1000000 1090000   /* OPP_NOM */
