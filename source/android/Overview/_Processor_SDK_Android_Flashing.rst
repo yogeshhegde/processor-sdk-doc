@@ -1,5 +1,7 @@
 .. include:: /_replacevars.rst
 
+.. _android-flashing:
+
 ********************************************
 Flashing Instruction
 ********************************************
@@ -31,16 +33,8 @@ Install snagboot following the `official instructions <https://github.com/bootli
 
     If Snagboot cannot be installed, it's possible boot the initial bootloaders from an SD card.
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62X')
+    Follow :ref:`android-bootloader-sdcard` if you encounter issues with Snagboot.
 
-      Follow `AM62x Initial Flashing on SD card`_ if you encounter issues with Snagboot.
-
-    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
-
-      Follow `AM62Px Initial Flashing on SD card`_ if you encounter issues with Snagboot.
-
-.. _AM62x Initial Flashing on SD card: ../devices/AM62X/android/Application_Notes_Android_Bootloader_SD_Card.html
-.. _AM62Px Initial Flashing on SD card: ../devices/AM62PX/android/Application_Notes_Android_Bootloader_SD_Card.html
 
 eMMC flashing
 ==============
@@ -143,16 +137,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
   .. note::
 
-      .. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-        By default, no Device-Tree Overlays are selected. Follow this link to set `AM62x Device Tree Overlays`_
-
-      .. ifconfig:: CONFIG_part_variant in ('AM62PX')
-
-        By default, no Device-Tree Overlays are selected. Follow this link to set `AM62Px Device Tree Overlays`_
-
-.. _AM62x Device Tree Overlays: ../devices/AM62X/android/Application_Notes_dtbo_support.html
-.. _AM62Px Device Tree Overlays: ../devices/AM62PX/android/Application_Notes_dtbo_support.html
+     By default, no Device-Tree Overlays are selected. Follow this link to configure :ref:`android-dtbo`
 
 6. Enable fastboot mode on the device through the terminal debugger by executing below command.
    Before running this command make sure USB-C cable is connected from the host PC to the EVM:

@@ -1,3 +1,5 @@
+.. _android-dtbo:
+
 ===========================
 Device Tree Overlay Support
 ===========================

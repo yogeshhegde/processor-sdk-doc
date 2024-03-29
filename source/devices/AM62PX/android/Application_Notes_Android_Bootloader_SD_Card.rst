@@ -1,3 +1,5 @@
+.. _android-bootloader-sdcard:
+
 =============================
 Android Bootloader on SD Card
 =============================

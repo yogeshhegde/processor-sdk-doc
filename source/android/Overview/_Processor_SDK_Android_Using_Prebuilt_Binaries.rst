@@ -13,7 +13,7 @@ Using Prebuilt binaries
 
     The SDK download page provides pre-built Android binaries (``AM62x_XX.YY.ZZ_emmc.tgz``) which can be readily used to flash the |__PART_FAMILY_DEVICE_NAMES__| EVM and boot Android.
 
-    Extract the contents of the pre-built images tarball and follow the procedure mentioned in `Flashing Instruction`_ page to flash these binaries to the EVM.
+    Extract the contents of the pre-built images tarball and follow the procedure mentioned in :ref:`android-flashing` page to flash these binaries to the EVM.
 
     .. code-block:: console
 
@@ -24,11 +24,8 @@ Using Prebuilt binaries
 
     The SDK download page provides pre-built Android binaries (``AM62Px_XX.YY.ZZ_emmc.tgz``) which can be readily used to flash the |__PART_FAMILY_DEVICE_NAMES__| EVM and boot Android.
 
-    Extract the contents of the pre-built images tarball and follow the procedure mentioned in `Flashing Instruction`_ page to flash these binaries to the EVM.
+    Extract the contents of the pre-built images tarball and follow the procedure mentioned in :ref:`android-flashing` page to flash these binaries to the EVM.
 
     .. code-block:: console
 
        $ tar -zxvf AM62Px_XX.YY.ZZ_emmc.tgz
-
-.. _Flashing Instruction: Overview_Flashing.html
-

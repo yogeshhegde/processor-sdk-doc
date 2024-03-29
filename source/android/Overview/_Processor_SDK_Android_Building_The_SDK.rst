@@ -1,3 +1,5 @@
+.. _android-building:
+
 ********************************************
 Building the SDK
 ********************************************
@@ -42,6 +44,8 @@ Downloading sources
        $ mkdir ~/09_02_00 && cd $_
        $ export YOUR_PATH=$PWD
 
+.. _android-download-bootloaders:
+
 Bootloader components
 ---------------------
 
@@ -76,6 +80,7 @@ Kernel
 
           $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_09_02_Kernel.xml --depth=1
 
+.. _android-download-aosp:
 
 Android file system
 -------------------
@@ -102,6 +107,7 @@ Build Instructions
         Prebuilt copies of these binaries are already part of Android file system sources
         in ``device/ti/am62x-kernel`` and ``vendor/ti/am62x/bootloader`` folder.
 
+.. _android-build-bootloaders:
 
 Bootloader components
 ---------------------
@@ -248,6 +254,7 @@ The usual (``make menuconfig``) is done via ``bazel`` command :
       Otherwise pre-built kernel images present in ``device/ti/am62x-kernel``
       will be used to create ``boot.img``
 
+.. _android-build-aosp:
 
 Android File System
 -------------------

@@ -1,3 +1,5 @@
+.. _android-application-notes:
+
 ##################
 Application Notes
 ##################
