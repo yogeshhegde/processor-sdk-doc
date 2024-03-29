@@ -64,10 +64,19 @@ Flashing SD Card
 .. warning::
     Minimal size for SD card is ``16GB``
 
-- Change the boot mode DIP switches to SD card boot mode::
+- Change the boot mode DIP switches to SD card boot mode:
 
-        Boot mode DIP switch:
-        SW1: 11000010 SW2: 01000000
+  .. list-table::
+     :widths: 16 16 16
+     :header-rows: 1
+
+     * - Switch Label
+       - SW2: 12345678
+       - SW3: 12345678
+
+     * - SD
+       - 01000000
+       - 11000010
 
 - Go in out directory in android environment and launch this command:
 

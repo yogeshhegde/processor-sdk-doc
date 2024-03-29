@@ -59,10 +59,19 @@ Use the SD card created in previous step to get started.
 Procedure is same whether the pre-built images from SDK download page is used or
 the images are built from source.
 
-1. Change the Boot Mode DIP switches to SD card boot mode::
+1. Change the Boot Mode DIP switches to SD card boot mode:
 
-        Boot mode DIP Switch:
-        SW1: 11000010 SW2: 01000000
+  .. list-table::
+     :widths: 16 16 16
+     :header-rows: 1
+
+     * - Switch Label
+       - SW2: 12345678
+       - SW3: 12345678
+
+     * - SD
+       - 01000000
+       - 11000010
 
 2. Insert the SD card into the AM62Px SK EVM.
 

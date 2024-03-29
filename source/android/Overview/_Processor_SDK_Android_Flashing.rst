@@ -52,10 +52,19 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
     .. Image:: ../images/am62x_sk_evm_setup.jpg
 
-1. Change the boot mode DIP switches to DFU mode::
+1. Change the boot mode DIP switches to DFU mode:
 
-        Boot mode DIP Switch:
-        SW1: 11001010 SW2: 00000000
+   .. list-table::
+      :widths: 16 16 16
+      :header-rows: 1
+
+      * - Switch Label
+        - SW2: 12345678
+        - SW3: 12345678
+
+      * - USB DFU
+        - 00000000
+        - 11001010
 
 2. Ensure the device is plugged in with USB host and debug UART/serial debug
 
@@ -215,10 +224,20 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
 8. Once the flashing is complete, power off the board
 
-9. Change boot mode DIP switches to boot from eMMC user partitions and power cycle the board::
+9. Change boot mode DIP switches to boot from eMMC user partitions and power cycle the board:
 
-        Boot mode DIP Switch:
-        SW1: 11000010 SW2: 00000000
+   .. list-table::
+      :widths: 16 16 16
+      :header-rows: 1
+
+      * - Switch Label
+        - SW2: 12345678
+        - SW3: 12345678
+
+      * - EMMC
+        - 00000000
+        - 11010010
+
 
 10. Board should boot the Android images now.
 
