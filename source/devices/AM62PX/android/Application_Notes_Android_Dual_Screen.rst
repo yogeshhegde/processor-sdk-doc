@@ -11,7 +11,7 @@ The following panel is currently supported with the AM62Px SK EVM board:
 
 .. note::
 
-	By default Android configures the displays in mirror mode.
+   By default Android configures the displays in mirror mode.
 
 
 How to enable Microtips LVDS panel on AM62Px SK EVM
@@ -30,18 +30,17 @@ How to enable Extended Display in Android
 
 #. Edit ``device.mk`` file to add this:
 
-	.. code-block:: makefile
+   .. code-block:: makefile
 
-		# Display settings (windowing, system decorations, IME ...)
-		PRODUCT_COPY_FILES += \
-			device/ti/am62x/display_settings.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display_settings.xml
+      # Display settings (windowing, system decorations, IME ...)
+      PRODUCT_COPY_FILES += \
+         device/ti/am62x/display_settings.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display_settings.xml
 
-		# Enable activities on secondary displays
-		PRODUCT_COPY_FILES += \
-			frameworks/native/data/etc/android.software.activities_on_secondary_displays.xml:system/etc/permissions/android.software.activities_on_secondary_displays.xml
+      # Enable activities on secondary displays
+      PRODUCT_COPY_FILES += \
+         frameworks/native/data/etc/android.software.activities_on_secondary_displays.xml:system/etc/permissions/android.software.activities_on_secondary_displays.xml
 
 #. Rebuild Android:
-
-	Relaunch command from `How to build SDK <../../../android/Overview_Building_the_SDK.html#id3>`_ guide.
+   Relaunch command from `How to build SDK <../../../android/Overview_Building_the_SDK.html#id3>`_ guide.
 
 #. Follow this `How to flash eMMC <../../../android/Overview_Flashing.html#emmc-flashing>`_ guide to flash Android images.

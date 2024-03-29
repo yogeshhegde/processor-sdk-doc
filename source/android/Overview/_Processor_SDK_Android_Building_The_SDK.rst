@@ -168,17 +168,19 @@ Bootloader components
 
     .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        .. note ::
-            To build bootloaders for AM62x LP board please do same step with this defconfig:
+       .. note::
 
-                - For step 3, use ``am62x_lpsk_r5_defconfig``
-                - For step 4, use ``am62x_lpsk_a53_defconfig`` with same fragment
+          To build bootloaders for AM62x LP board please do same step with this defconfig:
 
-        .. note ::
-            To build bootloaders for the Beagle Play, follow same steps but change the defconfigs:
+              - For step 3, use ``am62x_lpsk_r5_defconfig``
+              - For step 4, use ``am62x_lpsk_a53_defconfig`` with same fragment
 
-                - For step 3, use ``am62x_evm_r5_defconfig`` with ``am625_beagleplay_r5.config`` and ``am625_beagleplay_android_r5.config``
-                - For step 4, use ``am62x_evm_a53_defconfig`` with ``am625_beagleplay_a53.config``, ``am62x_android_a53.config`` and ``am625_beagleplay_android_a53.config``
+       .. note::
+
+          To build bootloaders for the Beagle Play, follow same steps but change the defconfigs:
+
+              - For step 3, use ``am62x_evm_r5_defconfig`` with ``am625_beagleplay_r5.config`` and ``am625_beagleplay_android_r5.config``
+              - For step 4, use ``am62x_evm_a53_defconfig`` with ``am625_beagleplay_a53.config``, ``am62x_android_a53.config`` and ``am625_beagleplay_android_a53.config``
 
 Kernel
 ------
@@ -198,11 +200,11 @@ Building everything from scratch
         export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/6.1
         tools/bazel run //common:ti_dist -- --dist_dir=$DIST_DIR
 
-    .. note::
+   .. note::
 
-        Android uses Kleaf, a Bazel-based build system to build the kernel.
-        AOSP documentation can be found `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and
-        Kleaf documentation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
+      Android uses Kleaf, a Bazel-based build system to build the kernel.
+      AOSP documentation can be found `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and
+      Kleaf documentation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
 
 Rebuilding faster
 ~~~~~~~~~~~~~~~~~
@@ -219,7 +221,7 @@ Rebuilding faster
 Defconfig/menuconfig changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The usual (``make menuconfig`` ) is done via ``bazel`` command :
+The usual (``make menuconfig``) is done via ``bazel`` command :
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
@@ -230,11 +232,11 @@ The usual (``make menuconfig`` ) is done via ``bazel`` command :
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
-    .. note::
+   .. note::
 
-           Users must have built the android kernel image prior to building the Android file system.
-           Otherwise pre-built kernel images present in ``device/ti/am62x-kernel``
-           will be used to create ``boot.img``
+      Users must have built the android kernel image prior to building the Android file system.
+      Otherwise pre-built kernel images present in ``device/ti/am62x-kernel``
+      will be used to create ``boot.img``
 
 
 Android File System

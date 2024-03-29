@@ -60,7 +60,8 @@ Flashing SD Card
 ----------------
 
 .. warning::
-    Minimal size for SD card is ``16GB``
+
+   Minimal size for SD card is ``16GB``
 
 - Change the boot mode DIP switches to SD card boot mode::
 
