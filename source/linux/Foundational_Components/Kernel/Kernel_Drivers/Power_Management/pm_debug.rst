@@ -4,8 +4,10 @@
 Debug Information
 #################
 
+***************
 Low Power Modes
-===============
+***************
+
 As described in the :ref:`S/W Architecture section<pm_sw_arch>`,
 implementing Low Power Modes like Deep Sleep requires a synchronization
 between multiple software components. Debugging a LPM issue 

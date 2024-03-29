@@ -19,8 +19,9 @@ The following wakeup sources are supported in this SDK release:
 #. MCU IPC (for MCU Only mode)
 #. CAN UART (for Partial I/O mode)
 
+*********************
 Real-Time Clock (RTC)
-=====================
+*********************
 
 It's possible to use the SoC's internal RTC to wakeup the system using the command rtcwake:
 
@@ -160,8 +161,9 @@ For example, if you wish to wakeup from Deep Sleep or MCU Only mode in 10 second
         AM62A requires additional -d rtc1 option as SoC's internal RTC gets
         probed as rtc1.
 
+********
 MCU GPIO
-========
+********
 
 One of the most common ways to wakeup a system is by using some I/O activity. MCU GPIOs allow us to do this
 by configuring the MCU GPIO controller as a wakeup source.
@@ -234,8 +236,9 @@ Once the system has entered Deep Sleep or MCU Only mode as shown in the
 :ref:`LPM section<lpm_modes>`, wakeup from MCU GPIO0_16 can be triggered
 by grounding Pin 11 on J8 MCU Header.
 
+********************
 Main I/O Daisy Chain
-====================
+********************
 
 The main domain is powered-off when the SoC enters low power mode. This includes controllers like
 Main UART, GPIO, I2C, etc. The question then arises how to wakeup the SoC from peripherals connected
@@ -266,7 +269,7 @@ To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_DEVICE_NAMES__| 
 
 
 Main UART
-*********
+=========
 
 The way to configure UART as an I/O daisy chain wakeup, refer to the
 main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=ti-linux-6.1.y#n329>`_
@@ -324,7 +327,7 @@ to wakeup the system.
 
 
 Main GPIO
-*********
+=========
 
 Configuring Main GPIO as an I/O daisy chain wakeup source requires a
 combination of gpio-keys with chained IRQ in the pinctrl driver. The
@@ -349,8 +352,9 @@ Once the system has entered Deep Sleep or MCU Only mode as shown in the
 :ref:`LPM section<lpm_modes>`, wakeup from MAIN GPIO1_10 can be triggered
 by grounding Pin 33 on J3 User Expansion Connector.
 
+*********
 WKUP UART
-=========
+*********
 
 The UART in WKUP domain is capable of waking up the system from Deep
 Sleep and MCU Only modes.
@@ -370,18 +374,19 @@ visible on the WKUP UART terminal, but Linux resume messages will be
 printed on the MAIN UART terminal.
 
 
+******************
 USB Wakeup methods
-=================
+******************
 
 System wakeup is possible through the USB events in both Host and Device mode.
 
 Host Mode Wakeup Events
-***********************
+=======================
 
 The USB wakeup events in Host mode are described below:
 
 Wakeup via a device connect event
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------
 
 Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
 
@@ -393,7 +398,7 @@ This can be checked by below command before and after suspending and waking up t
   # lsusb -t
 
 Wakeup via a device disconnect event
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 
 Plug in a USB device to one of the port on the board and check that the device is enumerated by executing the below command.
 
@@ -411,7 +416,7 @@ And device would not show up in list of USB enumerated devices. This can be veri
   # lsusb -t
 
 Via Remote wakeup event
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------
 
 Use a device that supports USB suspend/resume and ensure that the USB device can suspend and resume correctly.
 For a example a Logitech USB keyboard that supports suspend/resume. Follow below steps to check whether the keyboard is capable
@@ -447,10 +452,10 @@ And USB keyboard would still be present in the system's list of USB enumerated d
   # lsusb -t
 
 Device Mode Wakeup Events
-*************************
+=========================
 
 Wakeup via connect event
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------
 
 Load a USB gadget driver such as g_zero
 
@@ -469,8 +474,9 @@ below command on the Host system
   HOST:~$ > lsub -t
 
 
+********************
 MCU IPC based Wakeup
-======================
+********************
 
 It's possible to use IPC based wakeup events from the MCU core. For details on how to implement this
 from the firmware side, please refer to the relevant documentation:
@@ -506,8 +512,9 @@ mode and the following message printed:
     [IPC RPMSG ECHO] Main domain resumed due to MCU UART
 
 
+********************************
 Confirming the Wakeup event type
-================================
+********************************
 
 When the SoC wakes up from any Low Power Mode, the Device Manager logs the wake reason.
 This wake reason can be queried by Linux using the `TISCI LPM API <https://downloads.ti.com/tisci/esd/latest/2_tisci_msgs/pm/lpm.html>`__.

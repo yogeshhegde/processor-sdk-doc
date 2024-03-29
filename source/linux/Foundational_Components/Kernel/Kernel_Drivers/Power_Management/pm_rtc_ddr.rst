@@ -2,8 +2,9 @@
 RTC-Only and RTC+DDR Mode
 #########################
 
+********
 Overview
-========
+********
 
 AM437x supports two RTC modes, RTC+DDR and RTC-Only mode. RTC+DDR Mode is similar to the
 Suspend/Resume above but only supports wake by the Power Button present

@@ -89,7 +89,6 @@ Under Kernel directory arch/arm/boot/dts/am335x-bone-common.dtsi line 401
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
     .. rubric:: Power Management
-       :name: power-management
 
     | GPIO pins to be used to wake the system from low-power sleep states
       must be configured as a wake source in the device tree. Verify

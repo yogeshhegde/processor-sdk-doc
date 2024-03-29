@@ -1,7 +1,8 @@
 .. include:: /_replacevars.rst
 
+#######
 CPUIdle
--------
+#######
 
 .. rubric:: Overview
 
