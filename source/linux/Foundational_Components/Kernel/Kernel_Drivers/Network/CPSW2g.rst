@@ -82,3 +82,4 @@ MAC mode
 ========
 
 .. include:: _K3-CPSW-common.rst
+   :parser: rst
