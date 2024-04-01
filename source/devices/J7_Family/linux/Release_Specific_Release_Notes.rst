@@ -447,6 +447,36 @@ Linux RT Kernel Known Issues
 
 There are no known issues in this release in the Linux RT Kernel.
 
+|
+
+Issues closed in system firmware in this release
+-------------------------------------------------
+.. csv-table::
+  :header: "Record ID", "Title", "Platform"
+  :widths: 5, 10, 70
+
+  "SYSFW-6811","HSM core not allowed to access SA2UL context memory","j721s2, j784s4"
+  "SYSFW-6763","TISCI_MSG_SET_DEVICE_RESETS message returns success for invalid device reset range","j721e, j7200, j721s2, j784s4"
+  "SYSFW-7030","DEVICE_RESETS API fails for reset value for 0x3","j721e, j7200, j721s2, j784s4, j722s"
+  "SYSFW-7056","Implement New PLL sequence Proposed by HW team","j721e, j7200, j721s2, j784s4, j722s"
+  "SYSFW-6892","TISCI Clock api returns success for invalid Clock ID","j721e, j7200, j721s2, j784s4"
+  "SYSFW-6805","TISCI_MSG_QUERY_FW_CAPS is giving NACK when send over secure queue","j721e, j7200, j721s2, j784s4, j722s"
+  "SYSFW-4075","Trace: Insufficient bit-space allocated for LPSC IDs","j721e, j7200, j721s2, j784s4, j722s"
+
+|
+
+System firmware Known Issues
+------------------------------
+.. csv-table::
+  :header: "Record ID", "Title", "Platform"
+  :widths: 5, 10, 70
+
+  "SYSFW-6426","Ownership of a firewall region can be transferred to an invalid host","j721e, j7200, j721s2, j784s4, j722s"
+  "SYSFW-7038","Firewall 1050 Defaults to Region 1","j784s4"
+  "SYSFW-6010","Firewall Exception is not enabled for HSFS device","j721e"
+
+|
+
 Change Requests
 ===============
 
