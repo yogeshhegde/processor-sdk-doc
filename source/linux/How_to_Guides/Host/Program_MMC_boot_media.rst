@@ -1,8 +1,10 @@
+######################
 Program MMC boot media
-======================
+######################
 
+********
 Overview
---------
+********
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
    This documentation provide the steps for building flasher Image with initramfs-based boot support and programming
@@ -25,8 +27,9 @@ Overview
    * Use the SDK to build a separate "flasher" image which can be transferred
      from the host PC via Ethernet to program the MMC-SD device.
 
+**************
 What is Needed
---------------
+**************
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
@@ -70,18 +73,20 @@ What is Needed
 
 * A SD card with pre-built U-Boot images from SDK
 
+**************
 Configure tftp
---------------
+**************
 
 Steps to configure a TFTP Server on host PC can be found in :ref:`TFTP Server <run-setup-scripts>`
 
+***************************
 Preparing the Flasher Image
----------------------------
+***************************
 
 First we need to create the flasher image with smaller filesystem on the host PC.
 
 Prepare a rootfs
-^^^^^^^^^^^^^^^^
+================
 
 * Navigate to **<Processor-SDK>/filesystem**
 
@@ -149,7 +154,7 @@ Prepare a rootfs
    init should now be linked to sbin/init
 
 Prepare Kernel with baked-in initramfs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+======================================
 
 * Navigate to your linux repository to build flasher Image
 
@@ -226,7 +231,7 @@ location of the files:
 Exit menuconfig and save the new configuration.
 
 Build the Kernel
-^^^^^^^^^^^^^^^^
+================
 
 * Compile the zImage
 
@@ -236,8 +241,9 @@ Build the Kernel
 
 * Copy arch/arm64/boot/Image to /tftpboot
 
+*************
 Target Images
--------------
+*************
 
 * Populate pre-built U-Boot images from SDK into TFTP folder
 
@@ -274,8 +280,9 @@ Target Images
 
    * Copy wic image to root directory /tftpboot
 
+*****************
 Program the Flash
------------------
+*****************
 
 Now that the flash image has been created we can now flash the SK
 
