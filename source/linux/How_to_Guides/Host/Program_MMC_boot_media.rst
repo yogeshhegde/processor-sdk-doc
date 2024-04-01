@@ -92,19 +92,19 @@ Prepare a rootfs
 
    * Extract SDK-provided “tiny” rootfs inside the tisdk-tiny-image-j784s4-evm directory
 
-      ::
+      .. code-block:: console
 
          tar -C tisdk-tiny-image-j784s4-evm -xvf tisdk-tiny-image-j784s4-evm.tar.xz
 
    * Create an /init link pointing to /sbin/init. The Kernel requires this to boot from the initramfs:
 
-      ::
+      .. code-block:: console
 
          ln -s sbin/init tisdk-tiny-image-j784s4-evm/init
 
    * Verify contents of initramfs root folder:
 
-      ::
+      .. code-block:: console
 
          ls -l tisdk-tiny-image-j784s4-evm/
 
@@ -115,19 +115,19 @@ Prepare a rootfs
 
    * Extract SDK-provided “tiny” rootfs inside the tisdk-tiny-image-j721s2-evm directory
 
-      ::
+      .. code-block:: console
 
          tar -C tisdk-tiny-image-j721s2-evm -xvf tisdk-tiny-image-j721s2-evm.tar.xz
 
    * Create an /init link pointing to /sbin/init. The Kernel requires this to boot from the initramfs:
 
-      ::
+      .. code-block:: console
 
          ln -s sbin/init tisdk-tiny-image-j721s2-evm/init
 
    * Verify contents of initramfs root folder:
 
-      ::
+      .. code-block:: console
 
          ls -l tisdk-tiny-image-j721s2-evm/
 
@@ -153,13 +153,13 @@ Prepare Kernel with baked-in initramfs
 
 * Navigate to your linux repository to build flasher Image
 
-   ::
+   .. code-block:: console
 
       cd <PSDK_PATH>/board-support/linux-[ver]/
 
 * Build device defconfig file
 
-   ::
+   .. code-block:: console
 
      make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig ti_arm64_prune.config
 
@@ -167,7 +167,7 @@ Prepare Kernel with baked-in initramfs
 
 * Edit the current Kernel config using menuconfig as follows:
 
-   ::
+   .. code-block:: console
 
       make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- menuconfig
 
@@ -230,7 +230,7 @@ Build the Kernel
 
 * Compile the zImage
 
-   ::
+   .. code-block:: console
 
       make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- Image
 
@@ -293,7 +293,7 @@ Now that the flash image has been created we can now flash the SK
 
 * Enter the following commands
 
-   ::
+   .. code-block:: text
 
       setenv serverip <SERVER_IP>
       dhcp
@@ -304,7 +304,7 @@ Now that the flash image has been created we can now flash the SK
 
    * For writing bootloaders into eMMC boot partition
 
-      ::
+      .. code-block:: text
 
          mmc dev 0 1
          tftp ${loadaddr} tiboot3.bin
@@ -317,10 +317,10 @@ Now that the flash image has been created we can now flash the SK
    * To give the ROM access to the boot partition, the following commands must
      be used for the first time:
 
-      ::
+      .. code-block:: text
 
-         => mmc partconf 0 1 1 1
-         => mmc bootbus 0 2 0 0
+         mmc partconf 0 1 1 1
+         mmc bootbus 0 2 0 0
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
@@ -347,7 +347,7 @@ Now that the flash image has been created we can now flash the SK
 
 * Enter command to boot Linux using initramfs image from TFTP server
 
-   ::
+   .. code-block:: text
 
       run findfdt
       tftp ${loadaddr} Image
@@ -358,13 +358,13 @@ Now that the flash image has been created we can now flash the SK
 
    * Enter the following command on Linux shell to transfer the wic image
 
-      ::
+      .. code-block:: console
 
          tftp -b 1468 -g -r tisdk-default-image-j784s4-evm.wic.xz <SERVER_IP>
 
    * unmount the eMMC and flash the image into eMMC device
 
-      ::
+      .. code-block:: console
 
          umount /dev/mmcblk0*
          dd if=tisdk-default-image-j784s4-evm.wic.xz of=/dev/mmcblk0
@@ -373,7 +373,7 @@ Now that the flash image has been created we can now flash the SK
 
    * Enter command to boot kernel from eMMC
 
-      ::
+      .. code-block:: text
 
          setenv mmcdev 0
          setenv bootpart 0:2
@@ -383,13 +383,13 @@ Now that the flash image has been created we can now flash the SK
 
    * Enter the following command on Linux shell to transfer the wic image
 
-      ::
+      .. code-block:: console
 
          tftp -b 1468 -g -r tisdk-default-image-j721s2-evm.wic.xz <SERVER_IP>
 
    * Flash the image into MMC-SD
 
-      ::
+      .. code-block:: console
 
          dd if=tisdk-default-image-j721s2-evm.wic.xz of=/dev/mmcblk1
 
