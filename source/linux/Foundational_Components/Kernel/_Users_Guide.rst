@@ -7,6 +7,17 @@ Overview
 
 This document will cover the basic steps for building the Linux kernel.
 
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+
+   .. rubric:: Install host dependencies
+
+   To install host dependencies for building TI Linux kernel source (standalone)
+   on Ubuntu 22.04+, run the following command in the terminal prompt:
+
+   .. code-block:: console
+
+      sudo apt install git xz-utils build-essential flex bison bc libssl-dev libncurses-dev
+
 Getting the Kernel Source Code
 ------------------------------
 

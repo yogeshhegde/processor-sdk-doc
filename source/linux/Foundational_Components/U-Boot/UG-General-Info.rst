@@ -3,6 +3,19 @@
 General Information
 -------------------
 
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+
+   .. rubric:: Install host dependencies
+
+   To install host dependencies for building TI U-boot source (standalone)
+   on Ubuntu 22.04+, run the following command in the terminal prompt:
+
+   .. code-block:: console
+
+      sudo apt install git xz-utils build-essential autoconf flex bison libssl-dev bc libncurses-dev \
+      python3 python3-setuptools python3-dev python3-yaml python3-jsonschema python3-pyelftools \
+      swig yamllint
+
 Getting the U-Boot Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
