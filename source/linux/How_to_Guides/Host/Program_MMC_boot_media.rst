@@ -101,7 +101,8 @@ Prepare a rootfs
 
          tar -C tisdk-tiny-image-j784s4-evm -xvf tisdk-tiny-image-j784s4-evm.tar.xz
 
-   * Create an /init link pointing to /sbin/init. The Kernel requires this to boot from the initramfs:
+   * Create an :file:`/init` link pointing to :file:`/sbin/init`. The Kernel
+     requires this to boot from the initramfs:
 
       .. code-block:: console
 
@@ -124,7 +125,8 @@ Prepare a rootfs
 
          tar -C tisdk-tiny-image-j721s2-evm -xvf tisdk-tiny-image-j721s2-evm.tar.xz
 
-   * Create an /init link pointing to /sbin/init. The Kernel requires this to boot from the initramfs:
+   * Create an :file:`/init` link pointing to :file:`/sbin/init`. The Kernel
+     requires this to boot from the initramfs:
 
       .. code-block:: console
 
@@ -147,11 +149,11 @@ Prepare a rootfs
       MACHINE=<machine> bitbake -k tisdk-tiny-initramfs
 
    The bitbake command mentioned in the last line above builds the tisdk-tiny-initramfs
-   cpio which can be located at deploy-ti/images/am64xx-evm.
+   cpio which can be located at :file:`deploy-ti/images/am64xx-evm`.
 
 .. ifconfig:: CONFIG_part_variant not in ('AM64X')
 
-   init should now be linked to sbin/init
+   :file:`init` should now be linked to :file:`sbin/init`
 
 Prepare Kernel with baked-in initramfs
 ======================================
@@ -168,7 +170,7 @@ Prepare Kernel with baked-in initramfs
 
      make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig ti_arm64_prune.config
 
-* Make a backup copy of .config called .config.orig
+* Make a backup copy of :file:`.config` called :file:`.config.orig`
 
 * Edit the current Kernel config using menuconfig as follows:
 
@@ -178,15 +180,15 @@ Prepare Kernel with baked-in initramfs
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
-   * Set CONFIG_INITRAMFS_SOURCE = <Processor-SDK>/filesystem/tisdk-tiny-image-j784s4-evm
+   * Set CONFIG_INITRAMFS_SOURCE = :file:`{Processor-SDK}/filesystem/tisdk-tiny-image-j784s4-evm`
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-   * Set CONFIG_INITRAMFS_SOURCE = <Processor-SDK>/filesystem/tisdk-tiny-image-j721s2-evm
+   * Set CONFIG_INITRAMFS_SOURCE = :file:`{Processor-SDK}/filesystem/tisdk-tiny-image-j721s2-evm`
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-   * Set CONFIG_INITRAMFS_SOURCE = <path to cpio>/tisdk-tiny-initramfs-am64xx-evm.cpio
+   * Set CONFIG_INITRAMFS_SOURCE = :file:`{path to cpio}/tisdk-tiny-initramfs-am64xx-evm.cpio`
 
 Select General setup:
 
@@ -233,13 +235,13 @@ Exit menuconfig and save the new configuration.
 Build the Kernel
 ================
 
-* Compile the zImage
+* Compile the :file:`zImage`
 
    .. code-block:: console
 
       make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- Image
 
-* Copy arch/arm64/boot/Image to /tftpboot
+* Copy :file:`arch/arm64/boot/Image` to :file:`/tftpboot`
 
 *************
 Target Images
@@ -255,30 +257,34 @@ Target Images
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
-   * Copy tiboot3-j784s4-hs-fs-evm.bin, tispl.bin and u-boot.img files from
-     <Processor-SDK>/board-support/prebuilt-images/ to the ~/tftpboot directory
+   * Copy :file:`tiboot3-j784s4-hs-fs-evm.bin`, :file:`tispl.bin` and
+     :file:`u-boot.img` files from
+     :file:`{Processor-SDK}/board-support/prebuilt-images/` to the
+     :file:`~/tftpboot` directory
 
    * Rename tiboot3-j784s4-* as tiboot3.bin inside ~/tftpboot
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-   * Copy tiboot3-j721s2-hs-fs-evm.bin, tispl.bin and u-boot.img files from
-     <Processor-SDK>/board-support/prebuilt-images/ to the ~/tftpboot directory
+   * Copy :file:`tiboot3-j721s2-hs-fs-evm.bin`, :file:`tispl.bin` and
+     :file:`u-boot.img` files from
+     :file:`{Processor-SDK}/board-support/prebuilt-images/` to the
+     :file:`~/tftpboot` directory
 
    * Rename tiboot3-j721s2-* as tiboot3.bin inside ~/tftpboot
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-   * Copy tiboot3.bin, tispl.bin and u-boot.img files from
-     <Processor-SDK>/board-support/prebuilt-images/am64xx-evm/ to the ~/tftpboot
-     directory
+   * Copy :file:`tiboot3.bin`, :file:`tispl.bin` and :file:`u-boot.img` files
+     from :file:`{Processor-SDK}/board-support/prebuilt-images/am64xx-evm/` to
+     the :file:`~/tftpboot` directory
 
 * Populating rootfs into the TFTP home directory.
 
    * Download the default bootable SD card image (WIC file) available on the
-     release page as tisdk-default-image-<machine>.wic.xz
+     release page as :file:`tisdk-default-image-{machine}.wic.xz`
 
-   * Copy wic image to root directory /tftpboot
+   * Copy wic image to root directory :file:`/tftpboot`
 
 *****************
 Program the Flash
