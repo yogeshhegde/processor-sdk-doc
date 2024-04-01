@@ -46,7 +46,7 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-   .. Image:: /images/ti-apps-launcher-home.png
+   .. Image:: /images/ti-apps-launcher-home-am62x.png
       :height: 400
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
