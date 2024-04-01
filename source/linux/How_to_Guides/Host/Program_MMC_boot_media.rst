@@ -95,7 +95,7 @@ Prepare a rootfs
    * Create a directory called **tisdk-tiny-image-j784s4-evm** under
      **<Processsor-SDK>/filesystem/**
 
-   * Extract SDK-provided “tiny” rootfs inside the tisdk-tiny-image-j784s4-evm directory
+   * Extract SDK-provided "tiny" rootfs inside the tisdk-tiny-image-j784s4-evm directory
 
       .. code-block:: console
 
@@ -119,7 +119,7 @@ Prepare a rootfs
    * Create a directory called **tisdk-tiny-image-j721s2-evm** under
      **<Processsor-SDK>/filesystem/**
 
-   * Extract SDK-provided “tiny” rootfs inside the tisdk-tiny-image-j721s2-evm directory
+   * Extract SDK-provided "tiny" rootfs inside the tisdk-tiny-image-j721s2-evm directory
 
       .. code-block:: console
 
@@ -302,7 +302,7 @@ Now that the flash image has been created we can now flash the SK
 
 * Connect ethernet cable to board
 
-* Boot the board in SD boot mode and “strike any key” to halt U-Boot at prompt
+* Boot the board in SD boot mode and "strike any key" to halt U-Boot at prompt
 
 * Enter the following commands
 
@@ -382,7 +382,7 @@ Now that the flash image has been created we can now flash the SK
          umount /dev/mmcblk0*
          dd if=tisdk-default-image-j784s4-evm.wic.xz of=/dev/mmcblk0
 
-   * Now reboot the board with eMMC boot mode and “strike any key” to  halt U-Boot at prompt
+   * Now reboot the board with eMMC boot mode and "strike any key" to  halt U-Boot at prompt
 
    * Enter command to boot kernel from eMMC
 
