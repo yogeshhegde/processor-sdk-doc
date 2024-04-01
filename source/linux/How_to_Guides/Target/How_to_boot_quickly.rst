@@ -1,0 +1,537 @@
+.. include:: /_replacevars.rst
+
+Boot Time Optimizations
+=======================
+
+Introduction
+------------
+This guide explains how to reduce the time taken to boot from power on to userspace for |__PRODUCT_LINE_NAME__| |__PART_FAMILY_DEVICE_NAMES__| devices.
+In the fast-evolving landscape of automotive technology, quick processor boot times are paramount for delivering a seamless, responsive user experience and sets the stage for faster access to critical systems. 
+
+.. note::
+    The same workflow is applied to the entire Sitara MPU family, but for each SoC, specific steps will differ and will be highlighted
+
+The objectives of this document are as follows:
+
+- Explain various techniques to reduce boot time
+
+- Highlight the tradeoffs to reach the milestone
+
+- Measurement and breakdown of default boot time
+
+- Measurements after optimizations
+
+Software environment
+^^^^^^^^^^^^^^^^^^^^
+This guide uses 9.2 Processor SDK as reference.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    - `Processor-SDK-Linux <https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-AM62X>`_
+
+    - `MCU+ SDK <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM62X>`_
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+    - `Processor-SDK-Linux <https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-AM62A>`_
+
+    - `MCU+ SDK <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM62A>`_
+    
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    - `Processor-SDK-Linux <https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-AM62P>`_
+
+    - `MCU+ SDK <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM62P>`_
+
+Hardware setup and equipment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-  Development kit used for testing
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+        -  AM62  (https://www.ti.com/tool/SK-AM62)
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+        -  AM62A (https://www.ti.com/tool/SK-AM62A-LP)
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+        -  AM62P (https://www.ti.com/tool/SK-AM62P-LP)
+
+-  Micro-USB cables for UART connection
+
+-  Logic Analyzer with at least 4 channels and a sample rate of 10MS/s
+
+Typical boot flow
+^^^^^^^^^^^^^^^^^
+This section details the Out-Of-Box boot sequence:
+
+.. Image:: /images/typical_bootflow_spl_mpu.png
+     :align: center
+
+
+**PMIC** or Power Management IC controls the power supply to the SoC. As a unit, it consists of diode controllers, DC-DC conversion and voltage regulation. TI's Fulton PMIC needs about 30ms to supply power while Burton PMIC requires 18ms.
+
+**BootROM** (Primary Program Loader) is executed first from ROM and performs basic initializations such PLLs and SRAM configuration. It then loads a bootloader image in the boot device specified by the boot switches. This entity takes about 12ms to complete.
+
+**SPL** (Secondary Program Loader) is the first stage of the bootloader. It consists of code that fits into the SRAM and is run by the Main R5. R5 SPL initializes some peripherals and, most importantly, DDR. Subsequently, it loads TF-A, OPTEE and A53 SPL into DDR and then jumps to TF-A. A53 SPL is an intermediate Linux friendly bootloader stage used to jump to U-boot.
+
+**TF-A** (Trusted Firmware - Arm) provides a reference trusted code base for the Armv8 architecture. It implements various ARM interface standards. The binary is typically included in the bootloader binary. It starts in the early stages of U-Boot. Without ATF, the kernel cannot setup the services which need to be executed in the Secure World environment
+
+**OPTEE** (Trusted Execution Environment) is designed as a companion to a non-secure Linux kernel running on Arm; Cortex-A cores using the TrustZone technology. 
+
+**U-boot** proper is the second stage bootloader. It offers a flexible way to load and start the Linux Kernel and provides a minimal set of tools to interact with the board’s hardware via a command line interface. It runs from DRAM, initializing additional hardware devices (network, USB, DSI/CSI, etc.). Then, it loads and prepares the device tree (FDT). The main task handled by the U-Boot is the loading and starting of the kernel image itself.
+
+**Kernel** runs from DDR and takes over the system completely.
+
+**Userspace** process is executed by a user in the operating system, rather than being part of the operating system itself. It might also be executed by an init system (e.g. systemd), but it isn't part of the kernel. User space is the area of memory that non-kernel applications run in non-privileged execution mode.
+
+Optimized bootflow
+^^^^^^^^^^^^^^^^^^
+This section describes an overview of the modifications that can be done to achieve shorter boot times. The succeeding sections will detail how to achieve these sequences.
+
+.. Image:: /images/optimized_bootflow_sbl_mpu.png
+     :align: center
+
+Reducing bootloader time
+------------------------
+
+- Falcon Mode:
+
+    This is a feature that allows us to skip **A53 SPL** and **U-boot proper** and jump to TF-A and then the kernel directly saving ~5s in our boot time. It is implemented differently depending on the bootloader.
+
+- Choosing the right bootmedia:
+
+    +------------------+--------------+--------------------+----------------------------------+
+    |     Part         | Bootmedia    | Theoretical Read   |        Default offering          |
+    |                  |              | performance (MBps) |                                  |
+    +------------------+--------------+--------------------+----------+-----------+-----------+
+    |                  |              |                    | AM62 EVM | AM62A EVM | AM62P EVM |
+    +==================+==============+====================+==========+===========+===========+
+    |    S28HS512T     | OSPI-NOR     |        330         |   YES    |     NO    |    YES    |
+    +------------------+--------------+--------------------+----------+-----------+-----------+
+    |   W35N01JWTBAG   | OSPI-NAND    |         50         |    NO    |    YES    |     NO    |
+    +------------------+--------------+--------------------+----------+-----------+-----------+
+    | MTFC16GAPALBH-IT | eMMC (HS200) |        200         |   YES    |    YES    |     NO    |
+    +------------------+--------------+--------------------+----------+-----------+-----------+
+    | MTFC32GAZAQHD-IT | eMMC (HS400) |        400         |    NO    |     NO    |    YES    |
+    +------------------+--------------+--------------------+----------+-----------+-----------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    You can track current performance numbers here: `AM62X <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/latest/exports/docs/api_guide_am62x/DATASHEET_AM62X_EVM.html#autotoc_md105>`_
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+    You can track current performance numbers here: `AM62AX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/latest/exports/docs/api_guide_am62ax/DATASHEET_AM62AX_EVM.html#autotoc_md75>`_
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    You can track current performance numbers here: `AM62PX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/latest/exports/docs/api_guide_am62px/DATASHEET_AM62PX_EVM.html#autotoc_md47>`_
+
+    .. note::
+        If links are broken at a later stage, navigate to the Getting started page of MCU+ documentation -> Datasheet -> Performance numbers
+
+- Flashing binaries:
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+        - `UART flashing tool <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/latest/exports/docs/api_guide_am62x/TOOLS_FLASH.html>`_
+
+        - `U-Boot eMMC flashing tool <https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#u-boot-environment>`_
+
+        - `U-Boot SPI flashing tool <https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-SPI.html#spi>`_
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+        - `UART flashing tool <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/latest/exports/docs/api_guide_am62ax/TOOLS_FLASH.html>`_
+
+        - `U-Boot eMMC flashing tool <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#u-boot-environment>`_
+
+        - `U-Boot SPI flashing tool <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-SPI.html#spi>`_
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+        - `UART flashing tool <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/latest/exports/docs/api_guide_am62px/TOOLS_FLASH.html>`_
+
+        - `U-Boot eMMC flashing tool <https://software-dl.ti.com/processor-sdk-linux/esd/AM62PX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#u-boot-environment>`_
+
+        - `U-Boot SPI flashing tool <https://software-dl.ti.com/processor-sdk-linux/esd/AM62PX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-SPI.html#spi>`_
+
+Secondary Boot Loader (SBL)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    The following section will be in reference to `MCU+ SDK's SBL examples <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/latest/exports/docs/api_guide_am62x/EXAMPLES_DRIVERS_SBL.html>`_.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+    The following section will be in reference to `MCU+ SDK's SBL examples <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/latest/exports/docs/api_guide_am62ax/EXAMPLES_DRIVERS_SBL.html>`_.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    The following section will be in reference to `MCU+ SDK's SBL examples <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/latest/exports/docs/api_guide_am62px/EXAMPLES_DRIVERS_SBL.html>`_.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    - `AM62X Falcon Mode <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/latest/exports/docs/api_guide_am62x/TOOLS_BOOT.html#LINUX_APPIMAGE_GEN_TOOL>`_
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+    - `AM62AX Falcon Mode <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/latest/exports/docs/api_guide_am62ax/TOOLS_BOOT.html#LINUX_APPIMAGE_GEN_TOOL>`_
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    - `AM62PX Falcon Mode <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/latest/exports/docs/api_guide_am62px/TOOLS_BOOT.html#LINUX_APPIMAGE_GEN_TOOL>`_
+
+- Removing unnecessary prints
+
+    The default examples contain a large number of prints that impact boot time and need to be removed. 
+    
+    - Navigate to the main.c of your example and remove calls to `Bootloader_profileAddCore`, `Bootloader_profileAddProfilePoint`, `Bootloader_profileUpdateAppimageSize`, `Bootloader_profileUpdateMediaAndClk` and `Bootloader_profilePrintProfileLog`.
+
+    - Navigate to <mcu-plus-sdk>/source/drivers/device_manager/sciclient_direct/sciclient_direct_wrapper.c and remove the `DebugP_log` from `Sciclient_getVersionCheck` function.
+
+    .. note::
+        If an RTOS example is being used, remove prints in additional files in `<mcu-plus-sdk>/examples/drivers/boot/common/`
+
+- Skipping OSPI PHY tuning (in case of OSPI bootmedia)
+
+    PHY calibration allows the flash to function at maximum performance and this consumes some time that is dependent on the current algorithm implementation. By default, only stage 2 examples will skip tuning.
+
+    To validate this, do not remove the log prints from the previous subsection and observe the `SBL Board_driversOpen` parameter. Currently, the tuning algorithm takes 22ms to complete. If skipping is successful, it should drop down to ~150us.
+
+    Open the relevant example's syscfg by navigating into `<mcu-plus-path>/examples/drivers/boot/sbl_ospi_linux_multistage/sbl_ospi_linux_stage1/<soc-name>/<example-type>/ti-arm-clang/` and running :literal:`make syscfg-gui`. Navigate to the `OSPI` section and enable **OSPI skip Tuning option**. Ensure that **Enable PHY** is checked as well.
+
+    .. Image:: /images/SBL_enable_ospi_phy_skip.png
+         :align: center
+
+- Enabling DMA in the bootloader
+
+    Open the relevant example's syscfg and navigate to the `Bootloader` section and click on **Enable DMA** if not enabled by default.
+
+    .. Image:: /images/SBL_enable_dma.png
+         :align: center
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    - Enable High Capacity(HC) channel DMA
+
+        This upgrades the DMA channel's FIFO depth from 128 to 192 and has been shown to have more than 200% increase in DMA transfer performance. In AM62P, the first four channels are high capacity. By default, these channels have been assigned to the A53 core by order of core priority which A53 has the first 18 channels, DM R5 has the next 6 and lastly, MCU R5 has 2.
+
+        - :download:`This patch </files/AM62P-Change-DMA-allocation.patch>` removes the DMA allocation of A53 and MCU cores to showcase the use of High capacity channels
+
+            .. note::
+                It is not possible to assign the first 2 channels to DM R5, the next 2 to A53, next 4 again to DM R5 and so on.
+
+        - Rebuild the boardcfg : `BOARCFG_GEN <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/latest/exports/docs/api_guide_am62px/TOOLS_SYSFW.html#BOARCFG_GEN>`_
+
+        - Flash the binaries
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    - FastXSPI
+
+        This is a special OSPI-NOR boot mode where ROM tunes OSPI when provided with the right parameters. If successful, OSPI PHY tuning need not be done by the bootloader at SBL-stage1 otherwise it will switch to the regular OSPI-NOR mode where tuning has to be done by a subsequent stage.
+
+        Flash the relevant binary at :literal:`0x3fc0000`:
+
+        .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+            - :download:`OSPI-NOR @100MHz </files/fastxspi_pattern_am62a_100MHz.bin>`
+
+            - :download:`OSPI-NOR @133MHz </files/fastxspi_pattern_am62a_133MHz.bin>`
+
+            - :download:`OSPI-NOR @166MHz </files/fastxspi_pattern_am62a_166MHz.bin>`
+
+        .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+            - :download:`OSPI-NOR @100MHz </files/fastxspi_pattern_am62p_100MHz.bin>`
+
+            - :download:`OSPI-NOR @133MHz </files/fastxspi_pattern_am62p_133MHz.bin>`
+
+            - :download:`OSPI-NOR @166MHz </files/fastxspi_pattern_am62p_166MHz.bin>`
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+    
+    - Use DDR in single rank configuration
+
+        The number of ranks on any DIMM is the number of independent sets of DRAMs that can be accessed for the full data bit-width of the DIMM. Dual rank gives us access to a bigger memory bank but consumes twice the tuning time. By default, DDR is in dual rank configuration and takes ~35ms that is visible in `System_init` in the SBL logs.
+
+        Navigate to the DDR section in SBL-stage1 syscfg and update it to the single rank file given below to reduce the time to ~20ms.
+
+        :download:`ddr_1600_singlerank_am62p.h </files/ddr_1600_singlerank_am62p.h>`
+
+        .. Image:: /images/SBL_singlerank_ddr.png
+        :align: center
+
+Reducing Linux kernel boot time
+-------------------------------
+
+- Adding :literal:`quiet`
+
+    - To save 8+ seconds, add "quiet" argument in the Kernel "bootargs". It suppresses most messages during the Linux start-up sequence. To access the logs after login, you can run :code:`dmesg` for the logs to be printed. By default, quiet is at a loglevel of 4 and should be adequate to suppress the majority of logs but if finer control is required :litera:`quiet` can be replaced with :literal:`loglevel=x` where x can be 1-14.
+
+    - The kernel looks for bootargs in 3 places: U-Boot environment variable, the device tree and the kernel config. You can add the following in any of the 3 locations.
+
+        U-Boot console:
+
+        .. code-block:: console
+
+            U-Boot=> setenv bootargs 'console=ttyS2,115200n8 fsck.mode=skip sysrq_always_enabled quiet'
+
+        Device Tree:
+
+        .. code-block:: dts
+
+            chosen {
+		        ...
+		        bootargs = "console=ttyS2,115200n8 earlycon=ns16550a,mmio32,0x02800000 quiet";
+		        ...
+		    };
+
+        Kernel config:
+
+        .. code-block:: kconfig
+
+            CONFIG_CMDLINE="console=ttyS2,115200n8 earlycon=ns16550a,mmio32,0x02800000 quiet"
+
+- Using a smaller kernel system
+
+    -  By default, the kernel image contains a lot of drivers and filesystems to enable the functionality supported for the board but are not necessary for early boot. Trim kernel capabilities by using 
+    
+        - `ti_arm64_prune.config` - removes irrelevant platform drivers 
+        - `ti_early_display.config` - converts the majority of functionality into loadable modules
+
+    Usage:
+    
+    .. code-block:: console
+
+        kernel$ make ARCH=arm64 CROSS_COMPILE=<path-to-compiler>/aarch64-none-linux-gnu- defconfig ti_arm64_prune.config ti_early_display.config
+
+    *Note: You can access <kernel-path>/kernel/configs/ti_early_display.config and see the breakdown of how much time is saved by disabling each module and take a call on whether the functionality is required and its effect on boot time*
+
+- Disabling nodes in DT
+
+    Unnecessary nodes can be disabled by adding :literal:`status = "disabled"` to the nodes. While this will not directly affect boot time, the minimal kernel will not throw probe errors during boot.
+
+Reducing userspace boot time
+----------------------------
+
+It is recommended to use a tiny intermediate filesystem that can be used to run applications early with minimal configuration and then mount into a filesystem with full functionality. For this purpose, the installer packages a `tisdk-tiny-initramfs-am62xx-evm.cpio` under filesystem/<machine> that can be used as an initramfs.
+
+In order to package the filesystem as initramfs into the kernel, follow these steps:
+
+1. Extract the cpio archive to a preferred location via GUI or
+
+    .. code-block:: console
+
+        $ mkdir output
+        $ cd output
+        $ cpio -idv < tisdk-tiny-initramfs-am62xx-evm.cpio
+
+
+2. Edit the kernel config:
+
+    .config: 
+    
+    .. code-block:: kconfig
+
+        CONFIG_INITRAMFS_SOURCE="/path/to/filesystem"
+    
+    or using :literal:`menuconfig`:
+
+    .. code-block:: kconfig
+
+        kernel$ make ARCH=arm64 CROSS_COMPILE=<path-to-compiler>/aarch64-none-linux-gnu- menuconfig
+
+        General setup -> 
+            Initial RAM filesystem and RAM disk (initramfs/initrd) support -> 
+                Initramfs source file(s) 
+                    /path/to/filesystem
+
+3. Rebuild the kernel
+
+    .. code-block:: console
+
+        kernel$ make ARCH=arm64 CROSS_COMPILE=<path-to-compiler>/aarch64-none-linux-gnu- Image -j64
+
+The time taken to boot filesystem is measured from Process ID 1(PID1) to login prompt which is 1.98s with the initramfs filesystem. In order to further drop this time, you can:
+
+.. note::
+    Please ensure that you do not mistakenly affect the host computer while making the below changes
+
+- Remove startup scripts from the tiny filesystem
+
+    .. code-block:: console
+
+        host$ rm <filesystem>/etc/rc5.d/*
+        host$ cd <filesystem>/etc/rcS.d
+        host$ rm S02banner.sh S04udev S05checkroot.sh S06modutils.sh S07bootlogd S29read-only-rootfs-hook.sh S36bootmisc.sh S37populate-volatile.sh S38dmesg.sh S38urandom
+
+    This shaves off 1.536s from filesystem boot time. udev alone takes up 1.152s.
+
+- Remove package manager, console logo and add /dev/null in the filesystem
+
+    .. code-block:: console
+
+        host$ rm <filesystem>/usr/lib/opkg
+        host$ rm <filesystem>/etc/issue
+        host$ cd <filesystem>/dev
+        host$ mknod -m 0600 null c 1 3 
+
+    This removes 52ms from the boot up time.
+
+Measurements
+------------
+
+The following section displays the time taken by each stage to start and end. Four profile points were used:
+
+    - MCU_PORz (White) - MCU Power-On-Reset
+
+    - SBL_start (Brown) - GPIO is set to LOW as soon as SBL stage 1 is started (Before System_init)
+
+    - SBL_end (Red) - GPIO is set to LOW as soon as SBL stage 2 completes (After App_driversClose)
+
+    - Kernel_end (Gold) - GPIO is set to HIGH when kernel is about to jump to ramdisk (init/main.c: kernel_init)
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    .. Image:: /images/am62x_ospi_boot_analyser.png
+     :align: center
+
+    ROM time : SBL_start - MCU_PORz = 33ms
+
+    SBL time : SBL_end - SBL_start = 240ms
+
+    TF-A + OPTEE + Kernel time: Kernel_end - SBL_end = 415ms
+
+    .. code-block:: console
+
+        [2024-03-29 11:52:40.318] NOTICE:  BL31: v2.10.0(release):v2.10.0-367-g00f1ec6b87-dirty
+        [2024-03-29 11:52:40.318] NOTICE:  BL31: Built : 16:09:05, Feb  9 2024
+        [2024-03-29 11:52:41.098] 
+        [2024-03-29 11:52:41.098] am62xx-evm login:
+
+    To calculate userspace, we use console logs to take timestamps from TF-A to login prompt and subtract kernel time = 
+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+    .. Image:: /images/am62ax_ospi_boot_analyser.png
+     :align: center
+
+    ROM time : SBL_start - MCU_PORz = 48ms
+
+    SBL time til Linux CPU is started: SBL_end - SBL_start = 624ms
+
+    SBL C7X load + DriversClose + TF-A + OPTEE + Kernel time: Kernel_end - SBL_end = 679ms (~450ms for Kernel)
+
+    .. code-block:: console
+
+        [2024-03-29 13:02:19.196] NOTICE:  BL31: v2.10.0(release):v2.10.0-367-g00f1ec6b87-dirty
+        [2024-03-29 13:02:19.196] NOTICE:  BL31: Built : 16:09:05, Feb  9 2024
+        [2024-03-29 13:02:19.991] 
+        [2024-03-29 13:02:19.991] am62xx-evm login: 
+
+    To calculate userspace, we use console logs to take timestamps from TF-A to login prompt and subtract kernel time = 345ms
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    .. Image:: /images/am62px_ospi_boot_analyser.png
+     :align: center
+
+    ROM time : SBL_start - MCU_PORz = 30.79ms
+
+    SBL time : SBL_end - SBL_start = 186.42ms
+
+    TF-A + OPTEE + Kernel time: Kernel_end - SBL_end = 497.67ms
+
+    .. code-block:: console
+
+        [2024-03-29 14:31:25.265] NOTICE:  BL31: v2.10.0(release):v2.10.0-367-g00f1ec6b87-dirty
+        [2024-03-29 14:31:25.265] NOTICE:  BL31: Built : 16:09:05, Feb  9 2024
+        [2024-03-29 14:31:26.117] 
+        [2024-03-29 14:31:26.117] am62xx-evm login: 
+
+    To calculate userspace, we use console logs to take timestamps from TF-A to login prompt and subtract kernel time = 355ms
+
+Additional notes
+----------------
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+    .. note::
+        Ensure that you are not affecting your host computer when making the changes deailed below
+
+    - This statically compiled :download:`modetest </files/modetest>` can be added to the filesystem to test out display at boot on an OLDI panel. 
+
+        - `init` is a symbolic link to /sbin/init. Remove the file sbin/init
+
+            .. code-block:: console
+
+                rm <filesystem>/sbin/init
+
+        - Create a new sbin/init and add the following. 
+
+             .. code-block:: sh
+
+                #!/bin/sh
+
+                mount -t proc none /proc
+                mount -t sysfs none /sys
+                mount -t devtmpfs  dev  /dev
+
+                # Run modetest in the background
+                # 40 - connector ID
+                # 38 - CRTC ID
+                # 1920x1200 - resolution of panel
+                modetest -M tidss -s 40@38:1920x1200 &
+
+                exec /sbin/init.sysvinit $*
+
+            You can get the connector ID and CRTC ID of your OLDI panel by running :literal:`kmsprint` or :literal:`modetest -M tidss`
+
+        - Make it executable
+
+            .. code-block:: console
+
+                chmod +x <filesystem>/sbin/init
+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+    
+    - While AM62A ships with OSPI-NAND, it can be replaced with the OSPI-NOR flash with ease. It is not recommended to resolder used flashes onto a board. NAND flash support needs to be replaced with NOR flash support
+
+        - SPL:
+
+            Apply this :download:`patch </files/am62ax_nor.patch>` and rebuild `U-Boot <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#build-u-boot>`_.
+
+        - SBL:
+
+            Update the Flash type in Flash section in syscfg to reflect NOR. Save and build SBL.
+
+Troubleshooting
+---------------
+
+- If the following logs are noticed and kernel does not come up, it suggests that TF-A is not receiving data from DM which probably hasn't had enough time to run completely
+
+    .. code-block:: console
+
+        ERROR:   Timeout waiting for thread SP_RESPONSE to fill
+        ERROR:   Thread SP_RESPONSE verification failed (-60)
+        ERROR:   Message receive failed (-60)
+        ERROR:   Failed to get response (-60)
+        ERROR:   Transfer send failed (-60)
+
+Known issues
+------------
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+    - Due to the implementation of OSPI-NAND software layer in MCU+ SDK, it has been observed that the read performance drops when tuning is skipped. This fix will be incoporated for 10.0 SDK release.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    - OSPI stage 2 will not skip tuning by default on AM62X
