@@ -474,6 +474,9 @@ System firmware Known Issues
   "SYSFW-6426","Ownership of a firewall region can be transferred to an invalid host","j721e, j7200, j721s2, j784s4, j722s"
   "SYSFW-7038","Firewall 1050 Defaults to Region 1","j784s4"
   "SYSFW-6010","Firewall Exception is not enabled for HSFS device","j721e"
+  "SYSFW-7057","Can not set frequency of CPUs in second cluster","j784s4"
+  "SYSFW-5728","system clock is not coming to the audio codec","j721s2, j784s4"
+  "SYSFW-7187","Not able to power on LPSC_main_pdrsvd0_rsvd2","j722s"
 
 |
 
