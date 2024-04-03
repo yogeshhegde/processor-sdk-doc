@@ -11,37 +11,36 @@ The following panel is currently supported with the AM62Px SK EVM board:
 
 .. note::
 
-	By default Android configures the displays in mirror mode.
+   By default Android configures the displays in mirror mode.
 
 
 How to enable Microtips LVDS panel on AM62Px SK EVM
 ===================================================
 
-To enable OLDI Panel DT overlay, follow the `How to enable DT overlays in Android <Application_Notes_dtbo_support.html>`__ guide
+To enable OLDI Panel DT overlay, follow the :ref:`android-dtbo` guide
 
 How to enable Extended Display in Android
 ==========================================
 
 **Step to setup an android build environment:**
 
-#. Follow the `How to build Android <../../../android/Overview_Building_the_SDK.html#android-file-system>`_ Guide.
+#. Follow the :ref:`android-download-aosp` download guide.
 
 **Step to enable Extended Display:**
 
 #. Edit ``device.mk`` file to add this:
 
-	.. code-block:: makefile
+   .. code-block:: makefile
 
-		# Display settings (windowing, system decorations, IME ...)
-		PRODUCT_COPY_FILES += \
-			device/ti/am62x/display_settings.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display_settings.xml
+      # Display settings (windowing, system decorations, IME ...)
+      PRODUCT_COPY_FILES += \
+         device/ti/am62x/display_settings.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display_settings.xml
 
-		# Enable activities on secondary displays
-		PRODUCT_COPY_FILES += \
-			frameworks/native/data/etc/android.software.activities_on_secondary_displays.xml:system/etc/permissions/android.software.activities_on_secondary_displays.xml
+      # Enable activities on secondary displays
+      PRODUCT_COPY_FILES += \
+         frameworks/native/data/etc/android.software.activities_on_secondary_displays.xml:system/etc/permissions/android.software.activities_on_secondary_displays.xml
 
 #. Rebuild Android:
+   Relaunch command from :ref:`android-build-aosp` build guide.
 
-	Relaunch command from `How to build SDK <../../../android/Overview_Building_the_SDK.html#id3>`_ guide.
-
-#. Follow this `How to flash eMMC <../../../android/Overview_Flashing.html#emmc-flashing>`_ guide to flash Android images.
+#. Follow :ref:`android-flashing` guide to flash Android images.

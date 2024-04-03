@@ -11,7 +11,7 @@ Build U-Boot with this changes
 Download sources
 ----------------
 
-Follow this link to `download bootloader sources`_.
+Follow this link to download the :ref:`android-download-bootloaders`.
 
 Apply this patch in U-Boot source code:
 
@@ -35,25 +35,22 @@ Apply this patch in U-Boot source code:
 Build U-Boot
 ------------
 
-Follow this link to `build U-Boot`_.
+Follow this link to build the :ref:`android-build-bootloaders`.
 
 Rebuild U-Boot then copy ``u-boot.img`` in Android build system environment : ``vendor/ti/am62x/bootloader/am62-sk``
 
 Build Android
 -------------
 
-Follow this link to `build Android image`_.
-Go in your Android environment then rebuild with ``TARGET_SDCARD_BOOT=true`` build args::
+Follow this link to build :ref:`android-build-aosp`.
+Go in your Android environment then rebuild with ``TARGET_SDCARD_BOOT=true`` build args:
 
-        cd ${YOUR_PATH}/ti-aosp-14
-        source build/envsetup.sh
-        lunch <BUILD_TARGET>
-        m TARGET_SDCARD_BOOT=true
+.. code-block:: console
 
-
-.. _download Bootloader sources: ../../../android/Overview_Building_the_SDK.html#bootloader-components
-.. _build U-Boot: ../../../android/Overview_Building_the_SDK.html#id1
-.. _build Android image: ../../../android/Overview_Building_the_SDK.html#id5
+   $ cd ${YOUR_PATH}/ti-aosp-14
+   $ source build/envsetup.sh
+   $ lunch <BUILD_TARGET>
+   $ m TARGET_SDCARD_BOOT=true
 
 
 Flashing SD Card
@@ -62,16 +59,26 @@ Flashing SD Card
 .. warning::
     Minimal size for SD card is ``16GB``
 
-- Change the boot mode DIP switches to SD card boot mode::
+- Change the boot mode DIP switches to SD card boot mode:
 
-        Boot mode DIP switch:
-        SW1: 11000010 SW2: 01000000
+  .. list-table::
+     :widths: 16 16 16
+     :header-rows: 1
 
-- Go in out directory in android environment and launch this command::
+     * - Switch Label
+       - SW2: 12345678
+       - SW3: 12345678
 
-        # If you are using binaries built locally
-        cd out/target/product/am62x
-        sudo ./flashall.sh --board="am62x-sk" --sdcard="/dev/sdX"
+     * - SD
+       - 01000000
+       - 11000010
+
+- Go in out directory in android environment and launch this command:
+
+  .. code-block:: console
+
+     $ cd out/target/product/am62x
+     $ sudo ./flashall.sh --board="am62x-sk" --sdcard="/dev/sdX"
 
 **flashall.sh script print in your console instruction to do**
 

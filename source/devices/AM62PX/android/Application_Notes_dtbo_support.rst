@@ -1,3 +1,5 @@
+.. _android-dtbo:
+
 ===========================
 Device Tree Overlay Support
 ===========================
@@ -8,16 +10,20 @@ DTBOs can be enabled from U-Boot when extra peripherals are connected to the boa
 DTBOs are **board specific**.
 
 It's possible to change the ``dtbo_index`` from the U-Boot shell.
-For example::
+For example:
 
-    env set dtbo_index 1
-    saveenv
-    reset
+.. code-block:: console
+
+   => env set dtbo_index 1
+   => saveenv
+   => reset
 
 To enable multiple DTBOs, pass a space-separated index list.
-For example::
+For example:
 
-    env set dtbo_index '1 2'
+.. code-block:: console
+
+   => env set dtbo_index '1 2'
 
 
 The following Device-Tree Overlays are supported:
