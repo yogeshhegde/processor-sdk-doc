@@ -43,12 +43,12 @@ to run the inmate binary and to stop the hypervisor itself.
 Enabling hypervisor on |__PART_FAMILY_DEVICE_NAMES__| platform
 --------------------------------------------------------------
 
-Jailhouse is an example of Asynchronous Multiprocessing (AMP) architecture. When we boot Linux on |__PART_FAMILY_DEVICE_NAMES__|, 
-which has 4 ARM cores, Linux uses the all four cores. After we enable hypervisor 
-it moves Linux to the root-cell. The root cell still uses the all ARM cores. 
-When we create a new cell (ex. for linux-demo), hypervisor calls cpu_down() 
-for the ARM1,ARM2 and ARM3 core, leaving ARM0 for Linux.The new cell will use 
-the three ARM cores and hardware resources dedicated for this cell in the cell 
+Jailhouse is an example of Asynchronous Multiprocessing (AMP) architecture. When we boot Linux on |__PART_FAMILY_DEVICE_NAMES__|,
+which has 4 ARM cores, Linux uses the all four cores. After we enable hypervisor
+it moves Linux to the root-cell. The root cell still uses the all ARM cores.
+When we create a new cell (ex. for linux-demo), hypervisor calls cpu_down()
+for the ARM1,ARM2 and ARM3 core, leaving ARM0 for Linux.The new cell will use
+the three ARM cores and hardware resources dedicated for this cell in the cell
 configuration file.
 
 The open source Jailhouse project from https://github.com/siemens/jailhouse is integrated in Yocto build environment.
@@ -70,8 +70,8 @@ The list of components which should be built to get Jailhouse Image for |__PART_
 * Kernel ( with Jailhouse and shared memory module ).
 * Filesystem for root cell and RAM filesystem for inmate.
 
-There are two options to build Jailhouse Image, one is using open source Yocto build 
-environment with public repositories mentioned above or the other method is to 
+There are two options to build Jailhouse Image, one is using open source Yocto build
+environment with public repositories mentioned above or the other method is to
 use sources and makefile from TI Processors SDK installer.
 
 Building Jailhouse Image using Yocto
@@ -86,19 +86,19 @@ jailhouse-image) using Yocto build environment are as listed below :
 
     $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
     $ cd tisdk
-    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-09.01.00-config.txt
+    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
     $ cd build
     $ . conf/setenv
     $ echo 'TI_EXTRAS="tie-jailhouse"' >> conf/local.conf
     $ MACHINE=<machine> bitbake -k tisdk-jailhouse-image
 
-The bitbake command mentioned in the last line above builds the tisdk-jailhouse-image, 
+The bitbake command mentioned in the last line above builds the tisdk-jailhouse-image,
 the image can be located at tisdk/build/deploy-ti/images/|__SDK_BUILD_MACHINE__|.
 
-This image includes a host cell filesystem Image based on arago 'default' filesystem, 
+This image includes a host cell filesystem Image based on arago 'default' filesystem,
 boot partition with bootloader binaries and kernel Image with Jailhouse components and
-uio_ivshmem kernel module for shared memory applications. The filesystem image 
-also contains a RAM filesystem (cpio) which gets mounted by kernel booting on an 
+uio_ivshmem kernel module for shared memory applications. The filesystem image
+also contains a RAM filesystem (cpio) which gets mounted by kernel booting on an
 inmate cell.
 
 Building Jailhouse using TI SDK Installer
@@ -106,7 +106,7 @@ Building Jailhouse using TI SDK Installer
 
 The latest Processor SDK Linux |__PART_FAMILY_DEVICE_NAMES__| installer is available on |__SDK_DOWNLOAD_URL__|.
 
-The installer should be downloaded on a Linux ubuntu host machine. The steps to 
+The installer should be downloaded on a Linux ubuntu host machine. The steps to
 install the sources using installer are:
 
 ::
@@ -115,10 +115,10 @@ install the sources using installer are:
     ./ti-processor-sdk-linux-<machine>-<version>-Linux-x86-Install.bin
 
 
-Create an SD card with prepackaged filesystem image by following instructions from 
+Create an SD card with prepackaged filesystem image by following instructions from
 the link :ref:`processor-sdk-linux-create-sd-card-with-custom-images`.
 
-The Jailhouse kernel sources, Jailhouse firmware and u-boot bootloader sources 
+The Jailhouse kernel sources, Jailhouse firmware and u-boot bootloader sources
 can be customized or modified and then built using the steps given below.
 
 Jailhouse sources are located at $TI_SDK_PATH/board-support/extra-drivers/jailhouse
@@ -132,7 +132,7 @@ build.
 ::
 
     sudo apt-get install device-tree-compiler python3-dev
-    
+
     Python package:
     pip3 install Mako
 
@@ -144,7 +144,7 @@ The exact commands are:
     make jailhouse
     make jailhouse_install DESTDIR=<root partition of target>
 
-These commands can be used to install Jailhouse kernel module, firmware and 
+These commands can be used to install Jailhouse kernel module, firmware and
 management tools in the target filesystem.
 
 The kernel and u-boot sources for Jailhouse image are located at
@@ -174,8 +174,8 @@ Generate SD Card Image for Jailhouse
 
 You can download the tisdk-jailhouse-image-|__SDK_BUILD_MACHINE__|.wic.xz from here |__SDK_DOWNLOAD_URL__|.
 
-After that you need to flash the tisdk-jailhouse-image-|__SDK_BUILD_MACHINE__|.wic.xz 
-to a SD Card. Various ways to flash wic image on SD card are mentioned 
+After that you need to flash the tisdk-jailhouse-image-|__SDK_BUILD_MACHINE__|.wic.xz
+to a SD Card. Various ways to flash wic image on SD card are mentioned
 here :ref:`processor-sdk-linux-create-sd-card`.
 
 Booting the SD Card Image
@@ -188,8 +188,8 @@ the boot mode pins in |__PART_FAMILY_DEVICE_NAMES__| board for SD Card boot.
 
     SW1[1:8] = 11000010 and SW2[1:8] = 01000000
 
-Insert the SD Card in SD Card slot in |__PART_FAMILY_DEVICE_NAMES__| board. Use a 
-USB Micro-B cable to connect the host PC to the USB Micro-B interface for UART 
+Insert the SD Card in SD Card slot in |__PART_FAMILY_DEVICE_NAMES__| board. Use a
+USB Micro-B cable to connect the host PC to the USB Micro-B interface for UART
 on the EVM then power on the board, the following logs can be observed on the terminal window:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
@@ -253,7 +253,7 @@ on the EVM then power on the board, the following logs can be observed on the te
 
 Pre-built components in Jailhouse Image
 ---------------------------------------
-The target filesystem on |__PART_FAMILY_DEVICE_NAMES__| platform will consists 
+The target filesystem on |__PART_FAMILY_DEVICE_NAMES__| platform will consists
 of the following Jailhouse components:
 
 #. jailhouse.ko  : kernel module at
@@ -361,7 +361,7 @@ Running Jailhouse Demos on |__PART_FAMILY_DEVICE_NAMES__|
 
 **Host Setup**
 
-Flash tisdk-jailhouse-image-|__SDK_BUILD_MACHINE__|.wic.xz to SD card using balena 
+Flash tisdk-jailhouse-image-|__SDK_BUILD_MACHINE__|.wic.xz to SD card using balena
 and boot |__PART_FAMILY_DEVICE_NAMES__| from the SD card. As we will be running 
 two instances ,two terminals are required. Connect one terminal to the primary 
 UART (e.g. /dev/ttyUSB0) and the other to the secondary UART (e.g. /dev/ttyUSB1).
@@ -486,13 +486,47 @@ The Linux demo (i.e Two Guest VMs) can be started using the 'linux-demo.sh' scri
 in that folder. There is no such script for the bare-metal demos but the commands
 are very similar (all the needed pieces are in the filesystem already).
 
+Run Crash Test To Detect Inmate Failure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Jailhouse image also packages crash-test application, designed to detect crashes
+in the inmate Linux system by sending ICMP packets at regular intervals from the root
+side. If the application fails to receive ICMP echo reply packets within the expected
+timeframe, it prints "No response received for packet x" on the console which signifies
+a potential crash in the inmate Linux system.
+
+It utilizes network interface created on both root and inmate side using the ivshmem
+net module to facilitate communication between the root side and the inmate Linux
+system. It ensures continuous monitoring for effective crash detection.
+
+Crash test application can be run by using the 'linux-demo.sh' script present in
+:file:`/usr/share/jailhouse`.
+
+To start crash test after linux demo
+
+.. code-block:: console
+
+    ./usr/share/jailhouse/linux-demo.sh -c
+
+To start crash test in background mode
+
+.. code-block:: console
+
+    ./usr/share/jailhouse/linux-demo.sh -c -b
+
+To skip crash test and only start linux demo
+
+.. code-block:: console
+
+    ./usr/share/jailhouse/linux-demo.sh
+
 Adding custom demos or applications in Inmate Filesystem
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Custom demos can also be run in inmate after copying the required files in RAM filesystem.
 This can be done using following steps:-
 
-- Extract the tisdk-tiny-initramfs-image-|__SDK_BUILD_MACHINE__|.cpio file in a seperate folder(ex. temp) in
+- Extract the tisdk-tiny-initramfs-image-|__SDK_BUILD_MACHINE__|.cpio file in a separate folder(ex. temp) in
   linux host PC. This file is present in /media/$USER/root/boot/ or from output from
   yocto build.
 
@@ -522,10 +556,10 @@ shared memory regions are reserved in the DTB for cross-cell communication.
 
 For shared-memory demo we can use ivshmem-demo application located at tools/demos
 in Jailhouse source directory. ivshmem-demo application is already packaged in root.
-You can use following steps to copy this demo in the 
+You can use following steps to copy this demo in the
 tisdk-tiny-initramfs-image-|__SDK_BUILD_MACHINE__|.cpio filesystem packaged in Jailhouse image.
 
-- Extract the tisdk-tiny-initramfs-image-|__SDK_BUILD_MACHINE__|.cpio file in a seperate folder(ex. temp) in
+- Extract the tisdk-tiny-initramfs-image-|__SDK_BUILD_MACHINE__|.cpio file in a separate folder(ex. temp) in
   linux host PC. This file is present in /media/$USER/root/boot/ or from output from
   yocto build.
 
@@ -679,42 +713,42 @@ Run ivshmem-demo on both root and inmate cell
 
    ::
 
-        root@am62pxx-evm:/home# ./ivshmem-demo                                   
-        main program startedID = 2                                              
-        Maximum peers = 3                                                       
-        state[0] = 0                                                            
-        state[1] = 0                                                            
-        state[2] = 3                                                            
-        rw[0] = -1                                                              
-        rw[1] = -1                                                              
-        rw[2] = 0                                                               
-        in@0x0000 = �                                                           
-        in@0x2000 = -1                                                          
-        in@0x4000 = -1                                                          
-                                                                              
-        Sending interrupt 3 to peer 0                                           
-                                                                              
-        Sending interrupt 3 to peer 0                                           
-                                                                              
-        Interrupt #1                                                            
-        state[0] = 1                                                            
-        state[1] = 0                                                            
-        state[2] = 3                                                            
-        rw[0] = 0                                                               
-        rw[1] = -1                                                              
-        rw[2] = 1                                                               
-        in@0x0000 =                                                             
-        in@0x2000 = -1                                                          
-        in@0x4000 = -1                                                          
-                                                                             
-        Sending interrupt 3 to peer 0                                           
-                                                                    
-        Sending interrupt 3 to peer 0                                           
-                                                                              
-        Sending interrupt 3 to peer 0                                           
-                                                                              
-        Sending interrupt 3 to peer 0                                           
-        ^C                                           
+        root@am62pxx-evm:/home# ./ivshmem-demo
+        main program startedID = 2
+        Maximum peers = 3
+        state[0] = 0
+        state[1] = 0
+        state[2] = 3
+        rw[0] = -1
+        rw[1] = -1
+        rw[2] = 0
+        in@0x0000 = �
+        in@0x2000 = -1
+        in@0x4000 = -1
+
+        Sending interrupt 3 to peer 0
+
+        Sending interrupt 3 to peer 0
+
+        Interrupt #1
+        state[0] = 1
+        state[1] = 0
+        state[2] = 3
+        rw[0] = 0
+        rw[1] = -1
+        rw[2] = 1
+        in@0x0000 =
+        in@0x2000 = -1
+        in@0x4000 = -1
+
+        Sending interrupt 3 to peer 0
+
+        Sending interrupt 3 to peer 0
+
+        Sending interrupt 3 to peer 0
+
+        Sending interrupt 3 to peer 0
+        ^C
 
 You can see interrupts will be received in both inmate and root cell. Also, check
 the values using cat /proc/interrupts | grep uio.
@@ -783,7 +817,7 @@ inmate cell and ping.
 
     $ ifconfig enP1p0s1 192.168.0.3
 
-Ping enp0s1 using enP1p0s1 #ping 192.168.0.2 in root cell or ping enP1p0s1 using enp0s1 
+Ping enp0s1 using enP1p0s1 #ping 192.168.0.2 in root cell or ping enP1p0s1 using enp0s1
 ping 192.168.0.3 in inmate cell.
 
 Ex. ping to inmate cell from root cell
@@ -823,7 +857,7 @@ demos are common for all Jailhouse platforms.
 
         root@am62pxx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am62p5-sk.cell
 
-- Create a inmate cell  
+- Create a inmate cell
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -966,20 +1000,20 @@ cross-cell communication.
     ::
 
         hyp_mem: jailhouse@dfa00000 {
-			    reg = <0x0 0xdfa00000 0x0 0x20600000>;
-			    alignment = <0x1000>;
-			    no-map;
-	    };
+            reg = <0x0 0xdfa00000 0x0 0x20600000>;
+            alignment = <0x1000>;
+            no-map;
+        };
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
     ::
 
         hyp_mem: jailhouse@9dfa00000 {
-			reg = <0x00000009 0xdfa00000 0x0 0x20600000>;
-			alignment = <0x1000>;
-			no-map;
-		};
+            reg = <0x00000009 0xdfa00000 0x0 0x20600000>;
+            alignment = <0x1000>;
+            no-map;
+        };
 
 Hardware Modules Reservation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1003,7 +1037,7 @@ device tree.
 
     /* Disable emmc instance used by inmate cell */
     &sdhci0 {
-	    status = "disabled";
+        status = "disabled";
     };
 
 Root-cell configuration
@@ -1020,67 +1054,67 @@ will be used by the cell,
     ::
 
         .mem_regions = {
-		    /* IVSHMEM shared memory regions for 00:00.0 (demo)
-		    {
-			    .phys_start = 0xdfa00000,
-			    .virt_start = 0xdfa00000,
-			    .size = 0x10000,
-			    .flags = JAILHOUSE_MEM_READ,
-		    },
-		    {
-			    .phys_start = 0xdfa10000,
-			    .virt_start = 0xdfa10000,
-			    .size = 0x10000,
-			    .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE,
-		    },
-		    /* Peer 0  {
-			    .phys_start = 0xdfa20000,
-			    .virt_start = 0xdfa20000,
-			    .size = 0x10000,
-			    .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE,
-		    },
-		    /* Peer 1  {
-			    .phys_start = 0xdfa30000,
-			    .virt_start = 0xdfa30000,
-			    .size = 0x10000,
-			    .flags = JAILHOUSE_MEM_READ,
-		    },
-		    /* Peer 2  {
-			    .phys_start = 0xdfa40000,
-			    .virt_start = 0xdfa40000,
-			    .size = 0x10000,
-			    .flags = JAILHOUSE_MEM_READ,
-		    },
-		    /* IVSHMEM shared memory region for 00:01.0 
-		    JAILHOUSE_SHMEM_NET_REGIONS(0xdfb00000, 0),
-		    {
-			    .phys_start = 0x01810000,
-			    .virt_start = 0x01810000,
-			    .size = 0x00070000,
-			    .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
-				    JAILHOUSE_MEM_IO,
-		    },
-		    {
-			    .phys_start = 0x018a0000,
-			    .virt_start = 0x018a0000,
-			    .size = 0x00060000,
-			    .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
-				    JAILHOUSE_MEM_IO,
-		    },
-		    /* RAM  {
-			    .phys_start = 0x80000000,
-			    .virt_start = 0x80000000,
-			    .size = 0x5fa00000,
-			    .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
-				    JAILHOUSE_MEM_EXECUTE,
-		    },
-		    /* RAM. Reserved for inmates {
-			    .phys_start = 0xe0000000,
-			    .virt_start = 0xe0000000,
-			    .size = 0x20000000,
-			    .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
-				JAILHOUSE_MEM_EXECUTE,
-		    },
+        /* IVSHMEM shared memory regions for 00:00.0 (demo)
+        {
+            .phys_start = 0xdfa00000,
+            .virt_start = 0xdfa00000,
+            .size = 0x10000,
+            .flags = JAILHOUSE_MEM_READ,
+        },
+        {
+            .phys_start = 0xdfa10000,
+            .virt_start = 0xdfa10000,
+            .size = 0x10000,
+            .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE,
+        },
+        /* Peer 0  {
+            .phys_start = 0xdfa20000,
+            .virt_start = 0xdfa20000,
+            .size = 0x10000,
+            .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE,
+        },
+        /* Peer 1  {
+            .phys_start = 0xdfa30000,
+            .virt_start = 0xdfa30000,
+            .size = 0x10000,
+            .flags = JAILHOUSE_MEM_READ,
+        },
+        /* Peer 2  {
+            .phys_start = 0xdfa40000,
+            .virt_start = 0xdfa40000,
+            .size = 0x10000,
+            .flags = JAILHOUSE_MEM_READ,
+        },
+        /* IVSHMEM shared memory region for 00:01.0
+        JAILHOUSE_SHMEM_NET_REGIONS(0xdfb00000, 0),
+        {
+            .phys_start = 0x01810000,
+            .virt_start = 0x01810000,
+            .size = 0x00070000,
+            .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+            JAILHOUSE_MEM_IO,
+        },
+        {
+            .phys_start = 0x018a0000,
+            .virt_start = 0x018a0000,
+            .size = 0x00060000,
+            .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+            JAILHOUSE_MEM_IO,
+        },
+        /* RAM  {
+            .phys_start = 0x80000000,
+            .virt_start = 0x80000000,
+            .size = 0x5fa00000,
+            .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+            JAILHOUSE_MEM_EXECUTE,
+        },
+        /* RAM. Reserved for inmates {
+            .phys_start = 0xe0000000,
+            .virt_start = 0xe0000000,
+            .size = 0x20000000,
+            .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+            JAILHOUSE_MEM_EXECUTE,
+        },
 
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
@@ -1088,75 +1122,75 @@ will be used by the cell,
     ::
         
         .mem_regions = {
-		/* IVSHMEM shared memory regions for 00:00.0 (demo)
-		{
-			.phys_start = 0x9dfa00000,
-			.virt_start = 0x9dfa00000,
-			.size = 0x10000,
-			.flags = JAILHOUSE_MEM_READ,
-		},
-		{
-			.phys_start = 0x9dfa10000,
-			.virt_start = 0x9dfa10000,
-			.size = 0x10000,
-			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE,
-		},
-		/* Peer 0 {
-			.phys_start = 0x9dfa20000,
-			.virt_start = 0x9dfa20000,
-			.size = 0x10000,
-			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE,
-		},
-		/* Peer 1 {
-			.phys_start = 0x9dfa30000,
-			.virt_start = 0x9dfa30000,
-			.size = 0x10000,
-			.flags = JAILHOUSE_MEM_READ,
-		},
-		/* Peer 2 {
-			.phys_start = 0x9dfa40000,
-			.virt_start = 0x9dfa40000,
-			.size = 0x10000,
-			.flags = JAILHOUSE_MEM_READ,
-		},
-		/* IVSHMEM shared memory region for 00:01.0 
-		JAILHOUSE_SHMEM_NET_REGIONS(0x9dfb00000, 0),
-		{
-			.phys_start = 0x01810000,
-			.virt_start = 0x01810000,
-			.size = 0x00070000,
-			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
-				JAILHOUSE_MEM_IO,
-		},
-		{
-			.phys_start = 0x018a0000,
-			.virt_start = 0x018a0000,
-			.size = 0x00060000,
-			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
-				JAILHOUSE_MEM_IO,
-		},
-		/* RAM {
-			.phys_start = 0x80000000,
-			.virt_start = 0x80000000,
-			.size = 0x80000000,
-			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
-				JAILHOUSE_MEM_EXECUTE,
-		},
-		/* RAM {
-			.phys_start = 0x880000000,
-			.virt_start = 0x880000000,
-			.size = 0x15fa00000,
-			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
-				JAILHOUSE_MEM_EXECUTE,
-		},
-		/* RAM. Reserved for inmates {
-			.phys_start = 0x9e0000000,
-			.virt_start = 0x9e0000000,
-			.size = 0x20000000,
-			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
-				JAILHOUSE_MEM_EXECUTE,
-		},
-    
+        /* IVSHMEM shared memory regions for 00:00.0 (demo)
+        {
+            .phys_start = 0x9dfa00000,
+            .virt_start = 0x9dfa00000,
+            .size = 0x10000,
+            .flags = JAILHOUSE_MEM_READ,
+        },
+        {
+            .phys_start = 0x9dfa10000,
+            .virt_start = 0x9dfa10000,
+            .size = 0x10000,
+            .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE,
+        },
+        /* Peer 0 {
+            .phys_start = 0x9dfa20000,
+            .virt_start = 0x9dfa20000,
+            .size = 0x10000,
+            .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE,
+        },
+        /* Peer 1 {
+            .phys_start = 0x9dfa30000,
+            .virt_start = 0x9dfa30000,
+            .size = 0x10000,
+            .flags = JAILHOUSE_MEM_READ,
+        },
+        /* Peer 2 {
+            .phys_start = 0x9dfa40000,
+            .virt_start = 0x9dfa40000,
+            .size = 0x10000,
+            .flags = JAILHOUSE_MEM_READ,
+        },
+        /* IVSHMEM shared memory region for 00:01.0
+        JAILHOUSE_SHMEM_NET_REGIONS(0x9dfb00000, 0),
+        {
+            .phys_start = 0x01810000,
+            .virt_start = 0x01810000,
+            .size = 0x00070000,
+            .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+            JAILHOUSE_MEM_IO,
+        },
+        {
+            .phys_start = 0x018a0000,
+            .virt_start = 0x018a0000,
+            .size = 0x00060000,
+            .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+            JAILHOUSE_MEM_IO,
+        },
+        /* RAM {
+            .phys_start = 0x80000000,
+            .virt_start = 0x80000000,
+            .size = 0x80000000,
+            .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+            JAILHOUSE_MEM_EXECUTE,
+        },
+        /* RAM {
+            .phys_start = 0x880000000,
+            .virt_start = 0x880000000,
+            .size = 0x15fa00000,
+            .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+            JAILHOUSE_MEM_EXECUTE,
+        },
+        /* RAM. Reserved for inmates {
+            .phys_start = 0x9e0000000,
+            .virt_start = 0x9e0000000,
+            .size = 0x20000000,
+            .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+            JAILHOUSE_MEM_EXECUTE,
+        },
+
 
 bitmap of CPU cores dedicated for the cell,
 
@@ -1171,42 +1205,42 @@ bitmap of interrupt controller SPI interrupts
 ::
 
     .irqchips = {
-		{
-			.address = 0x01800000,
-			.pin_base = 32,
-			.pin_bitmap = {
-				0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-			},
-		},
-		{
-			.address = 0x01800000,
-			.pin_base = 160,
-			.pin_bitmap = {
-				0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-			},
-		},
-		{
-			.address = 0x01800000,
-			.pin_base = 288,
-			.pin_bitmap = {
-				0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-			},
-		},
-		{
-			.address = 0x01800000,
-			.pin_base = 416,
-			.pin_bitmap = {
-				0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-			},
-		},
-		{
-			.address = 0x01800000,
-			.pin_base = 544,
-			.pin_bitmap = {
-				0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-			},
-		},
-	},
+        {
+            .address = 0x01800000,
+            .pin_base = 32,
+            .pin_bitmap = {
+            0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+            },
+        },
+        {
+            .address = 0x01800000,
+            .pin_base = 160,
+            .pin_bitmap = {
+            0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+            },
+        },
+        {
+            .address = 0x01800000,
+            .pin_base = 288,
+            .pin_bitmap = {
+            0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+            },
+        },
+        {
+            .address = 0x01800000,
+            .pin_base = 416,
+            .pin_bitmap = {
+            0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+            },
+        },
+        {
+            .address = 0x01800000,
+            .pin_base = 544,
+            .pin_bitmap = {
+            0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+            },
+        },
+    },
 
 and some other parameters. That is for all the cells.
 
@@ -1218,18 +1252,136 @@ hypervisor.
     ::
 
         .hypervisor_memory = {
-		    .phys_start = 0xdfc00000,
-		    .size = 0x400000,
-    	},
+            .phys_start = 0xdfc00000,
+            .size = 0x400000,
+        },
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
    ::
-        
+
         .hypervisor_memory = {
-			.phys_start = 0x9dfc00000,
-			.size = 0x400000,
-		},
+            .phys_start = 0x9dfc00000,
+            .size = 0x400000,
+        },
 
 The "memory regions" section is used by hypervisor to create the second stage
 MMU translation table.
+
+Performance
+-----------
+
+Cache Benchmark
+^^^^^^^^^^^^^^^
+
+In the Jailhouse hypervisor environment, cache benchmarking involves executing
+cache-intensive operations, like the dd command, on the root side, while simultaneously
+employing the perf tool on the inmate side to measure cache performance metrics.
+This setup ensures that the cache activity generated on the root side is monitored
+in real-time on the inmate side, allowing user to analyze cache hit rates, misses,
+and other relevant metrics. Both the root and inmate system share one instance of L2
+cache sized at 512KiB. It's important to emphasize that the performance observed
+during cache benchmarking in a Jailhouse hypervisor environment may vary due to
+several factors. These include workload characteristics, cache utilization patterns,
+system resource availability, and potential interference from other processes or
+system activities.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    Root
+
+    .. code-block:: console
+
+        root@am62xx-evm:/usr/share/jailhouse# dd if=/dev/zero of=large_file bs=1M count=2000
+        2000+0 records in
+        2000+0 records out
+        2097152000 bytes (2.1 GB, 2.0 GiB) copied, 55.4181 s, 37.8 MB/s
+
+    Inmate
+
+    .. code-block:: console
+
+        root@am62xx-evm:~# perf stat -B -e cache-references,cache-misses,cycles,instructions,branches,faults,migrations sleep 5
+
+        Performance counter stats for 'sleep 5':
+
+            371430      cache-references
+             10203      cache-misses                     #    2.747 % of all cache refs
+           3291033      cycles
+           1036312      instructions                     #    0.31  insn per cycle
+            124061      branches
+                55      faults
+                 0      migrations
+
+        5.008279260 seconds time elapsed
+
+        0.000000000 seconds user
+        0.010416000 seconds sys
+
+
+        root@am62xx-evm:~# perf stat -B -e cache-references,cache-misses,cycles,instructions,branches,faults,migrations sleep 5
+
+        Performance counter stats for 'sleep 5':
+
+            381319      cache-references
+             10425      cache-misses                     #    2.734 % of all cache refs
+           2103918      cycles
+           1067610      instructions                     #    0.51  insn per cycle
+            127816      branches
+                55      faults
+                 0      migrations
+
+       5.017894215 seconds time elapsed
+
+       0.000000000 seconds user
+       0.019100000 seconds sys
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    Root
+
+    .. code-block:: console
+
+        root@am62pxx-evm:/usr/share/jailhouse# dd if=/dev/zero of=large_file bs=1M count=2000
+        2000+0 records in
+        2000+0 records out
+        2097152000 bytes (2.1 GB, 2.0 GiB) copied, 26.8668 s, 78.1 MB/s
+
+    Inmate
+
+    .. code-block:: console
+
+        root@am62pxx-evm:~# perf stat -B -e cache-references,cache-misses,cycles,instructions,branches,faults,migrations sleep 5
+
+        Performance counter stats for 'sleep 5':
+
+            375480      cache-references
+             10827      cache-misses                     #    2.884 % of all cache refs
+           2300421      cycles
+           1050009      instructions                     #    0.46  insn per cycle
+            125803      branches
+                55      faults
+                 0      migrations
+
+       5.015314265 seconds time elapsed
+
+       0.000000000 seconds user
+       0.017454000 seconds sys
+
+
+        root@am62pxx-evm:~# perf stat -B -e cache-references,cache-misses,cycles,instructions,branches,faults,migrations sleep 5
+
+        Performance counter stats for 'sleep 5':
+
+            371279      cache-references
+              9888      cache-misses                     #    2.663 % of all cache refs
+           2061169      cycles
+           1039573      instructions                     #    0.50  insn per cycle
+            123922      branches
+                55      faults
+                 0      migrations
+
+       5.011424805 seconds time elapsed
+
+       0.000000000 seconds user
+       0.013490000 seconds sys
