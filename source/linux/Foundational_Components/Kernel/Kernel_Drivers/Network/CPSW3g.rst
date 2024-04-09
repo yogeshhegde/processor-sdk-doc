@@ -53,6 +53,8 @@ Supported platforms
 +-----------+-------------------------------+
 | SoC       | Number of external ports      |
 +===========+===============================+
+| AM62PX    | 2 external ports (CPSW3g)     |
++-----------+-------------------------------+
 | AM62AX    | 2 external ports (CPSW3g)     |
 +-----------+-------------------------------+
 | AM62X     | 2 external ports (CPSW3g)     |
