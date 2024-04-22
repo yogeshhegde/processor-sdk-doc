@@ -235,6 +235,7 @@ Known Issues
    "SYSFW-6432","am62x,am62ax,am62px,am64x,am65x","Set device API doesn't return Error when PD is in transition state",""
    "SYSFW-6426","am62x,am62ax,am62px,am64x,am65x","Ownership of a firewall region can be transferred to an invalid host",""
    "SYSFW-6369","am62x,am62ax,am62px","DM unable to enter deep sleep mode when booting in SBL flow",""
+   "SITSW-4366","am62ax","C7x edge AI firmware is not supporting graceful shutdown",""
 
 |
 
