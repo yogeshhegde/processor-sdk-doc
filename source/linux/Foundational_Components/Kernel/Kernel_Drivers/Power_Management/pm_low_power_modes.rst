@@ -241,3 +241,15 @@ before running the Suspend-to-RAM command:
 ::
 
    root@evm:@~# modprobe -r optee_rng
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+   .. note::
+
+      Linux SDK for edge AI applications has a known issue that breaks
+      Deep Sleep and MCU Only modes. To test these modes, the DSP module
+      has to be unloaded before attempting LPM:
+
+      ::
+
+         root@evm:@~# modprobe -rf ti_k3_dsp_remoteproc
