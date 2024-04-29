@@ -36,14 +36,9 @@ Where <hash> is the OPTEE commit shown here: :ref:`optee-release-notes`.
 
 .. rubric:: Setting up the toolchain paths
 
-Refer to :ref:`yocto-toolchain` section to use the toolchain packaged in the Processor SDK (recommended).
-
-Refer to :ref:`external-arm-toolchain` to download and setup ARM toolchains, if the Processor SDK is not used.
-
-In either of the above setups, the OP-TEE build commands in the next section will assume the below variables are set appropriately.
-
-- ``CROSS_COMPILE_64``
-- ``CROSS_COMPILE_32``
+.. include:: Overview/GCC_ToolChain.rst
+   :start-after: .. start_include_yocto_toolchain_host_setup
+   :end-before: .. end_include_yocto_toolchain_host_setup
 
 .. rubric:: Building OP-TEE OS
 
