@@ -202,7 +202,7 @@ Secondary Boot Loader (SBL)
 
     To validate this, do not remove the log prints from the previous subsection and observe the `SBL Board_driversOpen` parameter. Currently, the tuning algorithm takes 22ms to complete. If skipping is successful, it should drop down to ~150us.
 
-    Open the relevant example's syscfg by navigating into `<mcu-plus-path>/examples/drivers/boot/sbl_ospi_linux_multistage/sbl_ospi_linux_stage1/<soc-name>/<example-type>/ti-arm-clang/` and running :literal:`make syscfg-gui`. Navigate to the `OSPI` section and enable **OSPI skip Tuning option**. Ensure that **Enable PHY** is checked as well.
+    Open the relevant example's syscfg by navigating into `<mcu-plus-path>/examples/drivers/boot/sbl_ospi_linux_multistage/sbl_ospi_linux_stage1/<soc-name>/<example-type>/ti-arm-clang/` and running :code:`make syscfg-gui`. Navigate to the `OSPI` section and enable **OSPI skip Tuning option**. Ensure that **Enable PHY** is checked as well.
 
     .. Image:: /images/SBL_enable_ospi_phy_skip.png
          :align: center
@@ -235,17 +235,7 @@ Secondary Boot Loader (SBL)
 
         This is a special OSPI-NOR boot mode where ROM tunes OSPI when provided with the right parameters. If successful, OSPI PHY tuning need not be done by the bootloader at SBL-stage1 otherwise it will switch to the regular OSPI-NOR mode where tuning has to be done by a subsequent stage.
 
-        Flash the relevant binary at :literal:`0x3fc0000`:
-
-        .. ifconfig:: CONFIG_part_variant in ('AM62AX')
-
-            - :download:`OSPI-NOR @100MHz </files/fastxspi_pattern_am62a_100MHz.bin>`
-
-            - :download:`OSPI-NOR @133MHz </files/fastxspi_pattern_am62a_133MHz.bin>`
-
-            - :download:`OSPI-NOR @166MHz </files/fastxspi_pattern_am62a_166MHz.bin>`
-
-        .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+        Flash the relevant binary at :code:`0x3fc0000`:
 
             - :download:`OSPI-NOR @100MHz </files/fastxspi_pattern_am62p_100MHz.bin>`
 
@@ -264,14 +254,14 @@ Secondary Boot Loader (SBL)
         :download:`ddr_1600_singlerank_am62p.h </files/ddr_1600_singlerank_am62p.h>`
 
         .. Image:: /images/SBL_singlerank_ddr.png
-        :align: center
+         :align: center
 
 Reducing Linux kernel boot time
 -------------------------------
 
-- Adding :literal:`quiet`
+- Adding :code:`quiet`
 
-    - To save 8+ seconds, add "quiet" argument in the Kernel "bootargs". It suppresses most messages during the Linux start-up sequence. To access the logs after login, you can run :code:`dmesg` for the logs to be printed. By default, quiet is at a loglevel of 4 and should be adequate to suppress the majority of logs but if finer control is required :litera:`quiet` can be replaced with :literal:`loglevel=x` where x can be 1-14.
+    - To save 8+ seconds, add "quiet" argument in the Kernel "bootargs". It suppresses most messages during the Linux start-up sequence. To access the logs after login, you can run :code:`dmesg` for the logs to be printed. By default, quiet is at a loglevel of 4 and should be adequate to suppress the majority of logs but if finer control is required :code:`quiet` can be replaced with :code:`loglevel=x` where x can be 1-14.
 
     - The kernel looks for bootargs in 3 places: U-Boot environment variable, the device tree and the kernel config. You can add the following in any of the 3 locations.
 
@@ -286,10 +276,10 @@ Reducing Linux kernel boot time
         .. code-block:: dts
 
             chosen {
-		        ...
-		        bootargs = "console=ttyS2,115200n8 earlycon=ns16550a,mmio32,0x02800000 quiet";
-		        ...
-		    };
+                ...
+                bootargs = "console=ttyS2,115200n8 earlycon=ns16550a,mmio32,0x02800000 quiet";
+                ...
+            };
 
         Kernel config:
 
@@ -314,7 +304,7 @@ Reducing Linux kernel boot time
 
 - Disabling nodes in DT
 
-    Unnecessary nodes can be disabled by adding :literal:`status = "disabled"` to the nodes. While this will not directly affect boot time, the minimal kernel will not throw probe errors during boot.
+    Unnecessary nodes can be disabled by adding :code:`status = "disabled"` to the nodes. While this will not directly affect boot time, the minimal kernel will not throw probe errors during boot.
 
 Reducing userspace boot time
 ----------------------------
@@ -340,7 +330,7 @@ In order to package the filesystem as initramfs into the kernel, follow these st
 
         CONFIG_INITRAMFS_SOURCE="/path/to/filesystem"
     
-    or using :literal:`menuconfig`:
+    or using :code:`menuconfig`:
 
     .. code-block:: kconfig
 
@@ -388,6 +378,8 @@ Measurements
 
 The following section displays the time taken by each stage to start and end. Four profile points were used:
 
+    - PMIC time is taken from the datasheet
+
     - MCU_PORz (White) - MCU Power-On-Reset
 
     - SBL_start (Brown) - GPIO is set to LOW as soon as SBL stage 1 is started (Before System_init)
@@ -401,12 +393,6 @@ The following section displays the time taken by each stage to start and end. Fo
     .. Image:: /images/am62x_ospi_boot_analyser.png
      :align: center
 
-    ROM time : SBL_start - MCU_PORz = 33ms
-
-    SBL time : SBL_end - SBL_start = 240ms
-
-    TF-A + OPTEE + Kernel time: Kernel_end - SBL_end = 415ms
-
     .. code-block:: console
 
         [2024-03-29 11:52:40.318] NOTICE:  BL31: v2.10.0(release):v2.10.0-367-g00f1ec6b87-dirty
@@ -414,19 +400,28 @@ The following section displays the time taken by each stage to start and end. Fo
         [2024-03-29 11:52:41.098] 
         [2024-03-29 11:52:41.098] am62xx-evm login:
 
-    To calculate userspace, we use console logs to take timestamps from TF-A to login prompt and subtract kernel time = 
-
+    +-------------------+-----------+
+    |       Stage       | Time (ms) |
+    +===================+===========+
+    | PMIC (TPS6521904) |     30    |
+    +-------------------+-----------+
+    |        ROM        |     33    |
+    +-------------------+-----------+
+    |        SBL        |    240    |
+    +-------------------+-----------+
+    |    Linux Kernel   |    415    |
+    +-------------------+-----------+
+    |      Tiny FS      |    365    |
+    +-------------------+-----------+
+    |             Total |   1083    |
+    +-------------------+-----------+
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
     .. Image:: /images/am62ax_ospi_boot_analyser.png
      :align: center
-
-    ROM time : SBL_start - MCU_PORz = 48ms
-
-    SBL time til Linux CPU is started: SBL_end - SBL_start = 624ms
-
-    SBL C7X load + DriversClose + TF-A + OPTEE + Kernel time: Kernel_end - SBL_end = 679ms (~450ms for Kernel)
+    
+    *679ms includes SBL C7x image load
 
     .. code-block:: console
 
@@ -435,18 +430,26 @@ The following section displays the time taken by each stage to start and end. Fo
         [2024-03-29 13:02:19.991] 
         [2024-03-29 13:02:19.991] am62xx-evm login: 
 
-    To calculate userspace, we use console logs to take timestamps from TF-A to login prompt and subtract kernel time = 345ms
+    +--------------------+-----------+
+    |       Stage        | Time (ms) |
+    +====================+===========+
+    | PMIC (TPS65931211) |     30    |
+    +--------------------+-----------+
+    |        ROM         |     48    |
+    +--------------------+-----------+
+    |        SBL         |    624    |
+    +--------------------+-----------+
+    |    Linux Kernel    |    450    |
+    +--------------------+-----------+
+    |      Tiny FS       |    345    |
+    +--------------------+-----------+
+    |              Total |   1497    |
+    +--------------------+-----------+
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
     .. Image:: /images/am62px_ospi_boot_analyser.png
      :align: center
-
-    ROM time : SBL_start - MCU_PORz = 30.79ms
-
-    SBL time : SBL_end - SBL_start = 186.42ms
-
-    TF-A + OPTEE + Kernel time: Kernel_end - SBL_end = 497.67ms
 
     .. code-block:: console
 
@@ -455,7 +458,21 @@ The following section displays the time taken by each stage to start and end. Fo
         [2024-03-29 14:31:26.117] 
         [2024-03-29 14:31:26.117] am62xx-evm login: 
 
-    To calculate userspace, we use console logs to take timestamps from TF-A to login prompt and subtract kernel time = 355ms
+    +-----------------+-----------+
+    |      Stage      | Time (ms) |
+    +=================+===========+
+    | PMIC (TPS65224) |     15    |
+    +-----------------+-----------+
+    |       ROM       |     31    |
+    +-----------------+-----------+
+    |       SBL       |    187    |
+    +-----------------+-----------+
+    |  Linux Kernel   |    498    |
+    +-----------------+-----------+
+    |     Tiny FS     |    355    |
+    +-----------------+-----------+
+    |           Total |   1086    |
+    +-----------------+-----------+
 
 Additional notes
 ----------------
@@ -463,7 +480,7 @@ Additional notes
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
     .. note::
-        Ensure that you are not affecting your host computer when making the changes deailed below
+        Ensure that you are not affecting your host computer when making the changes detailed below
 
     - This statically compiled :download:`modetest </files/modetest>` can be added to the filesystem to test out display at boot on an OLDI panel. 
 
@@ -491,7 +508,7 @@ Additional notes
 
                 exec /sbin/init.sysvinit $*
 
-            You can get the connector ID and CRTC ID of your OLDI panel by running :literal:`kmsprint` or :literal:`modetest -M tidss`
+            You can get the connector ID and CRTC ID of your OLDI panel by running :code:`kmsprint` or :code:`modetest -M tidss`
 
         - Make it executable
 
@@ -502,11 +519,11 @@ Additional notes
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
     
-    - While AM62A ships with OSPI-NAND, it can be replaced with the OSPI-NOR flash with ease. It is not recommended to resolder used flashes onto a board. NAND flash support needs to be replaced with NOR flash support
+    - While AM62A ships with OSPI-NAND, it can be replaced with the OSPI-NOR flash with ease. NAND flash support needs to be replaced with NOR flash support
 
         - SPL:
 
-            Apply this :download:`patch </files/am62ax_nor.patch>` and rebuild `U-Boot <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#build-u-boot>`_.
+            Rebuild `U-Boot <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#build-u-boot>`_ with OSPI NOR support.
 
         - SBL:
 
@@ -531,7 +548,3 @@ Known issues
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
     - Due to the implementation of OSPI-NAND software layer in MCU+ SDK, it has been observed that the read performance drops when tuning is skipped. This fix will be incoporated for 10.0 SDK release.
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-    - OSPI stage 2 will not skip tuning by default on AM62X
