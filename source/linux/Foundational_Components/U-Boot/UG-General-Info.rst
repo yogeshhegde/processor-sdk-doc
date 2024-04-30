@@ -327,12 +327,12 @@ Build U-Boot
 
    .. ifconfig:: CONFIG_part_variant in ('J722S')
 
-      +----------------------------+---------------------------------+--------------------------------+--------------------------------+------------------------------------+
-      |  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |           USB DFU                  |
-      +============================+=================================+================================+================================+====================================+
-      |    J722S EVM               |    j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_usbdfu.config    |
-      |                            |    j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig       |
-      +----------------------------+---------------------------------+--------------------------------+--------------------------------+------------------------------------+
+      +----------------------------+---------------------------------+--------------------------------+--------------------------------+------------------------------------+------------------------------------+
+      |  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |           USB DFU                  |           USB MSC                  |
+      +============================+=================================+================================+================================+====================================+====================================+
+      |    J722S EVM               |    j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_defconfig    |   j722s\_evm\_r5\_usbdfu.config    |   j722s\_evm\_r5\_usbmsc.config    |
+      |                            |    j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig       |   j722s\_evm\_a53\_defconfig       |
+      +----------------------------+---------------------------------+--------------------------------+--------------------------------+------------------------------------+------------------------------------+
 
    .. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4')
 
@@ -362,6 +362,7 @@ Build U-Boot
 
          To build with config fragments
          $ make ARCH=arm O=<output directory>/r5 j722s_evm_r5_defconfig j722s_evm_r5_usbdfu.config
+         $ make ARCH=arm O=<output directory>/r5 j722s_evm_r5_defconfig j722s_evm_r5_usbmsc.config
 
          $ make ARCH=arm O=<output directory>/r5 CROSS_COMPILE="$CROSS_COMPILE_32" BINMAN_INDIRS=${PREBUILT_IMAGES}
 

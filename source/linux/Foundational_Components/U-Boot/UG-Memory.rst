@@ -586,6 +586,29 @@ Booting to U-Boot prompt from USB storage
 
   #. Connect the USB Mass storage device with the bootloader images and boot up the board.
 
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+  Booting to U-Boot prompt from USB storage is supported. The following are the steps to be followed,
+  #. In U-Boot the USB controller can be used in either host or peripheral mode. For booting to linux kernel from USB storage device, the USB port is to be set as host.
+
+  #. By default, USB0 is set to peripheral mode. Change this from peripheral to host mode.
+
+  #. Build the bootloader images using the default "j722s_evm_r5_defconfig"
+     and the config fragment "j722s_evm_r5_usbmsc.config" and "j722s_evm_a53_defconfig"
+     configs files. The configs required for
+     USB MSC boot are already enabled. For instructions to build the bootloader
+     images please refer to :ref:`Build-U-Boot-label`.
+
+  #. Create a FAT32 partition with boot flag enabled on the USB storage device.
+
+  #. Copy the bootloader images(tiboot3.bin, tispl.bin, u-boot.img) into the above created partition.
+
+  #. Set the boot mode switches to USB host boot mode (Refer to  **Initialization** chapter of TRM for boot switch details)
+
+  #. Make sure USB0 port in DRP mode: SW2[2:3] = 00
+
+  #. Connect the USB Mass storage device with the bootloader images and boot up the board.
+
 .. note::
   While using ``usb reset`` or ``usb start`` command in U-Boot, or booting from a USB Mass storage device, some of the USB
   devices fail to get detected. This issue is seen because these USB
@@ -599,7 +622,58 @@ Booting Linux from USB storage
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
-  This feature is currently not supported.
+  .. ifconfig:: CONFIG_part_variant not in ('J722S')
+
+     This feature is currently not supported.
+
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+    To load the Linux kernel, Device Tree and the Root file system from USB Mass storage device,
+    the following changes are required to be done,
+
+    - U-Boot
+
+      #. In U-Boot the USB controller can be used in either host or peripheral mode. For booting to linux kernel
+         from USB storage device, the USB port is to be set as host.
+      #. By default, USB0 is set to peripheral mode. Change this from peripheral to host mode
+
+    - Kernel
+
+      #. In kernel, by default the USB subsystem is built as modules. For booting from USB mass storage device,
+         USB subsytem is required to be built into the image. This can be done by making the following changes
+         in the configuration used for building kernel,
+
+      .. code-block:: text
+
+          CONFIG_USB_COMMON=y
+          CONFIG_USB=y
+          CONFIG_USB_XHCI_HCD=y
+          CONFIG_USB_XHCI_PCI=y
+          CONFIG_USB_XHCI_PLATFORM=y
+          CONFIG_USB_STORAGE=y
+          CONFIG_USB_DWC3=y
+          CONFIG_USB_DWC3_AM62=y
+          CONFIG_USB_GADGET=y
+          CONFIG_TYPEC=y
+          CONFIG_TYPEC_TPS6598X=y
+          CONFIG_USB_ROLE_SWITCH=y
+
+    - Copying the images to USB storage device
+
+      #. After making the required changes mentioned above, build the kernel, device tree file and modules
+      #. The USB Mass storage device should have the rootfs as the second partition with ext4 file system,
+
+          - The following images should be in /boot/ directory
+
+            - Kernel image
+            - device tree file
+
+    - During the boot, cancel the autoboot at U-Boot and run the following command on U-Boot
+      prompt
+
+      .. code-block:: console
+
+         => run usb_boot
 
 .. ifconfig:: CONFIG_part_family in ('AM62X_family')
 
