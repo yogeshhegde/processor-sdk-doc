@@ -36,30 +36,25 @@ kernel configuration.
 
 .. ifconfig:: CONFIG_mcrc in ('mcrc')
 
-    .. code-block:: text
+   .. code-block:: kconfig
 
-	  |Symbol: CRYPTO_DEV_TI_MCRC64 [=m]
-	  | Type  : tristate
-	  | Defined at drivers/crypto/ti/Kconfig:2
-	  |   Prompt: Support for TI MCRC64 crc accelerators
-	  |   Depends on: CRYPTO [=y] && CRYPTO_HW [=y] && ARCH_K3 [=y]
-	  |   Location:
-	  |     -> Cryptographic API (CRYPTO [=y])
-	  | (1)   -> Hardware crypto devices (CRYPTO_HW [=y])
-	  | Selects: CRYPTO_HASH [=y]
+      Symbol: CRYPTO_DEV_TI_MCRC64 [=m]
+       Type  : tristate
+       Defined at drivers/crypto/ti/Kconfig:2
+         Prompt: Support for TI MCRC64 crc accelerators
+         Depends on: CRYPTO [=y] && CRYPTO_HW [=y] && ARCH_K3 [=y]
+         Location:
+           -> Cryptographic API (CRYPTO [=y])
+       (1)   -> Hardware crypto devices (CRYPTO_HW [=y])
+       Selects: CRYPTO_HASH [=y]
 
-    To check if mcrc module is properly installed,
-    run the below command from the Linux command prompt:
+   To check if mcrc module is properly installed,
+   run the below command from the Linux command prompt:
 
-    ::
+   .. code-block:: console
 
-        lsmod | grep mcrc
-
-    Output should show something similar to below:
-
-    ::
-
-        mcrc  20480  0
+      $ lsmod | grep mcrc
+      mcrc  20480  0
 
 .. rubric:: Build the algif_hash kernel module using SDK
    :name: build-the-algif_hash-kernel-module-using-sdk
@@ -72,27 +67,26 @@ algif_hash: User-space interface for hash algorithms
 
 For reference, the configuration details are shown below.
 
-.. code-block:: text
+.. code-block:: kconfig
 
-   |Symbol: CRYPTO_USER_API_HASH [=m]
-   | Type  : tristate
-   | Defined at crypto/Kconfig:1869
-   |   Prompt: User-space interface for hash algorithms
-   |   Depends on: CRYPTO [=y] && NET [=y]
-   |   Location:
-   |     -> Cryptographic API (CRYPTO [=y])
-   | Selects: CRYPTO_HASH [=y] && CRYPTO_USER_API [=m]
-
+   Symbol: CRYPTO_USER_API_HASH [=m]
+    Type  : tristate
+    Defined at crypto/Kconfig:1869
+      Prompt: User-space interface for hash algorithms
+      Depends on: CRYPTO [=y] && NET [=y]
+      Location:
+        -> Cryptographic API (CRYPTO [=y])
+    Selects: CRYPTO_HASH [=y] && CRYPTO_USER_API [=m]
 
 The following shows the command used to query the system for the state of
 the algif_hash module. If not already loaded, these modules will get loaded
 automatically while running user space application.
 
-    ::
+.. code-block:: console
 
-       root@am62xx-evm:~$ lsmod |grep alg
-       algif_hash             20480  0
-       af_alg                 32768  1 algif_hash
+   root@am62xx-evm:~$ lsmod | grep alg
+   algif_hash             20480  0
+   af_alg                 32768  1 algif_hash
 
 .. rubric:: Working of MCRC controller
    :name: working-of-mcrc-controller
@@ -125,7 +119,7 @@ engine is built as kernel module.
 
 The following code is for user-space application to access mcrc engine
 
-::
+.. code-block:: c
 
     #include <unistd.h>
     #include <stdio.h>
@@ -210,19 +204,19 @@ The following code is for user-space application to access mcrc engine
 
 Compile the code using below command
 
-::
+.. code-block:: console
 
-   cc <filename> -o calculate_crc
+   $ cc <filename> -o calculate_crc
 
 Run the executable
 
-::
+.. code-block:: console
 
-   ./calculate_crc <path-to-file-for-crc-calculation>
+   $ ./calculate_crc <path-to-file-for-crc-calculation>
 
 Example
 
-::
+.. code-block:: console
 
    root@am62xx-evm:~$ ./calculate_crc cscope.files
    0xfa68a95edc9f3b45
@@ -230,7 +224,7 @@ Example
 Using the Linux time function gives more information about CPU usage
 during the test.
 
-::
+.. code-block:: console
 
    root@am62xx-evm:~$ time ./calculate_crc cscope.files
    0xfa68a95edc9f3b45
@@ -241,7 +235,7 @@ during the test.
 
 To verify the result against pycrc module available `here <https://github.com/tpircher/pycrc.git>`_ on host PC.
 
-::
+.. code-block:: console
 
    debian@BeagleBone:~$ time python3 ~/pycrc/src/pycrc.py --width 64 --poly 0x000000000000001b --reflect-in False --xor-in 0x0000000000000000 --reflect-out False --xor-out 0x0000000000000000 --check-file cscope.files
    0xfa68a95edc9f3b45
@@ -256,7 +250,7 @@ To verify the result against pycrc module available `here <https://github.com/tp
 
 Testing using the tcrypt module:
 
-::
+.. code-block:: console
 
    root@am62xx-evm:~$ sudo modprobe tcrypt mode=329 sec=1
    [  542.497394]
@@ -290,4 +284,4 @@ Testing using the tcrypt module:
    [  562.686812] tcrypt: test 20 ( 8192 byte blocks, 4096 bytes per update,   2 updates):   3412 opers/sec,  27951104 bytes/sec
    [  563.694918] tcrypt: test 21 ( 8192 byte blocks, 8192 bytes per update,   1 updates):
    [  564.691734]   3411 opers/sec,  27942912 bytes/sec
-    ...
+   ...
