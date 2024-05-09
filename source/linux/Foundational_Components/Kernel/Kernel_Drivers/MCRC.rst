@@ -3,7 +3,7 @@
 .. include:: /_replacevars.rst
 
 MCRC
----------------------------------
+----
 
 .. rubric:: Introduction
    :name: introduction-linux-mcrc
