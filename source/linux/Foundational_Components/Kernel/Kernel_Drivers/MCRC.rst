@@ -102,9 +102,9 @@ the maximum length LFSR (Linear Feedback Shift Register).
 
 Below is the mathematical representation of used primitive polynomial.
 
-::
+.. code-block:: mathematica
 
-   f(x) = x^64 + x^4 + x^3 + x + 1
+   f[x] = x^(64) + x^(4) + x^(3) + x + 1
 
 
 .. rubric:: Using MCRC engine from user space application
