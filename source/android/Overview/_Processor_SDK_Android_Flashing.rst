@@ -219,9 +219,9 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
         - SW2: 12345678
         - SW3: 12345678
 
-      * - EMMC
+      * - EMMC (with UDA)
         - 00000000
-        - 11010010
+        - 11000010
 
 
 10. Board should boot the Android images now.
