@@ -20,16 +20,16 @@ Please refer to the software manifest, which outlines the licensing
 status for all packages included in the prebuilt binaries location.
 
 
-Release 09.02.00
+Release 09.02.01
 ==================
 
-Released March 2024
+Released May 2024
 
 .. rubric:: What's New
    :name: whats-new
 
-**Processor SDK 9.2 Sitara Release supports the following platforms**
-  * tag: 09.02.00.009
+**Processor SDK 9.2.1 Sitara Release supports the following platforms**
+  * tag: 09.02.00.010
        * AM62Px (HS-FS)
        * AM62x ( GP, HS-FS, HS-SE)
        * AM62x LP (HS-FS, HS-SE)
@@ -37,25 +37,10 @@ Released March 2024
        * AM64x 2.0 (HS-FS)
        * AM62A (HS-FS, HS-SE)
 
-**Processor SDK 9.2 Sitara Release has following Major Updates**
-  * LTS Refresh with Stable Kernel 6.1, U-boot 2023.04, Yocto Dunfell 4.0
-  * Single and multi-bit DDR ECC support
-  * MMC Highspeed tuning and Performance Improvements
-  * Graphics: DDK 23.3 Upgrade
-  * GPU Accelerated Chromium Browser support
-  * Optimized Boot Configuration
-  * Bug Fixes and Stability Improvements
-**AM62P**
-  * Stable DDR config update
-  * A53 SPL Splash Screen support
-  * DSI support
-**AM62A**
-  * Mini Fusion board support
-  * LI OX05B1S Sensor support
-**AM62**
-  * Kernel: eQEP
-**AM64**
-  * Kernel: eQEP
+**Processor SDK 9.2.1 Sitara Release has following Major Updates**
+  * LTS Refresh with Stable Kernel update from 6.1.80 to 6.1.83
+  * Important Bug fixes on top of 9.2 Release
+  ** Review Issue Tracker Section for the new fixes.
 
 
 Build Information
@@ -63,13 +48,13 @@ Build Information
 
 U-Boot
 -------------------------
-| Head Commit: f9b966c674731a1a29a20a8e143c61d4e046f13c configs: am62x_android_a53.config: Disable splashscreen
-| Date: 2024-03-21 08:39:16 -0500
+| Head Commit: 	83660642085462346fbeb410f83bc99448ec7042 arm: dts: k3-am62p-main: Add mac-address efuse
+| Date: 2024-05-16 08:21:02 -0500
 | uBoot Version: 2023.04
-| uBoot Description: RC Release 09.02.00.009
+| uBoot Description: RC Release 09.02.00.010
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2023.04
-| uBoot Tag: 09.02.00.009
+| uBoot Tag: 09.02.00.010
 |
 
 
@@ -78,14 +63,14 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 2e423244f8c09173a344e7069f0fe2bdf26cccee net: ethernet: ti: icssg-prueth: Fix RX frame drops in XDP
-| Date: 2024-03-21 08:39:05 -0500
-| Kernel Version: 6.1.80
-| Kernel Description: RC Release 09.02.00.009
+| Head Commit: c1c2f1971fbf6ddad93a8c94314fe8221e7aa6be Revert "HACK: drm/bridge: tc358762: Implement early_enable and late_disable"
+| Date: 2024-05-16 08:20:49 -0500
+| Kernel Version: 6.1.83
+| Kernel Description: RC Release 09.02.00.010
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.1.y
-| Tag: 09.02.00.009
+| Tag: 09.02.00.010
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config
 |
@@ -94,14 +79,14 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: 3c08dbfd7bfd83c247ad1ee4ddb989260c150af1 Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
-| Date: 2024-03-21 08:39:09 -0500
-| Kernel Version: 6.1.80-rt26
-| Kernel Description: RC Release 09.02.00.009-rt
+| Head Commit: 96b0ebd82722d16e9ab646cd3a73080e6f790747 Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
+| Date: 2024-05-16 08:20:53 -0500
+| Kernel Version: 6.1.83-rt26
+| Kernel Description: RC Release 09.02.00.010-rt
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-6.1.y
-| Tag: 09.02.00.009-rt
+| Tag: 09.02.00.010-rt
 | use-kernel-config=defconfig
 | config-fragment=config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 |
@@ -113,23 +98,23 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 376a2143533c6497b4e79304eccca2a630784436 CI/CD Auto-Merger: cicd.kirkstone.202403201028
-| Date: 2024-03-21 08:39:18 -0500
+| Head Commit: c57b63147d2ac0dde16e43f7407d0ff50e62efdb CI/CD Auto-Merger: cicd.kirkstone.202405141220
+| Date: 2024-05-16 08:21:03 -0500
 
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: kirkstone
-| Release Tag: 09.02.00.009
+| Release Tag: 09.02.00.010
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 98f178314931635c8641d1394dfd4341b86b6be2 CI/CD Auto-Merger: cicd.kirkstone.202403201028
-| Date: 2024-03-21 08:38:40 -0500
+| Head Commit: 3bc9220ea41ee74eea8e48505abbd94f2eee3625 meta-arago-test: cpuloadgen: Update SRCREV to latest
+| Date: 2024-05-16 08:20:18 -0500
 
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: kirkstone
-| Release Tag: 09.02.00.009
+| Release Tag: 09.02.00.010
 |
 
 Issues Tracker
