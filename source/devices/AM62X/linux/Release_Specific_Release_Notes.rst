@@ -35,36 +35,37 @@ found on the SDK download page or in the installed directory as indicated below.
 
 -  Linux Manifest:  "/docs/software_manifest.html"
 
-Release 09.02.00
-================
+Release 09.02.01.10
+===================
 
-Released on March 2024
+Released on May 2024
 
 What's new
 ----------
 
 **Processor SDK Linux AM62X Release has following new features:**
 
+  - LTS Refresh with Stable Kernel update from 6.1.80 to 6.1.83
+  - Important Bug Fixes on top of Processor SDK 09.02.01.09 Release
   - Kernel: MMC Highspeed tuning and Performance Improvements
   - RT Kernel : Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - DDR: Stable Config Update, Single and multi-bit DDR ECC Support
   - Power Management: DeepSleep, MCU-Only and Partial IO mode :ref:`Power Management Overview <Power-Management>`
   - OOB: GPU Accelerated Chromium Browser Support :ref:`Chromium Browser <Chromium_Browser-label>`
-  - Bug Fixes and Stability Improvements
   - DM Firmware: PLL Configuration sequence updated to latest recommendation
 
 
 **Component version:**
 
-  - Kernel 6.1.80
-  - RT Kernel 6.1.80-rt26
+  - Kernel 6.1.83
+  - RT Kernel 6.1.83-rt28
   - U-Boot 2023.04
   - Toolchain GCC 11.4
   - ATF 2.10
   - OPTEE 4.1
   - Graphics DDK 23.3
-  - TIFS Firmware v09.02.07
-  - DM Firmware 09.02.00.24
+  - TIFS Firmware v09.02.08
+  - DM Firmware 09.02.01.01
 
 Build Information
 =================
@@ -77,13 +78,13 @@ U-Boot
 .. rubric:: u-boot
    :name: u-boot
 
-| Head Commit: f9b966c674731a1a29a20a8e143c61d4e046f13c configs: am62x_android_a53.config: Disable splashscreen
-| Date: 2024-03-21 08:39:16 -0500
+| Head Commit: 83660642085462346fbeb410f83bc99448ec7042 arm: dts: k3-am62p-main: Add mac-address efuse
+| Date: 2024-05-16 08:21:02 -0500
 | uBoot Version: 2023.04
-| uBoot Description: RC Release 09.02.00.009
+| uBoot Description: RC Release 09.02.00.010
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2023.04
-| uBoot Tag: 09.02.00.009
+| uBoot Tag: 09.02.00.010
 |
 
 .. _tf-a-release-notes:
@@ -110,11 +111,11 @@ OP-TEE
 
 ti-linux-firmware
 -----------------
-| Head Commit: 553da6850e271b579b569725ce9c58a1a6d7c849 ti-dm: Update firmware for j784s4
-| Date: 2024-03-21 08:39:13 -0500
+| Head Commit: 3987d170fc522565c5e4a9293aba1db75951b8c0 ti-ipc: Update IPC firmwares for am62x, am62ax and am62px
+| Date: 2024-05-13 15:02:06 -0500
 | Clone: https://git.ti.com/cgit/processor-firmware/ti-linux-firmware
 | Branch: ti-linux-firmware
-| Tag: 09.02.00.009
+| Tag: 09.02.00.010
 |
 
 Kernel
@@ -123,14 +124,14 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 2e423244f8c09173a344e7069f0fe2bdf26cccee net: ethernet: ti: icssg-prueth: Fix RX frame drops in XDP
-| Date: 2024-03-21 08:39:05 -0500
-| Kernel Version: 6.1.80
-| Kernel Description: RC Release 09.02.00.009
+| Head Commit: c1c2f1971fbf6ddad93a8c94314fe8221e7aa6be Revert "HACK: drm/bridge: tc358762: Implement early_enable and late_disable"
+| Date: 2024-05-16 08:20:49 -0500
+| Kernel Version: 6.1.83
+| Kernel Description: RC Release 09.02.00.010
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.1.y
-| Tag: 09.02.00.009
+| Tag: 09.02.00.010
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config
 |
@@ -138,14 +139,14 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: 3c08dbfd7bfd83c247ad1ee4ddb989260c150af1 Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
-| Date: 2024-03-21 08:39:09 -0500
-| Kernel Version: 6.1.80-rt26
-| Kernel Description: RC Release 09.02.00.009-rt
+| Head Commit: 96b0ebd82722d16e9ab646cd3a73080e6f790747 Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
+| Date: 2024-05-16 08:20:53 -0500
+| Kernel Version: 6.1.83-rt26
+| Kernel Description: RC Release 09.02.00.010-rt
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-6.1.y
-| Tag: 09.02.00.009-rt
+| Tag: 09.02.00.010-rt
 | use-kernel-config=defconfig
 | config-fragment=config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 |
@@ -155,45 +156,44 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 376a2143533c6497b4e79304eccca2a630784436 CI/CD Auto-Merger: cicd.kirkstone.202403201028
-| Date: 2024-03-21 08:39:18 -0500
+| Head Commit: c57b63147d2ac0dde16e43f7407d0ff50e62efdb CI/CD Auto-Merger: cicd.kirkstone.202405141220
+| Date: 2024-05-16 08:21:03 -0500
 
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: kirkstone
-| Release Tag: 09.02.00.009
+| Release Tag: 09.02.00.010
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 98f178314931635c8641d1394dfd4341b86b6be2 CI/CD Auto-Merger: cicd.kirkstone.202403201028
-| Date: 2024-03-21 08:38:40 -0500
+| Head Commit: 3bc9220ea41ee74eea8e48505abbd94f2eee3625 meta-arago-test: cpuloadgen: Update SRCREV to latest
+| Date: 2024-05-16 08:20:18 -0500
 
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: kirkstone
-| Release Tag: 09.02.00.009
+| Release Tag: 09.02.00.010
 |
 
 .. rubric:: meta-tisdk
    :name: meta-tisdk
 
-| Head Commit: e2d81f687261309de3441917c53c5a282a4f3e1b jailhouse: Update SRCREV
-| Date: 2024-03-22 07:49:05 -0500
+| Head Commit: 03f2d14c2e4fefacb17aeab1540cbec694c3f217 recipes-kernel/recipes-bsp: Bump up SRCREV for jailhouse
+| Date: 2024-05-17 01:52:07 -0500
 
 | Clone: git://git.ti.com/ti-sdk-linux/meta-tisdk.git
 | Branch: kirkstone
-| Release Tag: 09.02.01.09
+| Release Tag: 09.02.01.10
 |
 
 .. rubric:: meta-edgeai
    :name: meta-edgeai
 
-| Head Commit: 80b2a8ea999c39f4ee7a951a67b218c3e0a1d6c4 ti-edgeai-firmware: Update SRCREV to get updated j722s FWs 9.2 RC3 tag
-| Date: 2024-03-21 13:12:49 -0500
+| Head Commit: fdb683aa69d4d70aca17c2d53be3f900ae9d5e72 Revert "conf: layer: Add device tree appends for packaging v3link dtbos"
+| Date: 2024-04-08 03:12:04 -0500
 
 | Clone: https://git.ti.com/git/edgeai/meta-edgeai.git
 | Branch: kirkstone
-| Release Tag: 09.02.00.03
 |
 
 .. note::
