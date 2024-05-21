@@ -10,8 +10,17 @@ of the Processor SDK Linux AM62PX.
 Processor SDK Linux AM62PX 09.xx Releases
 ========================================
 
-Processor SDK 09.02
--------------------
+Processor SDK 09.02.01.10
+-------------------------
+
+- This is the third release based on the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
+- ATF 2.10
+- OPTEE 4.1
+- Yocto Kirkstone/4.0
+- Platforms Supported : AM62Px (HS-FS)
+
+Processor SDK 09.02.01.09
+-------------------------
 
 - This is the second release based on the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
 - ATF 2.10
