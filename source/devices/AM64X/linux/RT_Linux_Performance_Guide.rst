@@ -396,7 +396,7 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 .. rubric::  UDP Throughput 
    :name: CPSW2g-udp-throughput-0-loss
 
-Table:  **CPSW2g UDP Egress Throughput 0 loss*
+Table:  **CPSW2g UDP Egress Throughput 0 loss**
 
 .. csv-table::
     :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"

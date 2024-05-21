@@ -87,3 +87,10 @@ Open the index page in a web browser
 
     linux: ./build/processor-sdk-linux-<FAMILY>/esd/docs/[version]/index.html
     rtos:  ./build/processor-sdk-rtos-<FAMILY>/esd/docs/[version]/index.html
+
+## Tips and Tricks
+
+Add the following to your `init.vim` to automatically use the standard
+whitespace values for RST files:
+
+    autocmd FileType rst set tabstop=3 shiftwidth=3 expandtab
