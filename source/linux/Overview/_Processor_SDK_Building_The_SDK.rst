@@ -256,8 +256,6 @@ The "Build Output" is given relative to the
         +------------------------------+---------------------------------------------------------------+----------------------------+
         | Target                       | Build Output                                                  | Description                |
         +==============================+===============================================================+============================+
-        | tisdk-core-bundle            | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
         | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
         +------------------------------+---------------------------------------------------------------+----------------------------+
         | tisdk-display-cluster-image  | images/<machine>/tisdk-display-cluster-image-<machine>.tar.xz | Display Cluster Filesystem |
@@ -277,8 +275,6 @@ The "Build Output" is given relative to the
         +------------------------------+---------------------------------------------------------------+----------------------------+
         | Target                       | Build Output                                                  | Description                |
         +==============================+===============================================================+============================+
-        | tisdk-core-bundle            | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
         | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
         +------------------------------+---------------------------------------------------------------+----------------------------+
         | tisdk-jailhouse-image        | images/<machine>/tisdk-jailhouse-image-<machine>.tar.xz       | Jailhouse Filesystem       |
