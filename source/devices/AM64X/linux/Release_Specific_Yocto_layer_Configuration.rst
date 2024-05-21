@@ -17,6 +17,6 @@ directory of the `oe-layersetup git repo <https://git.ti.com/cgit/arago-project/
 +--------------------------------------------------+-----------------------------------+------------------------------+
 | Config File                                      | Description                       | Supported machines/platforms |
 +==================================================+===================================+==============================+
-| processor-sdk-kirkstone-09.02.01.09-config.txt   | Processor SDK 09.02.01.09 Release | am64xx-evm                   |
+| processor-sdk-kirkstone-09.02.01.10-config.txt   | Processor SDK 09.02.01.10 Release | am64xx-evm                   |
 +--------------------------------------------------+-----------------------------------+------------------------------+
 
