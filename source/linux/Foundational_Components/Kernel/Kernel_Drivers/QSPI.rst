@@ -36,8 +36,9 @@ different TI SoCs:
 | AM654/J721e   | 1x OSPI,  | drivers/spi/spi-cadence-quadspi.c    |
 |               | 1x QSPI   |                                      |
 +---------------+-----------+--------------------------------------+
-| AM62x         | 1x OSPI,  | drivers/spi/cadence_qspi.c           |
-|               | 1x QSPI   |                                      |
+| AM62x         | OSPI      | drivers/spi/spi-cadence-quadspi.c    |
++---------------+-----------+--------------------------------------+
+| AM62P         | OSPI      | drivers/spi/spi-cadence-quadspi.c    |
 +---------------+-----------+--------------------------------------+
 
 .. note::
@@ -47,17 +48,6 @@ different TI SoCs:
     the criteria listed at https://e2e.ti.com/support/processors/f/791/t/946418
 
 .. rubric:: Driver Features
-
-.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62AX_family', 'AM64X_family')
-
-   .. note::
-
-      The AM62X 9.0 SDK linux is not able to use the OSPI NOR flash
-      in Octal Double Data Rate (DDR) mode. Hence it always functions
-      only in 1S mode. Please apply this commit:
-      `mtd: spi-nor: sfdp: Update params->hwcaps.mask at xSPI profile 1.0 table parse <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/commit/?h=ti-linux-6.1.y-cicd&id=05222ef1f8edd5d5c314469ab00de71dca6c8421>`__
-      or switch to the latest `ti-linux-6.1.y branch <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.1.y>`__
-      to fix this issue.
 
 OSPI controllers support Double Data Rate (DDR) mode in Octal
 configuration wherein data can be read on both edges of the clock.
@@ -375,14 +365,14 @@ Now you can access filesystem at /mnt/flash/.
               	};
               };
 
-.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62PX_family')
 
-    .. rubric:: Using Micron MT35XU512ABA1G12-0AAT flash on AM62x
+    .. rubric:: Using Micron MT35XU512ABA1G12-0AAT flash on AM62x and AM62P
 
-    AM62x Starter Kit (SK) by default comes with with the Cypress S28HS512TGABHM010 flash. But the
+    The AM62x and AM62P-LP Starter Kits (SK) by default come with with the Cypress S28HS512TGABHM010 flash. But the
     Micron MT35XU512ABA1G12-0AAT flash can be used with it with some slight
-    modifications to the device tree properties. The patch below should allow using
-    the flash on AM62x SK. Note that applying it will likely make the Cypress flash unusable.
+    modifications to the device tree properties. The patch below should allow to use
+    the Micron flash. Note that applying it will likely make the Cypress flash unusable.
 
     ::
 
