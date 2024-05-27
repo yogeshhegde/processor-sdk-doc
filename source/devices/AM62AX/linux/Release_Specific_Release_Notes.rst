@@ -265,16 +265,6 @@ Issues opened in previous releases that were closed on this release
    "LCPD-37150","am62: i2c bus speed test is failing","am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am62xx-sk"
    "LCPD-37149","Enabling RTC on am62ax is breaking TIDL","am62axx_sk-fs,am62axx_sk-se"
    "LCPD-37142","AM62A: Suspend-resume: 29010000.mailbox: fifo 1 has unexpected unread messages","am62axx_sk-fs,am62axx_sk-se"
-   "SYSFW-6763","TISCI_MSG_SET_DEVICE_RESETS message returns success for invalid device reset range","am62x,am62ax,am62px"
-   "SYSFW-7056","Implement New PLL sequence Proposed by HW team","am62x,am62ax,am62px,am64x"
-   "SYSFW-6941","TISCI_MSG_SYS_RESET fails for negative testcase","am62x,am62ax,am62px"
-   "SYSFW-6892","TISCI Clock api returns success for invalid Clock ID","am62x,am62ax,am62px,am64x,am65x"
-   "SYSFW-5266","LPM: USB must not remove reset isolation until LPSC has been reenabled","am62x,am62ax,am62px"
-   "SYSFW-6805","TISCI_MSG_QUERY_FW_CAPS is giving NACK when send over secure queue","am62x,am62ax,am62px"
-   "SYSFW-6879","clock_stop API in baremetal disables all configurable interrupts","am62x,am62ax,am62px"
-   "SYSFW-6811","HSM core not allowed to access SA2UL context memory","am62x,am62ax"
-   "SITSW-3600","FwdStatus is set as SCISERVER_FORWARD_MSG for secure messages from DM R5 core","am62x,am62ax,am62px"
-   "SITSW-3610","clock mux changes are lost after deepsleep entry/exit","am62x,am62ax,am62px"
 
 |
 
@@ -301,5 +291,11 @@ Issues found and closed on this release that may be applicable to prior releases
    "LCPD-32819","AM62A: USB Client: Tests: Host not detecting DUT in device mode ","am62axx_sk-fs,am62axx_sk-se"
    "LCPD-32356","AM62x: tcrypt doesn't use sa2ul for SHA256/512 or any other alg","am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62axx_sk-fs,am62xx-lp-sk,am62xx-sk"
    "LCPD-29445","AM62ax: MCAN CAN_S_FUNC_MODULAR test is failing","am64xx-evm,am64xx-hsevm,am64xx-hssk,am62xx_sk-fs,am62xx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62axx_sk-fs,am62axx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se"
+   "SYSFW-7251","Enabling DM UART traces in boardcfg causes abort in DeepSleep resume path","am62x,am62a,am62px"
+   "SYSFW-7315","Extra bypass step in boot time pll init routine","am62x,am62a,am62px"
+   "SYSFW-7327","DM self reset goes to abort with logs enabled in SBL flow","am62x,am62a,am62px"
+   "SYSFW-7370","pm init functions are missing proper return values","am64x,am62x,am62a,am62px"
+   "SYSFW-7375","Firewall Exception during devices_init function in DM","am62x,am62a,am62px"
+   "SITSW-4243","Enabling DM firmware log causing the DM to go to abort","am62x,am62a,am62px"
 
 |
