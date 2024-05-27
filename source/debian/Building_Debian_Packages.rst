@@ -4,7 +4,7 @@ Building Debian Packages
 
 `Debian-Repos <https://github.com/TexasInstruments/debian-repos>`__ is a set of scripts to build TI's Debian packages with a single command.
 
-The generation of a Debian package from a binary or source involves many steps such as, obtaining the source code in tar (compressed) format, generating template files, modifying template file. The host build system and host build  environment variables should also be configured.
+The generation of a Debian package from a binary or source involves many steps such as, obtaining the source code in tar (compressed) format, generating template files, modifying template file. The host build system and host build environment variables should also be configured.
 
 The `run.sh` script handles these steps, thus the building of a deb package for TI's packages is as simple as running `run.sh` with the desired package's name.
 
@@ -21,10 +21,36 @@ The `run.sh` file is the "main" script that should be run. It takes as argument 
 
 Each TI package has a corresponding directory, named after its source package. Within this directory exists the `suite/<distro-variant>/debian/` path. All Debian related files (`control`, `rules`, man pages etc) for the package are located here.
 
-There also exists a `<package-name>/version.sh` file. This file is sourced by `run.sh`. It exports a bunch of variables for `run.sh` to use. It also contains a `run_prep` function, which `run.sh` calls. `run_prep` carries out all package-specific operations needed to build the deb files.
+There also exists a `<package-name>/version.sh` file. This file is sourced by `run.sh`.
 
-HowTo Use
-=========
+Setting Up Host for the build
+=============================
+
+The `debian-repos` only support native compilation of packages. Hence, the build has to be done either on the ARM64 Target or ARM64 Docker Container or ARM64 Chroot Environment.
+
+When running on native ARM64 target, no additional setup is required. Proceed with Building the Package.
+
+To setup and run an ARM64 Docker, run the following commands:
+
+.. code-block::
+
+    # Setup Qemu multiarch support
+    sudo apt-get install qemu binfmt-support qemu-user-static
+    docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+
+    # Run ARM64 Container
+    docker pull ghcr.io/texasinstruments/debian-arm64:latest
+    docker run --rm -it ghcr.io/texasinstruments/debian-arm64:latest
+
+Building the Package
+====================
+
+Clone `debian-repos <https://github.com/TexasInstruments/debian-repos>`__
+
+.. code-block::
+
+   git clone https://github.com/TexasInstruments/debian-repos.git
+   cd debian-repos
 
 To build a package, the syntax is:
 
@@ -32,7 +58,7 @@ To build a package, the syntax is:
 
     ./run.sh <package-name>
 
-This command carries all the necessary steps to build the package. The package and all related files are then stored in `build/<package-name>`. Note that certain packages may require root privileges.
+This command carries out all the necessary steps to build the package including installation of package-specific dependencies. The package and all related files are then stored in `build/<package-name>`.
 
 For example: to build `ti-linux-kernel`, the command is:
 
@@ -57,7 +83,6 @@ To add a package, follow the following steps:
 
 .. code-block::
 
-    cp /path/to/debian/* <proj-name>/suite/<distro-variant>/debian/
     cp /path/to/debian/* -r  <proj-name>/suite/<distro-variant>/debian/
 
 3. In ``<proj-name>/``, create the ``version.sh`` file. The file must export the following variables:
@@ -65,8 +90,4 @@ To add a package, follow the following steps:
 .. code-block::
 
     git_repo # link from which to clone
-    custom_build # set it to true if entire build process must be in version.sh
-    require_root # set it to true if root privileges required for this package
-
-If ``custom_build`` is true, then the entire build process can be defined in ``run_custom_build`` function in ``version.sh`` file. This will not run any other generic steps to build the deb packages. Refer ``ti-linux-kernel`` package for reference implementation.
 

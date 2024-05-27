@@ -142,6 +142,10 @@ Finally, install ``toml-cli``:
 Building the Image
 -------------------
 
+.. note::
+
+   If you are behind a proxy, since the build is run with sudo, make sure to set the proxy for root user (preferably in ``/etc/environment``).
+
 To build an image, you need to run the ``build.sh`` script:
 
 .. code-block::
@@ -150,29 +154,49 @@ To build an image, you need to run the ``build.sh`` script:
 
 The ``<build-name>`` must be one present inside ``builds.toml`` file.
 
-Example: to build for ``am62-bookworm-09.01.00.008``, run:
+After the build, the RootFS, Boot partition and bsp_sources are stored in ``build/<build-name>``. The logs will be stored in ``logs/<build-name>.log``.
+
+Example: to build for ``am62-bookworm-09.02.01.010``, run:
 
 .. code-block::
 
-    sudo ./build.sh am62-bookworm-09.01.00.008
+    sudo ./build.sh am62-bookworm-09.02.01.010
 
-Output is then stored in ``build/am62-bookworm-09.01.00.008``. The logs are in ``logs/am62-bookworm-09.01.00.008.log``.
+The RootFS, Boot partition and bsp_sources are then stored in ``build/am62-bookworm-09.02.01.010``. The build log is saved as ``logs/am62-bookworm-09.02.01.010.log``.
 
-Flash Image to SD Card
-----------------------
+Generate an SD Card Image
+-------------------------
 
-To flash the image to the SD card, use the ``create-sdcard.sh`` script.
-Syntax:
+This step can be skipped if you do not want to share the generated Image with anyone and want to proceed with testing with an SD card.
+
+To generate an SD Card Image with the generated RootFS and Boot partition files, run:
+
+.. code-block::
+
+   ./create-wic.sh <build-name>
+
+Example: to build for ``am62-bookworm-09.02.01.010``, run:
+
+.. code-block::
+
+   ./create-wic.sh am62-bookworm-09.02.01.010
+
+The wic image is generated under ``build/am62-bookworm-09.02.010``. This can be used to flash an SD card using standard tools like balena-etcher.
+
+Flash Image to SD Card using Script
+-----------------------------------
+
+To flash the SD card without generating a wic image, use the ``create-sdcard.sh`` script. Run it using the below command and follow with the prompts.
 
 .. code-block::
 
     sudo ./create-sdcard.sh <build-name>
 
-For example, if the image is am62-bookworm-09.01.00.008, type:
+For example, if the image is am62-bookworm-09.02.01.010, type:
 
 .. code-block::
 
-    sudo ./create-sdcard.sh am62-bookworm-09.01.00.008
+    sudo ./create-sdcard.sh am62-bookworm-09.02.01.010
 
-Doing this will flash the am62-bookworm-09.01.00.008 image to the SD card.
+This script will partition the SD Card and copy the contents of RootFS and Boot partitions that are generated to the SD Card.
 
