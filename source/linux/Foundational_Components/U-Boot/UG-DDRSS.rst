@@ -254,10 +254,12 @@ manipulate an I/O error pin to signal an external hardware that an
 error has occurred. Therefore an external controller is able to reset
 the device or keep the system in a safe, known state.
 
-.. Image:: /images/Uboot_ddrss1.svg
+.. figure:: /images/Uboot_ddrss1.svg
    :width: 800
    :align: center
-|
+
+   DDRSS ESM Overview
+
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
    The ESM pin corresponding to DDRSS ECC uncorrectable error
