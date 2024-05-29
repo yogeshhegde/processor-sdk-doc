@@ -317,45 +317,62 @@ The external controls supported by Encoder and Decoder can be seen using below c
 GStreamer Pipelines
 *******************
 
-.. code-block:: text
+Encode from raw YUV (I420) file:
+   - H.264
 
-    H.264 encode:
-        target # gst-launch-1.0 filesrc location=/<path_to_file>  ! rawvideoparse width=1920 height=1080 format=i420 framerate=30/1 colorimetry=bt709 ! v4l2h264enc ! filesink location=/<path_to_file>  sync=true
+      .. code-block:: console
 
-    H.265 encode:
-        target # gst-launch-1.0 filesrc location=/<path_to_file>  ! rawvideoparse width=1920 height=1080 format=i420 framerate=30/1 colorimetry=bt709 ! v4l2h265enc ! filesink location=/<path_to_file>  sync=true
+         target # gst-launch-1.0 filesrc location=/<path_to_file>  ! rawvideoparse width=1920 height=1080 format=i420 framerate=30/1 colorimetry=bt709 ! v4l2h264enc ! filesink location=/<path_to_file>  sync=true
 
-.. code-block:: text
+   - H.265
 
-   H.264 decode:
-        target # gst-launch-1.0 filesrc location=/<path_to_file>  ! h264parse ! queue ! v4l2h264dec ! filesink location=/<path_to_file>
+      .. code-block:: console
 
-   H.265 decode:
-        target # gst-launch-1.0 filesrc location=/<path_to_file>  ! h265parse ! queue ! v4l2h265dec ! filesink location=/<path_to_file>
+         target # gst-launch-1.0 filesrc location=/<path_to_file>  ! rawvideoparse width=1920 height=1080 format=i420 framerate=30/1 colorimetry=bt709 ! v4l2h265enc ! filesink location=/<path_to_file>  sync=true
 
-.. code-block:: text
+Decode from raw file:
+   - H.264
 
-   Video only file playback:
-        target $gst-launch-1.0 filesrc location=./bbb_1080p60_30s.h264 ! h264parse ! v4l2h264dec capture-io-mode=dmabuf ! kmssink driver-name=tidss -v
+      .. code-block:: console
 
-.. code-block:: text
+         target # gst-launch-1.0 filesrc location=/<path_to_file>  ! h264parse ! queue ! v4l2h264dec ! filesink location=/<path_to_file>
 
-   Audio/Video file playback (h264/aac muxed file as example)
-        target $gst-launch-1.0 filesrc location=bbb_1080p_aac.mp4 ! qtdemux name=demux demux.video_0 ! h264parse ! v4l2h264dec capture-io-mode=dmabuf ! queue ! kmssink driver-name=tidss demux.audio_0 ! queue ! faad ! audioconvert ! audioresample ! audio/x-raw, channels=2, rate=48000 ! autoaudiosink
+   - H.265:
 
-.. code-block:: text
+      .. code-block:: console
 
-   Transcode use-case (h264->h265 conversion as example)
-      target $gst-launch-1.0 filesrc location=./sample_file.264 ! h264parse ! v4l2h264dec capture-io-mode=4 ! v4l2h265enc output-io-mode=5 ! filesink location=./output.265
+         target # gst-launch-1.0 filesrc location=/<path_to_file>  ! h265parse ! queue ! v4l2h265dec ! filesink location=/<path_to_file>
 
-.. code-block:: text
+Video only file playback:
 
-   Video Streaming use-case
-   Server (imx219 rawcamera->isp->encode->streamout) :
-      target $gst-launch-1.0 v4l2src device=/dev/video2 io-mode=dmabuf ! video/x-bayer,width=1920,height=1080, framerate=30/1, format=bggr ! tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/dcc_viss.bin sink_0::dcc-2a-file=/opt/imaging/imx219/dcc_2a.bin sink_0::device=/dev/v4l-subdev2 ! video/x-raw,format=NV12 ! v4l2h264enc output-io-mode=dmabuf-import extra-controls="controls,h264_i_frame_period=60" ! rtph264pay ! udpsink port=5000 host=<ip_address>
+.. code-block:: console
 
-   Client (streamin->decode->display :
-      target $gst-launch-1.0 -v udpsrc port=5000 caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! rtpjitterbuffer latency=50 ! rtph264depay ! h264parse ! v4l2h264dec capture-io-mode=dmabuf ! queue ! fpsdisplaysink text-overlay=false name=fpssink video-sink="kmssink driver-name=tidss sync=true show-preroll-frame=false" sync=true -v
+   target # gst-launch-1.0 filesrc location=./bbb_1080p60_30s.h264 ! h264parse ! v4l2h264dec capture-io-mode=dmabuf ! kmssink driver-name=tidss -v
+
+Audio/Video file playback (h264/aac muxed file as example):
+
+.. code-block:: console
+
+   target # gst-launch-1.0 filesrc location=bbb_1080p_aac.mp4 ! qtdemux name=demux demux.video_0 ! h264parse ! v4l2h264dec capture-io-mode=dmabuf ! queue ! kmssink driver-name=tidss demux.audio_0 ! queue ! faad ! audioconvert ! audioresample ! audio/x-raw, channels=2, rate=48000 ! autoaudiosink
+
+Transcode use-case (h264->h265 conversion as example):
+
+.. code-block:: console
+
+   target # gst-launch-1.0 filesrc location=./sample_file.264 ! h264parse ! v4l2h264dec capture-io-mode=4 ! v4l2h265enc output-io-mode=5 ! filesink location=./output.265
+
+Video Streaming use-case:
+   - Server (imx219 rawcamera->isp->encode->streamout):
+
+      .. code-block:: console
+
+         target # gst-launch-1.0 v4l2src device=/dev/video2 io-mode=dmabuf ! video/x-bayer,width=1920,height=1080, framerate=30/1, format=bggr ! tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/dcc_viss.bin sink_0::dcc-2a-file=/opt/imaging/imx219/dcc_2a.bin sink_0::device=/dev/v4l-subdev2 ! video/x-raw,format=NV12 ! v4l2h264enc output-io-mode=dmabuf-import extra-controls="controls,h264_i_frame_period=60" ! rtph264pay ! udpsink port=5000 host=<ip_address>
+
+   - Client (streamin->decode->display):
+
+      .. code-block:: console
+
+         target # gst-launch-1.0 -v udpsrc port=5000 caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! rtpjitterbuffer latency=50 ! rtph264depay ! h264parse ! v4l2h264dec capture-io-mode=dmabuf ! queue ! fpsdisplaysink text-overlay=false name=fpssink video-sink="kmssink driver-name=tidss sync=true show-preroll-frame=false" sync=true -v
 
 .. note::
 
