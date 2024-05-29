@@ -103,11 +103,12 @@ Simulating ECC error
 
 U-Boot command 'ddrss' can be used to simulate the ECC error by generating bit
 errors in SDRAM data at certain address. The ECC check can be tested by:
-   1. Enabling ECC
-   2. Shrinking the protected range
-   3. Modifying a value
-   4. Restoring range to original and
-   5. Reading the value will cause the ECC error
+
+   #. Enabling ECC
+   #. Shrinking the protected range
+   #. Modifying a value
+   #. Restoring range to original and
+   #. Reading the value will cause the ECC error
 
 The command syntax is
 
