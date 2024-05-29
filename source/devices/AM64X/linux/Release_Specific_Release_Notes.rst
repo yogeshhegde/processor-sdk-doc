@@ -284,11 +284,6 @@ Issues opened in previous releases that were closed on this release
    "LCPD-37223","AM64x: ICSSG1 MII mode isn't working","am64xx-evm,am64xx-hsevm"
    "LCPD-37207","Docker is disabled in RT Linux","am64xx-hssk,am62xx_lp_sk-fs,am62xxsip_sk-fs,am62pxx_sk-fs"
    "LCPD-32640","Kernel HSR does not work on base image (same command works on default)","am64xx-evm"
-   "SYSFW-6763","TISCI_MSG_SET_DEVICE_RESETS message returns success for invalid device reset range","am62x,am62ax,am62px"
-   "SYSFW-7056","Implement New PLL sequence Proposed by HW team","am62x,am62ax,am62px,am64x"
-   "SYSFW-6941","TISCI_MSG_SYS_RESET fails for negative testcase","am62x,am62ax,am62px"
-   "SYSFW-6892","TISCI Clock api returns success for invalid Clock ID","am62x,am62ax,am62px,am64x,am65x"
-   "SYSFW-6903","REF_DEF Value must be 1 for proper PLL operations","am64x"
 
 |
 
@@ -319,5 +314,7 @@ Issues found and closed on this release that may be applicable to prior releases
    "LCPD-24288","am64xx-evm NCM/ACM network performance test crashes with RT images","am64xx-evm,am64xx-hsevm"
    "LCPD-23011","Missing u-boot README file for AM64x","am64xx-evm,am62xx_sk-fs,am62xx_sk-se,am62xx-sk,am64xx_sk-fs"
    "LCPD-20006","AM64x: remoteproc may be stuck in the start phase after a few times of stop/start","am64xx-evm"
+   "SYSFW-7315","Extra bypass step in boot time pll init routine","am62x,am62a,am62px"
+   "SYSFW-7370","pm init functions are missing proper return values","am64x,am62x,am62a,am62px"
 
 |
