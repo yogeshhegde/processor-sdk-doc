@@ -148,8 +148,9 @@ These commands can be used to install Jailhouse kernel module, firmware and
 management tools in the target filesystem.
 
 The kernel and u-boot sources for Jailhouse image are located at
-$TI_SDK_PATH/board-support/linux-extras-* and $TI_SDK_PATH/board-support/uboot-extras-*.
-These targets can be build and installed using top-level Makefile.
+:file:`$TI_SDK_PATH/board-support/linux-extras-*` and
+:file:`$TI_SDK_PATH/board-support/uboot-extras-*`. These targets can be build
+and installed using top-level Makefile.
 
 Below commands can be used to install kernel image and modules to root of the target
 filesystem.
