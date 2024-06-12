@@ -125,7 +125,7 @@ Bootloader components
 
        .. code-block:: console
 
-          $ cd ${YOUR_PATH}/ti-bootloader-aosp/optee_os
+          $ cd ${YOUR_PATH}/ti-bootloader-aosp/ti-optee-os
           $ make PLATFORM=k3 CFG_ARM64_core=y CROSS_COMPILE=arm-none-linux-gnueabihf- CROSS_COMPILE64=aarch64-none-linux-gnu-
 
 
@@ -161,7 +161,7 @@ Bootloader components
             $ make ARCH=arm am62x_android_a53.config
             $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- \
                    BL31=${YOUR_PATH}/ti-bootloader-aosp/arm-trusted-firmware/build/k3/lite/release/bl31.bin \
-                   TEE=${YOUR_PATH}/ti-bootloader-aosp/optee_os/out/arm-plat-k3/core/tee-pager_v2.bin \
+                   TEE=${YOUR_PATH}/ti-bootloader-aosp/ti-optee-os/out/arm-plat-k3/core/tee-pager_v2.bin \
                    BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
 
 
@@ -174,7 +174,7 @@ Bootloader components
             $ make ARCH=arm am62x_android_a53.config
             $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- \
                    BL31=${YOUR_PATH}/ti-bootloader-aosp/arm-trusted-firmware/build/k3/lite/release/bl31.bin \
-                   TEE=${YOUR_PATH}/ti-bootloader-aosp/optee_os/out/arm-plat-k3/core/tee-pager_v2.bin \
+                   TEE=${YOUR_PATH}/ti-bootloader-aosp/ti-optee-os/out/arm-plat-k3/core/tee-pager_v2.bin \
                    BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
 
     5. Copy the ``tiboot3.bin``, ``tispl.bin`` and ``u-boot.img`` generated in steps 3 and 4
