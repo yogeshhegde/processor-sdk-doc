@@ -4,8 +4,8 @@ UFS
 .. rubric:: Introduction
    :name: introduction-linux-ufs
 
-Universal Flash Storage (UFS) is high performance mass storage device
-with a serial interface. Its primarily used as a high performance data
+Universal Flash Storage (UFS) is a high performance mass storage device
+with a serial interface. It is primarily used as a high performance data
 storage device for embedded applications. There are JEDEC standards
 governing UFS device and host controller. UFS adapts MIPI MPHY and
 MIPI UniPro standards.
@@ -37,7 +37,7 @@ Key Features:
 .. rubric:: Supported Features
    :name: supported-features-ufs
 
-- Linux as standard UFS Host Controller Interface (UFSHCI) driver at drivers/scsi/ufs/ufshcd.c and platform/SoC specific glue layers are located in the same folder.
+- Linux as standard UFS Host Controller Interface (UFSHCI) driver at :file:`drivers/scsi/ufs/ufshcd.c` and platform/SoC specific glue layers are located in the same folder.
 - Supports HS Gear3B, 2-lanes
 
 
@@ -57,13 +57,13 @@ JESD220D
 Host Controller Interface and programming sequence is explained in
 UFSHCI JEDEC specification JESD223C
 
-UFS storage devices are exposed in Linux as /dev/sdX. Tools such as
+UFS storage devices are exposed in Linux as :file:`/dev/sd{X}`. Tools such as
 fdisk can be used to format and store data onto them similar to
 traditional Hard Disks.
 
 Here is the typical enumeration log of UFS devices
 
-::
+.. code-block:: console
 
 	[    4.727525] cdns-ufshcd 4e84000.ufs: ufshcd_print_pwr_info:[RX, TX]: gear=[1, 1], lane[1, 1], pwr[SLOWAUTO_MODE, SLOWAUTO_MODE], rate = 0
 	[    4.763158] cdns-ufshcd 4e84000.ufs: ufshcd_print_pwr_info:[RX, TX]: gear=[3, 3], lane[2, 2], pwr[FAST MODE, FAST MODE], rate = 2
@@ -92,7 +92,7 @@ Here is the typical enumeration log of UFS devices
 .. rubric:: UFS Logical Units
    :name: UFS Logical Units
 
-UFS flash device is composed of memory blocks that are mapped to
+A UFS flash device is composed of memory blocks that are mapped to
 different Logical Units (LUs). UFS device address space is organized in
 several memory areas configurable by the user. In particular, such
 memory areas are denoted as logical units and characterized by the fact
@@ -103,12 +103,12 @@ addressable, independent, processing entity that processes SCSI tasks
 independent of other logical units in a device
 
 In addition to the logical units, the UFS device supports the following well known logical units for specific purposes: UFS Device, REPORT LUNS, Boot and RPMB. Logical units are addressed by the LUN (logical unit number), while well known logical unit are addressed by the W-LUN (well known logical unit number).
-In particular, the UFS device shall support:
-The number of logical units specified by bMaxNumberLU. Each of them configurable as boot logical units with a maximum of two.
+In particular, the UFS device shall support the number of logical units specified by bMaxNumberLU. Each of them can be configured as boot
+The number of logical units specified by bMaxNumberLU.
 One RPMB well known logical unit (W-LUN = 44h, LUN field in UPIU = C4h). RPMB well known
 logical unit may be further configured into up to four separate RPMB
-regions (RPMB region 0 - RPMB region 3). Two logical units can be
-configured as boot logical unit, with only one of them active and
+regions (RPMB region 0 - RPMB region 3). A maximum of two logical units can be
+configured as Boot logical units, with only one of them active and
 readable through the Boot well known logical unit (W-LUN = 30h) for the
 execution of the system boot (see UFS Boot section of JEDEC Spec). The
 RPMB well known logical unit is accessed by authenticated operations by
@@ -125,15 +125,16 @@ Logical Block Provisioning is the concept that describes the relationship betwee
  By default, Device comes with no LUs provisioned therefore device must
  be provisioned to be able to store anything in the device.
 
-.. rubric:: Interacting with UFS device from userspace:
+.. rubric:: Interacting with UFS device from userspace
    :name: Interacting with UFS device from userspace
 
 UFS and SCSI layer supports something called Block SCSI Generic (BSG)
 Device which exposes SCSI device such as UFS as generic device to
-Userspace. UFS flash can be accessed at /dev/bsg/ufs-bsg.
+Userspace. UFS flash can be accessed at :file:`/dev/bsg/ufs-bsg{x}` where
+`x` varies across devices and UFS parts.
 
-`ufs-tool <https://github.com/westerndigitalcorporation/ufs-tool>`_
-(part of SDK) can be used to interact with UFS device from userspace:
+`ufs-utils <https://github.com/westerndigitalcorporation/ufs-utils>`_
+(part of SDK) can be used to interact with UFS device from userspace.
 
 .. rubric:: UFS descriptors
 
@@ -142,17 +143,17 @@ In general, all Descriptors are readable, some may be write once, others
 may have a write protection mechanism. The Configuration Descriptor is
 writeable and allows modification of the device configuration set by the
 manufacturer. More details in JEDEC UFS specification.
-ufs-tool can be used to read any of the descriptor. See tool help for
+ufs-utils can be used to read any of the descriptor. See tool help for
 more details.
 
-.. rubric:: Provisioning UFS device using ufs-tool
+.. rubric:: Provisioning UFS device using ufs-utils
 
 UFS device can be provisioned by writing configuration descriptor to the
 flash. You can read current configuration of UFS device using:
 
-::
+.. code-block:: console
 
-	root@j721e-evm:~# ufs-tool desc -t 1 -p /dev/bsg/ufs-bsg
+	root@j721e-evm:~# ufs-utils desc -t 1 -p /dev/bsg/ufs-bsg0
 	Config Device Descriptor: [Byte offset 0x0]: bLength = 0x90
 	Config Device Descriptor: [Byte offset 0x1]: bDescriptorType = 0x1
 	Config Device Descriptor: [Byte offset 0x2]: bConfDescContinue = 0x0
@@ -253,9 +254,9 @@ This also dumps descriptor in binary format into file called
 *config_desc_data_ind_0*. Edit file as necessary and write file back to
 device using:
 
-::
+.. code-block:: console
 
-	ufs-tool desc -t 1 -w config_desc_data_ind_0 -p /dev/bsg/ufs-bsg
+	ufs-utils desc -t 1 -w config_desc_data_ind_0 -p /dev/bsg/ufs-bsg0
 
 .. note::
 
@@ -271,14 +272,14 @@ found below. So, to provision UFS flash on J721e EVM:
 - Execute below command to flash descriptor and reboot the board to see
   new partitions
 
-::
+.. code-block:: console
 
-	ufs-tool desc -t 1 -w config_desc_data_ind_0 -p /dev/bsg/ufs-bsg
+	ufs-utils desc -t 1 -w config_desc_data_ind_0 -p /dev/bsg/ufs-bsg0
 
 This creates two LUs on device. A Boot LUN of 32MB and rest of the
 flash (~32GB) is formated as general data area (for filesystem etc)
-These two partitions appear as tow SCSI block devices eg /dev/sda and
-/dev/sdb in Linux.
+These two partitions appear as two SCSI block devices eg :file:`/dev/sda` and
+:file:`/dev/sdb` in Linux.
 
 .. rubric:: Getting current speed gear and lane count:
 
@@ -287,11 +288,11 @@ User can dump all UFS UniPro attributes.
 
 For Active Data lanes:
 
-::
+.. code-block:: console
 
-	root@j721e-evm:~# ufs-tool uic -t 1 -i 0x1560 -p /dev/bsg/ufs-bsg
+	root@j721e-evm:~# ufs-utils uic -t 1 -i 0x1560 -p /dev/bsg/ufs-bsg0
 	[0x1560]PA_ActiveTxDataLanes                          : local = 0x00000002, peer = 0x00000002
-	root@j721e-evm:~# ufs-tool uic -t 1 -i 0x1580 -p /dev/bsg/ufs-bsg
+	root@j721e-evm:~# ufs-utils uic -t 1 -i 0x1580 -p /dev/bsg/ufs-bsg0
 	[0x1580]PA_ActiveRxDataLanes                          : local = 0x00000002, peer = 0x00000002
 
 Value of 2 indicates 2 lanes are active
@@ -299,20 +300,20 @@ Value of 2 indicates 2 lanes are active
 
 For Gear Speed:
 
-::
+.. code-block:: console
 
-	root@j721e-evm:~# ufs-tool uic -t 1 -i 0x1568 -p /dev/bsg/ufs-bsg
+	root@j721e-evm:~# ufs-utils uic -t 1 -i 0x1568 -p /dev/bsg/ufs-bsg0
 	[0x1568]PA_TxGear                                     : local = 0x00000003, peer = 0x00000003
-	root@j721e-evm:~# ufs-tool uic -t 1 -i 0x1583 -p /dev/bsg/ufs-bsg
+	root@j721e-evm:~# ufs-utils uic -t 1 -i 0x1583 -p /dev/bsg/ufs-bsg0
 	[0x1583]PA_RxGear                                     : local = 0x00000003, peer = 0x00000003
 
 Value of 3 indicates HS Gear3 is active
 
 For HS Gear Series
 
-::
+.. code-block:: console
 
-	root@j721e-evm:~# ufs-tool uic -t 1 -i 0x156a -p /dev/bsg/ufs-bsg
+	root@j721e-evm:~# ufs-utils uic -t 1 -i 0x156a -p /dev/bsg/ufs-bsg0
 	[0x156a]PA_HSSeries                                   : local = 0x00000002, peer = 0x00000002
 
 A value of 2 indicates series B is active
