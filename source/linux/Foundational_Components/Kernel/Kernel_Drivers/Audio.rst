@@ -63,9 +63,14 @@ one need to specify which device to use for audio:
     ``-Dplughw:omap5uevm,0`` will use the onboard audio on OMAP5-uEVM
     board.
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_variant in ('J721E')
 
-    ``-Dplughw:j721ecpbanalog,0`` will use the onboard audio on J721E-EVM
+    ``-Dplughw:j721ecpb,0`` will use the onboard audio on J721E-EVM
+    board.
+
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+    ``-Dplughw:j784s4cpb,0`` will use the onboard audio on J721E-EVM
     board.
 
 To play audio on card0's PCM0 and let ALSA to decide if resampling is
@@ -574,7 +579,7 @@ Board-specific instructions
 
     |
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_variant in ('J721E')
 
     .. rubric:: J721e Common Processor Board
        :name: j721e-cpb
@@ -653,26 +658,93 @@ Board-specific instructions
 
     .. code-block:: text
 
-        amixer -c j721ecpbanalog sset 'codec1 DAC1' 141  # Playback volume for p1 jack
-        amixer -c j721ecpbanalog sset 'codec1 DAC2' 141  # Playback volume for p2 jack
-        amixer -c j721ecpbanalog sset 'codec1 DAC3' 141  # Playback volume for p3 jack
-        amixer -c j721ecpbanalog sset 'codec1 DAC4' 141  # Playback volume for p4 jack
+        amixer -c j721ecpb sset 'codec1 DAC1' 141  # Playback volume for p1 jack
+        amixer -c j721ecpb sset 'codec1 DAC2' 141  # Playback volume for p2 jack
+        amixer -c j721ecpb sset 'codec1 DAC3' 141  # Playback volume for p3 jack
+        amixer -c j721ecpb sset 'codec1 DAC4' 141  # Playback volume for p4 jack
 
     Master volume control is disabled by default. It can be enabled by:
 
     .. code-block:: text
 
-        amixer -c j721ecpbanalog sset 'codec1 DAC Volume Control Type' 'Master + Individual'
+        amixer -c j721ecpb sset 'codec1 DAC Volume Control Type' 'Master + Individual'
 
     Then, a master gain control can be applied to all outputs:
 
     .. code-block:: text
 
-        amixer -c j721ecpbanalog sset 'codec1 Master' 141  # Master Playback volume for p1/2/3/4 jack
+        amixer -c j721ecpb sset 'codec1 Master' 141  # Master Playback volume for p1/2/3/4 jack
 
-.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62AX_family', 'AM62PX_family')
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
 
-    .. rubric:: SK-AM62x, SK-AM62Ax, SK-AM62Px
+    .. rubric:: J784S4 Evaluation Board
+       :name: j784s4-evm
+
+    | The board uses **pcm3168a codec** connected through **McASP0 [AXR3 for playback, AXR4 for capture]**.
+      The codec receives its SCKI clock from the AUDIO_EXT_REFCLK1 pin output of the j784s4.
+    | PLL4 is configured to 1179648000 Hz for the 48KHz sampling rate family.
+    | The board has two stereo jacks, one for playback and one for capture.
+    |
+
+    .. code-block:: text
+
+        |o|c1
+        | |
+        |o|p1
+        --------------------------
+
+        c1 - capture jack
+        p1 - playback jack
+
+    .. rubric:: Kernel config
+       :name: kernel-config-8
+
+    .. code-block:: text
+
+        Device Drivers  --->
+          Sound card support  --->
+            Advanced Linux Sound Architecture  --->
+              ALSA for SoC audio support  --->
+                Audio support for Texas Instruments SoCs  --->
+                  <*> SoC Audio support for j721e EVM
+
+    .. rubric:: ~/.asoundrc file needed for audio playback
+       :name: asoundrc-file-1
+
+    .. code-block:: text
+
+        pcm_slave.j784s4-evm {
+          pcm "hw:0,0"
+          format S16_LE
+          channels 2
+          rate 48000
+        }
+
+        pcm.j784s4-playback {
+          type plug
+          slave j784s4-evm
+        }
+
+    .. rubric:: User space
+       :name: user-space-8-kernel-audio
+
+    ``NOTE: Playback volume is HIGH after boot. Do not use headset without lowering it!!!``
+
+    Master volume control is disabled by default. It can be enabled by:
+
+    .. code-block:: text
+
+        amixer -c j784s4cpb sset 'codec1 DAC Volume Control Type' 'Master + Individual'
+
+    Then, a master gain control can be applied to all outputs:
+
+    .. code-block:: text
+
+        amixer -c j784s4cpb sset 'codec1 Master' 141  # Master Playback volume for p1 jack
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S')
+
+    .. rubric:: SK-AM62x, SK-AM62Ax, SK-AM62Px, J722S-EVM
        :name: sk-am62x
 
     | The board uses **tlv320aic3106 codec** connected through **McASP1
@@ -802,7 +874,7 @@ Additional Information
 .. rubric:: Audio hardware codecs
    :name: additional-information-audio-hardware-codecs
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM62X_family', 'AM62AX_family', 'AM62PX_family')
+.. ifconfig:: CONFIG_part_variant in ('Gen', 'AM335X', 'AM437X', 'AM62X', 'AM62AX', 'AM62PX', 'J722S')
 
     #. `TLV320AIC31 - Low-Power Stereo CODEC with HP
        Amplifier <http://www.ti.com/lit/ds/symlink/tlv320aic31.pdf>`__
@@ -813,7 +885,7 @@ Additional Information
     #. `TLV320AIC3106 - Low-Power Stereo Audio CODEC
        <http://www.ti.com/lit/ds/symlink/tlv320aic3106.pdf>`__
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J784S4')
 
     #. `PCM3168A - 24-Bit, 96kHz/192kHz, 6-In/8-Out Audio CODEC with
        Differential Input/Output
