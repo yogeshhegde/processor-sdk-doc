@@ -22,6 +22,7 @@ User's Guide
     UG-UFS
     UG-DDR3
     UG-DDRSS
+    UG-DDRSS-J7
     UG-HyperBus
     UG-RemoteProc
     UG-AVS
