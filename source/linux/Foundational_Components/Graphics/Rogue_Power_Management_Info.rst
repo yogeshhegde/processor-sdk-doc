@@ -3,15 +3,17 @@
 
 .. include:: /_replacevars.rst
 
+###########################
 Rogue Power Management Info
-===========================
+###########################
 
 Rogue graphics drivers have supported active power management on AXE devices
 since TISDK release 8.6 and 8XE/BXS devices since release 9.0 with some
 discrepancy in the implementation between cores.
 
+***
 APM
----
+***
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_8XE', 'Rogue_BXS')
 
@@ -32,29 +34,30 @@ controlled directly by Linux through APM hooks in the kernel module. This
 domain is powered up for all transactions and subsequently powered down after
 an idle period.
 
-Active Power Management is enabled by default, but it can be disabled at
-runtime by setting the power control to "on" through the devices
-/sys/devices/.../power/control interface. Subsequently it's status can be
-checked by reading that device file.
+Active Power Management is enabled by default, but it can be disabled at runtime
+by setting the power control to "on" through the devices
+:file:`/sys/devices/{path-to-device}/power/control` interface. Subsequently, it's
+status can be checked by reading that device file.
 
+****************
 Suspend & Resume
-----------------
+****************
 
 Suspend and resume features are also enabled for Rogue cores. To test this
 manually the following procedure can be used on products supporting full device
 suspend / resume features:
 
-Initiate a load to wake up the GPU using rgx_compute_test:
+Initiate a load to wake up the GPU using ``rgx_compute_test``:
 
-::
+.. code-block:: console
 
-    target # rgx_compute_test -f 100 &
+   target # rgx_compute_test -f 100 &
 
 Trigger a suspend event with a scheduled wakeup:
 
-::
+.. code-block:: console
 
-    target # rtcwake -s 3 -m mem
+   target # rtcwake -s 3 -m mem
 
 Wait for the scheduled wakeup.
 
