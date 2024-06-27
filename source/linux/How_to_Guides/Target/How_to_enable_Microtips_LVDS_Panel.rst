@@ -3,9 +3,10 @@ How to enable Microtips LVDS Panel
 
 **Microtips Technology USA (13-101HIEB0HF0-S) 10.1"  WUXGA (1920x1200) TFT LCD panel**
 is supported on platforms:
-  `AM62X SK <https://www.ti.com/tool/SK-AM62>`__,
-  `AM62X LP SK <https://www.ti.com/tool/SK-AM62-LP>`__,
-  `AM62P SK <https://www.ti.com/tool/SK-AM62P-LP>`__
+
+   - `AM62X SK <https://www.ti.com/tool/SK-AM62>`__
+   - `AM62X LP SK <https://www.ti.com/tool/SK-AM62-LP>`__
+   - `AM62P SK <https://www.ti.com/tool/SK-AM62P-LP>`__
 
 **Steps to enable OLDI Panel DT overlay:**
 
