@@ -124,22 +124,35 @@ with rendering commands submitted by the user applications.
 
    Support for the following pixel formats:
 
-   .. list-table:: Supported surface pixel formats
+   .. list-table:: Supported pixel formats
 
-      * - ARGB8888
-      * - BGRA8888
-      * - RGB565
-
-   .. list-table:: Supported texture pixel formats
-
-      * - ARGB4444
-      * - ARGB8888
-      * - BGRA8888
-      * - RGB565
-      * - RGBA5551
-      * - YUV420
-      * - YUYV
-      * - NV12
+      * -
+        - ARGB4444
+        - ARGB8888
+        - BGRA8888
+        - RGB565
+        - RGBA5551
+        - YUV420
+        - YUYV
+        - NV12
+      * - Surface
+        -
+        - |chk|
+        - |chk|
+        - |chk|
+        -
+        -
+        -
+        -
+      * - Texture
+        - |chk|
+        - |chk|
+        - |chk|
+        - |chk|
+        - |chk|
+        - |chk|
+        - |chk|
+        - |chk|
 
    Support for Ericsson Texture Compression (ETC1 and ETC2) on input textures.
    For an example toolkit to interact with these texture compression mechanisms,
@@ -797,6 +810,8 @@ Imagination's upstream target setup guide for the most recent instructions.
 https://docs.imgtec.com/tools-manuals/pvrcarbon-manual/html/topics/pvrcarbon-recorder/opengl-es.html
 
 .. |reg| unicode:: U+000AE .. REGISTERED SIGN
+
+.. |chk| unicode:: U+2713 .. CHECK MARK
 
 .. _PowerVR-SDK: https://www.imgtec.com/developers/powervr-sdk-tools/installers/
 
