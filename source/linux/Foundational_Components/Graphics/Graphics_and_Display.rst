@@ -8,108 +8,110 @@ Introduction
 
 .. ifconfig:: CONFIG_gpu_ip in ('SGX')
 
-    TI SOCs like AM335x, AM437x, AM57xx and AM65xx are enabled with 3D cores,
-    capable of accelerating 3D operations with dedicated hardware. The
-    dedicated hardware is based on SGX series of devices from Imagination
-    Technologies. The graphics cores only accelerate graphics operations,
-    and do not perform video decode operations. For video acceleration,
-    refer to respective Technical Reference Manuals for the SOCs.
+   TI SOCs like AM335x, AM437x, AM57xx and AM65xx are enabled with 3D cores,
+   capable of accelerating 3D operations with dedicated hardware. The
+   dedicated hardware is based on SGX series of devices from Imagination
+   Technologies. The graphics cores only accelerate graphics operations,
+   and do not perform video decode operations. For video acceleration,
+   refer to respective Technical Reference Manuals for the SOCs.
 
-    These devices do not utilize static memory carveouts. The only reservations
-    made in device tree are for control registers. Memory is instead dynamically
-    allocated at runtime depending on the task and will scale accordingly.
-    Buffers are allocated from CMA and other runtime memory allocations are made
-    from standard pages. See the kernel module memory management subsystem for
-    more information.
+   These devices do not utilize static memory carveouts. The only reservations
+   made in device tree are for control registers. Memory is instead dynamically
+   allocated at runtime depending on the task and will scale accordingly.
+   Buffers are allocated from CMA and other runtime memory allocations are made
+   from standard pages. See the kernel module memory management subsystem for
+   more information.
 
-    Below table lists the various TI families supported by this SDK, and the
-    SGX core information
+   Below table lists the various TI families supported by this SDK, and the
+   SGX core information
 
-    .. list-table:: TI System on Chips, and SGX cores
-       :header-rows: 1
+   .. list-table:: TI System on Chips, and SGX cores
+      :header-rows: 1
 
-       * - TI SOC Name
-         - SGX Core
-         - SGX Core Revision
-         - Max SGX Core Frequency (MHz)
-       * - AM335x
-         - SGX530
-         - 1.2.5
-         - 200
-       * - AM437x
-         - SGX530
-         - 1.2.5
-         - 200
-       * - AM57xx
-         - SGX544
-         - 1.1.6
-         - 532
-       * - AM65xx
-         - SGX544
-         - 1.1.7
-         - 450
+      * - TI SOC Name
+        - SGX Core
+        - SGX Core Revision
+        - Max SGX Core Frequency (MHz)
+      * - AM335x
+        - SGX530
+        - 1.2.5
+        - 200
+      * - AM437x
+        - SGX530
+        - 1.2.5
+        - 200
+      * - AM57xx
+        - SGX544
+        - 1.1.6
+        - 532
+      * - AM65xx
+        - SGX544
+        - 1.1.7
+        - 450
 
-    The SGX cores in AM family support OpenGL\ |reg| ES 1.1 and OpenGL\ |reg| ES
-    2.0 APIs.
+   The SGX cores in AM family support OpenGL\ |reg| ES 1.1 and OpenGL\ |reg| ES
+   2.0 APIs.
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_8XE')
 
-    |__PART_FAMILY_DEVICE_NAMES__| device is enabled with 3D graphics
-    accelerator based on the Rogue 8XE series from Imagination Technologies Inc.
-    It enables the support of 3D graphics rendering using OpenGL\ |reg| ES
-    API's. The OpenGL\ |reg| ES API's up to and including version 3.2 with
-    render surfaces upto 4k and input textures upto 8k sizes are supported by
-    the hardware. It also supports Vulkan |reg| up to API version 1.2.
+   |__PART_FAMILY_DEVICE_NAMES__| device is enabled with 3D graphics
+   accelerator based on the Rogue 8XE series from Imagination Technologies Inc.
+   It enables the support of 3D graphics rendering using OpenGL\ |reg| ES
+   API's. The OpenGL\ |reg| ES API's up to and including version 3.2 with
+   render surfaces upto 4k and input textures upto 8k sizes are supported by
+   the hardware. It also supports Vulkan |reg| up to API version 1.2.
 
-    These devices do not utilize static memory carveouts. The only reservations
-    made in device tree are for control registers. Memory is instead dynamically
-    allocated at runtime depending on the task and will scale accordingly.
-    Buffers are allocated from CMA and other runtime memory allocations are made
-    from standard pages. See the kernel module memory management subsystem for
-    more information.
+   These devices do not utilize static memory carveouts. The only reservations
+   made in device tree are for control registers. Memory is instead dynamically
+   allocated at runtime depending on the task and will scale accordingly.
+   Buffers are allocated from CMA and other runtime memory allocations are made
+   from standard pages. See the kernel module memory management subsystem for
+   more information.
 
-    The following extensions are supported:
+   The following extensions are supported:
 
-    .. include:: _8XE_Extension_List.rst
+   .. include:: _8XE_Extension_List.rst
 
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_AXE')
 
-    |__PART_FAMILY_DEVICE_NAMES__| device is enabled with 3D graphics
-    accelerator based on the A-Series AXE-1-16M from Imagination Technologies Inc.
-    It enables the support of 3D graphics rendering using OpenGL\ |reg| ES
-    API's. The OpenGL\ |reg| ES API's up to and including version 3.1 with
-    render surfaces upto 4k and input textures upto 8k sizes are supported by
-    the hardware. It also supports Vulkan |reg| up to API version 1.2.
+   |__PART_FAMILY_DEVICE_NAMES__| device is enabled with 3D graphics
+   accelerator based on the A-Series AXE-1-16M from Imagination Technologies Inc.
+   It enables the support of 3D graphics rendering using OpenGL\ |reg| ES
+   API's. The OpenGL\ |reg| ES API's up to and including version 3.1 with
+   render surfaces upto 4k and input textures upto 8k sizes are supported by
+   the hardware. It also supports Vulkan |reg| up to API version 1.2.
 
-    The following extensions are supported:
+   The following extensions are supported:
 
-    .. include:: _AXE_Extension_List.rst
+   .. include:: _AXE_Extension_List.rst
 
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_BXS')
 
-    |__PART_FAMILY_DEVICE_NAMES__| device is enabled with 3D graphics
-    accelerator based on the B-Series BXS-4-64 from Imagination Technologies
-    Inc. It enables the support of 3D graphics rendering using OpenGL\ |reg| ES
-    API's. The OpenGL\ |reg| ES API's up to and including version 3.2 with
-    render surfaces upto 4k and input textures upto 8k sizes are supported by
-    the hardware. It also supports Vulkan |reg| up to API version 1.2.
+   |__PART_FAMILY_DEVICE_NAMES__| device is enabled with 3D graphics
+   accelerator based on the B-Series BXS-4-64 from Imagination Technologies
+   Inc. It enables the support of 3D graphics rendering using OpenGL\ |reg| ES
+   API's. The OpenGL\ |reg| ES API's up to and including version 3.2 with
+   render surfaces upto 4k and input textures upto 8k sizes are supported by
+   the hardware. It also supports Vulkan |reg| up to API version 1.2.
 
-    The following extensions are supported:
+   The following extensions are supported:
 
-    .. include:: _BXS_Extension_List.rst
+   .. include:: _BXS_Extension_List.rst
 
 For more information about the supported OpenGL\ |reg| ES and EGL\ |reg|
 extensions see:
 
-- https://docs.imgtec.com/reference-manuals/open-gl-es-extensions/html/topics/overview.html
-- https://registry.khronos.org/OpenGL/
+   - `<https://docs.imgtec.com/reference-manuals/open-gl-es-extensions/html/topics/overview.html>`_
+   - `<https://registry.khronos.org/OpenGL/>`_
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_BXS', 'Rogue_AXE')
 
-    .. note:: OpenCL\ |reg| libraries are currently provided without support at
-              https://git.ti.com
+   .. note::
+
+      OpenCL\ |reg| libraries are currently provided without support at
+      `<https://git.ti.com>`_
 
 The OpenGL\ |reg| ES and EGL\ |reg| libraries are packaged with the
 |__SDK_FULL_NAME__| and are used by graphics stacks such as Wayland/Weston. The
@@ -162,24 +164,24 @@ The rest of this page will cover the following topics:
 
 .. ifconfig:: CONFIG_gpu_ip in ('SGX')
 
-    - Software architecture of Graphics
-    - Instructions on how to run graphics demos
-    - Instructions on how to run DSS application
-    - Instructions on how launch Weston
-    - Instructions on how to run PVR tools
-    - SoC Performance Monitoring Tools
-    - QT and GTK+ graphics frameworks
-    - Migration Guide
-    - AM3 Beagle Bone Black Board Configuration
-    - SGX Debugging Tips
+   - Software architecture of Graphics
+   - Instructions on how to run graphics demos
+   - Instructions on how to run DSS application
+   - Instructions on how launch Weston
+   - Instructions on how to run PVR tools
+   - SoC Performance Monitoring Tools
+   - QT and GTK+ graphics frameworks
+   - Migration Guide
+   - AM3 Beagle Bone Black Board Configuration
+   - SGX Debugging Tips
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_8XE', 'Rogue_AXE', 'Rogue_BXS')
 
-    - Software architecture of Graphics
-    - Instructions on how to run graphics demos
-    - Instructions on how to run DSS application
-    - Instructions on how launch Weston
-    - Instructions on how to run PVR tools
+   - Software architecture of Graphics
+   - Instructions on how to run graphics demos
+   - Instructions on how to run DSS application
+   - Instructions on how launch Weston
+   - Instructions on how to run PVR tools
 
 
 Software Architecture
@@ -190,28 +192,30 @@ The picture below shows the software architecture of Graphics in
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    .. figure:: ../../../images/Graphic_software_stacks_DRM.png
-        :align: center
+   .. figure:: ../../../images/Graphic_software_stacks_DRM.png
+       :align: center
 
-        Graphics Software Stack
-
-.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family')
-
-    .. figure:: ../../../images/rogue-graphics-software-stack.png
-        :align: center
-
-        PSDK Linux Rogue Graphics Software Stack
+       Graphics Software Stack
 
 .. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family')
 
-   Please note that RGX-KM in this context refers to the pvrsrvkm kernel module, which is currently provided at:
+   .. figure:: ../../../images/rogue-graphics-software-stack.png
+       :align: center
+
+       PSDK Linux Rogue Graphics Software Stack
+
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family')
+
+   Please note that RGX-KM in this context refers to the pvrsrvkm kernel module,
+   which is currently provided at:
+
    https://git.ti.com/cgit/graphics/ti-img-rogue-driver
 
    This is included by default in the SDK. The kernel module is located at:
 
    .. code-block:: console
 
-       # /lib/modules/$(uname -r)/extra/pvrsrvkm.ko
+      # /lib/modules/$(uname -r)/extra/pvrsrvkm.ko
 
 
 Graphics Demos
@@ -223,91 +227,91 @@ Native_SDK examples.
 
 .. ifconfig:: CONFIG_gpu_ip in ('SGX')
 
-    The following 3D Graphics demos are available via Matrix. The table
-    below provides a list of these demos, with a brief description.
+   The following 3D Graphics demos are available via Matrix. The table
+   below provides a list of these demos, with a brief description.
 
-    .. list-table:: Demos via Matrix
-       :widths: 25 75
-       :header-rows: 1
+   .. list-table:: Demos via Matrix
+      :widths: 25 75
+      :header-rows: 1
 
-       * - Demo Name
-         - Details
-       * - ChameleonMan
-         - This demo shows a matrix skinned character in combination with bump
-           mapping.
-       * - CoverFlow
-         - This is a demonstration of a coverflow style effect
-       * - ExampleUI
-         - This demo shows how to efficiently render sprites and interface
-           elements.
-       * - Navigation
-         - This is a demonstration of how to implement rendering algorithms for
-           Navigation software.
-       * - Kmscube
-         - This demo shows how to render and display multi-colored spinning cube
+      * - Demo Name
+        - Details
+      * - ChameleonMan
+        - This demo shows a matrix skinned character in combination with bump
+          mapping.
+      * - CoverFlow
+        - This is a demonstration of a coverflow style effect
+      * - ExampleUI
+        - This demo shows how to efficiently render sprites and interface
+          elements.
+      * - Navigation
+        - This is a demonstration of how to implement rendering algorithms for
+          Navigation software.
+      * - Kmscube
+        - This demo shows how to render and display multi-colored spinning cube
 
-    .. rubric:: Running demos in Null Window system mode
-       :name: gfx-demos-in-nullws
+   .. rubric:: Running demos in Null Window system mode
+      :name: gfx-demos-in-nullws
 
-    The graphics demos can also be run in null-window system mode outside of Wayland
-    windowing system as full screen applications. In order to do so, exit Weston by
-    pressing Ctrl-Alt-Backspace from the keyboard which connects to the EVM. Then,
-    if the LCD screen stays in "Please wait...", press Ctrl-Alt-F1 to go to the
-    command line on LCD console. After that, the command line can be used from
-    serial console, SSH console, or LCD console.
+   The graphics demos can also be run in null-window system mode outside of Wayland
+   windowing system as full screen applications. In order to do so, exit Weston by
+   pressing Ctrl-Alt-Backspace from the keyboard which connects to the EVM. Then,
+   if the LCD screen stays in "Please wait...", press Ctrl-Alt-F1 to go to the
+   command line on LCD console. After that, the command line can be used from
+   serial console, SSH console, or LCD console.
 
-    Please make sure the board is connected to at least one display before
-    running these demos.
+   Please make sure the board is connected to at least one display before
+   running these demos.
 
-    .. code-block:: console
+   .. code-block:: console
 
-        # /usr/bin/SGX/demos/DRM/OGLES2Coverflow
-        # /usr/bin/SGX/demos/DRM/OGLES2ChameleonMan
-        # /usr/bin/SGX/demos/DRM/OGLES2ExampleUI
-        # /usr/bin/SGX/demos/DRM/OGLES2Navigation
+      # /usr/bin/SGX/demos/DRM/OGLES2Coverflow
+      # /usr/bin/SGX/demos/DRM/OGLES2ChameleonMan
+      # /usr/bin/SGX/demos/DRM/OGLES2ExampleUI
+      # /usr/bin/SGX/demos/DRM/OGLES2Navigation
 
-    After you see the output on the display interface, hit *q* to terminate
-    the application.
+   After you see the output on the display interface, hit *q* to terminate
+   the application.
 
-    Some of the demos under null windowing system require the user to pass in
-    the drm connector id. For information on how to get connector id please
-    refer to the Display_ section.
+   Some of the demos under null windowing system require the user to pass in
+   the drm connector id. For information on how to get connector id please
+   refer to the Display_ section.
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_8XE', 'Rogue_AXE', 'Rogue_BXS')
 
-    The following demos are available to run under the Wayland windowing system.
+   The following demos are available to run under the Wayland windowing system.
 
-    .. code-block:: console
+   .. code-block:: console
 
-        # /usr/bin/SGX/demos/Wayland/OpenGLESDeferredShading
-        # /usr/bin/SGX/demos/Wayland/OpenGLESGaussianBlur
-        # /usr/bin/SGX/demos/Wayland/OpenGLESImageBasedLighting
-        # /usr/bin/SGX/demos/Wayland/OpenGLESIntroducingPVRCamera
-        # /usr/bin/SGX/demos/Wayland/OpenGLESIntroducingPVRUtils
-        # /usr/bin/SGX/demos/Wayland/OpenGLESIntroducingUIRenderer
-        # /usr/bin/SGX/demos/Wayland/OpenGLESNavigation2D
-        # /usr/bin/SGX/demos/Wayland/OpenGLESNavigation3D
-        # /usr/bin/SGX/demos/Wayland/OpenGLESParticleSystem
+      # /usr/bin/SGX/demos/Wayland/OpenGLESDeferredShading
+      # /usr/bin/SGX/demos/Wayland/OpenGLESGaussianBlur
+      # /usr/bin/SGX/demos/Wayland/OpenGLESImageBasedLighting
+      # /usr/bin/SGX/demos/Wayland/OpenGLESIntroducingPVRCamera
+      # /usr/bin/SGX/demos/Wayland/OpenGLESIntroducingPVRUtils
+      # /usr/bin/SGX/demos/Wayland/OpenGLESIntroducingUIRenderer
+      # /usr/bin/SGX/demos/Wayland/OpenGLESNavigation2D
+      # /usr/bin/SGX/demos/Wayland/OpenGLESNavigation3D
+      # /usr/bin/SGX/demos/Wayland/OpenGLESParticleSystem
 
-    Additionally demos using the Null Window System / KMS / DRM / EGLFS are
-    provided with Qt. By default EGLFS will use the eglfs\_kms backend.
+   Additionally demos using the Null Window System / KMS / DRM / EGLFS are
+   provided with Qt. By default EGLFS will use the eglfs\_kms backend.
 
-    .. code-block:: console
+   .. code-block:: console
 
-        # /usr/share/qt5/examples/opengl/hellogles3/hellogles3 -platform eglfs
-        # /usr/share/qt5/examples/opengl/2dpainting/2dpainting -platform eglfs
-        # /usr/share/qt5/examples/opengl/paintedwindow/paintedwindow -platform eglfs
+      # /usr/share/qt5/examples/opengl/hellogles3/hellogles3 -platform eglfs
+      # /usr/share/qt5/examples/opengl/2dpainting/2dpainting -platform eglfs
+      # /usr/share/qt5/examples/opengl/paintedwindow/paintedwindow -platform eglfs
 
-    The default eglfs\_kms configuration file for Qt5 is located at:
+   The default eglfs\_kms configuration file for Qt5 is located at:
 
-    .. code-block:: console
+   .. code-block:: console
 
-        # /etc/qt5/eglfs_kms_cfg.json
+      # /etc/qt5/eglfs_kms_cfg.json
 
-    For more information about Qt's EGLFS and using Qt5 in embedded
-    applications see:
+   For more information about Qt's EGLFS and using Qt5 in embedded
+   applications see:
 
-    - https://doc.qt.io/qt-5/embedded-linux.html
+      - https://doc.qt.io/qt-5/embedded-linux.html
 
 
 Display
@@ -322,13 +326,16 @@ the display.
 The drm module models the display hardware as a series of abstract hardware
 blocks and manages them through the API. The blocks are:
 
-  - CRTC\ [#f1]_\: represents a scanout engine that generates video timing signal from
-    the data pointed to by the scanout buffer
-  - Connector: represents where the video timing signal is sent across to the
-    display
-  - Encoder: transforms the video timing signal from CRTC to a format that is
-    suitable for sending across the connector
-  - Plane: represents the overlay buffer that a CRTC can be fed with
+   - CRTC\ [#f1]_\: represents a scanout engine that generates video timing
+     signal from the data pointed to by the scanout buffer
+
+   - Connector: represents where the video timing signal is sent across to the
+     display
+
+   - Encoder: transforms the video timing signal from CRTC to a format that is
+     suitable for sending across the connector
+
+   - Plane: represents the overlay buffer that a CRTC can be fed with
 
 A utility application ``modetest`` can be used to get the list of available drm
 blocks. All the information available for the device can be displayed by using
@@ -341,32 +348,32 @@ Run the below ``modetest`` command:
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    .. code-block:: console
+   .. code-block:: console
 
-        # modetest -c
+      # modetest -c
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
-    .. code-block:: console
+   .. code-block:: console
 
-        # modetest -M tidss -c
+      # modetest -M tidss -c
 
 Look for the display device for which the connector ID is required -
 such as HDMI, LCD etc.
 
 .. code-block:: text
 
-    Connectors:
-    id      encoder status          type    size (mm)       modes   encoders
-    4       3       connected       HDMI-A  480x270         20      3
-      modes:
-            name refresh (Hz) hdisp hss hse htot vdisp vss vse vtot)
-      1920x1080 60 1920 2008 2052 2200 1080 1084 1089 1125 flags: phsync, pvsync; type: preferred, driver
-    ...
-    16      15      connected       unknown 0x0             1       15
-      modes:
-            name refresh (Hz) hdisp hss hse htot vdisp vss vse vtot)
-      800x480 60 800 1010 1040 1056 480 502 515 525 flags: nhsync, nvsync; type: preferred, driver
+   Connectors:
+   id      encoder status          type    size (mm)       modes   encoders
+   4       3       connected       HDMI-A  480x270         20      3
+     modes:
+           name refresh (Hz) hdisp hss hse htot vdisp vss vse vtot)
+     1920x1080 60 1920 2008 2052 2200 1080 1084 1089 1125 flags: phsync, pvsync; type: preferred, driver
+   ...
+   16      15      connected       unknown 0x0             1       15
+     modes:
+           name refresh (Hz) hdisp hss hse htot vdisp vss vse vtot)
+     800x480 60 800 1010 1040 1056 480 502 515 525 flags: nhsync, nvsync; type: preferred, driver
 
 The modes displayed are the various resolutions supported by the connected
 display.
@@ -378,149 +385,149 @@ To find the Plane ID, run the ``modetest`` command:
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    .. code-block:: console
+   .. code-block:: console
 
-        # modetest -p
+      # modetest -p
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
-    .. code-block:: console
+   .. code-block:: console
 
-        # modetest -M tidss -p
+      # modetest -M tidss -p
 
-which should show something like below:
+Which should show something like below:
 
 .. code-block:: text
 
-    Planes:
-    id      crtc    fb      CRTC x,y        x,y     gamma size
-    19      0       0       0,0             0,0     0
-     formats: RG16 RX12 XR12 RA12 AR12 XR15 AR15 RG24 RX24 XR24 RA24 AR24 NV12 YUYV UYVY
-     props:
-     ...
-    20      0       0       0,0             0,0     0
-     formats: RG16 RX12 XR12 RA12 AR12 XR15 AR15 RG24 RX24 XR24 RA24 AR24 NV12 YUYV UYVY
-     props:
-     ...
+   Planes:
+   id      crtc    fb      CRTC x,y        x,y     gamma size
+   19      0       0       0,0             0,0     0
+    formats: RG16 RX12 XR12 RA12 AR12 XR15 AR15 RG24 RX24 XR24 RA24 AR24 NV12 YUYV UYVY
+    props:
+    ...
+   20      0       0       0,0             0,0     0
+    formats: RG16 RX12 XR12 RA12 AR12 XR15 AR15 RG24 RX24 XR24 RA24 AR24 NV12 YUYV UYVY
+    props:
+    ...
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    .. rubric:: kmscube
-       :name: kmscube
+   .. rubric:: kmscube
+      :name: kmscube
 
-    Run kmscube on the default display:
+   Run kmscube on the default display:
 
-    .. code-block:: console
+   .. code-block:: console
 
-          # kmscube
+      # kmscube
 
-    Run kmscube on the secondary display:
+   Run kmscube on the secondary display:
 
-    .. code-block:: console
+   .. code-block:: console
 
-          # kmscube -c <connector-id>
+      # kmscube -c <connector-id>
 
-    For example, if the connector id for the secondary display is 16:
+   For example, if the connector id for the secondary display is 16:
 
-    .. code-block:: console
+   .. code-block:: console
 
-          # kmscube -c 16
+      # kmscube -c 16
 
-    Run kmscube on all connected displays (LCD & HDMI):
+   Run kmscube on all connected displays (LCD & HDMI):
 
-    .. code-block:: console
+   .. code-block:: console
 
-          # kmscube -a
+      # kmscube -a
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    .. rubric:: Running DSS Applications
-       :name: running-dss-applications
+   .. rubric:: Running DSS Applications
+      :name: running-dss-applications
 
-    DSS applications are omapdrm based. These will demonstrate the clone
-    mode, extended mode, overlay window, z-order and alpha blending
-    features. To demonstrate clone and extended mode, HDMI display must be
-    connected to board. Application requires the supported mode information
-    of connected displays and plane ids. One can get these information by
-    running the *modetest* application in the filesystem.
+   DSS applications are omapdrm based. These will demonstrate the clone
+   mode, extended mode, overlay window, z-order and alpha blending
+   features. To demonstrate clone and extended mode, HDMI display must be
+   connected to board. Application requires the supported mode information
+   of connected displays and plane ids. One can get these information by
+   running the *modetest* application in the filesystem.
 
-    .. code-block:: console
+   .. code-block:: console
 
-          #  modetest
+      # modetest
 
-    **Running drmclone application**
+   **Running drmclone application**
 
-    This displays same test pattern on both LCD and HDMI (clone). Overlay
-    window also displayed on LCD. To test clone mode, execute the following
-    command:
+   This displays same test pattern on both LCD and HDMI (clone). Overlay
+   window also displayed on LCD. To test clone mode, execute the following
+   command:
 
-    .. code-block:: console
+   .. code-block:: console
 
-          # drmclone -l <lcd_w>x<lcd_h> -p <plane_w>x<plane_h>:<x>+<y> -h <hdmi_w>x<hdmi_h>
+      # drmclone -l <lcd_w>x<lcd_h> -p <plane_w>x<plane_h>:<x>+<y> -h <hdmi_w>x<hdmi_h>
 
-    For example:
+   For example:
 
-    .. code-block:: console
+   .. code-block:: console
 
-          # drmclone -l 1280x800 -p 320x240:0+0 -h 640x480
+      # drmclone -l 1280x800 -p 320x240:0+0 -h 640x480
 
-    We can change position of overlay window by changing x+y values. eg.
-    240+120 will show @ center
+   We can change position of overlay window by changing x+y values. eg.
+   240+120 will show @ center
 
-    **Running drmextended application**
+   **Running drmextended application**
 
-    This displays different test pattern on LCD and HDMI. Overlay window
-    also displayed on LCD. To test extended mode, execute the following
-    command:
+   This displays different test pattern on LCD and HDMI. Overlay window
+   also displayed on LCD. To test extended mode, execute the following
+   command:
 
-    .. code-block:: console
+   .. code-block:: console
 
-          # drmextended -l <lcd_w>x<lcd_h> -p <plane_w>x<plane_h>:<x>+<y> -h <hdmi_w>x<hdmi_h>
+      # drmextended -l <lcd_w>x<lcd_h> -p <plane_w>x<plane_h>:<x>+<y> -h <hdmi_w>x<hdmi_h>
 
-    For example:
+   For example:
 
-    .. code-block:: console
+   .. code-block:: console
 
-          # drmextended -l 1280x800 -p 320x240:0+0 -h 640x480
+      # drmextended -l 1280x800 -p 320x240:0+0 -h 640x480
 
-    **Running drmzalpha application**
+   **Running drmzalpha application**
 
-    **Z-order**:
+   **Z-order**:
 
-    It determines, which overlay window appears on top of the other.
+   It determines, which overlay window appears on top of the other.
 
-    |   Range: 0 to 3
-    |         lowest value for bottom
-    |         highest value for top
-    |
+   |   Range: 0 to 3
+   |         lowest value for bottom
+   |         highest value for top
+   |
 
-    **Alpha Blend**:
+   **Alpha Blend**:
 
-    It determines transparency level of image as a result of both global
-    alpha & pre multiplied alpha value.
+   It determines transparency level of image as a result of both global
+   alpha & pre multiplied alpha value.
 
-    |   Global alpha range: 0 to 255
-    |       0 - fully transparent
-    |       127 - semi transparent
-    |       255 - fully opaque
-    |
+   |   Global alpha range: 0 to 255
+   |       0 - fully transparent
+   |       127 - semi transparent
+   |       255 - fully opaque
+   |
 
-    Pre multipled alpha value: 0 or 1
-        |  0 - source is not premultiply with alpha
-        |  1 - source is premultiply with alpha
+   Pre multipled alpha value: 0 or 1
+       |  0 - source is not premultiply with alpha
+       |  1 - source is premultiply with alpha
 
 
-    To test drmzalpha, execute the following command:
+   To test drmzalpha, execute the following command:
 
-    .. code-block:: console
+   .. code-block:: console
 
-          # drmzalpha -s <crtc_w>x<crtc_h> -w <plane1_id>:<z_val>:<glo_alpha>:<pre_mul_alpha> -w <plane2_id>:<z_val>:<glo_alpha>:<pre_mul_alpha>
+      # drmzalpha -s <crtc_w>x<crtc_h> -w <plane1_id>:<z_val>:<glo_alpha>:<pre_mul_alpha> -w <plane2_id>:<z_val>:<glo_alpha>:<pre_mul_alpha>
 
-    For example:
+   For example:
 
-    .. code-block:: console
+   .. code-block:: console
 
-          # drmzalpha -s 1280x800 -w 19:1:255:1 -w 20:2:255:1
+      # drmzalpha -s 1280x800 -w 19:1:255:1 -w 20:2:255:1
 
 Wayland/Weston
 ==============
@@ -571,13 +578,13 @@ To start the systemd service manually, do the following:
 
 .. code-block:: console
 
-      # systemctl start weston
+   # systemctl start weston
 
 To inspect the systemd service and socket status, do the following:
 
 .. code-block:: console
 
-      # systemctl status weston.service weston.socket
+   # systemctl status weston.service weston.socket
 
 
 Starting Weston Manually
@@ -589,46 +596,46 @@ On the target console:
 
 .. code-block:: console
 
-      # unset WAYLAND_DISPLAY
+   # unset WAYLAND_DISPLAY
 
 On the default display:
 
 .. code-block:: console
 
-      # weston --tty=1 --display=<default connector-id>
+   # weston --tty=1 --display=<default connector-id>
 
 On the secondary display:
 
 .. code-block:: console
 
-      # weston --tty=1 --display=<secondary connector-id>
+   # weston --tty=1 --display=<secondary connector-id>
 
 On all connected displays (LCD and HDMI):
 
 .. code-block:: console
 
-      # weston --tty=1
+   # weston --tty=1
 
 By default, the screensaver timeout is configured to 300 seconds. The user can
 change the screensaver timeout using a command line option:
 
 ::
 
-     --idle-time=<number of seconds>
+   --idle-time=<number of seconds>
 
 For example, to set timeout of 10 minutes and Weston configured to
 display on all connectors, use the below command:
 
 .. code-block:: console
 
-     weston --tty=1 --idle-time=600
+   weston --tty=1 --idle-time=600
 
 To disable the screen timeout and to configure Weston to display on all
 connectors, use the below command:
 
 .. code-block:: console
 
-     weston --tty=1 --idle-time=0
+   weston --tty=1 --idle-time=0
 
 If you face any issues with the above procedure, please refer to `the upstream
 weston documentation`_ for troubleshooting tips.
@@ -644,26 +651,26 @@ be located in
 Running Weston clients
 ----------------------
 
-| Weston client examples can run from the command line on a serial port
-  console or an SSH console. After launching Weston, the user should be
-  able to use the keyboard and the mouse for various controls.
+Weston client examples can run from the command line on a serial port
+console or an SSH console. After launching Weston, the user should be
+able to use the keyboard and the mouse for various controls.
 
 .. code-block:: console
 
-           # /usr/bin/weston-flower
-           # /usr/bin/weston-clickdot
-           # /usr/bin/weston-cliptest
-           # /usr/bin/weston-dnd
-           # /usr/bin/weston-editor
-           # /usr/bin/weston-eventdemo
-           # /usr/bin/weston-image /usr/share/weston/terminal.png
-           # /usr/bin/weston-resizor
-           # /usr/bin/weston-simple-egl
-           # /usr/bin/weston-simple-shm
-           # /usr/bin/weston-simple-touch
-           # /usr/bin/weston-smoke
-           # /usr/bin/weston-info
-           # /usr/bin/weston-terminal
+   # /usr/bin/weston-flower
+   # /usr/bin/weston-clickdot
+   # /usr/bin/weston-cliptest
+   # /usr/bin/weston-dnd
+   # /usr/bin/weston-editor
+   # /usr/bin/weston-eventdemo
+   # /usr/bin/weston-image /usr/share/weston/terminal.png
+   # /usr/bin/weston-resizor
+   # /usr/bin/weston-simple-egl
+   # /usr/bin/weston-simple-shm
+   # /usr/bin/weston-simple-touch
+   # /usr/bin/weston-smoke
+   # /usr/bin/weston-info
+   # /usr/bin/weston-terminal
 
 Running multimedia with Wayland sink
 ------------------------------------
@@ -673,7 +680,7 @@ video-sink for video playback:
 
 .. code-block:: console
 
-      # gst-launch-1.0 playbin uri=file://<path-to-file-name> video-sink=waylandsink
+   # gst-launch-1.0 playbin uri=file://<path-to-file-name> video-sink=waylandsink
 
 Exiting Weston
 --------------
@@ -686,7 +693,7 @@ with:
 
 .. code-block:: console
 
-     # systemctl stop weston
+   # systemctl stop weston
 
 It is also possible to invoke Weston from the native console, exit
 Weston by pressing Ctrl-Alt-Backspace.
@@ -705,19 +712,20 @@ To switch back to the desktop-shell can be done by commenting these lines in the
 
 ::
 
-    [core]
-    shell=ivi-shell.so
+   [core]
+   shell=ivi-shell.so
 
 After the above configuration is completed, we can restart Weston by
 running the following command
 
 .. code-block:: console
 
-    # systemctl restart weston
+   # systemctl restart weston
 
-.. note:: When Weston starts with ivi-shell, the default background is
-          black, this is different from the desktop-shell that brings up a window
-          with background.
+.. note::
+
+   When Weston starts with ivi-shell, the default background is black, this is
+   different from the desktop-shell that brings up a window with background.
 
 With ivi-shell configured for Weston, Wayland client applications use
 ivi-application protocol to be managed by a central HMI window management.
@@ -728,7 +736,7 @@ the HMI central controller with an unique numeric ID.
 Some important references to Weston IVI-shell can be found at the following
 link:
 
--   https://wayland.pages.freedesktop.org/weston/toc/ivi-shell.html
+- https://wayland.pages.freedesktop.org/weston/toc/ivi-shell.html
 
 Running QT applications with IVI shell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -738,7 +746,7 @@ To run the QT application with ivi-shell, set the
 
 .. code-block:: console
 
-    # export QT_WAYLAND_SHELL_INTEGRATION=ivi-shell
+   # export QT_WAYLAND_SHELL_INTEGRATION=ivi-shell
 
 Using the PowerVR Tools
 =======================
@@ -788,10 +796,13 @@ Imagination's upstream target setup guide for the most recent instructions.
 
 https://docs.imgtec.com/tools-manuals/pvrcarbon-manual/html/topics/pvrcarbon-recorder/opengl-es.html
 
-.. |reg|    unicode:: U+000AE .. REGISTERED SIGN
+.. |reg| unicode:: U+000AE .. REGISTERED SIGN
+
 .. _PowerVR-SDK: https://www.imgtec.com/developers/powervr-sdk-tools/installers/
 
-.. [#f1] CRTC stands for cathode-ray tube controller, a throw back to the old
-         `cathode-ray tubes TV's <https://en.wikipedia.org/wiki/Cathode-ray_tube>`_
-         which had a controller that generated video timings based on the data
-         it is being fed by a buffer.
+.. [#f1]
+
+   CRTC stands for cathode-ray tube controller, a throw back to the old
+   `cathode-ray tubes TV's <https://en.wikipedia.org/wiki/Cathode-ray_tube>`_
+   which had a controller that generated video timings based on the data it is
+   being fed by a buffer.
