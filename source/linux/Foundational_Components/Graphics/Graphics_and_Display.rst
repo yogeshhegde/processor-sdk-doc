@@ -15,6 +15,13 @@ Introduction
     and do not perform video decode operations. For video acceleration,
     refer to respective Technical Reference Manuals for the SOCs.
 
+    These devices do not utilize static memory carveouts. The only reservations
+    made in device tree are for control registers. Memory is instead dynamically
+    allocated at runtime depending on the task and will scale accordingly.
+    Buffers are allocated from CMA and other runtime memory allocations are made
+    from standard pages. See the kernel module memory management subsystem for
+    more information.
+
     Below table lists the various TI families supported by this SDK, and the
     SGX core information
 
@@ -53,6 +60,13 @@ Introduction
     API's. The OpenGL\ |reg| ES API's up to and including version 3.2 with
     render surfaces upto 4k and input textures upto 8k sizes are supported by
     the hardware. It also supports Vulkan |reg| up to API version 1.2.
+
+    These devices do not utilize static memory carveouts. The only reservations
+    made in device tree are for control registers. Memory is instead dynamically
+    allocated at runtime depending on the task and will scale accordingly.
+    Buffers are allocated from CMA and other runtime memory allocations are made
+    from standard pages. See the kernel module memory management subsystem for
+    more information.
 
     The following extensions are supported:
 
