@@ -305,19 +305,16 @@ Note: this is not a comprehensive list of features supported/not supported, and 
  in user-space API. This ensures that existing display server based windowing systems and display applications can leverage display in shared mode directly without any additional update or handling. The DSS resources can be partitioned across multiple processing cores by setting the ti,dss-sharing-mode and associated properties in the device-tree. A static resource partitioning scheme is designed where each of the DSS resources are given attributes related to sharing and ownership as desribed below :
 
  1. *Display controller register region (Common or Common1 register space)* :
-   .. line-block::
 
- Each processing core is given separate register region for controlling the display, with only one of the processing cores having access to global configuration region, Also each processing core has access only to the corresponding register region owned by it with other register regions completely inaccessible to it. The processing core running Linux can be assigned one of the available display controller register spaces using the "ti,dss-shared-mode-common" device-tree property.
+  Each processing core is given separate register region for controlling the display, with only one of the processing cores having access to global configuration region, Also each processing core has access only to the corresponding register region owned by it with other register regions completely inaccessible to it. The processing core running Linux can be assigned one of the available display controller register spaces using the "ti,dss-shared-mode-common" device-tree property.
 
  2. *Video Pipeline* :
-   .. line-block::
 
- This resource also can be exclusively owned by only one processing core, thus remaining completely inaccesible to other processing cores which are not owning it, so there is no sharing possible for this resource actually. The processing core running Linux can be assigned one or more of the available video pipelines using "ti,dss-shared-mode-plane" device-tree property. The relative z-order of planes owned by processing core running Linux can be set using ti,dss-shared-mode-plane-zorder.
+  This resource also can be exclusively owned by only one processing core, thus remaining completely inaccesible to other processing cores which are not owning it, so there is no sharing possible for this resource actually. The processing core running Linux can be assigned one or more of the available video pipelines using "ti,dss-shared-mode-plane" device-tree property. The relative z-order of planes owned by processing core running Linux can be set using ti,dss-shared-mode-plane-zorder.
 
  3. *Video Port* :
-   .. line-block::
 
- A video port can drive multiple video pipelines which are being independently controlled by different processing cores, so it can act as shared resource too where although only one of the processing cores has an exclusive write access to it but any other processing cores which are owning the Video piplines driven by this video port can be given read-only access to this Video Port's register space.
+  A video port can drive multiple video pipelines which are being independently controlled by different processing cores, so it can act as shared resource too where although only one of the processing cores has an exclusive write access to it but any other processing cores which are owning the Video piplines driven by this video port can be given read-only access to this Video Port's register space.
 
  To summarize, this resource can have exclusive ownership attribute with write access to only one processing core but shared attribute for other processing cores which are provided read-only access, but this is for only those processing cores which are using this video port for driving their video pipelines. The read-only access also helps such processing cores to determine the video port configuration like screen width, screen height e.t.c directly from video port registers without any communication requirement with the processing core owning this video port. The corresponding overlay managers associated with this video port are automatically given same ownership and sharing attributes.
 
