@@ -161,9 +161,18 @@ as a starting point).
 
     For example, to apply the default AM335x kernel configuration, use:
 
+    For Linux,
+
     .. code-block:: console
 
         make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- multi_v7_defconfig ti_multi_v7_prune.config no_smp.config
+
+    For RT-Linux,
+
+    .. code-block:: console
+
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- multi_v7_defconfig ti_multi_v7_prune.config no_smp.config ti_rt.config
+
 
 ..
   [comment] instructions for 64 bit processors
@@ -181,7 +190,7 @@ as a starting point).
 
     .. code-block:: console
 
-        make ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" defconfig ti_rt.config
+        make ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" defconfig ti_arm64_prune.config ti_rt.config
 
 The config fragments found in <path-to-ti-linux-kernel>/kernel/configs can be used to trim/add
 features when building a kernel that targets only TI EVMs. Append a config fragment to the end
