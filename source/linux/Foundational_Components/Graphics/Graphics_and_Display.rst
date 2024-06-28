@@ -234,10 +234,10 @@ Native_SDK examples.
 
 .. ifconfig:: CONFIG_gpu_ip in ('SGX')
 
-   The following 3D Graphics demos are available via Matrix. The table
-   below provides a list of these demos, with a brief description.
+   The following 3D Graphics demos are available. The table below provides a
+   list of these demos, with a brief description.
 
-   .. list-table:: Demos via Matrix
+   .. list-table:: Demos
       :widths: 25 75
       :header-rows: 1
 
