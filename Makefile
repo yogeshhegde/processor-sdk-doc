@@ -7,7 +7,7 @@ default: html
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
-OS            = linux
+OS           ?= linux
 
 _UC = $(shell echo '$1' | tr '[:lower:]' '[:upper:]')
 _LC = $(shell echo '$1' | tr '[:upper:]' '[:lower:]')
