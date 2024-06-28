@@ -103,11 +103,12 @@ Simulating ECC error
 
 U-Boot command 'ddrss' can be used to simulate the ECC error by generating bit
 errors in SDRAM data at certain address. The ECC check can be tested by:
-   1. Enabling ECC
-   2. Shrinking the protected range
-   3. Modifying a value
-   4. Restoring range to original and
-   5. Reading the value will cause the ECC error
+
+   #. Enabling ECC
+   #. Shrinking the protected range
+   #. Modifying a value
+   #. Restoring range to original and
+   #. Reading the value will cause the ECC error
 
 The command syntax is
 
@@ -254,10 +255,12 @@ manipulate an I/O error pin to signal an external hardware that an
 error has occurred. Therefore an external controller is able to reset
 the device or keep the system in a safe, known state.
 
-.. Image:: /images/Uboot_ddrss1.svg
+.. figure:: /images/Uboot_ddrss1.svg
    :width: 800
    :align: center
-|
+
+   DDRSS ESM Overview
+
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
    The ESM pin corresponding to DDRSS ECC uncorrectable error
