@@ -20,7 +20,7 @@ The version of Chromium that is build can be obtained with this command:
 .. code-block:: console
 
     $ chromium --version
-    Chromium 111.0.5563.64 stable
+    Chromium 123.0.6312.122 stable
 
 The version of Chromium shown here is the one that GPU acceleration is verified to work with.
 
@@ -55,7 +55,7 @@ Will open www.ti.com in a windowed browser on the Weston desktop.
 
 .. code-block:: console
 
-    $ chromium https://webglsamples.org/aquarium/aquarium.org --start-fullscreen
+    $ chromium https://webglsamples.org/aquarium/aquarium.html --start-fullscreen
 
 Will open the aquarium 3d benchmark in a fullscreen window on the Weston desktop.
 
@@ -115,26 +115,27 @@ nefarious.
 How to build Chromuim under Yocto
 ---------------------------------
 
-Pull in the meta-browser and meta-clang layer into a Kirkstone Yocto build.
+Pull in the meta-browser and meta-clang layer into a Scarthgap Yocto build.
 
 meta-browser should be pinned to commit:
 
 .. code-block::
 
-    commit d3d16b47e17dc899e5298cff698dc32e5e639ab4 (HEAD)
+    commit 1ed2254d72a4c25879014c98be287a7e3e22904c
     Author: Max Ihlenfeldt <max@igalia.com>
-    Date:   Wed Mar 8 11:02:47 2023 +0000
+    Date:   Wed May 22 14:54:02 2024 +0200
 
-        chromium: update to 111.0.5563.64
+        chromium: Backport missing dependency in NewTabPage (#816)
 
-
-meta-clang needs to be pinned to HEAD commit of branch kirkstone-clang12, as of the time of writing that equates to this commit:
+meta-clang needs to be pinned to HEAD commit of branch "scarthgap", as of the time of writing that equates to this commit:
 
 .. code-block::
 
-    commit c2e89dc7e1dfcc1bbe432afca2dc43d6560cb007 (HEAD -> origin/kirkstone-clang12)
-    Author: Randy MacLeod <Randy.MacLeod@windriver.com>
-    Date:   Tue Jan 17 13:25:56 2023 -0800
+    commit e7dceb1c92caf7f21ef1d7b49c85328c30cffd90 (HEAD -> scarthgap, origin/scarthgap)
+    Author: Etienne Cordonnier <ecordonnier@snap.com>
+    Date:   Fri May 3 17:47:46 2024 +0200
+
+        clang: use release tarball instead of git
 
 With these layers pinned to the correct commit, you need to make sure they are referenced in :console:`build/conf/bblayers.conf``
 This is done automatically if you use the oe-layersetup tool.
@@ -142,7 +143,7 @@ This is done automatically if you use the oe-layersetup tool.
 .. code-block:: console
 
     $ cd yocto_dir
-    $ ./oe-layersetup -f config/arago-kirkstone-chromium-config.txt
+    $ ./oe-layersetup -f config/arago-scarthgap-chromium-config.txt
 
 Once this is done, use bitbake to create the tisdk-default-image. This will 
 detect the meta-browser and meta-clang layers, automatically building and 
@@ -152,7 +153,7 @@ adding Chromium to the root filesystem image.
 
     Build times of Chromium can be very long depending on the size of your build machine.   It has been found that you need
     at least 64Gigs of RAM, and on a 28 thread Intel Core-I9 with an SSD for the build driver it will still take upwards of 2 hours just
-    to build Chromium.   A full Yocto kirkstone build that includes Chromium can easily take 400GBytes of SSD.
+    to build Chromium.   A full Yocto Scarthgap build that includes Chromium can easily take 400GBytes of SSD.
 
 The following will initiate a full tisdk-default-image build that would include
 Chromium if the meta-browser and meta-clang layers are present:
@@ -186,7 +187,6 @@ Limitations
 
 * Audio/video within the browser is not supported.
 * Hardware acceleration of video either decode or encode is not supported.
-* Versions newer than Chromium v111 have rendering artifacts around chromium UI elements and are currently not supported.
 
 Performance
 -----------
@@ -203,7 +203,7 @@ Run as the weston user with the command line :console:`chromium https://webglsam
         +---------------------------------+----------------------+------------------------------------------------+
         | **Platform**                    | **Performance FPS**  | **GPU Utilisation**                            |
         +---------------------------------+----------------------+------------------------------------------------+
-        | |__PART_FAMILY_DEVICE_NAMES__|  | 40 @ 1080p60         | 72%                                            |
+        | |__PART_FAMILY_DEVICE_NAMES__|  | 36 @ 1080p60         | 72%                                            |
         +---------------------------------+----------------------+------------------------------------------------+
 
     .. note::
@@ -219,7 +219,7 @@ Run as the weston user with the command line :console:`chromium https://webglsam
         +---------------------------------+----------------------+------------------------------------------------+
         | **Platform**                    | **Performance FPS**  | **GPU Utilisation**                            |
         +---------------------------------+----------------------+------------------------------------------------+
-        | |__PART_FAMILY_DEVICE_NAMES__|  | 9 @ 1080p60          | 100%                                           |
+        | |__PART_FAMILY_DEVICE_NAMES__|  | 11 @ 1080p60         | 100%                                           |
         +---------------------------------+----------------------+------------------------------------------------+
 
        .. note::
@@ -235,7 +235,7 @@ Run as the weston user with the command line :console:`chromium https://webglsam
         +---------------------------------+-----------------------------------------------------------------------+
         | **Platform**                    | **Performance FPS**                                                   |
         +---------------------------------+-----------------------------------------------------------------------+
-        | |__PART_FAMILY_DEVICE_NAMES__|  | 36 @ 1080p60                                                          |
+        | |__PART_FAMILY_DEVICE_NAMES__|  | 33 @ 1080p60                                                          |
         +---------------------------------+-----------------------------------------------------------------------+
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
@@ -243,7 +243,7 @@ Run as the weston user with the command line :console:`chromium https://webglsam
         +---------------------------------+-----------------------------------------------------------------------+
         | **Platform**                    | **Performance FPS**                                                   |
         +---------------------------------+-----------------------------------------------------------------------+
-        | |__PART_FAMILY_DEVICE_NAMES__|  | 53 @ 1080p60                                                          |
+        | |__PART_FAMILY_DEVICE_NAMES__|  | 53 @ 1080p60   NEED UPDATING FOR v123                                 |
         +---------------------------------+-----------------------------------------------------------------------+
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
@@ -251,7 +251,7 @@ Run as the weston user with the command line :console:`chromium https://webglsam
         +---------------------------------+-----------------------------------------------------------------------+
         | **Platform**                    | **Performance FPS**                                                   |
         +---------------------------------+-----------------------------------------------------------------------+
-        | |__PART_FAMILY_DEVICE_NAMES__|  | 60 @ 1080p60                                                          |
+        | |__PART_FAMILY_DEVICE_NAMES__|  | 60 @ 1080p60   NEED UPDATING FOR v123                                 |
         +---------------------------------+-----------------------------------------------------------------------+
 
 **Performance of MotionMarkv1.3**
@@ -266,7 +266,7 @@ use the mouse to click the "Run Benchmark" button.
         +---------------------------------+-----------------------------------------------------------------------+
         | **Platform**                    | **MotionMark v1.3**                                                   |
         +---------------------------------+-----------------------------------------------------------------------+
-        | |__PART_FAMILY_DEVICE_NAMES__|  | 40.35 @ 1080p60                                                       |
+        | |__PART_FAMILY_DEVICE_NAMES__|  | 51.56 @ 1080p60                                                       |
         +---------------------------------+-----------------------------------------------------------------------+
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
@@ -274,7 +274,7 @@ use the mouse to click the "Run Benchmark" button.
         +---------------------------------+-----------------------------------------------------------------------+
         | **Platform**                    | **MotionMark v1.3**                                                   |
         +---------------------------------+-----------------------------------------------------------------------+
-        | |__PART_FAMILY_DEVICE_NAMES__|  | 1.82 @ 1080p60                                                        |
+        | |__PART_FAMILY_DEVICE_NAMES__|  | 1.51 @ 1080p60                                                        |
         +---------------------------------+-----------------------------------------------------------------------+
 
 .. ifconfig:: CONFIG_part_variant in ('J722S')
@@ -282,7 +282,7 @@ use the mouse to click the "Run Benchmark" button.
         +---------------------------------+-----------------------------------------------------------------------+
         | **Platform**                    | **MotionMark v1.3**                                                   |
         +---------------------------------+-----------------------------------------------------------------------+
-        | |__PART_FAMILY_DEVICE_NAMES__|  | 31.40 @ 1080p60                                                       |
+        | |__PART_FAMILY_DEVICE_NAMES__|  | 37.56 @ 1080p60                                                       |
         +---------------------------------+-----------------------------------------------------------------------+
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
@@ -290,7 +290,7 @@ use the mouse to click the "Run Benchmark" button.
         +---------------------------------+-----------------------------------------------------------------------+
         | **Platform**                    | **MotionMark v1.3**                                                   |
         +---------------------------------+-----------------------------------------------------------------------+
-        | |__PART_FAMILY_DEVICE_NAMES__|  | 64.23 @ 1080p60                                                       |
+        | |__PART_FAMILY_DEVICE_NAMES__|  | 64.23 @ 1080p60   NEED UPDATING FOR v123                              |
         +---------------------------------+-----------------------------------------------------------------------+
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
@@ -298,6 +298,6 @@ use the mouse to click the "Run Benchmark" button.
         +---------------------------------+-----------------------------------------------------------------------+
         | **Platform**                    | **MotionMark v1.3**                                                   |
         +---------------------------------+-----------------------------------------------------------------------+
-        | |__PART_FAMILY_DEVICE_NAMES__|  |  129.27 @ 1080p60                                                     |
+        | |__PART_FAMILY_DEVICE_NAMES__|  |  129.27 @ 1080p60  NEED UPDATING FOR v123                             |
         +---------------------------------+-----------------------------------------------------------------------+
 
