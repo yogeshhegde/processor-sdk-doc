@@ -234,3 +234,6 @@ latex_elements = {
 
 # Example configuration for intersphinx: refer to the Python standard library.
 # intersphinx_mapping = {'https://docs.python.org/': None}
+
+# Suppress warnings about excluded documents because every device gets a different toc tree
+suppress_warnings = ['toc.excluded']
