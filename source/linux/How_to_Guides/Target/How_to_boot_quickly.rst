@@ -421,7 +421,7 @@ The following section displays the time taken by each stage to start and end. Fo
     .. Image:: /images/am62ax_ospi_boot_analyser.png
      :align: center
     
-    *679ms includes SBL C7x image load
+    679ms includes SBL C7x image load
 
     .. code-block:: console
 
