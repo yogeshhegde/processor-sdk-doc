@@ -10,24 +10,19 @@ Booting U-Boot from the console UART
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In some cases we support loading SPL and U-Boot over the console UART.
-You will need to use the **spl/u-boot-spl.bin** and **u-boot.img** files
-to boot. As per the TRM, the file is to be loaded via the X-MODEM
+You will need to use the :file:`tiboot3.bin`, :file:`tispl.bin` and :file:`u-boot.img`
+files to boot. As per the TRM, the file is to be loaded via the X-MODEM
 protocol at 115200 baud 8 stop bits no parity (same as using it for
-console). SPL in turn expects to be sent **u-boot.img** at the same rate
+console). SPL in turn expects to be sent :file:`u-boot.img` at the same rate
 but via Y-MODEM. An example session from the host PC, assuming console
 is on ttyUSB0 and already configured would be and the **lrzsz** package
 is installed
 
-.. code-block:: console
-
-    $ sx -kb /path/to/u-boot-spl.bin < /dev/ttyUSB0 > /dev/ttyUSB0
-    $ sx -kb --ymodem /path/to/u-boot.img < /dev/ttyUSB0 > /dev/ttyUSB0
-
 .. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200')
 
-  In K3 based platforms, ROM supports booting from MCU_UART0 via X-Modem protocol.
-  The entire UART-based boot process up to U-Boot (proper) prompt goes through
-  different stages and uses different UART peripherals as follows:
+   In K3 based platforms, ROM supports booting from MCU_UART0 via X-Modem protocol.
+   The entire UART-based boot process up to U-Boot (proper) prompt goes through
+   different stages and uses different UART peripherals as follows:
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E')
 
@@ -52,7 +47,7 @@ is installed
       $ sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
       $ sb --ymodem $OUT_AXX/u-boot.img > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
 
-.. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2', 'J784S4', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2', 'J784S4')
 
    +---------------+---------------+-------------+------------+
    |   WHO         | Loading WHAT  |  HW Module  |  Protocol  |
@@ -72,11 +67,11 @@ is installed
       $ sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
       $ sb --ymodem $OUT_AXX/u-boot.img > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'J722S', 'AM62PX')
 
-  ROM supports booting from MAIN_UART0 via X-Modem protocol. R5 SPL, A53
-  SPL and U-Boot use Y-MODEM Protocol for downloading next stages over
-  MAIN_UART0
+   ROM supports booting from MAIN_UART0 via X-Modem protocol. R5 SPL, A53
+   SPL and U-Boot use Y-MODEM Protocol for downloading next stages over
+   MAIN_UART0
 
    +---------------+---------------+-------------+------------+
    |   WHO         | Loading WHAT  |  HW Module  |  Protocol  |
