@@ -308,7 +308,7 @@ Issues opened in previous releases that were closed on this release
    "LCPD-37389","Building Kernel from sources doesn't cover list of dependencies","am64xx-evm,am64xx-hssk,am62xx_sk-fs,am62xxsip_sk-fs,am62pxx_sk-fs,am64xx_sk-fs,am64xx_sk-se"
    "LCPD-37388","Building U-Boot from sources doesn't cover list of dependencies","am64xx-hssk,am62xx_sk-fs,am62xxsip_sk-fs,am62xxsip_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am64xx_sk-fs,am64xx_evm-se"
    "LCPD-36615","Linux SDK Docs for most K3 devices contain an outdated device list in the Kernel/SPI Section","am62axx_sk-fs, am62axx_sk-se, am62pxx_sk-fs, am62pxx_sk-se, am62xx_lp_sk-fs, am62xx_lp_sk-se, am62xx_p0_sk-fs, am62xx_sk-fs, am62xx_sk-se, am62xxsip_sk-fs, am62xxsip_sk-se, am64xx-hsevm, am64xx-hssk, am64xx_evm-se, am64xx_sk-fs, am64xx_sk-se"
-   "LCPD-37795",RAM size not updated, when ECC is enabled","am62axx_sk-fs, am62pxx_sk-fs, am62xx_lp_sk-fs, am62xx_lp_sk-se, am64xx_sk-fs"
+   "LCPD-37795","RAM size not updated, when ECC is enabled","am62axx_sk-fs, am62pxx_sk-fs, am62xx_lp_sk-fs, am62xx_lp_sk-se, am64xx_sk-fs"
    "LCPD-37805","Doc: AM62x: Known Issues table is missing in release notes","am62xx_sk-fs, am62xx_sk-se "
    "LCPD-37625","Linux CPSW Proxy Client: Fix complier warnings","am62xx_sk-fs,am62xx_lp_sk-fs,am62axx_sk-fs,am62pxx_sk-fs,j721e-hsevm,j721e-idk-gw,j7200-evm,j7200-hsevm,j784s4-evm,j784s4-hsevm"
    "LCPD-37613","Documentation: Mention correct file name for LP board","am62xx_lp_sk-fs"
