@@ -115,20 +115,13 @@ Run kmscube on the secondary display:
 
 .. code-block:: console
 
-   # kmscube -c <connector-id>
+   # kmscube -n <connector-id>
 
 For example, if the connector id for the secondary display is 16:
 
 .. code-block:: console
 
-   # kmscube -c 16
-
-Run kmscube on all connected displays (LCD & HDMI):
-
-.. code-block:: console
-
-   # kmscube -a
-
+   # kmscube -n 16
 
 .. [#f1]
 
