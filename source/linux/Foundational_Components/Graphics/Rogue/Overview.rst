@@ -116,15 +116,9 @@ Support for OS controlled Active Power Management, enabled by default.
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_AXE')
 
-   Support for up to 2Kx2K render surfaces.
-
    Support for OS suspend and resume functions. See
    :doc:`/linux/How_to_Guides/Target/How_to_suspend_to_ram_on_AM62x` for more
    info.
-
-.. ifconfig:: CONFIG_gpu_ip in ('Rogue_BXS', 'Rogue_8XE')
-
-   Support for up to 4Kx4K render surfaces.
 
 Software Architecture
 =====================
