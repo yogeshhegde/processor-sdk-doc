@@ -1,4 +1,5 @@
 .. include:: /_replacevars.rst
+.. include:: <isonum.txt>
 
 Introduction
 ============
@@ -107,4 +108,3 @@ Some of the demos under null windowing system require the user to pass in
 the drm connector id. For information on how to get connector id please
 refer to the :doc:`../Common/Display` section.
 
-.. |reg| unicode:: U+000AE .. REGISTERED SIGN

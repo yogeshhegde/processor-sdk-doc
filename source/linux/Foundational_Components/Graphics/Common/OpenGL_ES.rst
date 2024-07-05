@@ -1,4 +1,5 @@
 .. include:: /_replacevars.rst
+.. include:: <isonum.txt>
 
 #########
 OpenGL ES
@@ -14,4 +15,3 @@ For more information about OpenGL\ |reg| ES and EGL\ |reg| extensions see:
    - `<https://docs.imgtec.com/reference-manuals/open-gl-es-extensions/html/topics/overview.html>`_
    - `<https://registry.khronos.org/OpenGL/>`_
 
-.. |reg| unicode:: U+000AE .. REGISTERED SIGN

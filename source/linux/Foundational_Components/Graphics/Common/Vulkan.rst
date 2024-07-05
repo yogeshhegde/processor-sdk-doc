@@ -1,4 +1,5 @@
 .. include:: /_replacevars.rst
+.. include:: <isonum.txt>
 
 ######
 Vulkan
@@ -20,4 +21,3 @@ For more information about Vulkan\ |reg| extensions see:
    - `<https://docs.imgtec.com/starter-guides/vulkan-hello-api-guide/html/topics/introduction.html>`_
    - `<https://registry.khronos.org/vulkan/>`_
 
-.. |reg| unicode:: U+000AE .. REGISTERED SIGN

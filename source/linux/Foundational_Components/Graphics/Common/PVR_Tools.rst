@@ -1,3 +1,5 @@
+.. include:: <isonum.txt>
+
 #############
 PowerVR Tools
 #############
@@ -51,4 +53,3 @@ Imagination's upstream target setup guide for the most recent instructions.
 
 .. _PowerVR-SDK: https://www.imgtec.com/developers/powervr-sdk-tools/installers/
 
-.. |reg| unicode:: U+000AE .. REGISTERED SIGN

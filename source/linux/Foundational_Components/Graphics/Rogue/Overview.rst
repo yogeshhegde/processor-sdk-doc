@@ -1,4 +1,5 @@
 .. include:: /_replacevars.rst
+.. include:: <isonum.txt>
 
 ############
 Introduction
@@ -175,8 +176,6 @@ list of these demos, with a brief description.
        Navigation software.
    * - Kmscube
      - This demo shows how to render and display multi-colored spinning cube
-
-.. |reg| unicode:: U+000AE .. REGISTERED SIGN
 
 .. |chk| unicode:: U+2713 .. CHECK MARK
 
