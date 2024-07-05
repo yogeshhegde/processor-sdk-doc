@@ -95,7 +95,7 @@ On all connected displays (LCD and HDMI):
 By default, the screensaver timeout is configured to 300 seconds. The user can
 change the screensaver timeout using a command line option:
 
-::
+.. code-block:: text
 
    --idle-time=<number of seconds>
 
@@ -104,14 +104,14 @@ display on all connectors, use the below command:
 
 .. code-block:: console
 
-   weston --idle-time=600
+   # weston --idle-time=600
 
 To disable the screen timeout and to configure Weston to display on all
 connectors, use the below command:
 
 .. code-block:: console
 
-   weston --idle-time=0
+   # weston --idle-time=0
 
 If you face any issues with the above procedure, please refer to `the upstream
 weston documentation`_ for troubleshooting tips.
@@ -119,10 +119,8 @@ weston documentation`_ for troubleshooting tips.
 .. _the upstream weston documentation:
    https://wayland.pages.freedesktop.org/weston/toc/running-weston.html
 
-The filesystem comes with a preconfigured **weston.ini** file which will
-be located in
-
-**/etc/xdg/weston/weston.ini**
+The filesystem comes with a preconfigured :file:`weston.ini` file which will
+be located at :file:`/etc/xdg/weston/weston.ini`
 
 ***************
 Stopping Weston
@@ -185,12 +183,13 @@ The SDK also has support for configuring Weston ivi-shell. The default shell
 that is configured in the SDK is the desktop-shell.
 
 To change the shell to ivi-shell, the user will have to add the following lines
-into the /etc/xdg/weston/weston.ini.
+into the :file:`/etc/xdg/weston/weston.ini`.
 
 To switch back to the desktop-shell can be done by commenting these lines in the
-/etc/xdg/weston/weston.ini (comments begin with a '#' at the start of line).
+:file:`/etc/xdg/weston/weston.ini` (comments begin with a '#' at the start of
+line).
 
-::
+.. code-block:: ini
 
    [core]
    shell=ivi-shell.so
