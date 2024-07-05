@@ -300,26 +300,6 @@ Native_SDK examples.
       # /usr/bin/SGX/demos/Wayland/OpenGLESNavigation3D
       # /usr/bin/SGX/demos/Wayland/OpenGLESParticleSystem
 
-   Additionally demos using the Null Window System / KMS / DRM / EGLFS are
-   provided with Qt. By default EGLFS will use the eglfs\_kms backend.
-
-   .. code-block:: console
-
-      # /usr/share/qt5/examples/opengl/hellogles3/hellogles3 -platform eglfs
-      # /usr/share/qt5/examples/opengl/2dpainting/2dpainting -platform eglfs
-      # /usr/share/qt5/examples/opengl/paintedwindow/paintedwindow -platform eglfs
-
-   The default eglfs\_kms configuration file for Qt5 is located at:
-
-   .. code-block:: console
-
-      # /etc/qt5/eglfs_kms_cfg.json
-
-   For more information about Qt's EGLFS and using Qt5 in embedded
-   applications see:
-
-      - https://doc.qt.io/qt-5/embedded-linux.html
-
 
 Display
 =======
@@ -744,16 +724,6 @@ Some important references to Weston IVI-shell can be found at the following
 link:
 
 - https://wayland.pages.freedesktop.org/weston/toc/ivi-shell.html
-
-Running QT applications with IVI shell
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To run the QT application with ivi-shell, set the
-``QT_WAYLAND_SHELL_INTEGRATION`` environment variable to ivi-shell.
-
-.. code-block:: console
-
-   # export QT_WAYLAND_SHELL_INTEGRATION=ivi-shell
 
 Using the PowerVR Tools
 =======================
