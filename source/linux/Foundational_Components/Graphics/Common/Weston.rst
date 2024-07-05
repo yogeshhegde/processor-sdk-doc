@@ -11,26 +11,28 @@ to the other.
 .. ifconfig:: CONFIG_part_variant in ('AM62PX', 'J722S')
 
    The |__PART_FAMILY_NAME__| group of devices actually utilizes two separate
-   DSS modules enumerated under two different ``/dev/dri/card*`` devices.
+   DSS modules enumerated under two different :file:`/dev/dri/card*` devices.
 
-   Unfortunately utilizing multiple card devices is not supported by Weston
-   versions lower than ``11.0.91``. Starting multiple Weston instances can get
-   around this behavior with the caveat that you will need to switch the
-   ``WAYLAND_DISPLAY`` environment variable to point at the instance you want to
-   interact with.
+   Weston versions newer than ``11.0.91`` can specify additional card devices
+   via the ``--additional-devices`` command line parameter.
 
-   To start multiple instances of Weston, you will need to manually specify the
-   ``drm-device`` and the ``seat`` like the below command:
+   To launch Weston using both card0 and card1, you can use the following
+   command:
 
    .. code-block:: console
 
-      # weston --seat=seat1 --drm-device=card2
+      # weston --drm-device=card0 --additional-devices=card1
 
-   The first instance of Weston will always use ``seat0`` by default. Peripheral
-   devices will be automatically registered under ``seat0`` unless told
-   otherwise. For more info about multi-seat configuration see:
+   You may also modify the weston service to have systemd do this automatically
+   on launch by using ``systemctl edit weston`` and inserting the following:
 
-   https://www.freedesktop.org/wiki/Software/systemd/multiseat/
+   .. code-block:: ini
+
+      [Serivce]
+      ExecStart=/usr/bin/weston --modules=systemd-notify.so --drm-device=card0 --additional-devices=card1
+
+   Please note, however, that Weston cannot use by-path identifiers and
+   consistent naming of DRI devices is not the default behavior.
 
 ****************************
 Starting Weston with Systemd
