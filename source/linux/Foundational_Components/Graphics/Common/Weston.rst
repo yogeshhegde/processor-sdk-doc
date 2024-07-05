@@ -78,19 +78,19 @@ On the default display:
 
 .. code-block:: console
 
-   # weston --tty=1 --display=<default connector-id>
+   # weston --display=<default connector-id>
 
 On the secondary display:
 
 .. code-block:: console
 
-   # weston --tty=1 --display=<secondary connector-id>
+   # weston --display=<secondary connector-id>
 
 On all connected displays (LCD and HDMI):
 
 .. code-block:: console
 
-   # weston --tty=1
+   # weston
 
 By default, the screensaver timeout is configured to 300 seconds. The user can
 change the screensaver timeout using a command line option:
@@ -104,14 +104,14 @@ display on all connectors, use the below command:
 
 .. code-block:: console
 
-   weston --tty=1 --idle-time=600
+   weston --idle-time=600
 
 To disable the screen timeout and to configure Weston to display on all
 connectors, use the below command:
 
 .. code-block:: console
 
-   weston --tty=1 --idle-time=0
+   weston --idle-time=0
 
 If you face any issues with the above procedure, please refer to `the upstream
 weston documentation`_ for troubleshooting tips.
