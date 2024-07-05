@@ -12,7 +12,23 @@ projects ranging from small one-off tools to complete application suites.
 Please refer to `<https://www.gtk.org/>`_ for additional details on GTK+.
 
 The PSDK target file system includes the pre-built GTK+ libraries under
-:file:`/usr/lib` for GTK+3 over Wayland support. There is also a comprenhensive
-GTK+3 demo application gtk3-demo under :file:`/usr/bin` to demonstrate GTK+3
+:file:`/usr/lib` for GTK+3 over Wayland support. There is also a comprehensive
+GTK+3 demo application (``gtk3-demo``) under :file:`/usr/bin` to demonstrate GTK+3
 APIs and their usages.
+
+*****
+Demos
+*****
+
+GTK+ will attempt to interact with a windowing system on startup. If one is not
+running, or it fails to connect to one for any reason, you will see the
+following error:
+
+.. code-block:: text
+
+   (<application-name>:<pid>): Gtk-WARNING **: 21:21:27.361: cannot open display: <display>
+
+If no display value is returned, then you are more than likely missing the
+``WAYLAND_DISPLAY`` environment variable. Check the :doc:`Weston`
+section for more information.
 
