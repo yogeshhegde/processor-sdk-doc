@@ -1,5 +1,6 @@
 .. include:: /_replacevars.rst
 .. include:: <isonum.txt>
+.. include:: <isopub.txt>
 
 ############
 Introduction
@@ -89,22 +90,22 @@ Support for the following pixel formats:
      - NV12
    * - Surface
      -
-     - |chk|
-     - |chk|
-     - |chk|
+     - |check|
+     - |check|
+     - |check|
      -
      -
      -
      -
    * - Texture
-     - |chk|
-     - |chk|
-     - |chk|
-     - |chk|
-     - |chk|
-     - |chk|
-     - |chk|
-     - |chk|
+     - |check|
+     - |check|
+     - |check|
+     - |check|
+     - |check|
+     - |check|
+     - |check|
+     - |check|
 
 Support for Ericsson Texture Compression (ETC1 and ETC2) on input textures.
 For an example toolkit to interact with these texture compression mechanisms,
@@ -176,6 +177,4 @@ list of these demos, with a brief description.
        Navigation software.
    * - Kmscube
      - This demo shows how to render and display multi-colored spinning cube
-
-.. |chk| unicode:: U+2713 .. CHECK MARK
 
