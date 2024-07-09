@@ -114,6 +114,7 @@ linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customiz
 linux/How_to_Guides/Target/How_to_boot_quickly
 linux/How_to_Guides/Target/How_to_test_MCAN_on_AM62x
 linux/How_to_Guides/Target/How_to_enable_DT_overlays_in_linux
+linux/How_to_Guides/Target/How_To_Enable_M2CC3301_in_linux
 linux/How_to_Guides/Target/How_to_playback_audio_over_HDMI
 linux/How_to_Guides/Target/How_to_Use_K3Conf_Tool
 linux/How_to_Guides/Target/Runtime_debug_unlock_on_secure_device
