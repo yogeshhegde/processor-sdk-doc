@@ -11,7 +11,7 @@ Find more information about the `CC3301 here <https://www.ti.com/product/CC3301>
 
 Because the AM6x starter kits now feature an M.2 Key-E connector, an M.2 card has been
 developed for evaluation purposes. `Order the M.2-CC3301 board from here <https://www.ti.com/tool/M2-CC3301>`_.
-The M.2-CC3351 is also interchangeable
+The M.2-CC3351 is also interchangeable and uses the exact same instructions below. 
 
 By default, the Processor SDK includes support for the M.2-CC33x1 on the following starter kits:
 
@@ -32,26 +32,26 @@ M.2 card is held down by the screw. The end result should be as shown in the ima
 Enable DT Overlay for M.2-CC33x1
 --------------------------------
 
-After flashing the SD card with the default SDK image, plug the SD card into a host computer. 
+After flashing the SD card with the ``tisdk-default-image``, mount the SD card onto a host computer, if not done already. 
 On the boot partition of the SD card, add one of the following variables, corresponding to the starter kit,
 into the ``uEnv.txt`` file. This will let u-boot enable the m.2-cc33x1 devicetree overlay. The ``uEnv.txt`` file can be found on the ``boot``
 partition of the SD card. 
 
 For SK-AM62B-P1: 
 
-    ::
+    .. code-block::
 
         name_overlays=k3-am625-sk-m2-cc3301.dtbo 
 
 For SK-AM62A-LP: 
 
-    ::
+    .. code-block::
 
         name_overlays=k3-am62a7-sk-m2-cc3301.dtbo 
 
 For SK-AM62P-LP: 
 
-    ::
+    .. code-block::
 
         name_overlays=k3-am62p5-sk-m2-cc3301.dtbo 
 
@@ -69,7 +69,7 @@ Connect to Wi-Fi
 Using scripts provided in the SDK makes connecting to an Access Point or router straightforward.
 The following are steps to connect to a WPA password-secured Access Point. 
 
-:: 
+.. code-block:: 
 
     cd /usr/share/cc33xx
     ./sta_start.sh
