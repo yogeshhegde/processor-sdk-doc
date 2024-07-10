@@ -1,7 +1,8 @@
 .. _enable_m2cc3301:
 
+#################################
 How to Enable M.2-CC33x1 in Linux
-=================================
+#################################
 
 Processor SDK 10.0 introduces support for the CC33XX family of devices.
 These devices feature Wi-Fi 6 (802.11ax) for the 2.4 and 5GHz frequency bands,
@@ -19,7 +20,9 @@ By default, the Processor SDK includes support for the M.2-CC33x1 on the followi
 * SK-AM62A-LP
 * SK-AM62P-LP
 
-**Hardware Installation**
+*********************
+Hardware Installation
+*********************
 
 To install the M.2-CC33x1, remove the screw from the Starter Kit's M.2 connector. Place the M.2-CC33x1 into the
 Key-E slot. Place the M.2 card into the Starter Kit's slot, and insert the screw such that the edge of the
@@ -29,8 +32,9 @@ M.2 card is held down by the screw. The end result should be as shown in the ima
      :align: center
      :height: 360
 
+********************************
 Enable DT Overlay for M.2-CC33x1
---------------------------------
+********************************
 
 After flashing the SD card with the ``tisdk-default-image``, mount the SD card onto a host computer, if not done already. 
 On the boot partition of the SD card, add one of the following variables, corresponding to the starter kit,
@@ -39,19 +43,19 @@ partition of the SD card.
 
 For SK-AM62B-P1: 
 
-    .. code-block::
+    .. code-block:: console
 
         name_overlays=k3-am625-sk-m2-cc3301.dtbo 
 
 For SK-AM62A-LP: 
 
-    .. code-block::
+    .. code-block:: console
 
         name_overlays=k3-am62a7-sk-m2-cc3301.dtbo 
 
 For SK-AM62P-LP: 
 
-    .. code-block::
+    .. code-block:: console
 
         name_overlays=k3-am62p5-sk-m2-cc3301.dtbo 
 
@@ -63,13 +67,14 @@ For SK-AM62P-LP:
     Do not change the name of this file in the uEnv.txt regardless of which M.2 card that is being used. 
 
 
+****************
 Connect to Wi-Fi
-----------------
+****************
 
 Using scripts provided in the SDK makes connecting to an Access Point or router straightforward.
 The following are steps to connect to a WPA password-secured Access Point. 
 
-.. code-block:: 
+.. code-block:: console
 
     cd /usr/share/cc33xx
     ./sta_start.sh
