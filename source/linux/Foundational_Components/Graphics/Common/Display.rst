@@ -102,8 +102,26 @@ Using Connector ID and Plane ID
 *******************************
 
 The above information may be used with some userspace applications to control
-which displays are rendered to. For example, kmscube's behavior can be augmented
-with command line arguments.
+which displays are rendered to. These applications are using what is known as
+kernel mode setting (kms). For more information about kernel mode setting see
+the `upstream kms documentation`_. In this section you only need to keep 2
+things in mind:
+
+   #. Applications that intend to interact with the kms interface usually don't
+      need any user input. They can query device info through the interface and
+      will normally pick the first connected display automatically.
+
+   #. Only one application can manage the kms interface at a time. Weston is
+      normally the first graphical application started out of the box and as
+      such it will prevent you from starting any other kms applications. See
+      :ref:`stopping-weston` if you want to use another kms application.
+
+.. _upstream kms documentation: https://www.kernel.org/doc/html/latest/gpu/drm-kms.html
+
+That being said, if you wish to change rendering behavior for an application
+check with that applications documentation for a way to specify connector,
+plane, and / or crtc information. One kms application we include is ``kmscube``.
+Below are some examples on how to alter it's default behavior.
 
 Run kmscube on the default display:
 

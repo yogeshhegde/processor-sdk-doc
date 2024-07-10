@@ -122,6 +122,8 @@ weston documentation`_ for troubleshooting tips.
 The filesystem comes with a preconfigured :file:`weston.ini` file which will
 be located at :file:`/etc/xdg/weston/weston.ini`
 
+.. _stopping-weston:
+
 ***************
 Stopping Weston
 ***************
