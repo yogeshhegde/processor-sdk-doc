@@ -47,11 +47,7 @@ Introduction
 
    .. include:: _BXS_Extension_List.rst
 
-For more information about the supported OpenGL\ |reg| ES and EGL\ |reg|
-extensions see:
-
-   - `<https://docs.imgtec.com/reference-manuals/open-gl-es-extensions/html/topics/overview.html>`_
-   - `<https://registry.khronos.org/OpenGL/>`_
+For more information about OpenGL\ |reg| ES see :doc:`../Common/OpenGL_ES`.
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_BXS', 'Rogue_AXE')
 
