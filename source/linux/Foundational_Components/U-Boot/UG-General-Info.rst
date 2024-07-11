@@ -16,6 +16,16 @@ General Information
       python3 python3-setuptools python3-dev python3-yaml python3-jsonschema python3-pyelftools \
       swig yamllint
 
+.. note::
+
+   The recommended host machine for building U-Boot is Ubuntu 22.04.
+   Users of Ubuntu 18.04 may need to install Python 3.7 or higher. If using the default Python 3.6
+   that comes with Ubuntu 18.04, users may need to install these additional dependencies:
+
+   .. code-block:: console
+
+      pip install dataclasses pyelftools jsonschema yamllint importlib-resources
+
 Getting the U-Boot Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
