@@ -2,7 +2,7 @@
 Display
 #######
 
-TI SoC's are equipped with Display SubSystem (DSS) hardware to provide hardware
+TI SoCs are equipped with Display SubSystem (DSS) hardware to provide hardware
 acceleration for alpha blending of overlays and color conversion. The DSS
 hardware is exposed to the software drm API available through ``libdrm`` module.
 Through this drm interface, a user space program can perform *mode setting* of
