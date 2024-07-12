@@ -195,7 +195,7 @@ Demonstration of the NETCONF/YANG support using the **nw-configurator** applicat
 
 The YANG model pertaining to EST that come pre-installed SDK is available at
 
-https://github.com/YangModels/yang/blob/main/standard/ieee/draft/802.1/Qcw/ieee802-dot1q-sched.yang
+https://github.com/YangModels/yang/blob/main/standard/ieee/published/802.1/ieee802-dot1q-sched.yang
 
 The dependent YANG models are also installed.
 
