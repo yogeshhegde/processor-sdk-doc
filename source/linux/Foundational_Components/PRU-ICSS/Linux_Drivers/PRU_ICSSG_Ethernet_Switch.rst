@@ -16,15 +16,10 @@ Example assuming ETH1 and ETH2 as ICSSG0 interfaces:
 
 ::
 
- ip link set dev eth1 down
- ip link set dev eth2 down
- devlink dev param set platform/icssg0-eth name switch_mode value 1 cmode runtime
  ip link add name br0 type bridge
  ip link set dev eth1 master br0
  ip link set dev eth2 master br0
  ip link set dev br0 up
- ip link set dev eth1 up
- ip link set dev eth2 up
  bridge vlan add dev br0 vid 1 pvid untagged self
 
 Going back to Dual EMAC mode
@@ -35,12 +30,7 @@ Going back to Dual EMAC mode
  ip link set dev br0 down
  ip link set dev eth1 nomaster
  ip link set dev eth2 nomaster
- ip link set dev eth1 down
- ip link set dev eth2 down
- devlink dev param set platform/icssg0-eth name switch_mode value 0 cmode runtime
  ip link del name br0 type bridge
- ip link set dev eth1 up
- ip link set dev eth2 up
 
 Turn On/Off Spanning Tree Protocol (STP)
 """"""""""""""""""""""""""""""""""""""""
