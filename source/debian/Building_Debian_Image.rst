@@ -46,11 +46,18 @@ Repository Structure
     ├── builds.toml
     ├── configs
     │   ├── bdebstrap_configs
-    │   │   ├── am62-bookworm.yaml
-    │   │   ├── am62p-bookworm.yaml
-    │   │   ├── am64-bookworm.yaml
+    │   │   ├── bookworm
+    │   │   │   ├── bookworm-<machine>.yaml
+    │   │   │   └── bookworm-rt-<machine>.yaml
+    │   │   └── trixie
+    │   │       ├── trixie-<machine>.yaml
+    │   │       └── trixie-rt-<machine>.yaml
     │   ├── bsp_sources.toml
-    │   └── machines.toml
+    │   └── machines --> Machine configurations for each BSP version
+    │       ├── 09.02.00.010.toml
+    │       └── 10.00.05.toml
+    ├── create-sdcard.sh
+    ├── create-wic.sh
     ├── LICENSE
     ├── README.md
     ├── scripts
@@ -58,9 +65,7 @@ Repository Structure
     │   ├── build_distro.sh
     │   ├── common.sh
     │   └── setup.sh
-    ├── target
-    │   └── files for target configs
-
+    └── target --> Custom files to deploy in target.
 
 ``build.sh``: the "main" script that the user should run to generate Debian images.
 
@@ -75,26 +80,27 @@ Repository Structure
 Build Configurations
 --------------------
 
-A ``build config`` represents an image with certain values for the ``machine``, ``bsp_version`` and ``distro_variant`` parameters.
+A ``build config`` represents an image with certain values for the ``machine``, ``rt_linux`` and ``distro_codename`` parameters.
 
 The ``builds.toml`` file contains a list of all valid builds in the ``builds[]`` list. Each ``build`` is then defined underneath.
 
-Values of ``machine``, ``bsp_version`` and ``distro-variant`` must be defined in ``configs/machines.toml``, ``configs/bsp_sources.toml`` and ``configs/bdebstrap_configs/<distro-variant>.yaml`` files. If any of these is missing, the build will fail.
+Values of ``machine`` and ``distro_codename`` must be defined in :file:`configs/machines.toml`, :file:`configs/bdebstrap_configs/<distro>/<distro>-<machine>.yaml` and :file:`configs/bsp_sources.toml` files. If any of these is missing, the build will fail.
 
 So long as you conform to the rule above, you may also define your own builds.
 
 Building Images
 ---------------
 
-All valid builds are listed in the ``builds.toml`` file. To build an image, one of these must be chosen and supplied to the ``build.sh`` command. ``build.sh`` commences the build process.
-The images are finally stored in the ``build/`` directory. Each build also produces a log file inside ``log/``.
+All valid builds are listed in the :file:`builds.toml` file. To build an image, one of these must be chosen and supplied to the :file:`build.sh` command. :file:`build.sh` commences the build process.
+The images are finally stored in the :file:`build/` directory. Each build also produces a log file inside :file:`log/`.
 
 Building images using ``ti-bdebstrap`` involves the following steps:
 
     1. install the pre-requisite packages
     2. get the scripts using ``git clone``
-    3. run the ``build.sh`` script and with required build config as argument.
-    4. flashing the image into a SD card
+    3. run the :file:`build.sh` script and with required build config as argument.
+    4. creating a wic image using :file:`create-wic.sh`.
+    5. flashing the image into a SD card
 
 Install Pre-requisite Packages
 ------------------------------
@@ -125,44 +131,45 @@ Ensure that all packages were correctly installed using:
 
     sudo apt install --fix-broken
 
-Finally, install ``toml-cli``:
+Finally, install ``toml-cli`` and ``yamllint``:
 
 .. code-block::
 
     pip3 install toml-cli
+    pip3 install yamllint
 
 .. note::
 
-   Since the build script is run as `root` user, toml-cli should also be installed with `sudo` for `root` user to be able to access it.
+   Since the build script is run as ``root`` user, ``toml-cli`` and ``yamllint`` should also be installed with ``sudo`` for ``root`` user to be able to access it.
 
 .. note::
 
-   The scripts internally handle toolchain downloads based on Host architecture. So the same steps can be followed on both `arm` and `x86_64` hosts.
+   The scripts internally handle toolchain downloads based on Host architecture. So the same steps can be followed on both ``arm`` and ``x86_64`` hosts.
 
 Building the Image
 -------------------
 
 .. note::
 
-   If you are behind a proxy, since the build is run with sudo, make sure to set the proxy for root user (preferably in ``/etc/environment``).
+   If you are behind a proxy, since the build is run with sudo, make sure to set the proxy for root user (preferably in :file:`/etc/environment`).
 
-To build an image, you need to run the ``build.sh`` script:
+To build an image, you need to run the :file:`build.sh` script:
 
 .. code-block::
 
     sudo ./build.sh <build-name>
 
-The ``<build-name>`` must be one present inside ``builds.toml`` file.
+The ``<build-name>`` must be one present inside :file:`builds.toml` file.
 
-After the build, the RootFS, Boot partition and bsp_sources are stored in ``build/<build-name>``. The logs will be stored in ``logs/<build-name>.log``.
+After the build, the RootFS, Boot partition and bsp_sources are stored in :file:`build/<build-name>`. The logs will be stored in :file:`logs/<build-name>.log`.
 
-Example: to build for ``am62-bookworm-09.02.01.010``, run:
+Example: to build for ``trixie-am62pxx-evm``, run:
 
 .. code-block::
 
-    sudo ./build.sh am62-bookworm-09.02.01.010
+    sudo ./build.sh trixie-am62pxx-evm
 
-The RootFS, Boot partition and bsp_sources are then stored in ``build/am62-bookworm-09.02.01.010``. The build log is saved as ``logs/am62-bookworm-09.02.01.010.log``.
+The RootFS, Boot partition and bsp_sources are then stored in :file:`build/trixie-am62pxx-evm`. The build log is saved as :file:`logs/trixie-am62pxx-evm.log`.
 
 Generate an SD Card Image
 -------------------------
@@ -175,28 +182,28 @@ To generate an SD Card Image with the generated RootFS and Boot partition files,
 
    ./create-wic.sh <build-name>
 
-Example: to build for ``am62-bookworm-09.02.01.010``, run:
+Example: to build for ``trixie-am62pxx-evm``, run:
 
 .. code-block::
 
-   ./create-wic.sh am62-bookworm-09.02.01.010
+   ./create-wic.sh trixie-am62pxx-evm
 
-The wic image is generated under ``build/am62-bookworm-09.02.010``. This can be used to flash an SD card using standard tools like balena-etcher.
+The wic image is generated under :file:`build/trixie-am62pxx-evm`. This can be used to flash an SD card using standard tools like balena-etcher.
 
 Flash Image to SD Card using Script
 -----------------------------------
 
-To flash the SD card without generating a wic image, use the ``create-sdcard.sh`` script. Run it using the below command and follow with the prompts.
+To flash the SD card without generating a wic image, use the :file:`create-sdcard.sh` script. Run it using the below command and follow with the prompts.
 
 .. code-block::
 
     sudo ./create-sdcard.sh <build-name>
 
-For example, if the image is am62-bookworm-09.02.01.010, type:
+For example, if the image is ``trixie-am62pxx-evm``, type:
 
 .. code-block::
 
-    sudo ./create-sdcard.sh am62-bookworm-09.02.01.010
+    sudo ./create-sdcard.sh trixie-am62pxx-evm
 
 This script will partition the SD Card and copy the contents of RootFS and Boot partitions that are generated to the SD Card.
 
