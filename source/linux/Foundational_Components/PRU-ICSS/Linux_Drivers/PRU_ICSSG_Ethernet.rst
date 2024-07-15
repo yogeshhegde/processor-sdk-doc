@@ -225,83 +225,112 @@ The interface DMA Channels information can be retrieved by using ``ethtool-l|--s
 Show adapter statistics
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The interface statistics can be retrieved by using ``ethtool -S|--statistics DEVNAME`` command.
+The interface statistics are divided into several parts. Different statistics can be retrieved using the commands as mentioned below.
+
+Standard Netdev Staticstics
+"""""""""""""""""""""""""""
+
+Standard netdev staticstics such as RX / TX bytes / packet count can be retrieved using the command ``ip -s -s link show dev DEVNAME``. Fore more details refer `Standard interface statistics <https://docs.kernel.org/networking/statistics.html#standard-interface-statistics>`__
+
+.. code-block:: console
+
+   ~# ip -s -s link show dev eth1
+   10: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+      link/ether 70:ff:76:1d:ea:f9 brd ff:ff:ff:ff:ff:ff
+      RX:  bytes packets errors dropped  missed   mcast
+            2958      18      0       0       0       8
+      RX errors:  length    crc   frame    fifo overrun
+                       0      0       0       0       0
+      TX:  bytes packets errors dropped carrier collsns
+           13138     138      0       0       0       0
+      TX errors: aborted   fifo  window heartbt transns
+                       0      0       0       0       2
+
+Protocol-specific statistics
+""""""""""""""""""""""""""""
+
+Protocol specific staticstics such as packet counts for different octet sizes can be retrieved using the command ``ethtool -S DEVNAME --groups rmon``. Fore more details refer `Protocol specific statistics <https://docs.kernel.org/networking/statistics.html#protocol-specific-statistics>`__
+
+.. code-block:: console
+
+   ~# ethtool -S eth1 --groups rmon
+   Standard stats for eth1:
+   rmon-etherStatsUndersizePkts: 0
+   rx-rmon-etherStatsPkts64Octets: 3
+   rx-rmon-etherStatsPkts65to128Octets: 1
+   rx-rmon-etherStatsPkts129to256Octets: 4
+   rx-rmon-etherStatsPkts257to512Octets: 2
+   rx-rmon-etherStatsPkts513to2000Octets: 0
+   tx-rmon-etherStatsPkts64Octets: 0
+   tx-rmon-etherStatsPkts65to128Octets: 53
+   tx-rmon-etherStatsPkts129to256Octets: 18
+   tx-rmon-etherStatsPkts257to512Octets: 2
+   tx-rmon-etherStatsPkts513to2000Octets: 0
+
+Driver-defined statistics
+"""""""""""""""""""""""""
+
+Driver-defined ethtool statistics can be retrieved by using ``ethtool -S | --statistics DEVNAME`` command.
 It displays statistic for the ethernet port.
 
-::
+.. code-block:: console
 
- ~# ethtool -S eth1
- NIC statistics:
-     rx_good_frames: 1757
-     rx_broadcast_frames: 151
-     rx_multicast_frames: 585
-     rx_crc_error_frames: 0
-     rx_mii_error_frames: 0
-     rx_odd_nibble_frames: 0
-     rx_frame_max_size: 4972000
-     rx_max_size_error_frames: 0
-     rx_frame_min_size: 159104
-     rx_min_size_error_frames: 0
-     rx_overrun_frames: 0
-     rx_class0_hits: 1757
-     rx_class1_hits: 0
-     rx_class2_hits: 0
-     rx_class3_hits: 0
-     rx_class4_hits: 0
-     rx_class5_hits: 0
-     rx_class6_hits: 0
-     rx_class7_hits: 0
-     rx_class8_hits: 1757
-     rx_class9_hits: 1757
-     rx_class10_hits: 0
-     rx_class11_hits: 0
-     rx_class12_hits: 0
-     rx_class13_hits: 0
-     rx_class14_hits: 0
-     rx_class15_hits: 0
-     rx_smd_frags: 0
-     rx_bucket1_size: 159104
-     rx_bucket2_size: 318208
-     rx_bucket3_size: 636416
-     rx_bucket4_size: 1272832
-     rx_64B_frames: 1053
-     rx_bucket1_frames: 1053
-     rx_bucket2_frames: 366
-     rx_bucket3_frames: 88
-     rx_bucket4_frames: 250
-     rx_bucket5_frames: 0
-     rx_total_bytes: 203502
-     rx_tx_total_bytes: 1555610607
-     tx_good_frames: 1022405
-     tx_broadcast_frames: 2
-     tx_multicast_frames: 57
-     tx_odd_nibble_frames: 0
-     tx_underflow_errors: 0
-     tx_frame_max_size: 4972000
-     tx_max_size_error_frames: 0
-     tx_frame_min_size: 159104
-     tx_min_size_error_frames: 0
-     tx_bucket1_size: 159104
-     tx_bucket2_size: 318208
-     tx_bucket3_size: 636416
-     tx_bucket4_size: 1272832
-     tx_64B_frames: 0
-     tx_bucket1_frames: 0
-     tx_bucket2_frames: 3044
-     tx_bucket3_frames: 14
-     tx_bucket4_frames: 339
-     tx_bucket5_frames: 196605
-     tx_total_bytes: 1555407105
-     iet_bad_frag_slice0: 0
-     iet_bad_frag_slice1: 0
-     iet_asm_err_slice0: 0
-     iet_asm_err_slice1: 0
-     iet_tx_frag_slice0: 0
-     iet_tx_frag_slice1: 0
-     iet_asm_ok_slice0: 0
-     iet_asm_ok_slice1: 0
-     iet_rx_frag_slice0: 0
-     iet_rx_frag_slice1: 0
+   ~# ethtool -S eth1
+   NIC statistics:
+       rx_broadcast_frames: 0
+       rx_mii_error_frames: 0
+       rx_odd_nibble_frames: 0
+       rx_max_size_error_frames: 0
+       rx_min_size_error_frames: 0
+       rx_class0_hits: 16
+       rx_class1_hits: 0
+       rx_class2_hits: 0
+       rx_class3_hits: 0
+       rx_class4_hits: 0
+       rx_class5_hits: 0
+       rx_class6_hits: 0
+       rx_class7_hits: 0
+       rx_class8_hits: 16
+       rx_class9_hits: 16
+       rx_class10_hits: 0
+       rx_class11_hits: 0
+       rx_class12_hits: 0
+       rx_class13_hits: 0
+       rx_class14_hits: 0
+       rx_class15_hits: 0
+       rx_smd_frags: 0
+       rx_tx_total_bytes: 14348
+       tx_broadcast_frames: 2
+       tx_multicast_frames: 35
+       tx_odd_nibble_frames: 0
+       tx_underflow_errors: 0
+       tx_max_size_error_frames: 0
+       tx_min_size_error_frames: 0
+
+IET FPE statistics
+""""""""""""""""""
+
+ICSSG supports Intersperse Express Traffic (IET, defined in P802.3br/D2.0 spec which later is included in IEEE 802.3 2018) Frame preemption (FPE) feature. The statistics related to IET can be obtained by using ``ethtool --include-statistics --show-mm DEVNAME``
+
+.. code-block:: console
+
+   ~# ethtool --include-statistics --show-mm eth1
+   MAC Merge layer state for eth1:
+   pMAC enabled: on
+   TX enabled: off
+   TX active: off
+   TX minimum fragment size: 0
+   RX minimum fragment size: 124
+   Verify enabled: off
+   Verify time: 0
+   Max verify time: 128
+   Verification status: UNKNOWN
+   Statistics:
+    MACMergeFrameAssErrorCount: 0
+    MACMergeFrameSmdErrorCount: 0
+    MACMergeFrameAssOkCount: 0
+    MACMergeFragCountRx: 0
+    MACMergeFragCountTx: 0
 
 Show EEE settings
 ^^^^^^^^^^^^^^^^^
