@@ -20,8 +20,6 @@ To start using this tool, follow these instructions:
 - Download the SysConfig tool from `SysConfig release download link <https://www.ti.com/tool/download/SYSCONFIG>`__
 - Install the sysconfig tool and note the path where it is installed.
 - Go to the **k3-respart-tool** packaged in the SDK installation
-- Run the **setup script** ``./scripts/setup.py -s /path/to/sysconfig/installation``
-  to setup the SysConfig tool.
 - Open the SysConfig tool GUI from the desktop shortcut and select the **software product**
   by navigating to the path where the **k3-respart-tool** is available.
 
