@@ -13,11 +13,11 @@ the Texas Instruments AM62Px SoC.
 
 The Wave5 hardware is implemented via:
 
-- the ``wave5`` driver, located in ``~/09_02_00/ti-kernel-aosp/common/drivers/media/platform/chips-media/wave5/``
-- a firmware located in ``~/09_02_00/ti-aosp-14/vendor/ti/vendor/ti/am62x/firmware/vendor/firmware/cnm/``
+- the ``wave5`` driver, located in ``~/10_00_00/ti-kernel-aosp/common/drivers/media/platform/chips-media/wave5/``
+- a firmware located in ``~/10_00_00/ti-aosp-14/vendor/ti/vendor/ti/am62x/firmware/vendor/firmware/cnm/``
 
 The userspace associated component is based on the AOSP-provided ``v4l2_codec2`` HAL.
-The source can be found in ``~/09_02_00/ti-aosp-14/external/v4l2_codec2``.
+The source can be found in ``~/10_00_00/ti-aosp-14/external/v4l2_codec2``.
 
 
 Testing

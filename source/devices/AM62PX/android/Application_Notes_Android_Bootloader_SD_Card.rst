@@ -16,7 +16,7 @@ to boot into U-Boot and use fastboot.
 .. warning::
 
    Make sure to use the same bootloaders as the release you are flashing.
-   The latest release is ``09.02.00``.
+   The latest release is ``10.00.00``.
 
 Identify the SD Card
 --------------------
@@ -45,7 +45,7 @@ Then, run:
    (OR)
 
    # If you are using pre-built binaries from SDK download page
-   $ cd AM62Px_09.02.00_emmc
+   $ cd AM62Px_10.00.00_emmc
 
    $ sudo ./flashall.sh --board am62px-sk --bootloader --sdcard /dev/mmcblk0
 

@@ -80,7 +80,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
         (OR)
 
         # If you are using pre-built binaries from SDK download page
-        $ cd AM62x_09.02.00_emmc
+        $ cd AM62x_10.00.00_emmc
 
         # for AM62x SK EVM (GP)
         $ snagrecover -s am625 -f ./am62x-sk-evm.yaml
@@ -104,7 +104,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
         (OR)
 
         # If you are using pre-built binaries from SDK download page
-        $ cd AM62Px_09.02.00_emmc
+        $ cd AM62Px_10.00.00_emmc
 
         $ snagrecover -s am625 -f ./am62px-sk-evm-hsfs.yaml
 
@@ -158,7 +158,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
         (OR)
 
         # If you are using pre-built binaries from SDK download page
-        $ cd AM62x_09.02.00_emmc
+        $ cd AM62x_10.00.00_emmc
 
         # for AM62x SK EVM (GP)
         $ sudo ./flashall.sh --board am62x-sk
@@ -182,7 +182,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
         (OR)
 
         # If you are using pre-built binaries from SDK download page
-        $ cd AM62Px_09.02.00_emmc
+        $ cd AM62Px_10.00.00_emmc
 
         $ sudo ./flashall.sh --board am62px-sk
 

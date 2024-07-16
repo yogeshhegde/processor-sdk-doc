@@ -41,7 +41,7 @@ Downloading sources
 
     .. code-block:: console
 
-       $ mkdir ~/09_02_00 && cd $_
+       $ mkdir ~/10_00_00 && cd $_
        $ export YOUR_PATH=$PWD
 
 .. _android-download-bootloaders:
@@ -69,7 +69,7 @@ Kernel
     .. code-block:: console
 
        $ mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
-       $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_09_02_Kernel.xml
+       $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_10_00_Kernel.xml
        $ repo sync
 
     .. note::
@@ -78,7 +78,7 @@ Kernel
 
        .. code-block:: console
 
-          $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_09_02_Kernel.xml --depth=1
+          $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_10_00_Kernel.xml --depth=1
 
 .. _android-download-aosp:
 
@@ -92,7 +92,7 @@ Android file system
     .. code-block:: console
 
        $ mkdir ${YOUR_PATH}/ti-aosp-14 && cd $_
-       $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_09_02.xml
+       $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_10_00.xml
        $ repo sync
 
 
