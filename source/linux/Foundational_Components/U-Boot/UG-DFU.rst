@@ -132,40 +132,43 @@ platform that support USB Peripheral boot mode.
      Please refer to :ref:`workarounds` to fix the USB Device Firmware Upgrade (DFU) Boot
      failure in AM62x.
 
-  #. Build the bootloader images using default "am62x_evm_r5_usbdfu_defconfig"
-     and "am62x_evm_a53_defconfig" configs files. The configs required for
-     DFU boot as well as DFU in U-Boot are already enabled. For instructions
-     to build the bootloader images please refer to :ref:`Build-U-Boot-label`.
-  #. Load the bootloader images tiboot3.bin, tispl.bin and u-boot.img using
-     the dfu-util from host PC.
-  #. Once the U-Boot is up, use DFU command from u-boot to flash the
-     binary images from Host PC (using dfu-utils tool) to the eMMC, or
+  #. Build :program:`tiboot3.bin` using :file:`am62x_evm_r5_defconfig` along
+     with :file:`am62x_r5_usbdfu.config` fragment. Build :program:`tispl.bin`
+     and :program:`u-boot.img` using :file:`am62x_evm_a53_defconfig`.
+     For instructions to build the bootloader images please refer to
+     :ref:`Build-U-Boot-label`.
+  #. Load the bootloader images :program:`tiboot3.bin`, :program:`tispl.bin`
+     and :program:`u-boot.img` using the dfu-util tool on the Host PC.
+  #. Once U-Boot is up, use the DFU command at U-Boot prompt to flash the
+     binary images from the Host PC (using dfu-utils tool) to the eMMC, or
      QSPI to fresh/factory boards.
 
 
 .. ifconfig:: CONFIG_part_family in ('AM62AX_family')
 
-  #. Build the bootloader images using default "am62ax_evm_r5_usbdfu_defconfig"
-     and "am62ax_evm_a53_defconfig" config files. The configs required for
-     DFU boot as well as DFU in U-Boot are already enabled. For instructions
-     to build the bootloader images please refer to :ref:`Build-U-Boot-label`.
-  #. Load the bootloader images tiboot3.bin, tispl.bin and u-boot.img using
-     the dfu-util from host PC.
-  #. Once the U-Boot is up, use DFU command from u-boot to flash the
-     binary images from Host PC (using dfu-utils tool) to the eMMC, QSPI
+  #. Build :program:`tiboot3.bin` using :file:`am62ax_evm_r5_defconfig` along
+     with :file:`am62x_r5_usbdfu.config` fragment. Build :program:`tispl.bin`
+     and :program:`u-boot.img` using :file:`am62ax_evm_a53_defconfig`.
+     For instructions to build the bootloader images please refer to
+     :ref:`Build-U-Boot-label`.
+  #. Load the bootloader images :program:`tiboot3.bin`, :program:`tispl.bin`
+     and :program:`u-boot.img` using the dfu-util tool on the Host PC.
+  #. Once U-Boot is up, use the DFU command at U-Boot prompt to flash the
+     binary images from the Host PC (using dfu-utils tool) to the eMMC, QSPI
      or OSPI to fresh/factory boards.
 
 
 .. ifconfig:: CONFIG_part_family in ('AM62PX_family')
 
-  #. Build the bootloader images using default "am62px_evm_r5_usbdfu_defconfig"
-     and "am62px_evm_a53_defconfig" config files. The configs required for
-     DFU boot as well as DFU in U-Boot are already enabled. For instructions
-     to build the bootloader images please refer to :ref:`Build-U-Boot-label`.
-  #. Load the bootloader images tiboot3.bin, tispl.bin and u-boot.img using
-     the dfu-util from host PC.
-  #. Once the U-Boot is up, use DFU command from u-boot to flash the
-     binary images from Host PC (using dfu-utils tool) to the eMMC, QSPI
+  #. Build :program:`tiboot3.bin` using :file:`am62px_evm_r5_defconfig` along
+     with :file:`am62x_r5_usbdfu.config` fragment. Build :program:`tispl.bin`
+     and :program:`u-boot.img` using :file:`am62px_evm_a53_defconfig`.
+     For instructions to build the bootloader images please refer to
+     :ref:`Build-U-Boot-label`.
+  #. Load the bootloader images :program:`tiboot3.bin`, :program:`tispl.bin`
+     and :program:`u-boot.img` using the dfu-util tool on the Host PC.
+  #. Once U-Boot is up, use the DFU command at U-Boot prompt to flash the
+     binary images from the Host PC (using dfu-utils tool) to the eMMC, QSPI
      or OSPI to fresh/factory boards.
 
 
