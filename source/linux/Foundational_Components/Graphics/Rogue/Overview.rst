@@ -49,13 +49,6 @@ Introduction
 
 For more information about OpenGL\ |reg| ES see :doc:`../Common/OpenGL_ES`.
 
-.. ifconfig:: CONFIG_gpu_ip in ('Rogue_BXS', 'Rogue_AXE')
-
-   .. note::
-
-      OpenCL\ |reg| libraries are currently provided without support at
-      `<https://git.ti.com>`_
-
 These devices do not utilize static memory carveouts. The only reservations
 made in device tree are for control registers. Memory is instead dynamically
 allocated at runtime depending on the task and will scale accordingly.
@@ -65,8 +58,8 @@ more information.
 
 .. note::
 
-   OpenCL\ |reg| libraries are currently provided without support at
-   `<https://git.ti.com>`_
+   OpenCL\ |reg| libraries are also provided, without support, at
+   `<https://git.ti.com/cgit/graphics/ti-img-rogue-umlibs/>`_
 
 
 Other features of the Rogue series of GPUs include bilinear and trilinear filtering.
