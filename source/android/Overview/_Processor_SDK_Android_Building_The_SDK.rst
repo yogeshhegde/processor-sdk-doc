@@ -160,7 +160,12 @@ The following build flags are available. **Default** values are **highlighted**.
    * - ``TARGET_AVB_ENABLE``
      - **false**/true
      - Forces AVB feature on userdebug
-
+   * - ``TARGET_ADB_USER_ENABLE``
+     - **false**/true
+     - Forces enable ADB on user builds (**NOT for production builds**)
+   * - ``TARGET_SDCARD_BOOT``
+     - **false**/true
+     - Boot from SD card instead of eMMC
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
