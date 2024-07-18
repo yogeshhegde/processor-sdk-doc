@@ -102,6 +102,12 @@ Bootloader components
        $ git clone -b 09.02.00.009 git://git.ti.com/ti-u-boot/ti-u-boot.git
        $ git clone -b 09.02.00.009 git://git.ti.com/processor-firmware/ti-linux-firmware.git
 
+    To test the experimental ``2024.04`` U-Boot release, clone U-Boot as following instead:
+
+    .. code-block:: console
+
+       $ git clone -b 10.00.06 git://git.ti.com/ti-u-boot/ti-u-boot.git
+
 
 Build Instructions
 ==================
@@ -175,6 +181,9 @@ The following build flags are available. **Default** values are **highlighted**.
    * - ``TARGET_KERNEL_USE``
      - **6.1**/6.6
      - Pick kernel version. 6.6 is experimental
+   * - ``TARGET_BOOTLOADER_VERSION``
+     - **unset**/2024.04
+     - Pick U-Boot version (default: ``2023.04``). 2024.04 is experimental
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
@@ -272,6 +281,8 @@ For detailed information, see `k3 upstream documentation <https://docs.u-boot.or
 
          $ export UBOOT_CFG_CORTEXR=am62x_evm_r5_defconfig
          $ export UBOOT_CFG_CORTEXA="am62x_evm_a53_defconfig am62x_android_a53.config"
+         $ #OR, for use with experimental U-Boot 2024.04
+         $ #export UBOOT_CFG_CORTEXA="am62x_evm_a53_defconfig am62x_a53_android.config"
 
       For AM62x LP SK EVM, use:
 
@@ -279,6 +290,8 @@ For detailed information, see `k3 upstream documentation <https://docs.u-boot.or
 
          $ export UBOOT_CFG_CORTEXR=am62x_lpsk_r5_defconfig
          $ export UBOOT_CFG_CORTEXA="am62x_lpsk_a53_defconfig am62x_android_a53.config"
+         $ #OR, for use with experimental U-Boot 2024.04
+         $ #export UBOOT_CFG_CORTEXA="am62x_lpsk_a53_defconfig am62x_a53_android.config"
 
       For Beagle Play, use:
 
@@ -286,6 +299,9 @@ For detailed information, see `k3 upstream documentation <https://docs.u-boot.or
 
          $ export UBOOT_CFG_CORTEXR="am62x_evm_r5_defconfig am625_beagleplay_r5.config am625_beagleplay_android_r5.config"
          $ export UBOOT_CFG_CORTEXA="am62x_evm_a53_defconfig am625_beagleplay_a53.config am62x_android_a53.config am625_beagleplay_android_a53.config"
+         $ #OR, for use with experimental U-Boot 2024.04
+         $ #export UBOOT_CFG_CORTEXR=am62x_beagleplay_r5_defconfig
+         $ #export UBOOT_CFG_CORTEXA="am62x_beagleplay_a53_defconfig am62x_a53_android.config"
 
 
    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
@@ -294,6 +310,8 @@ For detailed information, see `k3 upstream documentation <https://docs.u-boot.or
 
          $ export UBOOT_CFG_CORTEXR=am62px_evm_r5_defconfig
          $ export UBOOT_CFG_CORTEXA="am62px_evm_a53_defconfig am62x_android_a53.config"
+         $ #OR, for use with experimental U-Boot 2024.04
+         $ #export UBOOT_CFG_CORTEXA="am62px_evm_a53_defconfig am62x_a53_android.config"
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 

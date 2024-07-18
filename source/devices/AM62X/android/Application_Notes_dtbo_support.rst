@@ -25,6 +25,17 @@ For example:
 
    => env set dtbo_index '1 2'
 
+When using the the experimental ``2024.04`` U-Boot set the ``adtbo_idx`` variable instead:
+
+.. code-block::
+
+   => env set adtbo_idx 1
+   => saveenv
+   => reset
+
+.. warning::
+
+   With the experimental ``2024.04`` U-Boot, multiple DTBOs are **not supported**.
 
 **- AM62x-SK EVM**
 
