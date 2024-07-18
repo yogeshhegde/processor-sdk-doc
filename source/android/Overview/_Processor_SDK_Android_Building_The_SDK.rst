@@ -122,7 +122,7 @@ Android File System
       $ lunch <BUILD_TARGET>
       $ m
 
-Where ``BUILD_TARGET`` is listed in the table below :
+Where ``<BUILD_TARGET>`` is listed in the table below :
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -135,7 +135,7 @@ Where ``BUILD_TARGET`` is listed in the table below :
     AM62X-SK Car user               ``am62x_car-user``
     ============================= ============================
 
-    The recommended ``BUILD_TARGET`` to use is ``am62x-userdebug``.
+    The recommended ``<BUILD_TARGET>`` to use is ``am62x-userdebug``.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -148,7 +148,7 @@ Where ``BUILD_TARGET`` is listed in the table below :
     AM62PX-SK Car user               ``am62p_car-user``
     ============================= ============================
 
-    The recommended ``BUILD_TARGET`` to use is ``am62p-userdebug``.
+    The recommended ``<BUILD_TARGET>`` to use is ``am62p-userdebug``.
 
 .. note::
     By default with user images AVB feature is enabled.
