@@ -100,14 +100,6 @@ Bootloader components
 Build Instructions
 ==================
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
-
-    .. note::
-
-        The bootloader and kernel builds below are optional if they are used as-is from TI release.
-        Prebuilt copies of these binaries are already part of Android file system sources
-        in ``device/ti/am62x-kernel`` and ``vendor/ti/am62x/bootloader`` folder.
-
 .. _android-build-aosp:
 
 Android File System
@@ -162,6 +154,13 @@ Where ``<BUILD_TARGET>`` is listed in the table below :
           $ lunch <BUILD_TARGET>
           $ m TARGET_AVB_ENABLE=true
 
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+    .. note::
+
+        The bootloader and kernel builds below are optional if they are used as-is from TI release.
+        Prebuilt copies of these binaries are already part of Android file system sources
+        in ``device/ti/am62x-kernel`` and ``vendor/ti/am62x/bootloader`` folder.
 
 
 Kernel
