@@ -142,17 +142,25 @@ Where ``<BUILD_TARGET>`` is listed in the table below :
 
     The recommended ``<BUILD_TARGET>`` to use is ``am62p-userdebug``.
 
-.. note::
-    By default with user images AVB feature is enabled.
-    For userdebug images, if you want to enable AVB feature you need to build
-    with ``TARGET_AVB_ENABLE=true`` build args:
+It's possible to customize the standard build (``m``), by passing build flags.
+For example, the following enables AVB on userdebug builds:
 
-       .. code-block:: console
+.. code-block:: console
 
-          $ cd ${YOUR_PATH}/ti-aosp-14
-          $ source build/envsetup.sh
-          $ lunch <BUILD_TARGET>
-          $ m TARGET_AVB_ENABLE=true
+  $ TARGET_AVB_ENABLE=true m
+
+The following build flags are available. **Default** values are **highlighted**.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Flag
+     - Possible values
+     - Description
+   * - ``TARGET_AVB_ENABLE``
+     - **false**/true
+     - Forces AVB feature on userdebug
+
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
