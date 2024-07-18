@@ -156,11 +156,13 @@ Where ``<BUILD_TARGET>`` is listed in the table below :
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
-    .. note::
+   After building is complete, the necessary images will be available in
+   ``${YOUR_PATH}/ti-aosp-14/out/target/product/am62*/``.
 
-        The bootloader and kernel builds below are optional if they are used as-is from TI release.
-        Prebuilt copies of these binaries are already part of Android file system sources
-        in ``device/ti/am62x-kernel`` and ``vendor/ti/am62x/bootloader`` folder.
+   The bootloader and kernel builds below are optional if they are used as-is from TI release.
+   Prebuilt copies of these binaries are already part of Android file system sources
+   in ``device/ti/am62x-kernel`` and ``vendor/ti/am62x/bootloader`` folder.
+   To proceed to flash Android, see :ref:`android-flashing`.
 
 
 Kernel
