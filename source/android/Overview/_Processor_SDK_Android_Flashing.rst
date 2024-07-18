@@ -28,10 +28,18 @@ Installation and setup
 ----------------------
 
 Install snagboot following the `official instructions <https://github.com/bootlin/snagboot>`_
+Make sure to install the udev rules as documented:
+
+.. code-block:: console
+
+   $ snagrecover --udev > 50-snagboot.rules
+   $ sudo cp 50-snagboot.rules /etc/udev/rules.d/
+   $ sudo udevadm control --reload-rules
+   $ sudo udevadm trigger
 
 .. note::
 
-    If Snagboot cannot be installed, it's possible boot the initial bootloaders from an SD card.
+    If Snagboot cannot be installed, it's possible to boot the initial bootloaders from an SD card.
 
     Follow :ref:`android-bootloader-sdcard` if you encounter issues with Snagboot.
 
