@@ -80,6 +80,12 @@ Kernel
 
           $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_10_00_Kernel.xml --depth=1
 
+    A preview for the ``android15-6.6`` kernel is also available for testing via a dedicated manifest:
+
+    .. code-block:: console
+
+       $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_10_00_Kernel-6.6.xml
+
 
 .. _android-download-bootloaders:
 
@@ -166,6 +172,9 @@ The following build flags are available. **Default** values are **highlighted**.
    * - ``TARGET_SDCARD_BOOT``
      - **false**/true
      - Boot from SD card instead of eMMC
+   * - ``TARGET_KERNEL_USE``
+     - **6.1**/6.6
+     - Pick kernel version. 6.6 is experimental
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
@@ -193,7 +202,8 @@ Building everything from scratch
    .. code-block:: console
 
       $ cd ${YOUR_PATH}/ti-kernel-aosp/
-      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/6.1
+      $ export TARGET_KERNEL_USE="6.1" # or "6.6" for experimental kernel
+      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
       $ tools/bazel run //common:ti_dist -- --dist_dir=$DIST_DIR
 
 Android uses Kleaf, a Bazel-based build system to build the kernel.
@@ -208,7 +218,8 @@ Rebuilding faster
    .. code-block:: console
 
       $ cd ${YOUR_PATH}/ti-kernel-aosp/
-      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/6.1
+      $ export TARGET_KERNEL_USE="6.1" # or "6.6" for experimental kernel
+      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
       $ tools/bazel run --config=fast //common:ti_dist -- --dist_dir=$DIST_DIR
 
 
