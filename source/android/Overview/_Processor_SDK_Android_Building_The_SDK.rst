@@ -44,20 +44,20 @@ Downloading sources
        $ mkdir ~/10_00_00 && cd $_
        $ export YOUR_PATH=$PWD
 
-.. _android-download-bootloaders:
+.. _android-download-aosp:
 
-Bootloader components
----------------------
+Android file system
+-------------------
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
+    Fetch the code using ``repo``:
+
     .. code-block:: console
 
-       $ mkdir ${YOUR_PATH}/ti-bootloader-aosp/ && cd $_
-       $ git clone -b 09.02.00.009 git://git.ti.com/atf/arm-trusted-firmware.git
-       $ git clone -b 09.02.00.009 git://git.ti.com/optee/ti-optee-os.git
-       $ git clone -b 09.02.00.009 git://git.ti.com/ti-u-boot/ti-u-boot.git
-       $ git clone -b 09.02.00.009 git://git.ti.com/processor-firmware/ti-linux-firmware.git
+       $ mkdir ${YOUR_PATH}/ti-aosp-14 && cd $_
+       $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_10_00.xml
+       $ repo sync
 
 Kernel
 ------
@@ -80,20 +80,21 @@ Kernel
 
           $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_10_00_Kernel.xml --depth=1
 
-.. _android-download-aosp:
 
-Android file system
--------------------
+.. _android-download-bootloaders:
+
+Bootloader components
+---------------------
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
-    Fetch the code using ``repo``:
-
     .. code-block:: console
 
-       $ mkdir ${YOUR_PATH}/ti-aosp-14 && cd $_
-       $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_10_00.xml
-       $ repo sync
+       $ mkdir ${YOUR_PATH}/ti-bootloader-aosp/ && cd $_
+       $ git clone -b 09.02.00.009 git://git.ti.com/atf/arm-trusted-firmware.git
+       $ git clone -b 09.02.00.009 git://git.ti.com/optee/ti-optee-os.git
+       $ git clone -b 09.02.00.009 git://git.ti.com/ti-u-boot/ti-u-boot.git
+       $ git clone -b 09.02.00.009 git://git.ti.com/processor-firmware/ti-linux-firmware.git
 
 
 Build Instructions
@@ -106,6 +107,118 @@ Build Instructions
         The bootloader and kernel builds below are optional if they are used as-is from TI release.
         Prebuilt copies of these binaries are already part of Android file system sources
         in ``device/ti/am62x-kernel`` and ``vendor/ti/am62x/bootloader`` folder.
+
+.. _android-build-aosp:
+
+Android File System
+-------------------
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+   .. code-block:: console
+
+      $ cd ${YOUR_PATH}/ti-aosp-14
+      $ source build/envsetup.sh
+      $ lunch <BUILD_TARGET>
+      $ m
+
+Where ``BUILD_TARGET`` is listed in the table below :
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    ============================= ============================
+    Android Build type            Build target
+    ============================= ============================
+    AM62X-SK Tablet userdebug       ``am62x-userdebug``
+    AM62X-SK Tablet user            ``am62x-user``
+    AM62X-SK Car userdebug          ``am62x_car-userdebug``
+    AM62X-SK Car user               ``am62x_car-user``
+    ============================= ============================
+
+    The recommended ``BUILD_TARGET`` to use is ``am62x-userdebug``.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    ============================= ============================
+    Android Build type            Build target
+    ============================= ============================
+    AM62PX-SK Tablet userdebug       ``am62p-userdebug``
+    AM62PX-SK Tablet user            ``am62p-user``
+    AM62PX-SK Car userdebug          ``am62p_car-userdebug``
+    AM62PX-SK Car user               ``am62p_car-user``
+    ============================= ============================
+
+    The recommended ``BUILD_TARGET`` to use is ``am62p-userdebug``.
+
+.. note::
+    By default with user images AVB feature is enabled.
+    For userdebug images, if you want to enable AVB feature you need to build
+    with ``TARGET_AVB_ENABLE=true`` build args:
+
+       .. code-block:: console
+
+          $ cd ${YOUR_PATH}/ti-aosp-14
+          $ source build/envsetup.sh
+          $ lunch <BUILD_TARGET>
+          $ m TARGET_AVB_ENABLE=true
+
+
+
+Kernel
+------
+
+Building everything from scratch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    The kernel is compatible with all AM62x boards, such as the SK EVM and the Beagle Play.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+   .. code-block:: console
+
+      $ cd ${YOUR_PATH}/ti-kernel-aosp/
+      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/6.1
+      $ tools/bazel run //common:ti_dist -- --dist_dir=$DIST_DIR
+
+   .. note::
+
+      Android uses Kleaf, a Bazel-based build system to build the kernel.
+      AOSP documentation can be found `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and
+      Kleaf documentation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
+
+Rebuilding faster
+~~~~~~~~~~~~~~~~~
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+   .. code-block:: console
+
+      $ cd ${YOUR_PATH}/ti-kernel-aosp/
+      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/6.1
+      $ tools/bazel run --config=fast //common:ti_dist -- --dist_dir=$DIST_DIR
+
+
+Defconfig/menuconfig changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The usual (``make menuconfig``) is done via ``bazel`` command :
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+   .. code-block:: console
+
+      $ cd ${YOUR_PATH}/ti-kernel-aosp/
+      $ tools/bazel run //common:ti_config -- menuconfig
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+   .. note::
+
+      Users must have built the android kernel image prior to building the Android file system.
+      Otherwise pre-built kernel images present in ``device/ti/am62x-kernel``
+      will be used to create ``boot.img``
 
 .. _android-build-bootloaders:
 
@@ -197,116 +310,6 @@ Bootloader components
 
               - For step 3, use ``am62x_evm_r5_defconfig`` with ``am625_beagleplay_r5.config`` and ``am625_beagleplay_android_r5.config``
               - For step 4, use ``am62x_evm_a53_defconfig`` with ``am625_beagleplay_a53.config``, ``am62x_android_a53.config`` and ``am625_beagleplay_android_a53.config``
-
-Kernel
-------
-
-Building everything from scratch
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-    The kernel is compatible with all AM62x boards, such as the SK EVM and the Beagle Play.
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
-
-   .. code-block:: console
-
-      $ cd ${YOUR_PATH}/ti-kernel-aosp/
-      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/6.1
-      $ tools/bazel run //common:ti_dist -- --dist_dir=$DIST_DIR
-
-   .. note::
-
-      Android uses Kleaf, a Bazel-based build system to build the kernel.
-      AOSP documentation can be found `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and
-      Kleaf documentation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
-
-Rebuilding faster
-~~~~~~~~~~~~~~~~~
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
-
-   .. code-block:: console
-
-      $ cd ${YOUR_PATH}/ti-kernel-aosp/
-      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/6.1
-      $ tools/bazel run --config=fast //common:ti_dist -- --dist_dir=$DIST_DIR
-
-
-Defconfig/menuconfig changes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The usual (``make menuconfig``) is done via ``bazel`` command :
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
-
-   .. code-block:: console
-
-      $ cd ${YOUR_PATH}/ti-kernel-aosp/
-      $ tools/bazel run //common:ti_config -- menuconfig
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
-
-   .. note::
-
-      Users must have built the android kernel image prior to building the Android file system.
-      Otherwise pre-built kernel images present in ``device/ti/am62x-kernel``
-      will be used to create ``boot.img``
-
-.. _android-build-aosp:
-
-Android File System
--------------------
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
-
-   .. code-block:: console
-
-      $ cd ${YOUR_PATH}/ti-aosp-14
-      $ source build/envsetup.sh
-      $ lunch <BUILD_TARGET>
-      $ m
-
-Where ``BUILD_TARGET`` is listed in the table below :
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-    ============================= ============================
-    Android Build type            Build target
-    ============================= ============================
-    AM62X-SK Tablet userdebug       ``am62x-userdebug``
-    AM62X-SK Tablet user            ``am62x-user``
-    AM62X-SK Car userdebug          ``am62x_car-userdebug``
-    AM62X-SK Car user               ``am62x_car-user``
-    ============================= ============================
-
-    The recommended ``BUILD_TARGET`` to use is ``am62x-userdebug``.
-
-.. ifconfig:: CONFIG_part_variant in ('AM62PX')
-
-    ============================= ============================
-    Android Build type            Build target
-    ============================= ============================
-    AM62PX-SK Tablet userdebug       ``am62p-userdebug``
-    AM62PX-SK Tablet user            ``am62p-user``
-    AM62PX-SK Car userdebug          ``am62p_car-userdebug``
-    AM62PX-SK Car user               ``am62p_car-user``
-    ============================= ============================
-
-    The recommended ``BUILD_TARGET`` to use is ``am62p-userdebug``.
-
-.. note::
-    By default with user images AVB feature is enabled.
-    For userdebug images, if you want to enable AVB feature you need to build
-    with ``TARGET_AVB_ENABLE=true`` build args:
-
-       .. code-block:: console
-
-          $ cd ${YOUR_PATH}/ti-aosp-14
-          $ source build/envsetup.sh
-          $ lunch <BUILD_TARGET>
-          $ m TARGET_AVB_ENABLE=true
 
 **After building all components, refer to instruction in next section for flashing the images to EVM**
 
