@@ -301,7 +301,7 @@ Where ``BUILD_TARGET`` is listed in the table below :
     For userdebug images, if you want to enable AVB feature you need to build
     with ``TARGET_AVB_ENABLE=true`` build args:
 
-       .. code-block::console
+       .. code-block:: console
 
           $ cd ${YOUR_PATH}/ti-aosp-14
           $ source build/envsetup.sh
