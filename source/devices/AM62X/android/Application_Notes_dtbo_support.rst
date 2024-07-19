@@ -43,6 +43,7 @@ The following Device-Tree Overlays are supported:
 
 .. list-table:: AM62x-SK EVM
    :header-rows: 1
+   :widths: 5 40
 
    * - Index
      - Description
@@ -62,6 +63,7 @@ The following Device-Tree Overlays are supported:
 
 .. list-table:: AM62x-LP-SK EVM
    :header-rows: 1
+   :widths: 5 40
 
    * - Index
      - Description
@@ -71,6 +73,7 @@ The following Device-Tree Overlays are supported:
 
 .. list-table:: Beagle Play
    :header-rows: 1
+   :widths: 5 40
 
    * - Index
      - Description

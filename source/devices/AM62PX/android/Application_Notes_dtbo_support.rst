@@ -43,6 +43,7 @@ The following Device-Tree Overlays are supported:
 
 .. list-table:: AM62Px-SK EVM
    :header-rows: 1
+   :widths: 5 40
 
    * - Index
      - Description
