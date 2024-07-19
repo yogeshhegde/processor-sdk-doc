@@ -9,7 +9,6 @@ Flashing Instruction
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
    These instructions are for the AM62x SK EVM.
-
    For flashing the Beagle Play, see the `dedicated application note`_.
 
    .. _dedicated application note: ../devices/AM62X/android/Application_Notes_BeaglePlay.html
@@ -20,7 +19,6 @@ DFU Recovery
 
 It's possible to put the |__PART_FAMILY_NAME__| SK EVM in USB DFU mode, which allows
 loading bootloaders over DFU. This is done via the ``snagboot`` tool.
-
 This is useful for initial flashing or recovering boards which have broken
 bootloaders.
 
@@ -40,7 +38,6 @@ Make sure to install the udev rules as documented:
 .. tip::
 
     If Snagboot cannot be installed, it's possible to boot the initial bootloaders from an SD card.
-
     Follow :ref:`android-bootloader-sdcard` if you encounter issues with Snagboot.
 
 
@@ -137,7 +134,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
   .. note::
 
-     If you build with `TARGET_AVB_ENABLE=true` or flash user images you need to do this command in U-Boot console:
+     If you build with ``TARGET_AVB_ENABLE=true`` or flash user images you need to do this command in U-Boot console:
 
      .. code-block:: console
 
