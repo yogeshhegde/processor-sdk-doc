@@ -7,7 +7,9 @@ Device Tree Overlay Support
 This application note contains steps to configure Device Tree Overlays (DTBO).
 DTBOs can be enabled from U-Boot when extra peripherals are connected to the board.
 
-DTBOs are **board specific**.
+.. attention::
+
+   DTBOs are **board specific**.
 
 It's possible to change the ``dtbo_index`` from the U-Boot shell.
 For example:
@@ -37,45 +39,44 @@ When using the the experimental ``2024.04`` U-Boot set the ``adtbo_idx`` variabl
 
    With the experimental ``2024.04`` U-Boot, multiple DTBOs are **not supported**.
 
-**- AM62x-SK EVM**
-
 The following Device-Tree Overlays are supported:
 
-+-----------+----------------------------------------------------------------------+
-|dtbo_index |  description                                                         |
-+-----------+----------------------------------------------------------------------+
-|    0      |   HDMI audio output (bridge by shorting a (J24) header on the board.)|
-+-----------+----------------------------------------------------------------------+
-|    1      |   Digilent PCam 5C OV5640 Camera                                     |
-+-----------+----------------------------------------------------------------------+
-|    2      |   TEVI-OV5640C-S84-IR-RPI Camera                                     |
-+-----------+----------------------------------------------------------------------+
-|    3      |   Microtips Technology USA 10.1"  WUXGA (1920x1200) OLDI panel       |
-+-----------+----------------------------------------------------------------------+
-|    4      |   Enable MAIN and MCU GPIO + CANUART wakeup source                   |
-+-----------+----------------------------------------------------------------------+
+.. list-table:: AM62x-SK EVM
+   :header-rows: 1
+
+   * - Index
+     - Description
+   * - 0
+     - HDMI audio output (bridge by shorting a (J24) header on the board.)
+   * - 1
+     - Digilent PCam 5C OV5640 Camera
+   * - 2
+     - TEVI-OV5640C-S84-IR-RPI Camera
+   * - 3
+     - Microtips Technology USA 10.1" WUXGA (1920x1200) OLDI panel
+   * - 4
+     - Enable MAIN and MCU GPIO + CANUART wakeup source
 
 .. warning::
-    LVDS Display is supported only on E3 board revision.
+    On AM62x-SK EVM, LVDS Display is supported only on E3 board revision.
 
-**- AM62x-LP-SK EVM**
+.. list-table:: AM62x-LP-SK EVM
+   :header-rows: 1
 
-The following Device-Tree Overlays are supported:
+   * - Index
+     - Description
+   * - 5
+     - Microtips Technology USA 10.1"  WUXGA (1920x1200) OLDI panel
 
-+-----------+----------------------------------------------------------------------+
-|dtbo_index |  description                                                         |
-+-----------+----------------------------------------------------------------------+
-|    5      |   Microtips Technology USA 10.1"  WUXGA (1920x1200) OLDI panel       |
-+-----------+----------------------------------------------------------------------+
 
-**- Beagle Play**
+.. list-table:: Beagle Play
+   :header-rows: 1
 
-+-----------+------------------------------------------------------------------------+
-|dtbo_index |  description                                                           |
-+-----------+------------------------------------------------------------------------+
-|    6      |   Digilent PCam 5C OV5640 Camera                                       |
-+-----------+------------------------------------------------------------------------+
-|    7      |   TEVI-OV5640C-S84-IR-RPI Camera                                       |
-+-----------+------------------------------------------------------------------------+
-|    8      |   Lincoln Technology Solutions LCD185-101CT WUXGA(1920x1200) OLDI panel|
-+-----------+------------------------------------------------------------------------+
+   * - Index
+     - Description
+   * - 6
+     - Digilent PCam 5C OV5640 Camera
+   * - 7
+     - TEVI-OV5640C-S84-IR-RPI Camera
+   * - 8
+     - Lincoln Technology Solutions LCD185-101CT WUXGA(1920x1200) OLDI panel
