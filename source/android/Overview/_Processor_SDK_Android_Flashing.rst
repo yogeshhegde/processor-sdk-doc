@@ -25,7 +25,7 @@ bootloaders.
 Installation and setup
 ----------------------
 
-Install snagboot following the `official instructions <https://github.com/bootlin/snagboot>`_
+Install snagboot 1.3.0 following the `official instructions <https://github.com/bootlin/snagboot>`_
 Make sure to install the udev rules as documented:
 
 .. code-block:: console
