@@ -116,7 +116,7 @@ makefile targets.
 
     .. code-block:: console
 
-        host# pip3 install jsonschema pyelftools PyYAML Mako
+        host# pip3 install jsonschema pyelftools PyYAML Mako yamllint
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
