@@ -121,35 +121,50 @@ ICSSG Switch firmware now supports cut through forwarding. Cut Through feature a
 #. Cut Through is not supported with any form of flow control.
 #. If Intersperced Express Traffic (IET) is enabled, then Cut Through can only be enabled on an express priority queue and not on preemptible queues.
 
-Assuming eth1 and eth2 are the active ports of ICSSG2 on AM654x-IDK, to enable cut through run below commands,
+The devlink command to enable cut-through takes a u16 value. All 16 bits of it represent queues. BIT 0 to BIT 7 are slice0 queues where as BIT 8 to BIT 15 are slice1 queues. To enable cut-through forwarding in both directions, cut-through will need to be enabled on both slice0 and slice1.
 
-::
+In general, to enable cut through for slice0 qM, qN queues and slice1 qX, qY queues, pass the value :math:`2^M + 2^N + 2^{8+X} + 2^{8+Y}` to the devlink command.
 
-  ip link set eth1 down
-  ip link set eth2 down
-  devlink dev param set platform/icssg2-eth name cut_thru value 1 cmode runtime # To enable cut thru for tx0 queue
-  devlink dev param set platform/icssg2-eth name cut_thru value 2 cmode runtime # To enable cut thru for tx1 queue
-  devlink dev param set platform/icssg2-eth name cut_thru value 3 cmode runtime # To enable cut thru for tx0 and tx1 queues
-  ip link set eth1 up
-  ip link set eth2 up
+Assuming eth1 and eth2 are the active ports of ICSSG1 on AM64xx-EVM, to enable cut through run below commands,
 
-To enable cut through for multiple (assume q1, q2 and q3) queues. Pass the value 2\ :sup:`q1` + 2\ :sup:`q2` + 2\ :sup:`q3` to the devlink command.
+.. code-block:: console
+
+   ip link set eth1 down
+   ip link set eth2 down
+
+   # To enable cut thru for slice0 q0
+   devlink dev param set platform/icssg1-eth name cut_thru value 1 cmode runtime
+
+   # To enable cut thru for slice0 q1
+   devlink dev param set platform/icssg1-eth name cut_thru value 2 cmode runtime
+
+   # To enable cut thru for slice0 q0, q1
+   devlink dev param set platform/icssg1-eth name cut_thru value 3 cmode runtime
+
+   # To enable cut thru for slice0 q0, q1 and slice1 q0, q1
+   devlink dev param set platform/icssg1-eth name cut_thru value 771 cmode runtime
+
+   ip link set eth1 up
+   ip link set eth2 up
 
 To show the current cut through status, run the below command,
-::
 
-  devlink dev param show platform/icssg2-eth name cut_thru
+.. code-block:: console
 
-  platform/icssg2-eth:
+   devlink dev param show platform/icssg1-eth name cut_thru
+
+   platform/icssg1-eth:
     name cut_thru type driver-specific
       values:
-        cmode runtime value 133
+        cmode runtime value 771
 
-Here the value is shown as 133 (Binary 10000101). This means that cut through is enabled for q0, q2 and q7 queues. As bit 0,1 and 7 are set in the binary representation of the value 133.
+Here the value is shown as 771 (Binary 0000 0011 0000 0011). This means that cut through is enabled for q0, q1 of slice0 and q0, q1 of slice1. As bit 0,1,8 and 9 are set in the binary representation of the value 711.
 
 To disable cut through on all queues
-::
-  devlink dev param set platform/icssg2-eth name cut_thru value 0 cmode runtime
+
+.. code-block:: console
+
+   devlink dev param set platform/icssg1-eth name cut_thru value 0 cmode runtime
 
 SRAM Requirement
 """"""""""""""""
