@@ -115,5 +115,5 @@ Flashing SD Card
 
 **flashall.sh script print in your console instruction to do**
 
-.. note::
+.. tip::
     Replace X in ``/dev/sdX/`` by letter corresponding to your SD card

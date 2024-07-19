@@ -37,7 +37,7 @@ Make sure to install the udev rules as documented:
    $ sudo udevadm control --reload-rules
    $ sudo udevadm trigger
 
-.. note::
+.. tip::
 
     If Snagboot cannot be installed, it's possible to boot the initial bootloaders from an SD card.
 
@@ -143,7 +143,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
         => setenv force_avb "1"; saveenv;
 
-  .. note::
+  .. tip::
 
      By default, no Device-Tree Overlays are selected. Follow this link to configure :ref:`android-dtbo`
 
@@ -194,7 +194,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
         $ sudo ./flashall.sh --board am62px-sk
 
-  .. note::
+  .. tip::
 
       If you get ``mcopy`` command not found error on Linux PC, install the ``mtools`` package:
 

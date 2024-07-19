@@ -72,7 +72,7 @@ Kernel
        $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_10_00_Kernel.xml
        $ repo sync
 
-    .. note::
+    .. tip::
 
        To save some disk space, pass the ``--depth=1`` option to ``repo init``:
 
