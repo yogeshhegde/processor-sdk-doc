@@ -70,13 +70,9 @@ Compiler
   [comment] instructions for 64 bit processors
 .. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
 
-   Refer to :ref:`yocto-toolchain` section to use the toolchain packaged in the Processor SDK (recommended).
-
-   Refer to :ref:`external-arm-toolchain` to download and setup ARM toolchains, if the Processor SDK is not used.
-
-   In either of the above setups, the build commands in the next section will assume the below variables are set appropriately.
-
-   - ``CROSS_COMPILE_64``
+   .. include:: Overview/GCC_ToolChain.rst
+      :start-after: .. start_include_yocto_toolchain_host_setup
+      :end-before: .. end_include_yocto_toolchain_host_setup
 
 The current compiler supported for this release along with download
 location can be found in the release notes for the kernel release.

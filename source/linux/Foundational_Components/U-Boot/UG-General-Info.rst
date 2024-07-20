@@ -182,15 +182,9 @@ Build U-Boot
 
    .. rubric:: Setting up the toolchain paths
 
-   Refer to :ref:`yocto-toolchain` section to use the toolchain packaged in the Processor SDK (recommended).
-
-   Refer to :ref:`external-arm-toolchain` to download and setup ARM toolchains, if the Processor SDK is not used.
-
-   In either of the above setups, the u-boot build commands in the next section will assume the below variables are set appropriately.
-
-   - ``CROSS_COMPILE_64``
-   - ``CC_64``
-   - ``CROSS_COMPILE_32``
+   .. include:: ../../Overview/GCC_ToolChain.rst
+      :start-after: .. start_include_yocto_toolchain_host_setup
+      :end-before: .. end_include_yocto_toolchain_host_setup
 
    .. rubric:: Compiling R5 and ARM64 images
 

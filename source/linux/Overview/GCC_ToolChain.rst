@@ -2,8 +2,23 @@
 
 .. _toolchains:
 
-GCC ToolChain
-=============
+GCC ToolChain Setup
+===================
+
+.. start_include_yocto_toolchain_host_setup
+
+Before compiling any of the sources referenced in this document, set the cross compiler paths to the toolchains packaged in the Processor SDK [Recommended] as shown below. Refer to :ref:`yocto-toolchain` section for more details on usage.
+
+.. code-block:: console
+
+   host# export CROSS_COMPILE_64="${SDK_INSTALL_DIR}/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/aarch64-oe-linux/aarch64-oe-linux-"
+   host# export SYSROOT_64="${SDK_INSTALL_DIR}/linux-devkit/sysroots/aarch64-oe-linux"
+   host# export CC_64="${CROSS_COMPILE_64}gcc --sysroot=${SYSROOT_64}"
+   host# export CROSS_COMPILE_32="${SDK_INSTALL_DIR}/k3r5-devkit/sysroots/x86_64-arago-linux/usr/bin/arm-oe-eabi/arm-oe-eabi-"
+
+If the Processor SDK is not installed, the Arm GNU toolchains can be downloaded and setup. Refer to :ref:`external-arm-toolchain` section for more details on usage.
+
+.. end_include_yocto_toolchain_host_setup
 
 .. _yocto-toolchain:
 
@@ -15,22 +30,10 @@ The |__SDK_FULL_NAME__| package contains cross compile toolchains for the ARMv8
 are used by the :ref:`top level makefile <top-level-makefile>` when
 compiling the binaries for the target. These also package an environment setup
 script that, when sourced, sets all the right variables to compile binaries for
-the target architecture. The toolchains installers are built through the yocto
+the target architecture. The toolchain installers are built through the yocto
 build system, same as the target filesystem images themselves.
 
-.. rubric:: SDK Toolchain Setup
-
-Below variables need to be setup to be able to compile with the toolchains packaged in the SDK.
-These will be referenced by the build commands of the Foundational Components in this document.
-
-.. code-block:: console
-
-   host# CROSS_COMPILE_64="${SDK_INSTALL_DIR}/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/aarch64-oe-linux/aarch64-oe-linux-"
-   host# SYSROOT_64="${SDK_INSTALL_DIR}/linux-devkit/sysroots/aarch64-oe-linux"
-   host# CC_64="${CROSS_COMPILE_64}gcc --sysroot=${SYSROOT_64}"
-   host# CROSS_COMPILE_32="${SDK_INSTALL_DIR}/k3r5-devkit/sysroots/x86_64-arago-linux/usr/bin/arm-oe-eabi/arm-oe-eabi-"
-
-Below sections give some more details about the contents of these SDK Toolchains
+Below sections give some more details about the contents of these SDK Toolchains.
 
 .. _linux-devkit:
 
@@ -225,7 +228,7 @@ commands of the Foundational Components in this document.
    host# mkdir -p $COMPILER_PATH
    host# wget -c https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf.tar.xz -O - | tar -xv -J -C $COMPILER_PATH
    host# wget -c https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu.tar.xz -O - | tar -xv -J -C $COMPILER_PATH
-   host# CROSS_COMPILE_64=$COMPILER_PATH/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-
-   host# CROSS_COMPILE_32=$COMPILER_PATH/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf/bin/arm-none-linux-gnueabihf-
-   host# CC_64="${CROSS_COMPILE_64}gcc"
+   host# export CROSS_COMPILE_64=$COMPILER_PATH/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-
+   host# export CROSS_COMPILE_32=$COMPILER_PATH/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf/bin/arm-none-linux-gnueabihf-
+   host# export CC_64="${CROSS_COMPILE_64}gcc"
 
