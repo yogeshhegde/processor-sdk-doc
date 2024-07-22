@@ -14,10 +14,11 @@ be used to build some of the sub-components found within the SDK. This
 Makefile uses the Rules.make file and gives an example of how the
 various components can be built and the parameters to use.
 
-**NOTE:** You should not call this makefile with the
-"environment-setup" script sourced. The sub-component Makefiles will handle sourcing this script
-where appropriate, but some make targets such as the Linux kernel make
-target do not work properly when this script is already sourced.
+.. caution::
+
+   You should not call this makefile with the "environment-setup" script sourced.
+   The sub-component Makefiles will handle sourcing this script where appropriate,
+   but some make targets such as the Linux kernel make target do not work properly when this script is already sourced.
 
 .. rubric:: Rules.make
    :name: rules.make
@@ -96,7 +97,8 @@ makefile targets.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-   .. note::
+   .. important::
+
         * AM62x installer supports ``am62xx-evm`` and ``am62xx-lp-evm`` platforms. ``am62xx-evm`` is the default platform for the toplevel Makefile. To build for ``am62xx-lp-evm``, pass ``PLATFORM=am62xx-lp-evm`` as argument to make.
         * No special arguments are needed to build for ``am62xxsip-evm`` in AM62xSIP Installer.
 
@@ -180,12 +182,11 @@ package:
 
 .. ifconfig:: CONFIG_sdk not in ('PLSDK')
 
-  -  **am-benchmarks** - Builds the ARM Benchmarks for the ARCH defined in
+   -  **arm-benchmarks** - Builds the ARM Benchmarks for the ARCH defined in
      Rules.make.
-  -  **am-sysinfo** - Build the helper applications used by the system
+   -  **am-sysinfo** - Build the helper applications used by the system
      settings demos in Matrix.
 
-|
 
 .. rubric:: Additional Targets
    :name: additional-targets
@@ -207,18 +208,15 @@ devices will have following additional targets:
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'AM62PX')
 
+    - **arm-benchmarks** - Build the ARM Benchmarks
 
-    **arm-benchmarks** - Build the ARM Benchmarks
-
-    **cryptodev** - Build module for cryptographic hardware accelerators.
+    - **cryptodev** - Build module for cryptographic hardware accelerators.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X')
 
-    **ti-img-rogue-driver** - Build GPU Kernel module.
+    - **ti-img-rogue-driver** - Build GPU Kernel module.
 
-    **jailhouse** - Builds the required kernel module, hypervisor firmware,
-    jailhouse tools and cell configs. Applicable for only platforms with
-    Hypervisor support enabled.
+    - **jailhouse** - Builds the required kernel module, hypervisor firmware, jailhouse tools and cell configs. Applicable for only platforms with Hypervisor support enabled.
 
 .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM65X')
 
@@ -227,7 +225,6 @@ devices will have following additional targets:
 Along with these targets, there might be additional targets for different
 external kernel modules. This list is different for each platform.
 
-|
 
 .. rubric:: Usage Examples
    :name: usage-examples
@@ -265,9 +262,9 @@ the Makefile from the top-level of the SDK.
 
     -  Build Linux kernel
 
-::
+    .. code-block:: console
 
-    host# make linux
+        host# make linux
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X')
 
@@ -674,13 +671,13 @@ the Makefile from the top-level of the SDK.
     .. code-block:: console
 
         host# sudo cp board-support/built-images/tiboot3-am62*-hs-evm.bin /media/$USER/boot/tiboot3.bin
-        host# sudo cp board-support/built-images/tispl.bin /media/$USER/boot/tispl.bin
-        host# sudo cp board-support/built-images/u-boot.img /media/$USER/boot/u-boot.img
+        host# sudo cp board-support/built-images/tispl.bin board-support/built-images/u-boot.img /media/$USER/boot
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
     **For HS-FS**
-    ::
+
+    .. code-block:: console
 
         host# sudo cp board-support/built-images/tiboot3-am62p*-hs-fs-evm.bin /media/$USER/boot/tiboot3.bin
         host# sudo cp board-support/built-images/u-boot.img board-support/built-images/tispl.bin /media/$USER/boot

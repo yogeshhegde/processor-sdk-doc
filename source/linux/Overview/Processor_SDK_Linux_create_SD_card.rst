@@ -24,25 +24,28 @@ This section provides guides to create SD cards for the following use cases:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM64X')
 
-   .. note:: After flashing the wic image on the SD-Card, it will boot on **HS-FS** devices by default.
+   .. attention:: After flashing the wic image on the SD-Card, it will boot on **HS-FS** devices by default.
 
          To boot on **GP**, run the following command:
-         ::
+
+         .. code-block:: console
 
              host# sudo cp /media/$USER/boot/tiboot3-am6*-gp-evm.bin /media/$USER/boot/tiboot3.bin
 
          To boot on **HS-SE**, run the following command:
-         ::
+
+         .. code-block:: console
 
              host# sudo cp /media/$USER/boot/tiboot3-am6*-hs-evm.bin /media/$USER/boot/tiboot3.bin
 
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-   .. note:: After flashing the wic image on the SD-Card, it will boot on **SR2 GP** devices by default.
+   .. attention:: After flashing the wic image on the SD-Card, it will boot on **SR2 GP** devices by default.
 
          To boot on **SR2 HS-SE**, run the following command:
-         ::
+
+         .. code-block:: console
 
              host# sudo cp /media/$USER/boot/tiboot3-am65x_sr2-hs-evm.bin /media/$USER/boot/tiboot3.bin
              host# sudo cp /media/$USER/boot/sysfw-am65x_sr2-hs-evm.itb /media/$USER/boot/sysfw.itb
@@ -53,28 +56,21 @@ Create SD Card using balenaEtcher
 ----------------------------------
 
 1.  Download the default bootable SD card image (WIC file) available on the release page as
-    tisdk-default-image-<machine>.wic.xz. The  |__SDK_FULL_NAME__| installer also contains other
-    WIC images that can be flashed to the SD card similarly. Assuming the SDK is installed on a
-    Linux machine at <PSDK\_PATH>, you can find other available WIC images at <PSDK\_PATH>/filesystem/
+    tisdk-default-image-<machine>.wic.xz
 
-|
+2.  Download and install the balenaEtcher tool
 
-2.  Download and install the balenaEtcher tool:
+        - Balena Etcher is an open-source utility that can be installed on both Linux and Windows.
+          Download the tool from `this link <https://www.balena.io/etcher/>`__ and install it.
 
-        Balena Etcher is an open-source utility that can be installed on both Linux and Windows.
-        Download the tool from `this link <https://www.balena.io/etcher/>`__ and install it.
+3.  Flash the WIC image to the SD card
 
-|
-
-3.  Flash the WIC image to the SD card:
-
-        Insert a micro SD card into the USB SD card reader and start Etcher.Choose the default WIC
-        image to be flashed, choose the USB SD card reader as the target, and then click "Flash".
-        Etcher will decompress the image and write it to the SD card, as shown below:
+        - Insert a micro SD card into the USB SD card reader and start Etcher.Choose the default WIC
+          image to be flashed, choose the USB SD card reader as the target, and then click "Flash".
+          Etcher will decompress the image and write it to the SD card, as shown below
 
     .. Image:: /images/balena_etcher.png
-
-|
+       :height: 400
 
 .. _processor-sdk-linux-create-sd-card-using-bmap:
 
@@ -82,27 +78,15 @@ Create SD Card using bmap-tools
 ----------------------------------
 
 1.  Download the default bootable SD card image (WIC file) available on the release page as
-    tisdk-default-image-<machine>.wic.xz. The  |__SDK_FULL_NAME__| installer also contains other
-    WIC images that can be flashed to the SD card similarly.
-
-    The |__SDK_FULL_NAME__| can be installed either on host or inside a Docker container that is hosted on `ghcr.io/texasinstruments <https://github.com/TexasInstruments/ti-docker-images/pkgs/container/ubuntu-distro>`__. Assuming the SDK is installed at <PSDK\_PATH>, you can find other available WIC images at <PSDK\_PATH>/filesystem/
-
-|
+    tisdk-default-image-<machine>.wic.xz.
 
 2.  Decompress the tisdk-default-image-<machine>.wic.xz to tisdk-default-image-<machine>.wic
 
-    - For Linux:
+      .. code-block:: console
 
-    ::
-
-        cd <PSDK_PATH>/filesystem
-        unxz tisdk-default-image-<machine>.wic.xz
-
-|
+          unxz tisdk-default-image-<machine>.wic.xz
 
 3.  Flash the WIC image to SD card
-
-    - For Linux:
 
       a) First, make sure that the SD card is unmounted. You can use lsblk to
          inspect whether the SD card partitions have a MOUNTPOINT. If the SD
@@ -110,22 +94,22 @@ Create SD Card using bmap-tools
 
          For example, if lsblk returned this:
 
-         ::
+         .. code-block:: console
 
              $ lsblk
              NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
              :
              :
              sdc      8:32   1    15G  0 disk
-             ├─sdc1   8:33   1 131.8M  0 part /media/localUser/boot
-             └─sdc2   8:34   1 765.9M  0 part /media/localUser/root
+             ├─sdc1   8:33   1 131.8M  0 part /media/$USER/boot
+             └─sdc2   8:34   1 765.9M  0 part /media/$USER/root
 
          Then we would want to unmount sdc1 and sdc2:
 
-         ::
+         .. code-block:: console
 
-             $ sudo umount /media/localUser/boot
-             $ sudo umount /media/localUser/root
+             $ sudo umount /media/$USER/boot
+             $ sudo umount /media/$USER/root
              $ lsblk
              NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
              :
@@ -136,31 +120,30 @@ Create SD Card using bmap-tools
 
       b) Next, install bmap-tools using the following command:
 
-         ::
+         .. code-block:: console
 
              sudo apt-get install bmap-tools
 
          Then generate a bmap file from the decompressed WIC image with the following command.
          This step can be skipped but the bmap file significantly reduces the time taken to flash the SD card.
 
-         ::
+         .. code-block:: console
 
              bmaptool create -o tisdk-default-image.bmap tisdk-default-image-<machine>.wic
 
       c) Then write the WIC image to the SD card with the following command:
 
-         ::
+         .. code-block:: console
 
              sudo bmaptool copy --bmap tisdk-default-image.bmap tisdk-default-image-<machine>.wic /dev/sdx
 
          In the above example, the SD card is at /dev/sdc. In that case, the
          image write command would look like this:
 
-         ::
+         .. code-block:: console
 
              sudo bmaptool copy --bmap tisdk-default-image.bmap tisdk-default-image-<machine>.wic /dev/sdc
 
-|
 
 
 .. _processor-sdk-linux-create-sd-card-with-custom-images:
@@ -183,8 +166,6 @@ The script will give you information about each step, but the following
 section will go over the details for the use cases above and walk you
 through how to use the script as well.
 
-|
-
 
 .. rubric:: 1. Invoking the Script:
    :name: Invoking-the-script
@@ -193,15 +174,14 @@ The **create-sdcard.sh** script can be run from any location but must be
 run with **root** permissions. This usually means using the **sudo**
 command to start execution of the script. For example:
 
-::
+.. code-block:: console
 
- sudo <PSDK\_PATH>/bin/create-sdcard.sh
+    sudo <PSDK_PATH>/bin/create-sdcard.sh
 
 If you fail to execute the script without root permissions you will
 receive a message that root permissions are required and the script will
 exit.
 
-|
 
 .. rubric:: 2. Select the SD Card Device:
    :name: select-the-sd-card-device
@@ -212,7 +192,7 @@ host root file system drive has been masked off to prevent damage to the
 host system. When prompted enter the device number corresponding to the
 SD card. For example if the output looks like:
 
-::
+.. code-block:: text
 
     Availible Drives to write images to:
 
@@ -223,7 +203,7 @@ SD card. For example if the output looks like:
 
 You would enter **1** to select the **sdb** device.
 
-.. note::
+.. attention::
 
  For most common installations, this script works fine.
  However, if you are using more advanced disk slicing and volume
@@ -237,7 +217,6 @@ You would enter **1** to select the **sdb** device.
  of the device name, e.g. "mapp" (out of "/dev/mapper/kubuntu--vg-root on
  / type ...").
 
-|
 
 .. rubric:: 3. Partitioning the SD Card
    :name: partitioning-the-sd-card
@@ -250,7 +229,7 @@ following asking you if you would like to repartition the card. If the
 card was not already partitioned then this step will be skipped and you
 can move on to the next step.
 
-::
+.. code-block:: text
 
     Would you like to re-partition the drive anyways [y/n] :
 
@@ -265,10 +244,10 @@ can move on to the next step.
       create a 2 partition card to give additional storage space to the
       root file system you would select **y** here.
 
-   .. note::
-      This operation **WILL ERASE** the contents of your SD card.
+.. danger::
 
-|
+    This operation **WILL ERASE** the contents of your SD card.
+
 
 .. rubric:: 4. Select Number of Partitions
    :name: select-number-of-partitions
@@ -276,7 +255,7 @@ can move on to the next step.
 You should now see a prompt like the following which will ask you how
 many partitions you want to create for the SD card.
 
-::
+.. code-block:: text
 
     Number of partitions needed [2/3] :
 
@@ -287,7 +266,6 @@ many partitions you want to create for the SD card.
 
 After selecting the number of partitions, move on to the next section.
 
-|
 
 .. rubric:: 5. Installing Content onto the SD Card:
    :name: installing-content-onto-sd-card
@@ -311,7 +289,7 @@ to continue installing the file system or safely exit the script.
 
 You should now see a prompt like:
 
-::
+.. code-block:: text
 
     ################################################################################
 
@@ -364,7 +342,6 @@ tarball or a directory path and will copy the files accordingly. You
 will be given a list of the files that are going to be copied and given
 the option to change the path if the list of files is not correct.
 
-|
 
 .. _processor-sdk-linux-sd-card-with-default-images:
 
@@ -402,7 +379,7 @@ The |__SDK_FULL_NAME__| can be installed either on host or inside a Docker conta
 
 You should now see a prompt like:
 
-::
+.. code-block:: text
 
     ################################################################################
 
@@ -426,13 +403,12 @@ If you executed the script from outside of the SDK (i.e. you copied it
 to some other directory and executed it there) please see the next
 section.
 
-.. note::
+.. important::
  Option 1 will only work with the format of the default SDK
  directory name, which makes the Hands on with the SDK training easiest.
  If you have to change the directory name, use option 2 to enter the
  custom file paths.
 
-|
 
 .. rubric:: 3. Enter SDK Path
    :name: enter-sdk-path
@@ -441,7 +417,7 @@ In the case that the script was invoked from a directory without the SDK
 installation in the path, i.e. the script was copied to your home
 directory and executed there, you may see a prompt like:
 
-::
+.. code-block:: text
 
     no SDK PATH found
     Enter path to SDK :
@@ -452,4 +428,3 @@ path to enter would be **/home/USER/ti-processor-sdk-linux-<machine>-<version>**
 You will be prompted to confirm the installation directory. The SD card will then
 be created using the default images and the script will exit when finished.
 
-|
