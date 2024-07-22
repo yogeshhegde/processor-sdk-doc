@@ -11,24 +11,6 @@ Supported low power mode:
 Enable Suspend/Resume support
 -----------------------------
 
-#. Edit android build system
-
-   - Update ``device/ti/am62x`` and apply this change:
-
-   .. code-block:: diff
-
-      		diff --git a/device-common.mk b/device-common.mk
-      		index b111bbc332e5..22c75bfadf31 100644
-      		--- a/device-common.mk
-      		+++ b/device-common.mk
-      		@@ -238,7 +238,6 @@ PRODUCT_COPY_FILES += \
-
-      		PRODUCT_COPY_FILES += \
-      				device/ti/am62x/init.am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_PLATFORM).rc \
-      		-       	device/ti/am62x/init.am62x.zygote_wakelock.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_PLATFORM).zygote_wakelock.rc \
-      				device/ti/am62x/init.am62x.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_PLATFORM).usb.rc \
-      				device/ti/am62x/ueventd.am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc
-
 #. At Android prompt, using RTC as wake-up source, test S2R using following command:
 
    .. code-block:: console
