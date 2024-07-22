@@ -7,7 +7,7 @@ Seva Store - User Guide
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-   .. note::
+   .. attention::
 
       This page is not relevant for AM62SIP SK
 
@@ -60,7 +60,11 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
 .. Image:: /images/ip-addr.jpg
    :height: 400
 
-.. note:: If you have connected the |__PART_FAMILY_DEVICE_NAMES__| SK to a proxy network, then before launching Seva Store you need to configure Docker and System proxies once per SD Card. **To set proxy settings you can click on the Settings button from the Left Hand Side Menu and provide the necessary HTTPS & NO PROXY inputs and click Set Proxy button**. Then, continue with Step 3.
+.. caution::
+
+    If you have connected the |__PART_FAMILY_DEVICE_NAMES__| SK to a proxy network, then before launching Seva Store you need to configure Docker and System proxies once per SD Card.
+    
+    **To set proxy settings you can click on the Settings button from the Left Hand Side Menu and provide the necessary HTTPS & NO PROXY inputs and click Set Proxy button**. Then, continue with Step 3.
 
    .. Image:: /images/webproxy-settings.jpg
       :height: 400
@@ -140,7 +144,7 @@ show the `Downloading Icon` as shown in the image below.
 
 |
 
-.. note:: The Thermostat Demo Docker Image that we provide is around 2.3 GB. Hence, docker pull time may vary based on your internet speed provided to TI |__PART_FAMILY_DEVICE_NAMES__| SK.
+.. note:: The Thermostat Demo Docker Image that we provide is around 848 MB. Hence, docker pull time may vary based on your internet speed provided to TI |__PART_FAMILY_DEVICE_NAMES__| SK.
 
 14. Once the Docker Image of `Thermostat Demo` is pulled, the Seva Control Centre will auto launch the demo in full screen as shown below.
 
@@ -160,13 +164,13 @@ show the `Downloading Icon` as shown in the image below.
 How to Launch Seva Store on Host Browser
 ----------------------------------------
 
-.. note::
+.. important::
 
     Launching Seva Store on host browser is possible only if the |__PART_FAMILY_DEVICE_NAMES__| SK and host PC are connected to the same local network.
 
 1. Flash an SD card with the **tisdk-default-image**. User can download the tisdk-default-image-|__SDK_BUILD_MACHINE__|.wic.xz image from the SDK downloads page. Connect the Display, Ethernet Cable, Mouse & keyboard and Power on the board after inserting an SD card. The TI Apps Launcher will launch when the |__PART_FAMILY_DEVICE_NAMES__| SK is fully booted. Take a note of the IP address you see on the bottom left corner of TI Apps Launcher as it will be needed to launch Seva Store on host browser.
 
-2. On host PC, launch your preferred browser and enter **http://<your-board-ip-address>:8000/**.
+2. On host PC, launch your preferred browser and enter **http://<your-board-ip-address>:8007/**.
 
 3. Refer **Step 6 to Step 17** from :ref:`How-to-Launch-Seva-Store-via-TI-Apps-Launcher` to understand how to use Seva Store to Launch a Demo.
 
@@ -190,7 +194,7 @@ Once you have your Demo Docker Image hosted on a Docker Registry, you can refer 
 
 2. For frontend, once your PR on `seva-apps <https://github.com/TexasInstruments/seva-apps>`__ is merged, to populate your Demo on Seva Store's Design Gallery you need to create a PR on `seva-design-gallery <https://github.com/TexasInstruments/seva-design-gallery/>`__ to add a `div class` for your Demo. You can refer the following template for the same.
 
-::
+.. code-block:: html
 
       <div class="ti_p-col-4">
         <div class="card bg-light mb-3 mt-3 h-100 d-flex flex-column align-items-start u-boxShadow-2 u-cardBorder-top-red">
