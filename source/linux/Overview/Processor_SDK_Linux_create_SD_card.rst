@@ -56,21 +56,24 @@ Create SD Card using balenaEtcher
 ----------------------------------
 
 1.  Download the default bootable SD card image (WIC file) available on the release page as
-    tisdk-default-image-<machine>.wic.xz
+    :file:`tisdk-default-image-<machine>.wic.xz`
 
 2.  Download and install the balenaEtcher tool
 
-        - Balena Etcher is an open-source utility that can be installed on both Linux and Windows.
-          Download the tool from `this link <https://www.balena.io/etcher/>`__ and install it.
+      - Balena Etcher is an open-source utility that can be installed on both Linux and Windows. Download the tool from `this link <https://www.balena.io/etcher/>`__ and install it.
 
 3.  Flash the WIC image to the SD card
 
-        - Insert a micro SD card into the USB SD card reader and start Etcher.Choose the default WIC
-          image to be flashed, choose the USB SD card reader as the target, and then click "Flash".
-          Etcher will decompress the image and write it to the SD card, as shown below
+      - Insert a micro SD card into the USB SD card reader and start Etcher.Choose the default WIC
+        image to be flashed, choose the USB SD card reader as the target, and then click "Flash".
+        Etcher will decompress the image and write it to the SD card, as shown below
 
     .. Image:: /images/balena_etcher.png
        :height: 400
+
+    .. danger::
+
+        This operation **WILL ERASE** the contents of your SD card.
 
 .. _processor-sdk-linux-create-sd-card-using-bmap:
 
@@ -78,9 +81,9 @@ Create SD Card using bmap-tools
 ----------------------------------
 
 1.  Download the default bootable SD card image (WIC file) available on the release page as
-    tisdk-default-image-<machine>.wic.xz.
+    :file:`tisdk-default-image-<machine>.wic.xz`
 
-2.  Decompress the tisdk-default-image-<machine>.wic.xz to tisdk-default-image-<machine>.wic
+2.  Decompress the :file:`tisdk-default-image-<machine>.wic.xz` to :file:`tisdk-default-image-<machine>.wic`
 
       .. code-block:: console
 
@@ -137,6 +140,11 @@ Create SD Card using bmap-tools
 
              sudo bmaptool copy --bmap tisdk-default-image.bmap tisdk-default-image-<machine>.wic /dev/sdx
 
+
+         .. danger::
+
+             The above operation **WILL ERASE** the contents of your SD card.
+
          In the above example, the SD card is at /dev/sdc. In that case, the
          image write command would look like this:
 
@@ -157,8 +165,8 @@ done with your development you may want to place these images onto an SD
 card so that they can be used stand-alone without requiring a network
 connection to a server.
 
-For this purpose, the |__SDK_FULL_NAME__| package includes a script in the
-**<PSDK\_PATH>/bin** directory named **create-sdcard.sh**.
+For this purpose, the |__SDK_FULL_NAME__| package includes a script at
+:file:`{PSDK_PATH}/bin/create-sdcard.sh`
 
 The |__SDK_FULL_NAME__| can be installed either on Host or Inside a Docker Container that is hosted on `ghcr.io/texasinstruments <https://github.com/TexasInstruments/ti-docker-images/pkgs/container/ubuntu-distro>`__.
 
@@ -170,7 +178,7 @@ through how to use the script as well.
 .. rubric:: 1. Invoking the Script:
    :name: Invoking-the-script
 
-The **create-sdcard.sh** script can be run from any location but must be
+The :file:`create-sdcard.sh` script can be run from any location but must be
 run with **root** permissions. This usually means using the **sudo**
 command to start execution of the script. For example:
 
@@ -349,7 +357,7 @@ Create SD Card with Default Images using script
 -----------------------------------------------
 
 The purpose of this section is to cover how to use the
-**create-sdcard.sh** script to populate an SD card that can be used to
+:file:`create-sdcard.sh` script to populate an SD card that can be used to
 boot the device using the default images that ship with the |__SDK_FULL_NAME__| package.
 
 The |__SDK_FULL_NAME__| can be installed either on host or inside a Docker container that is hosted on `ghcr.io/texasinstruments <https://github.com/TexasInstruments/ti-docker-images/pkgs/container/ubuntu-distro>`__.
@@ -404,10 +412,11 @@ to some other directory and executed it there) please see the next
 section.
 
 .. important::
- Option 1 will only work with the format of the default SDK
- directory name, which makes the Hands on with the SDK training easiest.
- If you have to change the directory name, use option 2 to enter the
- custom file paths.
+
+    Option 1 will only work with the format of the default SDK
+    directory name, which makes the Hands on with the SDK training easiest.
+    If you have to change the directory name, use option 2 to enter the
+    custom file paths.
 
 
 .. rubric:: 3. Enter SDK Path

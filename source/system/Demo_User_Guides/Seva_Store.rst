@@ -202,17 +202,17 @@ Once you have your Demo Docker Image hosted on a Docker Registry, you can refer 
 
 .. code-block:: html
 
-      <div class="ti_p-col-4">
-        <div class="card bg-light mb-3 mt-3 h-100 d-flex flex-column align-items-start u-boxShadow-2 u-cardBorder-top-red">
+    <div class="ti_p-col-4">
+       <div class="card bg-light mb-3 mt-3 h-100 d-flex flex-column align-items-start u-boxShadow-2 u-cardBorder-top-red">
           <p class="label">Your Organization Name</p>
           <img class="animated-gif" src="images/<A_GIF_image_for_your_demo>.gif" class="card-img-top" alt="...">
           <p class="lead text"> Your Demo Name </p>
           <p class="lead text" style="font-size: 14px;">Few Lines Description for your Demo</p>
           <footer>
-            <input type="button" value="Launch" onclick="seva_send_message('app_your-demo-name_demo');" />
-	  </footer>
-        </div>
-      </div>
+             <input type="button" value="Launch" onclick="seva_send_message('app_your-demo-name_demo');" />
+          </footer>
+       </div>
+    </div>
 
 3. Once your above both PR's are merged, you will have your Demo added on Seva Store.
 
