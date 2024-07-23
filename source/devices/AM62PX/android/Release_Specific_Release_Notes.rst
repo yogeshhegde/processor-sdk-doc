@@ -44,7 +44,7 @@ Following features are enabled/tested in this release for AM62Px Android:
 * **Connectivity:** Ethernet, USB touch
 * **Graphics:** GPU accelerated UI with drm_hwcomposer
 * **Audio:** HDMI output and jack audio output/input
-* **Multimedia:** SW video encode, :ref:`HW video decode (h264, hevc) <Android Multimedia Wave5>`, USB camera, CSI camera
+* **Multimedia:** :ref:`HW video decode (h264, hevc) encode (h264) <Android Multimedia Wave5>`, USB camera, CSI camera
 * **Android Baseport:** Support of Generic System Image
 * **Display:** Support for LVDS panel and dual display (mirroring and extended)
 
@@ -90,8 +90,6 @@ Known Issues
 | **Issues**     | **Description**                                                       | **Post Release Fix**                                                                                                      | **Component** |
 +----------------+-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+---------------+
 | **SITSW-4268** | Android: Seek operation not functional                                | N/A                                                                                                                       | N/A           |
-+----------------+-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+---------------+
-| **SITSW-4272** | Codec2 HAL encode is not functional                                   | N/A                                                                                                                       | N/A           |
 +----------------+-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+---------------+
 | **SITSW-1387** | Mcasp: Buffer underflow console messages seen                         | N/A                                                                                                                       | N/A           |
 +----------------+-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+---------------+
