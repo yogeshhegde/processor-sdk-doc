@@ -69,7 +69,7 @@ Build U-Boot
 
 Follow this link to build the :ref:`android-build-bootloaders`.
 
-Rebuild U-Boot then copy ``u-boot.img`` in Android build system environment : ``vendor/ti/am62x/bootloader/am62px-sk``
+Rebuild U-Boot then copy :file:`u-boot.img` in Android build system environment : :file`vendor/ti/am62x/bootloader/am62px-sk`
 
 Build Android
 -------------
@@ -106,14 +106,14 @@ Flashing SD Card
        - 01000000
        - 11000010
 
-- Go in out directory in android environment and launch this command:
+- Go in :file:`out` directory in android environment and launch this command:
 
   .. code-block:: console
 
      $ cd out/target/product/am62p
      $ sudo ./flashall.sh --board="am62px-sk" --sdcard="/dev/sdX"
 
-**flashall.sh script print in your console instruction to do**
+:file:`flashall.sh` **script print in your console instruction to do**
 
 .. tip::
     Replace X in ``/dev/sdX/`` by letter corresponding to your SD card

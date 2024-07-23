@@ -56,7 +56,7 @@ How to enable Extended Display in Android
 
 **Step to enable Extended Display:**
 
-#. Edit ``device.mk`` file to add this:
+#. Edit :file:`device.mk` file to add this:
 
    .. code-block:: makefile
 

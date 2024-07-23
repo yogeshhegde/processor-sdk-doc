@@ -188,11 +188,11 @@ The following build flags are available. **Default** values are **highlighted**.
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
    After building is complete, the necessary images will be available in
-   ``${YOUR_PATH}/ti-aosp-14/out/target/product/am62*/``.
+   :file:`${YOUR_PATH}/ti-aosp-14/out/target/product/am62*/`.
 
    The bootloader and kernel builds below are optional if they are used as-is from TI release.
    Prebuilt copies of these binaries are already part of Android file system sources
-   in ``device/ti/am62x-kernel`` and ``vendor/ti/am62x/bootloader`` folder.
+   in :file:`device/ti/am62x-kernel` and :file:`vendor/ti/am62x/bootloader` folder.
    To proceed to flash Android, see :ref:`android-flashing`.
 
 
@@ -249,8 +249,8 @@ The usual (``make menuconfig``) is done via ``bazel`` command :
    .. note::
 
       Users must have built the android kernel image prior to building the Android file system.
-      Otherwise pre-built kernel images present in ``device/ti/am62x-kernel``
-      will be used to create ``boot.img``
+      Otherwise pre-built kernel images present in :file:`device/ti/am62x-kernel`
+      will be used to create :file:`boot.img`
 
 .. _android-build-bootloaders:
 
@@ -330,7 +330,7 @@ For detailed information, see `k3 upstream documentation <https://docs.u-boot.or
           $ make PLATFORM=k3 CFG_ARM64_core=y CROSS_COMPILE=$CC32 CROSS_COMPILE64=$CC64
 
 
-    4. Build ``tiboot3.bin``:
+    4. Build :file:`tiboot3.bin`:
 
        .. code-block:: console
 
@@ -340,7 +340,7 @@ For detailed information, see `k3 upstream documentation <https://docs.u-boot.or
                   BINMAN_INDIRS=${LNX_FW_PATH}
 
 
-    5. Build ``tispl.bin`` and ``u-boot.img``:
+    5. Build :file:`tispl.bin` and :file:`u-boot.img`:
 
        .. code-block:: console
 
@@ -352,10 +352,10 @@ For detailed information, see `k3 upstream documentation <https://docs.u-boot.or
                  BINMAN_INDIRS=${LNX_FW_PATH}
 
 
-    6. Copy the ``tiboot3.bin``, ``tispl.bin`` and ``u-boot.img`` generated in steps 4 and 5
-       to ``${YOUR_PATH}/ti-aosp-14/vendor/ti/am62x/bootloader``.
-       If not copied, the prebuilt bootloader binaries already present in ``vendor/ti/am62x/bootloader``
-       will get used by ``flashall.sh`` flashing script.
+    6. Copy the :file:`tiboot3.bin`, :file:`tispl.bin` and :file:`u-boot.img` generated in steps 4 and 5
+       to :file:`${YOUR_PATH}/ti-aosp-14/vendor/ti/am62x/bootloader`.
+       If not copied, the prebuilt bootloader binaries already present in :file:`vendor/ti/am62x/bootloader`
+       will get used by :file:`flashall.sh` flashing script.
 
        .. ifconfig:: CONFIG_part_variant in ('AM62X')
 

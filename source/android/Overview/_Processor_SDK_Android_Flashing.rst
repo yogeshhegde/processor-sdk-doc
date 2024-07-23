@@ -231,7 +231,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
           => fastboot 0
 
-   * - Run the the ``flashall.sh`` script to start flashing the binaries to eMMC:
+   * - Run the the :file:`flashall.sh` script to start flashing the binaries to eMMC:
 
        .. ifconfig:: CONFIG_part_variant in ('AM62X')
 

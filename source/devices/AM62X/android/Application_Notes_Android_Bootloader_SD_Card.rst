@@ -32,7 +32,7 @@ In this example, the SD card will be: ``/dev/mmcblk0``.
 Prepare the SD Card
 -------------------
 
-The preparation of the SD Card is done via the ``flashall.sh`` script.
+The preparation of the SD Card is done via the :file:`flashall.sh` script.
 Make sure to identify the board model, and the SD card path.
 
 Then, run:
