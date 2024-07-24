@@ -29,7 +29,7 @@ Refer `Steps to Run Yocto builds inside a Container <https://github.com/TexasIns
 
 Follow :ref:`Processor SDK Build Reference <processor-sdk-build-reference>` for Layer Configuration and Build Options.
 
-.. note::
+.. attention::
 
     Before starting the container, ensure that you have completed all the Pre-Requisites as mentioned `here <https://github.com/TexasInstruments/ti-docker-images?tab=readme-ov-file#pre-requisites>`__.
 
@@ -70,10 +70,11 @@ reconfigure to use bash by running the following command:
 
 .. code-block:: console
 
-    sudo dpkg-reconfigure dash
+    $ sudo dpkg-reconfigure dash
 
-Be sure to select "No" when you are asked to use dash as the default
-system shell.
+.. important::
+
+    Be sure to select "No" when you are asked to use dash as the default system shell.
 
 .. rubric:: Large Swap File
 
@@ -88,7 +89,6 @@ small swap file to be larger will help avoid build errors for large packages.
 
 If working behind a proxy, please see `Working Behind a Network
 Proxy <https://wiki.yoctoproject.org/wiki/Working_Behind_a_Network_Proxy>`__.
-
 
 Build Steps
 -----------
@@ -168,12 +168,13 @@ Your newly built wic image will be generated in deploy-ti directory. Use :ref:`L
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational') or CONFIG_part_variant in ('AM62X', 'AM62PX')
 
-   .. note::
+   .. tip::
 
       The tisdk-default-image now includes Chromium by default, which may increase the build
       time. If you prefer not to build Chromium, you can remove the `meta-browser` layer from
-      the oeconfig-file before running oe-layertool-setup.sh. However, if you are building the
-      tisdk-default-image specifically to try out the TI Apps Launcher out-of-the-box (OOB),
+      the oeconfig-file before running oe-layertool-setup.sh
+
+      However, if you are building the tisdk-default-image specifically to try out the TI Apps Launcher out-of-the-box (OOB),
       it is not recommended to remove the meta-browser layer. The TI Apps Launcher relies on
       Chromium and removing the layer may impact its functionality. Keep the meta-browser layer
       intact for the best OOB experience.
@@ -192,7 +193,7 @@ Your newly built wic image will be generated in deploy-ti directory. Use :ref:`L
       to automatically figure out and set the maximum values for these variables, on your
       system, which may lead to errors.
 
-.. note:: While building images via Yocto, if you are facing **locale.Error: unsupported locale setting** error, it means your system is trying to use a locale setting which was not there. Run the following commands which will setup the locale and try building your target image again.
+.. caution:: While building images via Yocto, if you are facing **locale.Error: unsupported locale setting** error, it means your system is trying to use a locale setting which was not there. Run the following commands which will setup the locale and try building your target image again.
 
     .. code-block:: console
 

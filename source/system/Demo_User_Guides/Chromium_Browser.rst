@@ -24,12 +24,14 @@ The version of Chromium that is build can be obtained with this command:
 
 The version of Chromium shown here is the one that GPU acceleration is verified to work with.
 
-Executing Chromium
-------------------
+Launching Chromium Browser
+--------------------------
 
-*For security reasons it is suggested never to run Chromium as the root user.*
+.. danger::
 
-To run the Chromium browser:
+   For security reasons it is suggested never to run Chromium as the root user.
+
+To launch the Chromium browser:
 
 Assuming you are logged in as the root user.
 
@@ -64,11 +66,11 @@ The :console:`--start-fullscreen` switch will make the chromium browser consume 
 This will start chromium and provided you have network connectivity to the internet from the TI platform it will
 connect to an example application that uses WebGL/Javascript and renders fish swimming in a fish bowl using the 3D GPU.
 
-To see the GPU features that are in use, enter :code:`chrome://gpu` into the Chromium URL/Navigation bar. A web page will be
-rendered with this information. The below example shows what is enabled/disabled when GPU acceleration is working correctly:
-
 Graphics Feature Status
 -----------------------
+
+To see the GPU features that are in use, enter :code:`chrome://gpu` into the Chromium URL/Navigation bar. A web page will be
+rendered with this information. The below example shows what is enabled/disabled when GPU acceleration is working correctly
 
 .. code-block::
 
@@ -137,7 +139,7 @@ meta-clang needs to be pinned to HEAD commit of branch "scarthgap", as of the ti
 
         clang: use release tarball instead of git
 
-With these layers pinned to the correct commit, you need to make sure they are referenced in :console:`build/conf/bblayers.conf``
+With these layers pinned to the correct commit, you need to make sure they are referenced in :console:`build/conf/bblayers.conf`
 This is done automatically if you use the oe-layersetup tool.
 
 .. code-block:: console
@@ -149,11 +151,11 @@ Once this is done, use bitbake to create the tisdk-default-image. This will
 detect the meta-browser and meta-clang layers, automatically building and 
 adding Chromium to the root filesystem image.
 
-.. note::
+.. tip::
 
-    Build times of Chromium can be very long depending on the size of your build machine.   It has been found that you need
+    Build times of Chromium can be very long depending on the size of your build machine. It has been found that you need
     at least 64Gigs of RAM, and on a 28 thread Intel Core-I9 with an SSD for the build driver it will still take upwards of 2 hours just
-    to build Chromium.   A full Yocto Scarthgap build that includes Chromium can easily take 400GBytes of SSD.
+    to build Chromium. A full Yocto Scarthgap build that includes Chromium can easily take 400GBytes of SSD.
 
 The following will initiate a full tisdk-default-image build that would include
 Chromium if the meta-browser and meta-clang layers are present:

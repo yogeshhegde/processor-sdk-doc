@@ -14,10 +14,13 @@ be used to build some of the sub-components found within the SDK. This
 Makefile uses the Rules.make file and gives an example of how the
 various components can be built and the parameters to use.
 
-**NOTE:** You should not call this makefile with the
-"environment-setup" script sourced. The sub-component Makefiles will handle sourcing this script
-where appropriate, but some make targets such as the Linux kernel make
-target do not work properly when this script is already sourced.
+The source code is available at `TexasInstruments/ti-tisdk-makefile <https://github.com/TexasInstruments/ti-tisdk-makefile>`__
+
+.. caution::
+
+   You should not call this makefile with the "environment-setup" script sourced.
+   The sub-component Makefiles will handle sourcing this script where appropriate,
+   but some make targets such as the Linux kernel make target do not work properly when this script is already sourced.
 
 .. rubric:: Rules.make
    :name: rules.make
@@ -96,8 +99,9 @@ makefile targets.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-   .. note::
-        * AM62x installer supports ``am62xx-evm`` and ``am62xx-lp-evm`` platforms. ``am62xx-evm`` is the default platform for the toplevel Makefile. To build for ``am62xx-lp-evm``, pass ``PLATFORM=am62xx-lp-evm`` as argument to make.
+   .. important::
+
+        * AM62x installer supports ``am62xx-evm`` and ``am62xx-lp-evm`` platforms. ``am62xx-evm`` is the default platform for the Toplevel Makefile. To build for ``am62xx-lp-evm``, pass ``PLATFORM=am62xx-lp-evm`` as argument to make.
         * No special arguments are needed to build for ``am62xxsip-evm`` in AM62xSIP Installer.
 
 .. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM64X', 'AM62PX')
@@ -151,20 +155,18 @@ defined
    location pointed to by DESTDIR.
 -  **<target>_clean** - This target will clean the component.
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM64X')
+.. rubric:: Top-Level Targets
+   :name: top-level-targets
 
-    .. rubric:: Top-Level Targets
-       :name: top-level-targets
+The |__SDK_FULL_NAME__| package provides the following targets by default, which
+will invoke the corresponding component targets:
 
-    The |__SDK_FULL_NAME__| package provides the following targets by default, which
-    will invoke the corresponding component targets:
-
-    -  **all** - This will call the build target for each component defined
-       in the Makefile.
-    -  **install** - This will call the install target for each component
-       defined in the Makefile.
-    -  **clean** - This will call the clean target for each component
-       defined in the Makefile.
+-  ``all`` - This will call the build target for each component defined
+   in the Makefile.
+-  ``install`` - This will call the install target for each component
+   defined in the Makefile.
+-  ``clean`` - This will call the clean target for each component
+   defined in the Makefile.
 
 .. rubric:: Common Targets
    :name: common-targets
@@ -172,20 +174,19 @@ defined
 The following targets are common to all platforms in |__SDK_FULL_NAME__|
 package:
 
-- **linux** - Compiles the Linux kernel using the default tisdk\_<PLATFORM>\_defconfig
+- ``linux`` - Compiles the Linux kernel using the default tisdk\_<PLATFORM>\_defconfig
   configuration.
-- **linux-dtbs** - Compiles and creates the device tree blobs.
-- **u-boot** - This target will build both u-boot and the u-boot SPL (MLO) binaries used in newer
+- ``linux-dtbs`` - Compiles and creates the device tree blobs.
+- ``u-boot`` - This target will build both u-boot and the u-boot SPL (MLO) binaries used in newer
   versions of u-boot. This actually provides a u-boot and u-boot-spl target in the Makefile.
 
 .. ifconfig:: CONFIG_sdk not in ('PLSDK')
 
-  -  **am-benchmarks** - Builds the ARM Benchmarks for the ARCH defined in
+   -  ``arm-benchmarks`` - Builds the ARM Benchmarks for the ARCH defined in
      Rules.make.
-  -  **am-sysinfo** - Build the helper applications used by the system
+   -  ``am-sysinfo`` - Build the helper applications used by the system
      settings demos in Matrix.
 
-|
 
 .. rubric:: Additional Targets
    :name: additional-targets
@@ -198,36 +199,32 @@ devices will have following additional targets:
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
-  -  **sysfw-image** - Builds the system firmware itb file, which is a single
+  -  ``sysfw-image`` - Builds the system firmware itb file, which is a single
      binary for the system firmware release along with the different board
      configs.
-  -  **jailhouse** - Builds the required kernel module, hypervisor firmware,
+  -  ``jailhouse`` - Builds the required kernel module, hypervisor firmware,
      jailhouse tools and cell configs. Applicable for only platforms with
      Hypervisor support enabled.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'AM62PX')
 
+    - ``arm-benchmarks`` - Build the ARM Benchmarks
 
-    **arm-benchmarks** - Build the ARM Benchmarks
-
-    **cryptodev** - Build module for cryptographic hardware accelerators.
+    - ``cryptodev`` - Build module for cryptographic hardware accelerators.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X')
 
-    **ti-img-rogue-driver** - Build GPU Kernel module.
+    - ``ti-img-rogue-driver`` - Build GPU Kernel module.
 
-    **jailhouse** - Builds the required kernel module, hypervisor firmware,
-    jailhouse tools and cell configs. Applicable for only platforms with
-    Hypervisor support enabled.
+    - ``jailhouse`` - Builds the required kernel module, hypervisor firmware, jailhouse tools and cell configs. Applicable for only platforms with Hypervisor support enabled.
 
 .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM65X')
 
-   **ti-sgx-ddk-km** - Build GPU Kernel module.
+   ``ti-sgx-ddk-km`` - Build GPU Kernel module.
 
 Along with these targets, there might be additional targets for different
 external kernel modules. This list is different for each platform.
 
-|
 
 .. rubric:: Usage Examples
    :name: usage-examples
@@ -236,105 +233,107 @@ The following examples demonstrate how to use the top-level Makefile for
 some common tasks. All of the examples below assume that you are calling
 the Makefile from the top-level of the SDK.
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62PX', 'AM62X', 'AM64X')
+-  Build Everything
 
-    -  Build Everything
+   .. code-block:: console
 
-    .. code-block:: console
+       host# make all
 
-        host# make
+-  Clean Everything
 
-    -  Clean Everything
+   .. code-block:: console
 
-    .. code-block:: console
+       host# make clean
 
-        host# make clean
+-  Install Everything
 
-    -  Install Everything
+   .. code-block:: console
 
-    .. code-block:: console
-
-        host# make install
+       host# make install
 
 
 .. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X')
 
     -  Build Linux kernel and Fitimage
 
+       .. code-block:: console
+
+           host# make linux
+
 .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X')
 
     -  Build Linux kernel
 
-::
+       .. code-block:: console
 
-    host# make linux
+           host# make linux
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X')
 
    - Copy FitImage, Linux Kernel Image and boot-binaries to built-images folder
 
-   .. code-block:: console
+     .. code-block:: console
 
-        host# make linux_stage
+         host# make linux_stage
 
 
 .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X')
 
     -  Install Linux kernel image and kernel modules to SD card
 
-    .. code-block:: console
+       .. code-block:: console
 
-        host# make linux_install
+           host# make linux_install
 
-        To install in SD card directly:
-        host# sudo DESTDIR=/media/$USER/boot make linux_install
-        host# sudo DESTDIR=/media/$USER/rootfs make linux_modules_install
+           To install in SD card directly:
+           host# sudo DESTDIR=/media/$USER/boot make linux_install
+           host# sudo DESTDIR=/media/$USER/rootfs make linux_modules_install
 
 .. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X')
 
     -  Install Linux kernel modules and Fitimage to SD card rootfs
 
-    .. code-block:: console
+       .. code-block:: console
 
-        host# make linux_install
+           host# make linux_install
 
-        To install in SD card directly:
-        host# sudo DESTDIR=/media/$USER/rootfs make linux_install
+           To install in SD card directly:
+           host# sudo DESTDIR=/media/$USER/rootfs make linux_install
 
 -  Clean Linux
 
-.. code-block:: console
+   .. code-block:: console
 
-    host# make linux_clean
+       host# make linux_clean
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
     - To build Linux kernel and FitImage for ``am62xx-lp-evm``, pass ``PLATFORM=am62xx-lp-evm``
       argument to make.
 
-    .. code-block:: console
+      .. code-block:: console
 
-        host# PLATFORM=am62xx-lp-evm make linux
+          host# PLATFORM=am62xx-lp-evm make linux
 
     - make linux_install for ``am62xx-lp-evm``
 
-    .. code-block:: console
+      .. code-block:: console
 
-        host# sudo DESTDIR=/media/$USER/rootfs PLATFORM=am62xx-lp-evm make linux_install
+          host# sudo DESTDIR=/media/$USER/rootfs PLATFORM=am62xx-lp-evm make linux_install
 
     - To Build GPU kernel module
 
-    .. code-block:: console
+      .. code-block:: console
 
-        host# make ti-img-rogue-driver
+          host# make ti-img-rogue-driver
 
-    .. code-block:: console
+      .. code-block:: console
 
-        Install GPU Kernel Modules
-        host# make ti-img-rogue-driver_install
+          Install GPU Kernel Modules
+          host# make ti-img-rogue-driver_install
 
-        To install in SD card directly:
-        host# sudo DESTDIR=/media/$USER/rootfs make ti-img-rogue-driver_install
+          To install in SD card directly:
+          host# sudo DESTDIR=/media/$USER/rootfs make ti-img-rogue-driver_install
 
 
 .. ifconfig:: CONFIG_sdk not in ('PLSDK')
@@ -361,41 +360,21 @@ the Makefile from the top-level of the SDK.
 
     -  Build the ARM Benchmarks
 
-    .. code-block:: console
+       .. code-block:: console
 
-        host# make arm-benchmarks
+           host# make arm-benchmarks
 
     -  Clean the ARM Benchmarks
 
-    .. code-block:: console
+       .. code-block:: console
 
-        host# make arm-benchmarks_clean
+           host# make arm-benchmarks_clean
 
     -  Install the ARM Benchmarks
 
-    .. code-block:: console
+       .. code-block:: console
 
-        host# sudo make arm-benchmarks_install
-
-.. ifconfig:: CONFIG_part_variant in ( 'AM64X' )
-
-    - Build Matrix-gui sources
-
-    .. code-block:: console
-
-        host# make matrix-gui
-
-    - Clean the Matrix GUI
-
-    .. code-block:: console
-
-        host# make matrix-gui_clean
-
-    - Install the Matrix GUI sources
-
-    .. code-block:: console
-
-        host# sudo make matrix-gui_install
+           host# sudo make arm-benchmarks_install
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational') or CONFIG_part_variant in ('AM65X')
 
@@ -468,39 +447,39 @@ the Makefile from the top-level of the SDK.
 
     -  Build u-boot
 
-    .. code-block:: console
+       .. code-block:: console
 
-        host# make u-boot
+           host# make u-boot
 
     - Build A53
 
-    .. code-block:: console
+      .. code-block:: console
 
-        host# make u-boot-a53
+          host# make u-boot-a53
 
     - Build R5
 
-    .. code-block:: console
+      .. code-block:: console
 
-        host# make u-boot-r5
+          host# make u-boot-r5
 
     - Copy boot-binaries to built-images folder
 
-    .. code-block:: console
+      .. code-block:: console
 
-        host# make u-boot_stage
+          host# make u-boot_stage
 
     - Install boot-binaries to SD card boot partition
 
-    .. code-block:: console
+      .. code-block:: console
 
-        host# sudo DESTDIR=/media/$USER/boot make u-boot_install
+          host# sudo DESTDIR=/media/$USER/boot make u-boot_install
 
     - Clean u-boot
 
-    .. code-block:: console
+      .. code-block:: console
 
-        host# make u-boot_clean
+          host# make u-boot_clean
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -509,15 +488,15 @@ the Makefile from the top-level of the SDK.
 
     - Build u-boot for ``am62xx-lp-evm``
 
-    .. code-block:: console
+      .. code-block:: console
 
-        host# make u-boot PLATFORM=am62xx-lp-evm
+          host# make u-boot PLATFORM=am62xx-lp-evm
 
     - Install boot-binaries to SD card boot partition for ``am62xx-lp-evm``
 
-    .. code-block:: console
+      .. code-block:: console
 
-        host# sudo DESTDIR=/media/$USER/boot PLATFORM=am62xx-lp-evm make u-boot_install
+          host# sudo DESTDIR=/media/$USER/boot PLATFORM=am62xx-lp-evm make u-boot_install
 
     Similar argument can be added to all u-boot targets discussed above.
 
@@ -674,13 +653,13 @@ the Makefile from the top-level of the SDK.
     .. code-block:: console
 
         host# sudo cp board-support/built-images/tiboot3-am62*-hs-evm.bin /media/$USER/boot/tiboot3.bin
-        host# sudo cp board-support/built-images/tispl.bin /media/$USER/boot/tispl.bin
-        host# sudo cp board-support/built-images/u-boot.img /media/$USER/boot/u-boot.img
+        host# sudo cp board-support/built-images/tispl.bin board-support/built-images/u-boot.img /media/$USER/boot
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
     **For HS-FS**
-    ::
+
+    .. code-block:: console
 
         host# sudo cp board-support/built-images/tiboot3-am62p*-hs-fs-evm.bin /media/$USER/boot/tiboot3.bin
         host# sudo cp board-support/built-images/u-boot.img board-support/built-images/tispl.bin /media/$USER/boot

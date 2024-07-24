@@ -15,8 +15,7 @@ the tasks require administrator privileges. The script will prompt you
 when these administrator privileges are required. The setup script
 does the following things:
 
--  Verification that the Linux host is the recommended Ubuntu LTS
-   version
+-  Verification that the Linux host is the recommended Ubuntu LTS version
 -  Installation of required host packages
 -  Target FileSystem installation
 -  NFS setup
@@ -26,6 +25,7 @@ does the following things:
 -  Load uboot script
 
 .. note::
+
     The host setup is common to all TI platforms.
 
 .. Image:: /images/Linux_Host_Development_System.png
@@ -91,9 +91,12 @@ directory.  By default, this directory has a name that has the form
 
 Then run the script:
 
-**./setup.sh**
+.. code-block:: console
 
-.. note::
+    $ ./setup.sh
+
+.. attention::
+
     The Setup Script will first check to see if the user is running the
     recommended Ubuntu Long Term Support (LTS) distribution, if not it will
     exit. If the user is running on a different Ubuntu version or another
@@ -123,7 +126,8 @@ packages to allow you do the following tasks:
 If your host lacks any of the needed packages, they will automatically
 be installed in this step.
 
-.. note::
+.. important::
+
     This command requires you to have administrator priviliges (sudo access)
     on your host.
 
@@ -135,7 +139,8 @@ packages may vary for different releases:
 .. rubric:: Add to Dialout Group
    :name: add-to-dialout-group
 
-.. note::
+.. important::
+
     This part requires you to have administrator priviliges (sudo access).
 
 A unique step is required for users using Ubuntu 12.04+. By default the
@@ -154,7 +159,8 @@ logs out and then logs back in.
 
 This step will extract the target filesystem.
 
-.. note::
+.. important::
+
     This part requires you to have administrator priviliges (sudo access).
 
 The default location is:
@@ -191,7 +197,8 @@ exists, you will be asked to either:
 This step will allow you to export your filesystem which was extracted
 in the previous step.
 
-.. note::
+.. important::
+
     This command requires you to have administrator priviliges (sudo
     access).
 
@@ -205,7 +212,8 @@ in the previous step.
 
 This section will setup tftp access on your host.
 
-.. note::
+.. important::
+
     This command requires you to have administrator priviliges (sudo access)
     on your host.
 
@@ -270,7 +278,8 @@ development.
 The configuration saved to /home/user/.minirc.dfl can be changed, see
 the Software Development Guide for more information.
 
-.. note::
+.. tip::
+
     If you are using a USB-to-Serial converter, your port should be
     configured for /dev/ttyUSBx.
 
@@ -308,7 +317,8 @@ to be located.
 
    .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-      .. note::
+      .. attention::
+
             The option of "SD card" is not applicable to K2H/K2K, K2E, and K2L
             platforms. Therefore, please use TFTP/NFS for those keystone2 platforms.
 
@@ -345,7 +355,8 @@ necessary u-boot options to boot up your device.
        uEnv.txt script is created and placed in the /boot partition of the
        SD card.
 
-    .. note::
+    .. important::
+
         For devices which create a uEnv.txt, the device must already be booted
         up with the USB-to-Serial connector attached to the Host. Further the
         Host must recognize the boot and START\_HERE partitions.
