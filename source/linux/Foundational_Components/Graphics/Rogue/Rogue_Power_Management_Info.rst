@@ -47,20 +47,26 @@ Suspend and resume features are also enabled for Rogue cores. To test this
 manually the following procedure can be used on products supporting full device
 suspend / resume features:
 
-Initiate a load to wake up the GPU using ``rgx_compute_test``:
+Initiate a load to wake up the GPU using ``glmark2``:
 
 .. code-block:: console
 
-   target # rgx_compute_test -f 100 &
+   # glmark2-es2-wayland &
 
 Trigger a suspend event with a scheduled wakeup:
 
 .. code-block:: console
 
-   target # rtcwake -s 3 -m mem
+   # rtcwake -s 3 -m mem
 
 Wait for the scheduled wakeup.
 
 The above sequence should result in the background compute task being paused
 for the suspend action and then resumed after the scheduled wakeup 3 seconds
 later.
+
+.. note::
+
+   Driver specific unit tests (like ``rgx_compute_test``) will hold the device
+   in the powered on state starting with driver version 24.1. You cannot use
+   these tests as a load when attempting to test suspend/resume functionality.
