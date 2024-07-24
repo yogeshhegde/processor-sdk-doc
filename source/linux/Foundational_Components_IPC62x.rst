@@ -25,12 +25,12 @@ Prerequisites
 -  `Processor SDK MCU+ for
    AM62x <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM62X>`__
 
-.. note::
+.. attention::
+
    Please be sure that you have the same version number
    for both Processor SDK RTOS and Linux.
 
-Please refer to the MCU+SDK documentation, section "Developer Guides" -> "Understanding
-inter-processor communication (IPC)" for M4F IPC architecture and builds.
+Please refer to `Understanding inter-processor communication (IPC) <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/09_02_01_06/exports/docs/api_guide_am62x/IPC_GUIDE.html>`__ section from MCU+ SDK documentation for M4F IPC architecture and builds.
 
 Typical Boot Flow on AM62x for ARM Linux users
 ----------------------------------------------

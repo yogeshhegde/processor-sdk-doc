@@ -1,8 +1,8 @@
 Docker Linux Container Runtime
-=================================
+==============================
 
 Overview
------------
+--------
 
 Docker complements kernel namespacing with a high-level API which
 operates at the process level. It runs unix processes with strong
@@ -14,10 +14,10 @@ systems, private PaaS, service-oriented architectures, etc.
 
 
 Exploring Docker In Processor SDK
-------------------------------------
+---------------------------------
 
 Booting the Docker Filesystem
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 It is recommended to mount to root filesystem from an SD card as the docker
 runtime may not be located on an NFS mount. While it is possible to use Docker
 on a NFS root, extra configuration is required to modify the default docker
@@ -25,13 +25,12 @@ runtime directory.
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM62X_family')
 
-     Please follow the instructions for the `Create SD Card Script <../../Overview/Processor_SDK_Linux_create_SD_card.html#create-sd-card-with-default-images-using-script>`__
-     and when prompted to select the root filesystem image, select the 'tisdk-default-rootfs'
-     image.
+     Please follow the instructions for the :ref:`Create SD Card Script <processor-sdk-linux-create-sd-card-with-custom-images>`
+     and when prompted to select the root filesystem tarball, select the ``tisdk-default-image``
 
 
 Configuring the Docker daemon
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The default docker configuration is suitable in most settings. In certain cases,
 custom configuration may be needed to properly setup docker, for example,
 working behind a firewall. In the future, select configuration that may be
@@ -40,11 +39,11 @@ support. Often a search online provide information on configuring for different
 environments.
 
 Docker Hello World
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 On the EVM, login to the Linux shell. The following command will run the "Hello
 World" demo and confirm that docker is properly configured.
 
-::
+.. code-block:: console
 
     $ docker run hello-world
 
@@ -72,6 +71,6 @@ World" demo and confirm that docker is properly configured.
 
 
 Docker References
---------------------
+-----------------
 * https://docker.com/
 * https://hub.docker.com/
