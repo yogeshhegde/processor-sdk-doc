@@ -18,3 +18,6 @@ android/Overview_Building_the_SDK
 android/Overview
 android/Overview_Technical_Support
 android/Overview_Flashing
+
+android/Foundational_Components
+android/Foundational_Components_Kernel
