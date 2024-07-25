@@ -2,6 +2,7 @@
 Android Kernel
 ##############
 
+.. _android-download-kernel:
 
 *******************
 Downloading sources
@@ -31,6 +32,7 @@ Downloading sources
 
        $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_10_00_Kernel-6.6.xml
 
+.. _android-build-kernel:
 
 ******************
 Build Instructions

@@ -21,6 +21,8 @@ Please refer to the following pages from Android documentation to setup your env
 You will need the ``repo`` tool to retrieve repositories.
 To install it, please refer to this webpage : https://source.android.com/setup/develop#installing-repo
 
+.. _android-download-aosp:
+
 Downloading sources
 ===================
 
@@ -33,11 +35,6 @@ Downloading sources
        $ mkdir ~/10_00_00 && cd $_
        $ export YOUR_PATH=$PWD
 
-.. _android-download-aosp:
-
-Android file system
--------------------
-
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
     Fetch the code using ``repo``:
@@ -48,14 +45,22 @@ Android file system
        $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_10_00.xml
        $ repo sync
 
+.. tip::
 
-Build Instructions
-==================
+   By default the Android build contains **pre-built binaries** for both the kernel
+   and the bootloaders.
+   The pre-builts are located in in :file:`device/ti/am62x-kernel`
+   and :file:`vendor/ti/am62x/bootloader` folder.
+
+   To get the sources, refer to:
+
+   - :ref:`android-download-kernel` for kernel
+   - :ref:`android-download-bootloaders` for bootloaders
 
 .. _android-build-aosp:
 
-Android File System
--------------------
+Build Instructions
+==================
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
@@ -130,13 +135,17 @@ The following build flags are available. **Default** values are **highlighted**.
    After building is complete, the necessary images will be available in
    :file:`${YOUR_PATH}/ti-aosp-14/out/target/product/am62*/`.
 
-   The bootloader and kernel builds below are optional if they are used as-is from TI release.
-   Prebuilt copies of these binaries are already part of Android file system sources
-   in :file:`device/ti/am62x-kernel` and :file:`vendor/ti/am62x/bootloader` folder.
    To proceed to flash Android, see :ref:`android-flashing`.
 
+   .. tip::
 
-**After building all components, refer to instruction in next section for flashing the images to EVM**
+      As stated previously, Android build contains **pre-built binaries**
+      for both the kernel and the bootloaders.
+      These are ready to be used as-is with the EVM boards.
+      For customization, it's possible to rebuild them.
+
+      - See :ref:`android-build-kernel` for the kernel
+      - See :ref:`android-build-bootloaders` for the bootloaders
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
