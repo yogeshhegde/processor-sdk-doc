@@ -33,6 +33,12 @@ This wiki page provides usage information of M\_CAN Linux driver.
 +----------+---------+-----------------------+-------------------+----------------------+
 | AM62x    | SK      | 3                     | Header            | No                   |
 +----------+---------+-----------------------+-------------------+----------------------+
+| AM68     | SK      | 4                     | Header            | Yes                  |
++----------+---------+-----------------------+-------------------+----------------------+
+| AM69     | SK      | 4                     | Header            | Yes                  |
++----------+---------+-----------------------+-------------------+----------------------+
+| J721E    | SK      | 4                     | Header            | Yes                  |
++----------+---------+-----------------------+-------------------+----------------------+
 | J721E    | EVM     | 4                     | Header            | Yes                  |
 +----------+---------+-----------------------+-------------------+----------------------+
 | J7200    | EVM     | 4                     | Header            | Yes                  |
@@ -307,5 +313,5 @@ Stop the can bus by:
    they are probed. For example, 2 CAN instances will have names as can0 and can1
    assigned to them in the linux kernel, based on the order in which they are probed and
    irrespective of their CAN instance number. If the earlier CAN naming convention is needed,
-   you can revert `cfc97aeb022ddc03f252deebc9021aff449b24c8 <https://git.ti.com/cgit/arago-project/meta-arago
-   /commit/?h=kirkstone&id=cfc97aeb022ddc03f252deebc9021aff449b24c8>`_ commit in meta-arago repository.
+   you can revert `2d2df9f8058a3aa323daa01a64fcef59176500e3 <https://git.ti.com/cgit/arago-project/meta-arago
+   /commit/?h=scarthgap&id=2d2df9f8058a3aa323daa01a64fcef59176500e3>`_ commit in meta-arago repository.
