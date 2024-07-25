@@ -70,6 +70,8 @@ Build Instructions
       $ source build/envsetup.sh
       $ lunch <BUILD_TARGET>
       $ m
+      [...]
+      #### build completed successfully (49:14 (mm:ss)) ####
 
 Where ``<BUILD_TARGET>`` is listed in the table below :
 
