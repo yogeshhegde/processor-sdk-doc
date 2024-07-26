@@ -82,4 +82,4 @@ The following are steps to connect to a WPA password-secured Access Point.
     udhcpc -i wlan0
 
 For more information on the Wi-Fi capabilities of the CC33xx devices, please 
-see the documentation that can be found on the CC33xx SDK page `here <https://www.ti.com/tool/CC33XX-SOFTWARE>`.
+see the documentation that can be found in the `CC33xx SDK <https://www.ti.com/tool/CC33XX-SOFTWARE>`_.
