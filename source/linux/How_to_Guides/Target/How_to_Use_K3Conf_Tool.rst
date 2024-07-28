@@ -1,7 +1,7 @@
 .. include:: /_replacevars.rst
 
 How to Use K3Conf Tool
-================================
+======================
 
 Overview
 --------
@@ -17,18 +17,17 @@ intended to be extended to any other area.
 
 
 How to use
----------------------
+----------
 
-k3conf is part of yocto build and SDK installer.
-On target user needs to use command "k3conf".
+k3conf is part of yocto build and SDK installer. On target user needs to use command :command:`k3conf`
 
-Type "k3conf --help" to get complete list of available commands and options.
+Type ``k3conf --help`` to get complete list of available commands and options.
 
+.. attention::
 
-.. note::
-
-  K3CONF currently supports AM654, J721E, J7200, AM64x, AM62x, J721S2, J784S4 and
+  K3CONF currently supports AM654, J721E, J7200, AM64x, AM62x, AM62P, J721S2, J784S4 and
   AM62Ax Devices.
 
-Source code for k3conf tool can be accessed from
-https://git.ti.com/cgit/k3conf/k3conf/ git repo.
+Source code for k3conf tool is available at `git.ti.com/k3conf <https://git.ti.com/cgit/k3conf/k3conf/>`__ and the Yocto recipe which builds
+& packages k3conf in filesystem is available at `git.ti.com/meta-ti <https://git.ti.com/cgit/arago-project/meta-ti/tree/meta-ti-bsp/recipes-devtools/k3conf/k3conf_git.bb?h=scarthgap>`__
+

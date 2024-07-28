@@ -1,29 +1,21 @@
 .. include:: /_replacevars.rst
 
-**********
+.. _List-of-filesystems-in-SDK:
+
 Filesystem
-**********
+==========
 
-The |__SDK_FULL_NAME__| provides Filesystem Images that contain
+The |__SDK_FULL_NAME__| provides a filesystem tarball that contains
 programs, scripts, Linux user-space components that abstract various
-hardware accelerators available in the SoC. The Filesystem can be
-fully assembled via Yocto, following the instructions
-`Processor\_SDK\_Building\_The\_SDK <Overview_Building_the_SDK.html>`__.
+hardware accelerators available in the SoC. The filesystem can be
+built via Yocto, following the instructions
+:ref:`Processor SDK - Building the SDK with Yocto <Overview_Building_the_SDK.html>`
 
-There are different filesystem images provided in the SDK. You'll find them at
-the SDK Installation directory/filesystem/ folder.
+There are different filesystem tarballs provided in the SDK. You'll find them at
+:file:`${PSDK_PATH}/filesystem/`
 
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-    .. rubric:: tisdk-bootstrap-image
-
-    This image is a complete minimal system containing a rootfs and an initrd
-    with platform test utilities that can be used for new platform bringup
-    activities. Typically one would use the bootstrap initrd till the
-    storage media access is debugged, following which one would switch
-    over to using the storage media of choice with the same content. This
-    image has systemd replaced with sysvinit.
 
     .. rubric:: tisdk-base-image
 
@@ -42,7 +34,7 @@ the SDK Installation directory/filesystem/ folder.
 
 This is the complete filesystem image, that contains standard Linux
 commands and features. This also contains the TI component libraries,
-binaries and out of box examples.
+binaries and :ref:`TI Apps Launcher OOB Demo <TI-Apps-Launcher-User-Guide-label>`
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
@@ -70,3 +62,31 @@ binaries and out of box examples.
 
     This is the absolute minimal filesystem. The boot files are omitted from this
     image and systemd has been replaced with sysvinit.
+
+
+Following is a list of all filesystem images provided by TI which can be built via Yocto
+
+.. code-block:: text
+
+    Common targets are:
+
+    From meta-arago[recommended]:
+        tisdk-bootstrap-base-image:  Arago TI SDK bootstrap base image for initramfs
+        tisdk-jailhouse-image:  Arago TI SDK image for Jailhouse Hypervisor
+        tisdk-bootstrap-image:  Arago TI SDK bootstrap image usable for board bringup
+        tisdk-tiny-initramfs:  Arago TI SDK super minimal base image for initramfs
+        tisdk-core-bundle:  Installer package for TI SDK - NOT for direct use on target
+        tisdk-base-image:  Arago TI SDK base image with test tools
+        tisdk-thinlinux-image:  Arago TI SDK Thin Linux image
+        tisdk-jailhouse-inmate:  Arago TI SDK super minimal base image for jailhouse linux demo
+        tisdk-default-image:  Arago TI SDK full filesystem image
+        tisdk-tiny-image:  Arago TI SDK super minimal base image for initramfs
+
+    From meta-tisdk:
+        tisdk-display-cluster-image:  Arago TI SDK full filesystem image showcasing display sharing in AM62P
+
+
+.. note::
+    
+    Watchout for console logs while running `oe-layersetup <https://git.ti.com/cgit/arago-project/oe-layersetup/>`__ 
+    to get an exhaustive list of target filesystem images that can be built using Yocto.  

@@ -1,20 +1,14 @@
-###############################
 Documentation Tarball
-###############################
+=====================
 
 Please click the link below to download a snapshot of the entire documentation in HTML format.
 
-.. raw:: html
-
-    <a href="processor-sdk-linux-docs.tar.gz">Download processor-sdk-linux-docs.tar.gz</a>
-
-|
+`Download processor-sdk-linux-docs.tar.gz <processor-sdk-linux-docs.tar.gz>`__
 
 Unpack the tarball using the command below:
 
-::
+.. code-block:: console
 
     tar -xzvf processor-sdk-linux-docs.tar.gz
 
-Then, you can open the landing page (processor-sdk-linux-docs-[version]/linux/index.html) in
-a browser to browse the content.
+Then, you can open the landing page :file:`processor-sdk-linux-docs/index.html` in a browser to browse the content.
