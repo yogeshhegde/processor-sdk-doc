@@ -49,7 +49,13 @@ Flashing instructions
 
 Once the build is complete, follow the steps below to flash the images to eMMC.
 
-    .. Image:: ../images/am62x_sk_evm_setup.jpg
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   .. Image:: ../images/am62x_sk_evm_setup.jpg
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   .. Image:: ../images/am62px_sk_evm_setup.png
 
 1. Change the boot mode DIP switches to DFU mode:
 
