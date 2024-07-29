@@ -180,7 +180,7 @@ To build the IPC applications, follow the same procedure to build the
 entire AFS. If you want to specifically build the IPC content, you can
 issue the following command to build the needed IPC libraries and
 application from the top your AFS installation (must configure and pick
-the correct **launch** target for your device).
+the correct :command:`lunch` target for your device).
 
 ::
 
