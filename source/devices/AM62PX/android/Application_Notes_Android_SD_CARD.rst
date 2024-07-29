@@ -31,13 +31,45 @@ Apply this patch in U-Boot source code:
         # Enable Android boot flow
         CONFIG_SYS_MALLOC_LEN=0x08000000
 
+When using the the experimental ``2024.04`` U-Boot release apply this patch instead:
+
+    .. code-block:: diff
+
+       diff --git a/configs/am62x_a53_android.config b/configs/am62x_a53_android.config
+       index 55fa93b140f9..dd0d36069d74 100644
+       --- a/configs/am62x_a53_android.config
+       +++ b/configs/am62x_a53_android.config
+       @@ -5,7 +5,7 @@ CONFIG_USB_FUNCTION_FASTBOOT=y
+        CONFIG_FASTBOOT_BUF_ADDR=0xC0000000
+        CONFIG_FASTBOOT_BUF_SIZE=0x2F000000
+        CONFIG_FASTBOOT_FLASH=y
+       -CONFIG_FASTBOOT_FLASH_MMC_DEV=0
+       +CONFIG_FASTBOOT_FLASH_MMC_DEV=1
+        CONFIG_CMD_GPT=y # Needed for FASTBOOT_CMD_OEM_FORMAT
+        CONFIG_RANDOM_UUID=y # Needed for FASTBOOT_CMD_OEM_FORMAT
+        CONFIG_FASTBOOT_CMD_OEM_FORMAT=y
+       diff --git a/include/env/ti/android.env b/include/env/ti/android.env
+       index a058beb7fc42..693806550853 100644
+       --- a/include/env/ti/android.env
+       +++ b/include/env/ti/android.env
+       @@ -24,8 +24,8 @@ partitions+=name=userdata,size=-,uuid=${uuid_gpt_userdata}
+        fastboot_raw_partition_bootenv=0x800 0x400 mmcpart 1
+        fastboot.partition-type:metadata=f2fs
+
+       -boot_targets=mmc0
+       -mmcdev=0
+       +boot_targets=mmc1
+       +mmcdev=1
+        bootmeths=android
+        vendor_boot_comp_addr_r=0xd0000000
+        bootcmd=bootflow scan -lb
 
 Build U-Boot
 ------------
 
 Follow this link to build the :ref:`android-build-bootloaders`.
 
-Rebuild U-Boot then copy ``u-boot.img`` in Android build system environment : ``vendor/ti/am62x/bootloader/am62px-sk``
+Rebuild U-Boot then copy :file:`u-boot.img` in Android build system environment : :file`vendor/ti/am62x/bootloader/am62px-sk`
 
 Build Android
 -------------
@@ -74,14 +106,14 @@ Flashing SD Card
        - 01000000
        - 11000010
 
-- Go in out directory in android environment and launch this command:
+- Go in :file:`out` directory in android environment and launch this command:
 
   .. code-block:: console
 
      $ cd out/target/product/am62p
      $ sudo ./flashall.sh --board="am62px-sk" --sdcard="/dev/sdX"
 
-**flashall.sh script print in your console instruction to do**
+:file:`flashall.sh` **script print in your console instruction to do**
 
-.. note::
+.. tip::
     Replace X in ``/dev/sdX/`` by letter corresponding to your SD card

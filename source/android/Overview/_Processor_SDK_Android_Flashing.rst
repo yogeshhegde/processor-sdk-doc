@@ -9,7 +9,6 @@ Flashing Instruction
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
    These instructions are for the AM62x SK EVM.
-
    For flashing the Beagle Play, see the `dedicated application note`_.
 
    .. _dedicated application note: ../devices/AM62X/android/Application_Notes_BeaglePlay.html
@@ -20,19 +19,25 @@ DFU Recovery
 
 It's possible to put the |__PART_FAMILY_NAME__| SK EVM in USB DFU mode, which allows
 loading bootloaders over DFU. This is done via the ``snagboot`` tool.
-
 This is useful for initial flashing or recovering boards which have broken
 bootloaders.
 
 Installation and setup
 ----------------------
 
-Install snagboot following the `official instructions <https://github.com/bootlin/snagboot>`_
+Install snagboot 1.3.0 following the `official instructions <https://github.com/bootlin/snagboot>`_
+Make sure to install the udev rules as documented:
 
-.. note::
+.. code-block:: console
 
-    If Snagboot cannot be installed, it's possible boot the initial bootloaders from an SD card.
+   $ snagrecover --udev > 50-snagboot.rules
+   $ sudo cp 50-snagboot.rules /etc/udev/rules.d/
+   $ sudo udevadm control --reload-rules
+   $ sudo udevadm trigger
 
+.. tip::
+
+    If Snagboot cannot be installed, it's possible to boot the initial bootloaders from an SD card.
     Follow :ref:`android-bootloader-sdcard` if you encounter issues with Snagboot.
 
 
@@ -68,148 +73,256 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
       $ sudo picocom -b 115200 -r -l /dev/ttyUSB0
 
-4. run ``snagrecover`` for host
+4. The following sequence assumes that 2 terminals are open:
 
-  .. ifconfig:: CONFIG_part_variant in ('AM62X')
+   - On the left, a terminal to send commands from the PC to the device
+   - On the right, the ``picocom`` console to run commands on the device
 
-     .. code-block:: console
+.. list-table::
+   :header-rows: 1
 
-        # If you are using binaries built locally
-        $ cd out/target/product/am62x
+   * - PC
+     - Device
+   * - run ``snagrecover``:
 
-        (OR)
+       .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        # If you are using pre-built binaries from SDK download page
-        $ cd AM62x_09.02.00_emmc
+          .. code-block:: console
 
-        # for AM62x SK EVM (GP)
-        $ snagrecover -s am625 -f ./am62x-sk-evm.yaml
+             # If you are using binaries built locally
+             $ cd out/target/product/am62x
 
-        # for AM62x SK EVM (HS-FS)
-        $ snagrecover -s am625 -f ./am62x-sk-evm-hsfs.yaml
+             (OR)
 
-        # for AM62x LP SK EVM (GP)
-        $ snagrecover -s am625 -f ./am62x-lp-sk-evm.yaml
+             # If you are using pre-built binaries from SDK download page
+             $ cd AM62x_10.00.00_emmc
 
-        # for AM62x LP SK EVM (HS-FS)
-        $ snagrecover -s am625 -f ./am62x-lp-sk-evm-hsfs.yaml
+             # for AM62x SK EVM (GP)
+             $ snagrecover -s am625 -f ./am62x-sk-evm.yaml
 
-  .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+             # for AM62x SK EVM (HS-FS)
+             $ snagrecover -s am625 -f ./am62x-sk-evm-hsfs.yaml
 
-     .. code-block:: console
+             # for AM62x LP SK EVM (GP)
+             $ snagrecover -s am625 -f ./am62x-lp-sk-evm.yaml
 
-        # If you are using binaries built locally
-        $ cd out/target/product/am62p
+             # for AM62x LP SK EVM (HS-FS)
+             $ snagrecover -s am625 -f ./am62x-lp-sk-evm-hsfs.yaml
 
-        (OR)
+       .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-        # If you are using pre-built binaries from SDK download page
-        $ cd AM62Px_09.02.00_emmc
+         .. code-block:: console
 
-        $ snagrecover -s am625 -f ./am62px-sk-evm-hsfs.yaml
+             # If you are using binaries built locally
+             $ cd out/target/product/am62p
+
+             (OR)
+
+             # If you are using pre-built binaries from SDK download page
+             $ cd AM62Px_10.00.00_emmc
+
+             $ snagrecover -s am625 -f ./am62px-sk-evm-hsfs.yaml
+
+       produces::
+
+          Starting recovery of am625 board
+          Installing firmware tiboot3
+          Searching for partition id...
+          Downloading file...
+          Could not read status after end of manifest phase
+          Done
+          Done installing firmware tiboot3
+          Installing firmware tispl
+          Searching for partition id...
+          Downloading file...
+          Done
+          Done installing firmware tispl
+          Installing firmware u-boot
+          Searching for partition id...
+          Downloading file...
+          Done
+          Sending detach command...
+          Done installing firmware u-boot
+          Installing firmware u-boot
+          Searching for partition id...
+          Downloading file...
+          Done
+          Sending detach command...
+          Done installing firmware u-boot
+          Done recovering am625 board
+
+     - Halt the autoboot countdown by pressing any key::
+
+          U-Boot SPL 2023.04-g83660642 (Jul 15 2024 - 11:30:29 +0000)
+          SYSFW ABI: 4.0 (firmware rev 0x000a '10.0.6--v10.00.06 (Fiery Fox)')
+          SPL initial stack usage: 17048 bytes
+          Trying to boot from DFU
+          ##########################################################DOWNLOAD ... OK
+          Ctrl+C to exit ...
+          ##############################################################DOWNLOAD ... OK
+          Ctrl+C to exit ...
+          Authentication passed
+          Authentication passed
+          Authentication passed
+          init_env from device 10 not supported!
+          Authentication passed
+          Authentication passed
+          Starting ATF on ARM64 core...
+
+          NOTICE:  BL31: v2.10.0(release):09.02.00.009
+          NOTICE:  BL31: Built : 11:30:24, Jul 15 2024
+
+          U-Boot SPL 2023.04-g83660642 (Jul 15 2024 - 11:30:56 +0000)
+          SYSFW ABI: 4.0 (firmware rev 0x000a '10.0.6--v10.00.06 (Fiery Fox)')
+          SPL initial stack usage: 1904 bytes
+          Trying to boot from DFU
+          #####DOWNLOAD ... OK
+          Ctrl+C to exit ...
+          Authentication passed
+          Authentication passed
 
 
-  In the serial console, you will see::
+          U-Boot 2023.04-g83660642 (Jul 15 2024 - 11:30:56 +0000)
 
-      SYSFW ABI: 3.1 (firmware rev 0x0009 '9.0.5--v09.00.05 (Kool Koala)')
-      SPL initial stack usage: 1856 bytes
-      Trying to boot from DFU
+          SoC:   AM62PX SR1.0 HS-FS
+          Model: Texas Instruments AM62P5 SK
+          DRAM:  2 GiB (effective 8 GiB)
+          Core:  80 devices, 30 uclasses, devicetree: separate
+          MMC:   mmc@fa10000: 0, mmc@fa00000: 1
+          Loading Environment from MMC... OK
+          In:    serial
+          Out:   serial
+          Err:   serial
+          Net:   eth0: ethernet@8000000port@1, eth1: ethernet@8000000port@2
+          Hit any key to stop autoboot:  0
+          =>
+
+   * -
+     - .. _step_5_flashing_instructions:
+
+       Ensure the default U-Boot environment is configured with:
+
+       .. code-block::
+
+          => env default -f -a; saveenv;
+          ## Resetting to default environment
+          Saving Environment to MMC... Writing to MMC(0)... OK
+
+       .. note::
+
+          If you build with ``TARGET_AVB_ENABLE=true`` or flash user images you need to run this:
+
+          .. code-block::
+
+             => setenv force_avb "1"; saveenv;
+             Saving Environment to MMC... Writing to MMC(0)... OK
+
+       .. tip::
+
+          By default, no Device-Tree Overlays are selected.
+          Follow this link to configure :ref:`android-dtbo`
+
+   * -
+     - Enable fastboot mode on the device by executing below command.
+
+       Before running this, make sure USB-C cable is connected from the host PC to the EVM:
+
+       .. code-block:: console
+
+          => fastboot 0
+
+   * - Run the the :file:`flashall.sh` script to start flashing the binaries to eMMC:
+
+       .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+          .. code-block:: console
+
+             # If you are using binaries built locally
+             $ cd out/target/product/am62x
+
+             (OR)
+
+             # If you are using pre-built binaries from SDK download page
+             $ cd AM62x_10.00.00_emmc
+
+             # for AM62x SK EVM (GP)
+             $ sudo ./flashall.sh --board am62x-sk
+
+             # for AM62x SK EVM (HS-FS)
+             $ sudo ./flashall.sh --board am62x-sk --hsfs
+
+             # for AM62x LP SK EVM (GP)
+             $ sudo ./flashall.sh --board am62x-lp-sk
+
+             # for AM62x LP SK EVM (HS-FS)
+             $ sudo ./flashall.sh --board am62x-lp-sk --hsfs
+
+             board: am62x-sk
+             Fastboot: ./fastboot
+             Generating bootloader-am62x-sk.img ...
+             mkfs.fat 4.2 (2021-01-31)
+             Generating bootloader-am62x-sk.img: DONE
+             Create GPT partition table
+             OKAY [  0.032s]
+
+       .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+          .. code-block:: console
+
+             # If you are using binaries built locally
+             $ cd out/target/product/am62p
+
+             (OR)
+
+             # If you are using pre-built binaries from SDK download page
+             $ cd AM62Px_10.00.00_emmc
+
+             $ sudo ./flashall.sh --board am62px-sk
+             board: am62px-sk
+             Fastboot: ./fastboot
+             Generating bootloader-am62px-sk.img ...
+             mkfs.fat 4.2 (2021-01-31)
+             Generating bootloader-am62px-sk.img: DONE
+             Create GPT partition table
+             OKAY [  0.032s]
+
+     - ::
+
+          Writing GPT: success!
+          dwc3-generic-peripheral usb@31000000: request 00000000f7ec4040 was not queued to ep1in-bulk
+          ** Bad device specification mmc tiboot3_a **
+          ** Bad device specification mmc tiboot3_a **
+          Couldn't find partition mmc tiboot3_a
+          dwc3-generic-peripheral usb@31000000: request 00000000f7ec4040 was not queued to ep1in-bulk
 
 
-5. Setup default U-Boot environment
 
-.. _step_5_flashing_instructions:
+.. tip::
 
-  Type ``Ctrl-C`` in the serial console to continue to U-Boot.
-  From there, we should ensure the default U-Boot environment is configured with:
+    If you get ``mcopy`` command not found error on Linux PC, install the ``mtools`` package:
 
-  .. code-block:: console
+    .. code-block:: console
 
-     => env default -f -a; saveenv;
+      $ apt-get install mtools
 
-  .. note::
+.. warning::
 
-     If you build with `TARGET_AVB_ENABLE=true` or flash user images you need to do this command in U-Boot console:
+    It's possible that the in-memory partition layout is still from an older system.
 
-     .. code-block:: console
+    In that case, we can observe flashing errors similar to::
 
-        => setenv force_avb "1"; saveenv;
+      writing 'tiboot3'...
+      FAILED (remote: invalid partition or device)
 
-  .. note::
+    When that happens:
 
-     By default, no Device-Tree Overlays are selected. Follow this link to configure :ref:`android-dtbo`
+    1. Reboot into the newly flashed bootloader with ``$ fastboot reboot bootloader``
+    2. Restart the flashing from :ref:`U-Boot environment <step_5_flashing_instructions>`.
 
-6. Enable fastboot mode on the device through the terminal debugger by executing below command.
-   Before running this command make sure USB-C cable is connected from the host PC to the EVM:
 
-   .. code-block:: console
+5. Once the flashing is complete, power off the board
 
-      => fastboot 0
-
-7. From the host PC run the ``flashall.sh`` script to start flashing the binaries to eMMC:
-
-  .. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-     .. code-block:: console
-
-        # If you are using binaries built locally
-        $ cd out/target/product/am62x
-
-        (OR)
-
-        # If you are using pre-built binaries from SDK download page
-        $ cd AM62x_09.02.00_emmc
-
-        # for AM62x SK EVM (GP)
-        $ sudo ./flashall.sh --board am62x-sk
-
-        # for AM62x SK EVM (HS-FS)
-        $ sudo ./flashall.sh --board am62x-sk --hsfs
-
-        # for AM62x LP SK EVM (GP)
-        $ sudo ./flashall.sh --board am62x-lp-sk
-
-        # for AM62x LP SK EVM (HS-FS)
-        $ sudo ./flashall.sh --board am62x-lp-sk --hsfs
-
-  .. ifconfig:: CONFIG_part_variant in ('AM62PX')
-
-     .. code-block:: console
-
-        # If you are using binaries built locally
-        $ cd out/target/product/am62p
-
-        (OR)
-
-        # If you are using pre-built binaries from SDK download page
-        $ cd AM62Px_09.02.00_emmc
-
-        $ sudo ./flashall.sh --board am62px-sk
-
-  .. note::
-
-      If you get ``mcopy`` command not found error on Linux PC, install the ``mtools`` package:
-
-      .. code-block:: console
-
-         $ apt-get install mtools
-
-  .. warning::
-
-      It's possible that the in-memory partition layout is still from an older system.
-      In that case, we can observe flashing errors similar to::
-
-        writing 'tiboot3'...
-        FAILED (remote: invalid partition or device)
-
-      When that happens:
-
-      1. Reboot into the newfly flashed bootloader with ``$ fastboot reboot bootloader``
-      2. Restart the flashing from :ref:`step 5<step_5_flashing_instructions>`.
-
-8. Once the flashing is complete, power off the board
-
-9. Change boot mode DIP switches to boot from eMMC user partitions and power cycle the board:
+6. Change boot mode DIP switches to boot from eMMC user partitions and power cycle the board:
 
    .. list-table::
       :widths: 16 16 16
@@ -224,20 +337,22 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
         - 11000010
 
 
-10. Board should boot the Android images now.
+7. Board should boot the Android images now.
 
 Flashing the kernel
 ===================
 
-In order to flash a new kernel, the new boot image should be flashed:
+In order to flash a new kernel, the several images should be flashed:
 
 .. code-block:: console
 
-   $ adb reboot bootloader
-   < Wait for bootloader reboot >
+   $ adb reboot fastboot
+   < Wait for fastbootd reboot >
 
-   $ cd <PATH/TO/BOOT/IMAGE>
+   $ cd <PATH/TO/IMAGES>
    $ fastboot flash boot boot.img
+   $ fastboot flash vendor_boot vendor_boot.img
+   $ fastboot flash vendor_dlkm vendor_dlkm.img
    $ fastboot reboot
 
 The board should boot with the new kernel build.

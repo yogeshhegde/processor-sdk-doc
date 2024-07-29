@@ -43,7 +43,7 @@ How to enable Microtips LVDS panel on AM62 SK EVM
 
 After re-initializing the module, the touch IC should now be registered as an input and touch should be functional.
 
-.. note::
+.. attention::
 
    This step need to be done each time the board reboots.
 
@@ -56,7 +56,7 @@ How to enable Extended Display in Android
 
 **Step to enable Extended Display:**
 
-#. Edit ``device.mk`` file to add this:
+#. Edit :file:`device.mk` file to add this:
 
    .. code-block:: makefile
 
