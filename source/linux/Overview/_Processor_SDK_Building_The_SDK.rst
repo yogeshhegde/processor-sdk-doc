@@ -63,7 +63,10 @@ distribution.
         dos2unix python3 bison flex libssl-dev u-boot-tools mono-devel \
         mono-complete curl python3-distutils repo pseudo python3-sphinx \
         g++-multilib libc6-dev-i386 jq git-lfs pigz zstd liblz4-tool \
-        cpio file zstd lz4
+        cpio file lz4 debianutils iputils-ping python3-git python3-jinja2 \
+        python3-subunit locales libacl1 unzip gcc python3-pip python3-pexpect \
+        xz-utils wget \
+    $ sudo locale-gen en_US.UTF-8
 
 By default Ubuntu uses "dash" as the default shell for /bin/sh. You must
 reconfigure to use bash by running the following command:
@@ -94,7 +97,7 @@ Build Steps
 -----------
 
 Please refer to :ref:`here <yocto-layer-configuration>` for the
-layer configuration (oeconfig-file) for a particular release of |__SDK_FULL_NAME__|.
+layer configuration ``oeconfig-file`` for a particular release of |__SDK_FULL_NAME__|.
 The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
 .. ifconfig:: CONFIG_part_family not in ('General_family')
@@ -121,7 +124,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
       .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
 
-         The final command below will build the **tisdk-default-image**, which is the
+         The final command below will build the :file:`tisdk-default-image`, which is the
          Processor SDK image with arago filesystem.  See `Build Options`_ for a list of
          additional targets.
 
@@ -161,37 +164,40 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
 Your newly built wic image will be generated in deploy-ti directory. Use :ref:`Linux SD Card Creation Guide <processor-sdk-linux-create-sd-card>` to flash this image on the SD-Card.
 
-
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
    .. note:: If trying to build tisdk-display-cluster image, add ``DISPLAY_CLUSTER_ENABLE="1"`` at the end of :file:`conf/local.conf` file before running bitbake.
 
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM65X', 'AM335X', 'AM437X')
+
+   .. important::
+
+      The Yocto build will need ~500GB of hard disk space for building the :file:`tisdk-default-image`
+
 .. ifconfig:: CONFIG_sdk in ('j7_foundational') or CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+   .. important::
+
+      The Yocto build will need ~750GB of hard disk space for building the :file:`tisdk-default-image` which includes Chromium.
 
    .. tip::
 
       The :file:`tisdk-default-image` now includes Chromium by default, which may increase the build
       time. If you prefer not to build Chromium, you can remove the **meta-browser** layer from
-      the oeconfig-file before running oe-layertool-setup.sh
+      the oeconfig-file before running :file:`oe-layertool-setup.sh`
 
       However, if you are building the :file:`tisdk-default-image` specifically to try out the TI Apps Launcher out-of-the-box (OOB),
       it is not recommended to remove the meta-browser layer. The TI Apps Launcher relies on
       Chromium and removing the layer may impact its functionality. Keep the meta-browser layer
       intact for the best OOB experience.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
-   .. note::
+.. tip::
 
-      The build will use ~250GB of hard disk space for building the tisdk-default-image.
-
-   .. note::
-
-      If your computer is frequently crashing while running the bitbake command, edit the
-      './conf/local.conf' file and set the variables: BB_NUMBER_THREADS and PARALLEL_MAKE
-      to cap the number of threads bitbake can create at a time. By default bitbake tries
-      to automatically figure out and set the maximum values for these variables, on your
-      system, which may lead to errors.
+   If your computer is frequently crashing while running the bitbake command, edit the
+   :file:`conf/local.conf` file under ``build`` directory and set the variables: ``BB_NUMBER_THREADS`` and ``PARALLEL_MAKE``
+   to cap the number of threads bitbake can create at a time. By default bitbake tries to automatically figure out and
+   set the maximum values for these variables on your system which may lead to errors.
 
 .. caution:: While building images via Yocto, if you are facing **locale.Error: unsupported locale setting** error, it means your system is trying to use a locale setting which was not there. Run the following commands which will setup the locale and try building your target image again.
 
