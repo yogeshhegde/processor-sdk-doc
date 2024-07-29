@@ -25,16 +25,16 @@ Downloading sources
     .. code-block:: console
 
        $ mkdir ${YOUR_PATH}/ti-bootloader-aosp/ && cd $_
-       $ git clone -b 09.02.00.009 git://git.ti.com/atf/arm-trusted-firmware.git
-       $ git clone -b 09.02.00.009 git://git.ti.com/optee/ti-optee-os.git
-       $ git clone -b 09.02.00.009 git://git.ti.com/ti-u-boot/ti-u-boot.git
-       $ git clone -b 09.02.00.009 git://git.ti.com/processor-firmware/ti-linux-firmware.git
+       $ git clone -b 10.00.07 git://git.ti.com/atf/arm-trusted-firmware.git
+       $ git clone -b 10.00.07 git://git.ti.com/optee/ti-optee-os.git
+       $ git clone -b 09.02.00.010 git://git.ti.com/ti-u-boot/ti-u-boot.git
+       $ git clone -b 10.00.07 git://git.ti.com/processor-firmware/ti-linux-firmware.git
 
     To test the experimental ``2024.04`` U-Boot release, clone U-Boot as following instead:
 
     .. code-block:: console
 
-       $ git clone -b 10.00.06 git://git.ti.com/ti-u-boot/ti-u-boot.git
+       $ git clone -b 10.00.07 git://git.ti.com/ti-u-boot/ti-u-boot.git
 
 .. _android-build-bootloaders:
 
