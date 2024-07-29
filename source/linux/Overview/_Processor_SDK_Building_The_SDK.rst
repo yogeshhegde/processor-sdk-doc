@@ -164,17 +164,17 @@ Your newly built wic image will be generated in deploy-ti directory. Use :ref:`L
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-   .. note:: If trying to build tisdk-display-cluster image, Add ``DISPLAY_CLUSTER_ENABLE="1"`` at the end of `conf/local.conf` file before running bitbake.
+   .. note:: If trying to build tisdk-display-cluster image, add ``DISPLAY_CLUSTER_ENABLE="1"`` at the end of :file:`conf/local.conf` file before running bitbake.
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational') or CONFIG_part_variant in ('AM62X', 'AM62PX')
 
    .. tip::
 
-      The tisdk-default-image now includes Chromium by default, which may increase the build
-      time. If you prefer not to build Chromium, you can remove the `meta-browser` layer from
+      The :file:`tisdk-default-image` now includes Chromium by default, which may increase the build
+      time. If you prefer not to build Chromium, you can remove the **meta-browser** layer from
       the oeconfig-file before running oe-layertool-setup.sh
 
-      However, if you are building the tisdk-default-image specifically to try out the TI Apps Launcher out-of-the-box (OOB),
+      However, if you are building the :file:`tisdk-default-image` specifically to try out the TI Apps Launcher out-of-the-box (OOB),
       it is not recommended to remove the meta-browser layer. The TI Apps Launcher relies on
       Chromium and removing the layer may impact its functionality. Keep the meta-browser layer
       intact for the best OOB experience.
@@ -254,39 +254,39 @@ The "Build Output" is given relative to the
 
     .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | Target                       | Build Output                                                  | Description                |
-        +==============================+===============================================================+============================+
-        | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-display-cluster-image  | images/<machine>/tisdk-display-cluster-image-<machine>.tar.xz | Display Cluster Filesystem |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-jailhouse-image        | images/<machine>/tisdk-jailhouse-image-<machine>.tar.xz       | Jailhouse Filesystem       |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem   |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.tar.xz       | Minimal Target Filesytem   |
-        |                              |                                                               | with docker enabled        |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
+        +------------------------------+----------------------------------------------------------------------+----------------------------+
+        | Target                       | Build Output                                                         | Description                |
+        +==============================+======================================================================+============================+
+        | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.rootfs.tar.xz         | Target Filesystem          |
+        +------------------------------+----------------------------------------------------------------------+----------------------------+
+        | tisdk-display-cluster-image  | images/<machine>/tisdk-display-cluster-image-<machine>.rootfs.tar.xz | Display Cluster Filesystem |
+        +------------------------------+----------------------------------------------------------------------+----------------------------+
+        | tisdk-jailhouse-image        | images/<machine>/tisdk-jailhouse-image-<machine>.rootfs.tar.xz       | Jailhouse Filesystem       |
+        +------------------------------+----------------------------------------------------------------------+----------------------------+
+        | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.rootfs.tar.xz            | Minimal Target Filesytem   |
+        +------------------------------+----------------------------------------------------------------------+----------------------------+
+        | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.rootfs.tar.xz       | Minimal Target Filesytem   |
+        |                              |                                                                      | with docker enabled        |
+        +------------------------------+----------------------------------------------------------------------+----------------------------+
+        | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                          | Devkit                     |
+        +------------------------------+----------------------------------------------------------------------+----------------------------+
 
     .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | Target                       | Build Output                                                  | Description                |
-        +==============================+===============================================================+============================+
-        | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-jailhouse-image        | images/<machine>/tisdk-jailhouse-image-<machine>.tar.xz       | Jailhouse Filesystem       |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem   |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.tar.xz       | Minimal Target Filesytem   |
-        |                              |                                                               | with docker enabled        |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
+        +------------------------------+----------------------------------------------------------------+----------------------------+
+        | Target                       | Build Output                                                   | Description                |
+        +==============================+================================================================+============================+
+        | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.rootfs.tar.xz   | Target Filesystem          |
+        +------------------------------+----------------------------------------------------------------+----------------------------+
+        | tisdk-jailhouse-image        | images/<machine>/tisdk-jailhouse-image-<machine>.rootfs.tar.xz | Jailhouse Filesystem       |
+        +------------------------------+----------------------------------------------------------------+----------------------------+
+        | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.rootfs.tar.xz      | Minimal Target Filesytem   |
+        +------------------------------+----------------------------------------------------------------+----------------------------+
+        | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.rootfs.tar.xz | Minimal Target Filesytem   |
+        |                              |                                                                | with docker enabled        |
+        +------------------------------+----------------------------------------------------------------+----------------------------+
+        | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                    | Devkit                     |
+        +------------------------------+----------------------------------------------------------------+----------------------------+
 
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
@@ -460,6 +460,8 @@ The "Build Output" is given relative to the
         +------------------+--------------------------------------------+
         | am62xxsip-evm    | AM62x-SIP Starter Kit (SK) - HS-FS, HS-SE  |
         +------------------+--------------------------------------------+
+        | beagleplay       | BEAGL-PLAY-SBC - GP                        |
+        +------------------+--------------------------------------------+
 
     .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
@@ -553,6 +555,8 @@ The "Build Output" is given relative to the
         +------------------+--------------------------------------------+
         | am62xxsip-evm    | AM62x-SIP Starter Kit (SK) - HS-FS, HS-SE  |
         +------------------+--------------------------------------------+
+        | beagleplay       | BEAGL-PLAY-SBC - GP                        |
+        +------------------+--------------------------------------------+
 
     .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
@@ -598,7 +602,7 @@ the recipe and all its dependencies.
     ``MACHINE=<machine> bitbake opencl``
 
     After the bitbake command above is successfully done,
-    **arago-tmp-[toolchain]/work/<machine>-linux-gnueabi/opencl** directory
+    :file:`arago-tmp-[toolchain]/work/<machine>-linux-gnueabi/opencl` directory
     will be available including the original source code under the git
     folder, independent shared objects (.so files) under packages-split
     folder, and IPKs under deploy-ipks folder.

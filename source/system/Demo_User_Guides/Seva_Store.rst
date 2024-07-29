@@ -9,7 +9,7 @@ Seva Store - User Guide
 
    .. attention::
 
-      This page is not relevant for AM62SIP SK
+      This page is relevant for AM62x SK, AM62x-LP SK and BeaglePlay.
 
 Overview
 --------
@@ -21,13 +21,13 @@ All of the necessary equipment requirement and instructions are provided here.
 Hardware Prerequisites
 ----------------------
 
--  TI |__PART_FAMILY_DEVICE_NAMES__| SK
+-  TI AM62x SK / TI AM62x-LP SK / BeaglePlay
 
 -  PC (Windows or Linux, to use serial terminal console)
 
 -  HDMI Monitor (to view the Demo on Display)
 
--  Ethernet Cable (to connect |__PART_FAMILY_DEVICE_NAMES__| SK to internet)
+-  Ethernet Cable (to connect SK-EVM to internet)
 
 -  Keyboard (to enter proxy settings if working under VPN)
 
@@ -42,7 +42,7 @@ How to Launch Seva Store via TI Apps Launcher
 
 The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI Apps Launcher follow the below instructions.
 
-1. Flash an SD card with the **tisdk-default-image**. User can download the tisdk-default-image-|__SDK_BUILD_MACHINE__|.wic.xz image from the SDK download page. Connect the Display, Ethernet Cable, Mouse & keyboard and Power on the board after inserting an SD card. The TI Apps Launcher will launch when the |__PART_FAMILY_DEVICE_NAMES__| SK is fully booted.
+1. Flash an SD card with the :file:`tisdk-default-image`. User can download the :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__|. Connect the display, ethernet cable, mouse & keyboard and power on the board after inserting an SD card. The TI Apps Launcher will launch when the SK-EVM is fully booted.
 
    .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
@@ -62,7 +62,7 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
 
 .. caution::
 
-    If you have connected the |__PART_FAMILY_DEVICE_NAMES__| SK to a proxy network, then before launching Seva Store you need to configure Docker and System proxies once per SD Card.
+    If you have connected the SK-EVM to a proxy network, then before launching Seva Store you need to configure Docker and System proxies once per SD Card.
     
     **To set proxy settings you can click on the Settings button from the Left Hand Side Menu and provide the necessary HTTPS & NO PROXY inputs and click Set Proxy button**. Then, continue with Step 3.
 
@@ -150,7 +150,7 @@ show the `Downloading Icon` as shown in the image below.
 
 |
 
-.. note:: The Thermostat Demo Docker Image that we provide is around 848 MB. Hence, docker pull time may vary based on your internet speed provided to TI |__PART_FAMILY_DEVICE_NAMES__| SK.
+.. note:: The Thermostat Demo Docker Image that we provide is around 848 MB. Hence, docker pull time may vary based on your internet speed provided to SK-EVM.
 
 14. Once the Docker Image of `Thermostat Demo` is pulled, the Seva Control Centre will auto launch the demo in full screen as shown below.
 
@@ -172,9 +172,9 @@ How to Launch Seva Store on Host Browser
 
 .. important::
 
-    Launching Seva Store on host browser is possible only if the |__PART_FAMILY_DEVICE_NAMES__| SK and host PC are connected to the same local network.
+    Launching Seva Store on host browser is possible only if the SK-EVM and host PC are connected to the same local network.
 
-1. Flash an SD card with the **tisdk-default-image**. User can download the tisdk-default-image-|__SDK_BUILD_MACHINE__|.wic.xz image from the SDK downloads page. Connect the Display, Ethernet Cable, Mouse & keyboard and Power on the board after inserting an SD card. The TI Apps Launcher will launch when the |__PART_FAMILY_DEVICE_NAMES__| SK is fully booted. Take a note of the IP address you see on the bottom left corner of TI Apps Launcher as it will be needed to launch Seva Store on host browser.
+1. Flash an SD card with the :file:`tisdk-default-image`. User can download the :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__|. Connect the display, ethernet cable, mouse & keyboard and power on the board after inserting an SD card. The TI Apps Launcher will launch when the SK-EVM is fully booted. Take a note of the IP address you see on the bottom left corner of TI Apps Launcher as it will be needed to launch Seva Store on host browser.
 
 2. On host PC, launch your preferred browser and enter **http://<your-board-ip-address>:8007/**.
 

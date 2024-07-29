@@ -43,7 +43,7 @@ Hardware Prerequisites
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-   -  TI AM62x SK / TI AM62x-LP SK / TI AM62xSIP SK
+   -  TI AM62x SK / TI AM62x-LP SK / TI AM62xSIP SK / BeaglePlay
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2','J784S4','J722S')
 
@@ -66,13 +66,13 @@ Launching and Using the TI Apps Launcher
 
 The TI Apps Launcher launches on Linux startup. Follow the below instructions to use it.
 
-1. Flash an SD card with the **tisdk-default-image**. User can download the tisdk-default-image-|__SDK_BUILD_MACHINE__|.wic.xz image from the SDK downloads page. Please follow the instructions from here to `Flash an SD card <../../linux/Overview/Processor_SDK_Linux_create_SD_card.html>`__.
+1. Flash an SD card with the :file:`tisdk-default-image`. User can download the :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__|. Please follow the instructions from here to `Flash an SD card <../../linux/Overview/Processor_SDK_Linux_create_SD_card.html>`__.
 
 .. note::
 
    Images may vary between each platform based on the number of supported applications.
 
-2. Insert the flashed SD card to the board, connect the display, mouse, ethernet cable, keyboard and power on the TI |__PART_FAMILY_DEVICE_NAMES__| SK. The TI Apps Launcher will launch automatically when the device is fully booted.
+2. Insert the flashed SD card to the board, connect the display, mouse, ethernet cable, keyboard and power on the SK-EVM. The TI Apps Launcher will launch automatically when the device is fully booted.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -107,7 +107,7 @@ ____________________________
 
    .. note::
 
-      Industrial HMI on AM62xSIP SK varies from the one documented here. This is only valid for AM62x SK and AM62x-LP SK.
+      Industrial HMI on AM62xSIP SK varies from the one documented here. This is only valid for AM62x SK, AM62x-LP SK and BeaglePlay.
 
 1. To launch the Industrial HMI demo, click on the `Industrial HMI` button on the left menu.
 
@@ -132,7 +132,7 @@ ________________________
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
 
-    1. Ensure you have enabled the camera sensors which you have connected to TI |__PART_FAMILY_DEVICE_NAMES__| SK. Refer `this <../../linux/Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX.html#enabling-camera-sensors>`__ to know the list of camera modules supported and how to enable the sensor overlays for them.
+    1. Ensure you have enabled the camera sensors which you have connected to SK-EVM. Refer `this <../../linux/Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX.html#enabling-camera-sensors>`__ to know the list of camera modules supported and how to enable the sensor overlays for them.
 
     2. To launch the Live Camera demo, click on the `Live Camera` button on the left panel.
 
@@ -209,7 +209,7 @@ ________________________________
 
     .. note::
 
-       ARM Analytics Demo is only supported on AM62x SK, AM62x-LP SK and AM62PX. AM62SIP doesn't support it.
+       ARM Analytics Demo is only supported on AM62x SK, AM62x-LP SK, AM62PX and BeaglePlay. AM62SIP doesn't support it.
 
     1. This app tries to showcase the ARM optimized models for Object Detection, Face Detection and Image Classification.
 
@@ -244,7 +244,7 @@ _____________________________
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-   3. User will now see the list of Benchmarks available to test on TI |__PART_FAMILY_DEVICE_NAMES__|. Click on the `play button` infront of the benchmark you like to test. The image below is captured while running the `glmark2`.
+   3. User will now see the list of Benchmarks available to test on SK-EVM. Click on the `play button` infront of the benchmark you like to test. The image below is captured while running the `glmark2`.
 
    .. Image:: /images/ti-apps-launcher-benchmarks-glmark2.png
       :height: 400
@@ -297,7 +297,7 @@ ________________________
 
       Seva Store is not supported on AM62xSIP due to it's memory constraints.
 
-1. |__PART_FAMILY_DEVICE_NAMES__| SDK now supports Seva Store. Seva Store is a TI developed demo gallery which allows users to download and install demos on the go. Developers can host their demos as Docker Images on any public Docker Registry and link them to Seva Design Gallery. 
+1. |__SDK_FULL_NAME__| now supports Seva Store. Seva Store is a TI developed demo gallery which allows users to download and install demos on the go. Developers can host their demos as Docker Images on any public Docker Registry and link them to Seva Design Gallery. 
 
 2. Refer :ref:`Seva Store - User Guide <Seva-Store-label>` to know more about Seva Store.
 
@@ -315,7 +315,7 @@ ______________________________
 
       Chromium Browser is not supported on AM62xSIP due to it's memory constraints.
 
-1. |__PART_FAMILY_DEVICE_NAMES__| SDK now supports GPU Accelarated Chromium Browser. Click on the Chromium button on the left panel.
+1. |__SDK_FULL_NAME__| now supports GPU Accelarated Chromium Browser. Click on the Chromium button on the left panel.
   
 2. Click Launch button to launch the Chromium Browser. The Browser launches with `WebGL Aquarium <https://webglsamples.org/aquarium/aquarium.html>`__ as the first tab by default.
 
@@ -358,7 +358,7 @@ _____________________
 Using the Settings Button
 _________________________
 
-1. The Settings button on the left panel can be used to set docker's systemd-proxy and system proxy if your TI |__PART_FAMILY_DEVICE_NAMES__| SK is connected to a VPN.
+1. The Settings button on the left panel can be used to set docker's systemd-proxy and system proxy if your SK-EVM is connected to a VPN.
 
 2. Once the user clicks on the Settings button, it will ask for a HTTPS Proxy and No proxy values.
 
@@ -416,6 +416,7 @@ The source code is available at `TI Apps Launcher <https://github.com/TexasInstr
          $ qmake "SOURCES += configs/am62xx-evm.cpp" "DEFINES += SOC_AM62" ./ti-apps-launcher.pro ; make # For AM62x SK
          $ qmake "SOURCES += configs/am62xx-lp-evm.cpp" "DEFINES += SOC_AM62_LP" ./ti-apps-launcher.pro ; make # For AM62x LP SK
          $ qmake "SOURCES += configs/am62xxsip-evm.cpp" "DEFINES += SOC_AM62_LP" ./ti-apps-launcher.pro ; make # For AM62xSIP SK
+         $ qmake "SOURCES += configs/beagleplay.cpp" "DEFINES += SOC_AM62" ./ti-apps-launcher.pro ; make # For Beagleplay
 
       |
 

@@ -223,6 +223,9 @@ Run as the weston user with the command line :console:`chromium https://webglsam
         +---------------------------------+----------------------+------------------------------------------------+
         | |__PART_FAMILY_DEVICE_NAMES__|  | 11 @ 1080p60         | 100%                                           |
         +---------------------------------+----------------------+------------------------------------------------+
+        | Beagleplay                      | 11 @ 1080p60         | 100%                                           |
+        +---------------------------------+----------------------+------------------------------------------------+
+
 
        .. note::
 
@@ -230,7 +233,7 @@ Run as the weston user with the command line :console:`chromium https://webglsam
 
           .. code-block:: console
 
-              root@am62xx-evm:~# cat /sys/kernel/debug/pvr/status
+              root@<machine>:~# cat /sys/kernel/debug/pvr/status
 
 .. ifconfig:: CONFIG_part_variant in ('J722S')
 
@@ -277,6 +280,8 @@ use the mouse to click the "Run Benchmark" button.
         | **Platform**                    | **MotionMark v1.3**                                                   |
         +---------------------------------+-----------------------------------------------------------------------+
         | |__PART_FAMILY_DEVICE_NAMES__|  | 1.51 @ 1080p60                                                        |
+        +---------------------------------+-----------------------------------------------------------------------+
+        | Beagleplay                      | 1.77 @ 1080p60                                                        |
         +---------------------------------+-----------------------------------------------------------------------+
 
 .. ifconfig:: CONFIG_part_variant in ('J722S')
