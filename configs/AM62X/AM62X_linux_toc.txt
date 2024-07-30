@@ -134,8 +134,6 @@ linux/Foundational_Components/Graphics/Rogue/Rogue_Power_Management_Info
 
 linux/How_to_Guides
 linux/How_to_Guides_Developer_Notes
-linux/How_to_Guides/Host/Connect_to_an_EVM_via_Telnet
-linux/How_to_Guides/Host/How_to_Setup_a_Samba_Server
 linux/How_to_Guides/Host/Moving_Files_to_the_Target_System
 linux/How_to_Guides/Host/K3_Resource_Partitioning_Tool
 linux/How_to_Guides/Host/How_to_Setup_and_Debug_using_Lauterbach
