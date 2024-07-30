@@ -9,14 +9,16 @@ Yocto Layer Configuration
 Processor SDK uses the following oe-layersetup configs to configure the
 meta layers. These are the <config> used in the command:
 
-``$ ./oe-layertool-setup.sh -f <config>``
+.. console:: code-block
 
-The following config files are located in the **configs/processor-sdk**
+   $ ./oe-layertool-setup.sh -f <config>
+
+The following config files are located in the ``configs/processor-sdk``
 directory of the `oe-layersetup git repo <https://git.ti.com/cgit/arago-project/oe-layersetup/>`_.
 
 +--------------------------------------------------+-----------------------------------+------------------------------+
 | Config File                                      | Description                       | Supported machines/platforms |
 +==================================================+===================================+==============================+
-| processor-sdk-kirkstone-09.02.01.10-config.txt   | Processor SDK 09.02.01.10 Release | am64xx-evm                   |
+| processor-sdk-scarthgap-10.00.07.04-config.txt   | Processor SDK 10.00.07.04 Release | am64xx-evm                   |
 +--------------------------------------------------+-----------------------------------+------------------------------+
 
