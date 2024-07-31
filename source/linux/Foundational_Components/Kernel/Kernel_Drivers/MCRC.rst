@@ -1,65 +1,64 @@
-.. http://processors.wiki.ti.com/index.php/Linux_Core_MCRC_User_Guide
-
 .. include:: /_replacevars.rst
 
-MCRC
-----
+MCRC64
+------
 
 .. rubric:: Introduction
-   :name: introduction-linux-mcrc
+   :name: introduction-linux-mcrc64
 
-The MCRC driver provides access to the hardware MCRC engine
+The MCRC64 driver provides access to the hardware MCRC64 engine
 available on |__PART_FAMILY_DEVICE_NAMES__| devices. This driver is
 available as kernel module in the current SDK release.
 
-It supports crc64 Hardware acceleration.
+It supports crc64 hardware acceleration.
 
-.. rubric:: Building MCRC driver
-   :name: building-mcrc-driver
+.. rubric:: Building MCRC64 driver
+   :name: building-mcrc64-driver
 
-For devices with available MCRC engine, a Linux driver and additionally a
+For devices with available MCRC64 engine, a Linux driver and additionally a
 kernel module, user-space interface for hash algorithms is used to access them.
 Other devices use the pure software implementation of these crc64 calculations.
 
-.. ifconfig:: CONFIG_mcrc in ('mcrc')
+.. ifconfig:: CONFIG_mcrc64 in ('mcrc64')
 
     |__PART_FAMILY_DEVICE_NAMES__| SoCs support a hardware accelerator called
-    MCRC engine for crc64 calculations.
+    MCRC64 engine for crc64 calculations.
 
 The kernel configuration has already been set up in the SDK and no further
 configuration is needed for the driver to be built as kernel module.
 
 For reference, the configuration details are shown below. The
-configuration of the MCRC driver is done under the
+configuration of the MCRC64 driver is done under the
 Hardware crypto devices sub-menu of the Cryptographic API menu in the
 kernel configuration.
 
-.. ifconfig:: CONFIG_mcrc in ('mcrc')
+.. ifconfig:: CONFIG_mcrc64 in ('mcrc64')
 
    .. code-block:: kconfig
 
       Symbol: CRYPTO_DEV_TI_MCRC64 [=m]
-       Type  : tristate
-       Defined at drivers/crypto/ti/Kconfig:2
-         Prompt: Support for TI MCRC64 crc accelerators
-         Depends on: CRYPTO [=y] && CRYPTO_HW [=y] && ARCH_K3 [=y]
-         Location:
-           -> Cryptographic API (CRYPTO [=y])
-       (1)   -> Hardware crypto devices (CRYPTO_HW [=y])
-       Selects: CRYPTO_HASH [=y]
+      Type  : tristate
+      Defined at drivers/crypto/ti/Kconfig:2
+        Prompt: Texas Instruments MCRC64 engine support
+        Depends on: CRYPTO [=y] && CRYPTO_HW [=y] && (ARCH_K3 [=y] || COMPILE_TEST [=n])
+        Location:
+          -> Cryptographic API (CRYPTO [=y])
+            -> Hardware crypto devices (CRYPTO_HW [=y])
+      (1)     -> Texas Instruments MCRC64 engine support (CRYPTO_DEV_TI_MCRC64 [=m])
+      Selects: CRYPTO_HASH [=y] && CRYPTO_CRC64_ISO3309 [=m]
 
-   To check if mcrc module is properly installed,
+   To check if mcrc64 module is properly installed,
    run the below command from the Linux command prompt:
 
    .. code-block:: console
 
-      $ lsmod | grep mcrc
-      mcrc  20480  0
+      root@<machine># lsmod | grep mcrc64
+      mcrc64  20480  0
 
 .. rubric:: Build the algif_hash kernel module using SDK
    :name: build-the-algif_hash-kernel-module-using-sdk
 
-For using user application to access the MCRC Drivers above, the algif_hash
+For using user application to access the MCRC64 Drivers above, the algif_hash
 kernel module is required (can be built as module). It is built as part of the
 SDK and no further configuration is needed.
 
@@ -79,26 +78,31 @@ For reference, the configuration details are shown below.
     Selects: CRYPTO_HASH [=y] && CRYPTO_USER_API [=m]
 
 The following shows the command used to query the system for the state of
-the algif_hash module. If not already loaded, these modules will get loaded
-automatically while running user space application.
+the algif_hash module.
+
+.. note::
+   If not already loaded, these modules will get loaded
+   automatically while running user space application.
 
 .. code-block:: console
 
-   root@am62xx-evm:~$ lsmod | grep alg
+   root@<machine># lsmod | grep alg
    algif_hash             20480  0
    af_alg                 32768  1 algif_hash
 
-.. rubric:: Working of MCRC controller
-   :name: working-of-mcrc-controller
+.. rubric:: Working of MCRC64 controller
+   :name: working-of-mcrc64-controller
 
-MCRC Controller is a module which is used to perform CRC (Cyclic
+MCRC64 Controller is a module which is used to perform CRC (Cyclic
 Redundancy Check) to verify the integrity of memory system. A signature (CRC)
 representing the contents of the memory is obtained when the contents of the
-memory are read into MCRC Controller.
+memory are read into MCRC64 Controller.
 
 Writing the data into 64-bit Signature Register calculates the Signature (CRC).
 The 64-bit Signature Register is based on the primitive polynomial to produce
 the maximum length LFSR (Linear Feedback Shift Register).
+
+The polynomial used was published in ISO-3309:1991.
 
 Below is the mathematical representation of used primitive polynomial.
 
@@ -107,17 +111,17 @@ Below is the mathematical representation of used primitive polynomial.
    f[x] = x^(64) + x^(4) + x^(3) + x + 1
 
 
-.. rubric:: Using MCRC engine from user space application
-   :name: using-mcrc-engine-from-user-space-application
+.. rubric:: Using MCRC64 engine from user space application
+   :name: using-mcrc64-engine-from-user-space-application
 
-In order to use MCRC driver from user space, AF_ALG is used.
+In order to use MCRC64 driver from user space, AF_ALG is used.
 AF_ALG is User-space interface for Crypto API. Each algorithm type will provide its
 own implementation that plugs into af_alg. They're keyed using a string such as
 "skcipher" or "hash". The filesystem which comes with the SDK comes built with the
-af_alg, algif_hash kernel modules and the TI driver which directly accesses the MCRC
+af_alg, algif_hash kernel modules and the TI driver which directly accesses the MCRC64
 engine is built as kernel module.
 
-The following code is for user-space application to access mcrc engine
+The following code is for user-space application to access mcrc64 engine
 
 .. code-block:: c
 
@@ -138,7 +142,7 @@ The following code is for user-space application to access mcrc engine
         struct sockaddr_alg sock = {
             .salg_family = AF_ALG,
             .salg_type   = "hash",
-            .salg_name   = "crc64"
+            .salg_name   = "crc64-iso3309"
         };
 
         if ((desc[0] = socket(AF_ALG, SOCK_SEQPACKET, 0)) == -1 ) {
@@ -202,23 +206,20 @@ The following code is for user-space application to access mcrc engine
         return 0;
     }
 
-Compile the code using below command
+Compile the code on target using below command
 
 .. code-block:: console
 
-   $ cc <filename> -o calculate_crc
+   root@<machine># cc <filename> -o calculate_crc
 
-Run the executable
-
-.. code-block:: console
-
-   $ ./calculate_crc <path-to-file-for-crc-calculation>
-
-Example
+.. rubric:: Run the executable
 
 .. code-block:: console
 
-   root@am62xx-evm:~$ ./calculate_crc cscope.files
+   root@<machine># ./calculate_crc <path-to-file-for-crc-calculation>
+
+   #Example
+   root@<machine># ./calculate_crc cscope.files
    0xfa68a95edc9f3b45
 
 Using the Linux time function gives more information about CPU usage
@@ -226,7 +227,7 @@ during the test.
 
 .. code-block:: console
 
-   root@am62xx-evm:~$ time ./calculate_crc cscope.files
+   root@<machine># time ./calculate_crc cscope.files
    0xfa68a95edc9f3b45
 
    real    0m0.213s
@@ -237,7 +238,7 @@ To verify the result against pycrc module available `here <https://github.com/tp
 
 .. code-block:: console
 
-   debian@BeagleBone:~$ time python3 ~/pycrc/src/pycrc.py --width 64 --poly 0x000000000000001b --reflect-in False --xor-in 0x0000000000000000 --reflect-out False --xor-out 0x0000000000000000 --check-file cscope.files
+   host# time python3 ~/pycrc/src/pycrc.py --width 64 --poly 0x000000000000001b --reflect-in False --xor-in 0x0000000000000000 --reflect-out False --xor-out 0x0000000000000000 --check-file cscope.files
    0xfa68a95edc9f3b45
 
    real    1m36.405s
@@ -246,42 +247,36 @@ To verify the result against pycrc module available `here <https://github.com/tp
 
 
 
-.. rubric:: MCRC engine speed testing
+.. rubric:: MCRC64 engine speed testing
 
-Testing using the tcrypt module:
+Testing using the tcrypt module on target:
 
 .. code-block:: console
 
-   root@am62xx-evm:~$ sudo modprobe tcrypt mode=329 sec=1
-   [  542.497394]
-   [  542.497394] testing speed of async crc64 (mcrc)
-   [  542.503450] tcrypt: test  0 (   16 byte blocks,   16 bytes per update,   1 updates):
-   [  543.500041] 869397 opers/sec,  13910352 bytes/sec
-   [  543.512573] tcrypt: test  1 (   64 byte blocks,   16 bytes per update,   4 updates): 289782 opers/sec,  18546048 bytes/sec
-   [  544.523063] tcrypt: test  2 (   64 byte blocks,   64 bytes per update,   1 updates):
-   [  545.519994] 349609 opers/sec,  22374976 bytes/sec
-   [  545.532520] tcrypt: test  3 (  256 byte blocks,   16 bytes per update,  16 updates):  82569 opers/sec,  21137664 bytes/sec
-   [  546.543023] tcrypt: test  4 (  256 byte blocks,   64 bytes per update,   4 updates):  97018 opers/sec,  24836608 bytes/sec
-   [  547.550993] tcrypt: test  5 (  256 byte blocks,  256 bytes per update,   1 updates):
-   [  548.547937] 102905 opers/sec,  26343680 bytes/sec
-   [  548.560469] tcrypt: test  6 ( 1024 byte blocks,   16 bytes per update,  64 updates):  21393 opers/sec,  21906432 bytes/sec
-   [  549.570987] tcrypt: test  7 ( 1024 byte blocks,  256 bytes per update,   4 updates):  26477 opers/sec,  27112448 bytes/sec
-   [  550.578949] tcrypt: test  8 ( 1024 byte blocks, 1024 bytes per update,   1 updates):
-   [  551.575891]  26936 opers/sec,  27582464 bytes/sec
-   [  551.588421] tcrypt: test  9 ( 2048 byte blocks,   16 bytes per update, 128 updates):  10758 opers/sec,  22032384 bytes/sec
-   [  552.598909] tcrypt: test 10 ( 2048 byte blocks,  256 bytes per update,   8 updates):  13346 opers/sec,  27332608 bytes/sec
-   [  553.606886] tcrypt: test 11 ( 2048 byte blocks, 1024 bytes per update,   2 updates):  13519 opers/sec,  27686912 bytes/sec
-   [  554.614877] tcrypt: test 12 ( 2048 byte blocks, 2048 bytes per update,   1 updates):
-   [  555.611804]  13581 opers/sec,  27813888 bytes/sec
-   [  555.624336] tcrypt: test 13 ( 4096 byte blocks,   16 bytes per update, 256 updates):   5396 opers/sec,  22102016 bytes/sec
-   [  556.634909] tcrypt: test 14 ( 4096 byte blocks,  256 bytes per update,  16 updates):   6697 opers/sec,  27430912 bytes/sec
-   [  557.642905] tcrypt: test 15 ( 4096 byte blocks, 1024 bytes per update,   4 updates):   6784 opers/sec,  27787264 bytes/sec
-   [  558.650786] tcrypt: test 16 ( 4096 byte blocks, 4096 bytes per update,   1 updates):
-   [  559.647749]   6815 opers/sec,  27914240 bytes/sec
-   [  559.660275] tcrypt: test 17 ( 8192 byte blocks,   16 bytes per update, 512 updates):   2702 opers/sec,  22134784 bytes/sec
-   [  560.670880] tcrypt: test 18 ( 8192 byte blocks,  256 bytes per update,  32 updates):   3356 opers/sec,  27492352 bytes/sec
-   [  561.678918] tcrypt: test 19 ( 8192 byte blocks, 1024 bytes per update,   8 updates):   3399 opers/sec,  27844608 bytes/sec
-   [  562.686812] tcrypt: test 20 ( 8192 byte blocks, 4096 bytes per update,   2 updates):   3412 opers/sec,  27951104 bytes/sec
-   [  563.694918] tcrypt: test 21 ( 8192 byte blocks, 8192 bytes per update,   1 updates):
-   [  564.691734]   3411 opers/sec,  27942912 bytes/sec
+   root@<machine># sudo modprobe tcrypt mode=329 sec=1
+   sudo modprobe tcrypt mode=329 sec=1
+   [  420.706237] tcrypt: testing speed of async crc64-iso3309 (mcrc64)
+   [  420.712461] tcrypt: test  0 (   16 byte blocks,   16 bytes per update,   1 updates): 789148 opers/sec,  12626368 bytes/sec
+   [  421.719575] tcrypt: test  1 (   64 byte blocks,   16 bytes per update,   4 updates): 363004 opers/sec,  23232256 bytes/sec
+   [  422.727566] tcrypt: test  2 (   64 byte blocks,   64 bytes per update,   1 updates): 771433 opers/sec,  49371712 bytes/sec
+   [  423.735553] tcrypt: test  3 (  256 byte blocks,   16 bytes per update,  16 updates): 119069 opers/sec,  30481664 bytes/sec
+   [  424.743550] tcrypt: test  4 (  256 byte blocks,   64 bytes per update,   4 updates): 346712 opers/sec,  88758272 bytes/sec
+   [  425.751540] tcrypt: test  5 (  256 byte blocks,  256 bytes per update,   1 updates): 672290 opers/sec, 172106240 bytes/sec
+   [  426.759536] tcrypt: test  6 ( 1024 byte blocks,   16 bytes per update,  64 updates):  32296 opers/sec,  33071104 bytes/sec
+   [  427.767535] tcrypt: test  7 ( 1024 byte blocks,  256 bytes per update,   4 updates): 273303 opers/sec, 279862272 bytes/sec
+   [  428.775529] tcrypt: test  8 ( 1024 byte blocks, 1024 bytes per update,   1 updates): 442304 opers/sec, 452919296 bytes/sec
+   [  429.783523] tcrypt: test  9 ( 2048 byte blocks,   16 bytes per update, 128 updates):  16378 opers/sec,  33542144 bytes/sec
+   [  430.791574] tcrypt: test 10 ( 2048 byte blocks,  256 bytes per update,   8 updates): 155153 opers/sec, 317753344 bytes/sec
+   [  431.788486] tcrypt: test 11 ( 2048 byte blocks, 1024 bytes per update,   2 updates): 263325 opers/sec, 539289600 bytes/sec
+   [  432.799504] tcrypt: test 12 ( 2048 byte blocks, 2048 bytes per update,   1 updates): 303687 opers/sec, 621950976 bytes/sec
+   [  433.807495] tcrypt: test 13 ( 4096 byte blocks,   16 bytes per update, 256 updates):   8249 opers/sec,  33787904 bytes/sec
+   [  434.815592] tcrypt: test 14 ( 4096 byte blocks,  256 bytes per update,  16 updates):  83206 opers/sec, 340811776 bytes/sec
+   [  435.823491] tcrypt: test 15 ( 4096 byte blocks, 1024 bytes per update,   4 updates): 148290 opers/sec, 607395840 bytes/sec
+   [  436.831482] tcrypt: test 16 ( 4096 byte blocks, 4096 bytes per update,   1 updates): 187059 opers/sec, 766193664 bytes/sec
+   [  437.839475] tcrypt: test 17 ( 8192 byte blocks,   16 bytes per update, 512 updates):   4139 opers/sec,  33906688 bytes/sec
+   [  438.847507] tcrypt: test 18 ( 8192 byte blocks,  256 bytes per update,  32 updates):  43169 opers/sec, 353640448 bytes/sec
+   [  439.855468] tcrypt: test 19 ( 8192 byte blocks, 1024 bytes per update,   8 updates):  79294 opers/sec, 649576448 bytes/sec
+   [  440.863457] tcrypt: test 20 ( 8192 byte blocks, 4096 bytes per update,   2 updates): 100024 opers/sec, 819396608 bytes/sec
+   [  441.871452] tcrypt: test 21 ( 8192 byte blocks, 8192 bytes per update,   1 updates): 100349 opers/sec, 822059008 bytes/sec
+   modprobe: ERROR: could not insert 'tcrypt': Resource temporarily unavailable
    ...
