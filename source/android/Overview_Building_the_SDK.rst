@@ -1,11 +1,12 @@
 .. _android-building:
 
-****************
+################
 Building the SDK
-****************
+################
 
+**************
 Build PC setup
-==============
+**************
 
 Please refer to the following pages from Android documentation to setup your environment for Android build:
 
@@ -23,8 +24,9 @@ To install it, please refer to this webpage : https://source.android.com/setup/d
 
 .. _android-download-aosp:
 
+*******************
 Downloading sources
-===================
+*******************
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
@@ -59,8 +61,9 @@ Downloading sources
 
 .. _android-build-aosp:
 
+******************
 Build Instructions
-==================
+******************
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 

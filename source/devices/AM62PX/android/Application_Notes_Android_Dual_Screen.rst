@@ -1,6 +1,6 @@
-===========================
+###########################
 Android Dual Screen Support
-===========================
+###########################
 
 This application note contains steps to enable dual screen with Android in mirror mode or extended mode.
 
@@ -14,13 +14,15 @@ The following panel is currently supported with the AM62Px SK EVM board:
    By default Android configures the displays in mirror mode.
 
 
+***************************************************
 How to enable Microtips LVDS panel on AM62Px SK EVM
-===================================================
+***************************************************
 
 To enable OLDI Panel DT overlay, follow the :ref:`android-dtbo` guide
 
+*****************************************
 How to enable Extended Display in Android
-==========================================
+*****************************************
 
 **Step to setup an android build environment:**
 

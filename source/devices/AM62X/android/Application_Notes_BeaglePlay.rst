@@ -1,14 +1,15 @@
-===========
+###########
 Beagle Play
-===========
+###########
 
 The Beagle Play is very similar to the AM62x SK EVM.
 Therefore, the AM62x SDK can be installed on the Beagle Play as well.
 
 This application note contains steps to install the AM62x SDK on the Beagle Play board.
 
+**************************
 Initial Flashing procedure
---------------------------
+**************************
 
 Flashing Android the first time requires booting from DFU.
 
@@ -74,8 +75,9 @@ Then, the following steps are required:
 10. Unplug USB power and replug to switch to normal boot mode.
 
 
+******************
 External resources
-------------------
+******************
 
 - https://docs.beagleboard.org/latest/boards/beagleplay/index.html
 - https://www.beagleboard.org/boards/beagleplay

@@ -1,8 +1,8 @@
 .. _android-csi-camera:
 
-==============
+##############
 Android Camera
-==============
+##############
 
 The AM62x supports 2 camera interfaces:
 
@@ -15,8 +15,9 @@ This page will mainly describe Camera over CSI-2.
 
    Right now, only one YUV sensor is supported: The *Omnivision OV5640*.
 
+**************
 Hardware setup
-==============
+**************
 
 The following hardware is required to use the CSI-2 camera:
 
@@ -48,8 +49,9 @@ Plug the 15 pin FPC ribbon in ``J19`` and on the camera module as following:
     :width: 600
     :alt: am62x_sk_evm_with_ov5640.jpg
 
+**********************
 Software configuration
-======================
+**********************
 
 After flashing, make sure to halt in the U-Boot shell and run
 
@@ -73,11 +75,12 @@ default AOSP provided camera app:
 
    $ adb shell 'am start -a android.media.action.IMAGE_CAPTURE'
 
+**************
 Debugging tips
-==============
+**************
 
 Using the ``cam`` commandline
------------------------------
+=============================
 
 ``cam`` is a commandline utility to do low level captures and save them to disk.
 
@@ -101,7 +104,7 @@ Since the Android HAL has exclusive access to the camera, the camera app should
 not be running when we try to run a capture with ``cam``.
 
 Enabling additional kernel logs
--------------------------------
+===============================
 
 ``v4l2`` has its own logging system. To have additional logs in ``dmesg``, do the following:
 
@@ -113,10 +116,10 @@ Enabling additional kernel logs
    $ adb shell 'echo 1 > /sys/module/videobuf2_common/parameters/debug'
 
 Android specific tricks
------------------------
+=======================
 
 List cameras from Android system
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
 
 To list if the camera is enumerated by the Android system, run:
 
@@ -125,7 +128,7 @@ To list if the camera is enumerated by the Android system, run:
    $ adb shell 'dumpsys media.camera'
 
 Logging
-^^^^^^^
+-------
 
 To filter logs from logcat, use:
 
@@ -150,7 +153,7 @@ To change the log level for libcamera, edit the HAL's :file:`init.rc`
         setenv LIBCAMERA_LOG_FILE syslog
 
 The Camera app disappears after booting Android
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------------------
 
 The Android Camera app runs on the first Android boot to detect whether
 a physical camera sensor is present and useable by the device. If it

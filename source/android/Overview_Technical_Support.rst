@@ -1,8 +1,8 @@
 .. include:: /_replacevars.rst
 
-************************************
+###############################
 Processor SDK Technical Support
-************************************
+###############################
 
 Technical support is a broad term. Our desire is to provide a solid
 product, good documentation, and useful training that defines a clear

@@ -1,8 +1,8 @@
 .. _android-application-notes:
 
-##################
+#################
 Application Notes
-##################
+#################
 
 .. toctree::
    :maxdepth: 5

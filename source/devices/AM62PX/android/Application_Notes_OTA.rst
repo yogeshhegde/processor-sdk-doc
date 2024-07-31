@@ -1,6 +1,6 @@
-===========
+###########
 Android OTA
-===========
+###########
 
 This application note contains steps to test the OTA (Over The Air) feature on Android.
 
@@ -12,8 +12,9 @@ There are 2 ways of applying an OTA update:
 
 .. _android-ota-sideload:
 
+************************
 OTA via ``adb sideload``
-========================
+************************
 
 1. Build and flash android images following :ref:`android-build-aosp` instructions.
 
@@ -41,8 +42,9 @@ OTA via ``adb sideload``
 
 .. _android-ota-update-engine:
 
+*********************
 OTA via Update Engine
-=====================
+*********************
 
 1. Build the OTA package
 
@@ -151,7 +153,7 @@ OTA via Update Engine
 
 
 Troubleshooting
-^^^^^^^^^^^^^^^
+===============
 
 Python 3.12 is not supported, because it removed the ``imp`` module and also comes with a
 too recent version of ``protobuf``.

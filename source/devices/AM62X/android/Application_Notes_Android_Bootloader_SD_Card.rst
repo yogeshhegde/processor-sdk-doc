@@ -1,14 +1,15 @@
 .. _android-bootloader-sdcard:
 
-=============================
+#############################
 Android Bootloader on SD Card
-=============================
+#############################
 
 This application note contains steps to flash initial bootloaders
 from SD Card instead of using snagboot.
 
+****************
 SD Card Creation
-=============================
+****************
 
 In order to flash the AM62x board's eMMC the fist time, a SD card containing the required bootloaders will have to be used
 to boot into U-Boot and use fastboot.
@@ -19,7 +20,7 @@ to boot into U-Boot and use fastboot.
    The latest release is ``10.00.00``.
 
 Identify the SD Card
---------------------
+====================
 
 To start, identify your SD card with:
 
@@ -30,7 +31,7 @@ To start, identify your SD card with:
 In this example, the SD card will be: ``/dev/mmcblk0``.
 
 Prepare the SD Card
--------------------
+===================
 
 The preparation of the SD Card is done via the :file:`flashall.sh` script.
 Make sure to identify the board model, and the SD card path.
@@ -59,11 +60,12 @@ Then, run:
    # for AM62x LP SK EVM (HS-FS)
    $ sudo ./flashall.sh --board am62x-lp-sk --bootloader --hsfs --sdcard /dev/mmcblk0
 
+*************
 eMMC flashing
-==============
+*************
 
 Flashing instructions
----------------------
+=====================
 
 Once the build is complete, follow the steps below to flash the images to eMMC.
 Use the SD card created in previous step to get started.

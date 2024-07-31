@@ -1,15 +1,16 @@
-==================
+##################
 Android on SD Card
-==================
+##################
 
 This application note contains steps to use SD Card instead of eMMC.
 
 
+******************************
 Build U-Boot with this changes
-====================================
+******************************
 
 Download sources
-----------------
+================
 
 Follow this link to download the :ref:`android-download-bootloaders`.
 
@@ -65,14 +66,14 @@ When using the the experimental ``2024.04`` U-Boot apply this patch instead:
         bootcmd=bootflow scan -lb
 
 Build U-Boot
-------------
+============
 
 Follow this link to build the :ref:`android-build-bootloaders`.
 
 Rebuild U-Boot then copy :file:`u-boot.img` in Android build system environment : :file:`vendor/ti/am62x/bootloader/am62-sk`
 
 Build Android
--------------
+=============
 
 Follow this link to build :ref:`android-build-aosp`.
 Go in your Android environment then rebuild with ``TARGET_SDCARD_BOOT=true`` build args:
@@ -85,8 +86,9 @@ Go in your Android environment then rebuild with ``TARGET_SDCARD_BOOT=true`` bui
    $ m TARGET_SDCARD_BOOT=true
 
 
+****************
 Flashing SD Card
-----------------
+****************
 
 .. warning::
     Minimal size for SD card is ``16GB``

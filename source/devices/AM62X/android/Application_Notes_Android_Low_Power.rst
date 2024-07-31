@@ -1,6 +1,6 @@
-===========================
+#########################
 Android Low Power Support
-===========================
+#########################
 
 This application note contains steps to enable low power support in BSP.
 
@@ -8,8 +8,9 @@ Supported low power mode:
 
 #. **Suspend to RAM (S2R):** All power domains are off except for wake-up domain that has wake-up co-processor (DM R5) running. DDR is in self refresh.
 
+*****************************
 Enable Suspend/Resume support
------------------------------
+*****************************
 
 #. At Android prompt, using RTC as wake-up source, test S2R using following command:
 

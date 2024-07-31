@@ -2,9 +2,9 @@
 
 .. _android-flashing:
 
-********************************************
+####################
 Flashing Instruction
-********************************************
+####################
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -14,8 +14,9 @@ Flashing Instruction
    .. _dedicated application note: ../devices/AM62X/android/Application_Notes_BeaglePlay.html
 
 
+************
 DFU Recovery
-============
+************
 
 It's possible to put the |__PART_FAMILY_NAME__| SK EVM in USB DFU mode, which allows
 loading bootloaders over DFU. This is done via the ``snagboot`` tool.
@@ -23,7 +24,7 @@ This is useful for initial flashing or recovering boards which have broken
 bootloaders.
 
 Installation and setup
-----------------------
+======================
 
 Install snagboot 1.3.0 following the `official instructions <https://github.com/bootlin/snagboot>`_
 Make sure to install the udev rules as documented:
@@ -345,8 +346,9 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
 7. Board should boot the Android images now.
 
+*******************
 Flashing the kernel
-===================
+*******************
 
 In order to flash a new kernel, the several images should be flashed:
 

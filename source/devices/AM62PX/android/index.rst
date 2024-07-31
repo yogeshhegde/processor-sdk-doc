@@ -1,9 +1,9 @@
 .. _android-index:
 .. include:: /_replacevars.rst
 
-************************************************
+################################################
 Processor SDK Android Software Developer's Guide
-************************************************
+################################################
 
 .. rubric:: Welcome to the |__SDK_OS_NAME__| Software Developer's Guide for |__PART_FAMILY_NAME__|
 
