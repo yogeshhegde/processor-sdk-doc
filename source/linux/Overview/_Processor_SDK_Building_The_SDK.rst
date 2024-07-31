@@ -33,7 +33,7 @@ Follow :ref:`Processor SDK Build Reference <processor-sdk-build-reference>` for 
 
 .. attention::
 
-    Before starting the container, ensure that you have completed all the Pre-Requisites as mentioned `here <https://github.com/TexasInstruments/ti-docker-images?tab=readme-ov-file#pre-requisites>`__.
+   Before starting the container, ensure that you have completed all the Pre-Requisites as mentioned `here <https://github.com/TexasInstruments/ti-docker-images?tab=readme-ov-file#pre-requisites>`__.
 
 Steps to Run Yocto Builds on Host
 =================================
@@ -46,7 +46,7 @@ Prerequisites (One-time setup)
 
 .. ifconfig:: CONFIG_sdk in ('SITARA', 'JACINTO','j7_foundational')
 
-    The recommended Linux distribution is Ubuntu 22.04.
+   The recommended Linux distribution is Ubuntu 22.04.
 
 The following build host packages are required for Ubuntu. The following
 command will install the required tools on the Ubuntu Linux
@@ -54,32 +54,32 @@ distribution.
 
 .. ifconfig:: CONFIG_sdk in ('SITARA', 'JACINTO','j7_foundational')
 
-    For Ubuntu 22.04, please run the following:
+   For Ubuntu 22.04, please run the following:
 
 .. code-block:: console
 
-    $ sudo apt-get update
-    $ # Install packages required for builds
-    $ sudo apt-get -f -y install \
-        git build-essential diffstat texinfo gawk chrpath socat doxygen \
-        dos2unix python3 bison flex libssl-dev u-boot-tools mono-devel \
-        mono-complete curl python3-distutils repo pseudo python3-sphinx \
-        g++-multilib libc6-dev-i386 jq git-lfs pigz zstd liblz4-tool \
-        cpio file lz4 debianutils iputils-ping python3-git python3-jinja2 \
-        python3-subunit locales libacl1 unzip gcc python3-pip python3-pexpect \
-        xz-utils wget \
-    $ sudo locale-gen en_US.UTF-8
+   $ sudo apt-get update
+   $ # Install packages required for builds
+   $ sudo apt-get -f -y install \
+     git build-essential diffstat texinfo gawk chrpath socat doxygen \
+     dos2unix python3 bison flex libssl-dev u-boot-tools mono-devel \
+     mono-complete curl python3-distutils repo pseudo python3-sphinx \
+     g++-multilib libc6-dev-i386 jq git-lfs pigz zstd liblz4-tool \
+     cpio file lz4 debianutils iputils-ping python3-git python3-jinja2 \
+     python3-subunit locales libacl1 unzip gcc python3-pip python3-pexpect \
+     xz-utils wget \
+   $ sudo locale-gen en_US.UTF-8
 
 By default Ubuntu uses "dash" as the default shell for /bin/sh. You must
 reconfigure to use bash by running the following command:
 
 .. code-block:: console
 
-    $ sudo dpkg-reconfigure dash
+   $ sudo dpkg-reconfigure dash
 
 .. important::
 
-    Be sure to select "No" when you are asked to use dash as the default system shell.
+   Be sure to select "No" when you are asked to use dash as the default system shell.
 
 .. rubric:: Large Swap File
 
@@ -203,14 +203,14 @@ Your newly built wic image will be generated in deploy-ti directory. Use :ref:`L
 
 .. caution:: While building images via Yocto, if you are facing **locale.Error: unsupported locale setting** error, it means your system is trying to use a locale setting which was not there. Run the following commands which will setup the locale and try building your target image again.
 
-    .. code-block:: console
+   .. code-block:: console
 
-        export LC_ALL="en_US.UTF-8"
-        export LC_CTYPE="en_US.UTF-8"
-        export LC_NUMERIC="en_US.UTF-8"
-        export LANG=en_US.UTF-8
-        export LANGUAGE=en_US.UTF-8
-        ulimit -n 4096
+      export LC_ALL="en_US.UTF-8"
+      export LC_CTYPE="en_US.UTF-8"
+      export LC_NUMERIC="en_US.UTF-8"
+      export LANG=en_US.UTF-8
+      export LANGUAGE=en_US.UTF-8
+      ulimit -n 4096
 
 .. _processor-sdk-build-reference:
 
@@ -244,57 +244,57 @@ The "Build Output" is given relative to the
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | Target                       | Build Output                                                  | Description                |
-        +==============================+===============================================================+============================+
-        | tisdk-core-bundle            | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-edgeai-image           | images/<machine>/tisdk-edgeai-image-<machine>.tar.xz          | Target Edge AI Filesystem  |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem   |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
+      +------------------------------+---------------------------------------------------------------+----------------------------+
+      | Target                       | Build Output                                                  | Description                |
+      +==============================+===============================================================+============================+
+      | tisdk-core-bundle            | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
+      +------------------------------+---------------------------------------------------------------+----------------------------+
+      | tisdk-edgeai-image           | images/<machine>/tisdk-edgeai-image-<machine>.tar.xz          | Target Edge AI Filesystem  |
+      +------------------------------+---------------------------------------------------------------+----------------------------+
+      | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
+      +------------------------------+---------------------------------------------------------------+----------------------------+
+      | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem   |
+      +------------------------------+---------------------------------------------------------------+----------------------------+
+      | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
+      +------------------------------+---------------------------------------------------------------+----------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-        +------------------------------+----------------------------------------------------------------------+----------------------------+
-        | Target                       | Build Output                                                         | Description                |
-        +==============================+======================================================================+============================+
-        | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.rootfs.tar.xz         | Target Filesystem          |
-        +------------------------------+----------------------------------------------------------------------+----------------------------+
-        | tisdk-display-cluster-image  | images/<machine>/tisdk-display-cluster-image-<machine>.rootfs.tar.xz | Display Cluster Filesystem |
-        +------------------------------+----------------------------------------------------------------------+----------------------------+
-        | tisdk-jailhouse-image        | images/<machine>/tisdk-jailhouse-image-<machine>.rootfs.tar.xz       | Jailhouse Filesystem       |
-        +------------------------------+----------------------------------------------------------------------+----------------------------+
-        | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.rootfs.tar.xz            | Minimal Target Filesytem   |
-        +------------------------------+----------------------------------------------------------------------+----------------------------+
-        | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.rootfs.tar.xz       | Minimal Target Filesytem   |
-        |                              |                                                                      | with docker enabled        |
-        +------------------------------+----------------------------------------------------------------------+----------------------------+
-        | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                          | Devkit                     |
-        +------------------------------+----------------------------------------------------------------------+----------------------------+
+      +------------------------------+----------------------------------------------------------------------+----------------------------+
+      | Target                       | Build Output                                                         | Description                |
+      +==============================+======================================================================+============================+
+      | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.rootfs.tar.xz         | Target Filesystem          |
+      +------------------------------+----------------------------------------------------------------------+----------------------------+
+      | tisdk-display-cluster-image  | images/<machine>/tisdk-display-cluster-image-<machine>.rootfs.tar.xz | Display Cluster Filesystem |
+      +------------------------------+----------------------------------------------------------------------+----------------------------+
+      | tisdk-jailhouse-image        | images/<machine>/tisdk-jailhouse-image-<machine>.rootfs.tar.xz       | Jailhouse Filesystem       |
+      +------------------------------+----------------------------------------------------------------------+----------------------------+
+      | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.rootfs.tar.xz            | Minimal Target Filesytem   |
+      +------------------------------+----------------------------------------------------------------------+----------------------------+
+      | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.rootfs.tar.xz       | Minimal Target Filesytem   |
+      |                              |                                                                      | with docker enabled        |
+      +------------------------------+----------------------------------------------------------------------+----------------------------+
+      | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                          | Devkit                     |
+      +------------------------------+----------------------------------------------------------------------+----------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62X')
+   .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        +------------------------------+----------------------------------------------------------------+----------------------------+
-        | Target                       | Build Output                                                   | Description                |
-        +==============================+================================================================+============================+
-        | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.rootfs.tar.xz   | Target Filesystem          |
-        +------------------------------+----------------------------------------------------------------+----------------------------+
-        | tisdk-jailhouse-image        | images/<machine>/tisdk-jailhouse-image-<machine>.rootfs.tar.xz | Jailhouse Filesystem       |
-        +------------------------------+----------------------------------------------------------------+----------------------------+
-        | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.rootfs.tar.xz      | Minimal Target Filesytem   |
-        +------------------------------+----------------------------------------------------------------+----------------------------+
-        | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.rootfs.tar.xz | Minimal Target Filesytem   |
-        |                              |                                                                | with docker enabled        |
-        +------------------------------+----------------------------------------------------------------+----------------------------+
-        | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                    | Devkit                     |
-        +------------------------------+----------------------------------------------------------------+----------------------------+
+      +------------------------------+----------------------------------------------------------------+----------------------------+
+      | Target                       | Build Output                                                   | Description                |
+      +==============================+================================================================+============================+
+      | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.rootfs.tar.xz   | Target Filesystem          |
+      +------------------------------+----------------------------------------------------------------+----------------------------+
+      | tisdk-jailhouse-image        | images/<machine>/tisdk-jailhouse-image-<machine>.rootfs.tar.xz | Jailhouse Filesystem       |
+      +------------------------------+----------------------------------------------------------------+----------------------------+
+      | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.rootfs.tar.xz      | Minimal Target Filesytem   |
+      +------------------------------+----------------------------------------------------------------+----------------------------+
+      | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.rootfs.tar.xz | Minimal Target Filesytem   |
+      |                              |                                                                | with docker enabled        |
+      +------------------------------+----------------------------------------------------------------+----------------------------+
+      | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                    | Devkit                     |
+      +------------------------------+----------------------------------------------------------------+----------------------------+
 
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
@@ -337,256 +337,256 @@ The "Build Output" is given relative to the
 
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
-    .. rubric:: Platforms
+   .. rubric:: Platforms
 
-    Please refer to :ref:`here <yocto-layer-configuration>` for the yocto build platforms supported in |__SDK_FULL_NAME__|.
-    These are the <machine> used in the command:
+   Please refer to :ref:`here <yocto-layer-configuration>` for the yocto build platforms supported in |__SDK_FULL_NAME__|.
+   These are the <machine> used in the command:
 
-    ``MACHINE=<machine> bitbake <target>``
+   ``MACHINE=<machine> bitbake <target>``
 
-    .. ifconfig:: CONFIG_part_variant in ('J721E')
+   .. ifconfig:: CONFIG_part_variant in ('J721E')
 
-        +-------------------------------+-----------------------------------------------------------------------+
-        | **MACHINE**                   | **Supported EVMs**                                                    |
-        +-------------------------------+-----------------------------------------------------------------------+
-        | |__SDK_BUILD_MACHINE__|       | J721E EVM, TDA4VM SK                                                  |
-        +-------------------------------+-----------------------------------------------------------------------+
+      +-------------------------------+-----------------------------------------------------------------------+
+      | **MACHINE**                   | **Supported EVMs**                                                    |
+      +-------------------------------+-----------------------------------------------------------------------+
+      | |__SDK_BUILD_MACHINE__|       | J721E EVM, TDA4VM SK                                                  |
+      +-------------------------------+-----------------------------------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('J721S2')
+   .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-        +-------------------------------+-----------------------------------------------------------------------+
-        | **MACHINE**                   | **Supported EVMs**                                                    |
-        +-------------------------------+-----------------------------------------------------------------------+
-        | |__SDK_BUILD_MACHINE__|       | J721S2 EVM, AM68 SK                                                   |
-        +-------------------------------+-----------------------------------------------------------------------+
+      +-------------------------------+-----------------------------------------------------------------------+
+      | **MACHINE**                   | **Supported EVMs**                                                    |
+      +-------------------------------+-----------------------------------------------------------------------+
+      | |__SDK_BUILD_MACHINE__|       | J721S2 EVM, AM68 SK                                                   |
+      +-------------------------------+-----------------------------------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('J784S4')
+   .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
-        +-------------------------------+-----------------------------------------------------------------------+
-        | **MACHINE**                   | **Supported EVMs**                                                    |
-        +-------------------------------+-----------------------------------------------------------------------+
-        | |__SDK_BUILD_MACHINE__|       | J784S4 EVM, AM69 SK                                                   |
-        +-------------------------------+-----------------------------------------------------------------------+
+      +-------------------------------+-----------------------------------------------------------------------+
+      | **MACHINE**                   | **Supported EVMs**                                                    |
+      +-------------------------------+-----------------------------------------------------------------------+
+      | |__SDK_BUILD_MACHINE__|       | J784S4 EVM, AM69 SK                                                   |
+      +-------------------------------+-----------------------------------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('J7200')
+   .. ifconfig:: CONFIG_part_variant in ('J7200')
 
-        +-------------------------------+-----------------------------------------------------------------------+
-        | **MACHINE**                   | **Supported EVMs**                                                    |
-        +-------------------------------+-----------------------------------------------------------------------+
-        | |__SDK_BUILD_MACHINE__|       | J7200 EVM                                                             |
-        +-------------------------------+-----------------------------------------------------------------------+
+      +-------------------------------+-----------------------------------------------------------------------+
+      | **MACHINE**                   | **Supported EVMs**                                                    |
+      +-------------------------------+-----------------------------------------------------------------------+
+      | |__SDK_BUILD_MACHINE__|       | J7200 EVM                                                             |
+      +-------------------------------+-----------------------------------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('J722S')
+   .. ifconfig:: CONFIG_part_variant in ('J722S')
 
-        +-------------------------------+-----------------------------------------------------------------------+
-        | **MACHINE**                   | **Supported EVMs**                                                    |
-        +-------------------------------+-----------------------------------------------------------------------+
-        | |__SDK_BUILD_MACHINE__|       | J722S EVM                                                             |
-        +-------------------------------+-----------------------------------------------------------------------+
+      +-------------------------------+-----------------------------------------------------------------------+
+      | **MACHINE**                   | **Supported EVMs**                                                    |
+      +-------------------------------+-----------------------------------------------------------------------+
+      | |__SDK_BUILD_MACHINE__|       | J722S EVM                                                             |
+      +-------------------------------+-----------------------------------------------------------------------+
 
-    .. ifconfig:: CONFIG_rt_linux_support in ('yes')
+   .. ifconfig:: CONFIG_rt_linux_support in ('yes')
 
-        .. rubric:: RT Support
+      .. rubric:: RT Support
 
-        Run the command below, before the bitbake build command, to setup a yocto build with RT Linux Kernel:
+      Run the command below, before the bitbake build command, to setup a yocto build with RT Linux Kernel:
 
-        .. code-block:: console
+      .. code-block:: console
 
-            echo "ARAGO_RT_ENABLE = \"1\"" >> conf/local.conf
+         echo "ARAGO_RT_ENABLE = \"1\"" >> conf/local.conf
 
-        This will tell the Arago yocto setup to pick up RT-Linux Kernel when building any images that depend on the Kernel.
-        Alternatively, one can directly build the RT Kernel using below:
+      This will tell the Arago yocto setup to pick up RT-Linux Kernel when building any images that depend on the Kernel.
+      Alternatively, one can directly build the RT Kernel using below:
 
-        ``MACHINE=<machine> bitbake linux-ti-staging-rt``
+      ``MACHINE=<machine> bitbake linux-ti-staging-rt``
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-    .. rubric:: Platforms
-       :name: Platforms
+   .. rubric:: Platforms
+      :name: Platforms
 
-    The following platforms are supported in Processor SDK. These are the
-    <machine> in the command:
+   The following platforms are supported in Processor SDK. These are the
+   <machine> in the command:
 
-    ``MACHINE=<machine> bitbake <target>``
+   ``MACHINE=<machine> bitbake <target>``
 
-    .. ifconfig:: CONFIG_part_variant in ('AM335X')
+   .. ifconfig:: CONFIG_part_variant in ('AM335X')
 
-        +---------------+---------------------------------------------------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                                                                    |
-        +---------------+---------------------------------------------------------------------------------------+
-        | am335x-evm    | AM335x EVM, AM335x Starter Kit, Beaglebone Black                                      |
-        +---------------+---------------------------------------------------------------------------------------+
+      +---------------+---------------------------------------------------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                                                                    |
+      +---------------+---------------------------------------------------------------------------------------+
+      | am335x-evm    | AM335x EVM, AM335x Starter Kit, Beaglebone Black                                      |
+      +---------------+---------------------------------------------------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM437X')
+   .. ifconfig:: CONFIG_part_variant in ('AM437X')
 
-        +---------------+---------------------------------------------------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                                                                    |
-        +---------------+---------------------------------------------------------------------------------------+
-        | am437x-evm    | AM437x GP EVM, AM437x Starter Kit                                                     |
-        +---------------+---------------------------------------------------------------------------------------+
+      +---------------+---------------------------------------------------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                                                                    |
+      +---------------+---------------------------------------------------------------------------------------+
+      | am437x-evm    | AM437x GP EVM, AM437x Starter Kit                                                     |
+      +---------------+---------------------------------------------------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM57X')
+   .. ifconfig:: CONFIG_part_variant in ('AM57X')
 
-        +---------------+---------------------------------------------------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                                                                    |
-        +---------------+---------------------------------------------------------------------------------------+
-        | am57xx-evm    | AM572x GP EVM, AM572x Industrial Development Kit, AM571x Industrial Development Kit   |
-        +---------------+---------------------------------------------------------------------------------------+
+      +---------------+---------------------------------------------------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                                                                    |
+      +---------------+---------------------------------------------------------------------------------------+
+      | am57xx-evm    | AM572x GP EVM, AM572x Industrial Development Kit, AM571x Industrial Development Kit   |
+      +---------------+---------------------------------------------------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM64X')
+   .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-        +---------------+-----------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                            |
-        +---------------+-----------------------------------------------+
-        | am64xx-evm    | AM64x EVM - HS-FS, HS-SE                      |
-        +---------------+-----------------------------------------------+
+      +---------------+-----------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                            |
+      +---------------+-----------------------------------------------+
+      | am64xx-evm    | AM64x EVM - HS-FS, HS-SE                      |
+      +---------------+-----------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-        +---------------+-----------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                            |
-        +---------------+-----------------------------------------------+
-        | am62pxx-evm   | AM62Px EVM - HS-FS, HS-SE                     |
-        +---------------+-----------------------------------------------+
+      +---------------+-----------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                            |
+      +---------------+-----------------------------------------------+
+      | am62pxx-evm   | AM62Px EVM - HS-FS, HS-SE                     |
+      +---------------+-----------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('J722S')
+   .. ifconfig:: CONFIG_part_variant in ('J722S')
 
-        +---------------+-----------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                            |
-        +---------------+-----------------------------------------------+
-        | j722s-evm     | J722S EVM - HS-FS, HS-SE                      |
-        +---------------+-----------------------------------------------+
+      +---------------+-----------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                            |
+      +---------------+-----------------------------------------------+
+      | j722s-evm     | J722S EVM - HS-FS, HS-SE                      |
+      +---------------+-----------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62X')
+   .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        +------------------+--------------------------------------------+
-        | **MACHINE**      | **Supported EVMs**                         |
-        +------------------+--------------------------------------------+
-        | am62xx-evm       | AM62x Starter Kit (SK) - GP, HS-FS, HS-SE  |
-        +------------------+--------------------------------------------+
-        | am62xx-lp-evm    | AM62x LP Starter Kit (SK) - HS-FS, HS-SE   |
-        +------------------+--------------------------------------------+
-        | am62xxsip-evm    | AM62x-SIP Starter Kit (SK) - HS-FS, HS-SE  |
-        +------------------+--------------------------------------------+
-        | beagleplay       | BEAGL-PLAY-SBC - GP                        |
-        +------------------+--------------------------------------------+
+      +------------------+--------------------------------------------+
+      | **MACHINE**      | **Supported EVMs**                         |
+      +------------------+--------------------------------------------+
+      | am62xx-evm       | AM62x Starter Kit (SK) - GP, HS-FS, HS-SE  |
+      +------------------+--------------------------------------------+
+      | am62xx-lp-evm    | AM62x LP Starter Kit (SK) - HS-FS, HS-SE   |
+      +------------------+--------------------------------------------+
+      | am62xxsip-evm    | AM62x-SIP Starter Kit (SK) - HS-FS, HS-SE  |
+      +------------------+--------------------------------------------+
+      | beagleplay       | BEAGL-PLAY-SBC - GP                        |
+      +------------------+--------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-        +---------------+---------------------------------------------------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                                                                    |
-        +---------------+---------------------------------------------------------------------------------------+
-        | am62axx-evm   | AM62A Starter Kit (SK)                                                                |
-        +---------------+---------------------------------------------------------------------------------------+
+      +---------------+---------------------------------------------------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                                                                    |
+      +---------------+---------------------------------------------------------------------------------------+
+      | am62axx-evm   | AM62A Starter Kit (SK)                                                                |
+      +---------------+---------------------------------------------------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM65X')
+   .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-        +---------------+-----------------------------------------------------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                                                                      |
-        +---------------+-----------------------------------------------------------------------------------------+
-        | am65xx-evm    | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module    |
-        +---------------+-----------------------------------------------------------------------------------------+
+      +---------------+-----------------------------------------------------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                                                                      |
+      +---------------+-----------------------------------------------------------------------------------------+
+      | am65xx-evm    | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module    |
+      +---------------+-----------------------------------------------------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('Gen')
+   .. ifconfig:: CONFIG_part_variant in ('Gen')
 
-        +---------------+---------------------------------------------------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                                                                    |
-        +---------------+---------------------------------------------------------------------------------------+
-        | k2hk-evm      | 66AK2Hx EVM , K2K EVM                                                                 |
-        +---------------+---------------------------------------------------------------------------------------+
-        | k2e-evm       | K2Ex EVM                                                                              |
-        +---------------+---------------------------------------------------------------------------------------+
-        | k2l-evm       | 66AK2L06 EVM                                                                          |
-        +---------------+---------------------------------------------------------------------------------------+
-        | k2g-evm       | K2G EVM                                                                               |
-        +---------------+---------------------------------------------------------------------------------------+
-        | omapl138-lcdk | OMAP-L138 LCDK                                                                        |
-        +---------------+---------------------------------------------------------------------------------------+
+      +---------------+---------------------------------------------------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                                                                    |
+      +---------------+---------------------------------------------------------------------------------------+
+      | k2hk-evm      | 66AK2Hx EVM , K2K EVM                                                                 |
+      +---------------+---------------------------------------------------------------------------------------+
+      | k2e-evm       | K2Ex EVM                                                                              |
+      +---------------+---------------------------------------------------------------------------------------+
+      | k2l-evm       | 66AK2L06 EVM                                                                          |
+      +---------------+---------------------------------------------------------------------------------------+
+      | k2g-evm       | K2G EVM                                                                               |
+      +---------------+---------------------------------------------------------------------------------------+
+      | omapl138-lcdk | OMAP-L138 LCDK                                                                        |
+      +---------------+---------------------------------------------------------------------------------------+
 
-    .. rubric:: RT Support
-       :name: RT Support
+   .. rubric:: RT Support
+      :name: RT Support
 
-    Processor SDK Linux supports RT Linux Kernel for the following
-    machines/EVMs. Use the command below to make the RT builds:
+   Processor SDK Linux supports RT Linux Kernel for the following
+   machines/EVMs. Use the command below to make the RT builds:
 
-    ``MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake <target>``
+   ``MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake <target>``
 
-    .. ifconfig:: CONFIG_part_variant in ('AM335X')
+   .. ifconfig:: CONFIG_part_variant in ('AM335X')
 
-        +--------------+---------------------------------------------------------------------------------------+
-        | **MACHINE**  | **Supported EVMs**                                                                    |
-        +--------------+---------------------------------------------------------------------------------------+
-        | am335x-evm   | AM335x EVM, AM335x Industrial Communications Engine                                   |
-        +--------------+---------------------------------------------------------------------------------------+
+      +--------------+---------------------------------------------------------------------------------------+
+      | **MACHINE**  | **Supported EVMs**                                                                    |
+      +--------------+---------------------------------------------------------------------------------------+
+      | am335x-evm   | AM335x EVM, AM335x Industrial Communications Engine                                   |
+      +--------------+---------------------------------------------------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM437X')
+   .. ifconfig:: CONFIG_part_variant in ('AM437X')
 
-        +---------------+--------------------------------------------------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                                                                   |
-        +---------------+--------------------------------------------------------------------------------------+
-        | am437x-evm   | AM437x GP EVM, AM437x Industrial Development Kit                                      |
-        +--------------+---------------------------------------------------------------------------------------+
+      +---------------+--------------------------------------------------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                                                                   |
+      +---------------+--------------------------------------------------------------------------------------+
+      | am437x-evm   | AM437x GP EVM, AM437x Industrial Development Kit                                      |
+      +--------------+---------------------------------------------------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM57X')
+   .. ifconfig:: CONFIG_part_variant in ('AM57X')
 
-        +---------------+--------------------------------------------------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                                                                   |
-        +---------------+--------------------------------------------------------------------------------------+
-        | am57xx-evm   | AM572x GP EVM, AM574x Industrial Development Kit,                                     |
-        |              | AM572x Industrial Development Kit, AM571x Industrial Development Kit                  |
-        +--------------+---------------------------------------------------------------------------------------+
+      +---------------+--------------------------------------------------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                                                                   |
+      +---------------+--------------------------------------------------------------------------------------+
+      | am57xx-evm   | AM572x GP EVM, AM574x Industrial Development Kit,                                     |
+      |              | AM572x Industrial Development Kit, AM571x Industrial Development Kit                  |
+      +--------------+---------------------------------------------------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM64X')
+   .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-        +---------------+-----------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                            |
-        +---------------+-----------------------------------------------+
-        | am64xx-evm    | AM64x EVM - HS-FS, HS-SE                      |
-        +---------------+-----------------------------------------------+
+      +---------------+-----------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                            |
+      +---------------+-----------------------------------------------+
+      | am64xx-evm    | AM64x EVM - HS-FS, HS-SE                      |
+      +---------------+-----------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-        +---------------+-----------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                            |
-        +---------------+-----------------------------------------------+
-        | am62pxx-evm   | AM62Px EVM - HS-FS, HS-SE                     |
-        +---------------+-----------------------------------------------+
+      +---------------+-----------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                            |
+      +---------------+-----------------------------------------------+
+      | am62pxx-evm   | AM62Px EVM - HS-FS, HS-SE                     |
+      +---------------+-----------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62X')
+   .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        +------------------+--------------------------------------------+
-        | **MACHINE**      | **Supported EVMs**                         |
-        +------------------+--------------------------------------------+
-        | am62xx-evm       | AM62x Starter Kit (SK) - GP, HS-FS, HS-SE  |
-        +------------------+--------------------------------------------+
-        | am62xx-lp-evm    | AM62x LP Starter Kit (SK) - HS-FS, HS-SE   |
-        +------------------+--------------------------------------------+
-        | am62xxsip-evm    | AM62x-SIP Starter Kit (SK) - HS-FS, HS-SE  |
-        +------------------+--------------------------------------------+
-        | beagleplay       | BEAGL-PLAY-SBC - GP                        |
-        +------------------+--------------------------------------------+
+      +------------------+--------------------------------------------+
+      | **MACHINE**      | **Supported EVMs**                         |
+      +------------------+--------------------------------------------+
+      | am62xx-evm       | AM62x Starter Kit (SK) - GP, HS-FS, HS-SE  |
+      +------------------+--------------------------------------------+
+      | am62xx-lp-evm    | AM62x LP Starter Kit (SK) - HS-FS, HS-SE   |
+      +------------------+--------------------------------------------+
+      | am62xxsip-evm    | AM62x-SIP Starter Kit (SK) - HS-FS, HS-SE  |
+      +------------------+--------------------------------------------+
+      | beagleplay       | BEAGL-PLAY-SBC - GP                        |
+      +------------------+--------------------------------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('AM65X')
+   .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-        +---------------+-----------------------------------------------------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                                                                      |
-        +---------------+-----------------------------------------------------------------------------------------+
-        | am65xx-evm    | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module    |
-        +---------------+-----------------------------------------------------------------------------------------+
-        
-    .. ifconfig:: CONFIG_part_variant in ('Gen')
+      +---------------+-----------------------------------------------------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                                                                      |
+      +---------------+-----------------------------------------------------------------------------------------+
+      | am65xx-evm    | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module    |
+      +---------------+-----------------------------------------------------------------------------------------+
 
-        +---------------+--------------------------------------------------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                                                                   |
-        +---------------+--------------------------------------------------------------------------------------+
-        | k2hk-evm     | 66AK2Hx EVM , K2K EVM                                                                 |
-        +--------------+---------------------------------------------------------------------------------------+
-        | k2e-evm      | K2Ex EVM                                                                              |
-        +--------------+---------------------------------------------------------------------------------------+
-        | k2l-evm      | 66AK2L06 EVM                                                                          |
-        +--------------+---------------------------------------------------------------------------------------+
-        | k2g-evm      | K2G EVM                                                                               |
-        +--------------+---------------------------------------------------------------------------------------+
+   .. ifconfig:: CONFIG_part_variant in ('Gen')
+
+      +---------------+--------------------------------------------------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                                                                   |
+      +---------------+--------------------------------------------------------------------------------------+
+      | k2hk-evm     | 66AK2Hx EVM , K2K EVM                                                                 |
+      +--------------+---------------------------------------------------------------------------------------+
+      | k2e-evm      | K2Ex EVM                                                                              |
+      +--------------+---------------------------------------------------------------------------------------+
+      | k2l-evm      | 66AK2L06 EVM                                                                          |
+      +--------------+---------------------------------------------------------------------------------------+
+      | k2g-evm      | K2G EVM                                                                               |
+      +--------------+---------------------------------------------------------------------------------------+
 
 .. _building-the-sdk-recipes:
 
@@ -604,29 +604,29 @@ the recipe and all its dependencies.
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-    For example, the command below builds only the opencl recipe and all the
-    dependencies it defines.
+   For example, the command below builds only the opencl recipe and all the
+   dependencies it defines.
 
-    ``MACHINE=<machine> bitbake opencl``
+   ``MACHINE=<machine> bitbake opencl``
 
-    After the bitbake command above is successfully done,
-    :file:`arago-tmp-[toolchain]/work/<machine>-linux-gnueabi/opencl` directory
-    will be available including the original source code under the git
-    folder, independent shared objects (.so files) under packages-split
-    folder, and IPKs under deploy-ipks folder.
+   After the bitbake command above is successfully done,
+   :file:`arago-tmp-[toolchain]/work/<machine>-linux-gnueabi/opencl` directory
+   will be available including the original source code under the git
+   folder, independent shared objects (.so files) under packages-split
+   folder, and IPKs under deploy-ipks folder.
 
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
-    For example, the command below builds only the jailhouse recipe and all the
-    dependencies it defines.
+   For example, the command below builds only the jailhouse recipe and all the
+   dependencies it defines.
 
-    ``MACHINE=<machine> bitbake jailhouse``
+   ``MACHINE=<machine> bitbake jailhouse``
 
-    After the bitbake command above is successfully done,
-    **arago-tmp-[toolchain]/work/<machine>-linux/jailhouse** directory
-    will be available including the original source code under the git
-    folder, independent shared objects (.so files) under packages-split
-    folder, and IPKs under deploy-ipks folder.
+   After the bitbake command above is successfully done,
+   **arago-tmp-[toolchain]/work/<machine>-linux/jailhouse** directory
+   will be available including the original source code under the git
+   folder, independent shared objects (.so files) under packages-split
+   folder, and IPKs under deploy-ipks folder.
 
 .. note:: Please note that the output of a recipe can be in another folder under "arago-tmp-[toolchain]/work" directory, depending on the defines of the recipe.
 
@@ -636,49 +636,49 @@ the recipe and all its dependencies.
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-    When needed, source code under the work directory (e.g.,
-    **arago-tmp-[toolchain]/work/<machine>-linux-gnueabi/opencl**/git) can
-    be modified. After the modification is done, run the following commands
-    to force recompilation with the new code and rebuilding of the recipe,
-    e.g.,
-    ``MACHINE=<machine> bitbake opencl --force -c compile``
+   When needed, source code under the work directory (e.g.,
+   **arago-tmp-[toolchain]/work/<machine>-linux-gnueabi/opencl**/git) can
+   be modified. After the modification is done, run the following commands
+   to force recompilation with the new code and rebuilding of the recipe,
+   e.g.,
+   ``MACHINE=<machine> bitbake opencl --force -c compile``
 
-    ``MACHINE=<machine> bitbake opencl``
+   ``MACHINE=<machine> bitbake opencl``
 
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
-    When needed, source code under the work directory (e.g.,
-    **arago-tmp-[toolchain]/work/<machine>-linux/jailhouse**/git) can
-    be modified. After the modification is done, run the following commands
-    to force recompilation with the new code and rebuilding of the recipe,
-    e.g.,
+   When needed, source code under the work directory (e.g.,
+   **arago-tmp-[toolchain]/work/<machine>-linux/jailhouse**/git) can
+   be modified. After the modification is done, run the following commands
+   to force recompilation with the new code and rebuilding of the recipe,
+   e.g.,
 
-    ``MACHINE=<machine> bitbake jailhouse --force -c compile``
+   ``MACHINE=<machine> bitbake jailhouse --force -c compile``
 
-    ``MACHINE=<machine> bitbake jailhouse``
+   ``MACHINE=<machine> bitbake jailhouse``
 
 .. rubric:: Installing Package
    :name: installing-package
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-    To install a modified and rebuilt package, copy the new IPKs from the
-    deploy-ipks folder (e.g.,
-    **arago-tmp-[toolchain]/work/<machine>-linux-gnueabi/opencl/[version]/deploy-ipks**)
-    to the target system and then run the following command to install the
-    IPKs:
+   To install a modified and rebuilt package, copy the new IPKs from the
+   deploy-ipks folder (e.g.,
+   **arago-tmp-[toolchain]/work/<machine>-linux-gnueabi/opencl/[version]/deploy-ipks**)
+   to the target system and then run the following command to install the
+   IPKs:
 
-    ``opkg install [package_ipk].ipk``
+   ``opkg install [package_ipk].ipk``
 
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
-    To install a modified and rebuilt package, copy the new IPKs from the
-    deploy-ipks folder (e.g.,
-    **arago-tmp-[toolchain]/work/<machine>-linux/jailhouse/[version]/deploy-ipks**)
-    to the target system and then run the following command to install the
-    IPKs:
+   To install a modified and rebuilt package, copy the new IPKs from the
+   deploy-ipks folder (e.g.,
+   **arago-tmp-[toolchain]/work/<machine>-linux/jailhouse/[version]/deploy-ipks**)
+   to the target system and then run the following command to install the
+   IPKs:
 
-    ``opkg install [package_ipk].ipk``
+   ``opkg install [package_ipk].ipk``
 
 .. rubric:: Cleaning a Built Recipe
    :name: cleaning-a-built-recipe
