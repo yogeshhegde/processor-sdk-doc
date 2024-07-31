@@ -21,7 +21,7 @@ Replacement Variables
 '__SDK_SHORT_NAME__'             : 'JACINTO'
 '__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-am69-sk-<version>-Linux-x86-Install.bin'
 '__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-am69-sk-<version>'
-'__SDK_DOWNLOAD_URL__'           : '`Jacinto7-Linux-SDK-Download-page <http://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-am69/latest/index_FDS.html>`__'
+'__SDK_DOWNLOAD_URL__'           : '`SDK-Download-page <https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-AM69>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '22.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '22.04'
 '__OPTEE_PLATFORM_FLAVOR__'      : 'j784s4'
