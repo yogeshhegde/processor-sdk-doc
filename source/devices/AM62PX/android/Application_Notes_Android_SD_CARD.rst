@@ -69,7 +69,7 @@ Build U-Boot
 
 Follow this link to build the :ref:`android-build-bootloaders`.
 
-Rebuild U-Boot then copy :file:`u-boot.img` in Android build system environment : :file`vendor/ti/am62x/bootloader/am62px-sk`
+Rebuild U-Boot then copy :file:`u-boot.img` in Android build system environment : :file:`vendor/ti/am62x/bootloader/am62px-sk`
 
 Build Android
 -------------
