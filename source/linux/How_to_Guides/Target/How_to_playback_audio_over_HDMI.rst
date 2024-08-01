@@ -27,7 +27,7 @@ requires shorting a jumper on the board, and applying an additional DT overlay
 
     .. code-block:: text
 
-        name_overlays=k3-am62x-sk-hdmi-audio.dtbo
+        name_overlays=ti/k3-am62x-sk-hdmi-audio.dtbo
 
 #. Finally, reboot the board and playback a .WAV or raw PCM data using aplay:
 

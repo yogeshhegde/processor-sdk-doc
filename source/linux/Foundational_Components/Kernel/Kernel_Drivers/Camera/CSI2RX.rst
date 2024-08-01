@@ -200,11 +200,11 @@ Enabling camera sensors
     .. code-block:: text
 
         # For Digilent PCam5C or ALINX AN5641
-        setenv name_overlays k3-am62x-sk-csi2-ov5640.dtbo
+        setenv name_overlays ti/k3-am62x-sk-csi2-ov5640.dtbo
         boot
 
         # For Technexion TEVI-OV5640
-        setenv name_overlays k3-am62x-sk-csi2-tevi-ov5640.dtbo
+        setenv name_overlays ti/k3-am62x-sk-csi2-tevi-ov5640.dtbo
         boot
 
     Once the overlay is applied, you can confirm that the sensor is being
@@ -417,15 +417,15 @@ Enabling camera sensors
     .. code-block:: text
 
         # For OV2312 connected on Fusion board RX Port 0:
-        setenv name_overlays k3-am62a7-sk-fusion.dtbo k3-fpdlink-ov2312-0-0.dtbo
+        setenv name_overlays ti/k3-am62a7-sk-fusion.dtbo ti/k3-fpdlink-ov2312-0-0.dtbo
         boot
 
         # For RCM IMX390 connected on Fusion board RX Port 0:
-        setenv name_overlays k3-am62a7-sk-fusion.dtbo k3-fpdlink-imx390-rcm-0-0.dtbo
+        setenv name_overlays ti/k3-am62a7-sk-fusion.dtbo ti/k3-fpdlink-imx390-rcm-0-0.dtbo
         boot
 
         # For V3Link IMX219 module connected to V3Link fusion's RX Port 0:
-        setenv name_overlays k3-am62x-sk-csi2-v3link-fusion.dtbo k3-v3link-imx219-0-0.dtbo
+        setenv name_overlays ti/k3-am62x-sk-csi2-v3link-fusion.dtbo ti/k3-v3link-imx219-0-0.dtbo
         boot
 
     To enable camera connected to the 22-pin FFC connector, enable the sensor
@@ -434,7 +434,7 @@ Enabling camera sensors
     .. code-block:: text
 
         # For IMX219 connected to 22-pin FFC connector
-        setenv name_overlays k3-am62x-sk-csi2-imx219.dtbo
+        setenv name_overlays ti/k3-am62x-sk-csi2-imx219.dtbo
         boot
 
     For more details on building or applying overlays permanently, refer to the
@@ -616,12 +616,12 @@ Enabling camera sensors
 
         # For single RCM IMX390 connected to RX port 0 on Fusion board EVM on J721E CPB:
         # FPDLink IMX390 camera overlays are named according to the port connected in the following
-        # format : k3-fpdlink-imx390-rcm-<csi_port>-<fusion_rx_port>.dtbo
-        => setenv name_overlays k3-j721e-evm-fusion.dtbo k3-fpdlink-imx390-rcm-0-0.dtbo
+        # format : ti/k3-fpdlink-imx390-rcm-<csi_port>-<fusion_rx_port>.dtbo
+        => setenv name_overlays ti/k3-j721e-evm-fusion.dtbo ti/k3-fpdlink-imx390-rcm-0-0.dtbo
         => boot
 
         # For single RCM IMX390 connected to RX port 0 on Fusion board EVM on J721E SK:
-        => setenv name_overlays k3-j721e-sk-fpdlink-fusion.dtbo  k3-fpdlink-imx390-rcm-0-0.dtbo
+        => setenv name_overlays ti/k3-j721e-sk-fpdlink-fusion.dtbo  ti/k3-fpdlink-imx390-rcm-0-0.dtbo
         => boot
 
     To enable IMX219 camera connected to the 22-pin FFC connectoron J721E SK,
@@ -630,7 +630,7 @@ Enabling camera sensors
     .. code-block:: text
 
         # For IMX219 connected to 15-pin FFC connector
-        => setenv name_overlays k3-j721e-sk-csi2-dual-imx219.dtbo
+        => setenv name_overlays ti/k3-j721e-sk-csi2-dual-imx219.dtbo
         => boot
 
     For more details on building or applying overlays permanently, refer to the
@@ -654,12 +654,12 @@ Enabling camera sensors
 
         # For single RCM IMX390 connected to RX port 0 on Fusion board EVM on J721S2 CPB:
         # FPDLink IMX390 camera overlays are named according to the port connected in the following
-        # format : k3-fpdlink-imx390-rcm-<csi_port>-<fusion_rx_port>.dtbo
-        => setenv name_overlays k3-j721s2-evm-fusion.dtbo k3-fpdlink-imx390-rcm-0-0.dtbo
+        # format : ti/k3-fpdlink-imx390-rcm-<csi_port>-<fusion_rx_port>.dtbo
+        => setenv name_overlays ti/k3-j721s2-evm-fusion.dtbo ti/k3-fpdlink-imx390-rcm-0-0.dtbo
         => boot
 
         # For single RCM IMX390 connected to RX port 0 on Fusion board EVM on AM68A SK:
-        => setenv name_overlays k3-j721e-sk-fpdlink-fusion.dtbo k3-fpdlink-imx390-rcm-0-0.dtbo
+        => setenv name_overlays ti/k3-j721e-sk-fpdlink-fusion.dtbo ti/k3-fpdlink-imx390-rcm-0-0.dtbo
         => boot
 
     To enable IMX219 camera connected to the 22-pin FFC connectoron AM68A SK,
@@ -668,7 +668,7 @@ Enabling camera sensors
     .. code-block:: text
 
         # For IMX219 connected to 22-pin FFC connector
-        => setenv name_overlays k3-j721e-sk-csi2-dual-imx219.dtbo
+        => setenv name_overlays ti/k3-j721e-sk-csi2-dual-imx219.dtbo
         => boot
 
     For more details on building or applying overlays permanently, refer to the
@@ -692,12 +692,12 @@ Enabling camera sensors
 
         # For single RCM IMX390 connected to RX port 0 on Fusion board EVM on J721S2 CPB:
         # FPDLink IMX390 camera overlays are named according to the port connected in the following
-        # format : k3-fpdlink-imx390-rcm-<csi_port>-<fusion_rx_port>.dtbo
-        => setenv name_overlays k3-j721s2-evm-fusion.dtbo k3-fpdlink-imx390-rcm-0-0.dtbo
+        # format : ti/k3-fpdlink-imx390-rcm-<csi_port>-<fusion_rx_port>.dtbo
+        => setenv name_overlays ti/k3-j721s2-evm-fusion.dtbo ti/k3-fpdlink-imx390-rcm-0-0.dtbo
         => boot
 
         # For single RCM IMX390 connected to RX port 0 on Fusion board EVM on AM69A SK:
-        => setenv name_overlays k3-j721e-sk-fpdlink-fusion.dtbo k3-fpdlink-imx390-rcm-0-0.dtbo
+        => setenv name_overlays ti/k3-j721e-sk-fpdlink-fusion.dtbo ti/k3-fpdlink-imx390-rcm-0-0.dtbo
         => boot
 
     To enable IMX219 camera connected to the 22-pin FFC connectoron AM69A SK,
@@ -706,7 +706,7 @@ Enabling camera sensors
     .. code-block:: text
 
         # For IMX219 connected to 22-pin FFC connector
-        => setenv name_overlays k3-j721e-sk-csi2-dual-imx219.dtbo
+        => setenv name_overlays ti/k3-j721e-sk-csi2-dual-imx219.dtbo
         => boot
 
     For more details on building or applying overlays permanently, refer to the
