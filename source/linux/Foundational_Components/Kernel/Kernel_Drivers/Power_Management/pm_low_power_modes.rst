@@ -41,42 +41,49 @@ In order to enter deep sleep, use the following command:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-   ::
+   .. code-block:: console
 
       root@am62xx-evm:~# echo mem > /sys/power/state
-      [   45.902923] PM: suspend entry (deep)
-      [   45.906725] Filesystems sync: 0.000 seconds
-      [   45.924512] remoteproc remoteproc0: stopped remote processor 5000000.m4fss
-      [   45.931827] Freezing user space processes
-      [   45.937861] Freezing user space processes completed (elapsed 0.001 seconds)
-      [   45.944868] OOM killer disabled.
-      [   45.948087] Freezing remaining freezable tasks
-      [   45.953924] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
-      [   45.961330] printk: Suspending console(s) (use no_console_suspend to debug)
-      [   45.988085] Disabling non-boot CPUs ...
-      [   45.990243] psci: CPU1 killed (polled 0 ms)
-      [   45.992334] psci: CPU2 killed (polled 4 ms)
-      [   45.994977] psci: CPU3 killed (polled 0 ms)
+      [  444.719520] PM: suspend entry (deep)
+      [  444.723374] Filesystems sync: 0.000 seconds
+      [  444.751309] Freezing user space processes
+      [  444.756923] Freezing user space processes completed (elapsed 0.001 seconds)
+      [  444.763924] OOM killer disabled.
+      [  444.767141] Freezing remaining freezable tasks
+      [  444.772908] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+      [  444.780328] printk: Suspending console(s) (use no_console_suspend to debug)
+      [  444.796853] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 179: state: 1: ret 0
+      [  444.797037] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 178: state: 1: ret 0
+      [  444.805604] omap8250 2800000.serial: PM domain pd:146 will not be powered off
+      [  444.806188] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 117: state: 1: ret 0
+      [  444.816592] remoteproc remoteproc0: stopped remote processor 5000000.m4fss
+      [  444.820627] Disabling non-boot CPUs ...
+      [  444.822859] psci: CPU1 killed (polled 0 ms)
+      [  444.826567] psci: CPU2 killed (polled 0 ms)
+      [  444.830170] psci: CPU3 killed (polled 0 ms)
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX' , 'AM62PX')
 
-   ::
+   .. code-block:: console
 
-      root@evm:~# echo mem > /sys/power/state
-      [   47.558246] PM: suspend entry (deep)
-      [   47.562456] Filesystems sync: 0.000 seconds
-      [   47.597364] remoteproc remoteproc1: stopped remote processor 79000000.r5f
-      [   47.604640] Freezing user space processes
-      [   47.614313] Freezing user space processes completed (elapsed 0.005 seconds)
-      [   47.623448] OOM killer disabled.
-      [   47.627420] Freezing remaining freezable tasks
-      [   47.633363] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
-      [   47.640783] printk: Suspending console(s) (use no_console_suspend to debug)
-      [   47.662936] omap8250 2800000.serial: PM domain pd:146 will not be powered off
-      [   47.669305] Disabling non-boot CPUs ...
-      [   47.671283] psci: CPU1 killed (polled 0 ms)
-      [   47.674127] psci: CPU2 killed (polled 4 ms)
-      [   47.676794] psci: CPU3 killed (polled 0 ms)
+      root@<machine>:~# echo mem > /sys/power/state
+      [  230.181404] PM: suspend entry (deep)
+      [  230.185406] Filesystems sync: 0.000 seconds
+      [  230.219094] Freezing user space processes
+      [  230.224495] Freezing user space processes completed (elapsed 0.001 seconds)
+      [  230.231506] OOM killer disabled.
+      [  230.234736] Freezing remaining freezable tasks
+      [  230.240432] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+      [  230.247825] printk: Suspending console(s) (use no_console_suspend to debug)
+      [  230.266309] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 179: state: 1: ret 0
+      [  230.266456] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 178: state: 1: ret 0
+      [  230.273953] omap8250 2800000.serial: PM domain pd:146 will not be powered off
+      [  230.274450] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 117: state: 1: ret 0
+      [  230.284177] remoteproc remoteproc1: stopped remote processor 79000000.r5f
+      [  230.287440] Disabling non-boot CPUs ...
+      [  230.289569] psci: CPU1 killed (polled 0 ms)
+      [  230.292413] psci: CPU2 killed (polled 4 ms)
+      [  230.295457] psci: CPU3 killed (polled 0 ms)
 
 This partially indicates that linux has finished it's deep sleep sequence.
 For further confirmation, one can take a look at the PMIC_LPM_EN pin on the EVM
@@ -107,7 +114,7 @@ The benefits of using MCU Only mode:
 
    To enter MCU Only mode, enable MCU M4 core as a wakeup source in linux:
 
-   ::
+   .. code-block:: console
 
       root@am62xx-evm:~# echo enabled > /sys/bus/platform/devices/5000000.m4fss/power/wakeup
 
@@ -115,36 +122,66 @@ The benefits of using MCU Only mode:
 
    To enter MCU Only mode, enable MCU R5 core as a wakeup source in linux:
 
-   ::
+   .. code-block:: console
 
-      root@evm:~# echo enabled > /sys/bus/platform/devices/79000000.r5f/power/wakeup
+      root@<machine>:~# echo enabled > /sys/bus/platform/devices/79000000.r5f/power/wakeup
 
 Now, the SoC can be suspended using the following command:
 
-::
+.. code-block:: console
 
-    root@evm:~# echo mem > /sys/power/state
-    [  175.651151] PM: suspend entry (deep)
-    [  175.655444] Filesystems sync: 0.000 seconds
-    [  175.667559] Freezing user space processes
-    [  175.673951] Freezing user space processes completed (elapsed 0.002 seconds)
-    [  175.681105] OOM killer disabled.
-    [  175.684404] Freezing remaining freezable tasks
-    [  175.690155] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
-    [  175.697574] printk: Suspending console(s) (use no_console_suspend to debug)
-    [  175.722262] omap8250 2800000.serial: PM domain pd:146 will not be powered off
-    [  175.954174] Disabling non-boot CPUs ...
-    [  175.956374] psci: CPU1 killed (polled 0 ms)
-    [  175.959326] psci: CPU2 killed (polled 0 ms)
-    [  175.962024] psci: CPU3 killed (polled 4 ms)
+    root@<machine>:~# rtcwake -s 5 -m mem
+    rtcwake: wakeup from "mem" using /dev/rtc0 at Thu Jan  1 00:01:02 1970
+    [   45.548480] PM: suspend entry (deep)
+    [   45.552187] Filesystems sync: 0.000 seconds
+    [   45.566606] Freezing user space processes
+    [   45.572093] Freezing user space processes completed (elapsed 0.001 seconds)
+    [   45.579083] OOM killer disabled.
+    [   45.582309] Freezing remaining freezable tasks
+    [   45.587984] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+    [   45.595432] printk: Suspending console(s) (use no_console_suspend to debug)
+    [   45.627136] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 179: state: 1: ret 0
+    [   45.640758] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 178: state: 1: ret 0
+    [   45.648341] omap8250 2800000.serial: PM domain pd:146 will not be powered off
+    [   45.648892] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 117: state: 1: ret 0
+    [   45.648993] cpu cpu3: ti_sci_suspend: sending max CPU latency=100
+    [   45.649033] ti-sci 44043000.system-controller: ti_sci_cmd_set_latency_constraint: latency: 100: state: 1: ret 0
+    [   45.669270] Disabling non-boot CPUs ...
+    [   45.671353] psci: CPU1 killed (polled 0 ms)
+    [   45.674819] psci: CPU2 killed (polled 0 ms)
+    [   45.676640] psci: CPU3 killed (polled 4 ms)
+    [   45.677311] Enabling non-boot CPUs ...
+    [   45.677632] Detected VIPT I-cache on CPU1
+    [   45.677672] GICv3: CPU1: found redistributor 1 region 0:0x00000000018a0000
+    [   45.677724] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+    [   45.678694] CPU1 is up
+    [   45.678934] Detected VIPT I-cache on CPU2
+    [   45.678962] GICv3: CPU2: found redistributor 2 region 0:0x00000000018c0000
+    [   45.679002] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
+    [   45.679778] CPU2 is up
+    [   45.680016] Detected VIPT I-cache on CPU3
+    [   45.680045] GICv3: CPU3: found redistributor 3 region 0:0x00000000018e0000
+    [   45.680088] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
+    [   45.680939] CPU3 is up
+    [   45.681332] ti-sci 44043000.system-controller: ti_sci_resume: wakeup source: 0x50
+    [   45.703650] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 19
+    [   45.719704] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
+    [   45.719730] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
+    [   46.004264] OOM killer enabled.
+    [   46.007406] Restarting tasks ... done.
+    [   46.012454] random: crng reseeded on system resumption
+    [   46.026923] platform 79000000.r5f: Core is on in resume
+    [   46.032206] platform 79000000.r5f: received echo reply from 79000000.r5f
+    [   46.032262] PM: suspend exit
 
 Once the SoC enters MCU Only mode, the following log should be printed
 on the MCU UART (in most cases it will be /dev/ttyUSB3)
 
-::
+.. code-block:: text
 
+    [IPC RPMSG ECHO] Next MCU mode is 1
     [IPC RPMSG ECHO] Suspend request to MCU-only mode received
-    [IPC RPMSG ECHO] Press any key on this terminal to resume the kernel from MCU only mode
+    [IPC RPMSG ECHO] Press a sinlge key on this terminal to resume the kernel from MCU only mode
 
 Refer to the :ref:`Wakeup Sources<pm_wakeup_sources>` section for information on how to wakeup the device from
 MCU Only mode using one of the supported wakeup sources.
@@ -167,7 +204,7 @@ wakeup event is triggered.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-   .. note::
+   .. important::
 
       Only AM62 LP-SK EVM supports Partial I/O mode.
 
@@ -185,21 +222,21 @@ After Linux boots, the MCAN wakeup for Partial I/O is enabled using the
 wake on PHY activity option of ethtool. For example, the following
 command enables mcu_mcan0 wakeup:
 
-::
+.. code-block:: console
 
-   root@evm:~# ethtool -s mcu_mcan0 wol p
+   root@<machine>:~# ethtool -s mcu_mcan0 wol p
 
-To enable mcu_mcan1 wakeup:
+.. rubric:: To enable mcu_mcan1 wakeup:
 
-::
+.. code-block:: console
 
-   root@evm:~# ethtool -s mcu_mcan1 wol p
+   root@<machine>:~# ethtool -s mcu_mcan1 wol p
 
-To enable UART wakeup:
+.. rubric:: To enable UART wakeup:
 
-::
+.. code-block:: console
 
-   root@evm:~# echo enabled > /sys/class/tty/ttyS0/device/power/wakeup
+   root@<machine>:~# echo enabled > /sys/class/tty/ttyS0/device/power/wakeup
 
 .. note::
 
@@ -208,14 +245,14 @@ To enable UART wakeup:
 With at least one of the wakeup sources enabled, Partial I/O mode can be
 entered with the following command:
 
-::
+.. code-block:: console
 
-   root@evm:~# poweroff 
+   root@<machine>:~# poweroff
 
 At this point, Linux kernel will go through its poweroff process and
 the console output will stop at the following lines:
 
-::
+.. code-block:: text
 
    [   51.698039] systemd-shutdown[1]: Powering off.
    [   51.769478] reboot: Power down
@@ -238,18 +275,18 @@ HWRNG support on GP devices is incompatible with Deep Sleep and MCU Only
 modes. To test LPM on GP devices, HWRNG has to be unloaded one-time
 before running the Suspend-to-RAM command:
 
-::
+.. code-block:: console
 
-   root@evm:@~# modprobe -r optee_rng
+   root@<machine>:@~# modprobe -r optee_rng
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-   .. note::
+   .. attention::
 
       Linux SDK for edge AI applications has a known issue that breaks
       Deep Sleep and MCU Only modes. To test these modes, the DSP module
       has to be unloaded before attempting LPM:
 
-      ::
+      .. code-block:: console
 
-         root@evm:@~# modprobe -rf ti_k3_dsp_remoteproc
+         root@am62axx-evm:@~# modprobe -rf ti_k3_dsp_remoteproc

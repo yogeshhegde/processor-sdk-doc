@@ -25,7 +25,7 @@ Real-Time Clock (RTC)
 
 It's possible to use the SoC's internal RTC to wakeup the system using the command rtcwake:
 
-::
+.. code-block:: console
 
     rtcwake
 
@@ -51,64 +51,66 @@ For example, if you wish to wakeup from Deep Sleep or MCU Only mode in 10 second
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    ::
+    .. code-block:: console
 
         root@am62xx-evm:~# rtcwake -s 10 -m mem
-        rtcwake: wakeup from "mem" using /dev/rtc0 at Thu Apr 28 18:05:07 2022
-        [  217.136973] PM: suspend entry (deep)
-        [  217.140747] Filesystems sync: 0.000 seconds
-        [  217.147762] Freezing user space processes
-        [  217.153867] Freezing user space processes completed (elapsed 0.002 seconds)
-        [  217.160915] OOM killer disabled.
-        [  217.164149] Freezing remaining freezable tasks
-        [  217.170101] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
-        [  217.177507] printk: Suspending console(s) (use no_console_suspend to debug)
-        [  217.430054] Disabling non-boot CPUs ...
-        [  217.432261] psci: CPU1 killed (polled 0 ms)
-        [  217.435103] psci: CPU2 killed (polled 0 ms)
-        [  217.437754] psci: CPU3 killed (polled 0 ms)
-        [  217.438625] Enabling non-boot CPUs ...
-        [  217.439024] Detected VIPT I-cache on CPU1
-        [  217.439117] GICv3: CPU1: found redistributor 1 region 0:0x00000000018a0000
-        [  217.439182] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
-        [  217.440126] CPU1 is up
-        [  217.440374] Detected VIPT I-cache on CPU2
-        [  217.440419] GICv3: CPU2: found redistributor 2 region 0:0x00000000018c0000
-        [  217.440461] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
-        [  217.441134] CPU2 is up
-        [  217.441392] Detected VIPT I-cache on CPU3
-        [  217.441442] GICv3: CPU3: found redistributor 3 region 0:0x00000000018e0000
-        [  217.441486] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
-        [  217.442257] CPU3 is up
-        [  217.442874] ti-sci 44043000.system-controller: ti_sci_resume: wakeup source: 0x50
-        [  217.454117] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 19
-        [  217.463141] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
-        [  217.463172] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
-        [  217.469924] am65-cpsw-nuss 8000000.ethernet eth1: PHY [8000f00.mdio:01] driver [TI DP83867] (irq=POLL)
-        [  217.469938] am65-cpsw-nuss 8000000.ethernet eth1: configuring for phy/rgmii-rxid link mode
-        [  217.728474] OOM killer enabled.
-        [  217.731625] Restarting tasks ... done.
-        [  217.737936] random: crng reseeded on system resumption
-        [  217.743270] k3-m4-rproc 5000000.m4fss: received echo reply from 5000000.m4fss
-        [  217.751165] PM: suspend exit
+        rtcwake: wakeup from "mem" using /dev/rtc0 at Thu Jan 1 00:00:45 1970
+        [ 28.038332] PM: suspend entry (deep)
+        [ 28.042057] Filesystems sync: 0.000 seconds
+        [ 28.050312] Freezing user space processes
+        [ 28.052137] Freezing user space processes completed (elapsed 0.001 seconds)
+        [ 28.052162] OOM killer disabled.
+        [ 28.052166] Freezing remaining freezable tasks
+        [ 28.053557] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+        [ 28.053571] printk: Suspending console(s) (use no_console_suspend to debug)
+        [ 28.138190] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 179: state: 1: ret 0
+        [ 28.148680] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 178: state: 1: ret 0
+        [ 29.911265] omap8250 2800000.serial: PM domain pd:146 will not be powered off
+        [ 29.923288] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 117: state: 1: ret 0
+        [ 30.789584] remoteproc remoteproc0: stopped remote processor 5000000.m4fss
+        [ 30.981215] Disabling non-boot CPUs ...
+        [ 30.983394] psci: CPU1 killed (polled 0 ms)
+        [ 30.986714] psci: CPU2 killed (polled 0 ms)
+        [ 30.990028] psci: CPU3 killed (polled 0 ms)
+        [ 30.991437] Enabling non-boot CPUs ...
+        [ 31.011850] Detected VIPT I-cache on CPU1
+        [ 31.011909] GICv3: CPU1: found redistributor 1 region 0:0x00000000018a0000
+        [ 31.011972] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+        [ 31.013028] CPU1 is up
+        [ 31.033291] Detected VIPT I-cache on CPU2
+        [ 31.033322] GICv3: CPU2: found redistributor 2 region 0:0x00000000018c0000
+        [ 31.033365] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
+        [ 31.034221] CPU2 is up
+        [ 31.054487] Detected VIPT I-cache on CPU3
+        [ 31.054524] GICv3: CPU3: found redistributor 3 region 0:0x00000000018e0000
+        [ 31.054573] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
+        [ 31.055431] CPU3 is up
+        [ 31.058242] ti-sci 44043000.system-controller: ti_sci_resume: wakeup source: 0x50
+        [ 33.771971] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 19
+        [ 34.177716] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
+        [ 34.177741] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
+        [ 34.184415] am65-cpsw-nuss 8000000.ethernet eth1: PHY [8000f00.mdio:01] driver [TI DP83867] (irq=POLL)
+        [ 34.184425] am65-cpsw-nuss 8000000.ethernet eth1: configuring for phy/rgmii-rxid link mode
+        [ 34.400791] OOM killer enabled.
+        [ 34.403934] Restarting tasks ... done.
+        [ 34.408982] random: crng reseeded on system resumption
+        [ 34.555214] k3-m4-rproc 5000000.m4fss: Core is off in resume
+        [ 34.560924] remoteproc remoteproc0: powering up 5000000.m4fss
+        [ 34.566695] remoteproc remoteproc0: Booting fw image am62-mcu-m4f0_0-fw, size 55016
+        [ 34.595350] rproc-virtio rproc-virtio.2.auto: assigned reserved memory node m4f-dma-memory@9cb00000
+        [ 34.605831] virtio_rpmsg_bus virtio1: rpmsg host is online
+        [ 34.611540] rproc-virtio rproc-virtio.2.auto: registered virtio1 (type 7)
+        [ 34.618396] remoteproc remoteproc0: remote processor 5000000.m4fss is now up
+        [ 34.619659] virtio_rpmsg_bus virtio1: creating channel ti.ipc4.ping-pong addr 0xd
+        [ 34.633257] virtio_rpmsg_bus virtio1: creating channel rpmsg_chrdev addr 0xe
+        [ 34.645777] PM: suspend exit
         root@am62xx-evm:~#
-
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
-
-    ::
-
-        root@evm:~# rtcwake -s 10 -m mem -d rtc1
-
-.. ifconfig:: CONFIG_part_variant in ('AM62PX')
-
-    ::
-
-        root@evm:~# rtcwake -s 10 -m mem
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62PX')
 
-    ::
+    .. code-block:: console
 
+        root@<machine>:~# rtcwake -s 10 -m mem
         rtcwake: wakeup from "mem" using rtc1 at Thu Jan  1 00:01:31 1970
         [   73.746948] PM: suspend entry (deep)
         [   73.750871] Filesystems sync: 0.000 seconds
@@ -171,28 +173,28 @@ A brief guide to configuring an MCU GPIO as wakeup:
 First, we add gpio-keys as a compatible string, refer to `gpio_keys kernel documentation <https://www.kernel.org/doc/Documentation/devicetree/bindings/input/gpio-keys.txt>`__
 for details.
 
-::
+.. code-block:: dts
 
     compatible = "gpio-keys";
 
 
 Set the desired pinctrl,
 
-::
+.. code-block:: dts
 
     pinctrl-names = "default";
     pinctrl-0 = <&wake_mcugpio1_pins_default>;
 
 Setup the interrupt parent and interrupt as MCU_GPIO0,
 
-::
+.. code-block:: dts
 
     interrupt-parent = <&mcu_gpio0>;
     interrupts = <16 IRQ_TYPE_EDGE_RISING>;
 
 Now, under the switch node we add the following:
 
-::
+.. code-block:: dts
 
     switch {
                 label = "MCUGPIO";
@@ -203,9 +205,9 @@ Now, under the switch node we add the following:
 
 #. The label is the descriptive name of the key. The string will reflect under /proc/interrupts as:
 
-    ::
+    .. code-block:: console
 
-        root@evm:~# cat /proc/interrupts | grep "MCUGPIO"
+        root@<machine>:~# cat /proc/interrupts | grep "MCUGPIO"
         262:          0          0          0          0      GPIO  16 Edge    -davinci_gpio  MCUGPIO
 
 #. linux,code: Keycode to emit.
@@ -267,7 +269,7 @@ Main UART
 The way to configure UART as an I/O daisy chain wakeup, refer to the
 main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=10.00.07>`_
 
-::
+.. code-block:: dts
 
     interrupts-extended = <&gic500 GIC_SPI 178 IRQ_TYPE_LEVEL_HIGH>,
                 <&main_pmx0 0x1c8>; /* (D14) UART0_RXD PADCONFIG114 */
@@ -280,14 +282,14 @@ be configured as a wakeup pad when system enters deep sleep.
 
 To use main_uart0 as a wakeup source, ensure serial is a wake-irq in /proc/interrupts:
 
-::
+.. code-block:: console
 
-    root@evm:~# grep wakeup /proc/interrupts
+    root@<machine>:~# grep wakeup /proc/interrupts
     231:          0          0          0          0   pinctrl 456 Edge 2800000.serial:wakeup
 
 Then, run this script:
 
-::
+.. code-block:: bash
 
     #!/bin/bash -xe
 
@@ -336,9 +338,9 @@ overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_over
 
 To use main_gpio as a wakeup source, ensure gpio is a wake-irq in /proc/interrupts:
 
-::
+.. code-block:: console
 
-    root@evm:~# grep wakeup /proc/interrupts
+    root@<machine>:~# grep wakeup /proc/interrupts
     531:          0          0          0          0   pinctrl 416 Edge      WKGPIO:wakeup
 
 Once the system has entered Deep Sleep or MCU Only mode as shown in the
@@ -386,7 +388,7 @@ Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in
 Now plug in a USB device to one of the port on the board and the system should wakeup. Post wakeup, the device would show up enumerated.
 This can be checked by below command before and after suspending and waking up the system.
 
-::
+.. code-block:: console
 
   # lsusb -t
 
@@ -395,7 +397,7 @@ Wakeup via a device disconnect event
 
 Plug in a USB device to one of the port on the board and check that the device is enumerated by executing the below command.
 
-::
+.. code-block:: console
 
   # lsusb -t
 
@@ -404,7 +406,7 @@ Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in
 Once the system is suspended, disconnect the USB device from the board and this should wakeup the system.
 And device would not show up in list of USB enumerated devices. This can be verified by executing
 
-::
+.. code-block:: console
 
   # lsusb -t
 
@@ -417,7 +419,7 @@ to trigger a remote wakeup event to system.
 
 Assuming the USB keyboard device is at /sys/bus/usb/devices/1-1/, enable USB autosuspend and wakeup
 
-::
+.. code-block:: console
 
    # echo auto > /sys/bus/usb/devices/1-1/power/control
    # echo enabled > /sys/bus/usb/devices/1-1/power/wakeup
@@ -425,13 +427,13 @@ Assuming the USB keyboard device is at /sys/bus/usb/devices/1-1/, enable USB aut
 Allow for two seconds of inactivity and check the runtime power status of the keyboard.
 It should show "suspended", indicating that the keyboard has entered into suspend state.
 
-::
+.. code-block:: console
 
   # cat /sys/bus/usb/devices/1-1/power/runtime_status
 
 Now press a key on the keyboard and check the runtime power status and it would come back to "active".
 
-::
+.. code-block:: console
 
   # cat /sys/bus/usb/devices/1-1/power/runtime_status
 
@@ -440,7 +442,7 @@ Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in
 And once in suspended state, trigger system wakeup via remote wakeup event by typing keys on the keyboard. The system would wakeup.
 And USB keyboard would still be present in the system's list of USB enumerated devices and this can be verified by executing
 
-::
+.. code-block:: console
 
   # lsusb -t
 
@@ -452,7 +454,7 @@ Wakeup via connect event
 
 Load a USB gadget driver such as g_zero
 
-::
+.. code-block:: console
 
   # modprobe g_zero
 
@@ -462,9 +464,9 @@ Once the system has entered the suspend state, plug a cable from a different Hos
 This should wakeup the system and gadget would be enumerated on the Host. Enumeration of the gadget on the Host system can be verified by executing the
 below command on the Host system
 
-::
+.. code-block:: console
 
-  HOST:~$ > lsub -t
+  HOST:~$ > lsusb -t
 
 
 ********************
@@ -492,15 +494,16 @@ as shown in the :ref:`LPM section<pm_mcu_only>`.
 Once the SoC enters MCU Only mode, the following log should be printed
 on the MCU UART (in most cases it will be /dev/ttyUSB3)
 
-::
+.. code-block:: text
 
+    [IPC RPMSG ECHO] Next MCU mode is 1
     [IPC RPMSG ECHO] Suspend request to MCU-only mode received
-    [IPC RPMSG ECHO] Press any key on this terminal to resume the kernel from MCU only mode
+    [IPC RPMSG ECHO] Press a sinlge key on this terminal to resume the kernel from MCU only mode
 
 Any *key press* on the same terminal should trigger a wakeup from MCU Only
 mode and the following message printed:
 
-::
+.. code-block:: text
 
     [IPC RPMSG ECHO] Main domain resumed due to MCU UART
 
@@ -514,7 +517,7 @@ This wake reason can be queried by Linux using the `TISCI LPM API <https://downl
 
 This wake reason is printed as part of the Linux suspend/resume log:
 
-::
+.. code-block:: console
 
     [   37.357109] CPU3 is up
     [   37.357710] ti-sci 44043000.system-controller: ti_sci_resume: wakeup source: 0x50
