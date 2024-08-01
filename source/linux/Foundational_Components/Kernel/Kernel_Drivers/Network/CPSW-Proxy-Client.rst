@@ -95,19 +95,19 @@ To enable Linux CPSW Proxy Client functionality, save the following command in u
 
     .. code-block:: text
 
-        name_overlays="k3-j721e-evm-virt-mac-client.dtbo"
+        name_overlays="ti/k3-j721e-evm-ethfw.dtbo"
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
     .. code-block:: text
 
-        name_overlays="k3-j7200-evm-virt-mac-client.dtbo"
+        name_overlays="ti/k3-j7200-evm-ethfw.dtbo"
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
     .. code-block:: text
 
-        name_overlays="k3-j784s4-evm-virt-mac-client.dtbo"
+        name_overlays="ti/k3-j784s4-evm-ethfw.dtbo"
 
 .. note::
 
