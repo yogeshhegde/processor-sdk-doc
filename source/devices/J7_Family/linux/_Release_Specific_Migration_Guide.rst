@@ -9,32 +9,16 @@ Processor SDK Linux Migration Guide
 This page covers migration information for applications built on top
 of the Processor SDK for Linux.
 
-Processor SDK 09.xx Releases
+Processor SDK 10.xx Releases
 ================================
 
-Processor SDK Jacinto 09.02
+Processor SDK Jacinto 10.00
 -------------------------------
-- This is the Third release based upon LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
-- ATF Upgraded to 2.10
-- OPTEE Upgarded to 4.1.0-51
-- Yocto Kirkstone/4.0
+- This is the first release in the 2024 LTS stream 6.6 kernel, 2024.04 U-Boot and Yocto scarthgap/5.0
+- ATF 2.10+
+- OPTEE 4.20
+- Yocto Scarthgap/5.0
 - Platforms Supported : J721E, J7200, J721S2, J784S4, AM68, AM69, J722S
-
-Processor SDK Jacinto 09.01
--------------------------------
-- This is the Second release in the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
-- ATF 2.9
-- OPTEE 4.0.0
-- Yocto Kirkstone/4.0
-- Platforms Supported : J721E, J7200, J721S2, J784S4, AM68, AM69
-
-Processor SDK Jacinto 09.00
--------------------------------
-- This is the first release in the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
-- ATF 2.8+
-- OPTEE 3.20
-- Yocto Kirkstone/4.0
-- Platforms Supported : J721E, J7200, J721S2, J784S4, AM68, AM69
 
 .. note::
 
