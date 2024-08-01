@@ -1,18 +1,20 @@
 .. include:: /_replacevars.rst
 
-******
+######
 CSI2RX
-******
+######
 
+************
 Introduction
-============
+************
 
 The CSI2RX subsystem is present on some TI SoCs which facilitates the capture of
 camera frames over a MIPI CSI-2 bus. The driver is based on the Video for Linux
 2 (V4L2) API. It implements V4L2's Media Controller (MC) API.
 
+*********************
 Hardware Architecture
-=====================
+*********************
 
 The CSI2RX subsystem is composed of 3 IPs: Cadence DPHY, Cadence CSI2RX bridge,
 TI CSI2RX DMA wrapper (aka the SHIM layer).
@@ -30,8 +32,9 @@ The CSI2RX subsystem supports the following features:
 See the the technical reference manual (TRM) for the SoC in question for more
 detailed information.
 
+*******************
 Driver Architecture
-===================
+*******************
 
 The driver is based on the Video 4 Linux 2 (V4L2) API. It is implemented
 according to the V4L2 standard for capture devices. The driver is only
@@ -40,7 +43,7 @@ bridge, DMA. For external devices like camera sensors separate V4L2 subdevice
 drivers are needed.
 
 The Media Controller API
-------------------------
+========================
 
 The driver is implemented using V4L2's Media Controller (MC) API. In the MC API,
 each element in the media pipeline is configured individually by the user-space
@@ -72,10 +75,10 @@ Quick links for relevant Linux Kernel documentation:
 
 
 Utilities to interact with the driver
--------------------------------------
+=====================================
 
 Standard V4L2 utilities can be used to set these formats and frame rates. One
-such tool is media-ctl.
+such tool is :command:`media-ctl`.
 
 To see the media pipeline to understand how all the components are connected in
 software, the pipeline can be printed to the console using ``media-ctl -p``. This
@@ -90,8 +93,9 @@ various elements for the pipeline. For example, below command can be used to set
 
 This just sets the formats on the sensor and bridge. The format on the DMA
 context (/dev/videoX) needs to be set separately. This can be done while
-starting the capture with yavta for example. The below command can be run next
-to start capturing the video stream to a file called :file:`capture`:
+starting the capture with :command:`yavta` for example. The below command can
+be run next to start capturing the video stream to a file called
+:file:`capture`:
 
 .. code-block:: console
 
@@ -110,7 +114,7 @@ below set of commands can achieve this:
     media-ctl --print-dot | dot -Tpng > graph.png
 
 Building the driver
--------------------
+===================
 
 First, enable the DPHY using CONFIG_PHY_CADENCE_DPHY. Then enable the CSI2RX
 bridge using CONFIG_VIDEO_CADENCE and CONFIG_VIDEO_CADENCE_CSI2RX. Finally,
@@ -120,22 +124,25 @@ be enabled.
 The driver can be built-in or it can be a loadable module. If the driver is
 built as a module, the module will be called ``j721e-csi2rx``. Along with that,
 the Cadence bridge and DPHY modules must also be loaded, which are called
-cdns-csi2rx and cdns-dphy respectively.
+``cdns-csi2rx`` and ``cdns-dphy`` respectively.
 
+*************************************
 Creating device tree nodes for sensor
-=====================================
+*************************************
 
 Since the sensor is a separate module and any sensor can be plugged in to the
 board, the sensor device tree nodes are not included in the base dtb. Instead,
 it should be added in as an overlay.
 
-Below overlay is an example for adding the overlay nodes:
+Below overlay is an example for a sensor module connected to the board using
+I2C2 and CSI-RX Port 0:
 
 .. code-block:: dts
 
     // SPDX-License-Identifier: GPL-2.0
     /*
-     * Copyright (C) 2021 Texas Instruments Incorporated - http://www.ti.com/
+     * Example Camera Module
+     * Copyright (C) 2024 Texas Instruments Incorporated - https://www.ti.com/
      */
 
     /dts-v1/;
@@ -143,45 +150,72 @@ Below overlay is an example for adding the overlay nodes:
 
     #include <dt-bindings/gpio/gpio.h>
 
-    &main_i2c6 {
-    	#address-cells = <1>;
-    	#size-cells = <0>;
-
-    	camera_sensor: camera@12 {
-    		compatible = "manufacturer,sensor-compatible";
-    		reg = <0x12>;
-
-			/* Other sensor properties go here... */
-
-    		port {
-    			csi2_cam0: endpoint {
-    				remote-endpoint = <&csi2rx0_in_sensor>;
-    				clock-lanes = <0>;
-    				/*
-    				 * This example sensor uses 2 lanes. Other sensors might use
-    				 * 1, 2, 3, or 4 lanes. Populate this property accordingly.
-    				 * See Documentation/devicetree/bindings/media/video-interfaces.yaml
-    				 * for more info.
-    				 */
-    				data-lanes = <1 2>;
-    			};
-    		};
-    	};
+    &{/} {
+        clk_sensor_fixed: sensor-xclk {
+            compatible = "fixed-clock";
+            #clock-cells = <0>;
+            clock-frequency = <24000000>;
+        };
     };
 
-    &csi0_port0 {
-    	status = "okay";
+    &main_i2c2 {
+        #address-cells = <1>;
+        #size-cells = <0>;
+        status = "okay";
 
-    	csi2rx0_in_sensor: endpoint {
-    		remote-endpoint = <&csi2_cam0>;
-    		bus-type = <4>; /* CSI2 DPHY. */
-    		clock-lanes = <0>;
-    		data-lanes = <1 2>;
-    	};
+        camera@10 {
+            compatible = "manufacturer,sensor-compatible";
+            reg = <0x10>;
+
+            clocks = <&clk_sensor_fixed>;
+            clock-names = "xclk";
+
+            port {
+                csi2_cam0: endpoint {
+                    remote-endpoint = <&csi2rx0_in_sensor>;
+                    clock-lanes = <0>;
+                    /*
+                     * This example sensor uses 2 lanes. Other sensors might use
+                     * 1, 2, 3, or 4 lanes. Populate this property accordingly.
+                     * See Documentation/devicetree/bindings/media/video-interfaces.yaml
+                     * for more info.
+                     */
+                    data-lanes = <1 2>;
+                };
+            };
+        };
     };
 
+    &cdns_csi2rx0 {
+        ports {
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            csi0_port0: port@0 {
+                reg = <0>;
+                status = "okay";
+
+                csi2rx0_in_sensor: endpoint {
+                    remote-endpoint = <&csi2_cam0>;
+                    bus-type = <4>; /* CSI2 DPHY. */
+                    clock-lanes = <0>;
+                    data-lanes = <1 2>;
+                };
+            };
+        };
+    };
+
+    &ti_csi2rx0 {
+        status = "okay";
+    };
+
+    &dphy0 {
+        status = "okay";
+    };
+
+***********************
 Enabling camera sensors
-=========================
+***********************
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X','AM62PX')
 
@@ -195,7 +229,7 @@ Enabling camera sensors
     They can be tested with the following steps:
 
     Applying sensor overlays
-    ------------------------
+    ========================
 
     During bootup stop at u-boot prompt by pressing any key and enable camera devicetree overlay:
 
@@ -210,7 +244,7 @@ Enabling camera sensors
         => boot
 
     Once the overlay is applied, you can confirm that the sensor is being
-    probed by checking the output of lsmod or the media graph:
+    probed by checking the output of :command:`lsmod` or the media graph:
 
     .. code-block:: console
 
@@ -243,7 +277,7 @@ Enabling camera sensors
 
 
     Capturing raw frames
-    --------------------
+    ====================
 
     Once the media pipeline is configured, you should be able to capture raw
     frames from the sensor using any tool compliant with v4l2 apis. For example
@@ -274,9 +308,10 @@ Enabling camera sensors
         -rw-r--r-- 1 root root 614400 Jan  1 19:19 cam0-stream0-000003.uyvy
         -rw-r--r-- 1 root root 614400 Jan  1 19:19 cam0-stream0-000004.uyvy
 
-    Alternatively you can use tools like yavta or v4l2-ctl, but please note
-    they require manual configuration using media-ctl if you want to stream at
-    a different resolution and formats than the default (640x480 UYVY):
+    Alternatively you can use tools like :command:`yavta` or
+    :command:`v4l2-ctl`, but please note they require manual configuration
+    using media-ctl if you want to stream at a different resolution and formats
+    than the default (640x480 UYVY):
 
     .. code-block:: console
 
@@ -296,7 +331,7 @@ Enabling camera sensors
             $ echo "on" > /sys/devices/platform/bus@f0000/20020000.i2c/i2c-2/i2c-4/4-003c/power/control
 
     Capture to display
-    ------------------
+    ==================
 
     If a display (HDMI or LVDS) is connected then use the following steps to view the camera frames:
 
@@ -317,7 +352,7 @@ Enabling camera sensors
         $ gst-launch-1.0 libcamerasrc ! video/x-raw, width=1024, height=768, format=UYVY ! autovideosink
 
     Suspend to RAM
-    --------------
+    ==============
 
     The camera pipeline supports system supend to RAM on |__PART_FAMILY_NAME__|
     SK. You can refer to :ref:`Power Management <lpm_modes>` guide for more
@@ -332,6 +367,16 @@ Enabling camera sensors
 
     The system will automatically wake-up after 5 seconds, and camera streaming
     should resume from where it left (as long as the sensor supports it).
+
+    .. attention::
+
+        Only TEVI OV5640 module is known to work reliably when system is
+        suspended with capture running. And that too, with the below patch
+        applied to prevent races between different camera pipeline devices on
+        system resume. This is due to V4L2 framework's async notifier
+        limitations, which currently does not support sending notifications
+        between subdevice drivers on wakeup from suspend state.
+
 
     The Technexion TEVI-OV5640 module supports this, but it may fail to set the
     sensor registers in time when built as a module. You can fix this by making
@@ -390,7 +435,7 @@ Enabling camera sensors
          CONFIG_PHY_FSL_IMX8M_PCIE=y
 
     To re-build the kernel with above changes you can refer to the
-    :ref:`Users Guide <kernel-config>`.
+    :ref:`Users Guide <users-guide-kernel-config>`.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
@@ -412,7 +457,7 @@ Enabling camera sensors
     .. Image:: /images/ov2312-pipeline.png
 
     Applying sensor overlays
-    ------------------------
+    ========================
 
     To enable FPDLink/V3Link cameras you will need to apply the device tree
     overlays for both the deserializer board and the sensor at U-boot prompt:
@@ -444,7 +489,7 @@ Enabling camera sensors
     :ref:`How to enable DT overlays in linux <howto_dt_overlays>` guide.
 
     Configuring media pipeline
-    --------------------------
+    ==========================
 
     Once the overlay is applied, you can confirm that the sensor is being
     probed by checking the output of lsmod or the media graph:
@@ -500,11 +545,11 @@ Enabling camera sensors
         $ media-ctl --set-v4l2 '"imx219 4-0010":0[fmt:SRGGB10_1X10/1920x1080]'
 
     Capturing raw frames
-    --------------------
+    ====================
 
     Once the media pipeline is configured, you should be able to capture raw
     frames from the sensor using any tool compliant with v4l2 apis. For example
-    you can use yavta to capture 100 frames from IMX219 @ 1232p:
+    you can use :command:`yavta` to capture 100 frames from IMX219 @ 1232p:
 
     .. code-block:: console
 
@@ -544,7 +589,7 @@ Enabling camera sensors
     using OpenCV.
 
     Capture to Display using ISP
-    ----------------------------
+    ============================
 
     To use the full capture to display pipeline, you can use gstreamer to call
     the required ISP components to convert the raw frames, apply
@@ -610,7 +655,7 @@ Enabling camera sensors
     modules can be interfaced.
 
     Applying sensor overlays
-    ------------------------
+    ========================
 
     To enable FPDLink cameras you will need to apply the device tree overlays
     for both the fusion board and the sensor at U-boot prompt:
@@ -648,7 +693,7 @@ Enabling camera sensors
     modules can be interfaced.
 
     Applying sensor overlays
-    ------------------------
+    ========================
 
     To enable FPDLink cameras you will need to apply the device tree overlays
     for both the fusion board and the sensor at U-boot prompt:
@@ -686,7 +731,7 @@ Enabling camera sensors
     modules can be interfaced.
 
     Applying sensor overlays
-    ------------------------
+    ========================
 
     To enable FPDLink cameras you will need to apply the device tree overlays
     for both the fusion board and the sensor at U-boot prompt:

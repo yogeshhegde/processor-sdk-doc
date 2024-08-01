@@ -31,14 +31,15 @@ Steps to enable audio over HDMI
 
         name_overlays=ti/k3-am62x-sk-hdmi-audio.dtbo
 
-#. Finally, reboot the board and playback a .WAV or raw PCM data using aplay:
+#. Finally, reboot the board and playback a .WAV or raw PCM data using
+   :command:`aplay`:
 
     .. code-block:: text
 
         aplay <path to wav file>
 
     You can also check out the :ref:`Audio Linux Driver Guide <Audio_User_Guide>` for
-    more information on using ``aplay``.
+    more information on using :command:`aplay`.
 
 
 .. note::

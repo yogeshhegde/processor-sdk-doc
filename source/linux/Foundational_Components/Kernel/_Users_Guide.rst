@@ -111,7 +111,7 @@ The command to clean the kernel is:
 
 |
 
-.. _kernel-config:
+.. _users-guide-kernel-config:
 
 Configuring the Kernel
 ----------------------
