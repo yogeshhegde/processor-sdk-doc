@@ -1,3 +1,5 @@
+.. include:: /_replacevars.rst
+
 ******
 CSI2RX
 ******
@@ -76,7 +78,7 @@ Standard V4L2 utilities can be used to set these formats and frame rates. One
 such tool is media-ctl.
 
 To see the media pipeline to understand how all the components are connected in
-software, the pipeline can be printed to the console using "media-ctl -p". This
+software, the pipeline can be printed to the console using ``media-ctl -p``. This
 would list all the elements in the pipeline, what they are connected to, and
 their names. This information can then be used to set formats and frame rates on
 various elements for the pipeline. For example, below command can be used to set
@@ -89,7 +91,7 @@ various elements for the pipeline. For example, below command can be used to set
 This just sets the formats on the sensor and bridge. The format on the DMA
 context (/dev/videoX) needs to be set separately. This can be done while
 starting the capture with yavta for example. The below command can be run next
-to start capturing the video stream to a file called "capture":
+to start capturing the video stream to a file called :file:`capture`:
 
 .. code-block:: console
 
@@ -97,7 +99,7 @@ to start capturing the video stream to a file called "capture":
 
 This command first sets the 1920x1080 UYVY format on the DMA context (which must
 match the format on the sensor), and then starts capturing frames to a file
-called "capture".
+called :file:`capture`.
 
 It is often useful to see the pipeline visually. media-ctl can print the
 pipeline as a dot graph which can then be converted to an image for viewing. The
@@ -116,8 +118,8 @@ enable CONFIG_VIDEO_TI_J721E_CSI2RX. The config for the sensor should also
 be enabled.
 
 The driver can be built-in or it can be a loadable module. If the driver is
-built as a module, the module will be called j721e-csi2rx. Along with that, the
-Cadence bridge and DPHY modules must also be loaded, which are called
+built as a module, the module will be called ``j721e-csi2rx``. Along with that,
+the Cadence bridge and DPHY modules must also be loaded, which are called
 cdns-csi2rx and cdns-dphy respectively.
 
 Creating device tree nodes for sensor
@@ -183,8 +185,8 @@ Enabling camera sensors
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X','AM62PX')
 
-    SK-AM62 supports the following 15-pin FFC compatible camera modules with
-    **OV5640** sensor:
+    |__PART_FAMILY_NAME__| SK supports the following 15-pin FFC compatible
+    camera modules with **OV5640** sensor:
 
         1. TEVI-OV5640-\*-RPI
         2. Digilent PCam5C
@@ -200,12 +202,12 @@ Enabling camera sensors
     .. code-block:: text
 
         # For Digilent PCam5C or ALINX AN5641
-        setenv name_overlays ti/k3-am62x-sk-csi2-ov5640.dtbo
-        boot
+        => setenv name_overlays ti/k3-am62x-sk-csi2-ov5640.dtbo
+        => boot
 
         # For Technexion TEVI-OV5640
-        setenv name_overlays ti/k3-am62x-sk-csi2-tevi-ov5640.dtbo
-        boot
+        => setenv name_overlays ti/k3-am62x-sk-csi2-tevi-ov5640.dtbo
+        => boot
 
     Once the overlay is applied, you can confirm that the sensor is being
     probed by checking the output of lsmod or the media graph:
@@ -317,10 +319,9 @@ Enabling camera sensors
     Suspend to RAM
     --------------
 
-    The camera pipeline supports system supend to RAM on SK-AM62. You can refer
-    to `Power Management
-    <../Power_Management/pm_low_power_modes.html#suspend-to-ram-deep-sleep>`__ guide for
-    more details.
+    The camera pipeline supports system supend to RAM on |__PART_FAMILY_NAME__|
+    SK. You can refer to :ref:`Power Management <lpm_modes>` guide for more
+    details.
 
     For example, you can start streaming from camera using any of the above
     methods and then suspend to RAM for 5 seconds using the following command:
@@ -339,27 +340,28 @@ Enabling camera sensors
     .. code-block:: diff
 
         diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-        index 1f402994efed..0f081e5f96c1 100644
+        index bb3cd088db44..2262f23cd9ab 100644
         --- a/arch/arm64/configs/defconfig
         +++ b/arch/arm64/configs/defconfig
-        @@ -739,14 +739,14 @@ CONFIG_RC_DECODERS=y
-         CONFIG_RC_DEVICES=y
+        @@ -805,7 +805,7 @@ CONFIG_RC_DEVICES=y
+         CONFIG_IR_GPIO_CIR=m
          CONFIG_IR_MESON=m
          CONFIG_IR_SUNXI=m
         -CONFIG_MEDIA_SUPPORT=m
         +CONFIG_MEDIA_SUPPORT=y
-         # CONFIG_DVB_NET is not set
-         CONFIG_MEDIA_USB_SUPPORT=y
-         CONFIG_USB_VIDEO_CLASS=m
+         CONFIG_MEDIA_CAMERA_SUPPORT=y
+         CONFIG_MEDIA_ANALOG_TV_SUPPORT=y
+         CONFIG_MEDIA_DIGITAL_TV_SUPPORT=y
+        @@ -817,7 +817,7 @@ CONFIG_USB_VIDEO_CLASS=m
          CONFIG_V4L_PLATFORM_DRIVERS=y
          CONFIG_SDR_PLATFORM_DRIVERS=y
          CONFIG_V4L_MEM2MEM_DRIVERS=y
         -CONFIG_VIDEO_CADENCE_CSI2RX=m
         +CONFIG_VIDEO_CADENCE_CSI2RX=y
          CONFIG_VIDEO_WAVE_VPU=m
-         CONFIG_VIDEO_IMG_VXD_DEC=m
          CONFIG_VIDEO_IMG_VXE_ENC=m
-        @@ -764,12 +764,12 @@ CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC=m
+         CONFIG_VIDEO_E5010_JPEG_ENC=m
+        @@ -842,13 +842,13 @@ CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC=m
          CONFIG_VIDEO_SAMSUNG_S5P_JPEG=m
          CONFIG_VIDEO_SAMSUNG_S5P_MFC=m
          CONFIG_VIDEO_SUN6I_CSI=m
@@ -368,13 +370,14 @@ Enabling camera sensors
          CONFIG_VIDEO_HANTRO=m
          CONFIG_VIDEO_IMX219=m
          CONFIG_VIDEO_IMX390=m
+         CONFIG_VIDEO_IMX412=m
          CONFIG_VIDEO_OV2312=m
         -CONFIG_VIDEO_OV5640=m
         +CONFIG_VIDEO_OV5640=y
          CONFIG_VIDEO_OV5645=m
+         CONFIG_VIDEO_OX05B1S=m
          CONFIG_VIDEO_DS90UB953=m
-         CONFIG_VIDEO_DS90UB960=m
-        @@ -1309,8 +1309,8 @@ CONFIG_PHY_XGENE=y
+        @@ -1459,8 +1459,8 @@ CONFIG_PHY_XGENE=y
          CONFIG_PHY_CAN_TRANSCEIVER=m
          CONFIG_PHY_SUN4I_USB=y
          CONFIG_PHY_CADENCE_TORRENT=y
@@ -386,8 +389,8 @@ Enabling camera sensors
          CONFIG_PHY_MIXEL_MIPI_DPHY=m
          CONFIG_PHY_FSL_IMX8M_PCIE=y
 
-    To re-build the kernel with above changes you can refer to the `Users Guide
-    <../../../../Foundational_Components_Kernel_Users_Guide.html#configuring-the-kernel>`__.
+    To re-build the kernel with above changes you can refer to the
+    :ref:`Users Guide <kernel-config>`.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
@@ -417,16 +420,16 @@ Enabling camera sensors
     .. code-block:: text
 
         # For OV2312 connected on Fusion board RX Port 0:
-        setenv name_overlays ti/k3-am62a7-sk-fusion.dtbo ti/k3-fpdlink-ov2312-0-0.dtbo
-        boot
+        => setenv name_overlays ti/k3-am62a7-sk-fusion.dtbo ti/k3-fpdlink-ov2312-0-0.dtbo
+        => boot
 
         # For RCM IMX390 connected on Fusion board RX Port 0:
-        setenv name_overlays ti/k3-am62a7-sk-fusion.dtbo ti/k3-fpdlink-imx390-rcm-0-0.dtbo
-        boot
+        => setenv name_overlays ti/k3-am62a7-sk-fusion.dtbo ti/k3-fpdlink-imx390-rcm-0-0.dtbo
+        => boot
 
         # For V3Link IMX219 module connected to V3Link fusion's RX Port 0:
-        setenv name_overlays ti/k3-am62x-sk-csi2-v3link-fusion.dtbo ti/k3-v3link-imx219-0-0.dtbo
-        boot
+        => setenv name_overlays ti/k3-am62x-sk-csi2-v3link-fusion.dtbo ti/k3-v3link-imx219-0-0.dtbo
+        => boot
 
     To enable camera connected to the 22-pin FFC connector, enable the sensor
     overlay at U-boot prompt:
@@ -434,8 +437,8 @@ Enabling camera sensors
     .. code-block:: text
 
         # For IMX219 connected to 22-pin FFC connector
-        setenv name_overlays ti/k3-am62x-sk-csi2-imx219.dtbo
-        boot
+        => setenv name_overlays ti/k3-am62x-sk-csi2-imx219.dtbo
+        => boot
 
     For more details on building or applying overlays permanently, refer to the
     :ref:`How to enable DT overlays in linux <howto_dt_overlays>` guide.
