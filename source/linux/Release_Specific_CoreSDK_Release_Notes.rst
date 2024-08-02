@@ -20,16 +20,16 @@ Please refer to the software manifest, which outlines the licensing
 status for all packages included in the prebuilt binaries location.
 
 
-Release 09.02.01
-==================
+Release 10.00
+=============
 
-Released May 2024
+Released August 2024
 
 .. rubric:: What's New
    :name: whats-new
 
-**Processor SDK 9.2.1 Sitara Release supports the following platforms**
-  * tag: 09.02.00.010
+**Processor SDK 10.00 Sitara Release supports the following platforms**
+  * tag: 10.00.07
        * AM62Px (HS-FS)
        * AM62x ( GP, HS-FS, HS-SE)
        * AM62x LP (HS-FS, HS-SE)
@@ -37,9 +37,19 @@ Released May 2024
        * AM64x 2.0 (HS-FS)
        * AM62A (HS-FS, HS-SE)
 
-**Processor SDK 9.2.1 Sitara Release has following Major Updates**
-  * LTS Refresh with Stable Kernel update from 6.1.80 to 6.1.83
-  * Important Bug fixes on top of 9.2 Release
+**Processor SDK 10.00 Sitara Release has following Major Updates**
+  * 2024 LTS Migration with
+      * Stable Kernel update from 6.1.83 to 6.6.32
+      * U-Boot from 2023.04 to 2024.04
+      * ATF to 2.10+
+      * OPTEE to 4.2.0
+      * Yocto Distribution from Kirkstone/4.0 to Scarthgap/5.0
+      * GCC to 13.3
+      * Graphics DDK from 23.3 to 24.1
+  * Other Key Component Version updates
+      * SYSFW: v10.00.08
+      * DM: 10.00.00.08
+  * Important Bug and Stability fixes on top of 9.2 Release
   ** Review Issue Tracker Section for the new fixes.
 
 
@@ -48,13 +58,13 @@ Build Information
 
 U-Boot
 -------------------------
-| Head Commit: 	83660642085462346fbeb410f83bc99448ec7042 arm: dts: k3-am62p-main: Add mac-address efuse
-| Date: 2024-05-16 08:21:02 -0500
-| uBoot Version: 2023.04
-| uBoot Description: RC Release 09.02.00.010
+| Head Commit: fda88f8bcea30590528930ff9441c6e958da86f5 clk: ti: clk-k3-pll: Add additional robustness steps to the PLL sequence
+| Date: 2024-07-28 10:37:17 -0500
+| uBoot Version: 2024.04
+| uBoot Description: RC Release 10.00.07
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: ti-u-boot-2023.04
-| uBoot Tag: 09.02.00.010
+| Branch: ti-u-boot-2024.04
+| uBoot Tag: 10.00.07
 |
 
 
@@ -63,14 +73,14 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: c1c2f1971fbf6ddad93a8c94314fe8221e7aa6be Revert "HACK: drm/bridge: tc358762: Implement early_enable and late_disable"
-| Date: 2024-05-16 08:20:49 -0500
-| Kernel Version: 6.1.83
-| Kernel Description: RC Release 09.02.00.010
+| Head Commit: 6de6e418c80edfbe08f4a5f851c721bd60c0123b net: ti: icssg_prueth: Enable 10M Link issue quirk for AM64x
+| Date: 2024-07-28 10:37:02 -0500
+| Kernel Version: 6.6.32
+| Kernel Description: RC Release 10.00.07
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-linux-6.1.y
-| Tag: 09.02.00.010
+| Branch: ti-linux-6.6.y
+| Tag: 10.00.07
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config
 |
@@ -79,14 +89,14 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: 96b0ebd82722d16e9ab646cd3a73080e6f790747 Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
-| Date: 2024-05-16 08:20:53 -0500
-| Kernel Version: 6.1.83-rt26
-| Kernel Description: RC Release 09.02.00.010-rt
+| Head Commit: 04a9ad081f0f255a046f398abf6faf1d4374267f Merge branch 'ti-linux-6.6.y-cicd' into ti-rt-linux-6.6.y-cicd
+| Date: 2024-07-28 10:37:05 -0500
+| Kernel Version: 6.6.32-rt32
+| Kernel Description: RC Release 10.00.07-rt
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-rt-linux-6.1.y
-| Tag: 09.02.00.010-rt
+| Branch: ti-rt-linux-6.6.y
+| Tag: 10.00.07-rt
 | use-kernel-config=defconfig
 | config-fragment=config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 |
@@ -98,23 +108,23 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: c57b63147d2ac0dde16e43f7407d0ff50e62efdb CI/CD Auto-Merger: cicd.kirkstone.202405141220
-| Date: 2024-05-16 08:21:03 -0500
+| Head Commit: 138077349667614f83637c98798c06249615a23e CI/CD Auto-Merger: cicd.scarthgap.202407271443
+| Date: 2024-07-28 10:37:17 -0500
 
 | Clone: git://git.yoctoproject.org/meta-ti
-| Branch: kirkstone
-| Release Tag: 09.02.00.010
+| Branch: scarthgap
+| Release Tag: 10.00.07
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 3bc9220ea41ee74eea8e48505abbd94f2eee3625 meta-arago-test: cpuloadgen: Update SRCREV to latest
-| Date: 2024-05-16 08:20:18 -0500
+| Head Commit: 82833bae8835e06301c23c8833642ae4c02d303a packagegroup-arago-tisdk-multimedia: Add ffmpeg package
+| Date: 2024-07-28 10:36:40 -0500
 
 | Clone: git://git.yoctoproject.org/meta-arago
-| Branch: kirkstone
-| Release Tag: 09.02.00.010
+| Branch: scarthgap
+| Release Tag: 10.00.07
 |
 
 Issues Tracker
