@@ -36,35 +36,35 @@ M.2 card is held down by the screw. The end result should be as shown in the ima
 Enable DT Overlay for M.2-CC33x1
 ********************************
 
-After flashing the SD card with the ``tisdk-default-image``, mount the SD card onto a host computer, if not done already. 
+After flashing the SD card with the :file:`tisdk-default-image`, mount the SD card onto a host computer, if not done already.
 On the boot partition of the SD card, add one of the following variables, corresponding to the starter kit,
-into the ``uEnv.txt`` file. This will let u-boot enable the m.2-cc33x1 devicetree overlay. The ``uEnv.txt`` file can be found on the ``boot``
+into the :file:`uEnv.txt` file. This will let u-boot enable the m.2-cc33x1 devicetree overlay. The :file:`uEnv.txt` file can be found on the ``boot``
 partition of the SD card. 
 
 For SK-AM62B-P1: 
 
     .. code-block:: console
 
-        name_overlays=k3-am625-sk-m2-cc3301.dtbo 
+        name_overlays=ti/k3-am625-sk-m2-cc3301.dtbo
 
 For SK-AM62A-LP: 
 
     .. code-block:: console
 
-        name_overlays=k3-am62a7-sk-m2-cc3301.dtbo 
+        name_overlays=ti/k3-am62a7-sk-m2-cc3301.dtbo
 
 For SK-AM62P-LP: 
 
     .. code-block:: console
 
-        name_overlays=k3-am62p5-sk-m2-cc3301.dtbo 
+        name_overlays=ti/k3-am62p5-sk-m2-cc3301.dtbo
 
 
 
 .. note:: 
 
     Though the name of the file ends with `m2-cc3301.dtbo`, the same file applies for the M.2-CC3351 board.
-    Do not change the name of this file in the uEnv.txt regardless of which M.2 card that is being used. 
+    Do not change the name of this file in the :file:`uEnv.txt` regardless of which M.2 card that is being used.
 
 
 ****************
