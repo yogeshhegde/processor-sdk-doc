@@ -188,15 +188,6 @@ Yocto
 | Release Tag: 09.02.01.10
 |
 
-.. rubric:: meta-edgeai
-   :name: meta-edgeai
-
-| Head Commit: fdb683aa69d4d70aca17c2d53be3f900ae9d5e72 Revert "conf: layer: Add device tree appends for packaging v3link dtbos"
-| Date: 2024-04-08 03:12:04 -0500
-
-| Clone: https://git.ti.com/git/edgeai/meta-edgeai.git
-| Branch: kirkstone
-|
 
 Issues Tracker
 ==============
