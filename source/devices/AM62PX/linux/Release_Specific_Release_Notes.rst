@@ -36,40 +36,37 @@ found on the SDK download page or in the installed directory as indicated below.
 -  Linux Manifest:  "/docs/software_manifest.html"
 
 
-Release 09.02.01.10
+Release 10.00.07.04
 ===================
 
-Released on May 2024
+Released on August 2024
 
 What's new
 ----------
 
 **Processor SDK Linux AM62Px Release has following new features:**
 
-  - LTS Refresh with Stable Kernel update from 6.1.80 to 6.1.83
-  - Important Bug fixes on top of Processor SDK 09.02.01.09 Release
+  - LTS Refresh with Stable Kernel update to 6.6.32
+  - Important Bug Fixes on top of Processor SDK 09.02.01.10 Release
+  - Kernel: MMC Highspeed tuning and Performance Improvements
   - U-Boot: A53 SPL Splash Screen support :ref:`A53 SPL Splash Overview <Uboot-splash-label>`
-  - Kernel: DSI Support, MMC Highspeed tuning and Performance Improvements
   - RT Kernel : Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
-  - DDR: Stable Config Update, Single and multi-bit DDR ECC Support
   - Power Management: DeepSleep, MCU-Only and Partial IO mode :ref:`Power Management Overview <Power-Management>`
   - OOB: GPU Accelerated Chromium Browser Support :ref:`Chromium Browser <Chromium_Browser-label>`
   - PM: MCU Only mode and Partial I/O mode
-  - DM Firmware: PLL Configuration sequence updated to latest recommendation
-  - TIFS: HSM infrastructure updates
-
+  - TIFS, DM, R5 SPL: PLL Configuration sequence updated to latest recommendation
 
 **Component version:**
 
-  - Kernel 6.1.83
-  - RT Kernel 6.1.83-rt28
-  - U-Boot 2023.04
-  - Toolchain GCC 11.4
-  - ATF 2.10
-  - OPTEE 4.1
-  - Graphics DDK 23.3
-  - TIFS Firmware v09.02.08
-  - DM Firmware 09.02.01.01
+  - Kernel 6.6.32
+  - RT Kernel 6.6.32-rt32
+  - U-Boot 2024.04
+  - Toolchain GCC 13.3
+  - ATF 2.10+
+  - OPTEE 4.2.0
+  - Graphics DDK 24.1
+  - TIFS Firmware v10.00.08
+  - DM Firmware 10.00.00.08
 
 Build Information
 =================
@@ -82,13 +79,13 @@ U-Boot
 .. rubric:: u-boot
    :name: u-boot
 
-| Head Commit: 83660642085462346fbeb410f83bc99448ec7042 arm: dts: k3-am62p-main: Add mac-address efuse
-| Date: 2024-05-16 08:21:02 -0500
-| uBoot Version: 2023.04
-| uBoot Description: RC Release 09.02.00.010
+| Head Commit: fda88f8bcea30590528930ff9441c6e958da86f5 clk: ti: clk-k3-pll: Add additional robustness steps to the PLL sequence
+| Date: 2024-07-28 10:37:17 -0500
+| uBoot Version: 2024.04
+| uBoot Description: RC Release 10.00.07
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: ti-u-boot-2023.04
-| uBoot Tag: 09.02.00.010
+| Branch: ti-u-boot-2024.04
+| uBoot Tag: 10.00.07
 |
 
 .. _tf-a-release-notes:
@@ -98,28 +95,28 @@ TF-A
 | Head Commit: 00f1ec6b8740ccd403e641131e294aabacf2a48b Merge changes from topic "revert-ti-dm-workaround" into integration
 | Repo: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
 | Branch: master
-| Tag: 2.10
+| Tag: 2.10+
 |
 
 .. _optee-release-notes:
 
 OP-TEE
 ------
-| Head Commit: 012cdca49db398693903e05c42a254a3a0c0d8f2 plat-k3: drivers: sec_proxy: increment while reading trail bytes
+| Head Commit: 12d7c4ee4642d2d761e39fbcf21a06fb77141dea Update CHANGELOG for 4.2.0
 | Repo: https://github.com/OP-TEE/optee_os/
 | Branch: master
-| Tag: 4.1.0
+| Tag: 4.2.0
 |
 
 .. _ti-linux-fw-release-notes:
 
 ti-linux-firmware
 -----------------
-| Head Commit: 3987d170fc522565c5e4a9293aba1db75951b8c0 ti-ipc: Update IPC firmwares for am62x, am62ax and am62px
-| Date: 2024-05-13 15:02:06 -0500
+| Head Commit: 1e01062a34b88427c2fca1ce7c5a5c308961e0c7 ti-eth: update firmware to 10.00.00.02 for j721e, j7200 and j784s4
+| Date: 2024-07-28 10:37:11 -0500
 | Clone: https://git.ti.com/cgit/processor-firmware/ti-linux-firmware
 | Branch: ti-linux-firmware
-| Tag: 09.02.00.010
+| Tag: 10.00.07
 |
 
 Kernel
@@ -128,29 +125,30 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: c1c2f1971fbf6ddad93a8c94314fe8221e7aa6be Revert "HACK: drm/bridge: tc358762: Implement early_enable and late_disable"
-| Date: 2024-05-16 08:20:49 -0500
-| Kernel Version: 6.1.83
-| Kernel Description: RC Release 09.02.00.010
+| Head Commit: 6de6e418c80edfbe08f4a5f851c721bd60c0123b net: ti: icssg_prueth: Enable 10M Link issue quirk for AM64x
+| Date: 2024-07-28 10:37:02 -0500
+| Kernel Version: 6.6.32
+| Kernel Description: RC Release 10.00.07
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-linux-6.1.y
-| Tag: 09.02.00.010
+| Branch: ti-linux-6.6.y
+| Tag: 10.00.07
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config
 |
 
+
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: 96b0ebd82722d16e9ab646cd3a73080e6f790747 Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
-| Date: 2024-05-16 08:20:53 -0500
-| Kernel Version: 6.1.83-rt26
-| Kernel Description: RC Release 09.02.00.010-rt
+| Head Commit: 04a9ad081f0f255a046f398abf6faf1d4374267f Merge branch 'ti-linux-6.6.y-cicd' into ti-rt-linux-6.6.y-cicd
+| Date: 2024-07-28 10:37:05 -0500
+| Kernel Version: 6.6.32-rt32
+| Kernel Description: RC Release 10.00.07-rt
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-rt-linux-6.1.y
-| Tag: 09.02.00.010-rt
+| Branch: ti-rt-linux-6.6.y
+| Tag: 10.00.07-rt
 | use-kernel-config=defconfig
 | config-fragment=config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 |
@@ -160,23 +158,23 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: c57b63147d2ac0dde16e43f7407d0ff50e62efdb CI/CD Auto-Merger: cicd.kirkstone.202405141220
-| Date: 2024-05-16 08:21:03 -0500
+| Head Commit: 138077349667614f83637c98798c06249615a23e CI/CD Auto-Merger: cicd.scarthgap.202407271443
+| Date: 2024-07-28 10:37:17 -0500
 
 | Clone: git://git.yoctoproject.org/meta-ti
-| Branch: kirkstone
-| Release Tag: 09.02.00.010
+| Branch: scarthgap
+| Release Tag: 10.00.07
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 3bc9220ea41ee74eea8e48505abbd94f2eee3625 meta-arago-test: cpuloadgen: Update SRCREV to latest
-| Date: 2024-05-16 08:20:18 -0500
+| Head Commit: 82833bae8835e06301c23c8833642ae4c02d303a packagegroup-arago-tisdk-multimedia: Add ffmpeg package
+| Date: 2024-07-28 10:36:40 -0500
 
 | Clone: git://git.yoctoproject.org/meta-arago
-| Branch: kirkstone
-| Release Tag: 09.02.00.010
+| Branch: scarthgap
+| Release Tag: 10.00.07
 |
 
 .. rubric:: meta-tisdk

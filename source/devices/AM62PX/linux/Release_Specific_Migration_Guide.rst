@@ -7,24 +7,15 @@ Migration Guide
 This page covers migration information for applications built on top
 of the Processor SDK Linux AM62PX.
 
-Processor SDK Linux AM62PX 09.xx Releases
-========================================
+Processor SDK Linux AM62PX 10.xx Releases
+=========================================
 
-Processor SDK 09.02.01.10
+Processor SDK 10.00.07.04
 -------------------------
 
-- This is the third release based on the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
-- ATF 2.10
-- OPTEE 4.1
-- Yocto Kirkstone/4.0
-- Platforms Supported : AM62Px (HS-FS)
-
-Processor SDK 09.02.01.09
--------------------------
-
-- This is the second release based on the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
-- ATF 2.10
-- OPTEE 4.1
-- Yocto Kirkstone/4.0
-- Platforms Supported : AM62Px (HS-FS)
+- This is the first release on the 2024 LTS stream 6.6 kernel, 2024.04 U-Boot and Yocto Scarthgap/5.0
+- ATF 2.10+
+- OPTEE 4.2.0
+- Yocto Scarthgap/5.0
+- Platforms Supported : AM62Px (HS-FS, HS-SE) : `SK-AM62P <https://www.ti.com/tool/SK-AM62P-LP>`__
 
