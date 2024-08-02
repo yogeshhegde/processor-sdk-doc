@@ -49,7 +49,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Display/DSS7
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
 linux/Foundational_Components/Kernel/Kernel_Drivers/MCAN
-linux/Foundational_Components/Kernel/Kernel_Drivers/MCRC
+linux/Foundational_Components/Kernel/Kernel_Drivers/MCRC64
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-Ethernet
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW2g
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSWng
