@@ -7,44 +7,19 @@ Migration Guide
 This page covers migration information for applications built on top
 of the Processor SDK Linux AM62X.
 
-Processor SDK Linux AM62X 09.xx Releases
+Processor SDK Linux AM62X 10.xx Releases
 ========================================
 
-Processor SDK 09.02.01.10
--------------------------
-
-- This is the fourth release based on the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
-- ATF 2.10
-- OPTEE 4.1
-- Yocto Kirkstone/4.0
-- Platforms Supported : AM62x (GP, HS-FS, HS-SE), AM62x LP (HS-FS, HS-SE), AM62SIP (HS-FS, HS-SE)
-
-Processor SDK 09.02.01.09
--------------------------
-
-- This is the third release based on the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
-- ATF 2.10
-- OPTEE 4.1
-- Yocto Kirkstone/4.0
-- Platforms Supported : AM62x (GP, HS-FS, HS-SE), AM62x LP (HS-FS, HS-SE), AM62SIP (HS-FS, HS-SE)
-
-Processor SDK 09.01
+Processor SDK 10.00
 -------------------
-
-- This is the second release based on the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
-- ATF 2.9+
-- OPTEE 4.0
-- Yocto Kirkstone/4.0
-- Platforms Supported : AM62x (GP, HS-FS, HS-SE), AM62x LP (HS-FS, HS-SE), AM62SIP (HS-FS, HS-SE)
-
-Processor SDK 09.00
--------------------
-
-- This is the first release in the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
-- ATF 2.8+
-- OPTEE 3.20
-- Yocto Kirkstone/4.0
-- Platforms Supported : AM62x (GP, HS-FS, HS-SE), AM62x LP (HS-FS, HS-SE)
+- This is the first release on the 2024 LTS stream 6.6 kernel, 2024.04 U-Boot and Yocto Scarthgap/5.0
+- ATF 2.10+
+- OPTEE 4.2.0
+- Yocto Scarthgap/5.0
+- Platforms Supported : AM62x (HS-FS, HS-SE) : `SK-AM62 <https://www.ti.com/tool/SK-AM62>`__ , `SK-AM62B <https://www.ti.com/tool/SK-AM62B>`__ , `SK-AM62B-P1 <https://www.ti.com/tool/SK-AM62B-P1>`__
+- Platforms Supported : AM62x LP (HS-FS, HS-SE) : `SK-AM62-LP <https://www.ti.com/tool/SK-AM62-LP>`__
+- Platforms Supported : AM62SIP (HS-FS, HS-SE) : `SK-AM62-SIP <https://www.ti.com/tool/SK-AM62-SIP>`__
+- Platforms Supported : BeaglePlay (GP) : `BeaglePlay <https://www.ti.com/tool/BEAGL-PLAY-SBC>`__
 
 .. note::
 
