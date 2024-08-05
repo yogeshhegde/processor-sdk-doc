@@ -32,7 +32,6 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Backplane
    Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
    Foundational_Components/Kernel/Kernel_Drivers/PMIC/pmic_tps6594
-   Foundational_Components/Kernel/Kernel_Drivers/Power_Management
    Foundational_Components/Kernel/Kernel_Drivers/PWM
    Foundational_Components/Kernel/Kernel_Drivers/QSPI
    Foundational_Components/Kernel/Kernel_Drivers/SERDES/SERDES

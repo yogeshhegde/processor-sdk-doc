@@ -345,7 +345,7 @@ table.
 
         .. code-block:: console
 
-                setenv name_overlays=ti/k3-am62a7-sk-e3-max-opp.dtbo
+                setenv name_overlays ti/k3-am62a7-sk-e3-max-opp.dtbo
 
         This overlay adds the 1.4 GHz OPP for A53 cores and disables all
         the lower OPPs. It also overrides the clock rate for C7x to 1 GHz.

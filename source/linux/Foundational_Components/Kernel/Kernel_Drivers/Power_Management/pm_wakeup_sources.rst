@@ -51,60 +51,65 @@ For example, if you wish to wakeup from Deep Sleep or MCU Only mode in 10 second
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    .. code-block:: console
+   .. note::
 
-        root@am62xx-evm:~# rtcwake -s 10 -m mem
-        rtcwake: wakeup from "mem" using /dev/rtc0 at Thu Jan 1 00:00:45 1970
-        [ 28.038332] PM: suspend entry (deep)
-        [ 28.042057] Filesystems sync: 0.000 seconds
-        [ 28.050312] Freezing user space processes
-        [ 28.052137] Freezing user space processes completed (elapsed 0.001 seconds)
-        [ 28.052162] OOM killer disabled.
-        [ 28.052166] Freezing remaining freezable tasks
-        [ 28.053557] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
-        [ 28.053571] printk: Suspending console(s) (use no_console_suspend to debug)
-        [ 28.138190] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 179: state: 1: ret 0
-        [ 28.148680] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 178: state: 1: ret 0
-        [ 29.911265] omap8250 2800000.serial: PM domain pd:146 will not be powered off
-        [ 29.923288] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 117: state: 1: ret 0
-        [ 30.789584] remoteproc remoteproc0: stopped remote processor 5000000.m4fss
-        [ 30.981215] Disabling non-boot CPUs ...
-        [ 30.983394] psci: CPU1 killed (polled 0 ms)
-        [ 30.986714] psci: CPU2 killed (polled 0 ms)
-        [ 30.990028] psci: CPU3 killed (polled 0 ms)
-        [ 30.991437] Enabling non-boot CPUs ...
-        [ 31.011850] Detected VIPT I-cache on CPU1
-        [ 31.011909] GICv3: CPU1: found redistributor 1 region 0:0x00000000018a0000
-        [ 31.011972] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
-        [ 31.013028] CPU1 is up
-        [ 31.033291] Detected VIPT I-cache on CPU2
-        [ 31.033322] GICv3: CPU2: found redistributor 2 region 0:0x00000000018c0000
-        [ 31.033365] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
-        [ 31.034221] CPU2 is up
-        [ 31.054487] Detected VIPT I-cache on CPU3
-        [ 31.054524] GICv3: CPU3: found redistributor 3 region 0:0x00000000018e0000
-        [ 31.054573] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
-        [ 31.055431] CPU3 is up
-        [ 31.058242] ti-sci 44043000.system-controller: ti_sci_resume: wakeup source: 0x50
-        [ 33.771971] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 19
-        [ 34.177716] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
-        [ 34.177741] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
-        [ 34.184415] am65-cpsw-nuss 8000000.ethernet eth1: PHY [8000f00.mdio:01] driver [TI DP83867] (irq=POLL)
-        [ 34.184425] am65-cpsw-nuss 8000000.ethernet eth1: configuring for phy/rgmii-rxid link mode
-        [ 34.400791] OOM killer enabled.
-        [ 34.403934] Restarting tasks ... done.
-        [ 34.408982] random: crng reseeded on system resumption
-        [ 34.555214] k3-m4-rproc 5000000.m4fss: Core is off in resume
-        [ 34.560924] remoteproc remoteproc0: powering up 5000000.m4fss
-        [ 34.566695] remoteproc remoteproc0: Booting fw image am62-mcu-m4f0_0-fw, size 55016
-        [ 34.595350] rproc-virtio rproc-virtio.2.auto: assigned reserved memory node m4f-dma-memory@9cb00000
-        [ 34.605831] virtio_rpmsg_bus virtio1: rpmsg host is online
-        [ 34.611540] rproc-virtio rproc-virtio.2.auto: registered virtio1 (type 7)
-        [ 34.618396] remoteproc remoteproc0: remote processor 5000000.m4fss is now up
-        [ 34.619659] virtio_rpmsg_bus virtio1: creating channel ti.ipc4.ping-pong addr 0xd
-        [ 34.633257] virtio_rpmsg_bus virtio1: creating channel rpmsg_chrdev addr 0xe
-        [ 34.645777] PM: suspend exit
-        root@am62xx-evm:~#
+      An additional :code:`-d rtc1` option is required on BeaglePlay as the SoC's
+      internal RTC gets probed as rtc1
+
+   .. code-block:: console
+
+      root@am62xx-evm:~# rtcwake -s 10 -m mem
+      rtcwake: wakeup from "mem" using /dev/rtc0 at Thu Jan 1 00:00:45 1970
+      [ 28.038332] PM: suspend entry (deep)
+      [ 28.042057] Filesystems sync: 0.000 seconds
+      [ 28.050312] Freezing user space processes
+      [ 28.052137] Freezing user space processes completed (elapsed 0.001 seconds)
+      [ 28.052162] OOM killer disabled.
+      [ 28.052166] Freezing remaining freezable tasks
+      [ 28.053557] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+      [ 28.053571] printk: Suspending console(s) (use no_console_suspend to debug)
+      [ 28.138190] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 179: state: 1: ret 0
+      [ 28.148680] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 178: state: 1: ret 0
+      [ 29.911265] omap8250 2800000.serial: PM domain pd:146 will not be powered off
+      [ 29.923288] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 117: state: 1: ret 0
+      [ 30.789584] remoteproc remoteproc0: stopped remote processor 5000000.m4fss
+      [ 30.981215] Disabling non-boot CPUs ...
+      [ 30.983394] psci: CPU1 killed (polled 0 ms)
+      [ 30.986714] psci: CPU2 killed (polled 0 ms)
+      [ 30.990028] psci: CPU3 killed (polled 0 ms)
+      [ 30.991437] Enabling non-boot CPUs ...
+      [ 31.011850] Detected VIPT I-cache on CPU1
+      [ 31.011909] GICv3: CPU1: found redistributor 1 region 0:0x00000000018a0000
+      [ 31.011972] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+      [ 31.013028] CPU1 is up
+      [ 31.033291] Detected VIPT I-cache on CPU2
+      [ 31.033322] GICv3: CPU2: found redistributor 2 region 0:0x00000000018c0000
+      [ 31.033365] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
+      [ 31.034221] CPU2 is up
+      [ 31.054487] Detected VIPT I-cache on CPU3
+      [ 31.054524] GICv3: CPU3: found redistributor 3 region 0:0x00000000018e0000
+      [ 31.054573] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
+      [ 31.055431] CPU3 is up
+      [ 31.058242] ti-sci 44043000.system-controller: ti_sci_resume: wakeup source: 0x50
+      [ 33.771971] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 19
+      [ 34.177716] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
+      [ 34.177741] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
+      [ 34.184415] am65-cpsw-nuss 8000000.ethernet eth1: PHY [8000f00.mdio:01] driver [TI DP83867] (irq=POLL)
+      [ 34.184425] am65-cpsw-nuss 8000000.ethernet eth1: configuring for phy/rgmii-rxid link mode
+      [ 34.400791] OOM killer enabled.
+      [ 34.403934] Restarting tasks ... done.
+      [ 34.408982] random: crng reseeded on system resumption
+      [ 34.555214] k3-m4-rproc 5000000.m4fss: Core is off in resume
+      [ 34.560924] remoteproc remoteproc0: powering up 5000000.m4fss
+      [ 34.566695] remoteproc remoteproc0: Booting fw image am62-mcu-m4f0_0-fw, size 55016
+      [ 34.595350] rproc-virtio rproc-virtio.2.auto: assigned reserved memory node m4f-dma-memory@9cb00000
+      [ 34.605831] virtio_rpmsg_bus virtio1: rpmsg host is online
+      [ 34.611540] rproc-virtio rproc-virtio.2.auto: registered virtio1 (type 7)
+      [ 34.618396] remoteproc remoteproc0: remote processor 5000000.m4fss is now up
+      [ 34.619659] virtio_rpmsg_bus virtio1: creating channel ti.ipc4.ping-pong addr 0xd
+      [ 34.633257] virtio_rpmsg_bus virtio1: creating channel rpmsg_chrdev addr 0xe
+      [ 34.645777] PM: suspend exit
+      root@am62xx-evm:~#
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62PX')
 
@@ -155,6 +160,17 @@ For example, if you wish to wakeup from Deep Sleep or MCU Only mode in 10 second
         [   74.176785] virtio_rpmsg_bus virtio1: creating channel rpmsg_chrdev addr 0xe
         [   74.180714] remoteproc remoteproc1: remote processor 79000000.r5f is now up
         [   74.194846] PM: suspend exit
+
+    .. note::
+
+        The system will enter the mode selected by DM on the basis on existing constraints.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+    .. note::
+
+        AM62A requires additional -d rtc1 option as SoC's internal RTC gets
+        probed as rtc1.
 
 ********
 MCU GPIO

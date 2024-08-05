@@ -8,13 +8,17 @@ S/W Architecture of System Suspend
 Overview
 ********
 
-In AM62, Deep Sleep is the state of the SoC in which it consumes very low power
-overall yet it is not completely shut off. During Deep Sleep, Certain IPs
+TI AM62 family of devices support multiple Suspend-to-RAM modes, including Deep Sleep
+and MCU Only as described in :ref:`Low Power Modes<lpm_modes>` section.
+The SoC consumes very low power overall yet it is not completely shut off in these modes.
+For example, During Deep Sleep, Certain IPs
 (depending on the power domain to which then belong) will lose context on suspend.
 S/W should save and restore the context as required across state transitions. DDR is in self-
 refresh to allow context saving.
 
-This document explains the overall high level Software Flow of deep sleep in AM62x.
+This section explains the high-level Software Flow of low power modes in AM62 family of devices.
+It also introduces the LPM constraints framework that enables seamless management of
+multiple Suspend-to-RAM modes.
 
 *****************************
 System diagram and components
@@ -26,8 +30,8 @@ System diagram and components
 Above diagram has software sequence for how deep sleep (ie. Suspend to RAM) works on
 SK-AM62 ( Read more on the Starter Kit `here <https://www.ti.com/tool/SK-AM62>`__ ).
 
-Deep Sleep Entry:
-=================
+Deep Sleep Entry
+================
 
 #. The user first instructs the System to Suspend. This triggers a suspend
    sequence from linux side (which runs on the A53 cluster of the SoC).
@@ -59,8 +63,8 @@ Deep Sleep Entry:
    e. Saves GTC counter and Disable it.
    f. Finally, Suspends OS.
 
-   The OS in this case is the Free RTOS based Device Manager firmware itself. After this step it starts performing final
-   Steps toward completion of Suspend to RAM.
+   The OS in this case is the Free RTOS based Device Manager firmware itself. After this step, it starts performing
+   the final few steps toward completion of Suspend to RAM.
 
 #. These steps include the following:
 
@@ -77,8 +81,8 @@ Deep Sleep Entry:
    DM in WFI will basically wait for the configured wakeup source to trigger
    an interrupt that will act as the wakeup signal.
 
-Deep Sleep Exit:
-================
+Deep Sleep Exit
+===============
 
 #. External async wakeup from wake source triggers the DM to resume.
 #. The DM brings MAIN Domain out of reset.
@@ -94,6 +98,158 @@ Deep Sleep Exit:
 #. As the A53 core resumes, and subsequently the linux TI_SCI driver's resume hook is called,
    I/O isolation is disabled. This allows the pads to be re-connected to their respective controllers
    and allow the device to function normally post resume.
+
+.. _pm_constraints_fwk:
+
+*************************
+LPM constraints framework
+*************************
+
+Starting with 10.0 DM firmware and ti-linux-6.6.y kernel, TI is offering
+an updated LPM Software Architecture that seamlessly manages the various
+Suspend-to-RAM modes supported by AM62 family of devices. The first part
+of this architecture is the introduction of "DM Managed" mode []. In this
+mode, the DM will by default attempt the deepest low power mode
+available during system wide suspend/resume.
+
+However, Linux (or OSes running on remote cores) may want to constrain
+the DM for certain use cases.  For example, the deepest state may have
+a resume latency that is too long for certain use cases, or a
+host OS may want certain wakeup-capable devices to stay enabled during
+suspend/resume.
+
+To communicate these constraints to the DM, TI SCI has added new
+constraint APIs. On the Linux side, existing per-device PM QoS
+framework is used to collect these constraints and then pass them
+to the DM. Remote cores can directly register their constraints with
+DM using the new constraint APIs.
+
+Types of Constraints
+====================
+
+#. **Device Constraint:** The LPM constraint can be set on behalf of a device. By setting this constraint,
+   the host ensures that the device will not be powered off or reset in the selected mode.
+
+#. **Resume Latency Constraint:** The LPM resume latency constraint can be set to specify the maximum system
+   resume latency value. By setting this constraint, the host ensures that the resume time from selected mode
+   will be less than the constraint value.
+
+For more detailed explanation of these constraints, refer to
+`TISCI_MSG_LPM_SET_DEVICE_CONSTRAINT <https://software-dl.ti.com/tisci/esd/latest/2_tisci_msgs/pm/lpm.html#tisci-msg-lpm-set-device-constraint>`__
+and
+`TISCI_MSG_LPM_SET_LATENCY_CONSTRAINT <https://software-dl.ti.com/tisci/esd/latest/2_tisci_msgs/pm/lpm.html#tisci-msg-lpm-set-latency-constraint>`__
+of TISCI documentation.
+
+On the Linux side, the constraints framework is managed within TI SCI code.
+No new APIs are needed by Linux drivers. Any device that is managed by TI SCI
+will be checked for QoS constraints or wakeup capability and the constraints will
+be sent to the DM (via the new SCI APIs.)
+
+Specifically, checking of constraints is done at two levels:
+1) Runtime PM suspend
+2) System-wide suspend
+
+The code enabling the constraints framework can be found in:
+
+#. TISCI PM Domain driver: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/pmdomain/ti/ti_sci_pm_domains.c?h=10.00.07
+#. TISCI driver: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/pmdomain/ti/ti_sci_pm_domains.c?h=10.00.07
+
+Examples of adding constraints from the remote core side are being implemented and will
+be enabled in future release.
+
+How to set constraints
+======================
+
+Constraints can be placed from the Linux side in the following ways:
+
+Device Constraint
+-----------------
+
+These are automatically placed on behalf of any device that is wakeup-capable or
+wakeup-enabled by the TISCI PM domain driver. No additional driver-level changes
+are required.
+
+.. note::
+
+   Some devices may disable the wakeup property by default. These can be enabled via
+   the sysfs interface (e.g., :file:`/sys/bus/platform/devices/\*/power/wakeup`)
+
+If a device wants to put a constraint to be not powered-off, it can use the Linux
+QoS framework and set the DEV_PM_QOS_RESUME_LATENCY equal to 0.
+An example is shown in the following RemoteProc driver:
+https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/remoteproc/ti_k3_r5_remoteproc.c?h=10.00.07#n535
+
+Resume Latency Constraint
+-------------------------
+
+This constraint is exposed to the user-level through the existing sysfs PM QoS interface for CPU Cores.
+Default constraint is "no constraint", but it can be changed as shown in the examples below:
+
+   a. To set 100 usec resume latency for the SoC, a constraint can be placed for CPU0 (or any other CPU core):
+
+   .. code:: console
+
+      root@evm:~# echo 100 > /sys/devices/system/cpu/cpu0/power/pm_qos_resume_latency_us
+
+   b. To clear the constraint, 0 has to be written to the same parameter:
+
+   .. code:: console
+
+      root@evm:~# echo 0 > /sys/devices/system/cpu/cpu0/power/pm_qos_resume_latency_us
+
+Setting a resume latency constraint impacts the deepest low power mode system can enter.
+The various modes and their latencies are documented here: https://downloads.ti.com/tisci/esd/latest/2_tisci_msgs/pm/lpm.html#tisci-msg-lpm-set-latency-constraint
+
+.. note::
+
+   The constraints need to be set before each system suspend as DM firmware clears all
+   constraints at resume time.
+
+Constraints and mode selection explained
+========================================
+
+By default, if no constraint is set, then the deepest low power mode for SOC is selected.
+Otherwise, the mode selection is done as described below:
+
+.. rubric:: Device Constraint:
+
+.. Image:: /images/AM62_LPM_Dev_Cons.png
+
+Above diagram shows the mode selection if constraints are set on MCU_WAKEUP devgroup devices.
+As shown, if the constraints are set on WAKEUP Domain devices or Always ON MCU domain devices,
+deep sleep mode will be selected. Otherwise, MCU Only mode will be selected.
+
+If constraint is put on MAIN devgroup devices, then no low power mode is possible.
+
+.. important::
+
+   USB devices are an exception in MAIN devgroup as there is extra hardware logic preventing
+   reset of USB devices in Deep Sleep and MCU Only mode.
+   If constraints are set on USB devices, deep sleep mode will be selected even though it's
+   technically part of MAIN devgroup.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   For detailed description for devgroup of these devices, refer to
+   `Devgroup section <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/am62x/soc_devgrps.html#am62x-device-group-descriptions>`__
+   of TISCI documentation.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+   For detailed description for devgroup of these devices, refer to
+   `Devgroup section <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/am62ax/soc_devgrps.html#am62ax-device-group-descriptions>`__
+   of TISCI documentation.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   For detailed description for devgroup of these devices, refer to
+   `Devgroup section <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/am62px/soc_devgrps.html#am62px-device-group-descriptions>`__
+   of TISCI documentation.
+
+.. rubric:: Resume Latency Constraint:
+
+The mode selection is done using resume latencies as mentioned in TI SCI LPM Documentation:
+`Latency Table <https://software-dl.ti.com/tisci/esd/latest/2_tisci_msgs/pm/lpm.html#latency-table>`__
 
 ******************
 Learning Resources

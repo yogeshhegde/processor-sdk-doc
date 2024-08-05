@@ -8,7 +8,7 @@ Low Power Modes
 Overview
 ********
 
-The following sections describe a high-level description of the different low power modes of the
+The following sections describe a high-level description of the different low power modes (LPM) of the
 device. If your application requires inactive power management, you must determine which
 low power mode described below satisfies your requirements. Each mode must be evaluated
 based on power consumption and latency (the time it takes to wakeup to Active mode) requirements. Specific
@@ -19,6 +19,10 @@ Texas Instruments has added support for the following low power modes:
 #. MCU Only
 #. Partial I/O
 
+TI SDK 10.0 (ti-linux-6.6.y kernel and 10.0 DM firmware) adds support for
+an updated LPM Software Architecture that seamlessly manages the various
+Suspend-to-RAM modes supported by AM62 family of devices. More details about
+this architecture can be found in :ref:`LPM constraints framework<pm_constraints_fwk>` section.
 
 **********
 Deep Sleep
@@ -90,6 +94,10 @@ For further confirmation, one can take a look at the PMIC_LPM_EN pin on the EVM
 (after programming the PMCTRL_SYS register (0x43018080) to 0x15). Here, if the pin is 3.3V when active and
 0V when in deep sleep.
 
+.. note::
+
+   The system will enter deep sleep mode only if DM selects it based on existing constraints.
+
 Refer to the :ref:`Wakeup Sources<pm_wakeup_sources>` section for information on how to wakeup the device from
 Deep Sleep mode using one of the supported wakeup sources.
 
@@ -109,6 +117,17 @@ The benefits of using MCU Only mode:
    For example, you could use the firmware on the MCU core to run a watchdog timer, a sensor polling loop,
    or a network communication task.
 #. Respond to interrupts: This allows the system to still respond to external events, while it is in a low-power state.
+
+To enter MCU Only mode, set :code:`100 usec` resume latency for CPU0 in linux:
+
+.. code-block:: console
+
+   root@<machine>:~# echo 100 > /sys/devices/system/cpu/cpu0/power/pm_qos_resume_latency_us
+
+.. important::
+
+        Note that the step below to set "enabled" won't work for SDK 10.00
+        and will be supported in future release
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -182,6 +201,10 @@ on the MCU UART (in most cases it will be /dev/ttyUSB3)
     [IPC RPMSG ECHO] Next MCU mode is 1
     [IPC RPMSG ECHO] Suspend request to MCU-only mode received
     [IPC RPMSG ECHO] Press a sinlge key on this terminal to resume the kernel from MCU only mode
+
+.. note::
+
+   The system will enter MCU Only mode only if DM selects it based on existing constraints.
 
 Refer to the :ref:`Wakeup Sources<pm_wakeup_sources>` section for information on how to wakeup the device from
 MCU Only mode using one of the supported wakeup sources.
