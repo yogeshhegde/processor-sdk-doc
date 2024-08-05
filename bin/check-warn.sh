@@ -31,7 +31,7 @@ usage()
 
 restore_branch()
 {
-	[[ -z "$_cbr" ]] || git checkout "$_cbr"
+	[ -z "$_cbr" ] || git checkout "$_cbr"
 }
 
 ### main() ###
@@ -47,9 +47,11 @@ while [ "$#" -gt 0 ]; do
 	esac
 done
 
-[[ -n "$_dev" ]] || usage 1
-[[ -n "$_old" && -n "$_new" ]] || usage 2
-[[ -n "$_os" ]] || _os=linux
+[ -n "$_dev" ] || usage 1
+if [ -z "$_old" ] || [ -z "$_new" ]; then
+	usage 2
+fi
+[ -n "$_os" ] || _os=linux
 
 if [[ "$(head -1 Makefile 2> /dev/null)" != "# Makefile for Sphinx"* ]]
 then
@@ -58,7 +60,7 @@ then
 fi
 
 # do nothing if current workspace is not clean
-if [[ -n "$(git status --porcelain --untracked-files=no)" ]]
+if [ -n "$(git status --porcelain --untracked-files=no)" ]
 then
 	echo "Error: Current workspace has uncommitted changes"
 	exit 4
@@ -72,17 +74,17 @@ if ! git cat-file -t "${_new}" > /dev/null 2>&1; then
 fi
 
 # convert 'HEAD' to its commit ID
-if [[ "$_new" == "HEAD" ]]; then
+if [ "$_new" = "HEAD" ]; then
 	_new=$(git rev-parse HEAD)
 fi
-if [[ "$_old" == "HEAD" ]]; then
+if [ "$_old" = "HEAD" ]; then
 	_old=$(git rev-parse HEAD)
 fi
 	 
 
 # get current branch name or commit ID
 _cbr=$(git branch | sed -n '/\* /s///p')
-if [[ $_cbr == "(HEAD detached"* ]]; then
+if [[ "$_cbr" == "(HEAD detached"* ]]; then
 	_cbr=$(git rev-parse HEAD)
 fi
 
@@ -113,7 +115,7 @@ echo
 echo "Found $_num new build WARNING(s)."
 echo
 
-if [[ $_num != "0" ]]; then
+if [ "$_num" != "0" ]; then
 	cat build/_new-warn.log
 fi
 
