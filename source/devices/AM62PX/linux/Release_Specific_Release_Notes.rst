@@ -48,6 +48,7 @@ What's new
 
   - LTS Refresh with Stable Kernel update to 6.6.32
   - Important Bug Fixes on top of Processor SDK 09.02.01.10 Release
+  - `CC33XX M.2 Module <https://www.ti.com/tool/M2-CC3351>`__ Wi-Fi support
   - Kernel: MMC Highspeed tuning and Performance Improvements
   - U-Boot: A53 SPL Splash Screen support :ref:`A53 SPL Splash Overview <Uboot-splash-label>`
   - RT Kernel : Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`

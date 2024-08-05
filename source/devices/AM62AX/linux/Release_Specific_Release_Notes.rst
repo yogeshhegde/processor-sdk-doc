@@ -50,6 +50,7 @@ What's new
   - Kernel: MMC Highspeed tuning and Performance Improvements
   - Mini Fusion board support
   - LI OX05B1S Sensor support
+  - `CC33XX M.2 Module <https://www.ti.com/tool/M2-CC3351>`__ Wi-Fi support
   - Kernel: MMC Highspeed tuning and Performance Improvements
   - RT Kernel : Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - TIFS, DM, R5 SPL: PLL Configuration sequence updated to latest recommendation

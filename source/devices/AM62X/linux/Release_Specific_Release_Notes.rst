@@ -47,6 +47,7 @@ What's new
 
   - LTS Refresh with Stable Kernel update to 6.6.32
   - Important Bug Fixes on top of Processor SDK 09.02.01.10 Release
+  - `CC33XX M.2 Module <https://www.ti.com/tool/M2-CC3351>`__ Wi-Fi support
   - Kernel: MMC Highspeed tuning and Performance Improvements
   - RT Kernel : Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Power Management: DeepSleep, MCU-Only and Partial IO mode :ref:`Power Management Overview <Power-Management>`
