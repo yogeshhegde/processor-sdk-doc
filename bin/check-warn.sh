@@ -26,17 +26,17 @@ trap restore_branch 1 2 3 6 15
 usage()
 {
 	echo "${HELP_STRING}"
-	exit $1
+	exit "$1"
 }
 
 restore_branch()
 {
-	[[ -z "$_cbr" ]] || git checkout $_cbr
+	[[ -z "$_cbr" ]] || git checkout "$_cbr"
 }
 
 ### main() ###
 
-while [ $# -gt 0 ]; do
+while [ "$#" -gt 0 ]; do
 	case $1 in
 	-h | --help) usage 0;;
 	-d | --device) shift; _dev=$1; shift;;
@@ -66,7 +66,7 @@ fi
 
 # do nothing if target ${_new} doesn't exist,
 # don't wait for it fails after ${_old} was built
-if ! git cat-file -t ${_new} > /dev/null 2>&1; then
+if ! git cat-file -t "${_new}" > /dev/null 2>&1; then
 	echo "${_new} not found"
 	exit 5
 fi
@@ -86,20 +86,20 @@ if [[ $_cbr == "(HEAD detached"* ]]; then
 	_cbr=$(git rev-parse HEAD)
 fi
 
-git checkout ${_old} || exit 10
+git checkout "${_old}" || exit 10
 
 mkdir -p build
 
-make DEVFAMILY=${_dev} OS=${_os} clean
-make DEVFAMILY=${_dev} OS=${_os} config > build/_a.log 2>&1 || exit 12
-make DEVFAMILY=${_dev} OS=${_os} >> build/_a.log 2>&1 || exit 13
+make DEVFAMILY="${_dev}" OS="${_os}" clean
+make DEVFAMILY="${_dev}" OS="${_os}" config > build/_a.log 2>&1 || exit 12
+make DEVFAMILY="${_dev}" OS="${_os}" >> build/_a.log 2>&1 || exit 13
 grep "WARNING:" build/_a.log > build/_a-warn.log
 
-git checkout ${_new} || exit 20
+git checkout "${_new}" || exit 20
 
-make DEVFAMILY=${_dev} OS=${_os} clean
-make DEVFAMILY=${_dev} OS=${_os} config > build/_b.log 2>&1 || exit 22
-make DEVFAMILY=${_dev} OS=${_os} >> build/_b.log 2>&1 || exit 23
+make DEVFAMILY="${_dev}" OS="${_os}" clean
+make DEVFAMILY="${_dev}" OS="${_os}" config > build/_b.log 2>&1 || exit 22
+make DEVFAMILY="${_dev}" OS="${_os}" >> build/_b.log 2>&1 || exit 23
 grep "WARNING:" build/_b.log > build/_b-warn.log
 
 restore_branch
