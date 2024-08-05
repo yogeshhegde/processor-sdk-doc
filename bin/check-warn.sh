@@ -107,7 +107,7 @@ restore_branch
 diff --changed-group-format="%>" --unchanged-group-format="" \
 	build/_a-warn.log build/_b-warn.log > build/_new-warn.log
 
-_num=$(cat build/_new-warn.log | wc -l)
+_num=$(wc -l build/_new-warn.log)
 
 echo
 echo "Found $_num new build WARNING(s)."
