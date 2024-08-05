@@ -47,16 +47,6 @@ DDRSS ECC handling
 
    The ECC feature of DDRSS is not enabled by default in U-Boot.
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62AX', 'AM62PX')
-
-   .. note::
-
-      Apply the patch on top of ti-u-boot (tag: 09.02.00.009).
-
-      This patch is to fix up the RAM size correctly if ECC is enabled.
-
-      Patch: https://git.ti.com/cgit/ti-u-boot/ti-u-boot/patch/?id=26c81a4d5b31b0ca6a57bcd30d115f458cb98192
-
 Enabling ECC
 ------------
 
