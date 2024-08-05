@@ -83,6 +83,17 @@ generate_log()
 	grep "WARNING:" "${log_path}" > "${warning_log_path}"
 }
 
+rev-parse()
+{
+	local rev
+	if ! rev=$(git rev-parse "$1"); then
+		printf '%s\n' 'Unable to parse given revisions:'
+		printf '  %s\n' "$1"
+		exit 2
+	fi
+	echo "$rev"
+}
+
 main()
 {
 	if [[ "$(head -1 Makefile 2> /dev/null)" != "# Makefile for Sphinx"* ]]
@@ -98,22 +109,10 @@ main()
 		exit 4
 	fi
 
-	# do nothing if target ${_new} doesn't exist,
-	# don't wait for it fails after ${_old} was built
-	if ! git cat-file -t "${_new}" > /dev/null 2>&1; then
-		echo "${_new} not found"
-		exit 5
-	fi
-
-	# convert 'HEAD' to its commit ID
-	if [ "$_new" = "HEAD" ]; then
-		_new=$(git rev-parse HEAD)
-	fi
-	if [ "$_old" = "HEAD" ]; then
-		_old=$(git rev-parse HEAD)
-	fi
-
 	save_branch
+
+	_old=$(rev-parse "${_old}")
+	_new=$(rev-parse "${_new}")
 
 	generate_log "${_old}" "_a"
 	generate_log "${_new}" "_b"
@@ -136,7 +135,7 @@ done
 [ -n "$_dev" ] || usage 1
 [ -n "$_os" ] || _os=linux
 
-if [ -z "$_old" ] || [ -z "$_new" ]; then
+if [ -z "${_new}" ] || [ -z "${_old}" ]; then
 	usage 2
 fi
 
