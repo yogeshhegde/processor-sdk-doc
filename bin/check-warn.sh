@@ -1,21 +1,31 @@
 #!/bin/bash
 ### PSDK-doc check new build WARNINGs
 
+HELP_STRING="
+Build and check if git branch or commit <NEW> generates any new build WARNING(s)
+based on git branch or commit <OLD>.
+
+check-warn.sh [OPTIONS]
+
+BUILD OPTIONS:
+  -d, --device DEV   build for device-family DEV
+  -o, --os OS        build for os OS, default: linux
+
+DIFF OPTIONS:
+  -a OLD             git branch or commit ID OLD as the base, 'HEAD' is
+                     acceptable
+  -b NEW             git branch or commit ID NEW for checking WARNING(s), 'HEAD'
+                     is acceptable
+
+OTHER OPTIONS:
+  -h, --help         this message
+"
+
 trap restore_branch 1 2 3 6 15
 
 usage()
 {
-	echo "Build and check if git branch or commit <NEW> generates" \
-	     "any new build WARNING(s) based on git branch or commit <OLD>."
-	echo
-	echo "check-warn.sh <-d | --device DEV> [-o | --os OS] <-a OLD> <-b NEW> [-h | --help]"
-	echo
-	echo -e "\t-d | --device DEV: build for device-family DEV"
-	echo -e "\t-o | --os OS:      build for os OS, default: linux"
-	echo -e "\t-a OLD:            git branch or commit ID OLD as the base, 'HEAD' is acceptable"
-	echo -e "\t-b NEW:            git branch or commit ID NEW for checking WARNING(s), 'HEAD' is acceptable"
-	echo -e "\t-h | --help:       this message"
-	echo
+	echo "${HELP_STRING}"
 	exit $1
 }
 
