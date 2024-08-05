@@ -43,7 +43,7 @@ and loads the A53 with the HLOS. The A53 then boots the M4F core.
 The R5F firmware runs device manager software (SciServer) along
 with a demo IPC application.
 
-Unlike M4F firmware, The R5F firmware is integrated as part of tispl.bin binary
+Unlike M4F firmware, The R5F firmware is integrated as part of :file:`tispl.bin` binary
 and is started early in the boot process by u-boot R5 SPL right after DDR initialization.
 
 
@@ -62,49 +62,44 @@ in the SDK package that can be run from ARM Linux.
 The remoteproc driver is hard-coded to look for specific files when
 loading the M4F core. Here are the files it looks for on an AM62x device:
 
-::
-
-	+------------------+-----------------+--------------------+----------------------+
-	| Core Name        | RemoteProc Name | Description        | Firmware File Name   |
-	+==================+=================+====================+======================+
-	| M4F              | 5000000.m4f     | M4F core           | am62-mcu-m4f0_0-fw   |
-	+------------------+-----------------+--------------------+----------------------+
-	| R5F              | 78000000.r5f    | R5F core           | am62-main-r5f0_0-fw  |
-	+------------------+-----------------+--------------------+----------------------+
+   +------------------+-----------------+--------------------+----------------------+
+   | Core Name        | RemoteProc Name | Description        | Firmware File Name   |
+   +==================+=================+====================+======================+
+   | M4F              | 5000000.m4f     | M4F core           | am62-mcu-m4f0_0-fw   |
+   +------------------+-----------------+--------------------+----------------------+
 
 Generally on a target file system the above files are soft linked to the
 intended executable FW files:
 
-::
+.. code-block:: console
 
-	root@am62xx-evm:/opt/ltp# ls -l /lib/firmware
-	lrwxrwxrwx 1 root root      72 Sep 25  2022 am62-mcu-m4f0_0-fw -> /lib/firmware/pdk-ipc/ipc_echo_baremetal_test_mcu2_0_release_strip.xer5f
-	lrwxrwxrwx 1 root root      72 Sep 25  2022 am62-main-r5f0_0-fw -> /lib/firmware/pdk-ipc/ipc_echo_testb_mcu1_0_release_strip.xer5f
+   root@am62xx-evm:/opt/ltp# ls -l /lib/firmware
+   lrwxrwxrwx 1 root root      72 Mar  9  2018 am62-mcu-m4f0_0-fw -> /usr/lib/firmware/ti-ipc/am62xx/ipc_echo_test_mcu2_0_release_strip.xer5f
 
 However, unlike M4F remoteproc driver which boots the M4F, the R5F remoteproc driver doesn't boot the R5F instead it late
 attaches to already running R5F firmware binary which is started early in the boot process as mentinoed in previous section.
 
-For updating R5F firmware binary, tispl.bin needs to be recompiled with the new firmware binary as mentioned below :
+For updating R5F firmware binary, :file:`tispl.bin` needs to be recompiled with the new firmware binary as mentioned below :
 
 #. Go to linux installer and replace the existing R5F firmware binary with the new one
 
-::
+.. code-block:: console
 
-    host#  cp <path_to_new_fw_binary>/ipc_echo_testb_freertos_mcu1_0_release.xer5f <path_to_linux_installer>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f
+   host#  cp <path_to_new_fw_binary>/ipc_echo_testb_freertos_mcu1_0_release.xer5f <path_to_linux_installer>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f
 
 #. Recompile u-boot to regenerate tispl.bin using the top level makefile.
 
-::
+.. code-block:: console
 
-    host# make u-boot
+   host# make u-boot
 
-Please refer to `Top-Level Makefile <./Overview/Top_Level_Makefile.html>`__ for more details on Top Level makefile.
+Please refer to :ref:`Top-Level Makefile <top-level-makefile>` for more details on Top Level makefile.
 
 #. Replace the updated tispl.bin containing new R5F firmware binary in the boot partition of sdcard and reboot
 
-::
+.. code-block:: console
 
-    host# sudo cp board-support/u-boot_build/a53/tispl.bin  /media/$USER/boot
+   host# sudo cp board-support/u-boot_build/a53/tispl.bin  /media/$USER/boot
 
 .. _booting_remote_cores_from_Linux_console:
 
@@ -115,48 +110,48 @@ To reload a remote core with new executables, please follow the below steps.
 
 First, identify the remotproc node associated with the remote core:
 
-::
+.. code-block:: console
 
-	root@am62xx-evm:~# head /sys/class/remoteproc/remoteproc*/name
-	==> /sys/class/remoteproc/remoteproc0/name <==
-	5000000.m4fss
+   root@am62xx-evm:~# head /sys/class/remoteproc/remoteproc*/name
+   ==> /sys/class/remoteproc/remoteproc0/name <==
+   5000000.m4fss
 
-	==> /sys/class/remoteproc/remoteproc1/name <==
-	78000000.r5f
+   ==> /sys/class/remoteproc/remoteproc1/name <==
+   78000000.r5f
 
-	==> /sys/class/remoteproc/remoteproc2/name <==
-	30074000.pru
+   ==> /sys/class/remoteproc/remoteproc2/name <==
+   30074000.pru
 
-	==> /sys/class/remoteproc/remoteproc3/name <==
-	30078000.pru
+   ==> /sys/class/remoteproc/remoteproc3/name <==
+   30078000.pru
 
 
 Then, use the sysfs interface to stop the remote core. For example, to stop the M4F
 
-::
+.. code-block:: console
 
-	root@am62xx-evm:~# echo stop > /sys/class/remoteproc/remoteproc0/state
-	[  440.832317] remoteproc remoteproc0: stopped remote processor 5000000.m4fss
+   root@am62xx-evm:~# echo stop > /sys/class/remoteproc/remoteproc0/state
+   [  440.832317] remoteproc remoteproc0: stopped remote processor 5000000.m4fss
 
 If needed, update the firmware symbolic link to point to a new firmware:
 
-::
+.. code-block:: console
 
-	root@am62xx-evm:/lib/firmware# ln -sf /lib/firmware/pdk-ipc/ipc_echo_baremetal_test_mcu2_0_release_strip.xer5f am62-mcu-m4f0_0-fw
+   root@am62xx-evm:/lib/firmware# ln -sf /usr/lib/firmware/ti-ipc/am62xx/ipc_echo_test_mcu2_0_release_strip.xer5f am62-mcu-m4f0_0-fw
 
 Finally, use the sysfs interface to start the remote core:
 
-::
+.. code-block:: console
 
-	root@am62xx-evm:~# echo start > /sys/class/remoteproc/remoteproc0/state
-	[  450.930070] remoteproc remoteproc0: powering up 5000000.m4fss
-	[  450.936112] remoteproc remoteproc0: Booting fw image am62-mcu-m4f0_0-fw, size 78960
-	[  450.960447]  remoteproc0#vdev0buffer: assigned reserved memory node m4f-dma-memory@9cb00000
-	[  450.969408] virtio_rpmsg_bus virtio0: rpmsg host is online
-	[  450.975089] virtio_rpmsg_bus virtio0: creating channel ti.ipc4.ping-pong addr 0xd
-	[  450.975850]  remoteproc0#vdev0buffer: registered virtio0 (type 7)
-	[  450.982840] virtio_rpmsg_bus virtio0: creating channel rpmsg_chrdev addr 0xe
-	[  450.988824] remoteproc remoteproc0: remote processor 5000000.m4fss is now up
+   root@am62xx-evm:~# echo start > /sys/class/remoteproc/remoteproc0/state
+   [  450.930070] remoteproc remoteproc0: powering up 5000000.m4fss
+   [  450.936112] remoteproc remoteproc0: Booting fw image am62-mcu-m4f0_0-fw, size 78960
+   [  450.960447]  remoteproc0#vdev0buffer: assigned reserved memory node m4f-dma-memory@9cb00000
+   [  450.969408] virtio_rpmsg_bus virtio0: rpmsg host is online
+   [  450.975089] virtio_rpmsg_bus virtio0: creating channel ti.ipc4.ping-pong addr 0xd
+   [  450.975850]  remoteproc0#vdev0buffer: registered virtio0 (type 7)
+   [  450.982840] virtio_rpmsg_bus virtio0: creating channel rpmsg_chrdev addr 0xe
+   [  450.988824] remoteproc remoteproc0: remote processor 5000000.m4fss is now up
 
 DMA memory Carveouts
 --------------------
@@ -165,32 +160,32 @@ System memory is carved out for each remote processor core for IPC and for the
 remote processor's code/data section needs. The default
 memory carveouts (DMA pools) are shown below.
 
-See the devicetree bindings documentation for more details: `Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml?h=ti-linux-5.10.y>`__
+See the devicetree bindings documentation for more details: `Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml?h=ti-linux-6.6.y>`__
 
-::
++------------------+--------------------+---------+----------------------------+
+| Memory Section   | Physical Address   | Size    | Description                |
++==================+====================+=========+============================+
+| M4F Pool         | 0x9cb00000         | 1MB     | IPC (Virtio/Vring buffers) |
++------------------+--------------------+---------+----------------------------+
+| M4F Pool         | 0x9cc00000         | 14MB    | M4F externel code/data mem |
++------------------+--------------------+---------+----------------------------+
+| R5F Pool         | 0x9da00000         | 1MB     | IPC (Virtio/Vring buffers) |
++------------------+--------------------+---------+----------------------------+
+| R5F Pool         | 0x9db00000         | 12MB    | R5F externel code/data mem |
++------------------+--------------------+---------+----------------------------+
 
-	+------------------+--------------------+---------+----------------------------+
-	| Memory Section   | Physical Address   | Size    | Description                |
-	+==================+====================+=========+============================+
-	| M4F Pool         | 0x9cb00000         | 1MB     | IPC (Virtio/Vring buffers) |
-	+------------------+--------------------+---------+----------------------------+
-	| M4F Pool         | 0x9cc00000         | 14MB    | M4F externel code/data mem |
-	+------------------+--------------------+---------+----------------------------+
-	| R5F Pool         | 0x9da00000         | 1MB     | IPC (Virtio/Vring buffers) |
-	+------------------+--------------------+---------+----------------------------+
-	| R5F Pool         | 0x9db00000         | 12MB    | R5F externel code/data mem |
-	+------------------+--------------------+---------+----------------------------+
+.. code-block:: console
 
-	root@am62xx-evm:~# dmesg | grep Reserved
-	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009c800000, size 3 MiB
-	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009cb00000, size 1 MiB
-	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009cc00000, size 14 MiB
-	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009da00000, size 1 MiB
-	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009db00000, size 12 MiB
-	[    0.000000] cma: Reserved 512 MiB at 0x00000000dd000000
+   root@am62xx-evm:~# dmesg | grep Reserved
+   [    0.000000] Reserved memory: created DMA memory pool at 0x000000009c800000, size 3 MiB
+   [    0.000000] Reserved memory: created DMA memory pool at 0x000000009cb00000, size 1 MiB
+   [    0.000000] Reserved memory: created DMA memory pool at 0x000000009cc00000, size 14 MiB
+   [    0.000000] Reserved memory: created DMA memory pool at 0x000000009da00000, size 1 MiB
+   [    0.000000] Reserved memory: created DMA memory pool at 0x000000009db00000, size 12 MiB
+   [    0.000000] cma: Reserved 512 MiB at 0x00000000dd000000
 
 .. note:: The reserved memory sizes listed above are provided as a reference only and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
-          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=ti-linux-5.10.y'
+          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=ti-linux-6.6.y'
 
 By default the first 1MB of each pool is used for the Virtio and Vring buffers
 used to communicate with the remote processor core. The remaining carveout is
@@ -213,44 +208,43 @@ Changing the Memory Map
 The address and size of the DMA memory carveouts needs to match with the MCU
 M4F and R5F external memory section sizes in their respective linker mapfiles.
 
-arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi
+:file:`arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi`
 
-::
+.. code-block:: dts
 
-	reserved-memory {
-			#address-cells = <2>;
-			#size-cells = <2>;
-			ranges;
+   reserved-memory {
+      #address-cells = <2>;
+      #size-cells = <2>;
+      ranges;
 
-			mcu_m4fss_dma_memory_region: m4f-dma-memory@9cb00000 {
-				compatible = "shared-dma-pool";
-				reg = <0x00 0x9cb00000 0x00 0x100000>;
-				no-map;
-			};
+      mcu_m4fss_dma_memory_region: m4f-dma-memory@9cb00000 {
+         compatible = "shared-dma-pool";
+         reg = <0x00 0x9cb00000 0x00 0x100000>;
+         no-map;
+      };
 
-			mcu_m4fss_memory_region: m4f-memory@9cc00000 {
-				compatible = "shared-dma-pool";
-				reg = <0x00 0x9cc00000 0x00 0xe00000>;
-				no-map;
-			};
+      mcu_m4fss_memory_region: m4f-memory@9cc00000 {
+         compatible = "shared-dma-pool";
+         reg = <0x00 0x9cc00000 0x00 0xe00000>;
+         no-map;
+      };
 
-                	wkup_r5fss0_core0_dma_memory_region: r5f-dma-memory@9da00000 {
-                        	compatible = "shared-dma-pool";
-                        	reg = <0x00 0x9da00000 0x00 0x00100000>;
-                        	no-map;
-                	};
+      wkup_r5fss0_core0_dma_memory_region: r5f-dma-memory@9da00000 {
+         compatible = "shared-dma-pool";
+         reg = <0x00 0x9da00000 0x00 0x00100000>;
+         no-map;
+      };
 
-                	wkup_r5fss0_core0_memory_region: r5f-memory@9db00000 {
-                        	compatible = "shared-dma-pool";
-                        	reg = <0x00 0x9db00000 0x00 0x00c00000>;
-                        	no-map;
-                	};
-	};
-
+      wkup_r5fss0_core0_memory_region: r5f-memory@9db00000 {
+         compatible = "shared-dma-pool";
+         reg = <0x00 0x9db00000 0x00 0x00c00000>;
+         no-map;
+      };
+   };
 
 .. warning:: Be careful not to overlap carveouts!
 
 .. note:: The DT fragments are provided as a reference and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
-          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=ti-linux-5.10.y'
+          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=10.00.07'
 
 .. include:: Foundational_Components/IPC/_RPMsg_char_driver.rst
