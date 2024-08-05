@@ -49,7 +49,7 @@ summary()
 
 	rm -f build/_new-warn.log
 	diff --changed-group-format="%>" --unchanged-group-format="" \
-		build/_a-warn.log build/_b-warn.log > build/_new-warn.log
+		build/_a.log build/_b.log > build/_new-warn.log
 
 	_num=$(wc -l build/_new-warn.log)
 
@@ -64,23 +64,21 @@ summary()
 
 generate_log()
 {
-	local git_hash log_name log_path warning_log_path
+	local git_hash log_name log_path
 
 	git_hash=$1
 	log_name=$2
 
 	log_path="build/${log_name}.log"
-	warning_log_path="build/${log_name}-warn.log"
 
 	git checkout "${git_hash}" || exit 10
 
 	mkdir -p build
 
-	rm -f "${log_path}" "${warning_log_path}"
+	rm -f "${log_path}"
 	make DEVFAMILY="${_dev}" OS="${_os}" clean
-	make DEVFAMILY="${_dev}" OS="${_os}" config >> "${log_path}" 2>&1 || exit 12
-	make DEVFAMILY="${_dev}" OS="${_os}" >> "${log_path}" 2>&1 || exit 13
-	grep "WARNING:" "${log_path}" > "${warning_log_path}"
+	make DEVFAMILY="${_dev}" OS="${_os}" config 2> >(tee -a "${log_path}" >&2) || exit 12
+	make DEVFAMILY="${_dev}" OS="${_os}" 2> >(tee -a "${log_path}" >&2) || exit 13
 }
 
 rev-parse()
