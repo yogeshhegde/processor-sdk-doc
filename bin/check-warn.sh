@@ -29,9 +29,58 @@ usage()
 	exit "$1"
 }
 
+save_branch()
+{
+	# get current branch name or commit ID
+	_cbr=$(git branch | sed -n '/\* /s///p')
+	if [[ "$_cbr" == "(HEAD detached"* ]]; then
+		_cbr=$(git rev-parse HEAD)
+	fi
+}
+
 restore_branch()
 {
 	[ -z "$_cbr" ] || git checkout "$_cbr"
+}
+
+summary()
+{
+	local _num
+
+	rm -f build/_new-warn.log
+	diff --changed-group-format="%>" --unchanged-group-format="" \
+		build/_a-warn.log build/_b-warn.log > build/_new-warn.log
+
+	_num=$(wc -l build/_new-warn.log)
+
+	echo
+	echo "Found $_num new build WARNING(s)."
+	echo
+
+	if [ "$_num" != "0" ]; then
+		cat build/_new-warn.log
+	fi
+}
+
+generate_log()
+{
+	local git_hash log_name log_path warning_log_path
+
+	git_hash=$1
+	log_name=$2
+
+	log_path="build/${log_name}.log"
+	warning_log_path="build/${log_name}-warn.log"
+
+	git checkout "${git_hash}" || exit 10
+
+	mkdir -p build
+
+	rm -f "${log_path}" "${warning_log_path}"
+	make DEVFAMILY="${_dev}" OS="${_os}" clean
+	make DEVFAMILY="${_dev}" OS="${_os}" config >> "${log_path}" 2>&1 || exit 12
+	make DEVFAMILY="${_dev}" OS="${_os}" >> "${log_path}" 2>&1 || exit 13
+	grep "WARNING:" "${log_path}" > "${warning_log_path}"
 }
 
 main()
@@ -64,42 +113,13 @@ main()
 		_old=$(git rev-parse HEAD)
 	fi
 
-	# get current branch name or commit ID
-	_cbr=$(git branch | sed -n '/\* /s///p')
-	if [[ "$_cbr" == "(HEAD detached"* ]]; then
-		_cbr=$(git rev-parse HEAD)
-	fi
+	save_branch
 
-	git checkout "${_old}" || exit 10
-
-	mkdir -p build
-
-	make DEVFAMILY="${_dev}" OS="${_os}" clean
-	make DEVFAMILY="${_dev}" OS="${_os}" config > build/_a.log 2>&1 || exit 12
-	make DEVFAMILY="${_dev}" OS="${_os}" >> build/_a.log 2>&1 || exit 13
-	grep "WARNING:" build/_a.log > build/_a-warn.log
-
-	git checkout "${_new}" || exit 20
-
-	make DEVFAMILY="${_dev}" OS="${_os}" clean
-	make DEVFAMILY="${_dev}" OS="${_os}" config > build/_b.log 2>&1 || exit 22
-	make DEVFAMILY="${_dev}" OS="${_os}" >> build/_b.log 2>&1 || exit 23
-	grep "WARNING:" build/_b.log > build/_b-warn.log
+	generate_log "${_old}" "_a"
+	generate_log "${_new}" "_b"
 
 	restore_branch
-
-	diff --changed-group-format="%>" --unchanged-group-format="" \
-		build/_a-warn.log build/_b-warn.log > build/_new-warn.log
-
-	_num=$(wc -l build/_new-warn.log)
-
-	echo
-	echo "Found $_num new build WARNING(s)."
-	echo
-
-	if [ "$_num" != "0" ]; then
-		cat build/_new-warn.log
-	fi
+	summary
 }
 
 while [ "$#" -gt 0 ]; do
@@ -114,9 +134,10 @@ while [ "$#" -gt 0 ]; do
 done
 
 [ -n "$_dev" ] || usage 1
+[ -n "$_os" ] || _os=linux
+
 if [ -z "$_old" ] || [ -z "$_new" ]; then
 	usage 2
 fi
-[ -n "$_os" ] || _os=linux
 
 main
