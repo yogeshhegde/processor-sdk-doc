@@ -154,13 +154,6 @@ For example, if you wish to wakeup from Deep Sleep or MCU Only mode in 10 second
         [   74.180714] remoteproc remoteproc1: remote processor 79000000.r5f is now up
         [   74.194846] PM: suspend exit
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
-
-    .. note::
-
-        AM62A requires additional -d rtc1 option as SoC's internal RTC gets
-        probed as rtc1.
-
 ********
 MCU GPIO
 ********
