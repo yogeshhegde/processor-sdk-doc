@@ -8,6 +8,8 @@ devices/AM62PX/android/Application_Notes_Android_Bootloader_SD_Card
 devices/AM62PX/android/Application_Notes_Android_SD_CARD
 devices/AM62PX/android/Application_Notes_Android_Dual_Screen
 devices/AM62PX/android/Application_Notes_Android_Low_Power
+devices/AM62PX/android/Application_Notes_OTA
+devices/AM62PX/android/Application_Notes_Camera
 devices/AM62PX/android/Application_Notes_Android_Multimedia_Video
 
 android/Overview_Getting_Started_Guide
@@ -15,3 +17,7 @@ android/Overview_Building_the_SDK
 android/Overview
 android/Overview_Technical_Support
 android/Overview_Flashing
+
+android/Foundational_Components
+android/Foundational_Components_Kernel
+android/Foundational_Components_Bootloaders

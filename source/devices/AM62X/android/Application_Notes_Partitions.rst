@@ -1,6 +1,6 @@
-=====================
+#####################
 eMMC Partition Layout
-=====================
+#####################
 
 The AM62x board eMMC partition for Android binaries is shown in below table
 

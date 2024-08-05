@@ -1,8 +1,8 @@
 .. _Android Multimedia Wave5:
 
-========================================
+########################################
 Android Multimedia (Video encode/decode)
-========================================
+########################################
 
 This application note describes video decoding/encoding using the onboard Wave5 chip
 found in the Texas Instruments AM62Px SoC.
@@ -16,11 +16,12 @@ The userspace associated component is based on the AOSP-provided ``v4l2_codec2``
 The source can be found in :file:`~/10_00_00/ti-aosp-14/external/v4l2_codec2`.
 
 
+*******
 Testing
-=======
+*******
 
 Using ``atest``
----------------
+===============
 
 Android provides all kind of tests to test the media framework.
 We can run a sample playback via ``atest`` from a development tree.
@@ -41,7 +42,7 @@ We can run a sample playback via ``atest`` from a development tree.
    $ atest android.media.player.cts.MediaPlayerTest#testLocalVideo_MP4_H264_480x360_500kbps_25fps_AAC_Stereo_128kbps_44110Hz
 
 Using Gallery
--------------
+=============
 
 To play test videos, we can also use the Gallery app.
 
@@ -71,7 +72,7 @@ Finally, reboot the board:
 Then run the Gallery app from the UI and play the videos.
 
 Using ``screenrecord``
-----------------------
+======================
 
 To test video encoding, we can use the ``screenrecord`` command.
 
@@ -86,11 +87,12 @@ To test video encoding, we can use the ``screenrecord`` command.
    ``screenrecord`` only records frames when there is some user activity detected.
    Make sure to generate some activity to avoid empty video files.
 
+**************
 Debugging tips
-==============
+**************
 
 List available codecs
----------------------
+=====================
 
 ``dumpsys`` can be used to list the available codecs on an Android system.
 To check that the v4l2 codecs are available, run:
@@ -136,7 +138,7 @@ To check that the v4l2 codecs are available, run:
 
 
 Verbose logcat logging
-----------------------
+======================
 
 The logs in logcat from ``v4l2_codec2`` are not very verbose by default.
 To enable more logs, ``v4l2_codec2`` should be rebuild. It's possible to enable all logs with:

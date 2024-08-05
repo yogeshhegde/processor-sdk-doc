@@ -1,6 +1,6 @@
-##################
+########
 Overview
-##################
+########
 
 .. include:: Overview/_Processor_SDK_Android_Software_Developers_Guide.rst
 
