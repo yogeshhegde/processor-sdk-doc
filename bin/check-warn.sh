@@ -58,7 +58,7 @@ then
 fi
 
 # do nothing if current workspace is not clean
-if [[ -n "$(git status --porcelain --untracked-files=no | grep -v swtoolsdev)" ]]
+if [[ -n "$(git status --porcelain --untracked-files=no)" ]]
 then
 	echo "Error: Current workspace has uncommitted changes"
 	exit 4
