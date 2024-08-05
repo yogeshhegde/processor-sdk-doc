@@ -1,56 +1,91 @@
 .. include:: /_replacevars.rst
 
-OSPI/QSPI
----------------------------------
+OSPI/QSPI NOR/NAND
+------------------
 
 .. rubric:: Introduction
    :name: introduction-linux-qspi-ug
 
-Octal Serial Peripheral Interface (OSPI) is a SPI module that has x8 IO
-lines. Quad Serial Peripheral Interface (QSPI) has x4 IO lines. These
-controllers are mainly used to interface with Octal or Quad SPI flashes. OSPI
-is backward compatible with QSPI. These modules can also work in dual
-(x2) and single (x1) modes.
+Octal Serial Peripheral Interface (OSPI) and Quad Serial Peripheral Interface
+(QSPI) are SPI modules that has x8 IO lines and x4 IO lines respectively.
+These controllers are mainly used to interface with Octal and Quad SPI flashes.
+OSPI is backward compatible with QSPI. These modules can also work in dual (x2)
+and single (x1) modes. OSPI and QSPI controllers on TI SoCs support memory
+mapped IO interfaces, which provide a direct interface for accessing data from
+the external SPI flash, thereby simplifying software requirements. These
+controllers work only in master mode.
 
-OSPI and QSPI controllers on TI SoCs support memory mapped IO interfaces,
-which provide a direct interface for accessing data from the external SPI
-flash, thereby simplifying software requirements. These controllers work
-only in master mode.
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-.. rubric:: Supported Devices
-   :name: supported-devices-kernel-qspi
+   +---------------+------------+-------------------------------------------+
+   | SoC Family    | capability | Driver                                    |
+   +===============+============+===========================================+
+   | AM64x         | OSPI NOR   | :file:`drivers/spi/spi-cadence-quadspi.c` |
+   +---------------+------------+-------------------------------------------+
 
-There are two variants of OSPI/QSPI controller IPs on various TI SoCs.
-The table below provides a mapping of driver and capabilities for
-different TI SoCs:
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-+---------------+-----------+--------------------------------------+
-| SoC Family    | capability| Driver                               |
-+===============+===========+======================================+
-| AM437x        | QSPI      | drivers/spi/spi-ti-qspi.c            |
-+---------------+-----------+--------------------------------------+
-| DRA7xx/AM57xx | QSPI      | drivers/spi/spi-ti-qspi.c            |
-+---------------+-----------+--------------------------------------+
-| 66AK2Gx       | QSPI      | drivers/spi/spi-cadence-quadspi.c    |
-+---------------+-----------+--------------------------------------+
-| AM654/J721e   | 1x OSPI,  | drivers/spi/spi-cadence-quadspi.c    |
-|               | 1x QSPI   |                                      |
-+---------------+-----------+--------------------------------------+
-| AM62x         | OSPI      | drivers/spi/spi-cadence-quadspi.c    |
-+---------------+-----------+--------------------------------------+
-| AM62P         | OSPI      | drivers/spi/spi-cadence-quadspi.c    |
-+---------------+-----------+--------------------------------------+
+   +---------------+------------+-------------------------------------------+
+   | SoC Family    | capability | Driver                                    |
+   +===============+============+===========================================+
+   | AM62x         | OSPI NOR   | :file:`drivers/spi/spi-cadence-quadspi.c` |
+   +---------------+------------+-------------------------------------------+
+   | AM62x LP SK   | OSPI NAND  | :file:`drivers/spi/spi-cadence-quadspi.c` |
+   +---------------+------------+-------------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+   +---------------+------------+-------------------------------------------+
+   | SoC Family    | capability | Driver                                    |
+   +===============+============+===========================================+
+   | AM62Ax        | OSPI NAND  | :file:`drivers/spi/spi-cadence-quadspi.c` |
+   +---------------+------------+-------------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   +---------------+------------+-------------------------------------------+
+   | SoC Family    | capability | Driver                                    |
+   +===============+============+===========================================+
+   | AM62Px        | OSPI NOR   | :file:`drivers/spi/spi-cadence-quadspi.c` |
+   +---------------+------------+-------------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM437X')
+
+   +---------------+------------+--------------------------------------+
+   | SoC Family    | capability | Driver                               |
+   +===============+============+======================================+
+   | AM437x        | QSPI NOR   | :file:`drivers/spi/spi-ti-qspi.c`    |
+   +---------------+------------+--------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM57X')
+
+   +---------------+------------+--------------------------------------+
+   | SoC Family    | capability | Driver                               |
+   +===============+============+======================================+
+   | DRA7xx/AM57xx | QSPI NOR   | :file:`drivers/spi/spi-ti-qspi.c`    |
+   +---------------+------------+--------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('J721E')
+
+   +---------------+-------------+-------------------------------------------+
+   | SoC Family    | capability  | Driver                                    |
+   +===============+=============+===========================================+
+   | AM654/J721e   | 1x QSPI NOR,| :file:`drivers/spi/spi-cadence-quadspi.c` |
+   |               | 1x OSPI NOR |                                           |
+   +---------------+-------------+-------------------------------------------+
 
 .. note::
 
-    Not all OSPI flashes can be supported. Users are recommended to check
-    whether or not the OSPI flash part chosen for custom board designs meets all
-    the criteria listed at https://e2e.ti.com/support/processors/f/791/t/946418
+   Not all OSPI flashes can be supported. Users are recommended to check
+   whether or not the OSPI flash part chosen for custom board designs meets all
+   the criteria listed at https://e2e.ti.com/support/processors/f/791/t/946418
 
 .. rubric:: Driver Features
 
-OSPI controllers support Double Data Rate (DDR) mode in Octal
-configuration wherein data can be read on both edges of the clock.
+OSPI controllers supports Double Data Rate (DDR) mode for OSPI/QSPI NOR flashes
+in Octal configuration wherein data can be read on both edges of the clock, and
+Single Data Rate (SDR) mode for OSPI/QSPI NAND flashes in Quad and Octal
+configuration.
 
 .. rubric:: Memory mapped read support
    :name: memory-mapped-read-support
@@ -65,12 +100,14 @@ the best throughput and is the default mode in the SDK.
 .. rubric:: Supported SPI modes
    :name: supported-spi-modes
 
-spi-ti-qspi.c driver supports all clock and polarity modes defined in
-the table "SPI Clock Modes Definition" of particular SoC's TRM. But make
-sure that the selected mode is supported by the clocking requirements of
-the device as per the device's datasheet.
+.. ifconfig:: CONFIG_part_variant in ('AM437X', 'AM57X')
 
-spi-cadence-quadspi.c driver supports standard SPI mode 0 only.
+   :file:`spi-ti-qspi.c` driver supports all clock and polarity modes defined
+   in the table "SPI Clock Modes Definition" of particular SoC's TRM. But make
+   sure that the selected mode is supported by the clocking requirements of
+   the device as per the device's datasheet.
+
+:file:`spi-cadence-quadspi.c` driver supports standard SPI mode 0 only.
 
 .. rubric:: DMA support
    :name: dma-support
@@ -81,21 +118,11 @@ read from flash for maximum throughput and reduced CPU load.
 .. rubric:: Driver Architecture
    :name: driver-architecture-kernel-qspi
 
-Following diagram shows the QSPI driver stack:
+.. figure:: ../../../../images/linux_qspi.png
+   :width: 500
+   :align: center
 
-.. figure:: ../../../../images/QSPI_architecture.png
-
-    QSPI driver software stack
-
-The QSPI driver can be used both to access SPI flash devices via mtd
-subsystem or access generic SPI devices (like SPI touchscreen) via SPI
-framework.
-
-The OSPI driver stack is shown in the following diagram:
-
-.. figure:: ../../../../images/linux-ospi.png
-
-    OSPI driver software stack
+   OSPI/QSPI NOR/NAND software stack
 
 OSPI does not support interfacing with non flash SPI slaves.
 
@@ -105,9 +132,12 @@ OSPI does not support interfacing with non flash SPI slaves.
 .. rubric:: Source Location
    :name: source-location-qspi
 
-The source file for the QSPI driver can be found at: drivers/spi/spi-ti-qspi.c under Linux kernel source tree.
+.. ifconfig:: CONFIG_part_variant in ('AM437X', 'AM57X')
 
-OSPI driver is at: drivers/spi/spi-cadence-quadspi.c under Linux kernel source tree.
+   The source file for the QSPI driver can be found at:
+   :file:`drivers/spi/spi-ti-qspi.c` under Linux kernel source tree.
+
+OSPI driver is at: :file:`drivers/spi/spi-cadence-quadspi.c` under Linux kernel source tree.
 This driver also supports QSPI version of the same IP.
 
 .. rubric:: Kernel Configuration Options
@@ -120,8 +150,8 @@ loaded into the kernel dynamically.
    :name: enabling-qspi-driver-configurations
 
 Following needs to be enabled to access OSPI/QSPI flash: TI QSPI controller
-driver, Cadence OSPI controller driver, and SPI NOR framework in the kernel via
-menuconfig.
+driver, Cadence OSPI controller driver, SPI NOR framework, and/or SPI NAND
+framework in the kernel via menuconfig.
 
 .. note::
     OSPI/QSPI drivers and their dependencies are enabled by default in
@@ -129,13 +159,13 @@ menuconfig.
 
 Start the Linux Kernel Configuration tool:
 
-::
+.. code-block:: console
 
-        $ make menuconfig  ARCH=arm
+        $ make menuconfig ARCH=<architecture_name>
 
 To enable QSPI controller driver:
 
-.. code-block:: text
+.. code-block:: menuconfig
 
               Device Drivers  --->
                [*] SPI support  --->
@@ -143,15 +173,24 @@ To enable QSPI controller driver:
 
 To enable SPI NOR framework:
 
-.. code-block:: text
+.. code-block:: menuconfig
 
               Device Drivers  --->
                 <*> Memory Technology Device (MTD) support  --->
                   <*>   SPI-NOR device support  --->
 
+To enable SPI NAND framework:
+
+.. code-block:: menuconfig
+
+              Device Drivers  --->
+                <*> Memory Technology Device (MTD) support  --->
+                  <*>   NAND  --->
+                    <*>   SPI NAND device Support  --->
+
 To enable spi-cadence-quadspi driver:
 
-.. code-block:: text
+.. code-block:: menuconfig
 
               Device Drivers  --->
                 [*] SPI support --->
@@ -161,7 +200,7 @@ To enable them as modules, make <\*> as <M>.
 
 Enabling UBIFS filesystem support:
 
-.. code-block:: text
+.. code-block:: menuconfig
 
               File systems  --->
                 [*] Miscellaneous filesystems  --->
@@ -170,49 +209,151 @@ Enabling UBIFS filesystem support:
 .. rubric:: DT Configuration
    :name: dt-configuration-kernel-qspi
 
-Refer to Documentation/devicetree/bindings/spi/ti\_qspi.txt under
-kernel source tree for spi-ti-qspi controller driver's DT bindings and
-their usage.
+.. ifconfig:: CONFIG_part_variant in ('AM437X', 'AM57X')
 
-For spi-cadence-quadspi controller refer to Documentation/devicetree/bindings/mtd/cadence-quadspi.txt
-for DT bindings and their usage.
+   Refer to :file:`Documentation/devicetree/bindings/spi/ti\_qspi.txt` under
+   kernel source tree for spi-ti-qspi controller driver's DT bindings and
+   their usage.
 
-To configure OSPI/QSPI flash partitions and flash related DT bindings refer
-to Documentation/devicetree/bindings/mtd/jedec,spi-nor.txt and
-Documentation/devicetree/bindings/mtd/partition.txt.
+For spi-cadence-quadspi controller refer to
+:file:`Documentation/devicetree/bindings/spi/cdns,qspi-nor.yaml` for DT
+bindings and their usage.
+
+To configure OSPI/QSPI NOR/NAND flash partitions and flash related DT bindings
+refer to :file:`Documentation/devicetree/bindings/mtd/jedec,spi-nor.yaml`,
+:file:`Documentation/devicetree/bindings/mtd/spi-nand.yaml` and
+:file:`Documentation/devicetree/bindings/mtd/partitions/partition.yaml`.
+
+Following is an example device tree describing OSPI NOR
+
+.. code-block:: dts
+
+   &ospi0 {
+
+      flash@0{
+         compatible = "jedec,spi-nor";
+         reg = <0x0>;
+         spi-tx-bus-width = <8>;
+         spi-rx-bus-width = <8>;
+         spi-max-frequency = <25000000>;
+         cdns,tshsl-ns = <60>;
+         cdns,tsd2d-ns = <60>;
+         cdns,tchsh-ns = <60>;
+         cdns,tslch-ns = <60>;
+         cdns,read-delay = <4>;
+
+         partitions {
+            compatible = "fixed-partitions";
+            #address-cells = <1>;
+            #size-cells = <1>;
+            bootph-all;
+
+            partition@0 {
+               label = "ospi.tiboot3";
+               reg = <0x00 0x80000>;
+            };
+
+            partition@80000 {
+               label = "ospi.tispl";
+               reg = <0x80000 0x200000>;
+            };
+
+            <other_partitions>
+         };
+      };
+   };
+
+Following is an example device tree describing OSPI NAND
+
+.. code-block:: dts
+
+   &ospi0 {
+
+      flash@0 {
+         compatible = "spi-nand";
+         reg = <0x0>;
+         spi-tx-bus-width = <8>;
+         spi-rx-bus-width = <8>;
+         spi-max-frequency = <25000000>;
+         cdns,tshsl-ns = <60>;
+         cdns,tsd2d-ns = <60>;
+         cdns,tchsh-ns = <60>;
+         cdns,tslch-ns = <60>;
+         cdns,read-delay = <2>;
+
+         partitions {
+            compatible = "fixed-partitions";
+            #address-cells = <1>;
+            #size-cells = <1>;
+
+            partition@0 {
+               label = "ospi_nand.tiboot3";
+               reg = <0x0 0x80000>;
+            };
+
+            partition@80000 {
+               label = "ospi_nand.tispl";
+               reg = <0x80000 0x200000>;
+            };
+
+            <other_partitions>
+         };
+      };
+   };
+
+Flash properties:
+
+1. **compatible:** specifies the compatible string for the device, the operating
+   system uses this string to identify and the match the driver for the device.
+   Use 'jedec,spi-nor' for OSPI/QSPI NOR flashes and 'spi-nand' for OSPI/QSPI
+   NAND flashes.
+
+2. **spi-tx-bus-width and spi-rx-bus-width:** specifies the bus width in bits for
+   SPI transactions when transmitting (tx) and receiving (rx) data. Set for '8'
+   for OSPI flashes and '4' for QSPI flashes.
+
+3. **spi-max-frequency:** defines the maximum frequency in Hertz at which the SPI
+   bus can operate. Set 1/4th or 1/8th of 'assigned-clocks' value of 'ospi0'
+   node for SDR and DDR mode respectively.
+
+4. **cdns,read-delay:** specifies the delay in clock cycles between the fetch of a
+   command and responding to that command by the flash devices. This differs
+   with flashes, try with different read delays starting from 0 and find the
+   minimum read-delay at which the flash driver probes correctly.
 
 .. rubric:: Driver Usage
    :name: driver-usage-qspi
 
 .. note::
-    Although OSPI and QSPI are different at hardware level, from
-    Linux point of view, both OSPI and QSPI are managed in the same way and
-    are exposed as /dev/mtdX devices to the user space. Therefore, there is
-    virtually no difference to end user even though OSPI and QSPI use
-    different drivers underneath. Therefore this section applies to both
-    OSPI and QSPI.
+
+    Although OSPI/QSPI NOR/NAND are different at hardware level, from
+    Linux point of view, they are managed in the same way and are exposed as
+    /dev/mtdX devices to the user space. Therefore, there is virtually no
+    difference to end user even though OSPI/QSPI NOR/NAND use different drivers
+    underneath. Therefore this section applies to both OSPI/QSPI NOR/NAND.
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
-    .. note::
-        On J721E EVM, switch SW3.1 should be in OFF position at the time
-	of powering on the board to access OSPI flash.
+    .. important::
+
+         On J721E EVM, switch SW3.1 should be in OFF position at the time
+         of powering on the board to access OSPI flash.
 
 Load UBI module for using ubi commands:
 
-::
+.. code-block:: console
 
-       $modprobe ubi
+       $ modprobe ubi
 
 
 This should create /dev/mtdX entries for every partition defined in DT
 or via command line arguments. MTD abstracts all types of flashes and,
-therefore, both OSPI and QSPI appear as MTD devices. To see all MTD
+therefore, both OSPI/QSPI NOR/NAND appear as MTD devices. To see all MTD
 partitions in the system run:
 
-::
+.. code-block:: console
 
-       $cat /proc/mtd
+       $ cat /proc/mtd
 
 Here is an example output (name varies depending on what is passed in DT
 or via command line arguments):
@@ -236,26 +377,26 @@ or via command line arguments):
 .. rubric:: Using mtd-utils
    :name: using-mtd-utils
 
-::
+.. code-block:: console
 
-         $ cat /proc/mtd       /* Should list QSPI partitions */
-         $ flash_erase  /dev/mtd6 0 0  /* Erase entire /dev/mtd6 */
-         $ dd if=/dev/random of=tmp_write.txt bs=1 count=num  /* num = bytes to write to flash */
-         $ mtd_debug write /dev/mtd6 0 num tmp_write.txt  /* write to num bytes to flash */
-         $ mtd_debug read /dev/mtd6 0 num tmp_read.txt /* /* read to num bytes to flash */
-         $ diff tmp_read.txt tmp_write.txt /* should be NULL */
+         $ cat /proc/mtd # Should list OSPI/QSPI partitions
+         $ flash_erase  /dev/mtd6 0 0 # Erase entire /dev/mtd6
+         $ dd if=/dev/random of=tmp_write.txt bs=1 count=num # num = bytes to write to flash
+         $ mtd_debug write /dev/mtd6 0 num tmp_write.txt # write to num bytes to flash
+         $ mtd_debug read /dev/mtd6 0 num tmp_read.txt # read to num bytes to flash
+         $ diff tmp_read.txt tmp_write.txt # should be NULL
 
 .. rubric:: Using dd command
    :name: using-dd-command
 
-::
+.. code-block:: console
 
-         $ cat /proc/mtd       /* Should list QSPI partitions */
-         $ flash_erase  /dev/mtd6 0 0  /* Erase entire /dev/mtd6 */
-         $ dd if=/dev/random of=tmp_write.txt bs=1 count=num  /* num = bytes to write to flash */
-         $ dd if=tmp_write.txt of=/dev/mtd6 bs=num count=1 /* write to num bytes to flash */
-         $ dd if=/dev/mtd6 of=tmp_read.txt bs=num count=1  /* read to num bytes to flash */
-         $ diff tmp_read.txt tmp_write.txt /* should be NULL */
+         $ cat /proc/mtd # Should list OSPI/QSPI partitions
+         $ flash_erase  /dev/mtd6 0 0 # Erase entire /dev/mtd6
+         $ dd if=/dev/random of=tmp_write.txt bs=1 count=num # num = bytes to write to flash
+         $ dd if=tmp_write.txt of=/dev/mtd6 bs=num count=1 # write to num bytes to flash
+         $ dd if=/dev/mtd6 of=tmp_read.txt bs=num count=1 # read to num bytes to flash
+         $ diff tmp_read.txt tmp_write.txt # should be NULL
 
 .. rubric:: Using UBIFS on flash
    :name: using-ubifs-on-flash
@@ -263,7 +404,7 @@ or via command line arguments):
 Make sure UBIFS filesystem is enabled in the kernel (refer to `this
 section <#enabling-qspi-driver-configurations>`__ for more information).
 
-::
+.. code-block:: console
 
          root~# ubiformat /dev/mtd9
          ubiformat: mtd9 (nor), size 23199744 bytes (22.1 MiB), 354 eraseblocks of 65536 bytes (64.0 KiB), min. I/O size 1 bytes
@@ -296,41 +437,45 @@ section <#enabling-qspi-driver-configurations>`__ for more information).
          [  326.061610] UBIFS (ubi0:0): media format: w4/r0 (latest is w4/r0), UUID 828AA98E-3A51-4B35-AD50-9E90144AD4C7, small LPT model
          root:~#
 
-Now you can access filesystem at /mnt/flash/.
+Now you can access filesystem at :file:`/mnt/flash/`.
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
     .. rubric:: Using Cypress S28HS512TGABHM010 flash on J721E
        :name: using-cypress-s28-on-j721e
 
-    J721E by default comes with with the Micron MT35XU512ABA1G12-0AAT flash. But the
-    Cypress S28HS512TGABHM010 flash can be used with it with some slight
+    J721E by default comes with the Micron MT35XU512ABA1G12-0AAT flash. But the
+    Cypress S28HS512TGABHM010 flash can also be used with some slight
     modifications to the device tree properties. The below patch should allow using
     the flash on J721E. Note that applying it will likely make the Micron flash unusable.
 
-    ::
+    .. code-block:: diff
 
-             diff --git a/arch/arm64/boot/dts/ti/k3-j721e-som-p0.dtsi b/arch/arm64/boot/dts/ti/k3-j721e-som-p0.dtsi
-             index 90bcc6be3834..7c43b56cf849 100644
-             --- a/arch/arm64/boot/dts/ti/k3-j721e-som-p0.dtsi
-             +++ b/arch/arm64/boot/dts/ti/k3-j721e-som-p0.dtsi
-             @@ -181,13 +181,13 @@
-              		cdns,tsd2d-ns = <60>;
-              		cdns,tchsh-ns = <60>;
-              		cdns,tslch-ns = <60>;
-             -		cdns,read-delay = <0>;
-             +		cdns,read-delay = <4>;
-              		cdns,phy-mode;
-              		#address-cells = <1>;
-              		#size-cells = <1>;
-             -		partition@3fe0000 {
-             +		partition@3fc0000 {
-              			label = "ospi.phypattern";
-             -			reg = <0x3fe0000 0x20000>;
-             +			reg = <0x3fc0000 0x40000>;
-              		};
-              	};
-              };
+               diff --git a/arch/arm64/boot/dts/ti/k3-j721e-som-p0.dtsi b/arch/arm64/boot/dts/ti/k3-j721e-som-p0.dtsi
+               index c16facf3d33d..9e50e40b453d 100644
+               --- a/arch/arm64/boot/dts/ti/k3-j721e-som-p0.dtsi
+               +++ b/arch/arm64/boot/dts/ti/k3-j721e-som-p0.dtsi
+               @@ -385,7 +385,7 @@ flash@0 {
+                              cdns,tsd2d-ns = <60>;
+                              cdns,tchsh-ns = <60>;
+                              cdns,tslch-ns = <60>;
+               -              cdns,read-delay = <0>;
+               +              cdns,read-delay = <4>;
+
+                              partitions {
+                                       compatible = "fixed-partitions";
+               @@ -427,9 +427,9 @@ partition@800000 {
+                                             reg = <0x800000 0x37c0000>;
+                                       };
+
+               -                       partition@3fe0000 {
+               +                       partition@3fc0000 {
+                                             label = "ospi.phypattern";
+               -                             reg = <0x3fe0000 0x20000>;
+               +                             reg = <0x3fc0000 0x40000>;
+                                       };
+                              };
+                     };
 
     .. rubric:: Using Micron MT35XU512ABA1G12-0AAT flash on J7200
        :name: using-micron-mt35-on-j7200
@@ -341,64 +486,69 @@ Now you can access filesystem at /mnt/flash/.
     the flash on J7200. Note that applying it will likely make the Cypress flash
     unusable.
 
-    ::
+    .. code-block:: diff
 
-             diff --git a/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi b/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi
-             index df8d9e2ad3dd..8decb9c0de9a 100644
-             --- a/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi
-             +++ b/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi
-             @@ -168,13 +168,13 @@
-              		cdns,tsd2d-ns = <60>;
-              		cdns,tchsh-ns = <60>;
-              		cdns,tslch-ns = <60>;
-             -		cdns,read-delay = <4>;
-             +		cdns,read-delay = <0>;
-              		cdns,phy-mode;
-              		#address-cells = <1>;
-              		#size-cells = <1>;
-             -		partition@3fc0000 {
-             +		partition@3fe0000 {
-              			label = "ospi.phypattern";
-             -			reg = <0x3fc0000 0x40000>;
-             +			reg = <0x3fe0000 0x20000>;
-              		};
-              	};
-              };
+               diff --git a/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi b/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi
+               index 0e7b52a89177..4f752d9f7d28 100644
+               --- a/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi
+               +++ b/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi
+               @@ -463,7 +463,7 @@ flash@0 {
+                              cdns,tsd2d-ns = <60>;
+                              cdns,tchsh-ns = <60>;
+                              cdns,tslch-ns = <60>;
+               -              cdns,read-delay = <4>;
+               +              cdns,read-delay = <0>;
+
+                              partitions {
+                                       compatible = "fixed-partitions";
+               @@ -500,9 +500,9 @@ partition@800000 {
+                                             reg = <0x800000 0x37c0000>;
+                                       };
+
+               -                       partition@3fc0000 {
+               +                       partition@3fe0000 {
+                                             label = "ospi.phypattern";
+               -                             reg = <0x3fc0000 0x40000>;
+               +                             reg = <0x3fe0000 0x20000>;
+                                       };
+                              };
+                     };
 
 .. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62PX_family')
 
     .. rubric:: Using Micron MT35XU512ABA1G12-0AAT flash on AM62x and AM62P
 
-    The AM62x and AM62P-LP Starter Kits (SK) by default come with with the Cypress S28HS512TGABHM010 flash. But the
-    Micron MT35XU512ABA1G12-0AAT flash can be used with it with some slight
+    The AM62x and AM62P-LP Starter Kits (SK) by default come with the Cypress S28HS512TGABHM010 flash. But the
+    Micron MT35XU512ABA1G12-0AAT flash can also be used with some slight
     modifications to the device tree properties. The patch below should allow to use
     the Micron flash. Note that applying it will likely make the Cypress flash unusable.
 
-    ::
+    .. code-block:: diff
 
-             diff --git a/arch/arm64/boot/dts/ti/k3-am625-sk.dts b/arch/arm64/boot/dts/ti/k3-am625-sk.dts
-             index 618e1efb7344..0fe52818f16b 100644
-             --- a/arch/arm64/boot/dts/ti/k3-am625-sk.dts
-             +++ b/arch/arm64/boot/dts/ti/k3-am625-sk.dts
-             @@ -763,7 +763,7 @@ flash@0{
-                             cdns,tsd2d-ns = <60>;
-                             cdns,tchsh-ns = <60>;
-                             cdns,tslch-ns = <60>;
-             -               cdns,read-delay = <4>;
-             +               cdns,read-delay = <0>;
-                             cdns,phy-mode;
+               diff --git a/arch/arm64/boot/dts/ti/k3-am625-sk.dts b/arch/arm64/boot/dts/ti/k3-am625-sk.dts
+               index f353db3664ac..bb2ef6a88455 100644
+               --- a/arch/arm64/boot/dts/ti/k3-am625-sk.dts
+               +++ b/arch/arm64/boot/dts/ti/k3-am625-sk.dts
+               @@ -253,7 +253,7 @@ flash@0 {
+                              cdns,tsd2d-ns = <60>;
+                              cdns,tchsh-ns = <60>;
+                              cdns,tslch-ns = <60>;
+               -              cdns,read-delay = <4>;
+               +              cdns,read-delay = <0>;
 
-                             partitions {
-             @@ -801,9 +801,9 @@ partition@800000 {
+                              partitions {
+                                       bootph-all;
+               @@ -291,10 +291,10 @@ partition@800000 {
                                              reg = <0x800000 0x37c0000>;
-                                     };
+                                       };
 
-             -                       partition@3fc0000 {
-             +                       partition@3fe0000 {
+               -                       partition@3fc0000 {
+               +                       partition@3fe0000 {
+                                             bootph-pre-ram;
                                              label = "ospi.phypattern";
-             -                               reg = <0x3fc0000 0x40000>;
-             +                               reg = <0x3fe0000 0x20000>;
-                                     };
+               -                             reg = <0x3fc0000 0x40000>;
+               +                             reg = <0x3fe0000 0x20000>;
+                                       };
                               };
                      };
 
@@ -408,9 +558,9 @@ Now you can access filesystem at /mnt/flash/.
     when there is no activity concerning the OSPI peripheral.
 
     It suspends after a certain period of inactivity based on the value of
-    CQSPI_AUTOSUSPEND_TIMEOUT which is set to 2000 ms in it's driver spi-cadence-quadspi.c
+    CQSPI_AUTOSUSPEND_TIMEOUT which is set to 2000 ms in it's driver :file:`spi-cadence-quadspi.c`
 
-    ::
+    .. code-block:: console
 
             root@am62xx-evm:~# cat /sys/bus/platform/devices/fc40000.spi/power/*
             2000
@@ -422,22 +572,22 @@ Now you can access filesystem at /mnt/flash/.
     To increase the auto suspend delay value, one can write into the autosuspend_delay_ms
     sysfs entry like below,
 
-    ::
+    .. code-block:: console
 
         echo <delay> > /sys/bus/platform/devices/fc40000.spi/power/autosuspend_delay_ms
 
     One can verify that OSPI has actually suspended by also looking at the
     k3conf output as shown below.
 
-    ::
+    .. code-block:: console
 
             root@am62xx-evm:~# k3conf dump device 75
             |------------------------------------------------------------------------------|
             | VERSION INFO                                                                 |
             |------------------------------------------------------------------------------|
-            | K3CONF | (version 0.3-nogit built Fri Oct 06 12:20:16 UTC 2023)              |
+            | K3CONF | (version 0.3-nogit built Thu Jul 25 14:13:02 UTC 2024)              |
             | SoC    | AM62X SR1.0                                                         |
-            | SYSFW  | ABI: 3.1 (firmware version 0x0009 '9.1.8--v09.01.08 (Kool Koala))') |
+            | SYSFW  | ABI: 4.0 (firmware version 0x000a '10.0.8--v10.00.08 (Fiery Fox))') |
             |------------------------------------------------------------------------------|
 
             |------------------------------------------------------|
