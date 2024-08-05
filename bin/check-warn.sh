@@ -80,7 +80,6 @@ fi
 if [ "$_old" = "HEAD" ]; then
 	_old=$(git rev-parse HEAD)
 fi
-	 
 
 # get current branch name or commit ID
 _cbr=$(git branch | sed -n '/\* /s///p')
