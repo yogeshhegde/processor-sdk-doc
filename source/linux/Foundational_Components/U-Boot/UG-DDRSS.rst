@@ -91,7 +91,7 @@ region with zeros in much less time.
 Simulating ECC error
 --------------------
 
-U-Boot command 'ddrss' can be used to simulate the ECC error by generating bit
+U-Boot command :command:`ddrss` can be used to simulate the ECC error by generating bit
 errors in SDRAM data at certain address. The ECC check can be tested by:
 
    #. Enabling ECC
@@ -102,9 +102,9 @@ errors in SDRAM data at certain address. The ECC check can be tested by:
 
 The command syntax is
 
-   .. code-block:: console
+   .. code-block:: text
 
-      ddrss ecc_err <addr in hex> <bit_err in hex>
+      => ddrss ecc_err <addr in hex> <bit_err in hex>
 
 The command will read data from ``addr`` and write ``data ^ bit_err`` back to
 ``addr``.
@@ -182,8 +182,8 @@ data at address 0x82400000.
 
       resetting ...
 
-      U-Boot SPL 2023.04-00017-gc0a4f47f8365 (Feb 16 2024 - 12:18:21 +0530)
-      SYSFW ABI: 3.1 (firmware rev 0x0009 '9.1.8--v09.01.08 (Kool Koala)')
+      U-Boot SPL 2024.04-ti-g818c76aed67f (Aug 01 2024 - 19:19:47 +0000)
+      SYSFW ABI: 4.0 (firmware rev 0x000a '10.0.8--v10.00.08 (Fiery Fox)')
       ECC is enabled, priming DDR which will take several seconds.
       ECC: priming DDR completed in 1356 msec
 
@@ -230,8 +230,8 @@ addresses 0x82400000 and 0x82400008.
 
       resetting ...
 
-      U-Boot SPL 2023.04-00017-gc0a4f47f8365 (Feb 16 2024 - 12:18:21 +0530)
-      SYSFW ABI: 3.1 (firmware rev 0x0009 '9.1.8--v09.01.08 (Kool Koala)')
+      U-Boot SPL 2024.04-ti-g818c76aed67f (Aug 01 2024 - 19:19:47 +0000)
+      SYSFW ABI: 4.0 (firmware rev 0x000a '10.0.8--v10.00.08 (Fiery Fox)')
       ECC is enabled, priming DDR which will take several seconds.
       ECC: priming DDR completed in 1356 msec
 
@@ -332,8 +332,8 @@ data at address 0x82400000.
          ECC test: Disabling DDR ECC ...
          ECC test: addr 0x82400000, read data 0x0, written data 0x3, err pattern: 0x3, read after write data 0x3
          ECC test: Enabled DDR ECC ...�
-      U-Boot SPL 2023.04-00017-gc0a4f47f8365-dirty (Feb 16 2024 - 12:07:41 +0530)
-      SYSFW ABI: 3.1 (firmware rev 0x0009 '9.1.8--v09.01.08 (Kool Koala)')
+      U-Boot SPL 2024.04-ti-g818c76aed67f (Aug 01 2024 - 19:19:47 +0000)
+      SYSFW ABI: 4.0 (firmware rev 0x000a '10.0.8--v10.00.08 (Fiery Fox)')
       ECC is enabled, priming DDR which will take several seconds.
       ECC: priming DDR completed in 1357 msec
 
@@ -356,8 +356,8 @@ addresses 0x82400000 and 0x82400008.
          ECC test: Disabling DDR ECC ...
          ECC test: addr 0x82400008, read data 0x0, written data 0x1, err pattern: 0x1, read after write data 0x1
          ECC test: Enabled DDR ECC ...�
-      U-Boot SPL 2023.04-00017-gc0a4f47f8365-dirty (Feb 16 2024 - 12:07:41 +0530)
-      SYSFW ABI: 3.1 (firmware rev 0x0009 '9.1.8--v09.01.08 (Kool Koala)')
+      U-Boot SPL 2024.04-ti-g818c76aed67f (Aug 01 2024 - 19:19:47 +0000)
+      SYSFW ABI: 4.0 (firmware rev 0x000a '10.0.8--v10.00.08 (Fiery Fox)')
       ECC is enabled, priming DDR which will take several seconds.
       ECC: priming DDR completed in 1357 msec
 
@@ -438,7 +438,7 @@ EL3 if ``HANDLE_EA_EL3_FIRST_NS`` is enabled.
                   { /* sentinel */ }
             };
 
-   4. Add ``trusted-firmware-a/plat/ti/k3/common/k3_ea.c`` to
+   4. Add :file:`trusted-firmware-a/plat/ti/k3/common/k3_ea.c` to
       ``BL31_SOURCES``
 
          .. code-block:: make
@@ -568,8 +568,8 @@ data at address 0x82400000.
       l2merrsr_el1   = 0x0000000011005408
       cpuactlr_el1   = 0x00001000090ca000
 
-      U-Boot SPL 2023.04-00017-gc0a4f47f8365 (Feb 16 2024 - 11:30:58 +0530)
-      SYSFW ABI: 3.1 (firmware rev 0x0009 '9.1.8--v09.01.08 (Kool Koala)')
+      U-Boot SPL 2024.04-ti-g818c76aed67f (Aug 01 2024 - 19:19:47 +0000)
+      SYSFW ABI: 4.0 (firmware rev 0x000a '10.0.8--v10.00.08 (Fiery Fox)')
       ECC is enabled, priming DDR which will take several seconds.
       ECC: priming DDR completed in 1356 msec
 
@@ -680,8 +680,8 @@ addresses 0x82400000 and 0x82400008.
       l2merrsr_el1   = 0x0000000011005808
       cpuactlr_el1   = 0x00001000090ca000
 
-      U-Boot SPL 2023.04-00017-gc0a4f47f8365 (Feb 16 2024 - 11:30:58 +0530)
-      SYSFW ABI: 3.1 (firmware rev 0x0009 '9.1.8--v09.01.08 (Kool Koala)')
+      U-Boot SPL 2024.04-ti-g818c76aed67f (Aug 01 2024 - 19:19:47 +0000)
+      SYSFW ABI: 4.0 (firmware rev 0x000a '10.0.8--v10.00.08 (Fiery Fox)')
       ECC is enabled, priming DDR which will take several seconds.
       ECC: priming DDR completed in 1356 msec
 
