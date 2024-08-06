@@ -37,4 +37,5 @@ Foundational Components
    Foundational_Components_Edge_AI
    Foundational_Components_ATF
    Foundational_Components_OPTEE
+   Foundational_Components_Other_Media_Tools
    Foundational_Components/Sysfw
