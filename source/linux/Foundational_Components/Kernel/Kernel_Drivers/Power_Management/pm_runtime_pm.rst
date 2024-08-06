@@ -45,22 +45,31 @@ to control the Runtime PM behavior at per device level:
 
 For example, here are the default values for DSS device:
 
-::
+.. code-block:: console
 
-    root@evm:~# cat /sys/devices/platform/bus@f0000/30200000.dss/power/*
+    root@am62xx-evm:~# tail -n +1 /sys/devices/platform/bus@f0000/30200000.dss/power/*
+    ==> /sys/devices/platform/bus@f0000/30200000.dss/power/autosuspend_delay_ms <==
     1000
+
+    ==> /sys/devices/platform/bus@f0000/30200000.dss/power/control <==
     auto
-    2285
-    suspended
-    199159074
+
+    ==> /sys/devices/platform/bus@f0000/30200000.dss/power/runtime_active_time <==
+    24129
+
+    ==> /sys/devices/platform/bus@f0000/30200000.dss/power/runtime_status <==
+    active
+
+    ==> /sys/devices/platform/bus@f0000/30200000.dss/power/runtime_suspended_time <==
+    0
 
 To disable Runtime PM for the DSS device, the "control" parameter can be
 changed to "on":
 
-::
+.. code-block:: console
 
-    root@evm:~# echo on > /sys/devices/platform/bus@f0000/30200000.dss/power/control                                                  
-    root@evm:~# cat /sys/devices/platform/bus@f0000/30200000.dss/power/*
+    root@<machine>:~# echo on > /sys/devices/platform/bus@f0000/30200000.dss/power/control
+    root@<machine>:~# cat /sys/devices/platform/bus@f0000/30200000.dss/power/*
     1000
     on
     4629
