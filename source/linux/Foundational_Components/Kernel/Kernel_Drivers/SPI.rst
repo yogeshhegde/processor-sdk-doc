@@ -254,7 +254,7 @@ show a C application interacting with the SPI peripheral.
 
    .. code-block:: console
 
-    => setenv name_overlays k3-j7200-mcspi-loopback.dtbo
+    => setenv name_overlays ti/k3-j7200-mcspi-loopback.dtbo
     => boot
 
    This will instantiate MAIN_MCSPI4 instance in slave mode and a spidev device

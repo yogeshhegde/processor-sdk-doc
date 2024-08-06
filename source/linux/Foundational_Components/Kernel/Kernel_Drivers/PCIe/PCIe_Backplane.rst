@@ -86,7 +86,7 @@ in u-boot prompt:
 
 ::
 
-  #setenv name_overlays k3-j721e-pcie-backplane.dtbo
+  #setenv name_overlays ti/k3-j721e-pcie-backplane.dtbo
 
 .. rubric:: *EP Side Configuration (J721E Backplane)*
    :name: ep-side-configuration

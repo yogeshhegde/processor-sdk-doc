@@ -274,20 +274,6 @@ An overlay can be used to dynamically overlay each DTB. If an AM62 .wic image wa
 should be found in the "root" partition in path: boot/dtb/ti. This overlay can be loaded by stopping bootup at U-boot
 prompt and executing the following commands:
 
-For 8.6 and 9.1 SDK:
-
-.. code-block:: console
-        :emphasize-lines: 3
-
-        Hit any key to stop autoboot:  0
-                =>
-                => setenv name_overlays <name-of-overlay>.dtbo
-                => boot
-
-|
-
-For 9.0 SDK:
-
 .. code-block:: console
         :emphasize-lines: 3
 

@@ -1395,4 +1395,4 @@ The following config options have to be enabled in order to use the
 
         ::
 
-           => setenv name_overlays k3-j7200-common-proc-board-pcie.dtbo k3-j7200-common-proc-board-pcie-ep.dtso
+           => setenv name_overlays ti/k3-j7200-common-proc-board-pcie.dtbo ti/k3-j7200-common-proc-board-pcie-ep.dtso

@@ -409,7 +409,7 @@ BCH16. So BCH8 ECC Scheme has been used on this board.
 
     ::
 
-       =>  setenv name_overlays k3-am62x-lp-sk-nand.dtbo
+       =>  setenv name_overlays ti/k3-am62x-lp-sk-nand.dtbo
 
 GPMC NAND driver can be enabled/disabled via *Linux Kernel
 Configuration* tool. Enable below Configs to enable MTD Support along

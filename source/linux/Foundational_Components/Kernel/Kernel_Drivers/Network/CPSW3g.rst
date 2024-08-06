@@ -70,7 +70,7 @@ Supported platforms
         | Additionally, the device-tree overlay:
         |  **k3-am62a7-sk-ethernet-dc01.dtbo**
         | has to be applied at U-Boot stage using the command:
-        |  **setenv name_overlays k3-am62a7-sk-ethernet-dc01.dtbo**
+        |  **setenv name_overlays ti/k3-am62a7-sk-ethernet-dc01.dtbo**
         | to enable functionality of the second CPSW port in Linux.
 
 ********************

@@ -1397,4 +1397,4 @@ Following is a brief explanation of layers shown in the diagram:
 
         ::
 
-           => setenv name_overlays k3-j7200-common-proc-board-pcie.dtbo
+           => setenv name_overlays ti/k3-j7200-common-proc-board-pcie.dtbo
