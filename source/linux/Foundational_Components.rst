@@ -27,6 +27,7 @@ Foundational Components
    Foundational_Components_Graphics
    Foundational_Components_Multimedia_IVAHD
    Foundational_Components_Multimedia_D5520_VXE384
+   Foundational_Components_Multimedia_Other_Tools.rst
    Foundational_Components_Multimedia_wave5
    Foundational_Components_OpenCL
    Foundational_Components_OpenCV
@@ -37,5 +38,4 @@ Foundational Components
    Foundational_Components_Edge_AI
    Foundational_Components_ATF
    Foundational_Components_OPTEE
-   Foundational_Components_Other_Media_Tools
    Foundational_Components/Sysfw
