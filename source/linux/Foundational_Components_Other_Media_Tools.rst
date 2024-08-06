@@ -8,7 +8,7 @@ ffplay is a very simple and portable media player using the ffmpeg libraries and
 
 ffprobe gathers information from multimedia streams and prints it in human- and machine-readable fashion.
 
-For example it can be used to check the format of the container used by a multimedia stream and the format and type of each media stream contained in it.
+For example, it can be used to check the format of the container used by a multimedia stream and the format and type of each media stream contained in it.
 
 To enable ffplay, the following needs to be added to **ffmpeg_%.bbappend**:\
 
@@ -95,7 +95,7 @@ The command above takes in a hevc file and converts it to a raw video with pixel
 
 The command above takes in a h264 file and converts it to a raw video with pixel format nv12 called bar.yuv. This command also utilizes the hardware GPU with h264_v4l2m2. Since it uses the hardware GPU and takes in an h264/5 input stream, fps_mode is needed to decode all frames. If not included, it will only decode up to first 3 frames.
 
-``fmpeg -re -codec:v hevc_v4l2m2m -i input.h265 -fps_mode passthrough -pix_fmt nv12 -f rawvideo - | ffplay -framerate 30 -video_size 1920x1080 -pixel_format nv12 -f rawvideo -autoexit -``
+``ffmpeg -re -codec:v hevc_v4l2m2m -i input.h265 -fps_mode passthrough -pix_fmt nv12 -f rawvideo - | ffplay -framerate 30 -video_size 1920x1080 -pixel_format nv12 -f rawvideo -autoexit -``
 
 The command above decodes a hevc stream at the native refresh rate and pipes it to ffplay. ffplay will output a 30 fps 1080p stream and will quit once the video is done playing.
 
@@ -105,11 +105,11 @@ The command above decodes a h264 file and outputs to a display in fullscreen mod
 
 ``ffprobe -show_data -show_packets foo.h265``
 
-The command above prints the packet's data and payland data in hexadecimal from the given stream.
+The command above prints the packet's data and payload data in hexadecimal from the given stream.
 
 ``ffprobe -show_frames bar.h264``
 
-The command above prints ifnormation about each frame and subtitle in the given input multimedia stream.
+The command above prints information about each frame and subtitle in the given input multimedia stream.
 
 
 
@@ -134,7 +134,7 @@ Useful Flags
 
 ``--vo=[driver]``
 
-Specify the video output backend to be used. See VIDEO OUTPUT DRIVERS for details and descriptions of available drivers.
+Specify the video output backend to be used. See `VIDEO OUTPUT DRIVERS <https://mpv.io/manual/stable/#video-output-drivers>`_ for details and descriptions of available drivers.
 
 ``--hwdec=[api1,api2,...|no|auto|auto-safe|auto-copy]``
 
