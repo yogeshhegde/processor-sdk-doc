@@ -9,7 +9,7 @@ The |__SDK_FULL_NAME__| provides a filesystem tarball that contains
 programs, scripts, Linux user-space components that abstract various
 hardware accelerators available in the SoC. The filesystem can be
 built via Yocto, following the instructions
-:ref:`Processor SDK - Building the SDK with Yocto <Overview_Building_the_SDK.html>`
+:ref:`Processor SDK - Building the SDK with Yocto <building-the-sdk-with-yocto>`
 
 There are different filesystem tarballs provided in the SDK. You'll find them at
 :file:`${PSDK_PATH}/filesystem/`

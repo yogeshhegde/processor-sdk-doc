@@ -1,5 +1,7 @@
 .. include:: /_replacevars.rst
 
+.. _building-the-sdk-with-yocto:
+
 ***************************
 Building the SDK with Yocto
 ***************************
@@ -9,8 +11,8 @@ Introduction
 This page provides the steps to build the Processor SDK and individual
 components from source. The Processor SDK build is based on the `Arago
 Project <https://git.yoctoproject.org/meta-arago>`__ which
-provides a set of layers for `OpenEmbedded <http://openembedded.org/>`__
-and the `Yocto Project <http://yoctoproject.org/>`__ targeting TI
+provides a set of layers for `OpenEmbedded <https://www.openembedded.org/wiki/Main_Page>`__
+and the `Yocto Project <https://yoctoproject.org/>`__ targeting TI
 platforms.
 
 This page will provide the basic steps required to recreate the Processor

@@ -1,3 +1,5 @@
+.. _display-sharing-between-remotecore-and-linux:
+
 How to enable display sharing between remote core and Linux
 ===========================================================
 
