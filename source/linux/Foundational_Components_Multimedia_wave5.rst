@@ -1,4 +1,4 @@
-
+.. include:: /_replacevars.rst
 
 .. _foundational-components-multimedia:
 
@@ -652,6 +652,5 @@ Also to change cma without re-compilation, one can stop at u-boot prompt during 
 
    target # setenv args_all $args_all cma=1000M
    target # boot
-
 
 `Other Available Multimedia Tools <./Foundational_Components_Other_Media_Tools.rst>`_
