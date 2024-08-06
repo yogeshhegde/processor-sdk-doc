@@ -43,7 +43,7 @@ Following features are enabled/tested in this release for AM62Px Android:
 * **Boot:** eMMC boot, fastboot based flashing, A/B partition
 * **Security:** Keymint and gatekeeper implementation with OP-TEE
 * **Platform:** SELinux enforced mode with user build, ADB over USB
-* **Connectivity:** Ethernet, USB touch
+* **Connectivity:** Ethernet, USB touch, CC33XX M.2 Module Wi-Fi support
 * **Graphics:** GPU accelerated UI with drm_hwcomposer
 * **Audio:** HDMI output and jack audio output/input
 * **Multimedia:** :ref:`HW video decode (h264, hevc) encode (h264) <Android Multimedia Wave5>`, USB camera, :ref:`CSI camera <android-csi-camera>`

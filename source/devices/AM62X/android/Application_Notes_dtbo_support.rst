@@ -57,6 +57,10 @@ The following Device-Tree Overlays are supported:
      - Microtips Technology USA 10.1" WUXGA (1920x1200) OLDI panel
    * - 4
      - Enable MAIN and MCU GPIO + CANUART wakeup source
+   * - 11
+     - M.2-CC3301 WiFi board on the M.2 connector
+   * - 13
+     - WL1837 on-board WiFi for AM62X rev 1,2,3
 
 .. warning::
     On AM62x-SK EVM, LVDS Display is supported only on E3 board revision.
