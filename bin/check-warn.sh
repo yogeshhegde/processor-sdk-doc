@@ -16,6 +16,7 @@ DIFF OPTIONS:
                      acceptable
   -b NEW             git branch or commit ID NEW for checking WARNING(s), 'HEAD'
                      is acceptable
+  -m, --merge        automatically pick the merge-base for the given commits
 
 OTHER OPTIONS:
   -h, --help         this message
@@ -112,6 +113,12 @@ main()
 	_old=$(rev-parse "${_old}")
 	_new=$(rev-parse "${_new}")
 
+	if [ -n "${_merge}" ] && ! _old=$(git merge-base "${_old}" "${_new}")
+	then
+		echo "Error: Unable to find merge-base for the given commits"
+		exit 5
+	fi
+
 	generate_log "${_old}" "_a"
 	generate_log "${_new}" "_b"
 
@@ -126,6 +133,7 @@ while [ "$#" -gt 0 ]; do
 	-o | --os) shift; _os=$1; shift;;
 	-a) shift; _old=$1; shift;;
 	-b) shift; _new=$1; shift;;
+	-m | --merge) shift; _merge=1;;
 	*) shift;;
 	esac
 done
