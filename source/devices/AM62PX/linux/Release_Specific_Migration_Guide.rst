@@ -1,17 +1,20 @@
-************************************
+.. _release-specific-migration-guide:
+
+###############
 Migration Guide
-************************************
+###############
 
 .. rubric:: Overview
 
 This page covers migration information for applications built on top
 of the Processor SDK Linux AM62PX.
 
+*****************************************
 Processor SDK Linux AM62PX 10.xx Releases
-=========================================
+*****************************************
 
 Processor SDK 10.00.07.04
--------------------------
+=========================
 
 - This is the first release on the 2024 LTS stream 6.6 kernel, 2024.04 U-Boot and Yocto Scarthgap/5.0
 - ATF 2.10+
