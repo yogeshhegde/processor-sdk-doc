@@ -33,7 +33,7 @@ Please refer to the software manifests, which outlines the licensing
 status for all packages included in this release. The manifest can be
 found on the SDK download page or in the installed directory as indicated below.
 
--  Linux Manifest:  "/docs/software_manifest.html"
+-  Linux Manifest:  :file:`<PSDK_PATH>/docs/software_manifest.html`
 
 
 Release 10.00.07.04
@@ -48,12 +48,12 @@ What's new
 
   - LTS Refresh with Stable Kernel update to 6.6.32
   - Important Bug Fixes on top of Processor SDK 09.02.01.10 Release
-  - `CC33XX M.2 Module <https://www.ti.com/tool/M2-CC3351>`__ Wi-Fi support
+  - `CC33XX M.2 Module <https://www.ti.com/tool/M2-CC3351>`__ Wi-Fi support on `SK-AM62P-LP <https://www.ti.com/tool/SK-AM62P-LP>`__ - :ref:`How to Enable M.2-CC33x1 in Linux <enable_m2cc3301>`
   - Kernel: MMC Highspeed tuning and Performance Improvements
-  - U-Boot: A53 SPL Splash Screen support :ref:`A53 SPL Splash Overview <Uboot-splash-label>`
-  - RT Kernel : Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
-  - Power Management: DeepSleep, MCU-Only and Partial IO mode :ref:`Power Management Overview <Power-Management>`
-  - OOB: GPU Accelerated Chromium Browser Support :ref:`Chromium Browser <Chromium_Browser-label>`
+  - U-Boot: A53 SPL Splash Screen support - :ref:`A53 SPL Splash Overview <Uboot-splash-label>`
+  - RT Kernel : Significant Improvements to Real-Time Linux Interrupt Latency - :ref:`RT Interrupt Latencies <RT-linux-performance>`
+  - Power Management: DeepSleep, MCU-Only and Partial IO mode - :ref:`Power Management Overview <Power-Management>`
+  - OOB: GPU Accelerated Chromium Browser Support - :ref:`Chromium Browser <Chromium_Browser-label>`
   - PM: MCU Only mode and Partial I/O mode
   - TIFS, DM, R5 SPL: PLL Configuration sequence updated to latest recommendation
 
@@ -68,6 +68,7 @@ What's new
   - Graphics DDK 24.1
   - TIFS Firmware v10.00.08
   - DM Firmware 10.00.00.08
+  - Yocto scarthgap
 
 Build Information
 =================
@@ -181,12 +182,23 @@ Yocto
 .. rubric:: meta-tisdk
    :name: meta-tisdk
 
-| Head Commit: 03f2d14c2e4fefacb17aeab1540cbec694c3f217 recipes-kernel/recipes-bsp: Bump up SRCREV for jailhouse
-| Date: 2024-05-17 01:52:07 -0500
+| Head Commit: af81e0d81c5efd005bfc0ef749f690f9748c70f6 recipes-demos: ti-apps-launcher: Bump up SRCREV
+| Date: 2024-08-05 01:53:23 -0500
 
-| Clone: git://git.ti.com/ti-sdk-linux/meta-tisdk.git
-| Branch: kirkstone
-| Release Tag: 09.02.01.10
+| Clone: https://github.com/TexasInstruments/meta-tisdk.git
+| Branch: scarthgap
+| Release Tag: 10.00.07.04
+|
+
+.. rubric:: meta-edgeai
+   :name: meta-edgeai
+
+| Head Commit: 836b1a3aa89d087474495ab4f77fc7a06ffcef0f edgeai-test-data.bb: edgeai-tidl-models.bb: Updated EDGEAI_SDK_VERSION
+| Date: 2024-07-30 05:58:20 -0500
+
+| Clone: https://git.ti.com/git/edgeai/meta-edgeai.git
+| Branch: scarthgap
+| Release Tag: 10.00.00.04
 |
 
 

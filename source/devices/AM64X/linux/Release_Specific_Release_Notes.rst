@@ -33,7 +33,7 @@ Please refer to the software manifests, which outlines the licensing
 status for all packages included in this release. The manifest can be
 found on the SDK download page or in the installed directory as indicated below.
 
--  Linux Manifest:  "/docs/software_manifest.html"
+-  Linux Manifest:  :file:`<PSDK_PATH>/docs/software_manifest.html`
 
 
 Release 10.00.07.04
@@ -49,7 +49,7 @@ What's new
   - LTS Refresh with Stable Kernel update to 6.6.32
   - Important Bug Fixes on top of Processor SDK 09.02.01.10 Release
   - Kernel: MMC Highspeed tuning and Performance Improvements
-  - RT Kernel : Significant Improvements to Real-Time Linux Interrupt Latency, :ref:`RT Interrupt Latencies <RT-linux-performance>`
+  - RT Kernel : Significant Improvements to Real-Time Linux Interrupt Latency - :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Bug Fixes and Stability Improvements
   - TIFS, DM, R5 SPL: PLL Configuration sequence updated to latest recommendation
   - DMSC Firmware: No longer re-initializing ICSSG clocks
@@ -65,6 +65,7 @@ What's new
   - OPTEE 4.2.0
   - TIFS Firmware v10.00.08
   - DM Firmware 10.00.00.08
+  - Yocto scarthgap
 
 Build Information
 =================
@@ -178,12 +179,12 @@ Yocto
 .. rubric:: meta-tisdk
    :name: meta-tisdk
 
-| Head Commit: 03f2d14c2e4fefacb17aeab1540cbec694c3f217 recipes-kernel/recipes-bsp: Bump up SRCREV for jailhouse
-| Date: 2024-05-17 01:52:07 -0500
+| Head Commit: af81e0d81c5efd005bfc0ef749f690f9748c70f6 recipes-demos: ti-apps-launcher: Bump up SRCREV
+| Date: 2024-08-05 01:53:23 -0500
 
-| Clone: git://git.ti.com/ti-sdk-linux/meta-tisdk.git
-| Branch: kirkstone
-| Release Tag: 09.02.01.10
+| Clone: https://github.com/TexasInstruments/meta-tisdk.git
+| Branch: scarthgap
+| Release Tag: 10.00.07.04
 |
 
 Issues Tracker
