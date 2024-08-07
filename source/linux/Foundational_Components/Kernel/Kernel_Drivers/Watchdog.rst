@@ -2,11 +2,9 @@
 
 .. include:: /_replacevars.rst
 
+########
 Watchdog
----------------------------------
-
-Introduction
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+########
 
 .. rubric:: Watchdog Driver Overview
 
@@ -20,12 +18,13 @@ Introduction
   an interrupt to the MCU ESM module. The MCU ESM module recieves these
   watchdog interrupts and triggers the reset logic to reset the device.
 
-Driver Features
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|
 
-.. rubric:: Driver Configuration
+********************
+Driver Configuration
+********************
 
-- Driver source location: drivers/watchdog/rti_wdt.c
+- Driver source location: :file:`drivers/watchdog/rti_wdt.c`
 
 - Watchdog module timeout parameter name: heartbeat
 
@@ -103,12 +102,12 @@ Kernel Configuration
 
 Configs to be enabled in kernel:
 
-.. code-block:: text
+.. code-block:: menuconfig
 
     CONFIG_WATCHDOG (watchdog support)
     CONFIG_K3_RTI_WATCHDOG (K3 RTI watchdog support)
 
-::
+.. code-block:: kconfig
 
    Device Drivers --->
       <*> Watchdog Timer Support --->
@@ -124,7 +123,7 @@ Configs to be enabled in kernel:
 
    From k3-am64-main.dtsi:
 
-.. code-block:: text
+.. code-block:: dts
 
    main_rti0: watchdog@e000000 {
             compatible = "ti,j7-rti-wdt";
@@ -135,7 +134,11 @@ Configs to be enabled in kernel:
             assigned-clock-parents = <&k3_clks 125 2>;
    };
 
-.. rubric:: Driver Usage
+|
+
+************
+Driver Usage
+************
 
 Once the driver is probed, each of watchdogs are exposed as a
 character device file by the kernel to be used by userspace:
@@ -143,6 +146,8 @@ character device file by the kernel to be used by userspace:
 .. code-block:: text
 
     /dev/watchdogX        X - watchdog number (zero indexed)
+
+.. rubric:: How to test watchdog
 
 An example of how to use them from a userspace application can be
 found in Linux Kernel at: samples/watchdog/watchdog-simple.c.
