@@ -1,5 +1,3 @@
-.. http://processors.wiki.ti.com/index.php/Linux_Core_CPSW_User%27s_Guide
-
 CPSW
 ---------------------------------
 
@@ -1146,10 +1144,6 @@ Sets the driver message type flags by name or number
 
            [rx-usecs N]
 
-See [`"Interrupt
-Pacing" <http://processors.wiki.ti.com/index.php/Linux_Core_CPSW_User%27s_Guide#Interrupt_Pacing>`__]
-section for more information"
-
 ::
 
            # ethtool -C eth0 rx-usecs 500
@@ -1203,10 +1197,6 @@ Supported options:
 ::
 
            [ rx N ]
-
-See [`"Configure number of TX/RX
-descriptors" <http://processors.wiki.ti.com/index.php/Linux_Core_CPSW_User%27s_Guide#Configure_number_of_TX.2FRX_descriptors>`__]
-section for more information
 
 ::
 
@@ -1653,19 +1643,19 @@ Pn\_TS\_SEQ\_MTYPE Register:
 
 For more information about PTP clock API and Network timestamping see
 Linux kernel documentation
-`Documentation/ptp/ptp.txt <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-4.9.y/Documentation/ptp/ptp.txt>`__
+`Documentation/driver-api/ptp.rst <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/driver-api/ptp.rst?h=ti-linux-6.6.y>`__
 
-`include/uapi/linux/ptp\_clock.h <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-4.9.y/include/uapi/linux/ptp_clock.h>`__
+`include/uapi/linux/ptp\_clock.h <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-6.6.y/include/uapi/linux/ptp_clock.h>`__
 
-`Documentation/ABI/testing/sysfs-ptp <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-4.9.y/Documentation/ABI/testing/sysfs-ptp>`__
+`Documentation/ABI/testing/sysfs-ptp <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-6.6.y/Documentation/ABI/testing/sysfs-ptp>`__
 
-| `Documentation/networking/timestamping.txt <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-4.9.y/Documentation/networking/timestamping.txt>`__
+| `Documentation/networking/timestamping.rst <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-6.6.y/Documentation/networking/timestamping.rst>`__
 | Code examples and tools:
-| `tools/testing/selftests/ptp/testptp.c <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-4.9.y/tools/testing/selftests/ptp/testptp.c>`__
+| `tools/testing/selftests/ptp/testptp.c <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-6.6.y/tools/testing/selftests/ptp/testptp.c>`__
 
-`tools/testing/selftests/networking/timestamping/timestamping.c <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-4.9.y/tools/testing/selftests/networking/timestamping/timestamping.c>`__
+`tools/testing/selftests/net/timestamping.c <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/tools/testing/selftests/net/timestamping.c?h=ti-linux-6.6.y>`__
 
-`Open Source Project linuxptp <http://linuxptp.sourceforge.net/>`__
+`Open Source Project linuxptp <https://linuxptp.sourceforge.net/>`__
 
 .. rubric:: Testing using ptp4l tool from linuxptp project
    :name: testing-using-ptp4l-tool-from-linuxptp-project

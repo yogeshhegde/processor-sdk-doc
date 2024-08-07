@@ -302,15 +302,6 @@ In case of custom builds, please ensure following configs are enabled.
    CONFIG_RPMSG_KDRV_ETH_SWITCH
    CONFIG_TI_RDEV_ETH_SWITCH_VIRT_EMAC
 
-
-Device tree bindings
-====================
-
-The DT bindings description can be found at:
-
-|   `Documentation/devicetree/bindings/net/ti,cpsw-virt-mac.txt <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-5.10.y/Documentation/devicetree/bindings/net/ti,cpsw-virt-mac.txt>`__
-|
-
 User guide
 ==========
 
