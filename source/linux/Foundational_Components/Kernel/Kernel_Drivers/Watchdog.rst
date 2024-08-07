@@ -146,3 +146,91 @@ character device file by the kernel to be used by userspace:
 
 An example of how to use them from a userspace application can be
 found in Linux Kernel at: samples/watchdog/watchdog-simple.c.
+
+|
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62PX')
+
+   Fixes for 10.0 SDK
+   ^^^^^^^^^^^^^^^^^^
+
+   For 10.0 SDK, ESM support was introduced for |__PART_FAMILY_NAME__|
+   platform, but ESM interrupt sources are incorrect, apply the following
+   changes in order for the watchdogs to trigger reset on CPU:
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+   For linux kernel:
+
+   .. code-block:: diff
+
+      diff --git a/arch/arm64/boot/dts/ti/k3-am62a-main.dtsi b/arch/arm64/boot/dts/ti/k3-am62a-main.dtsi
+      index 49eece9218c3..f9f1f50785e8 100644
+      --- a/arch/arm64/boot/dts/ti/k3-am62a-main.dtsi
+      +++ b/arch/arm64/boot/dts/ti/k3-am62a-main.dtsi
+      @@ -274,7 +274,8 @@ main_pmx0: pinctrl@f4000 {
+              main_esm: esm@420000 {
+                      compatible = "ti,j721e-esm";
+                      reg = <0x0 0x420000 0x0 0x1000>;
+      -               ti,esm-pins = <160>, <161>, <162>, <163>, <177>, <178>;
+      +               /* Interrupt sources: rti0, rti1, wrti0, rti4, rti2, rti3 */
+      +               ti,esm-pins = <192>, <193>, <195>, <204>, <209>, <210>;
+                      bootph-pre-ram;
+              };
+
+   For u-boot:
+
+   .. code-block:: diff
+
+      diff --git a/arch/arm/dts/k3-am62a-main.dtsi b/arch/arm/dts/k3-am62a-main.dtsi
+      index e5adae8209d..53964307858 100644
+      --- a/arch/arm/dts/k3-am62a-main.dtsi
+      +++ b/arch/arm/dts/k3-am62a-main.dtsi
+      @@ -274,7 +274,8 @@
+              main_esm: esm@420000 {
+                      compatible = "ti,j721e-esm";
+                      reg = <0x0 0x420000 0x0 0x1000>;
+      -               ti,esm-pins = <160>, <161>, <162>, <163>, <177>, <178>;
+      +               /* Interrupt sources: rti0, rti1, wrti0, rti4, rti2, rti3 */
+      +               ti,esm-pins = <192>, <193>, <195>, <204>, <209>, <210>;
+                      bootph-pre-ram;
+              };
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   For linux kernel:
+
+   .. code-block:: diff
+
+      diff --git a/arch/arm64/boot/dts/ti/k3-am62p-main.dtsi b/arch/arm64/boot/dts/ti/k3-am62p-main.dtsi
+      index 48898ed15dbd..83d1ee3ea641 100644
+      --- a/arch/arm64/boot/dts/ti/k3-am62p-main.dtsi
+      +++ b/arch/arm64/boot/dts/ti/k3-am62p-main.dtsi
+      @@ -300,7 +300,8 @@ main_pmx0_range: gpio-range {
+              main_esm: esm@420000 {
+                      compatible = "ti,j721e-esm";
+                      reg = <0x00 0x420000 0x00 0x1000>;
+      -               ti,esm-pins = <160>, <161>, <162>, <163>, <177>, <178>;
+      +               /* Interrupt sources: rti0, rti1, wrti0 rti2, rti3, rti15 */
+      +               ti,esm-pins = <224>, <225>, <227>, <241>, <242>, <248>;
+                      bootph-pre-ram;
+              };
+
+   For u-boot:
+
+   .. code-block:: diff
+
+      diff --git a/arch/arm/dts/k3-am62p-main.dtsi b/arch/arm/dts/k3-am62p-main.dtsi
+      index 652908cf0d0..d8333023cdc 100644
+      --- a/arch/arm/dts/k3-am62p-main.dtsi
+      +++ b/arch/arm/dts/k3-am62p-main.dtsi
+      @@ -269,7 +269,8 @@
+              main_esm: esm@420000 {
+                      compatible = "ti,j721e-esm";
+                      reg = <0x00 0x420000 0x00 0x1000>;
+      -               ti,esm-pins = <160>, <161>, <162>, <163>, <177>, <178>;
+      +               /* Interrupt sources: rti0, rti1, wrti0 rti2, rti3, rti15 */
+      +               ti,esm-pins = <224>, <225>, <227>, <241>, <242>, <248>;
+                      bootph-pre-ram;
+              };
+ 
