@@ -1,11 +1,10 @@
 Thank you for choosing to evaluate one of our `TI Processors
-<http://www.ti.com/lsds/ti/dsp/arm.page>`__. It is designed to quickly
+<https://www.ti.com/microcontrollers-mcus-processors/overview.html>`__. It is designed to quickly
 provide the information you need most while evaluating a TI
 microprocessor, specifically running one of the Software Architectures
 available, embedded Linux. We are always striving to improve this
-product. Please let us know if you have :ref:`ideas or
-suggestions <Feedback>`.
-
+product. Please let us know if you have ideas or
+suggestions at `E2E <https://e2e.ti.com/>`__.
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
@@ -14,16 +13,25 @@ suggestions <Feedback>`.
     +========================================================================+===============================================================================+
     | |__Getting Started Guide__|  <-- **Start Here**                        | |__How To Guides__|                                                           |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-    | |__Supported Platforms and Versions__|                                 | |__Linux Software Stack__|                                                    |
+    | |__Supported Platforms and Versions__|                                 | |__Building the SDK__|                                                        |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-    | |__Directory Structure Overview__|                                     | |__Building the SDK__|                                                        |
+    | |__Directory Structure Overview__|                                     | |__GPLv3 Disclaimer__|                                                        |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
     | |__Release Notes__|                                                    | |__Migration Guide__|                                                         |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-    | |__GPLv3 Disclaimer__|                                                 | `Training <https://training.ti.com/processor-sdk-training-series>`__          |
+    | |__Technical Support__|                                                | `Training <https://training.ti.com/processor-sdk-training-series>`__          |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-    | |__Technical Support__|                                                |                                                                               |
-    +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+
+    .. |__Getting Started Guide__| replace:: :ref:`Getting Started Guide <overview-getting-started>`
+    .. |__Directory Structure Overview__| replace:: :ref:`Directory Structure Overview <overview-directory-structure>`
+    .. |__Building the SDK__| replace:: :ref:`Building the SDK with Yocto <overview-building-the-sdk>`
+    .. |__GPLv3 Disclaimer__| replace:: :ref:`GPLv3 Disclaimer <overview-gplv3-disclaimer>`
+    .. |__Technical Support__| replace:: :ref:`Technical Support <overview-technical-support>`
+    .. |__Supported Platforms and Versions__| replace:: :ref:`Supported Platforms and Versions <release-specific-supported-platforms-and-versions>`
+    .. |__Migration Guide__| replace:: :ref:`Migration Guide <release-specific-migration-guide>`
+    .. |__How To Guides__| replace:: :ref:`How To Guides <how-to-guides>`
+    .. |__Release Notes__| replace:: :ref:`Release Notes <Release-note-label>`
+
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
 
@@ -41,16 +49,17 @@ suggestions <Feedback>`.
     | `Training <https://training.ti.com/processor-sdk-training-series>`__  |                                                                      |
     +-----------------------------------------------------------------------+----------------------------------------------------------------------+
 
-.. |__Getting Started Guide__| replace:: :ref:`Getting Started Guide <overview-getting-started>`
-.. |__Directory Structure Overview__| replace:: :ref:`Directory Structure Overview <overview-directory-structure>`
-.. |__Building the SDK__| replace:: :ref:`Building the SDK <overview-building-the-sdk>`
-.. |__GPLv3 Disclaimer__| replace:: :ref:`GPLv3 Disclaimer <overview-gplv3-disclaimer>`
-.. |__Technical Support__| replace:: :ref:`Technical Support <overview-technical-support>`
-.. |__Supported Platforms and Versions__| replace:: :ref:`Supported Platforms and Versions <release-specific-supported-platforms-and-versions>`
-.. |__Linux Software Stack__| replace:: :ref:`Linux Software Stack <overview-software-stack>`
-.. |__Migration Guide__| replace:: :ref:`Migration Guide <release-specific-migration-guide>`
-.. |__How To Guides__| replace:: :ref:`How To Guides <how-to-guides>`
-.. |__Release Notes__| replace:: :ref:`Release Notes <release-specific-release-notes>`
+    .. |__Getting Started Guide__| replace:: :ref:`Getting Started Guide <overview-getting-started>`
+    .. |__Directory Structure Overview__| replace:: :ref:`Directory Structure Overview <overview-directory-structure>`
+    .. |__Building the SDK__| replace:: :ref:`Building the SDK with Yocto <overview-building-the-sdk>`
+    .. |__GPLv3 Disclaimer__| replace:: :ref:`GPLv3 Disclaimer <overview-gplv3-disclaimer>`
+    .. |__Technical Support__| replace:: :ref:`Technical Support <overview-technical-support>`
+    .. |__Supported Platforms and Versions__| replace:: :ref:`Supported Platforms and Versions <release-specific-supported-platforms-and-versions>`
+    .. |__Linux Software Stack__| replace:: :ref:`Linux Software Stack <overview-software-stack>`
+    .. |__Migration Guide__| replace:: :ref:`Migration Guide <release-specific-migration-guide>`
+    .. |__How To Guides__| replace:: :ref:`How To Guides <how-to-guides>`
+    .. |__Release Notes__| replace:: :ref:`Release Notes <Release-note-label>`
+
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
@@ -68,17 +77,17 @@ suggestions <Feedback>`.
     | |__ATF__|        | |__OPTEE__|            |                            |                            |
     +------------------+------------------------+----------------------------+----------------------------+
 
-.. |__Boot Monitor__| replace:: :ref:`Boot Monitor  <foundational-components-boot-monitor>`
-.. |__OpenCL__| replace:: `OpenCL <http://downloads.ti.com/mctools/esd/docs/opencl/index.html>`__
-.. |__OpenCV__| replace:: :ref:`OpenCV <foundational-components-opencv>`
-.. |__Multimedia__| replace:: :ref:`Multimedia <foundational-components-multimedia>`
-.. |__Virtualization__| replace:: :ref:`Virtualization <foundational-components-virtualization>`
-.. |__IPC__| replace:: :ref:`IPC <foundational-components-ipc>`
-.. |__OpenVX__| replace:: :ref:`OpenVX <foundational-components-openvx>`
-.. |__CMEM__| replace:: :ref:`CMEM <foundational-components-cmem>`
-.. |__Machine Learning__| replace:: :ref:`Machine Learning <foundational-components-machine-learning>`
-.. |__ATF__| replace:: :ref:`ATF <foundational-components-atf>`
-.. |__OPTEE__| replace:: :ref:`OPTEE <foundational-components-optee>`
+    .. |__Boot Monitor__| replace:: :ref:`Boot Monitor  <foundational-components-boot-monitor>`
+    .. |__OpenCL__| replace:: `OpenCL <http://downloads.ti.com/mctools/esd/docs/opencl/index.html>`__
+    .. |__OpenCV__| replace:: :ref:`OpenCV <foundational-components-opencv>`
+    .. |__Multimedia__| replace:: :ref:`Multimedia <foundational-components-multimedia>`
+    .. |__Virtualization__| replace:: :ref:`Virtualization <foundational-components-virtualization>`
+    .. |__IPC__| replace:: :ref:`IPC <foundational-components-ipc>`
+    .. |__OpenVX__| replace:: :ref:`OpenVX <foundational-components-openvx>`
+    .. |__CMEM__| replace:: :ref:`CMEM <foundational-components-cmem>`
+    .. |__Machine Learning__| replace:: :ref:`Machine Learning <foundational-components-machine-learning>`
+    .. |__ATF__| replace:: :ref:`ATF <foundational-components-atf>`
+    .. |__OPTEE__| replace:: :ref:`OPTEE <foundational-components-optee>`
 
 
 .. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
@@ -91,16 +100,16 @@ suggestions <Feedback>`.
     | |__Graphics & Display__| | |__Examples & Demos__| | |__PRU Subsystem__|        |             |
     +--------------------------+------------------------+----------------------------+-------------+
 
-.. |__U-Boot__| replace:: :ref:`U-Boot <foundational-components-u-boot>`
-.. |__Kernel__| replace:: :ref:`Kernel <foundational-components-kernel>`
-.. |__Filesystem__| replace:: :ref:`Filesystem <foundational-components-filesystem>`
-.. |__Tools__| replace:: :ref:`Tools <foundational-components-tools>`
-.. |__Graphics & Display__| replace:: :ref:`Graphics & Display <foundational-components-graphics-and-display>`
-.. |__Examples & Demos__| replace:: :ref:`Examples, Demos <examples-and-demos>`
-.. |__PRU Subsystem__| replace:: :ref:`PRU Subsystem <foundational-components-pru-subsystem>`
+    .. |__U-Boot__| replace:: :ref:`U-Boot <foundational-components-u-boot>`
+    .. |__Kernel__| replace:: :ref:`Kernel <foundational-components-kernel>`
+    .. |__Filesystem__| replace:: :ref:`Filesystem <foundational-components-filesystem>`
+    .. |__Tools__| replace:: :ref:`Tools <foundational-components-tools>`
+    .. |__Graphics & Display__| replace:: :ref:`Graphics & Display <foundational-components-graphics-and-display>`
+    .. |__Examples & Demos__| replace:: :ref:`Examples, Demos <examples-and-demos>`
+    .. |__PRU Subsystem__| replace:: :ref:`PRU Subsystem <foundational-components-pru-subsystem>`
+
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
-
 
     .. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62AX', 'AM62PX')
 
@@ -112,10 +121,10 @@ suggestions <Feedback>`.
         | |__CCLINK__|    | |__SORTE__|            | |__OPCUA__|      |                                   |
         +-----------------+------------------------+------------------+-----------------------------------+
 
-.. |__DUAL_EMAC__| replace:: :ref:`DUAL_EMAC <industrial-protocols-dual-emac>`
-.. |__HSR_PRP__| replace:: :ref:`HSR_PRP <industrial-protocols-hsr-prp>`
-.. |__PTP__| replace:: :ref:`PTP <industrial-protocols-ptp>`
-.. |__RSTP__| replace:: :ref:`RSTP <industrial-protocols-rstp>`
-.. |__CCLINK__| replace:: :ref:`CCLINK <industrial-protocols-cclink>`
-.. |__SORTE__| replace:: :ref:`SORTE <industrial-protocols-sorte>`
-.. |__OPCUA__| replace:: :ref:`OPC/UA <industrial-protocols-opcua>`
+        .. |__DUAL_EMAC__| replace:: :ref:`DUAL_EMAC <industrial-protocols-dual-emac>`
+        .. |__HSR_PRP__| replace:: :ref:`HSR_PRP <industrial-protocols-hsr-prp>`
+        .. |__PTP__| replace:: :ref:`PTP <industrial-protocols-ptp>`
+        .. |__RSTP__| replace:: :ref:`RSTP <industrial-protocols-rstp>`
+        .. |__CCLINK__| replace:: :ref:`CCLINK <industrial-protocols-cclink>`
+        .. |__SORTE__| replace:: :ref:`SORTE <industrial-protocols-sorte>`
+        .. |__OPCUA__| replace:: :ref:`OPC/UA <industrial-protocols-opcua>`

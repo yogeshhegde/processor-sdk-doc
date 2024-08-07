@@ -17,7 +17,7 @@ for instructions on running the SDK installer.
 Once the installer is run, you can setup your host environment with a few steps.
 Run the following scripts to achieve this:
 
-* *setup.sh* to install all host packages needed for development.
+* :file:`setup.sh` to install all host packages needed for development.
 
 Detailed steps are described at :ref:`run-setup-scripts`
 
@@ -66,9 +66,9 @@ For detailed instructions on building BSP components, refer to the section
 :ref:`top-level-makefile`.
 You should run the following commands in the installer directory:
 
-* Build all components using *make all*
-* Follow the section *Installing to SD card rootfs*
-* Follow the section *Installing boot binaries*
+* Build all components using :code:`make all`
+* Follow the section **Installing to SD card rootfs**
+* Follow the section **Installing boot binaries**
 
 After you build and copy all the binaries to your SD card, you can boot the
 EVM with binaries built on your host. Upon successful bootup, you should see
@@ -76,9 +76,9 @@ a different wallpaper on the display. This should confirm that your updates
 are copied correctly in the SD card. Also, you can run the following command
 on the target to verify that you are using the newly-built Linux kernel.
 
-::
+.. code-block:: console
 
-    $> cat /proc/version
+    target# cat /proc/version
 
 The output should indicate the build date, host PC name, etc. This verifies
 that your SDK has been setup correctly, enabling you to start development.
