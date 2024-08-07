@@ -71,15 +71,6 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Network/NETCONF-YANG
 #linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
 #linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Backplane
 #linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_overview
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_dfs
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_cpuidle
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_runtime_pm
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_low_power_modes
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_wakeup_sources
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_sw_arch
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_debug
 linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
 linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
@@ -89,6 +80,16 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/UART
 linux/Foundational_Components/Kernel/Kernel_Drivers/USB/AM62_DWC3
 linux/Foundational_Components/Kernel/Kernel_Drivers/VTM
 linux/Foundational_Components/Kernel/Kernel_Drivers/Watchdog
+
+linux/Foundational_Components_Power_Management
+linux/Foundational_Components/Power_Management/pm_overview
+linux/Foundational_Components/Power_Management/pm_dfs
+linux/Foundational_Components/Power_Management/pm_cpuidle
+linux/Foundational_Components/Power_Management/pm_runtime_pm
+linux/Foundational_Components/Power_Management/pm_low_power_modes
+linux/Foundational_Components/Power_Management/pm_wakeup_sources
+linux/Foundational_Components/Power_Management/pm_sw_arch
+linux/Foundational_Components/Power_Management/pm_debug
 
 linux/Foundational_Components_Kernel_Users_Guide
 linux/Foundational_Components_Kernel_LTP-DDT_Validation
