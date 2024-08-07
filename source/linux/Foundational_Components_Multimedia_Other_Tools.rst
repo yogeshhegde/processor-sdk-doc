@@ -1,120 +1,135 @@
-FFmpeg Plugins for Multimedia
-=============================
-ffmpeg is an open-source multimedia framework. This is useful for decoding, encoding and transcoding videos.
+################################
+Fmpeg Plugins for Multimedia
+################################
+:command:`ffmpeg` is an open-source multimedia framework. This is useful for decoding, encoding and transcoding videos. This is a command line tool.
 
-The library comes with ffplay and ffprobe.
+The library comes with :command:`ffplay` and :command:`ffprobe`.
 
-ffplay is a very simple and portable media player using the ffmpeg libraries and the SDL library. It is mostly used as a testbed for the various ffmpeg APIs.
+:command:`ffplay` is a very simple and portable media player using the :command:`ffmpeg` libraries and the SDL library. It is mostly used as a testbed for the various :command:`ffmpeg` APIs.
 
-ffprobe gathers information from multimedia streams and prints it in human- and machine-readable fashion.
+:command:`ffprobe` gathers information from multimedia streams and prints it in human and machine-readable fashion.
 
-For example, it can be used to check the format of the container used by a multimedia stream and the format and type of each media stream contained in it.
+For example, it can be used to check the format of the container used and the format and type of each media stream contained in it.
 
-To enable ffplay, the following needs to be added to **ffmpeg_%.bbappend**:\
+To enable :command:`ffplay`, the following needs to be added to :file:`ffmpeg_%.bbappend`:\
 
-``PACKAGECONFIG:append = "sdl2"``
+.. code-block::  console
 
-This is a command line tool.
+   PACKAGECONFIG:append = "sdl2"
 
-https://ffmpeg.org/ffmpeg.html
-https://ffmpeg.org/ffplay.html
-https://ffmpeg.org/ffprobe.html
+More information about the :command:`ffmpeg` tools can be found here:
+   - https://ffmpeg.org/ffmpeg.html
+   - https://ffmpeg.org/ffplay.html
+   - https://ffmpeg.org/ffprobe.html
 
 Useful Flags
-------------
-**ffmpeg**
+============
+
+ffmpeg
+------
 
 Help Flags
-
+^^^^^^^^^^
 ``-h`` or ``-?`` or ``-help``
-	Topic show help
+   Topic show help
 ``-codecs``
-	Displays all codecs supported
+   Displays all codecs supported
 ``-decoders``
-	Displays all decoders supported
+   Displays all decoders supported
 ``-formats``
-	Displays all available formats
+   Displays all available formats
 ``-pix_fmts``
-	Displays all available pixel formats
+   Displays all available pixel formats
 
 ``-codec:v``
-	Specifies the stream decoder. For decoding, we only ``hevc_v4l2m2m`` and ``h264_v4l2m2m``. :v stands for video
+   Specifies the stream decoder. For decoding, we only ``hevc_v4l2m2m`` and ``h264_v4l2m2m``. :v stands for video
 
 Stream Specific Flags
-
+^^^^^^^^^^^^^^^^^^^^^
 ``-re``
-	Reads input at native frame rate
+   Reads input at native frame rate
 ``-i [filename]``
-	Input stream
+   Input stream
 ``-fps_mode passthrough``
-	Allows for frames to pass even if out of sync. Needed since there are no timestamps in decoded h264/5 streams that use the hardware GPU to decode. Must be placed in between input and output stream
+   Allows for frames to pass even if out of sync. Needed since there are no timestamps in decoded h264/5 streams that use the hardware GPU to decode. Must be placed in between input and output stream
 ``-pix_fmt``
-	Specifies the pixel format for the output stream. NV12 is recommended for wave5
+   Specifies the pixel format for the output stream. NV12 is recommended for wave5
 ``-f``
-	Forces format of output stream
+   Forces format of output stream
 ``-frames``
-	Set the number of frames to record
+   Set the number of frames to record
 
-**ffplay**
-
+ffplay
+------
 ``-framerate``
-	Specifies framerate of display stream
+   Specifies framerate of display stream
 ``-video_size``
-	Specifies video size of video. It may be the string of the form or *widthxheigh*. For example, 2k or 2048x1080 are equivalent.
+   Specifies video size of video. It may be the string of the form or *widthxheigh*. For example, 2k or 2048x1080 are equivalent.
 ``-pixel_format``
-	Specifies pixel format of display stream
+   Specifies pixel format of display stream
 ``-f``
-	Forces format of display stream
+   Forces format of display stream
 ``-fs``
-	Start in fullscreen mode
+   Start in fullscreen mode
 ``-autoexit``
-	Exits ffplay after stream is finished
+   Exits ffplay after stream is finished
 
-**ffprobe**
-
+ffprobe
+-------
 ``-show_data``
-	Show payload data, as a hexadecimal and ASCII dump. Coupled with -show_packets, it will dump the packets’ data. Coupled with -show_streams, it will dump the codec extradata
-	The dump is printed as the "data" field. It may contain newlines
+   Show payload data, as a hexadecimal and ASCII dump. Coupled with -show_packets, it will dump the packets’ data. Coupled with -show_streams, it will dump the codec extradata
+   The dump is printed as the "data" field. It may contain newlines
 ``-show_packets``
-	Show information about each packet contained in the input multimedia stream
-	The information for each single packet is printed within a dedicated section with name "PACKET"
+   Show information about each packet contained in the input multimedia stream
+   The information for each single packet is printed within a dedicated section with name "PACKET"
 ``-show_frames``
-	Show information about each frame and subtitle contained in the input multimedia stream
-	The information for each single frame is printed within a dedicated section with name "FRAME" or "SUBTITLE"
+   Show information about each frame and subtitle contained in the input multimedia stream
+   The information for each single frame is printed within a dedicated section with name "FRAME" or "SUBTITLE"
 ``-show_format``
-	Show information about the container format of the input multimedia stream
-	All the container format information is printed within a section with name "FORMAT"
+   Show information about the container format of the input multimedia stream
+   All the container format information is printed within a section with name "FORMAT"
 
 Example Commands
-----------------
-``ffmpeg -i foo.265 -f rawvideo -pix_fmt nv12 foo.yuv``
+================
 
-The command above takes in a hevc file and converts it to a raw video with pixel format nv12 called foo.yuv. This uses software hardware acceleration.
+To convert a HEVC file to a raw video with pixel format NV12 named :file:`foo.yuv` with software acceleration, the following can be used:
 
-``ffmpeg -codec:v h264_v4l2m2m -i bar.h264 -f rawvideo -pix_fmt nv12 -fps_mode passthrough bar.yuv``
+.. code-block:: console
+   
+   ffmpeg -i foo.265 -f rawvideo -pix_fmt nv12 foo.yuv
 
-The command above takes in a h264 file and converts it to a raw video with pixel format nv12 called bar.yuv. This command also utilizes the hardware GPU with h264_v4l2m2. Since it uses the hardware GPU and takes in an h264/5 input stream, fps_mode is needed to decode all frames. If not included, it will only decode up to first 3 frames.
+To convert a H264 file to a raw video named :file:`bar.yuv` with hardware acceleration and each frame passed, the following can be used:
 
-``ffmpeg -re -codec:v hevc_v4l2m2m -i input.h265 -fps_mode passthrough -pix_fmt nv12 -f rawvideo - | ffplay -framerate 30 -video_size 1920x1080 -pixel_format nv12 -f rawvideo -autoexit -``
+.. code-block:: console
 
-The command above decodes a hevc stream at the native refresh rate and pipes it to ffplay. ffplay will output a 30 fps 1080p stream and will quit once the video is done playing.
+   ffmpeg -codec:v h264_v4l2m2m -i bar.h264 -f rawvideo -fps_mode passthrough bar.yuv
 
-``ffplay -fs -autoexit foobar.264``
+To play a H264 video and output to the display at fullscreen and exit once the video is done playing, the following can be used:
 
-The command above decodes a h264 file and outputs to a display in fullscreen mode and will automatically quit once the video is done playing.
+.. code-block:: console
+   
+   ffplay -fs -autoexit foobar.264
 
-``ffprobe -show_data -show_packets foo.h265``
+To pipe the output from ffmpeg to ffplay with hardware acceleration, the following can be used:
 
-The command above prints the packet's data and payload data in hexadecimal from the given stream.
+.. code-block:: console
 
-``ffprobe -show_frames bar.h264``
+   ffmpeg -re -codec:v hevc_v4l2m2m -i input.h265 -fps_mode passthrough -f rawvideo - | ffplay -framerate 30 -video_size 1920x1080 -f rawvideo -autoexit -
 
-The command above prints information about each frame and subtitle in the given input multimedia stream.
+To print out the packet's data and payload data in hexadecimal from a given multimedia stream named :file:`foo.h265`, the following can be used:
 
+.. code-block:: console
+   
+   ffprobe -show_data -show_packets foo.h265``
 
+To print information about each frame and/or subtitle in the given multimedia stream named :file:`bar.h264`, the following can be used:
 
+.. code-block:: console
+   ffprobe -show_frames bar.h264``
+
+################################
 MPV Plugins for Multimedia
-==========================
+################################
 mpv is a media player based on MPlayer and mplayer2. It supports a wide variety of video file formats, audio and video codecs, and subtitle types. 
 Special input URL types are available to read input from a variety of sources other than disk files. 
 Depending on platform, a variety of different video and audio output methods are supported.
@@ -123,14 +138,16 @@ This is a command line tool that can also use keyboard shortcuts.
 
 https://mpv.io/manual/stable/
 
-``yt-dlp`` can be combined with mpv to play videos from the web. (YouTube, TikTok, etc.)
+:command:`yt-dlp` can be combined with mpv to play videos from the web. (YouTube, TikTok, etc.)
 
-To install ``yt-dlp`` run the following command
+To install :command:`yt-dlp` run the following command
 
-``python3 -m pip install yt-dlp``
+.. code-block:: console
+
+   python3 -m pip install yt-dlp
 
 Useful Flags
-------------
+============
 
 ``--vo=[driver]``
 
@@ -163,27 +180,39 @@ Switches mpv to a mode where video timing is determined using a fixed framerate 
 Set framerate of output stream. Can be combined with --no-correct-pts for streams with incorrect/no timestamps
 
 Example Commands
-----------------
-``mpv --no-correct-pts --fps=30 foo.h264``
+================
 
-The command above decodes an h264 file and outputs to the display and is set to 30 frames per second.
+To play a H264 video to display at 30 frames per seconds, the following can be used:
 
-``mpv --vo=gpu --hwdec=auto --no-correct-pts --fps=30 bar.h265``
+.. code-block:: console
 
-The command above decodes an hevc file and outputs to display using the available hardware acceleration
-at 30 frames per second.
+   mpv --no-correct-pts --fps=30 foo.h264
 
-``mpv --vo=gpu --gpu-context=wayland --fs foobar.mp4``
+To play a HEVC video with full/assisted hardware acceleration at 30 frames per second, the following can be used:
 
-The command above displays a mp4 video to display and sets the gpu context to wayland and sets the video to Fullscreen
+.. code-block:: console
 
-``yt-dlp -o - <link> | mpv --no-correct-pts --fps=30 -``
+   mpv --vo=gpu --hwdec=auto --no-correct-pts --fps=30 bar.h265
 
-The command above downloads a video from a link and pipes the video to mpv with no correct points at 30 frames per seconds
+To play a mp4 video to display in fullscreen and set the gpu context to wayland, the following can be used:
 
-``yt-dlp -f 270 -o - <link> | mpv -``
+.. code-block:: console
 
-The command above downloads a video from a link at 1080p and plays the video with mpv. ``-f 232`` can be used for 720p
+   mpv --vo=gpu --gpu-context=wayland --fs foobar.mp4
+
+To download a video from a link and pipe the video to mpv with no correct points at 30 frames per seconds, the following can be used:
+
+.. code-block:: console
+
+   yt-dlp -o - <link> | mpv --no-correct-pts --fps=30 -
+
+Tp download a video from a link at 1080p and play the video with mpv, the following can be used:
+
+.. code-block:: console
+
+   yt-dlp -f 270 -o - <link> | mpv -
+
+``-f 232`` can be used to get a 720p video.
 
 In instances where running yt-dlp doesn't work because of a protocol issue, updating to the newest version of yt-dlp or changing
 the format/quality by running ``-f 270`` or ``-f 232`` for example, or playing other videos might solve the issue.
