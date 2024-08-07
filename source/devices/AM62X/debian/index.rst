@@ -18,6 +18,7 @@ Debian Developer's Guide
    Getting_Started_Guide
    /debian/Building_Debian_Image
    /debian/Building_Debian_Packages
+   /debian/Demo_User_Guides/index_Demos
 
 |
 
