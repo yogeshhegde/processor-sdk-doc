@@ -158,7 +158,7 @@ MTD subsystem. The mtd device names are named /dev/mtdX, where X is and integer.
     utility.
 
 .. rubric:: U-boot
-   :name: u-boot
+   :name: nand-u-boot
 
 Information regarding NAND booting and booting the kernel and file
 system from NAND can be found in the U-boot User Guide NAND
