@@ -1576,7 +1576,7 @@ filesystem and then imported
   => env import -t ${loadaddr} ${filesize}
 
 For production environments if one needs to rely on saveenv counterpart
-then they can always refer to the `commit <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2023.04-next&id=949e9cf709391136aa9a7a7f2c2215a9855261ef>`__
+then they can always refer to the `commit <https://source.denx.de/u-boot/u-boot/-/commit/a5e8678e0a32f85ad012aea7641e9534ada5c0fe>`__
 
 .. rubric:: Networking Environment
    :name: networking-environment
