@@ -1,6 +1,7 @@
-################################
-Fmpeg Plugins for Multimedia
-################################
+#############################
+FFmpeg Plugins for Multimedia
+#############################
+
 :command:`ffmpeg` is an open-source multimedia framework. This is useful for decoding, encoding and transcoding videos. This is a command line tool.
 
 The library comes with :command:`ffplay` and :command:`ffprobe`.
@@ -11,25 +12,26 @@ The library comes with :command:`ffplay` and :command:`ffprobe`.
 
 For example, it can be used to check the format of the container used and the format and type of each media stream contained in it.
 
-To enable :command:`ffplay`, the following needs to be added to :file:`ffmpeg_%.bbappend`:\
+To enable :command:`ffplay`, the following needs to be added to :file:`local.conf`:
 
-.. code-block::  console
+.. code-block::  text
 
-   PACKAGECONFIG:append = "sdl2"
+   PACKAGECONFIG:append:pn-ffmpeg = " sdl2"
 
 More information about the :command:`ffmpeg` tools can be found here:
    - https://ffmpeg.org/ffmpeg.html
    - https://ffmpeg.org/ffplay.html
    - https://ffmpeg.org/ffprobe.html
 
+************
 Useful Flags
-============
+************
 
 ffmpeg
-------
+======
 
 Help Flags
-^^^^^^^^^^
+----------
 ``-h`` or ``-?`` or ``-help``
    Topic show help
 ``-codecs``
@@ -45,7 +47,7 @@ Help Flags
    Specifies the stream decoder. For decoding, we only ``hevc_v4l2m2m`` and ``h264_v4l2m2m``. :v stands for video
 
 Stream Specific Flags
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 ``-re``
    Reads input at native frame rate
 ``-i [filename]``
@@ -60,7 +62,7 @@ Stream Specific Flags
    Set the number of frames to record
 
 ffplay
-------
+======
 ``-framerate``
    Specifies framerate of display stream
 ``-video_size``
@@ -75,7 +77,7 @@ ffplay
    Exits ffplay after stream is finished
 
 ffprobe
--------
+=======
 ``-show_data``
    Show payload data, as a hexadecimal and ASCII dump. Coupled with -show_packets, it will dump the packets’ data. Coupled with -show_streams, it will dump the codec extradata
    The dump is printed as the "data" field. It may contain newlines
@@ -89,8 +91,9 @@ ffprobe
    Show information about the container format of the input multimedia stream
    All the container format information is printed within a section with name "FORMAT"
 
+****************
 Example Commands
-================
+****************
 
 To convert a HEVC file to a raw video with pixel format NV12 named :file:`foo.yuv` with software acceleration, the following can be used:
 
@@ -120,16 +123,17 @@ To print out the packet's data and payload data in hexadecimal from a given mult
 
 .. code-block:: console
    
-   ffprobe -show_data -show_packets foo.h265``
+   ffprobe -show_data -show_packets foo.h265
 
 To print information about each frame and/or subtitle in the given multimedia stream named :file:`bar.h264`, the following can be used:
 
 .. code-block:: console
-   ffprobe -show_frames bar.h264``
 
-################################
+   ffprobe -show_frames bar.h264
+
+##########################
 MPV Plugins for Multimedia
-################################
+##########################
 mpv is a media player based on MPlayer and mplayer2. It supports a wide variety of video file formats, audio and video codecs, and subtitle types. 
 Special input URL types are available to read input from a variety of sources other than disk files. 
 Depending on platform, a variety of different video and audio output methods are supported.
@@ -146,8 +150,9 @@ To install :command:`yt-dlp` run the following command
 
    python3 -m pip install yt-dlp
 
+************
 Useful Flags
-============
+************
 
 ``--vo=[driver]``
 
@@ -179,8 +184,9 @@ Switches mpv to a mode where video timing is determined using a fixed framerate 
 
 Set framerate of output stream. Can be combined with --no-correct-pts for streams with incorrect/no timestamps
 
+****************
 Example Commands
-================
+****************
 
 To play a H264 video to display at 30 frames per seconds, the following can be used:
 
