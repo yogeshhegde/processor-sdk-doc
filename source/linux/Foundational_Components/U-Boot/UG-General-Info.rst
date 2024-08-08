@@ -1583,7 +1583,7 @@ then they can always refer to the `commit <https://source.denx.de/u-boot/u-boot/
 
 When using a USB-Ethernet dongle a valid MAC address must be set in the
 environment. To create a valid address please read `**this
-page** <http://www.denx.de/wiki/view/DULG/WhereCanIGetAValidMACAddress>`__.
+page** <https://github.com/u-boot/u-boot/blob/v2024.04/doc/README.usb#L208>`__.
 Then issue the following command:
 
 .. code-block:: console
