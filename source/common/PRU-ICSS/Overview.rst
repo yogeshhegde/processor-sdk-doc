@@ -313,7 +313,7 @@ Support
 
 TI supports PRU through the `e2e forums <https://e2e.ti.com>`__.
 
-The Beagleboard community discusses PRU `here <https://beagleboard.org/Community>`__
+The Beagleboard community discusses PRU `here <https://forum.beagleboard.org/>`__
 
 :ref:`pru_overview_faq`
 
