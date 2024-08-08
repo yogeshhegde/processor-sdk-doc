@@ -477,7 +477,7 @@ ICSSG Ethernet Driver
 .. csv-table:: ICSSG TCP Bidirectional Throughput
     :header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","353.58","76.28"
+    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","844.83","99.92"
 
 
 
@@ -488,7 +488,7 @@ ICSSG Ethernet Driver
 .. csv-table:: ICSSG TCP Bidirectional Throughput Interrupt Pacing
     :header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","358.73","51.26"
+    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","870.69","78.99"
 
 
 
@@ -498,11 +498,11 @@ ICSSG Ethernet Driver
 .. csv-table:: ICSSG UDP Ingress Throughput 0 loss
     :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load %"
 
-    "64","18.00","3.07","21.00","13.74"
-    "128","82.00","15.87","24.00","17.36"
-    "256","210.00","13.94","8.00","6.07"
-    "1024","978.00","158.04","20.00","26.03"
-    "1518","1472.00","191.24","16.00","28.55"
+    "64","18.00","13.84","29.14","90.54"
+    "128","82.00","61.76","64.58","91.48"
+    "256","210.00","152.83","79.24","91.51"
+    "1024","978.00","659.92","80.73","92.60"
+    "1518","1472.00","951.78","78.37","92.78"
 
  
  
