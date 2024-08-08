@@ -18,7 +18,7 @@ controllers work only in master mode.
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
    +---------------+------------+-------------------------------------------+
-   | SoC Family    | capability | Driver                                    |
+   | SoC Family    | Capability | Driver                                    |
    +===============+============+===========================================+
    | AM64x         | OSPI NOR   | :file:`drivers/spi/spi-cadence-quadspi.c` |
    +---------------+------------+-------------------------------------------+
@@ -26,25 +26,53 @@ controllers work only in master mode.
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
    +---------------+------------+-------------------------------------------+
-   | SoC Family    | capability | Driver                                    |
+   | SoC Family    | Capability | Driver                                    |
    +===============+============+===========================================+
    | AM62x         | OSPI NOR   | :file:`drivers/spi/spi-cadence-quadspi.c` |
    +---------------+------------+-------------------------------------------+
    | AM62x LP SK   | OSPI NAND  | :file:`drivers/spi/spi-cadence-quadspi.c` |
    +---------------+------------+-------------------------------------------+
 
+   .. important::
+
+      For AM62x LP SK:
+
+      The PHY DLL Master Control Register includes details such as bypass mode,
+      delay element, and whether the master delay line locks on a half or full
+      cycle. This register is configured before the PHY Calibration process.
+
+      The PHY Configuration Register stores the Optimal Tuning Point
+      (rx, tx) after the PHY Calibration process.
+
+      These registers are not restored after suspend-resume, this issue (Record
+      ID: LCPD-38669) has been listed in the :ref:`Known Issues <known-issues>`
+      section with a workaround.
+
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
    +---------------+------------+-------------------------------------------+
-   | SoC Family    | capability | Driver                                    |
+   | SoC Family    | Capability | Driver                                    |
    +===============+============+===========================================+
    | AM62Ax        | OSPI NAND  | :file:`drivers/spi/spi-cadence-quadspi.c` |
    +---------------+------------+-------------------------------------------+
 
+   .. important::
+
+      The PHY DLL Master Control Register includes details such as bypass mode,
+      delay element, and whether the master delay line locks on a half or full
+      cycle. This register is configured before the PHY Calibration process.
+
+      The PHY Configuration Register stores the Optimal Tuning Point
+      (rx, tx) after the PHY Calibration process.
+
+      These registers are not restored after suspend-resume, this issue (Record
+      ID: LCPD-38669) has been listed in the :ref:`Known Issues <known-issues>`
+      section with a workaround.
+
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
    +---------------+------------+-------------------------------------------+
-   | SoC Family    | capability | Driver                                    |
+   | SoC Family    | Capability | Driver                                    |
    +===============+============+===========================================+
    | AM62Px        | OSPI NOR   | :file:`drivers/spi/spi-cadence-quadspi.c` |
    +---------------+------------+-------------------------------------------+
@@ -52,7 +80,7 @@ controllers work only in master mode.
 .. ifconfig:: CONFIG_part_variant in ('AM437X')
 
    +---------------+------------+--------------------------------------+
-   | SoC Family    | capability | Driver                               |
+   | SoC Family    | Capability | Driver                               |
    +===============+============+======================================+
    | AM437x        | QSPI NOR   | :file:`drivers/spi/spi-ti-qspi.c`    |
    +---------------+------------+--------------------------------------+
@@ -60,7 +88,7 @@ controllers work only in master mode.
 .. ifconfig:: CONFIG_part_variant in ('AM57X')
 
    +---------------+------------+--------------------------------------+
-   | SoC Family    | capability | Driver                               |
+   | SoC Family    | Capability | Driver                               |
    +===============+============+======================================+
    | DRA7xx/AM57xx | QSPI NOR   | :file:`drivers/spi/spi-ti-qspi.c`    |
    +---------------+------------+--------------------------------------+
@@ -68,7 +96,7 @@ controllers work only in master mode.
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
    +---------------+-------------+-------------------------------------------+
-   | SoC Family    | capability  | Driver                                    |
+   | SoC Family    | Capability  | Driver                                    |
    +===============+=============+===========================================+
    | AM654/J721e   | 1x QSPI NOR,| :file:`drivers/spi/spi-cadence-quadspi.c` |
    |               | 1x OSPI NOR |                                           |

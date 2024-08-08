@@ -220,6 +220,7 @@ Errata Workarounds Available in this Release
 
 |
 
+.. _known-issues:
 
 Known Issues
 ------------
@@ -233,6 +234,7 @@ Known Issues
    "LCPD-38688","RT Linux benchmarks: add histogram for cyclic test","am62axx_sk-fs,am62pxx_sk-fs,am62xx_lp_sk-fs,am62xx_sk-fs,am64xx-evm",""
    "LCPD-38687","LPM: TI SCI: debug prints during suspend print wrong CPU device for max latency set","am62axx_sk-fs,am62axx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62xx_sk-fs,am62xx_sk-se",""
    "LCPD-38670","misleading GPMC message in kernel log","am62xx_lp_sk-fs,am62xx_lp_sk-se",""
+   "LCPD-38669","PHY configs not restored afer suspend-resume","am62xx_lp_sk-fs,am62axx_sk-fs","Checkout to tag: 10.00.08 (https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/commit/?h=ti-linux-6.6.y-cicd&id=db88712931433e92a5f73cec57c82c5c7ebee593) or Apply the following 3 commits: 'c3c859de6142 spi: cadence-quadspi: Define cqspi_phy_set_dll_master', 'e64d4d321e85 spi: cadence-quadspi: Store phy_setting in flash private data', '6b5642d52397 spi: cadence-quadspi: Move restore_context to runtime_resume'"
    "LCPD-38662","rcu_preempt self-detected stall on CPU","am62axx_sk-fs,am62pxx_sk-fs,am62xx_lp_sk-fs,am62xx_sk-fs,am62xxsip_sk-fs,j721e-idk-gw,j721s2-evm",""
    "LCPD-38660","AM62*: CAN: mcu_mcan0 regression","am62xx_lp_sk-fs,am62xx_lp_sk-se,am62xx_sk-fs,am62xx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se",""
    "LCPD-38626","PRU needed in DTS for AM62x-lp for IPC PRU Echo Test","am62xx_lp_sk-fs",""
