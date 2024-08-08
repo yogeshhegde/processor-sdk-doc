@@ -18,7 +18,7 @@ execution of Linux based applications and includes the following:
 -  Demo applications
 -  Documentation
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('JACINTO')
 
    .. Note::
       For building some of the RTOS-based demonstrations, you should also download

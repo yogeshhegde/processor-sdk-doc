@@ -15,7 +15,7 @@ There are different filesystem tarballs provided in the SDK. You'll find them at
 :file:`${PSDK_PATH}/filesystem/`
 
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     .. rubric:: tisdk-base-image
 
@@ -36,7 +36,7 @@ This is the complete filesystem image, that contains standard Linux
 commands and features. This also contains the TI component libraries,
 binaries and :ref:`TI Apps Launcher OOB Demo <TI-Apps-Launcher-User-Guide-label>`
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     .. ifconfig:: CONFIG_part_family in ('General_family')
 
@@ -51,7 +51,7 @@ binaries and :ref:`TI Apps Launcher OOB Demo <TI-Apps-Launcher-User-Guide-label>
 
 .. only:: _comment
 
-    [comment] current SDK 7.x build for 'PLSDK' doesn't have docker/tiny image, so comment out the following section
+    [comment] current SDK 7.x build for 'SITARA' doesn't have docker/tiny image, so comment out the following section
 
     .. rubric:: tisdk-docker-rootfs-image
 

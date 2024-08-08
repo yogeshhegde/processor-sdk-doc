@@ -67,7 +67,7 @@ Follow the steps below to connect to the WiFi Access Point of the SK board:
        :width: 407
        :height: 400
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
    4. Once connected, you can access the Matrix GUI from http://192.168.43.1
 
@@ -129,11 +129,11 @@ following steps:
 
    You will see the connection details displayed like this:
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     .. figure:: /images/wifi-oob-iw-command.png
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     .. figure:: /images/j7-wifi-oob-iw-command.png
 

@@ -5,7 +5,7 @@
 Seva Store - User Guide
 =======================
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
    .. attention::
 
@@ -44,7 +44,7 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
 
 1. Flash an SD card with the :file:`tisdk-default-image`. User can download the :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__|. Connect the display, ethernet cable, mouse & keyboard and power on the board after inserting an SD card. The TI Apps Launcher will launch when the SK-EVM is fully booted.
 
-   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+   .. ifconfig:: CONFIG_sdk in ('SITARA')
 
       .. Image:: /images/ti-apps-launcher-home-am62x.png
          :height: 400

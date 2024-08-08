@@ -7,7 +7,7 @@ Processor SDK Linux Software Developer's Guide
 .. rubric:: Welcome to the Processor SDK Linux Software Developer's Guide
    :name: welcome-to-the-processor-sdk-linux-software-developers-guide
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     .. note::
        | Processor SDK documentation is now created from reStructuredText sources using

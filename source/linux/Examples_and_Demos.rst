@@ -4,7 +4,7 @@
 Examples and Demos
 ####################################
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     .. include:: Examples_and_Demos/_Matrix_Demos.rst
 

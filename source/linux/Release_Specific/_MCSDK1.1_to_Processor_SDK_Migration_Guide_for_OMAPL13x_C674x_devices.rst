@@ -24,7 +24,7 @@ development.
    machines running Linux. Support for 32-bit machines is dropped
    primarily due to the Linzro toolchain not supporting 32-bit anymore.
 
-   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+   .. ifconfig:: CONFIG_sdk in ('SITARA')
 
        Host support for the SDK is described in the `Supported Host Operating Systems
        <Release_Specific_Supported_Platforms_and_Versions.html#supported-host-operating-systems>`__

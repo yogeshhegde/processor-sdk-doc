@@ -84,7 +84,7 @@ procedure using UniFlash tool to install `mmWave SDK <http://www.ti.com/tool/MMW
 ROS configuration verification
 ------------------------------
 
-ROS is part of PLSDK 4.3 target filesystem, including mmWave ROS driver, so no additional
+ROS is part of SITARA 4.3 target filesystem, including mmWave ROS driver, so no additional
 installation steps are required. ROS is installed in /opt/ros/indigo folder.
 Only setting up configuration related to specific IP address
 of target EVM, and Ubuntu Linux box host IP address is needed.
@@ -98,10 +98,10 @@ ROS RViz node since RViz requires OpenGL desktop support (Sitara only supports O
 
 .. _reconfigure-plsdk-for-python3:
 
-.. topic:: Reconfigure PLSDK for Python3
+.. topic:: Reconfigure SITARA for Python3
 
-    PLSDK includes ROS packages from meta-ros layer, compiled with Python3 support (build/conf/local.conf : ROS_USE_PYTHON3 = "yes")
-    As PLSDK default python setting is Python 2.7, filesystem update is required for ROS tests to run:
+    SITARA includes ROS packages from meta-ros layer, compiled with Python3 support (build/conf/local.conf : ROS_USE_PYTHON3 = "yes")
+    As SITARA default python setting is Python 2.7, filesystem update is required for ROS tests to run:
 
 
 .. code-block:: console

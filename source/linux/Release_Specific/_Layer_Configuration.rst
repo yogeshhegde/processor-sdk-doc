@@ -9,7 +9,7 @@ meta layers. These are the <config> used in the command:
 
 ``$ ./oe-layertool-setup.sh -f <config>``
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     The following config files are located in the **configs/processor-sdk** directory of the `oe-layersetup git repo <https://git.ti.com/cgit/arago-project/oe-layersetup/>`_.
 
@@ -19,7 +19,7 @@ meta layers. These are the <config> used in the command:
     | processor-sdk-09.01.00-legacy-config.txt | Processor SDK 09.01.00.01 Release | am335x-evm, am437x-evm          |
     +------------------------------------------+-----------------------------------+---------------------------------+
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     |
     | The following config files are located in the **configs/**

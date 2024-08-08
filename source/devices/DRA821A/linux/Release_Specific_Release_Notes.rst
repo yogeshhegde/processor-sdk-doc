@@ -116,7 +116,7 @@ Component versions
 Issues Tracker
 ===============
 ..
-   project = LCPD AND issuetype = Bug AND status = Closed AND resolution = Done AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal", Graphics, Multimedia, Wireless, "System Integration", Security) AND closedDate > 2020-11-18 AND createdDate <= 2020-11-17 AND (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE, PLSDK_NOT_RN) OR labels is EMPTY) AND OS in (Linux, RT-linux) AND Platform in (j7200-evm) ORDER BY key DESC, priority DESC
+   project = LCPD AND issuetype = Bug AND status = Closed AND resolution = Done AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal", Graphics, Multimedia, Wireless, "System Integration", Security) AND closedDate > 2020-11-18 AND createdDate <= 2020-11-17 AND (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE, SITARA_NOT_RN) OR labels is EMPTY) AND OS in (Linux, RT-linux) AND Platform in (j7200-evm) ORDER BY key DESC, priority DESC
 
 Issues opened in previous releases that were closed on this release
 ---------------------------------------------------------------------
@@ -129,7 +129,7 @@ Issues opened in previous releases that were closed on this release
    LCPD-19731,HSR/PRP : warning: ignoring return value of ‘skb_put_padto'
 
 ..
-   project = LCPD AND issuetype = Bug AND status = Closed AND resolution = Done AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal", "System Integration", Wireless, Graphics, Multimedia, Security) AND closedDate > 2020-11-18 AND createdDate > 2020-11-18 AND (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE, PLSDK_NOT_RN) OR labels is EMPTY) AND OS in (Linux, RT-linux) AND fixversion not in (Upstream) AND Platform in (j7200-evm) ORDER BY key DESC, priority DESC
+   project = LCPD AND issuetype = Bug AND status = Closed AND resolution = Done AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal", "System Integration", Wireless, Graphics, Multimedia, Security) AND closedDate > 2020-11-18 AND createdDate > 2020-11-18 AND (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE, SITARA_NOT_RN) OR labels is EMPTY) AND OS in (Linux, RT-linux) AND fixversion not in (Upstream) AND Platform in (j7200-evm) ORDER BY key DESC, priority DESC
 
 Issues found and closed on this release that may be applicable to prior releases
 --------------------------------------------------------------------------------
@@ -151,7 +151,7 @@ Issues found and closed on this release that may be applicable to prior releases
    LCPD-19862,USB SuperSpeed enumeration not working on j7200e
 
 ..
-   project = LCPD AND Platform in (j7200-evm) AND ErrataID is not EMPTY AND status = Closed AND (Labels not in (PLSDK_NOT_RN) OR labels is EMPTY) ORDER BY priority DESC
+   project = LCPD AND Platform in (j7200-evm) AND ErrataID is not EMPTY AND status = Closed AND (Labels not in (SITARA_NOT_RN) OR labels is EMPTY) ORDER BY priority DESC
 
 Errata workarounds
 ------------------
@@ -163,7 +163,7 @@ Errata workarounds
 
 
 ..
-   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("System Integration", Graphics, Wireless, Security, Multimedia) AND (labels not in (LCPD_K3.14_MAINT, MAINTENANCE, DO_NOT_RELEASE_NOTE, PLSDK_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND ((affectedVersion <= 07.03.00 AND affectedVersion >upstream ) OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream)) AND Platform in (j7200-evm) AND OS = "Linux" ORDER BY key DESC, priority DESC, component ASC
+   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("System Integration", Graphics, Wireless, Security, Multimedia) AND (labels not in (LCPD_K3.14_MAINT, MAINTENANCE, DO_NOT_RELEASE_NOTE, SITARA_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND ((affectedVersion <= 07.03.00 AND affectedVersion >upstream ) OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream)) AND Platform in (j7200-evm) AND OS = "Linux" ORDER BY key DESC, priority DESC, component ASC
 
 .. _release-specific-known-issues:
 
@@ -177,7 +177,7 @@ SDK Known Issues
    LCPD-19743,Packages.gz is missing,
 
 ..
-   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("Power & Thermal", Baseport, "Audio & Display", Connectivity, IPC) AND (labels not in (LCPD_K3.14_MAINT, upstream, MAINTENANCE, DO_NOT_RELEASE_NOTE, PLSDK_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND (summary ~ u-boot OR Subcomponent in (u-boot, UBOOT, Uboot)) AND (affectedVersion <= 07.03.00 AND affectedVersion > upstream OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream)) AND Platform in (j7200-evm) ORDER BY key DESC, priority DESC, component ASC
+   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("Power & Thermal", Baseport, "Audio & Display", Connectivity, IPC) AND (labels not in (LCPD_K3.14_MAINT, upstream, MAINTENANCE, DO_NOT_RELEASE_NOTE, SITARA_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND (summary ~ u-boot OR Subcomponent in (u-boot, UBOOT, Uboot)) AND (affectedVersion <= 07.03.00 AND affectedVersion > upstream OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream)) AND Platform in (j7200-evm) ORDER BY key DESC, priority DESC, component ASC
 
 U-Boot Known Issues
 -------------------
@@ -190,7 +190,7 @@ U-Boot Known Issues
    LCPD-17523,R5-SPL - Support to dump EEPROM to shared memory,
 
 ..
-   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal") AND (affectedVersion <= 07.03.00 AND affectedVersion > upstream OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream)) AND (labels not in (LCPD_K3.14_MAINT, upstream, MAINTENANCE, DO_NOT_RELEASE_NOTE, PLSDK_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND summary !~ u-boot AND (Subcomponent not in (u-boot, UBOOT, Uboot) OR Subcomponent is EMPTY) AND Platform in (j7200-evm) ORDER BY key DESC, priority DESC, component DESC
+   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal") AND (affectedVersion <= 07.03.00 AND affectedVersion > upstream OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream)) AND (labels not in (LCPD_K3.14_MAINT, upstream, MAINTENANCE, DO_NOT_RELEASE_NOTE, SITARA_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND summary !~ u-boot AND (Subcomponent not in (u-boot, UBOOT, Uboot) OR Subcomponent is EMPTY) AND Platform in (j7200-evm) ORDER BY key DESC, priority DESC, component DESC
 
 Linux Kernel Known Issues
 ---------------------------

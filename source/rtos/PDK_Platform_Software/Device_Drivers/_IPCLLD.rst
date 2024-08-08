@@ -21,7 +21,7 @@ MailBox   IP which provides queued interrupt mechanism  for communication channe
 VRing     Ring Buffer in shared memory
 PDK       Platform Development Kit
 PSDKRA    Processor SDK RTOS Automotive
-PSDKLA    Processor SDK Linux Automotive
+JACINTOA    Processor SDK Linux Automotive
 =======   =============================================
 
 

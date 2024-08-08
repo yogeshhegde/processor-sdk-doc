@@ -18,7 +18,7 @@ Replacement Variables
 '__PRODUCT_LINE_NAME__'          : 'Jacinto'
 '__SDK_BUILD_MACHINE__'          : 'j721s2-evm'
 '__SDK_FULL_NAME__'              : 'Processor SDK Linux J721s2'
-'__SDK_SHORT_NAME__'             : 'PSDKL'
+'__SDK_SHORT_NAME__'             : 'JACINTO'
 '__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-j721s2-evm-<version>-Linux-x86-Install.bin'
 '__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-j721s2-evm-<version>'
 '__SDK_DOWNLOAD_URL__'           : '`Jacinto7-Linux-SDK-Download-page <http://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-j721s2/latest/index_FDS.html>`__'
@@ -36,7 +36,7 @@ Configuration Values
 --------------------
 'CONFIG_part_family'      : 'J7_family'
 'CONFIG_part_variant'     : 'J721S2'
-'CONFIG_sdk'              : 'PSDKL'
+'CONFIG_sdk'              : 'JACINTO'
 'CONFIG_icss_support'     : 'no'
 'CONFIG_rt_linux_support' : 'yes'
 'CONFIG_gpu_ip'           : 'Rogue_BXS'

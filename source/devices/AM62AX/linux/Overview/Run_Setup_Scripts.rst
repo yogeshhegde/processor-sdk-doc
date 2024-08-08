@@ -111,7 +111,7 @@ This step will extract the target filesystem.
 The default location is:
 /home/user/|__SDK_INSTALL_DIR__|/targetNFS
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     .. code-block:: text
 
@@ -194,7 +194,7 @@ For most boards, the default /dev/ttyUSB0 should be selected.
     If you are using a USB-to-Serial converter, your port should be
     configured for /dev/ttyUSBx.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     .. rubric:: uboot Setup
        :name: uboot-setup

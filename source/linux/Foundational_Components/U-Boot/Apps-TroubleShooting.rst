@@ -42,7 +42,7 @@ Check if one of the cases below applies:
   - u-boot.bin
   - MLO
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     For Keystone-2 platforms, U-boot can also be brought up using CCS. The step-by-step instruction on booting up u-boot
     with one of the boot modes or using CCS are documented in <Processor_SDK_install_dir>/board-support/u-boot-<ver>/board/ti/ks2_evm/README file.

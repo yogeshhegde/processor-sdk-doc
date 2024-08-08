@@ -35,7 +35,7 @@ Configuration Values
 --------------------
 'CONFIG_part_family'      : 'AM62AX_family'
 'CONFIG_part_variant'     : 'AM62AX'
-'CONFIG_sdk'              : 'PLSDK'
+'CONFIG_sdk'              : 'SITARA'
 'CONFIG_icss_support'     : 'yes'
 'CONFIG_rt_linux_support' : 'yes'
 'CONFIG_gpu_ip'           : 'Rogue_AXE'

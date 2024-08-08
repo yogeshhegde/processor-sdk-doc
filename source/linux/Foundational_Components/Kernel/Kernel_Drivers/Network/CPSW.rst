@@ -1489,7 +1489,7 @@ after:
 
 |
 
-.. _PLSDK_CPTS_Module-label:
+.. _SITARA_CPTS_Module-label:
 
 Common Platform Time Sync (CPTS) module
 """"""""""""""""""""""""""""""""""""""""
