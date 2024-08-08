@@ -46,7 +46,8 @@ PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
 CONFLOC         = -c build/
 VEROPTS         = -D version=${VERSION} -D release=${VERSION}
-ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) $(CONFLOC) $(VEROPTS)
+GIT_HASH        = -D html_context.commit="$(shell git rev-parse --short HEAD)"
+ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) $(CONFLOC) $(VEROPTS) $(GIT_HASH)
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
 
