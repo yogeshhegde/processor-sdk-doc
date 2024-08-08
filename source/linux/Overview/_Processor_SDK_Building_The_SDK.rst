@@ -44,7 +44,7 @@ Prerequisites (One-time setup)
 .. rubric:: Host Setup - Ubuntu (Recommended)
    :name: Host Setup - ubuntu (Recommended)
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('SITARA', 'JACINTO','j7_foundational')
 
     The recommended Linux distribution is Ubuntu 22.04.
 
@@ -52,7 +52,7 @@ The following build host packages are required for Ubuntu. The following
 command will install the required tools on the Ubuntu Linux
 distribution.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('SITARA', 'JACINTO','j7_foundational')
 
     For Ubuntu 22.04, please run the following:
 
@@ -104,7 +104,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
 .. ifconfig:: CONFIG_part_family not in ('General_family')
 
-   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+   .. ifconfig:: CONFIG_sdk in ('SITARA')
 
       .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
@@ -140,7 +140,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
             $ MACHINE=<machine> bitbake -k tisdk-default-image
 
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
    |__SDK_FULL_NAME__| uses the 'oe-layersetup' tool to configure the meta layers. If you do not have the Linux SDK package installed:
 
@@ -242,7 +242,7 @@ The "Build Output" is given relative to the
 **deploy-ti** directory.
 
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
@@ -316,7 +316,7 @@ The "Build Output" is given relative to the
    | mc:k3r5:meta-toolchain-arago | sdk/arago-<arago-version>-<architecture>.sh                   | K3R5 baremetal toolchain   |
    +------------------------------+---------------------------------------------------------------+----------------------------+
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('JACINTO')
 
    +------------------------------+---------------------------------------------------------------+----------------------------+
    | Target                       | Build Output                                                  | Description                |
@@ -335,7 +335,7 @@ The "Build Output" is given relative to the
    | mc:k3r5:meta-toolchain-arago | sdk/arago-<arago-version>-<architecture>.sh                   | K3R5 baremetal toolchain   |
    +------------------------------+---------------------------------------------------------------+----------------------------+
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     .. rubric:: Platforms
 
@@ -399,7 +399,7 @@ The "Build Output" is given relative to the
 
         ``MACHINE=<machine> bitbake linux-ti-staging-rt``
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     .. rubric:: Platforms
        :name: Platforms
@@ -602,7 +602,7 @@ granularity of recipe development and debug. Specifying a recipe name,
 minus the version (if the version is appended to the name), will build
 the recipe and all its dependencies.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     For example, the command below builds only the opencl recipe and all the
     dependencies it defines.
@@ -615,7 +615,7 @@ the recipe and all its dependencies.
     folder, independent shared objects (.so files) under packages-split
     folder, and IPKs under deploy-ipks folder.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     For example, the command below builds only the jailhouse recipe and all the
     dependencies it defines.
@@ -634,7 +634,7 @@ the recipe and all its dependencies.
 .. rubric:: Forced Re-compilation
    :name: Forced Re-compilation
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     When needed, source code under the work directory (e.g.,
     **arago-tmp-[toolchain]/work/<machine>-linux-gnueabi/opencl**/git) can
@@ -645,7 +645,7 @@ the recipe and all its dependencies.
 
     ``MACHINE=<machine> bitbake opencl``
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     When needed, source code under the work directory (e.g.,
     **arago-tmp-[toolchain]/work/<machine>-linux/jailhouse**/git) can
@@ -660,7 +660,7 @@ the recipe and all its dependencies.
 .. rubric:: Installing Package
    :name: installing-package
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     To install a modified and rebuilt package, copy the new IPKs from the
     deploy-ipks folder (e.g.,
@@ -670,7 +670,7 @@ the recipe and all its dependencies.
 
     ``opkg install [package_ipk].ipk``
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     To install a modified and rebuilt package, copy the new IPKs from the
     deploy-ipks folder (e.g.,

@@ -30,7 +30,7 @@ does the following things:
 
 .. Image:: /images/Linux_Host_Development_System.png
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     .. rubric:: BeagleBone Black Users
        :name: beaglebone-black-users
@@ -85,7 +85,7 @@ The Setup Script (**setup.sh**) is located in the |__SDK_FULL_NAME__| installati
 directory.  By default, this directory has a name that has the form
 |__SDK_INSTALL_DIR__|.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
    Change to that ti-processor-sdk-linux install directory.
 
@@ -166,14 +166,14 @@ This step will extract the target filesystem.
 The default location is:
 /home/user/|__SDK_INSTALL_DIR__|/targetNFS
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     .. code-block:: text
 
         In which directory do you want to install the target filesystem?(if this directory does not exist it will be created)
         [ /home/user/ti-processor-sdk-linux-[platformName]-evm-x.x.x.x/targetNFS ]
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     .. code-block:: text
 
@@ -265,7 +265,7 @@ development.
 
    For most boards, the default /dev/ttyUSB0 should be selected.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     For Beaglebone which has a USB-to-Serial converter, just hit enter and the
     proper serial port will be setup in a later step.
@@ -315,7 +315,7 @@ to be located.
    -  SD card - located on the 2nd partition named "rootfs" of your SD
       card.
 
-   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+   .. ifconfig:: CONFIG_sdk in ('SITARA')
 
       .. attention::
 
@@ -332,7 +332,7 @@ necessary u-boot options to boot up your device.
 .. rubric:: Load uboot Script
    :name: load-uboot-script
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     This section creates a minicom script which will be
     used by u-boot to provide the necessary commands to boot up in the
@@ -343,7 +343,7 @@ necessary u-boot options to boot up your device.
 
        minicom -S bin/setupBoard.minicom
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     This section creates a minicom script or a uEnv.txt file which will be
     used by u-boot to provide the necessary commands to boot up in the

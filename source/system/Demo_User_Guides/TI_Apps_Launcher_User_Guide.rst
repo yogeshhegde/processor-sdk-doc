@@ -111,7 +111,7 @@ ____________________________
 
 1. To launch the Industrial HMI demo, click on the `Industrial HMI` button on the left menu.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
    .. Image:: /images/ti-apps-launcher-hmi.png
       :height: 400
@@ -136,7 +136,7 @@ ________________________
 
     2. To launch the Live Camera demo, click on the `Live Camera` button on the left panel.
 
-    .. ifconfig:: CONFIG_sdk in ('PLSDK')
+    .. ifconfig:: CONFIG_sdk in ('SITARA')
 
        .. Image:: /images/live-camera-button.jpg
           :height: 400
@@ -145,7 +145,7 @@ ________________________
 
     3. The Live Camera demo starts streaming the output of the camera connected in the centre window of TI Apps Launcher. The image below is captured using USB Camera.
 
-    .. ifconfig:: CONFIG_sdk in ('PLSDK')
+    .. ifconfig:: CONFIG_sdk in ('SITARA')
 
        .. Image:: /images/live-camera.png
           :height: 400
@@ -242,7 +242,7 @@ _____________________________
 
 2. Click on the `Benchmarks` button on the left panel.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
    3. User will now see the list of Benchmarks available to test on SK-EVM. Click on the `play button` infront of the benchmark you like to test. The image below is captured while running the `glmark2`.
 
@@ -272,7 +272,7 @@ __________________________________
 
 2. Now you can choose the GPU Load Level from the buttons available on the right. Choose from '0' which is no load to '4' max load.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
    .. Image:: /images/ti-apps-launcher-gpu-performance.png
       :height: 400

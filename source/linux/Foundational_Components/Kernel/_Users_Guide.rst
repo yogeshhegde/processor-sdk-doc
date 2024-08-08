@@ -29,7 +29,7 @@ directory. For your convenience the sources also includes the kernel's
 git repository including commit history.
 Alternatively, Kernel sources can directly be fetched from GIT.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     You can find the details about the git repository, branch and commit id in
     the :ref:`release-specific-build-information-kernel` section of the release notes.

@@ -6,7 +6,7 @@ available, embedded Linux. We are always striving to improve this
 product. Please let us know if you have ideas or
 suggestions at `E2E <https://e2e.ti.com/>`__.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
     | **Processor SDK Linux**                                                                                                                                |
@@ -33,7 +33,7 @@ suggestions at `E2E <https://e2e.ti.com/>`__.
     .. |__Release Notes__| replace:: :ref:`Release Notes <Release-note-label>`
 
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     +-----------------------------------------------------------------------+----------------------------------------------------------------------+
     |           **Processor SDK Linux**                                     |                                                                      |
@@ -109,7 +109,7 @@ suggestions at `E2E <https://e2e.ti.com/>`__.
     .. |__PRU Subsystem__| replace:: :ref:`PRU Subsystem <foundational-components-pru-subsystem>`
 
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     .. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62AX', 'AM62PX')
 

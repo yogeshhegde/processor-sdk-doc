@@ -146,7 +146,7 @@ driver is developed to support existing Dual EMAC device as well HSR/PRP
 
 .. Image:: /images/Hsr-prp-offload.png
 
-.. _PLSDK_HSR_PRP_id_if_number_mapping:
+.. _SITARA_HSR_PRP_id_if_number_mapping:
 
 PRU-ICSS Subsystem Driver
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -212,7 +212,7 @@ driver behavior is transparent to the user.
 
 .. note:: For all discussion and examples shown, AM57xx device is used as
 	   example, but different devices will use different ports. Please
-	   see :ref:`PLSDK_HSR_PRP_id_if_number_mapping` for interface
+	   see :ref:`SITARA_HSR_PRP_id_if_number_mapping` for interface
 	   number and PRU-ICSS ID information for different SoCs.
 
 As of Processor SDK 5.1.x, the driver supports 2 instances of HSR/PRP
@@ -1137,7 +1137,7 @@ support IEC-62439-3 related MIB access at the DAN using snmp commands
 such as snmpwalk, snmpget etc. **NOTE:** IEC-62439-3 MIB is supported
 only in the offloaded case. So user is expected to create HSR/PRP
 interface with offload. For details on how to setup HSR/PRP interface
-with offload, please refer :ref:`PLSDK_HSR_PRP_Testing_Firmware_Offload`
+with offload, please refer :ref:`SITARA_HSR_PRP_Testing_Firmware_Offload`
 
 .. rubric:: Command examples
    :name: command-examples
@@ -1349,7 +1349,7 @@ interface using two slave interfaces.
 
 Test Procedure
 ---------------
-.. _PLSDK_HSR_PRP_Testing_Firmware_Offload:
+.. _SITARA_HSR_PRP_Testing_Firmware_Offload:
 
 Testing HSR/PRP Firmware Offload
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1443,7 +1443,7 @@ example to dump this for prp0 interface, do:
         lreOwnRxA: 0
         lreOwnRxB: 0
 
-.. _PLSDK_HSR_Testing:
+.. _SITARA_HSR_Testing:
 
 HSR Testing
 ^^^^^^^^^^^^^^
@@ -1740,7 +1740,7 @@ after this as below assuming eth2 and eth3 interfaces
     DANH
     Time Last Seen: RxA=0 RxB=0
 
-.. _PLSDK_PRP_Testing:
+.. _SITARA_PRP_Testing:
 
 PRP Testing
 ^^^^^^^^^^^^^^
@@ -1942,9 +1942,9 @@ Performance Test and Logs
 -------------------------
 
 Boot up two AM571x/572x EVM to configure PRU Ethernet in HSR or PRP mode
-as described at :ref:`PLSDK_HSR_PRP_Testing_Firmware_Offload`
+as described at :ref:`SITARA_HSR_PRP_Testing_Firmware_Offload`
 They are connected over eth2 and eth3 as described in
-:ref:`PLSDK_HSR_Testing` or :ref:`PLSDK_PRP_Testing`
+:ref:`SITARA_HSR_Testing` or :ref:`SITARA_PRP_Testing`
 
 .. rubric:: UDP
    :name: udp

@@ -22,7 +22,7 @@ pieces work together. We package all of this together with a working
 Linux Embedded System that has been built with all of the things
 mentioned above.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     It contains a featured application called
     “Matrix” (derived from the fact that it is basically a simple
@@ -66,7 +66,7 @@ pieces to simplify things a bit:
    kernel, and filesystem that can be put on an SD card and ran on a TI
    EVMs.
 
-   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+   .. ifconfig:: CONFIG_sdk in ('SITARA')
 
        It can also be used on one of the very popular Beaglebones (either the original
        “white” or the newer “black”). For K2H/K2K, K2E, and K2L platforms
@@ -78,20 +78,20 @@ pieces to simplify things a bit:
    -  U-Boot sources and configuration files
    -  Kernel sources and configuration files
 
-   .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+   .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
        -  Hypervisor sources and configuration files
 
    -  An ARM cross-compiling toolchain as well as other host binaries
       and components
 
-   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+   .. ifconfig:: CONFIG_sdk in ('SITARA')
 
        -  RTOS application sources and configuration files
        -  A Yocto/OE compliant filesystem and sources for example
           applications in Matrix
 
-   .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+   .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
        -  A Yocto/OE compliant filesystem and sources for example
           applications
@@ -112,7 +112,7 @@ want to start with. However, it provides access to the full spectrum of
 development from rebuilding the SDK from sources to fully adapting it
 with new device drivers and applications.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     .. note::
        For K2H/K2K, K2E, and K2L platforms which are not using SD cards, please
@@ -130,12 +130,12 @@ mentioned earlier. All you’ll need is access to a Linux
 computer, a SD card, a SD card reader, some free, open-source software,
 and a supported `Hardware Platform <../Release_Specific_Supported_Platforms_and_Versions.html>`__.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     .. rubric:: Evaluating the SDK Embedded Linux System and Matrix
        :name: evaluating-the-sdk-embedded-linux-system-and-matrix
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     .. rubric:: Evaluating the SDK Embedded Linux System
        :name: evaluating-the-sdk-embedded-linux-system
@@ -149,7 +149,7 @@ SDK Embedded Linux System |__FEATURINGMATRIX__| on a supported `Hardware platfor
 This will allow you to poke and prod and interact. It’s a powerful way
 to get the imagination active and engaged.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     If you’ve recently purchased a TI EVM or Starterkit, it should have came
     with a SD card with the SDK on it. If that is the case, simply plug the
@@ -205,7 +205,7 @@ which you can start development.
    Linux distribution, running natively. We validate the Long-term
    Support (LTS) versions of Ubuntu at the time of a SDK release.
 
-   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+   .. ifconfig:: CONFIG_sdk in ('SITARA')
 
        For example, at the time of this writing, Ubuntu 16.04 and Ubuntu 18.04
        are the currently supported LTS versions).
@@ -251,12 +251,12 @@ which you can start development.
 
 #. **Create a SD Card**
 
-   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+   .. ifconfig:: CONFIG_sdk in ('SITARA')
 
        Use the `SDK Create SD Card Script <Processor_SDK_Linux_create_SD_card_script.html>`__,
        or **One-time Program EVM for K2H/K2K, K2E, and K2L** - following directions for `Program EVM User Guide <Program_EVM.html>`__
 
-   .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+   .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
        Use the mksdboot.sh script from the installer.
 
@@ -276,7 +276,7 @@ which you can start development.
       the SD Card reader into your virtual machine (disconnect it from the
       host and connect it to the VM so that the Linux VM can see it).
 
-   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+   .. ifconfig:: CONFIG_sdk in ('SITARA')
 
        .. note::
           For K2H/K2K, K2E, and K2L platforms which are not using SD card,
@@ -299,14 +299,14 @@ which you can start development.
       configuration will simplify the transfer of files to and from the
       target platform.
 
-   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+   .. ifconfig:: CONFIG_sdk in ('SITARA')
 
        .. Image:: /images/AM335x_Development_Environment.png
 
 #. **Use the SD Card to boot the target board** properly connected for
    your development environment.
 
-   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+   .. ifconfig:: CONFIG_sdk in ('SITARA')
 
        .. note::
           This is not applicable to K2H/K2K, K2E, and K2L platforms. For those
@@ -358,7 +358,7 @@ Now that you have a solid baseline set up, you can choose what you'd
 like to do next based on what you need to do. Here are some of the many
 possibilities:
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
     |  **Link**                                                                                                          | **Summary**                                                                                                        |
@@ -392,7 +392,7 @@ possibilities:
     |`Processor SDK Linux Tools <../Foundational_Components_Tools.html>`__                                               |Documentation for all of the various tools included with the SDK.                                                   |
     +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     .. Note::
         Some of the training content below has been written for DRA80x devices.

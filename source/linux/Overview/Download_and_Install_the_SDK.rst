@@ -39,7 +39,7 @@ Refer `Steps to Run SDK Installer inside a Container <https://github.com/TexasIn
 Download & Install the SDK Installer on Host
 --------------------------------------------
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     .. rubric:: How to Get the SDK Installer
        :name: how-to-get-the-sdk-installer
@@ -60,7 +60,7 @@ Download & Install the SDK Installer on Host
        Linux Host PC (using a USB SD Card reader).  The SDK Installer is found
        in the START\_HERE partition of the SD card.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     .. rubric:: Downloading the SDK installer
        :name: downloading-the-sdk-installer
@@ -71,14 +71,14 @@ Download & Install the SDK Installer on Host
 .. rubric:: How to Run the SDK Installer
    :name: how-to-run-the-sdk-installer
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     Make sure that the execute permissions are set. Bring up a terminal
     window and change directories to where the installer is located
     (probably the Downloads directory if downloaded or the START\_HERE
     partition mounted from the SD Card) and run the following commands:
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     Make sure that the execute permissions are set. Bring up a terminal
     window and change directories to where the installer is located
@@ -92,7 +92,7 @@ Download & Install the SDK Installer on Host
 Alternatively, you can give execute permissions and run the "|__SDK_INSTALL_FILE__|"
 by double clicking on it within your Linux host PC.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     .. note::
        As a part of the installation, the packaging will run a script to configure your
@@ -131,13 +131,13 @@ for the installer (e.g. text installer, etc.):
 
 The default selection of where to install is the user's home directory.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     In this particular example the name of the user is 'sitara'.
 
     .. Image:: /images/Processor_sdk_select_directory.png
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     .. Image:: /images/Processor_sdk_jacinto_select_directory.png
 

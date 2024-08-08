@@ -42,7 +42,7 @@ SDK.
     |                           | | 18.04 (64-bit)        |
     +---------------------------+-------------------------+
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     -  **Linux SDK**
 

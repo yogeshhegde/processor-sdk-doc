@@ -27,7 +27,7 @@ Please refer to the software manifest, which outlines the licensing
 status for all packages included in this release. The manifest can be
 found on the SDK download page. The manifest can be found on the SDK
 download page or in the installed directory as indicated below. In
-addition, see :ref:`PLSDK GPLv3 Disclaimer <overview-gplv3-disclaimer>`.
+addition, see :ref:`SITARA GPLv3 Disclaimer <overview-gplv3-disclaimer>`.
 
 Documentation
 ===============

@@ -23,11 +23,11 @@ not, a quick post will likely provide you the answers you need.
 Open Source Software Support Disclaimer
 =======================================
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
     Processor SDK Linux integrates various free and open source software (FOSS) to demonstrate the hardware capabilities of Sitara devices. The FOSS offers many advantages to the customers such as flexibility, interoperability, robustness, reduced development time and support from the respective FOSS community.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     Processor SDK Linux Automotive integrates various free and open source software (FOSS) to demonstrate the hardware capabilities of Jacinto devices. The FOSS offers many advantages to the customers such as flexibility, interoperability, robustness, reduced development time and support from the respective FOSS community.
 
@@ -54,14 +54,14 @@ While TI integrates the FOSS in |__SDK_FULL_NAME__|, TI does not own, maintain a
 
     - https://wayland.freedesktop.org
 
-    .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+    .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
         **Robot Operating System (ROS)**
 
         - http://www.ROS.org
         - For meta-ros (embedded version of ROS, that runs on our ARM): https://github.com/bmwcarit/meta-ros
 
-    .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+    .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
         **V4L2**
 
@@ -80,7 +80,7 @@ While TI integrates the FOSS in |__SDK_FULL_NAME__|, TI does not own, maintain a
     - Graphics Execution Manager (GEM): https://www.kernel.org/doc/html/v5.10/gpu/drm-mm.html#the-graphics-execution-manager-gem
 
 
-    .. ifconfig:: CONFIG_sdk in ('PSDKL','j7_foundational')
+    .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
         Example applications:
 

@@ -27,7 +27,7 @@ Detailed steps are described at :ref:`run-setup-scripts`
    :name: qsg-hardware-evm-setup
 
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('JACINTO')
 
    .. ifconfig:: CONFIG_part_variant not in ('J784S4')
 
