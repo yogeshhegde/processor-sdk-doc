@@ -275,6 +275,10 @@ Known Issues
    "LCPD-20105","AM64x: Kernel: ADC: RX DMA channel request fails","am64xx-evm,am64xx-hsevm",""
    "SYSFW-6432","Set device API doesn't return Error when PD is in transition state","am62x,am62ax,am62px,am64x,am65x",""
    "SYSFW-6426","Ownership of a firewall region can be transferred to an invalid host","am62x,am62ax,am62px,am64x,am65x",""
+   "PINDSW-7087,"ICSSG Fw:IET FPE mac verify fails","am64xx-evm,am654x-evm",""
+   "PINDSW-8022,"ICSSG Fw:TAPRIO - Base-time is not used properly","am64xx-evm,am654x-evm",""
+   "PINDSW-8023,"ICSSG Fw:TAPRIO - Firmware can’t handle base-time which is not a multiple of cycle-time.","am64xx-evm,am654x-evm",""
+   "PINDSW-7087,"ICSSG Fw:Switch: PTP: Timestamp Interrupt is coming on the opposite port","am64xx-evm,am654x-evm",""
 
 |
 
@@ -311,6 +315,11 @@ Closed Issues in Current Release
    "SYSFW-7463","TISCI_MSG_GET_CLOCK always return Enabled for input clock","am62x,am62ax,am62px,am64x,am65x"
    "SYSFW-7485","Update the PLL driver in TIFS boot flow to follow correct sequence","am62x,am62ax,am62px,am64x,am65x"
    "SYSFW-7486","PM: Cleanup additional steps in pll init startup routine","am62x,am62ax,am62px,am64x,am65x"
+   "PINDSW-7851","ICSSG Fw: Sporadic forwarding stall in Cut-through mode","am64xx-evm,am654x-evm"
+   "PINDSW-7980","ICSSG Fw: FDB: Learning and Flushing Issues","am64xx-evm,am654x-evm"
+   "PINDSW-7981","ICSSG Fw: FDB: All Slots are not cleared during initialization","am64xx-evm,am654x-evm"
+   "PINDSW-7982","ICSSG Fw: Race condition during IEP configuration","am64xx-evm,am654x-evm"
+   "PINDSW-7990","ICSSG Fw: HalfDuplex: Need to handle CRS, COL connections combination in firmware","am64xx-evm"
 
 
 |
