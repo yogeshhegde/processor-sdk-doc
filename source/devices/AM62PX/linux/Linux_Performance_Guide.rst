@@ -241,6 +241,28 @@ solving a dense linear system.
 
 
 
+NBench
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NBench which stands for Native Benchmark is used to measure macro benchmarks
+for commonly used operations such as sorting and analysis algorithms.
+More information about NBench at
+https://en.wikipedia.org/wiki/NBench and
+https://nbench.io/articles/index.html
+
+.. csv-table:: NBench Benchmarks
+    :header: "Benchmarks","am62pxx_sk-fs: perf"
+
+    "assignment (Iterations)","14.47"
+    "fourier (Iterations)","22833.00"
+    "fp_emulation (Iterations)","215.65"
+    "huffman (Iterations)","1183.60"
+    "idea (Iterations)","3444.70"
+    "lu_decomposition (Iterations)","526.69"
+    "neural_net (Iterations)","8.66"
+    "numeric_sort (Iterations)","616.00"
+    "string_sort (Iterations)","163.93"
+
+
 
 
 Stream
@@ -657,6 +679,68 @@ RAW
 
  
 
+
+
+|
+
+EMMC Driver
+-------------------------
+
+.. warning::
+
+  **IMPORTANT**: The performance numbers can be severely affected if the media is
+  mounted in sync mode. Hot plug scripts in the filesystem mount
+  removable media in sync mode to ensure data integrity. For performance
+  sensitive applications, umount the auto-mounted filesystem and
+  re-mount in async mode.
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+ 
+
+ 
+
+
+
+
+AM62PXX-SK
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table:: EMMC EXT4 FIO 1G
+    :header: "Buffer size (bytes)","am62pxx_sk-fs: Write EXT4 Throughput (Mbytes/sec)","am62pxx_sk-fs: Write EXT4 CPU Load (%)","am62pxx_sk-fs: Read EXT4 Throughput (Mbytes/sec)","am62pxx_sk-fs: Read EXT4 CPU Load (%)"
+
+    "1m","90.20","1.46","285.00","2.24"
+    "4m","96.40","1.03","287.00","2.10"
+    "4k","78.90","23.50","91.20","19.73"
+    "256k","90.30","1.77","288.00","3.76"
+
+
+
+ 
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
  
 
 
@@ -809,6 +893,60 @@ The performance numbers were captured using the following:
 -  Partition was mounted with async option
  
 
+
+
+|
+
+UBoot MMC/SD Driver
+-------------------------
+
+  
+
+
+
+
+AM62PXX-SK
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table:: UBOOT MMCSD FAT
+    :header: "File size (bytes in hex)","am62pxx_sk-fs: Write Throughput (Kbytes/sec)","am62pxx_sk-fs: Read Throughput (Kbytes/sec)"
+
+    "400000","37236.36","59362.32"
+    "800000","45765.36","72495.58"
+    "1000000","48617.21","81108.91"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
  
 
 
