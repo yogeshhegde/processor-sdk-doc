@@ -641,13 +641,13 @@ the recipe and all its dependencies.
 
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
-   For example, the command below builds only the jailhouse recipe and all the
+   For example, the command below builds only the k3conf recipe and all the
    dependencies it defines.
 
-   ``MACHINE=<machine> bitbake jailhouse``
+   ``MACHINE=<machine> bitbake k3conf``
 
    After the bitbake command above is successfully done,
-   **arago-tmp-[toolchain]/work/<machine>-linux/jailhouse** directory
+   **arago-tmp-[toolchain]/work/<machine>-linux/k3conf** directory
    will be available including the original source code under the git
    folder, independent shared objects (.so files) under packages-split
    folder, and IPKs under deploy-ipks folder.
@@ -672,14 +672,14 @@ the recipe and all its dependencies.
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
    When needed, source code under the work directory (e.g.,
-   **arago-tmp-[toolchain]/work/<machine>-linux/jailhouse**/git) can
+   **arago-tmp-[toolchain]/work/<machine>-linux/k3conf**/git) can
    be modified. After the modification is done, run the following commands
    to force recompilation with the new code and rebuilding of the recipe,
    e.g.,
 
-   ``MACHINE=<machine> bitbake jailhouse --force -c compile``
+   ``MACHINE=<machine> bitbake k3conf --force -c compile``
 
-   ``MACHINE=<machine> bitbake jailhouse``
+   ``MACHINE=<machine> bitbake k3conf``
 
 .. rubric:: Installing Package
    :name: installing-package
@@ -698,7 +698,7 @@ the recipe and all its dependencies.
 
    To install a modified and rebuilt package, copy the new IPKs from the
    deploy-ipks folder (e.g.,
-   **arago-tmp-[toolchain]/work/<machine>-linux/jailhouse/[version]/deploy-ipks**)
+   **arago-tmp-[toolchain]/work/<machine>-linux/k3conf/[version]/deploy-ipks**)
    to the target system and then run the following command to install the
    IPKs:
 
