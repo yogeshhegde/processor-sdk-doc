@@ -614,11 +614,11 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 .. csv-table:: CPSW2g UDP Ingress Throughput 0 loss
     :header: "Frame Size(bytes)","am62xx_lp_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: Packets Per Second (kPPS)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: Packets Per Second (kPPS)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: Packets Per Second (kPPS)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","18.00","1.05","7.00","0.92"
+    "64","18.00","1.05","7.00","0.92","18.00","17.93","125.00","82.59"
     "128","82.00","3.94","6.00","1.04","82.00","5.44","8.00","2.44","82.00","4.72","7.00","1.18"
     "256","210.00","13.61","8.00","2.93","210.00","13.94","8.00","1.63","210.00","13.44","8.00","1.30"
-    "1024","978.00","67.29","9.00","5.02","978.00","65.72","8.00","3.25","978.00","936.69","120.00","43.50"
-    "1518","1472.00","98.92","8.00","5.91","1472.00","98.92","8.00","2.84"
+    "1024","978.00","67.29","9.00","5.02","978.00","934.93","119.00","41.89","978.00","936.69","120.00","43.50"
+    "1518","1472.00","98.92","8.00","5.91","1472.00","957.03","81.00","43.05"
 
 
 
@@ -626,9 +626,9 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 .. csv-table:: CPSW2g UDP Ingress Throughput possible loss
     :header: "Frame Size(bytes)","am62xx_lp_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: Packets Per Second (kPPS)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_lp_sk-fs: Packet Loss %","am62xx_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: Packets Per Second (kPPS)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: Packet Loss %","am62xxsip_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: Packets Per Second (kPPS)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: Packet Loss %"
 
-    "64","18.00","33.79","235.00","42.10","71.81"
+    "64","18.00","33.79","235.00","42.10","71.81","18.00","25.06","174.00","37.74","17.10"
     "128","82.00","125.99","192.00","44.62","63.57","82.00","139.74","213.00","43.66","47.43","82.00","152.20","232.00","43.43","68.57"
-    "256","210.00","251.77","150.00","42.72","0.05","210.00","332.46","198.00","45.22","47.35","210.00","381.37","227.00","44.06","28.31"
+    "256","210.00","261.84","156.00","39.59","11.97","210.00","332.46","198.00","45.22","47.35","210.00","381.37","227.00","44.06","28.31"
     "1024","978.00","934.87","119.00","44.28","0.21","978.00","936.28","120.00","43.16","0.05","978.00","936.69","120.00","43.50","0.00"
     "1518","1472.00","956.11","81.00","43.28","0.10","1472.00","955.03","81.00","41.14","0.19"
 
