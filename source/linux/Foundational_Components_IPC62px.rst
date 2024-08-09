@@ -210,32 +210,32 @@ M4F and R5F external memory section sizes in their respective linker mapfiles.
 
    reserved-memory {
       #address-cells = <2>;
-       #size-cells = <2>;
-       ranges;
+      #size-cells = <2>;
+      ranges;
 
-          wkup_r5fss0_core0_dma_memory_region: r5f-dma-memory@9c800000 {
-             compatible = "shared-dma-pool";
-             reg = <0x00 0x9c800000 0x00 0x100000>;
-             no-map;
-          };
+      wkup_r5fss0_core0_dma_memory_region: r5f-dma-memory@9c800000 {
+         compatible = "shared-dma-pool";
+         reg = <0x00 0x9c800000 0x00 0x100000>;
+         no-map;
+      };
 
-          wkup_r5fss0_core0_memory_region: r5f-dma-memory@9c900000 {
-             compatible = "shared-dma-pool";
-             reg = <0x00 0x9c900000 0x00 0x01e00000>;
-             no-map;
-          };
+      wkup_r5fss0_core0_memory_region: r5f-dma-memory@9c900000 {
+         compatible = "shared-dma-pool";
+         reg = <0x00 0x9c900000 0x00 0x01e00000>;
+         no-map;
+      };
 
-          mcu_r5fss0_core0_dma_memory_region: r5f-dma-memory@9b800000 {
-             compatible = "shared-dma-pool";
-             reg = <0x00 0x9b800000 0x00 0x100000>;
-             no-map;
-          };
+      mcu_r5fss0_core0_dma_memory_region: r5f-dma-memory@9b800000 {
+         compatible = "shared-dma-pool";
+         reg = <0x00 0x9b800000 0x00 0x100000>;
+         no-map;
+      };
 
-          mcu_r5fss0_core0_memory_region: r5f-dma-memory@9b900000 {
-             compatible = "shared-dma-pool";
-             reg = <0x00 0x9b900000 0x00 0x0f00000>;
-             no-map;
-          };
+      mcu_r5fss0_core0_memory_region: r5f-dma-memory@9b900000 {
+         compatible = "shared-dma-pool";
+         reg = <0x00 0x9b900000 0x00 0x0f00000>;
+         no-map;
+      };
    };
 
 
