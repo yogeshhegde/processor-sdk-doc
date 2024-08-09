@@ -18,6 +18,7 @@ Debian Developer's Guide
    Getting_Started_Guide
    /debian/Building_Debian_Image
    /debian/Building_Debian_Packages
+   /debian/Demo_User_Guides/index_Demos
 
 |
 
@@ -29,6 +30,6 @@ or docs, it is very appreciated. Please post your ideas to the Linux
 forum listed at :ref:`Technical Support <technical-support>`.
 
 
-+--------------------------------+--------------------------------------------------------------------------------------------------+
-| .. Image:: /images/E2e.jpg     | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
-+--------------------------------+--------------------------------------------------------------------------------------------------+
++--------------------------------+----------------------------------------------------------------------------------------------------+
+| .. Image:: /images/E2e.jpg     | For technical support please post your questions at `https://e2e.ti.com <https://e2e.ti.com/>`__.  |
++--------------------------------+----------------------------------------------------------------------------------------------------+
