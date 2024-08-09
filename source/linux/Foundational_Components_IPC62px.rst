@@ -65,7 +65,7 @@ loading the R5F core. Here are the files it looks for on an AM62Px device:
    +------------------+-----------------+----------------------+----------------------+
    | Core Name        | RemoteProc Name | Description          | Firmware File Name   |
    +==================+=================+======================+======================+
-   | R5F	      | 79000000.r5f    | R5F core(MCU domain) | am62p-mcu-r5f0_0-fw  |
+   | R5F              | 79000000.r5f    | R5F core(MCU domain) | am62p-mcu-r5f0_0-fw  |
    +------------------+-----------------+----------------------+----------------------+
 
 Generally on a target file system the above files are soft linked to the
@@ -236,7 +236,7 @@ M4F and R5F external memory section sizes in their respective linker mapfiles.
              reg = <0x00 0x9b900000 0x00 0x0f00000>;
              no-map;
           };
-	};
+   };
 
 
 .. warning:: Be careful not to overlap carveouts!
