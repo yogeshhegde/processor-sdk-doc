@@ -44,7 +44,7 @@ and loads the A53 with the HLOS. The A53 then boots the R5F core.
 The wakeup R5F firmware runs device manager software (SciServer) along
 with user application.
 
-The wakeup R5F firmware is integrated as part of tispl.bin binary
+The wakeup R5F firmware is integrated as part of :file:`tispl.bin` binary
 and is started early in the boot process by u-boot R5 SPL right after DDR initialization.
 
 
@@ -63,11 +63,11 @@ in the SDK package that can be run from ARM Linux.
 The remoteproc driver is hard-coded to look for specific files when
 loading the R5F core. Here are the files it looks for on an AM62Px device:
 
-   +------------------+-----------------+----------------------+----------------------+
-   | Core Name        | RemoteProc Name | Description          | Firmware File Name   |
-   +==================+=================+======================+======================+
-   | R5F              | 79000000.r5f    | R5F core(MCU domain) | am62p-mcu-r5f0_0-fw  |
-   +------------------+-----------------+----------------------+----------------------+
+   +-----------+-----------------+----------------------+-----------------------------+
+   | Core Name | RemoteProc Name | Description          | Firmware File Name          |
+   +===========+=================+======================+=============================+
+   | R5F       | 79000000.r5f    | R5F core(MCU domain) | :file:`am62p-mcu-r5f0_0-fw` |
+   +-----------+-----------------+----------------------+-----------------------------+
 
 Generally on a target file system the above files are soft linked to the
 intended executable FW files:
