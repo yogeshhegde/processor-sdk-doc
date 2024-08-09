@@ -9,7 +9,7 @@ Yocto Layer Configuration
 Processor SDK uses the following oe-layersetup configs to configure the
 meta layers. These are the <config> used in the command:
 
-.. console:: code-block
+.. code-block:: console
 
    $ ./oe-layertool-setup.sh -f <config>
 
