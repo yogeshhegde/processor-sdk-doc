@@ -226,8 +226,6 @@ Known Issues
    :widths: 5, 10, 70, 35
 
    "LCPD-38696","Wave5: Seek issue with video playback","am62pxx_sk-fs",""
-   "LCPD-38691","Documentation: Remove external links of Kernel 5.10/ 6.1 &/or U-Boot 2023.04","am62pxx_sk-fs,am62xx-evm,am64xx-evm,am654x-evm",""
-   "LCPD-38690","Documentation: Remove reference of denx.de/wiki","am62pxx_sk-fs,am62pxx_sk-se,am62xx-evm,am62xx-lp-sk,am62xx-sk,am62xx_lp_sk-fs,am62xxsip_sk-fs,am62xxsip_sk-se,am64xx-evm",""
    "LCPD-38689","Linux benchmarks: add context to Boot-time measurement","am62axx_sk-fs,am62pxx_sk-fs,am62xx_lp_sk-fs,am64xx-evm,am654x-evm",""
    "LCPD-38688","RT Linux benchmarks: add histogram for cyclic test","am62axx_sk-fs,am62pxx_sk-fs,am62xx_lp_sk-fs,am62xx_sk-fs,am64xx-evm",""
    "LCPD-38672","SD Card / rootfs unmounts randomly after Deep Sleep suspend/resume cycle (AM62P)","am62pxx_sk-fs",""
@@ -299,6 +297,7 @@ Closed Issues in Current Release
    "LCPD-37320","AM62P: AM62A: update OPP speed grade decoding","am62axx_sk-fs,am62axx_sk-se,am62pxx_sk-fs,am62pxx_sk-se"
    "LCPD-37141","AM62x: Sync up USB R5 defconfigs with main R5 defconfig","am62axx_sk-fs,am62pxx_sk-fs,am62xx_lp_sk-fs,am62xx_sk-fs"
    "LCPD-32250","Doc: Linux driver for eQEP","am62axx_sk-fs,am62axx_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62xx_p0_sk-fs,am62xx_sk-fs,am62xx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am64xx-hssk,am64xx_sk-fs,am64xx_sk-se"
+   "LCPD-38690","Documentation: Remove reference of denx.de/wiki","am62pxx_sk-fs,am62pxx_sk-se,am62xx-evm,am62xx-lp-sk,am62xx-sk,am62xx_lp_sk-fs,am62xxsip_sk-fs,am62xxsip_sk-se,am64xx-evm"
    "SYSFW-7536","Sending JTAG unlock certificate to TIFS using T32 JTAG fails","am62x,am62ax,am62px,am64x,am65x"
    "SYSFW-7474","Write access from DMA initiators to RA GCFG region results in firewall exception","am62x,am62ax,am62px"
    "SYSFW-7463","TISCI_MSG_GET_CLOCK always return Enabled for input clock","am62x,am62ax,am62px,am64x,am65x"
