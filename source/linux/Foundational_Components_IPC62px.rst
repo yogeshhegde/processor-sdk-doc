@@ -26,6 +26,7 @@ Prerequisites
    AM62Px <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM62P>`__
 
 .. note::
+
    Please be sure that you have the same version number
    for both Processor SDK RTOS and Linux.
 
@@ -180,14 +181,19 @@ See the devicetree bindings documentation for more details: `Documentation/devic
    [    0.000000] OF: reserved mem: initialized node r5f-dma-memory@9c800000, compatible id shared-dma-pool
    [    0.000000] OF: reserved mem: initialized node r5f-memory@9c900000, compatible id shared-dma-pool
 
-.. note:: The reserved memory sizes listed above are provided as a reference only and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
-          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=ti-linux-6.6.y'
+.. note::
+
+   The reserved memory sizes listed above are provided as a reference only and
+   subject to change between releases. For latest memory reservations, please
+   refer to the kernel device tree repository :
+   'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=ti-linux-6.6.y'
 
 By default the first 1MB of each pool is used for the Virtio and Vring buffers
 used to communicate with the remote processor core. The remaining carveout is
 used for the remote core external memory (program code, data, etc).
 
 .. note::
+
     The resource table entity (which describes the system resources needed by
     the remote processor) needs to be at the beginning of the remote processor
     external memory section.
@@ -239,9 +245,15 @@ M4F and R5F external memory section sizes in their respective linker mapfiles.
    };
 
 
-.. warning:: Be careful not to overlap carveouts!
+.. warning::
 
-.. note:: The reserved memory sizes listed above are provided as a reference only and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
-          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=10.00.07'
+   Be careful not to overlap carveouts!
+
+.. note::
+
+   The reserved memory sizes listed above are provided as a reference only and
+   subject to change between releases. For latest memory reservations, please
+   refer to the kernel device tree repository :
+   'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=10.00.07'
 
 .. include:: Foundational_Components/IPC/_RPMsg_char_driver.rst
