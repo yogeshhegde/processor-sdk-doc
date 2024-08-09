@@ -21,9 +21,9 @@ Software Dependencies to Get Started
 
 Prerequisites
 
--  Processor SDK Linux for AM62Px |__SDK_DOWNLOAD_URL__|.
--  `Processor SDK MCU+ for
-   AM62Px <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM62P>`__
+   - Processor SDK Linux for AM62Px |__SDK_DOWNLOAD_URL__|.
+   - `Processor SDK MCU+ for AM62Px
+     <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM62P>`__
 
 .. note::
 
@@ -79,25 +79,25 @@ intended executable FW files:
 
 For updating wakeup (DM) R5F firmware binary, tispl.bin needs to be recompiled with the new firmware binary as mentioned below :
 
-#. Go to linux installer and replace the existing R5F wakeup (DM) firmware binary with the new one
+   #. Go to linux installer and replace the existing R5F wakeup (DM) firmware binary with the new one
 
-.. code-block:: console
+      .. code-block:: console
 
-   host#  cp <path_to_new_fw_binary>/ipc_echo_testb_freertos_mcu1_0_release.xer5f <path_to_linux_installer>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f
+         host#  cp <path_to_new_fw_binary>/ipc_echo_testb_freertos_mcu1_0_release.xer5f <path_to_linux_installer>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f
 
-#. Recompile u-boot to regenerate tispl.bin using the top level makefile.
+   #. Recompile u-boot to regenerate tispl.bin using the top level makefile.
 
-.. code-block:: console
+      .. code-block:: console
 
-   host# make u-boot
+         host# make u-boot
 
-Please refer to :ref:`Top-Level Makefile <top-level-makefile>` for more details on Top Level makefile.
+      Please refer to :ref:`Top-Level Makefile <top-level-makefile>` for more details on Top Level makefile.
 
-#. Replace the updated tispl.bin containing new R5F firmware binary in the boot partition of sdcard and reboot
+   #. Replace the updated tispl.bin containing new R5F firmware binary in the boot partition of sdcard and reboot
 
-.. code-block:: console
+      .. code-block:: console
 
-   host# sudo cp board-support/u-boot_build/a53/tispl.bin  /media/$USER/boot
+         host# sudo cp board-support/u-boot_build/a53/tispl.bin  /media/$USER/boot
 
 .. _booting_remote_cores_from_Linux_console:
 
