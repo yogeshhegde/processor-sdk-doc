@@ -254,17 +254,17 @@ https://en.wikipedia.org/wiki/NBench and
 https://nbench.io/articles/index.html
 
 .. csv-table:: NBench Benchmarks
-    :header: "Benchmarks","am62xx_lp_sk-fs: perf","am62xxsip_sk-fs: perf"
+    :header: "Benchmarks","am62xx_lp_sk-fs: perf","am62xx_sk-fs: perf","am62xxsip_sk-fs: perf"
 
-    "assignment (Iterations)","12.94","14.51"
-    "fourier (Iterations)","20384.00","22833.00"
-    "fp_emulation (Iterations)","192.53","215.65"
-    "huffman (Iterations)","1057.00","1184.40"
-    "idea (Iterations)","3075.60","3444.90"
-    "lu_decomposition (Iterations)","470.79","528.09"
-    "neural_net (Iterations)","7.73","8.66"
-    "numeric_sort (Iterations)","554.43","628.66"
-    "string_sort (Iterations)","146.37","163.94"
+    "assignment (Iterations)","12.94","14.49","14.49"
+    "fourier (Iterations)","20384.00","22833.00","22832.00"
+    "fp_emulation (Iterations)","192.53","215.65","215.65"
+    "huffman (Iterations)","1057.00","1184.40","1184.40"
+    "idea (Iterations)","3075.60","3444.90","3444.90"
+    "lu_decomposition (Iterations)","470.79","527.77","528.61"
+    "neural_net (Iterations)","7.73","8.65","8.65"
+    "numeric_sort (Iterations)","554.43","628.90","628.46"
+    "string_sort (Iterations)","146.37","163.94","163.94"
 
 
 
@@ -432,18 +432,18 @@ ALSA SoC Audio Driver
 
 
 .. csv-table:: Audio Capture
-    :header: "Sampling Rate (Hz)","am62xx_lp_sk-fs: Throughput (bits/sec)","am62xx_lp_sk-fs: CPU Load (%)","am62xxsip_sk-fs: Throughput (bits/sec)","am62xxsip_sk-fs: CPU Load (%)"
+    :header: "Sampling Rate (Hz)","am62xx_lp_sk-fs: Throughput (bits/sec)","am62xx_lp_sk-fs: CPU Load (%)","am62xx_sk-fs: Throughput (bits/sec)","am62xx_sk-fs: CPU Load (%)","am62xxsip_sk-fs: Throughput (bits/sec)","am62xxsip_sk-fs: CPU Load (%)"
 
-    "8000","255998.00","0.27","255999.00","0.28"
-    "11025","352797.00","0.19","352799.00","0.35"
-    "16000","511996.00","0.13","511999.00","0.30"
-    "22050","705595.00","0.33","705599.00","0.49"
-    "24000","705595.00","0.32","705596.00","0.45"
-    "32000","1023991.00","0.92","1023992.00","1.05"
-    "44100","1411188.00","0.50","1411191.00","0.64"
-    "48000","1535987.00","0.25","1535991.00","0.45"
-    "88200","2822371.00","0.95","2822381.00","1.01"
-    "96000","3071968.00","0.41","3071979.00","1.25"
+    "8000","255998.00","0.27","255998.00","0.15","255999.00","0.28"
+    "11025","352797.00","0.19","352797.00","0.21","352799.00","0.35"
+    "16000","511996.00","0.13","511997.00","0.17","511999.00","0.30"
+    "22050","705595.00","0.33","705596.00","0.34","705599.00","0.49"
+    "24000","705595.00","0.32","705595.00","0.32","705596.00","0.45"
+    "32000","1023991.00","0.92","1023990.00","0.21","1023992.00","1.05"
+    "44100","1411188.00","0.50","1411187.00","0.50","1411191.00","0.64"
+    "48000","1535987.00","0.25","1535987.00","1.23","1535991.00","0.45"
+    "88200","2822371.00","0.95","2822372.00","0.92","2822381.00","1.01"
+    "96000","3071968.00","0.41","3071969.00","2.50","3071979.00","1.25"
 
 
 
