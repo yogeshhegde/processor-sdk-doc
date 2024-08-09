@@ -659,102 +659,132 @@ PCIe-ETH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table:: PCIe Ethernet performance
-    :header: "TCP Window Size(Kbytes)","j7200-evm: Bandwidth (Mbits/sec)","j721e-idk-gw: Bandwidth (Mbits/sec)","j721s2-evm: Bandwidth (Mbits/sec)"
+    :header: "TCP Window Size(Kbytes)","am68-sk: Bandwidth (Mbits/sec)","am69-sk: Bandwidth (Mbits/sec)","j721e-idk-gw: Bandwidth (Mbits/sec)","j7200-evm: Bandwidth (Mbits/sec)","j721s2-evm: Bandwidth (Mbits/sec)","j784s4-evm: Bandwidth (Mbits/sec)","j722s-evm: Bandwidth (Mbits/sec)"
 
-    "8","0.00"
-    "16","0.00"
-    "32","0.00","0.00"
-    "64","0.00"
-    "128","0.00","0.00"
-    "256","0.00","0.00"
+    "8","185","185","185","185","185","185","179"
+    "16","438","439","440","440","438","439","416"
+    "32","583","587","589","589","583","588","549"
+    "64","926","936","937","934","926","937","912"
+    "128","938","939","938","938","938","939","937"
+    "256","938","940","939","939","938","940","938"
 
-
-
- 
-
+- Command: iperf3 -c $server_ip -w $window_size
+- PCIe-Ethernet Card being used: Intel® 82574L Gigabit Ethernet Controller
 
 PCIe-NVMe-SSD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
  
+AM68-SK
+"""""""
 
- 
+.. csv-table:: PCIE SSD EXT4 FIO 10G
+    :header: "Buffer size (bytes)","am68-sk: Write EXT4 Throughput (Mibytes/sec)","am68-sk: Write EXT4 CPU Load (%)","am68-sk: Read EXT4 Throughput (Mibytes/sec)","am68-sk: Read EXT4 CPU Load (%)"
 
+    "4k","183","50.42","277","49.81"
+    "256k","1138","22.87","1545","13.11"
+    "1m","1426","26.07","1563","6.23"
+    "4m","1428","22.64","1564","4.13"
+
+- Filesize used is: 10G
+- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
+- Negotiated link speed and width: Speed 8GT/s, Width x2
+- SSD being used: Samsung 970 EVO Plus PCIe 3.0 SSD
+
+AM69-SK
+"""""""
+
+.. csv-table:: PCIE SSD EXT4 FIO 10G
+    :header: "Buffer size (bytes)","am69-sk: Write EXT4 Throughput (Mibytes/sec)","am69-sk: Write EXT4 CPU Load (%)","am69-sk: Read EXT4 Throughput (Mibytes/sec)","am69-sk: Read EXT4 CPU Load (%)"
+
+    "4k","178","12.59","271","12.51"
+    "256k","1086","4.24","1545","3.25"
+    "1m","1401","4.44","1563","1.60"
+    "4m","1407","5.24","1563","0.93"
+
+- Filesize used is: 10G
+- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
+- Negotiated link speed and width: Speed 8GT/s, Width x2
+- SSD being used: Samsung 970 EVO Plus PCIe 3.0 SSD
 
 J721E-IDK-GW
 """""""""""""""""""""""""""
 
-
-
-
 .. csv-table:: PCIE SSD EXT4 FIO 10G
-    :header: "Buffer size (bytes)","j721e-idk-gw: Write EXT4 Throughput (Mbytes/sec)","j721e-idk-gw: Write EXT4 CPU Load (%)","j721e-idk-gw: Read EXT4 Throughput (Mbytes/sec)","j721e-idk-gw: Read EXT4 CPU Load (%)"
+    :header: "Buffer size (bytes)","j721e-idk-gw: Write EXT4 Throughput (Mibytes/sec)","j721e-idk-gw: Write EXT4 CPU Load (%)","j721e-idk-gw: Read EXT4 Throughput (Mibytes/sec)","j721e-idk-gw: Read EXT4 CPU Load (%)"
 
-    "1m","745.00","13.64","1514.00","8.39"
-    "4m","723.00","12.66","1512.00","6.67"
-    "4k","187.00","48.81","166.00","36.17"
-    "256k","752.00","14.26","1510.00","14.05"
-
-
+    "4k","187","50.32","285","50.29"
+    "256k","1409","26.65","1569","14.69"
+    "1m","1394","25.13","1569","8.79"
+    "4m","1372","22.31","1537","7.52"
 
 - Filesize used is: 10G
-- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based 
-- Platform: Speed 8GT/s, Width x2
-- SSD being used: PLEXTOR PX-128M8PeY
- 
-
+- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
+- Negotiated link speed and width: Speed 8GT/s, Width x2
+- SSD being used: Intel Optane SSD 900P
 
 J7200-EVM
 """""""""""""""""""""""""""
 
-
-
-
 .. csv-table:: PCIE SSD EXT4 FIO 10G
-    :header: "Buffer size (bytes)","j7200-evm: Write EXT4 Throughput (Mbytes/sec)","j7200-evm: Write EXT4 CPU Load (%)","j7200-evm: Read EXT4 Throughput (Mbytes/sec)","j7200-evm: Read EXT4 CPU Load (%)"
+    :header: "Buffer size (bytes)","j7200-evm: Write EXT4 Throughput (Mibytes/sec)","j7200-evm: Write EXT4 CPU Load (%)","j7200-evm: Read EXT4 Throughput (Mibytes/sec)","j7200-evm: Read EXT4 CPU Load (%)"
 
-    "1m","813.00","17.74","1523.00","8.33"
-    "4m","814.00","16.45","1521.00","6.67"
-    "4k","188.00","48.73","165.00","36.27"
-    "256k","818.00","17.30","1519.00","13.60"
-
-
+    "4k","189","50.34","292","50.28"
+    "256k","1403","28.05","1569","14.34"
+    "1m","1366","28.61","1569","8.19"
+    "4m","1321","26.68","1540","7.67"
 
 - Filesize used is: 10G
-- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based 
-- Platform: Speed 8GT/s, Width x2
-- SSD being used: PLEXTOR PX-128M8PeY
- 
-
+- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
+- Negotiated link speed and width: Speed 8GT/s, Width x2
+- SSD being used: Intel Optane SSD 900P
 
 J721S2-EVM
 """""""""""""""""""""""""""
 
-
-
-
 .. csv-table:: PCIE SSD EXT4 FIO 10G
-    :header: "Buffer size (bytes)","j721s2-evm: Write EXT4 Throughput (Mbytes/sec)","j721s2-evm: Write EXT4 CPU Load (%)","j721s2-evm: Read EXT4 Throughput (Mbytes/sec)","j721s2-evm: Read EXT4 CPU Load (%)"
+    :header: "Buffer size (bytes)","j721s2-evm: Write EXT4 Throughput (Mibytes/sec)","j721s2-evm: Write EXT4 CPU Load (%)","j721s2-evm: Read EXT4 Throughput (Mibytes/sec)","j721s2-evm: Read EXT4 CPU Load (%)"
 
-    "1m","731.00","17.54","771.00","6.74"
-    "4m","733.00","16.65","771.00","6.34"
-    "4k","188.00","52.38","282.00","52.43"
-    "256k","749.00","18.01","786.00","9.98"
-
-
+    "4k","198","50.35","291","50.33"
+    "256k","748","15.69","786","7.61"
+    "1m","730","15.09","771","4.20"
+    "4m","732","14.16","771","3.89"
 
 - Filesize used is: 10G
-- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based 
-- Platform: Speed 8GT/s, Width x2
-- SSD being used: PLEXTOR PX-128M8PeY
- 
+- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
+- Negotiated link speed and width: Speed 8GT/s, Width x1
+- SSD being used: Intel Optane SSD 900P
 
- 
- 
- 
+J784S4-EVM
+"""""""""""""""""""""""""""
 
- 
+.. csv-table:: PCIE SSD EXT4 FIO 10G
+    :header: "Buffer size (bytes)","j784s4-evm: Write EXT4 Throughput (Mibytes/sec)","j784s4-evm: Write EXT4 CPU Load (%)","j784s4-evm: Read EXT4 Throughput (Mibytes/sec)","j784s4-evm: Read EXT4 CPU Load (%)"
 
+    "4k","184","12.63","281","12.62"
+    "256k","2143","8.06","2458","5.45"
+    "1m","1642","5.64","2496","3.18"
+    "4m","1590","6.00","2443","2.24"
 
+- Filesize used is: 10G
+- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
+- Negotiated link speed and width: Speed 8GT/s, Width x2
+- SSD being used: Intel Optane SSD 900P
+
+J722S-EVM
+"""""""""""""""""""""""""""
+
+.. csv-table:: PCIE SSD EXT4 FIO 10G
+    :header: "Buffer size (bytes)","j722s-evm: Write EXT4 Throughput (Mibytes/sec)","j722s-evm: Write EXT4 CPU Load (%)","j722s-evm: Read EXT4 Throughput (Mibytes/sec)","j722s-evm: Read EXT4 CPU Load (%)"
+
+    "4k","110","25.37","166","25.27"
+    "256k","751","11.76","785","9.79"
+    "1m","733","9.90","772","8.23"
+    "4m","734","8.34","775","7.42"
+
+- Filesize used is: 10G
+- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
+- Negotiated link speed and width: Speed 8GT/s, Width x1
+- SSD being used: Intel Optane SSD 900P
 
 |
 
