@@ -7,13 +7,15 @@
 **All performance numbers provided in this document are gathered using
 following Evaluation Modules unless otherwise specified.**
 
-+----------------+---------------------------------------------------------------------------------------------------+
-| Name           | Description                                                                                       |
-+================+===================================================================================================+
-| AM62x EVM      | AM62x Starter Kit rev A with ARM running at 1400 MHz, DDR4 data rate 1600 MT/S                    |
-+----------------+---------------------------------------------------------------------------------------------------+
-| AM62x SK LP    | AM62x LP Starter Kit rev E1 with ARM running at 1250 MHz, LPDDR4 data rate 1600 MT/S              |
-+----------------+---------------------------------------------------------------------------------------------------+
++----------------+----------------------------------------------------------------------------------------------------------------+
+| Name           | Description                                                                                                    |
++================+================================================================================================================+
+| AM62x SK       | AM62x Starter Kit rev E2 and E3 with ARM running at 1.4GHz, DDR data rate 1600 MT/S                            |
++----------------+----------------------------------------------------------------------------------------------------------------+
+| AM62x LP SK    | AM62x LP Starter Kit rev E1 with ARM running at 1.25GHz, LPDDR4 data rate 1600 MT/S                            |
++----------------+----------------------------------------------------------------------------------------------------------------+
+| AM62SIP SK     | AM62SIP Starter Kit rev E1 with ARM running at 1.4GHz, 512MB LPDDR4 data rate 1600 MT/S                        |
++----------------+----------------------------------------------------------------------------------------------------------------+
 
 Table:  Evaluation Modules
 
@@ -58,6 +60,6 @@ Test command for running stress-ng and cyclictest together
 .. csv-table::
     :header: "Latencies","am62xx_sk:per-core"
 
-    "Minimum (usec)","4,4,4,4"
-    "Average (usec)","5,5,5,5"
-    "Maximum (usec)","33,63,46,52"
+    "Minimum (usec)","5,5,4,4"
+    "Average (usec)","7,5,6,6"
+    "Maximum (usec)","69,51,62,50"
