@@ -521,43 +521,31 @@ PCIe-ETH
 .. csv-table:: PCIe Ethernet performance
     :header: "TCP Window Size(Kbytes)","am64xx-hsevm: Bandwidth (Mbits/sec)"
 
-    "8","0.00"
-    "16","0.00"
+    "8","173"
+    "16","383"
+    "32","524"
+    "64","930"
+    "128","936"
+    "256","939"
 
-
-
- 
-
+- Command: iperf3 -c $server_ip -w $window_size
+- PCIe-Ethernet Card being used: Intel® 82574L Gigabit Ethernet Controller
 
 PCIe-NVMe-SSD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-AM64xx-EVM
-"""""""""""""""""""""""""""
-
-
-
-
 .. csv-table:: PCIE SSD EXT4 FIO 10G
-    :header: "Buffer size (bytes)","am64xx-hsevm: Write EXT4 Throughput (Mbytes/sec)","am64xx-hsevm: Write EXT4 CPU Load (%)","am64xx-hsevm: Read EXT4 Throughput (Mbytes/sec)","am64xx-hsevm: Read EXT4 CPU Load (%)"
+    :header: "Buffer size (bytes)","am64xx-hsevm: Write EXT4 Throughput (Mibytes/sec)","am64xx-hsevm: Write EXT4 CPU Load (%)","am64xx-hsevm: Read EXT4 Throughput (Mibytes/sec)","am64xx-hsevm: Read EXT4 CPU Load (%)"
 
-    "1m","365.00","18.69","398.00","14.39"
-    "4m","360.00","15.64","398.00","12.54"
-    "4k","79.30","51.13","90.20","46.87"
-    "256k","375.00","24.41","397.00","16.45"
-
-
+    "4k","81.4","51.17","126","50.86"
+    "256k","384.00","24.72","406.00","16.67"
+    "1m","384.00","17.43","407.00","13.70"
+    "4m","384.00","14.18","407.00","10.68"
 
 - Filesize used is: 10G
 - FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based 
-- Platform: Speed 8GT/s, Width x1
-- SSD being used: Lite-On Technology Corporation M8Pe Series NVMe SSD [14a4:22f1] (rev 01)
- 
- 
-
- 
-
-
+- Negotiated Link Speed and Link Width: Speed 5GT/s, Width x1
+- SSD being used: Intel Optane NVMe SSD 900P
 
 |
 
