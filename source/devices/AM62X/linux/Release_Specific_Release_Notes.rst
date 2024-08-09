@@ -53,6 +53,7 @@ What's new
   - Power Management: DeepSleep, MCU-Only and Partial IO mode - :ref:`Power Management Overview <Power-Management>`
   - OOB: GPU Accelerated Chromium Browser Support - :ref:`Chromium Browser <Chromium_Browser-label>`
   - TIFS, DM, R5 SPL: PLL Configuration sequence updated to latest recommendation
+  - TISCI ABI version updated to 4.0 from 3.1 (Low power mode related API changes)
 
 
 **Component version:**
@@ -334,6 +335,13 @@ Known Issues
    "LCPD-28138","AM62x: RTC tests fail in automated testing","am62xx-sk,am62xx_sk-fs,am62xx_sk-se",""
    "LCPD-28104","Automated test failure - CPSW test is passing invalid parameters to switch-config","am62xx-sk,am62xx_sk-fs,am62xx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se",""
    "LCPD-24456","Move IPC validation source from github to git.ti.com","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am437x-idk,am437x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am571x-idk,am572x-idk,am574x-hsidk,am574x-idk,am57xx-beagle-x15,am57xx-evm,am57xx-hsevm,am62axx_sk-fs,am62xx-sk,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62xx_sk-fs,am62xx_sk-se,am64xx-evm,am64xx-hsevm,am64xx_sk-fs,am654x-evm,am654x-hsevm,am654x-idk,bbai,beaglebone,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm,j7200-evm,j7200-hsevm,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,omapl138-lcdk",""
+   "SYSFW-5992","Unable to set exact pixel clock for OLDI LCD display / HDMI Pixel clock","am62x, am62a, am62px",""
+   "SYSFW-6369","DM unable to enter deep sleep mode when booting in SBL flow","am62x, am62a, am62px",""
+   "SYSFW-6432","Set device API doesn't return Error when PD is in transition state","am62x,am62ax,am62px,am64x,am65x",""
+   "SYSFW-6426","Ownership of a firewall region can be transferred to an invalid host","am62x,am62ax,am62px,am64x,am65x",""
+   "SYSFW-7559","LPM: In MCU Only mode resume path the MCU_M4 LPSC is ON","am62x,am62ax,am62px",""
+   "SYSFW-7571","LPM: Device IDs higher than 255 will not work with set device constraint","am62x,am62ax,am62px",""
+   "SITSW-4773","DM is not receiving the exact flags passed by sender for all K3 devices","am62x,am62ax,am62px",""
 
 
 |
@@ -372,6 +380,11 @@ Closed Issues in Current Release
    "LCPD-32344","AM62: McASP recording causes CPU freezes","am62axx_sk-fs,am62xx-lp-sk,am62xx-sk,am62xx_lp_sk-fs,am62xx_sk-fs,am62xx_sk-se"
    "LCPD-32250","Doc: Linux driver for eQEP","am62axx_sk-fs,am62axx_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62xx_p0_sk-fs,am62xx_sk-fs,am62xx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am64xx-hssk,am64xx_sk-fs,am64xx_sk-se"
    "LCPD-29649","inta_ack results in NULL pointer exception","beagleplay-gp"
+   "SYSFW-7536","Sending JTAG unlock certificate to TIFS using T32 JTAG fails","am62x,am62ax,am62px,am64x,am65x"
+   "SYSFW-7474","Write access from DMA initiators to RA GCFG region results in firewall exception","am62x,am62ax,am62px"
+   "SYSFW-7463","TISCI_MSG_GET_CLOCK always return Enabled for input clock","am62x,am62ax,am62px,am64x,am65x"
+   "SYSFW-7485","Update the PLL driver in TIFS boot flow to follow correct sequence","am62x,am62ax,am62px,am64x,am65x"
+   "SYSFW-7486","PM: Cleanup additional steps in pll init startup routine","am62x,am62ax,am62px,am64x,am65x"
 
 |
 

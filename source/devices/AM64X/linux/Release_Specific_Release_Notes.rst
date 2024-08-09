@@ -52,7 +52,7 @@ What's new
   - RT Kernel : Significant Improvements to Real-Time Linux Interrupt Latency - :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Bug Fixes and Stability Improvements
   - TIFS, DM, R5 SPL: PLL Configuration sequence updated to latest recommendation
-  - DMSC Firmware: No longer re-initializing ICSSG clocks
+  - TISCI ABI version updated to 4.0 from 3.1 (Low power mode related API changes - LPM does not apply to AM64x)
   - HSR Tx Tag Insertion and Rx Tag Removal offload on ICSSG
 
 **Component version:**
@@ -279,6 +279,8 @@ Known Issues
    "LCPD-22834","am64xx-evm stress boot test fails","am64xx-evm",""
    "LCPD-21577","USBHOST_S_FUNC_SERIAL_0001 test passes even when the serial device is not enumerated","am64xx-evm",""
    "LCPD-20105","AM64x: Kernel: ADC: RX DMA channel request fails","am64xx-evm,am64xx-hsevm",""
+   "SYSFW-6432","Set device API doesn't return Error when PD is in transition state","am62x,am62ax,am62px,am64x,am65x",""
+   "SYSFW-6426","Ownership of a firewall region can be transferred to an invalid host","am62x,am62ax,am62px,am64x,am65x",""
 
 |
 
@@ -307,6 +309,9 @@ Closed Issues in Current Release
    "LCPD-32250","Doc: Linux driver for eQEP","am62axx_sk-fs,am62axx_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62xx_p0_sk-fs,am62xx_sk-fs,am62xx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am64xx-hssk,am64xx_sk-fs,am64xx_sk-se"
    "LCPD-25540","AM64: u-boot: usb host boot failed","am64xx-hsevm,am64xx_sk-fs"
    "LCPD-24872","Am64x-sk :LCPD-16811 CPSW  failed while throughput metrics comparison ","am64xx_sk-fs"
+   "SYSFW-7463","TISCI_MSG_GET_CLOCK always return Enabled for input clock","am62x,am62ax,am62px,am64x,am65x"
+   "SYSFW-7485","Update the PLL driver in TIFS boot flow to follow correct sequence","am62x,am62ax,am62px,am64x,am65x"
+   "SYSFW-7486","PM: Cleanup additional steps in pll init startup routine","am62x,am62ax,am62px,am64x,am65x"
 
 
 |
