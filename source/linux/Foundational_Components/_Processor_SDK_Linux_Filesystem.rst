@@ -51,7 +51,7 @@ binaries and :ref:`TI Apps Launcher OOB Demo <TI-Apps-Launcher-User-Guide-label>
 
 .. only:: _comment
 
-    [comment] current SDK 7.x build for 'SITARA' doesn't have docker/tiny image, so comment out the following section
+    [comment] current SDK 7.x build for 'PSDK' doesn't have docker/tiny image, so comment out the following section
 
     .. rubric:: tisdk-docker-rootfs-image
 

@@ -290,7 +290,7 @@ divided by the number of messages sent (1000).
 Average Round Trip Time (ARTT) for K2H/E/G and OMAP-L138 EVMs
 
 .. csv-table::
-    :header: "SITARA 5.2","K2H","K2E","K2G","OMAP-L138"
+    :header: "PLSDK 5.2","K2H","K2E","K2G","OMAP-L138"
 
     "CPU Speed","1.2GHz","1.4GHz","1GHz","456MHz"
     "ARTT (us)","115","68","81","904"

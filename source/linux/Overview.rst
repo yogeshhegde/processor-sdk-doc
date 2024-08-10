@@ -12,7 +12,7 @@ Overview
    Overview_Top_Level_Makefile
    Overview_Directory_Structure_Overview
    Overview_Software_Stack
-   Overview_JACINTOA_PSDKRA_Summary
+   Overview_PSDKLA_PSDKRA_Summary
    Overview_Technical_Support
    Overview_Training
    Overview_GPLv3_Disclaimer
