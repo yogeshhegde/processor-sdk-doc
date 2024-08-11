@@ -129,15 +129,30 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
          The final command below will build the :file:`tisdk-default-image`, which is the
          Processor SDK image with arago filesystem.  See `Build Options`_ for a list of
          additional targets.
+         
+         .. tabs::
+            
+            .. tab:: Build Linux SD card Image
+               
+               .. code-block:: console
 
-         .. code-block:: console
+                  $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+                  $ cd tisdk
+                  $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
+                  $ cd build
+                  $ . conf/setenv
+                  $ MACHINE=<machine> bitbake -k tisdk-default-image
 
-            $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
-            $ cd tisdk
-            $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
-            $ cd build
-            $ . conf/setenv
-            $ MACHINE=<machine> bitbake -k tisdk-default-image
+            .. tab:: Build RT-Linux SD card Image
+               
+               .. code-block:: console
+
+                  $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+                  $ cd tisdk
+                  $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
+                  $ cd build
+                  $ . conf/setenv
+                  $ MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake -k tisdk-default-image
 
 
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
