@@ -28,7 +28,7 @@ Please refer to the software manifest, which outlines the licensing
 status for all packages included in this release. The manifest can be
 found on the SDK download page. The manifest can be found on the SDK
 download page or in the installed directory as indicated below. In
-addition, see `SITARA GPLv3 Disclaimer <Overview_GPLv3_Disclaimer.html>`__
+addition, see `GPLv3 Disclaimer <Overview_GPLv3_Disclaimer.html>`__
 
 Documentation
 ===============
@@ -181,8 +181,8 @@ Issues opened in previous releases that were closed on this release
    :header: "Record ID", "Platform", "Title"
    :widths: 15, 30, 100
 
-   SITARA-1398,"k2e-evm,k2e-hsevm,k2h-hsevm,k2g-hsevm",Documentation IPC Demo hangs if run after OpenCL demos
-   SITARA-3143,"am335x-evm, am437x-evm, am437x-idk, am572x-evm, am572x-idk, am574x-idk",TVM inside SITARA Linux devkit not working for code generation
+   PLSDK-1398,"k2e-evm,k2e-hsevm,k2h-hsevm,k2g-hsevm",Documentation IPC Demo hangs if run after OpenCL demos
+   PLSDK-3143,"am335x-evm, am437x-evm, am437x-idk, am572x-evm, am572x-idk, am574x-idk",TVM inside PLSDK Linux devkit not working for code generation
 
 |
 
@@ -193,9 +193,9 @@ Issues found and closed on this release that may be applicable to prior releases
    :header: "Record ID", "Platform", "Title"
    :widths: 15, 20, 70
 
-   SITARA-3157,"am654x-evm,am654x-idk,am654x-hsevm", ICSSG: Driver has to support changing of speed/duplex on the fly
-   SITARA-3067,"am574x-idk", M4 Bind/Unbind Causes Hang
-   SITARA-2642,"am574x-idk", PRU Ethernet links on IDK Application board are unstable
+   PLSDK-3157,"am654x-evm,am654x-idk,am654x-hsevm", ICSSG: Driver has to support changing of speed/duplex on the fly
+   PLSDK-3067,"am574x-idk", M4 Bind/Unbind Causes Hang
+   PLSDK-2642,"am574x-idk", PRU Ethernet links on IDK Application board are unstable
 
 |
 
@@ -274,55 +274,55 @@ SDK Known Issues
    :widths: 25, 30, 50, 600
 
    LCPD-15810,"am335x-evm, am43xx-gpevm, k2g-evm",Illegal instruction reported when trying to decode h264 stream with gstreamer,None
-   SITARA-1398,"k2e-evm, k2e-hsevm, k2g-hsevm, k2hk-hsevm",IPC demo hangs if run after OpenCL demos,Run IPC demo w/o running OpenCL first
-   SITARA-1419,k2l-evm,Intermittent-IP address display issue on LCD for K2L RT,"Use ifconfig once Linux boots, to acquire IP address"
-   SITARA-2178,"am335x-ice, am437x-idk, am574x-idk",ICSS EMAC intermittent error in received acyclic packet content,None
-   SITARA-2466,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, k2g-ice",Fix Race condition in updating NSP credit value,None
-   SITARA-2530,"am335x-ice, am437x-idk",AM3/4 PTP PPS fails intermittently,No complete workaround. Restarting the ethernet interface should reset PPS and likely resolve the issue temporarily.
-   SITARA-2642,am654x-idk,PRU Ethernet links on IDK Application board are unstable,"IDK Limitation, requires re-work"
-   SITARA-2662,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",HSR/PRP: Bringing down one slave port stops HSR/PRP interface,None
-   SITARA-2861,"k2e-evm, k2g-evm, k2hk-evm, k2l-evm",Crypto is not functional on 2019 LTS,None
-   SITARA-2873,k2g-ice,K2G-ICE kernel warnings when removing PRUETH module,None
-   SITARA-2895,am571x-idk,AM571x-IDK: Icss Emac: TTS Port 1: Packet cyclic timestamp error.,None
-   SITARA-2896,"k2e-evm, k2e-hsevm, k2hk-evm",mpm_transport_hyperlink_loopback: transport arm-loopback-hyplnk-0 failed (error: -114) retval -1001,No workaround
-   SITARA-2900,"am335x-evm, am437x-evm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm","crypto examples are skipped from toplevel SDK Makefile, due to OpenSSL dependency",No workaround
-   SITARA-2913,am572x-idk,NetJury Test Failure: TC_PRP_4_3_4_____Reception_of_a_PRP_Supervision_frame_and_Nodes_Table - test_VLAN,No workaround
-   SITARA-2936,am572x-evm,jailhouse: failed in destroy cell,None
-   SITARA-2937,am572x-evm,jailhouse: ti-app demo doesn't start,None
-   SITARA-2960,am571x-idk,HSR/PRP: Noticed 1 packet loss seen with UDP tests over 60 minute test,None
-   SITARA-2989,"am335x-evm, am437x-evm, am437x-hsevm, am572x-evm, am572x-hsevm, k2e-evm, k2g-evm, k2l-evm, k2l-hsevm",defconfig build failure: reported diff,
-   SITARA-3031,"am571x-idk, am572x-idk, am574x-idk",HSR: erroneous A-B forwarding of frames,
-   SITARA-3032,"am571x-idk, am572x-idk, am574x-idk","HSR: forwarding of untagged frames in default mode H not according to IEC 62439-3:2016, 5.3.3 DANH receiving from an HSR port.",None
-   SITARA-3057,"am335x-evm, am437x-evm, am572x-evm, am654x-evm, am654x-idk",ARMNN with TFLite parser: performance/accuracy issue with quantized mobilenet models,Patch from arm compute library https://review.mlplatform.org/c/ml/ComputeLibrary/+/1620/.
-   SITARA-3071,"am571x-idk, am572x-evm, am572x-idk, am574x-idk",Dual camera demo: Overlapping of camera and stats panel due to big font size,None
-   SITARA-3074,am572x-idk,NetJury Test Failure: TC_PRP_4_2_4_____IP_addresses,None
-   SITARA-3086,"am571x-idk, am572x-idk",Unable to handle kernel NULL pointer dereference when disabling HSR,None
-   SITARA-3089,"am572x-evm, k2l-evm",openmpacc example test failed on am572x-evm and k2l-evm,
-   SITARA-3091,am572x-idk,Jailhouse: ICSS_EMAC_LLD test hangs during TTS tests on ICSS_EMAC_TEST_PRU2ETH0 and ICSS_EMAC_TEST_PRU2ETH1,
-   SITARA-3125,"am571x-idk, am572x-idk, am574x-idk",clean up timestamp queue when extts is disabled,
-   SITARA-3128,"am572x-evm, am572x-hsevm, am572x-idk, am574x-hsidk, am574x-idk",SDK disk image for Windows users too large for 16GB SD card,
-   SITARA-3138,,EtherCAT in Jailhouse inmate: instruction abort at 0x80013f00,
-   SITARA-3147,am654x-idk,ICSSG: < 0.01 packet loss at 3/4/4.5 Mbits/sec for 10M Half Duplex link,
-   SITARA-3148,am654x-idk,ICSSG: 10M/100M Half duplex doesn't work with 10/100M Hub,
-   SITARA-3152,am654x-idk,10M/100M EVM <-------> PC / H3C S5120V2: setup results in kernel errors and ping failures,
-   SITARA-3171,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",DualEMAC PTP IPv4/UDP transport does not support VLAN,
-   SITARA-3172,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",DualEMAC PTP IPv4/UDP transport does not drop SYNC messages from unknown PTP masters,
-   SITARA-3179,"am572x-idk",OpenCV_stereoBM_implementation test failed on am5729-idk,
-   SITARA-3182,"am571x-idk",RSTP switch PRU ethernet driver should use 4 tx queues instead of 2,
-   SITARA-3183,"am571x-idk",RSTP switch PRU ethernet driver should purge FDB only when going in or out of blocking state,
-   SITARA-3184,"am571x-idk",RSTP switch PRU ethernet driver should age out dynamically learned FDB,
-   SITARA-3185,"am571x-idk",RSTP switch PRU ethernet driver multicast filtering is not working,
-   SITARA-3191,"am335x-ice",icss-m: prueth: AM335x Single EMAC broken,
-   SITARA-3213,"am654x-idk",DP83867: auto negotiation at 10M/100M unstable,
-   SITARA-3215,"omapl138-lcdk",Windows SD card creation does not result in bootable binary,
-   SITARA-3219,"am571x-idk,am572x-idk,am574x-idk",Invalid PTP message type warnings,
-   SITARA-3219,"am571x-idk,am572x-idk,am574x-idk",Invalid PTP message type warnings,
-   SITARA-3220,"am572x-evm,am572x-idk", Neo-AI DLR TIDL demo image preprocssing incorrectly indexing pixels,
-   SITARA-3225,"am654x-evm", bin/create-ubifs.sh not available in SDK,
-   SITARA-3232,"am654x-evm", UDP throughput numbers are half of what they should be,
-   SITARA-3238,"am335x-evm,am437x-evm", Docker hello world test failure on am335x-evm/am437x-evm/dra76x-evm,
-   SITARA-3240,"am571x-idk,am572x-idk,am574x-idk", RSTP prueth: cable removal can cause instability on disabled Ethernet port,
-   SITARA-3241,"am571x-idk,am572x-idk,am574x-idk", RSTP_SWITCH_FW: Re-calculate timeout value for PRU-side locking,
+   PLSDK-1398,"k2e-evm, k2e-hsevm, k2g-hsevm, k2hk-hsevm",IPC demo hangs if run after OpenCL demos,Run IPC demo w/o running OpenCL first
+   PLSDK-1419,k2l-evm,Intermittent-IP address display issue on LCD for K2L RT,"Use ifconfig once Linux boots, to acquire IP address"
+   PLSDK-2178,"am335x-ice, am437x-idk, am574x-idk",ICSS EMAC intermittent error in received acyclic packet content,None
+   PLSDK-2466,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, k2g-ice",Fix Race condition in updating NSP credit value,None
+   PLSDK-2530,"am335x-ice, am437x-idk",AM3/4 PTP PPS fails intermittently,No complete workaround. Restarting the ethernet interface should reset PPS and likely resolve the issue temporarily.
+   PLSDK-2642,am654x-idk,PRU Ethernet links on IDK Application board are unstable,"IDK Limitation, requires re-work"
+   PLSDK-2662,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",HSR/PRP: Bringing down one slave port stops HSR/PRP interface,None
+   PLSDK-2861,"k2e-evm, k2g-evm, k2hk-evm, k2l-evm",Crypto is not functional on 2019 LTS,None
+   PLSDK-2873,k2g-ice,K2G-ICE kernel warnings when removing PRUETH module,None
+   PLSDK-2895,am571x-idk,AM571x-IDK: Icss Emac: TTS Port 1: Packet cyclic timestamp error.,None
+   PLSDK-2896,"k2e-evm, k2e-hsevm, k2hk-evm",mpm_transport_hyperlink_loopback: transport arm-loopback-hyplnk-0 failed (error: -114) retval -1001,No workaround
+   PLSDK-2900,"am335x-evm, am437x-evm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm","crypto examples are skipped from toplevel SDK Makefile, due to OpenSSL dependency",No workaround
+   PLSDK-2913,am572x-idk,NetJury Test Failure: TC_PRP_4_3_4_____Reception_of_a_PRP_Supervision_frame_and_Nodes_Table - test_VLAN,No workaround
+   PLSDK-2936,am572x-evm,jailhouse: failed in destroy cell,None
+   PLSDK-2937,am572x-evm,jailhouse: ti-app demo doesn't start,None
+   PLSDK-2960,am571x-idk,HSR/PRP: Noticed 1 packet loss seen with UDP tests over 60 minute test,None
+   PLSDK-2989,"am335x-evm, am437x-evm, am437x-hsevm, am572x-evm, am572x-hsevm, k2e-evm, k2g-evm, k2l-evm, k2l-hsevm",defconfig build failure: reported diff,
+   PLSDK-3031,"am571x-idk, am572x-idk, am574x-idk",HSR: erroneous A-B forwarding of frames,
+   PLSDK-3032,"am571x-idk, am572x-idk, am574x-idk","HSR: forwarding of untagged frames in default mode H not according to IEC 62439-3:2016, 5.3.3 DANH receiving from an HSR port.",None
+   PLSDK-3057,"am335x-evm, am437x-evm, am572x-evm, am654x-evm, am654x-idk",ARMNN with TFLite parser: performance/accuracy issue with quantized mobilenet models,Patch from arm compute library https://review.mlplatform.org/c/ml/ComputeLibrary/+/1620/.
+   PLSDK-3071,"am571x-idk, am572x-evm, am572x-idk, am574x-idk",Dual camera demo: Overlapping of camera and stats panel due to big font size,None
+   PLSDK-3074,am572x-idk,NetJury Test Failure: TC_PRP_4_2_4_____IP_addresses,None
+   PLSDK-3086,"am571x-idk, am572x-idk",Unable to handle kernel NULL pointer dereference when disabling HSR,None
+   PLSDK-3089,"am572x-evm, k2l-evm",openmpacc example test failed on am572x-evm and k2l-evm,
+   PLSDK-3091,am572x-idk,Jailhouse: ICSS_EMAC_LLD test hangs during TTS tests on ICSS_EMAC_TEST_PRU2ETH0 and ICSS_EMAC_TEST_PRU2ETH1,
+   PLSDK-3125,"am571x-idk, am572x-idk, am574x-idk",clean up timestamp queue when extts is disabled,
+   PLSDK-3128,"am572x-evm, am572x-hsevm, am572x-idk, am574x-hsidk, am574x-idk",SDK disk image for Windows users too large for 16GB SD card,
+   PLSDK-3138,,EtherCAT in Jailhouse inmate: instruction abort at 0x80013f00,
+   PLSDK-3147,am654x-idk,ICSSG: < 0.01 packet loss at 3/4/4.5 Mbits/sec for 10M Half Duplex link,
+   PLSDK-3148,am654x-idk,ICSSG: 10M/100M Half duplex doesn't work with 10/100M Hub,
+   PLSDK-3152,am654x-idk,10M/100M EVM <-------> PC / H3C S5120V2: setup results in kernel errors and ping failures,
+   PLSDK-3171,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",DualEMAC PTP IPv4/UDP transport does not support VLAN,
+   PLSDK-3172,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",DualEMAC PTP IPv4/UDP transport does not drop SYNC messages from unknown PTP masters,
+   PLSDK-3179,"am572x-idk",OpenCV_stereoBM_implementation test failed on am5729-idk,
+   PLSDK-3182,"am571x-idk",RSTP switch PRU ethernet driver should use 4 tx queues instead of 2,
+   PLSDK-3183,"am571x-idk",RSTP switch PRU ethernet driver should purge FDB only when going in or out of blocking state,
+   PLSDK-3184,"am571x-idk",RSTP switch PRU ethernet driver should age out dynamically learned FDB,
+   PLSDK-3185,"am571x-idk",RSTP switch PRU ethernet driver multicast filtering is not working,
+   PLSDK-3191,"am335x-ice",icss-m: prueth: AM335x Single EMAC broken,
+   PLSDK-3213,"am654x-idk",DP83867: auto negotiation at 10M/100M unstable,
+   PLSDK-3215,"omapl138-lcdk",Windows SD card creation does not result in bootable binary,
+   PLSDK-3219,"am571x-idk,am572x-idk,am574x-idk",Invalid PTP message type warnings,
+   PLSDK-3219,"am571x-idk,am572x-idk,am574x-idk",Invalid PTP message type warnings,
+   PLSDK-3220,"am572x-evm,am572x-idk", Neo-AI DLR TIDL demo image preprocssing incorrectly indexing pixels,
+   PLSDK-3225,"am654x-evm", bin/create-ubifs.sh not available in SDK,
+   PLSDK-3232,"am654x-evm", UDP throughput numbers are half of what they should be,
+   PLSDK-3238,"am335x-evm,am437x-evm", Docker hello world test failure on am335x-evm/am437x-evm/dra76x-evm,
+   PLSDK-3240,"am571x-idk,am572x-idk,am574x-idk", RSTP prueth: cable removal can cause instability on disabled Ethernet port,
+   PLSDK-3241,"am571x-idk,am572x-idk,am574x-idk", RSTP_SWITCH_FW: Re-calculate timeout value for PRU-side locking,
 
 |
 

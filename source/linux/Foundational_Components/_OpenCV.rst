@@ -506,7 +506,7 @@ Primary purpose of this tutorial is to show how one can add TI DSP C66
 optimized kernels to existing OpenCV framework. Necessary steps are
 described in below paragraphs, describing several already optimized
 kernels, and also how to add new and then recompile and deploy updated
-OpenCV in SITARA 3.1. TI DSP specific OpenCL implementation is additional
+OpenCV in SDK 3.1. TI DSP specific OpenCL implementation is additional
 to few existing accelerators: Intel x86: SSE2/SSE4/AVX/AVX2 extensions;
 ARM: NEON; nVIDIA: CUDA; Generic OpenCL. Range of accelerated kernels
 via OpenCL is wide, e.g. OpenCV 3.10 baseline includes ~200 kernels
@@ -528,7 +528,7 @@ AM5728 (2 C66 cores).
 OpenCV OpenCL run-time setup
 -----------------------------
 
-OpenCV and OpenCL are already included in SITARA 3.10. OpenCV uses
+OpenCV and OpenCL are already included in SDK 3.10. OpenCV uses
 run-time compilation of OpenCL kernels, so first time kernel execution
 is dominated by kernel compilation (later they are cached either in
 memory or tmp filesystem) - please note that it may take several dozens
@@ -544,7 +544,7 @@ Multicore C66 DSP'**
 OpenCV OpenCL development setup
 --------------------------------
 
-OpenCV and OpenCL are already included in SITARA 3.10.
+OpenCV and OpenCL are already included in SDK 3.10.
 
 -  Development setup need to be prepared based on
    `Building the Processor SDK <Overview_Building_the_SDK.html>`__
@@ -725,7 +725,7 @@ Implementation for this OpenCL kernel is provided in
 modules/imgproc/src/opencl/gauss.cl, which is a new file.
 
 DSP kernels can use standard 1.2 OpenCL C and DSP specific extensions.
-OpenCL included in SITARA 3.1 allows direct use of functions in edmamgr
+OpenCL included in SDK 3.1 allows direct use of functions in edmamgr
 module. We can even use printf() in .cl files (developer does not need
 to bother with any additional hooks on Host side) which is very useful
 for development, debugging and benchmarking.
@@ -881,7 +881,7 @@ Additional information about C66 specific optimizations
    https://training.ti.com/system/files/docs/c66x-corepac-instruction-set-reference-guide.pdf
 
 --------------------------------------------------------------------------------------------------------
-List of currently (SITARA 3.1) DSP optimized OpenCV OpenCL kernels, using non-standard OpenCL extensions
+List of currently (SDK 3.1) DSP optimized OpenCV OpenCL kernels, using non-standard OpenCL extensions
 --------------------------------------------------------------------------------------------------------
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -903,7 +903,7 @@ OpenCL C C66 DSP kernels
 |
 
 --------------------------------------------------------------------------------------
-Profiling results of DSP optimized OpenCV OpenCL kernels (SITARA 3.1), AM5728 platform
+Profiling results of DSP optimized OpenCV OpenCL kernels (SDK 3.1), AM5728 platform
 --------------------------------------------------------------------------------------
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

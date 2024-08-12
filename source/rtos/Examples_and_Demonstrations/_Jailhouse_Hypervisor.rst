@@ -44,7 +44,7 @@ https://github.com/siemens/jailhouse.
 
 | Processor Linux SDK delivers Jailhouse’s prebuilt binaries. You may
   try it immediately after installation. This section assumes that you
-  have already installed SITARA, and have Linux booted on the AM572X-EVM
+  have already installed PSDK, and have Linux booted on the AM572X-EVM
   or AM572x-IDK.
 
 | **NOTE:** *to use Jailhouse hypervisor*
@@ -498,7 +498,7 @@ install jailhouse to the target file system.
    :name: building-and-running-the-ethercat-slave-demo
 
 To build and run the Ethercat Slave Demo, you need to install the
-SITARA-RT, PRSDK and PRU-ICSS-ETHERCAT-SLAVE builds. We assume that you
+PSDK-RT, PRSDK and PRU-ICSS-ETHERCAT-SLAVE builds. We assume that you
 already have the first two SDKs installed. The PRU-ICSS-ETHERCAT-SLAVE
 can be downloaded from
 http://software-dl.ti.com/processor-industrial-sw/esd/PRU-ICSS-ETHERCAT-SLAVE/01_00_05_00/index_FDS.html.
@@ -507,7 +507,7 @@ Once you have this SDK installed you may build Ethercat slave
 components.
 
 If the am572x-ethercat.cell is not installed on target filesystem yet,
-build it from SITARA-RT top level makefile "make jailhouse" and copy it
+build it from PSDK-RT top level makefile "make jailhouse" and copy it
 to target under /usr/share/jailhouse/examples.
 
 To build the ethercat_slave_demo.bin:

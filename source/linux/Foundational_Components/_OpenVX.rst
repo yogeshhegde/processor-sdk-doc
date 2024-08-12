@@ -264,7 +264,7 @@ After finishing running the TIOVX test application, switch the firmware back to 
 
     MACHINE=am57xx-evm bitbake tisdk-core-bundle
 
-| For modifying individual components in SITARA, please refer to: to
+| For modifying individual components in SDK, please refer to: to
   http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK#Recipes
 | If there is a need to modify source code of TIOVX host library
   (framework) files (A15 side), please do that in:

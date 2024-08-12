@@ -18,7 +18,7 @@ Arm Compute Library
 -------------------
 
 Arm Compute Library is a software library for computer vision and machine learning, optimized for NEON SIMD architecture (Mali GPU OpenCL is not applicable to TI devices).
-Exact list of functions can be found at https://developer.arm.com/technologies/compute-library. Arm Compute Libraries and sample executables are included in SITARA filesystem.
+Exact list of functions can be found at https://developer.arm.com/technologies/compute-library. Arm Compute Libraries and sample executables are included in SDK filesystem.
 AM3/4/5/6 devices can utilize this library to unleash full potential of Arm CPUs.
 
 Sample NN related executables (using Arm Compute Library only):

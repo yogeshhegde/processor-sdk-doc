@@ -452,7 +452,7 @@ Classification with class filtering  tidl-matrix-gui-demo_
 Matrix GUI demos
 ^^^^^^^^^^^^^^^^
 
-Upon boot, Matrix-GUI is started with multiple button that can start many demos. In current release, SITARA 5.0, there is sub-menu "TI Deep Learning"
+Upon boot, Matrix-GUI is started with multiple button that can start many demos. In current release, SDK 5.0, there is sub-menu "TI Deep Learning"
 with multiple demo selection buttons. Scripts invoked via Matrix-GUI can be found in /usr/bin target folder, all named as runTidl*.sh:
 
 * ImageNet dataset trained classification model, based on Jacinto11 topology; input from pre-recorded real-world video clip - runTidlStaticImg.sh, runTidlStaticImg_dsponly.sh, runTidlStaticImg_lg2.sh
@@ -1201,15 +1201,15 @@ For networks with two layer groups, viewer generated graph clearly depicts layer
 Simulation Tool
 ^^^^^^^^^^^^^^^^
 
-We provide simulation tool both in SITARA Arm filesystem:
+We provide simulation tool both in SDK Arm filesystem:
 
   - /usr/bin/eve_test_dl_algo.out, bit-exact emulation (of the target execution)
   - /usr/bin/eve_test_dl_algo_ref.out, simulation (faster execution)
 
 and Linux x86 simulation tool (added to the path, after enabling linux-devkit with source environment-setup):
 
-  - <SITARA>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/eve_test_dl_algo.out, bit-exact emulation (of the target execution)
-  - <SITARA>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/eve_test_dl_algo_ref.out, simulation (faster exeectuion)
+  - <SDK>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/eve_test_dl_algo.out, bit-exact emulation (of the target execution)
+  - <SDK>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/eve_test_dl_algo_ref.out, simulation (faster exeectuion)
 
 For bit-exact simulation, output of simulation tool is expected to be identical to the output of A5749 or AM57xx target.
 Please use this tool as convenience tool only (E.g. testing model on setup without target EVM).
@@ -1432,7 +1432,7 @@ JDetNet, sparse           Obj.Det.   768x320x3    -                       -     
    * Layers groups can be defined in runtime using 2 layers group configuration: first layers group is executed on EVE and second on DSP. TIDL-API takes care of execution pipelining.
    * Properly setting configuration for conv2dkernelype parameter is very important for execution performance of layers with feature map size smaller than 64x64: dense type is mandatory for layers with small feature maps (dense is '1', sparese is '0'). This parameter is applicable on per layer basis (multiple values are expected - as many as there are layers).
    * In upcoming releases conv2dkernelytype setting will be done automatically during import process.
-   * From release SITARA 5.1, default EVE speed is increased from 535MHz to 650MHz.
+   * From release SDK 5.1, default EVE speed is increased from 535MHz to 650MHz.
 
 Accuracy of selected networks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
