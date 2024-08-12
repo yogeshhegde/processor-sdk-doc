@@ -98,9 +98,10 @@ Building images using ``ti-bdebstrap`` involves the following steps:
 
     1. install the pre-requisite packages
     2. get the scripts using ``git clone``
-    3. run the :file:`build.sh` script and with required build config as argument.
-    4. creating a wic image using :file:`create-wic.sh`.
-    5. flashing the image into a SD card
+    3. checkout to the SDK release version tag that you want to build
+    4. run the :file:`build.sh` script and with required build config as argument.
+    5. creating a wic image using :file:`create-wic.sh`.
+    6. flashing the image into a SD card
 
 Install Pre-requisite Packages
 ------------------------------
@@ -145,6 +146,32 @@ Finally, install ``toml-cli`` and ``yamllint``:
 .. note::
 
    The scripts internally handle toolchain downloads based on Host architecture. So the same steps can be followed on both ``arm`` and ``x86_64`` hosts.
+
+Checkout to the Correct Release Tag
+-----------------------------------
+
+ti-bdebstrap repository has tags corresponding to each release.
+
+Before building the image, it is important to ensure that you are on the correct release tag. First, view all the tags
+using:
+
+.. code-block:: console
+
+   git tag
+
+Then, select a release tag and checkout to it:
+
+.. code-block:: console
+
+   git checkout <tag-name>
+
+For example, to checkout to the `10.00.07-release` tag, use the following command:
+
+.. code-block:: console
+
+   git checkout 10.00.07-release
+
+The :file:`builds.toml` and other config files will now support building images corresponding to the `10.00.07` release.
 
 Building the Image
 -------------------
