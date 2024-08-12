@@ -21,11 +21,12 @@ Software Dependencies to Get Started
 
 Prerequisites
 
--  Processor SDK Linux for AM62Px |__SDK_DOWNLOAD_URL__|.
--  `Processor SDK MCU+ for
-   AM62Px <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM62P>`__
+   - Processor SDK Linux for AM62Px |__SDK_DOWNLOAD_URL__|.
+   - `Processor SDK MCU+ for AM62Px
+     <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM62P>`__
 
 .. note::
+
    Please be sure that you have the same version number
    for both Processor SDK RTOS and Linux.
 
@@ -43,7 +44,7 @@ and loads the A53 with the HLOS. The A53 then boots the R5F core.
 The wakeup R5F firmware runs device manager software (SciServer) along
 with user application.
 
-The wakeup R5F firmware is integrated as part of tispl.bin binary
+The wakeup R5F firmware is integrated as part of :file:`tispl.bin` binary
 and is started early in the boot process by u-boot R5 SPL right after DDR initialization.
 
 
@@ -62,11 +63,11 @@ in the SDK package that can be run from ARM Linux.
 The remoteproc driver is hard-coded to look for specific files when
 loading the R5F core. Here are the files it looks for on an AM62Px device:
 
-   +------------------+-----------------+----------------------+----------------------+
-   | Core Name        | RemoteProc Name | Description          | Firmware File Name   |
-   +==================+=================+======================+======================+
-   | R5F	      | 79000000.r5f    | R5F core(MCU domain) | am62p-mcu-r5f0_0-fw  |
-   +------------------+-----------------+----------------------+----------------------+
+   +-----------+-----------------+----------------------+-----------------------------+
+   | Core Name | RemoteProc Name | Description          | Firmware File Name          |
+   +===========+=================+======================+=============================+
+   | R5F       | 79000000.r5f    | R5F core(MCU domain) | :file:`am62p-mcu-r5f0_0-fw` |
+   +-----------+-----------------+----------------------+-----------------------------+
 
 Generally on a target file system the above files are soft linked to the
 intended executable FW files:
@@ -78,25 +79,25 @@ intended executable FW files:
 
 For updating wakeup (DM) R5F firmware binary, tispl.bin needs to be recompiled with the new firmware binary as mentioned below :
 
-#. Go to linux installer and replace the existing R5F wakeup (DM) firmware binary with the new one
+   #. Go to linux installer and replace the existing R5F wakeup (DM) firmware binary with the new one
 
-.. code-block:: console
+      .. code-block:: console
 
-   host#  cp <path_to_new_fw_binary>/ipc_echo_testb_freertos_mcu1_0_release.xer5f <path_to_linux_installer>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f
+         host#  cp <path_to_new_fw_binary>/ipc_echo_testb_freertos_mcu1_0_release.xer5f <path_to_linux_installer>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f
 
-#. Recompile u-boot to regenerate tispl.bin using the top level makefile.
+   #. Recompile u-boot to regenerate tispl.bin using the top level makefile.
 
-.. code-block:: console
+      .. code-block:: console
 
-   host# make u-boot
+         host# make u-boot
 
-Please refer to :ref:`Top-Level Makefile <top-level-makefile>` for more details on Top Level makefile.
+      Please refer to :ref:`Top-Level Makefile <top-level-makefile>` for more details on Top Level makefile.
 
-#. Replace the updated tispl.bin containing new R5F firmware binary in the boot partition of sdcard and reboot
+   #. Replace the updated tispl.bin containing new R5F firmware binary in the boot partition of sdcard and reboot
 
-.. code-block:: console
+      .. code-block:: console
 
-   host# sudo cp board-support/u-boot_build/a53/tispl.bin  /media/$USER/boot
+         host# sudo cp board-support/u-boot_build/a53/tispl.bin  /media/$USER/boot
 
 .. _booting_remote_cores_from_Linux_console:
 
@@ -180,14 +181,19 @@ See the devicetree bindings documentation for more details: `Documentation/devic
    [    0.000000] OF: reserved mem: initialized node r5f-dma-memory@9c800000, compatible id shared-dma-pool
    [    0.000000] OF: reserved mem: initialized node r5f-memory@9c900000, compatible id shared-dma-pool
 
-.. note:: The reserved memory sizes listed above are provided as a reference only and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
-          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=ti-linux-6.6.y'
+.. note::
+
+   The reserved memory sizes listed above are provided as a reference only and
+   subject to change between releases. For latest memory reservations, please
+   refer to the kernel device tree repository :
+   'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=ti-linux-6.6.y'
 
 By default the first 1MB of each pool is used for the Virtio and Vring buffers
 used to communicate with the remote processor core. The remaining carveout is
 used for the remote core external memory (program code, data, etc).
 
 .. note::
+
     The resource table entity (which describes the system resources needed by
     the remote processor) needs to be at the beginning of the remote processor
     external memory section.
@@ -210,38 +216,44 @@ M4F and R5F external memory section sizes in their respective linker mapfiles.
 
    reserved-memory {
       #address-cells = <2>;
-       #size-cells = <2>;
-       ranges;
+      #size-cells = <2>;
+      ranges;
 
-          wkup_r5fss0_core0_dma_memory_region: r5f-dma-memory@9c800000 {
-             compatible = "shared-dma-pool";
-             reg = <0x00 0x9c800000 0x00 0x100000>;
-             no-map;
-          };
+      wkup_r5fss0_core0_dma_memory_region: r5f-dma-memory@9c800000 {
+         compatible = "shared-dma-pool";
+         reg = <0x00 0x9c800000 0x00 0x100000>;
+         no-map;
+      };
 
-          wkup_r5fss0_core0_memory_region: r5f-dma-memory@9c900000 {
-             compatible = "shared-dma-pool";
-             reg = <0x00 0x9c900000 0x00 0x01e00000>;
-             no-map;
-          };
+      wkup_r5fss0_core0_memory_region: r5f-dma-memory@9c900000 {
+         compatible = "shared-dma-pool";
+         reg = <0x00 0x9c900000 0x00 0x01e00000>;
+         no-map;
+      };
 
-          mcu_r5fss0_core0_dma_memory_region: r5f-dma-memory@9b800000 {
-             compatible = "shared-dma-pool";
-             reg = <0x00 0x9b800000 0x00 0x100000>;
-             no-map;
-          };
+      mcu_r5fss0_core0_dma_memory_region: r5f-dma-memory@9b800000 {
+         compatible = "shared-dma-pool";
+         reg = <0x00 0x9b800000 0x00 0x100000>;
+         no-map;
+      };
 
-          mcu_r5fss0_core0_memory_region: r5f-dma-memory@9b900000 {
-             compatible = "shared-dma-pool";
-             reg = <0x00 0x9b900000 0x00 0x0f00000>;
-             no-map;
-          };
-	};
+      mcu_r5fss0_core0_memory_region: r5f-dma-memory@9b900000 {
+         compatible = "shared-dma-pool";
+         reg = <0x00 0x9b900000 0x00 0x0f00000>;
+         no-map;
+      };
+   };
 
 
-.. warning:: Be careful not to overlap carveouts!
+.. warning::
 
-.. note:: The reserved memory sizes listed above are provided as a reference only and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
-          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=10.00.07'
+   Be careful not to overlap carveouts!
+
+.. note::
+
+   The reserved memory sizes listed above are provided as a reference only and
+   subject to change between releases. For latest memory reservations, please
+   refer to the kernel device tree repository :
+   'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=10.00.07'
 
 .. include:: Foundational_Components/IPC/_RPMsg_char_driver.rst
