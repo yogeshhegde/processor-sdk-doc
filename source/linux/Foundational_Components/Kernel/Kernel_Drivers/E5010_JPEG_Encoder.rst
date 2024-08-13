@@ -7,7 +7,13 @@ Introduction
 
 The E5010 JPEG encoder is a stateful and scalable performance still image encoder.
 It is capable of real time encoding of YUV420/YUV422 raw picture data to fully compressed
-compressed image (jpeg) or a sequence of compressed images (mjpeg).
+compressed image (jpeg) or a sequence of compressed images (mjpeg). The driver is supported
+in both TI SDK and upstream at below paths:
+
+- `E5010 JPEG encoder source code in Upstream Linux kernel
+  <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/media/platform/imagination>`__
+- `E5010 JPEG encoder source code in TI Linux kernel
+  <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/media/platform/imagination/e5010/e5010-jpeg-enc.c?h=10.00.07>`__
 
 Hardware Specification
 ======================
@@ -51,13 +57,13 @@ Below diagram depicts different software layers involved here :
 Linux Kernel documentation references:
 
 - `V4l2 uAPI
-  <https://www.kernel.org/doc/html/v6.1/userspace-api/media/v4l/v4l2.html>`__
+  <https://www.kernel.org/doc/html/v6.6/userspace-api/media/v4l/v4l2.html>`__
 - `V4L2 core kernel docs
-  <https://www.kernel.org/doc/html/v6.1/driver-api/media/v4l2-core.html>`__
+  <https://www.kernel.org/doc/html/v6.6/driver-api/media/v4l2-core.html>`__
 - `V4L2 M2M uAPI
-  <https://www.kernel.org/doc/html/v6.1/userspace-api/media/v4l/dev-encoder.html>`__
+  <https://www.kernel.org/doc/html/v6.6/userspace-api/media/v4l/dev-encoder.html>`__
 - `V4L2 M2M driver docs
-  <https://www.kernel.org/doc/html/v6.1/driver-api/media/v4l2-mem2mem.html>`__
+  <https://www.kernel.org/doc/html/v6.6/driver-api/media/v4l2-mem2mem.html>`__
 
 Sample userspace programs for validating the hardware
 =====================================================
@@ -66,7 +72,7 @@ v4l2-ctl
 ---------
 The v4l2-ctl application from v4l-utils package can be used to encode YUV 4:2:0 and YUV 4:2:2 pixel data from a file to a sequence of JPEG images as demonstrated in below example commands:
 
-.. code-block:: text
+.. code-block:: console
 
  v4l2-ctl -d /dev/video2 --set-fmt-video-out=width=640,height=480,pixelformat=NV12 --stream-mmap --stream-out-mmap --stream-to-hdr out.jpeg --stream-from op.yuv
 
@@ -76,7 +82,7 @@ gst-launch-1.0
 gst-launch-1.0 is a sample gstreamer test application from gstreamer1.0 package which along with gstreamer plugins (pre-installed in file system) can be used to run different kind
 of video encoding based use-cases utilizing this driver as demonstrated in below example commands.
 
-.. code-block:: text
+.. code-block:: console
 
  #JPEG Encoding of live stream from Test Pattern Generator
  gst-launch-1.0 -v videotestsrc num-buffers=100 '!' video/x-raw,width=640,height=480,format=NV12, framerate=30/1 '!' queue '!' v4l2jpegenc extra-controls=c,compression_quality=75 '!' filesink location="op.mjpeg"
@@ -97,9 +103,9 @@ Building the driver
 The E5010 JPEG driver is already enabled as a kernel module in processor SDK 9.0 for AM62A in the default defconfig being used for the board.
 If using a separate defconfig, It can be enabled explicitly for compilation by setting corresponding Kconfig as shown below:
 
-.. code-block:: text
+.. code-block:: kconfig
 
- CONFIG_VIDEO_E5010_JPEG_ENC=m
+   CONFIG_VIDEO_E5010_JPEG_ENC=m
 
 Supported driver features
 =========================
@@ -107,10 +113,11 @@ The driver currently supports following features :
 
 - Compression quality setting
 - V4L2 API Compliance
-- Power Management
+- System and Run-time Power Management
+- Video cropping
 - Multi-instance JPEG encoding
 - DMABuf Import and Export support
-- Supported video formats
+- YUV 4:2:0 & YUV 4:2:2 video formats supported
 
 Compression quality setting
 ---------------------------
@@ -122,10 +129,10 @@ Compression quality setting
 
   For more information on above controls below links can be referred :
 
-- `V4L2 JPEG ctrls
-  <https://www.kernel.org/doc/html/v6.1/userspace-api/media/v4l/ext-ctrls-jpeg.html>`__
-- `V4L2 ctrl ioctls
-  <https://www.kernel.org/doc/html/v6.1/userspace-api/media/v4l/vidioc-g-ctrl.html#vidioc-g-ctrl>`__
+    - `V4L2 JPEG ctrls
+      <https://www.kernel.org/doc/html/v6.6/userspace-api/media/v4l/ext-ctrls-jpeg.html>`__
+    - `V4L2 ctrl ioctls
+      <https://www.kernel.org/doc/html/v6.6/userspace-api/media/v4l/vidioc-g-ctrl.html#vidioc-g-ctrl>`__
 
 - There is a trade-off between picture quality and compression ratio as selection of higher value of compression quality
   setting helps with acheiving better picture quality in encoded file but at the same time it reduces the compression ratio
@@ -136,7 +143,7 @@ Compression quality setting
 - Below example depicts how userspace can select different compression quality using gstreamer
   based example pipelines :
 
-.. code-block:: text
+.. code-block:: console
 
  #Select compression quality as 50%
  $gst-launch-1.0 -v videotestsrc num-buffers=100 '!' video/x-raw,width=640,height=480,format=NV12, framerate=30/1 '!' queue '!' v4l2jpegenc extra-controls=c,compression_quality=50 capture-io-mode=dmabuf-export output-io-mode=dmabuf-export '!' filesink location="op.mjpeg"
@@ -144,9 +151,9 @@ Compression quality setting
 V4L2 API Compliance
 --------------------
   The driver is fully compliant with V4L2 API with 100% PASS result achieved
-  for v4l2-compliance test which can be ran as below :
+  for v4l2-compliance test which can be ran as below:
 
-.. code-block:: text
+.. code-block:: console
 
  $v4l2-compliance -s -d /dev/videoX (X=video node number for JPEG Encoder)
 
@@ -155,37 +162,146 @@ V4L2 API Compliance
 
 Power Management
 ----------------
-The driver supports both runtime and system suspend hooks although only runtime suspend
-was validated on AM62A board as system suspend feature is not available in device manager
-in current release. Due to runtime power management feature, device stays in suspended state
-and same can be verified using k3conf utility as shown below :
+The driver supports both runtime and system suspend hooks.
 
-.. code-block:: text
+Runtime PM
+**********
+Due to runtime power management feature, when JPEG encoder
+is not being used by any of the applications, it stays in suspended
+state and same can be verified using k3conf utility as shown below :
 
-    root@am62axx-evm:~# k3conf dump device 201
-    |------------------------------------------------------------------------------|
-    | VERSION INFO                                                                 |
-    |------------------------------------------------------------------------------|
-    | K3CONF | (version v0.1-90-g1dd468d built Mon Jul 10 05:34:55 PM UTC 2023)    |
-    | SoC    | AM62Ax SR1.0                                                        |
-    | SYSFW  | ABI: 3.1 (firmware version 0x0009 '9.0.5--v09.00.05 (Kool Koala))') |
-    |------------------------------------------------------------------------------|
+.. code-block:: console
 
-    |---------------------------------------------------|
-    | Device ID | Device Name        | Device Status    |
-    |---------------------------------------------------|
-    |   201     | AM62AX_DEV_JPGENC0 | DEVICE_STATE_OFF |
-    |---------------------------------------------------|
+   root@am62axx-evm:~#  k3conf dump device 201
+   |------------------------------------------------------------------------------|
+   | VERSION INFO                                                                 |
+   |------------------------------------------------------------------------------|
+   | K3CONF | (version 0.3-nogit built Thu Jul 25 14:13:02 UTC 2024)              |
+   | SoC    | AM62Ax SR1.0                                                        |
+   | SYSFW  | ABI: 4.0 (firmware version 0x000a '10.0.8--v10.00.08 (Fiery Fox))') |
+   |------------------------------------------------------------------------------|
 
+   |---------------------------------------------------|
+   | Device ID | Device Name        | Device Status    |
+   |---------------------------------------------------|
+   |   201     | AM62AX_DEV_JPGENC0 | DEVICE_STATE_OFF |
+   |---------------------------------------------------|
 
-Multi-instance JPEG encoding:
------------------------------
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+   System PM
+   **********
+   When system gets suspended, the JPEG encoder IP block also gets powered-off. Before system suspend
+   if any JPEG encoding application utililzing this IP block was running, the application will
+   get paused for the time when system is suspended and it will seamlessly resume back when system resumes.
+
+   This is demonstrated in below logs where a gstreamer application is launched which encodes a software
+   generated test pattern using JPEG encoder IP block, decodes it using a software JPEG decoder before displaying
+   it over the screen. Using the rtcwake command system is suspended for 2 seconds before resuming back and the
+   gstreamer application seamlessly resumes with live test pattern visible again on the display.
+
+   .. important::
+
+      The ``ti_k3_dsp_remoteproc`` module needs to be removed while validating system PM
+
+   .. code-block:: console
+
+      root@am62axx-evm:~# gst-launch-1.0 videotestsrc ! v4l2jpegenc ! jpegdec ! videoconvert ! fpsdisplaysink text-overlay=false name=fpssink video-sink="waylandsink" -v > /run/l.txt 2>&1&
+      root@am62axx-evm:~# tail /run/l.txt #Check fps logs after launching the gstreamer pipeline involving JPEG encoder
+                          Setting pipeline to PLAYING ...
+                          Redistribute latency...
+                          New clock: GstSystemClock
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink/GstWaylandSink:waylandsink0: sync = true
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 17, dropped: 0, current: 33.81, average: 33.81
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 33, dropped: 0, current: 30.00, average: 31.85
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 49, dropped: 0, current: 30.00, average: 31.22
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 64, dropped: 0, current: 30.00, average: 30.93
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 80, dropped: 0, current: 30.00, average: 30.74
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 96, dropped: 0, current: 30.00, average: 30.61
+      root@am62axx-evm:~# rmmod ti_k3_dsp_remoteproc
+      root@am62axx-evm:~# rtcwake -s 2 -m mem
+                          rtcwake: wakeup from "mem" using /dev/rtc0 at Fri Aug  9 12:42:30 2024
+                          [ 6246.515781] PM: suspend entry (deep)
+                          [ 6246.519494] Filesystems sync: 0.000 seconds
+                          [ 6246.577493] Freezing user space processes
+                          [ 6246.583228] Freezing user space processes completed (elapsed 0.001 seconds)
+                          [ 6246.590280] OOM killer disabled.
+                          [ 6246.593525] Freezing remaining freezable tasks
+                          [ 6246.599295] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+                          [ 6246.619905] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 179: state: 1: ret 0
+                          [ 6246.629967] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 178: state: 1: ret 0
+                          [ 6246.640740] am65-cpsw-nuss 8000000.ethernet eth0: Link is Down
+                          [ 6246.652481] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 117: state: 1: ret 0
+                          [ 6246.671973] remoteproc remoteproc1: stopped remote processor 79000000.r5f
+                          [[ 6247.258180] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 19
+                          [ 6247.280796] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
+                          [ 6247.290130] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
+                          [ 6247.340269] OOM killer enabled.
+                          [ 6247.343440] Restarting tasks ... done.
+                          [ 6247.349753] random: crng reseeded on system resumption
+                          [ 6247.362365] platform 79000000.r5f: Core is off in resume
+                          [ 6247.370105] remoteproc remoteproc1: powering up 79000000.r5f
+                          [ 6247.377207] remoteproc remoteproc1: Booting fw image am62a-mcu-r5f0_0-fw, size 53172
+                          [ 6247.392202] rproc-virtio rproc-virtio.7.auto: assigned reserved memory node r5f-dma-memory@9b800000
+                          [ 6247.413051] virtio_rpmsg_bus virtio0: rpmsg host is online
+                          [ 6247.418725] virtio_rpmsg_bus virtio0: creating channel ti.ipc4.ping-pong addr 0xd
+                          [ 6247.420809] rproc-virtio rproc-virtio.7.auto: registered virtio0 (type 7)
+                          [ 6247.427309] virtio_rpmsg_bus virtio0: creating channel rpmsg_chrdev addr 0xe
+                          [ 6247.433219] remoteproc remoteproc1: remote processor 79000000.r5f is now up
+                          [ 6247.448351] PM: suspend exit
+      root@am62axx-evm:~# tail  /run/l.txt #JPEG Application resumes back seamless as seen in fps logs below
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 7519, dropped: 1, current: 30.00, average: 29.83
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 7535, dropped: 1, current: 30.00, average: 29.83
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 7550, dropped: 1, current: 30.00, average: 29.83
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 7566, dropped: 1, current: 30.00, average: 29.83
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 7582, dropped: 1, current: 30.00, average: 29.83
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 7598, dropped: 1, current: 30.00, average: 29.83
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 7614, dropped: 1, current: 30.00, average: 29.84
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 7629, dropped: 1, current: 30.00, average: 29.84
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 7645, dropped: 1, current: 30.00, average: 29.84
+                          /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 7660, dropped: 1, current: 30.00, average: 29.84
+
+Video Cropping
+--------------
+The E5010 JPEG encoder driver supports video cropping feature where application can request to encode
+only a portion of the input frame (called crop rectangle) by providing the coordinates and dimension information
+of crop rectangle to the application using ``VIDIOC_S_SELECTION`` ioctl as shown below:
+
+.. code-block:: c
+
+   /* apply cropping */
+   struct v4l2_selection sel = {
+           .type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE,
+           .target = V4L2_SEL_TGT_CROP_BOUNDS,
+   };
+   struct v4l2_rect r;
+
+   r.width = crop_width > 0 ? crop_width : width;
+   r.height = crop_height > 0 ? crop_height : height;
+   r.left = crop_left;
+   r.top = crop_top;
+   sel.r = r;
+   sel.target = V4L2_SEL_TGT_CROP;
+   sel.flags = V4L2_SEL_FLAG_LE;
+   ret = ioctl(vid_fd, VIDIOC_S_SELECTION, &sel);
+   if (ret)
+         printf("raw image cropping failed\n");
+   else
+         printf("cropped rectangle: %dx%d\n", sel.r.width, sel.r.height);
+
+For more information on passing up the cropping rectangle referred information to application, please refer below link :
+
+- `ioctl VIDIOC_G_SELECTION, VIDIOC_S_SELECTION
+  <https://www.kernel.org/doc/html/v6.6/userspace-api/media/v4l/vidioc-g-selection.html?highlight=s_selection#c.V4L.VIDIOC_S_SELECTION>`__
+
+Multi-instance JPEG encoding
+----------------------------
 The hardware can only process one frame at a time but multiple application instances/contexts
 can still be running in parallel and V4L2 M2M framework takes care of scheduling
 those contexts sequentially to the E5010 JPEG driver. This can be validated by launching multiple
 application instances together.
 
-.. code-block:: text
+.. code-block:: console
 
  #Pipe1 with 75% compression ratio
  $gst-launch-1.0 -v videotestsrc num-buffers=1000 '!' video/x-raw,width=640,height=480,format=NV12, framerate=30/1 '!' queue '!' v4l2jpegenc extra-controls=c,compression_quality=75 capture-io-mode=dmabuf-export output-io-mode=dmabuf-export '!' filesink location="op1.mjpeg" &
@@ -197,15 +313,15 @@ application instances together.
  #PipeN with 30% compression ratio
  $gst-launch-1.0 -v videotestsrc num-buffers=1000 '!' video/x-raw,width=640,height=480,format=NV12, framerate=30/1 '!' queue '!' v4l2jpegenc extra-controls=c,compression_quality=30 capture-io-mode=dmabuf-export output-io-mode=dmabuf-export '!' filesink location="op3.mjpeg" &
 
-DMABuf Import and Export support:
----------------------------------
+DMABuf Import and Export support
+--------------------------------
 The driver supports dmabuf import and export for both capture and output queues which can be used
 for zero CPU copy transfer of pixel data. This feature is especially useful for output queue where
 raw pixel data of larger size need to be transferred to device for encoding.
 
 Below examples demonstrate usage of same feature using gstreamer:
 
-.. code-block:: text
+.. code-block:: console
 
  #Recoding camera feed by encoding as sequence of JPEG images using DMABUF Import
  $gst-launch-1.0 v4l2src device=/dev/video-rpi-cam0 io-mode=5 ! video/x-bayer,width=1920,height=1080,format=bggr ! tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/d
@@ -217,8 +333,8 @@ Below examples demonstrate usage of same feature using gstreamer:
  #Sample pipeline demonstrating DMABUF import for output queues of JPEG Encoder while transcoding an existing .H264 file to a sequence of JPEG images
  $gst-launch-1.0 filesrc location=bbb_4kp60_30s_IPPP.h264 ! h264parse ! v4l2h264dec capture-io-mode=dmabuf ! v4l2jpegenc output-io-mode=dmabuf-import ! filesink location=op.mjpeg
 
-Supported video formats:
-------------------------
+Supported video formats
+-----------------------
 The driver supports encoding of both contigous and non-contigous versions of YUV 4:2:0 and YUV 4:2:2 semiplanar raw pixel formats.
 The non contiguous formats (suffixed with `M` in below table) use separate buffers (non-contigous) for luma and chroma data. However,
 the gstreamer framework uses a single video format for both contigous and non-contigous and dynamically maps it to either of them
@@ -249,8 +365,8 @@ and this was done to match the requirements of TI specific gstreamer elements.
 | V4L2_PIX_FMT_NV61M |     2       | GST_VIDEO_FORMAT_NV61  |
 +--------------------+-------------+------------------------+
 
-Buffer alignment requirements:
-==============================
+Buffer alignment requirements
+=============================
 - For input raw pixel data, the driver requests for width in pixels to be multiple of 64 bytes and height in pixels to be multiple of 8 bytes and buffers for output queue are allocated/negotiated accordingly.
 
 - For output encoded data, the driver requests for width in pixels to be multiple of 16 bytes and height in pixels to be multiple of 8 bytes and buffers for capture queue are allocated/negotiated accordingly.
@@ -273,7 +389,7 @@ for 4:2:2 video formats and 3840x2160@75fps equivalent load for 4:2:0 video form
 
 This however requires the upstream element (for e.g. camera) to support above rates. On AM62A board fastest locally available upstream element source is `wave5 VPU decoder <../../../Foundational_Components_Multimedia_wave5.html>`__ which provides maximum performance of 3840x2160@59 fps with low bitrate files and we were able to achieve same performance after passing this decoded data to E5010 JPEG Encoder as shown in below example :
 
-.. code-block:: text
+.. code-block:: console
 
  $gst-launch-1.0 filesrc location=bbb_4kp60_30s_IPPP.h264 ! h264parse ! v4l2h264dec capture-io-mode=dmabuf ! v4l2jpegenc output-io-mode=dmabuf-import ! fpsdisplaysink text-overlay=false ssink video-sink="fakesink" -v
  Setting pipeline to PAUSED ...
@@ -345,7 +461,7 @@ Below example depicts a dummy pipeline to measure performance (or throughput) an
 imx219 RPi Camera configured to provide 1080p@30 fps, ISP block and JPEG Encoder which is configured to import data from ISP block using
 dmabuf sharing.
 
-.. code-block:: text
+.. code-block:: console
 
  $GST_TRACERS="latency(flags=pipeline+element+reported)" gst-launch-1.0 v4l2src device=/dev/video-rpi-cam0 io-mode=5 ! video/x-bayer,width=1920,height=1080,format=bggr ! tiovxisp sensor-name=SENS
  _IMX219_RPI dcc-isp-file=/opt/imaging/imx219/dcc_viss_1920x1080.bin sink_0::dcc-2a-file=/opt/imaging/imx219/dcc_2a_1920x1080.bin sink_0::device=/dev/v4l-rpi-subdev0 ! video/x-raw,format=NV12 ! v4l2jpegenc output-io-mode=dmabuf-import ! fpsdisplaysink text-overlay=false name=fpssink video-sink="fakesink" sync=true -v
