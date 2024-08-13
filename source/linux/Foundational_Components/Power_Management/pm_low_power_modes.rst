@@ -313,3 +313,29 @@ before running the Suspend-to-RAM command:
       .. code-block:: console
 
          root@am62axx-evm:@~# modprobe -rf ti_k3_dsp_remoteproc
+
+Compatibility
+=============
+
+The compatibility between Kernel version and firmware version to enter low power mode is listed
+in the below table:
+
++-----------------+-----------------------------------+------------------------------------+
+|  LPM            |  Firmware v10.0                   |  Firmware < v10.0                  |
++=================+===================================+====================================+
+| TI Kernel 6.6   |   All low power modes supported   |    Only Deep Sleep supported       |
++-----------------+-----------------------------------+------------------------------------+
+| TI Kernel < 6.6 |   All low power modes supported   |    All low power modes supported   |
++-----------------+-----------------------------------+------------------------------------+
+
+.. important::
+
+   In case of Kernel 6.6 and Firmware < v10.0, the firmware is unaware of the constraints
+   framework. Hence, the system will always enter deep sleep low power mode irrespective
+   of the constraints set.
+
+.. note::
+
+   All low power mode supported implies all low power mode supported by the firmware as per firmware
+   capabilities. `TISCI_MSG_QUERY_FW_CAPS <https://software-dl.ti.com/tisci/esd/latest/2_tisci_msgs/general/core.html#tisci-msg-query-fw-caps>`__
+   can be sent to firmware to get the low power modes supported by firmware.
