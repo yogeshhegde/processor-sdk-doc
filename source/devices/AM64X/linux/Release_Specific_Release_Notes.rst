@@ -275,10 +275,11 @@ Known Issues
    "LCPD-20105","AM64x: Kernel: ADC: RX DMA channel request fails","am64xx-evm,am64xx-hsevm",""
    "SYSFW-6432","Set device API doesn't return Error when PD is in transition state","am62x,am62ax,am62px,am64x,am65x",""
    "SYSFW-6426","Ownership of a firewall region can be transferred to an invalid host","am62x,am62ax,am62px,am64x,am65x",""
-   "PINDSW-7087,"ICSSG Fw:IET FPE mac verify fails","am64xx-evm,am654x-evm",""
-   "PINDSW-8022,"ICSSG Fw:TAPRIO - Base-time is not used properly","am64xx-evm,am654x-evm",""
-   "PINDSW-8023,"ICSSG Fw:TAPRIO - Firmware can’t handle base-time which is not a multiple of cycle-time.","am64xx-evm,am654x-evm",""
-   "PINDSW-7087,"ICSSG Fw:Switch: PTP: Timestamp Interrupt is coming on the opposite port","am64xx-evm,am654x-evm",""
+   "PINDSW-7087","ICSSG Fw:IET FPE mac verify fails","am64xx-evm,am654x-evm",""
+   "PINDSW-8022","ICSSG Fw:TAPRIO - Base-time is not used properly","am64xx-evm,am654x-evm",""
+   "PINDSW-8023","ICSSG Fw:TAPRIO - Firmware can’t handle base-time which is not a multiple of cycle-time.","am64xx-evm,am654x-evm",""
+   "PINDSW-7087","ICSSG Fw:Switch: PTP: Timestamp Interrupt is coming on the opposite port","am64xx-evm,am654x-evm",""
+   "SITSW-3922","Flash writer - Benchmark script fails for emmc logs","am62x,am62ax,am62px,am64x",""
 
 |
 

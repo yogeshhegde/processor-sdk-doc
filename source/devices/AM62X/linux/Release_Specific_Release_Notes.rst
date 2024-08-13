@@ -341,6 +341,7 @@ Known Issues
    "SYSFW-7559","LPM: In MCU Only mode resume path the MCU_M4 LPSC is ON","am62x,am62ax,am62px",""
    "SYSFW-7571","LPM: Device IDs higher than 255 will not work with set device constraint","am62x,am62ax,am62px",""
    "SITSW-4773","DM is not receiving the exact flags passed by sender for all K3 devices","am62x,am62ax,am62px",""
+   "SITSW-3922","Flash writer: Benchmark script fails for emmc logs","am62x,am62ax,am62px,am64x",""
 
 
 |
