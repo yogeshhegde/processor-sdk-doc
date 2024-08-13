@@ -265,6 +265,9 @@ Known Issues
    "SITSW-4773","DM is not receiving the exact flags passed by sender for all K3 devices","am62x,am62ax,am62px",""
    "SITSW-3922","Flash writer: Benchmark script fails for emmc logs","am62x,am62ax,am62px,am64x",""
    "SITSW-5048","AM62P: ti-img-rogue kernel driver makefile bug","am62px",""
+   "SITSW-5041","Debian: LPM not working again on AM62P, AM62LP and AM62SIP","am62p-sk,am62xx-sk-lp,am62x-sip-sk",""
+   "SITSW-5049","Debian: Chromium doesn't display minimize and maximize buttons","am62p-sk,am62xx-sk,am62xx-sk-lp",""
+   "SITSW-4864","TI Debian SDK: Docker not working","am62xx-sk,am62xx-sk-lp,am62x-sip-sk,am62p-sk,am64xx-evm,am64xx-sk",""
 
 |
 
@@ -304,6 +307,9 @@ Closed Issues in Current Release
    "SYSFW-7463","TISCI_MSG_GET_CLOCK always return Enabled for input clock","am62x,am62ax,am62px,am64x,am65x"
    "SYSFW-7485","Update the PLL driver in TIFS boot flow to follow correct sequence","am62x,am62ax,am62px,am64x,am65x"
    "SYSFW-7486","PM: Cleanup additional steps in pll init startup routine","am62x,am62ax,am62px,am64x,am65x"
+   "SITSW-4481","Debian SDK documentation misses instructions for building kernel package","am62x-sk,am62p-sk,am64xx-evm,am64xx-sk,am62xx-sk-lp,am62x-sip-sk"
+   "SITSW-4288","Debian: Dual-display doesn't work out-of-box","am62xx-sk,am62p-sk,am62xx-sk-lp,am62x-sip-sk"
+   "SITSW-5040","TI Debian SDK: Build instructions no longer working due to ti-bdebstrap Advancement","am62xx-sk,am62xx-sk-lp,am62x-sip-sk,am62p-sk,am64xx-evm,am64xx-sk"
 
 |
 

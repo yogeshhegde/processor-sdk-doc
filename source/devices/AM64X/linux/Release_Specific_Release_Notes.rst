@@ -280,6 +280,7 @@ Known Issues
    "PINDSW-8023","ICSSG Fw:TAPRIO - Firmware can’t handle base-time which is not a multiple of cycle-time.","am64xx-evm,am654x-evm",""
    "PINDSW-7087","ICSSG Fw:Switch: PTP: Timestamp Interrupt is coming on the opposite port","am64xx-evm,am654x-evm",""
    "SITSW-3922","Flash writer - Benchmark script fails for emmc logs","am62x,am62ax,am62px,am64x",""
+   "SITSW-4864","TI Debian SDK: Docker not working","am62xx-sk,am62xx-sk-lp,am62x-sip-sk,am62p-sk,am64xx-evm,am64xx-sk",""
 
 |
 
@@ -321,6 +322,8 @@ Closed Issues in Current Release
    "PINDSW-7981","ICSSG Fw: FDB: All Slots are not cleared during initialization","am64xx-evm,am654x-evm"
    "PINDSW-7982","ICSSG Fw: Race condition during IEP configuration","am64xx-evm,am654x-evm"
    "PINDSW-7990","ICSSG Fw: HalfDuplex: Need to handle CRS, COL connections combination in firmware","am64xx-evm"
+   "SITSW-4481","Debian SDK documentation misses instructions for building kernel package","am62x-sk,am62p-sk,am64xx-evm,am64xx-sk,am62xx-sk-lp,am62x-sip-sk"
+   "SITSW-5040","TI Debian SDK: Build instructions no longer working due to ti-bdebstrap Advancement","am62xx-sk,am62xx-sk-lp,am62x-sip-sk,am62p-sk,am64xx-evm,am64xx-sk"
 
 
 |
