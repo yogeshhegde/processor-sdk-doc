@@ -105,6 +105,11 @@ Known Issues
      - N/A
      - N/A
 
+   * - **SITSW-5071**
+     - U-Boot 2024.04 crashes with ``adtbo_idx=1``
+     - N/A
+     - N/A
+
    * - **SITSW-1387**
      - Mcasp: Buffer underflow console messages seen
      - N/A
