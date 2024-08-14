@@ -346,21 +346,3 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
 7. Board should boot the Android images now.
 
-*******************
-Flashing the kernel
-*******************
-
-In order to flash a new kernel, the several images should be flashed:
-
-.. code-block:: console
-
-   $ adb reboot fastboot
-   < Wait for fastbootd reboot >
-
-   $ cd <PATH/TO/IMAGES>
-   $ fastboot flash boot boot.img
-   $ fastboot flash vendor_boot vendor_boot.img
-   $ fastboot flash vendor_dlkm vendor_dlkm.img
-   $ fastboot reboot
-
-The board should boot with the new kernel build.
