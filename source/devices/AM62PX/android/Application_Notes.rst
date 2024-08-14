@@ -16,3 +16,4 @@ Application Notes
    Application_Notes_OTA
    Application_Notes_Camera
    Application_Notes_Android_Multimedia_Video
+   Application_Notes_Sample_Maps_App
