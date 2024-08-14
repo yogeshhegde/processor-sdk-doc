@@ -21,9 +21,11 @@ u-boot version 2021.x. To pick up the PLL updates on top of this SDK, pick the
 components listed below when building the u-boot binaries.
 
 
-#. DMSC Firmware
-    - Pick up the SDK 10.0 DMSC firmware from tag ``10.00.07`` of ti-linux-firmware repo
-       - https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=10.00.07
+   #. DMSC Firmware
+
+      - Pick up the SDK 10.0 DMSC firmware from tag ``10.00.07`` of ti-linux-firmware repo
+
+         - https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=10.00.07
 
 
 Refer to `SDK 08.06 u-boot build instructions <https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/08_06_00_42/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#build-u-boot>`__
@@ -38,9 +40,11 @@ u-boot version 2024.x. To pick up the PLL updates on top of this SDK, pick the
 components listed below when building the u-boot binaries.
 
 
-#. DMSC Firmware
-    - Pick up the SDK 10.0 DMSC firmware from tag ``10.00.07`` of ti-linux-firmware repo
-       - https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=10.00.07
+   #. DMSC Firmware
+
+      - Pick up the SDK 10.0 DMSC firmware from tag ``10.00.07`` of ti-linux-firmware repo
+
+         - https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=10.00.07
 
 
 Refer to `SDK 09.02 u-boot build instructions <https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/09_02_01_10/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#build-u-boot>`__

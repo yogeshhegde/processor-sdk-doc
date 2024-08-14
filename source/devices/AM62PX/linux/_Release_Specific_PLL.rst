@@ -23,14 +23,18 @@ u-boot version 2024.x. To pick up the PLL updates on top of this SDK, pick the
 components listed below when building the u-boot binaries.
 
 
-#. TIFS and DM Firmware
-    - Pick up the SDK 10.0 TIFS and DM firmware from tag `10.00.07` of ti-linux-firmware repo
-       - https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=10.00.07
+   #. TIFS and DM Firmware
 
-#. U-boot patches for SPL
-    - Apply the below patches to u-boot project for getting the PLL driver updates in R5 SPL
-       - https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2024.04&id=a99fde602fae9efafeaafd57a7f684557f9cd666
-       - https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2024.04&id=fda88f8bcea30590528930ff9441c6e958da86f5
+      - Pick up the SDK 10.0 TIFS and DM firmware from tag `10.00.07` of ti-linux-firmware repo
+
+         - https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=10.00.07
+
+   #. U-boot patches for SPL
+
+      - Apply the below patches to u-boot project for getting the PLL driver updates in R5 SPL
+
+         - https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2024.04&id=a99fde602fae9efafeaafd57a7f684557f9cd666
+         - https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2024.04&id=fda88f8bcea30590528930ff9441c6e958da86f5
 
 Refer to `SDK 09.02 u-boot build instructions <https://software-dl.ti.com/processor-sdk-linux/esd/AM62PX/09_02_01_10/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#build-u-boot>`__
 for more information on building u-boot binaries.
