@@ -149,3 +149,5 @@ For detailed information, see `k3 upstream documentation <https://docs.u-boot.or
        .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
           For picking the correct filenames, refer to the `upstream documentation <https://docs.u-boot.org/en/latest/board/ti/am62px_sk.html#target-images>`__.
+
+    7. Rebuild Android by following :ref:`android-build-aosp`.
