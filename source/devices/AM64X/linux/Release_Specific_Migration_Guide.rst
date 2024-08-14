@@ -32,3 +32,4 @@ Processor SDK 10.00.07.04
       <../../../linux/Foundational_Components_Kernel_Users_Guide.html#preparing-to-build>`__
       for build instructions.
 
+.. include:: _Release_Specific_PLL.rst

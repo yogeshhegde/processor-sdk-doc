@@ -36,3 +36,5 @@ Processor SDK 10.00.07.04
       for build instructions.
 
 .. include:: /linux/Release_Specific/_AM62_Enable_UHS_MMCSD.rst
+
+.. include:: _Release_Specific_PLL.rst
