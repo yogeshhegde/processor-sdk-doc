@@ -37,8 +37,8 @@ Contents of the board
    - Port1 from this is used for MCU R5F UART
 
 #. 6x CAN FD Interfaces
-#. Main Domain Ethernet (CPSW2G) port
 #. MCU Domain Ethernet (CPSW2G) port
+#. Main Domain Ethernet (CPSW2G) port
 #. MIPI JTAG connector
 #. SD card slot
 #. XDS110 on board USB JTAG connector
