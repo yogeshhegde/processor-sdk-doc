@@ -652,3 +652,5 @@ Also to change cma without re-compilation, one can stop at u-boot prompt during 
 
    target # setenv args_all $args_all cma=1000M
    target # boot
+
+:doc:`Other Multimedia Tools <./Foundational_Components_Multimedia_Other_Tools>`
