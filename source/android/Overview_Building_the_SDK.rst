@@ -44,7 +44,7 @@ Downloading sources
     .. code-block:: console
 
        $ mkdir ${YOUR_PATH}/ti-aosp-14 && cd $_
-       $ repo init -u git://git.ti.com/android/manifest.git -b android14-release -m releases/RLS_10_00.xml
+       $ repo init -u https://git.ti.com/git/android/manifest.git -b android14-release -m releases/RLS_10_00.xml
        $ repo sync
 
 .. tip::
