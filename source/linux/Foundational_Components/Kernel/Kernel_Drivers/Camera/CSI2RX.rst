@@ -509,40 +509,68 @@ Enabling camera sensors
         serial
         bus info        platform:30102000.ticsi2rx
         hw revision     0x1
-        driver version  6.1.33
+        driver version  6.6.32
 
         Device topology
+        - entity 1: 30102000.ticsi2rx (7 pads, 7 links, 1 route)
+                    type V4L2 subdev subtype Unknown flags 0
+                    device node name /dev/v4l-subdev0
+                routes:
+                        0/0 -> 1/0 [ACTIVE]
+                pad0: Sink
+                        [stream:0 fmt:SRGGB8_1X8/1920x1080 field:none]
+                        <- "cdns_csi2rx.30101000.csi-bridge":1 [ENABLED,IMMUTABLE]
+                pad1: Source
+                        [stream:0 fmt:SRGGB8_1X8/1920x1080 field:none]
+                        -> "30102000.ticsi2rx context 0":0 [ENABLED,IMMUTABLE]
+                pad2: Source
+                        -> "30102000.ticsi2rx context 1":0 [ENABLED,IMMUTABLE]
+                pad3: Source
+                        -> "30102000.ticsi2rx context 2":0 [ENABLED,IMMUTABLE]
+                pad4: Source
+                        -> "30102000.ticsi2rx context 3":0 [ENABLED,IMMUTABLE]
+                pad5: Source
+                        -> "30102000.ticsi2rx context 4":0 [ENABLED,IMMUTABLE]
+                pad6: Source
+                        -> "30102000.ticsi2rx context 5":0 [ENABLED,IMMUTABLE]
         ....
-        - entity 15: imx219 4-0010 (1 pad, 1 link, 0 route)
-                     type V4L2 subdev subtype Sensor flags 0
-                     device node name /dev/v4l-subdev2
-                pad0: Source
-                        [stream:0 fmt:SRGGB10_1X10/1640x1232 field:none colorspace:srgb xfer:srgb ycbcr:601 quantization:full-range
-                         crop.bounds:(8,8)/3280x2464
-                         crop:(8,8)/3280x2464]
-                        -> "cdns_csi2rx.30101000.csi-bridge":0 [ENABLED,IMMUTABLE]
-        ....
+        - entity 15: imx219 4-0010 (1 pad, 1 link, 0 routes)
+             type V4L2 subdev subtype Sensor flags 0
+             device node name /dev/v4l-subdev2
+        pad0: Source
+                [stream:0 fmt:SRGGB8_1X8/1920x1080 field:none colorspace:raw xfer:none quantization:full-range
+                 crop.bounds:(8,8)/3280x2464
+                 crop:(688,700)/1920x1080]
+                -> "cdns_csi2rx.30101000.csi-bridge":0 [ENABLED,IMMUTABLE]
 
     The sensor and other subdevs (for example FPDLink ser/deser) should
     automatically get configured by the initialization script on the SD card:
 
-    .. code-block:: text
+    .. code-block:: console
 
-        CSI Camera 0 detected
-            device = /dev/video-rpi-cam0
-            name = imx219
-            format = [fmt:SRGGB10_1X10/1640x1232]
-            subdev_id = /dev/v4l-rpi-subdev0
-            isp_required = yes
+       IMX219 Camera 0 detected
+       device = /dev/video-imx219-cam0
+       name = imx219
+       format = [fmt:SRGGB8_1X8/1920x1080]
+       subdev_id = /dev/v4l-imx219-subdev0
+       isp_required = yes
 
     For manual configuration, like switching to a different resolution or
     bitdepth, you can use media-ctl as `explained above
     <#utilities-to-interact-with-the-driver>`__. For example you can switch to
-    10-bit 1080p capture on IMX219 using:
+    10-bit 1640x1232 capture on IMX219 using:
 
     .. code-block:: console
 
-        $ media-ctl --set-v4l2 '"imx219 4-0010":0[fmt:SRGGB10_1X10/1920x1080]'
+        $ media-ctl --set-v4l2 '"imx219 4-0010":0[fmt:SRGGB10_1X10/1640x1232]'
+        $ media-ctl --set-v4l2 '"30102000.ticsi2rx":0[fmt:SRGGB10_1X10/1640x1232]'
+
+    and to switch it back to 8bit 1920x1080 capture :
+
+    .. code-block:: console
+
+        $ media-ctl --set-v4l2 '"30102000.ticsi2rx":0[fmt:SRGGB8_1X8/1920x1080]'
+        $ media-ctl --set-v4l2 '"imx219 4-0010":0[fmt:SRGGB8_1X8/1920x1080]'
 
     Capturing raw frames
     ====================
@@ -553,28 +581,30 @@ Enabling camera sensors
 
     .. code-block:: console
 
-        $ yavta -s 1640x1232 -f SRGGB10 /dev/video-rpi-cam0 -c100
-        Device /dev/video-rpi-cam0 opened.
-        Device `j721e-csi2rx' on `platform:30102000.ticsi2rx' is a video output (without mplanes) device.
-        Video format set: SRGGB10 (30314752) 1640x1232 (stride 3280) field none buffer size 4040960
-        Video format: SRGGB10 (30314752) 1640x1232 (stride 3280) field none buffer size 4040960
+        $ yavta -s 1920x1080 -f SRGGB8 /dev/video-imx219-cam0 -c100
+        Device /dev/video-imx219-cam0 opened.
+        yavta -s 1920x1080 -f SRGGB8 /dev/video-imx219-cam0 -c100
+        Device /dev/video-imx219-cam0 opened.
+        Device `j721e-csi2rx' on `platform:30102000.ticsi2rx' (driver 'j721e-csi2rx') supports video, capture, without mplanes.
+        Video format set: SRGGB8 (42474752) 1920x1080 (stride 1920) field none buffer size 2073600
+        Video format: SRGGB8 (42474752) 1920x1080 (stride 1920) field none buffer size 2073600
         8 buffers requested.
         ....
-        0 (0) [-] any 0 4040960 B 5147.594160 5147.594200 17.080 fps ts mono/EoF
-        1 (1) [-] any 1 4040960 B 5147.627500 5147.627570 29.994 fps ts mono/EoF
+        length: 2073600 offset: 0 timestamp type/source: mono/EoF
+        Buffer 0/0 mapped at address 0xffff95415000.
+        length: 2073600 offset: 2076672 timestamp type/source: mono/EoF
+        Buffer 1/0 mapped at address 0xffff9521a000.
+        length: 2073600 offset: 4153344 timestamp type/source: mono/EoF
+        Buffer 2/0 mapped at address 0xffff9501f000.
+        length: 2073600 offset: 6230016 timestamp type/source: mono/EoF
         ....
-        98 (2) [-] any 98 4040960 B 5150.860153 5150.860171 30.007 fps ts mono/EoF
-        99 (3) [-] any 99 4040960 B 5150.893480 5150.893499 30.006 fps ts mono/EoF
-        Captured 100 frames in 3.357886 seconds (29.780638 fps, 120342366.671406 B/s).
-        8 buffers released.
-
 
     By default the frames are copied over to DDR and discarded later. You can
     optionally save a few frames to the SD card for debugging purposes:
 
     .. code-block:: console
 
-        $ yavta -s 1640x1232 -f SRGGB10 /dev/video-rpi-cam0 -c5 -Fframe-#.bin
+        $ yavta -s 1920x1080 -f SRGGB8 /dev/video-imx219-cam0 -c5 -Fframe-#.bin
         ....
         $ ls -l frame-*.bin
         -rw-r--r-- 1 root root 2073600 Feb 22 05:24 frame-000000.bin
@@ -603,25 +633,21 @@ Enabling camera sensors
 
         $ systemctl stop weston.service
 
-    Use the following pipeline for IMX219 1232p RAW10 mode:
+    Use the following pipeline for IMX219 1920x1080 RAW8 mode:
 
     .. code-block:: console
 
-        $ gst-launch-1.0 v4l2src device=/dev/video-rpi-cam0 io-mode=5 ! video/x-bayer,width=1640,height=1232,format=rggb10 ! \
-        tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/linear/dcc_viss_10b_1640x1232.bin \
-        sink_0::dcc-2a-file=/opt/imaging/imx219/linear/dcc_2a_10b_1640x1232.bin sink_0::device=/dev/v4l-rpi-subdev0 format-msb=9 ! \
-        video/x-raw,format=NV12 ! queue ! kmssink driver-name=tidss plane-properties=s,zpos=1
+        $ gst-launch-1.0 v4l2src io-mode=dmabuf-import device=/dev/video-imx219-cam0 ! video/x-bayer,width=1920,height=1080,format=rggb ! tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/linear/dcc_viss_1920x1080.bin sink_0::dcc-2a-file=/opt/imaging/imx219/linear/dcc_2a_1920x1080.bin sink_0::device=/dev/v4l-imx219-subdev0 ! video/x-raw,format=NV12 ! queue ! kmssink driver-name=tidss plane-properties=s,zpos=1
 
-    If the sensor is configured to capture at some other resolution or format
-    (e.g. 1080p RAW8 mode) you can edit the above pipeline with the new width,
+    If the sensor needs to be configured to capture at some other resolution or format
+    (e.g. 1640x1232, 10bit) you can update media graph and edit the above pipeline with the new width,
     height, format and dcc-\*-file parameters:
 
     .. code-block:: console
 
-        $ gst-launch-1.0 v4l2src device=/dev/video-rpi-cam0 io-mode=5 ! video/x-bayer,width=1920,height=1080,format=bggr ! \
-        tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/linear/dcc_viss_1920x1080.bin \
-        sink_0::dcc-2a-file=/opt/imaging/imx219/linear/dcc_2a_1920x1080.bin sink_0::device=/dev/v4l-rpi-subdev0 ! \
-        video/x-raw,format=NV12 ! queue ! kmssink driver-name=tidss plane-properties=s,zpos=1
+        $ media-ctl --set-v4l2 '"30102000.ticsi2rx":0[fmt:SRGGB10_1X10/1640x1232]'
+        $ media-ctl --set-v4l2 '"imx219 4-0010":0[fmt:SRGGB10_1X10/1640x1232]'
+        $ gst-launch-1.0 v4l2src io-mode=dmabuf-import device=/dev/video-imx219-cam0 ! video/x-bayer,width=1640,height=1232,format=rggb10 ! tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/linear/dcc_viss_10b_1640x1232.bin sink_0::dcc-2a-file=/opt/imaging/imx219/linear/dcc_2a_10b_1640x1232.bin sink_0::device=/dev/v4l-imx219-subdev0 format-msb=9 ! video/x-raw,format=NV12 ! queue ! kmssink driver-name=tidss plane-properties=s,zpos=1
 
     For OV2312 use mosaic to display both streams together:
 

@@ -90,13 +90,15 @@ of video encoding based use-cases utilizing this driver as demonstrated in below
  #JPEG Encoding of input YUV source file
  gst-launch-1.0 filesrc location=/<path_to_file>  ! rawvideoparse width=1920 height=1080 format=nv12 framerate=30/1 ! v4l2jpegenc ! filesink location=/<path_to_file>
 
- #JPEG Streaming of live v4l2 based RPi Camera (imx219) camera feed
+ #JPEG Encoding of live v4l2 based RPi Camera (imx219) camera feed :
+ $ gst-launch-1.0 v4l2src io-mode=dmabuf-import num-buffers=100 device=/dev/video-imx219-cam0 ! video/x-bayer,width=1920,height=1080,format=rggb ! tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/linear/dcc_viss_1920x1080.bin sink_0::dcc-2a-file=/opt/imaging/imx219/linear/dcc_2a_1920x1080.bin sink_0::device=/dev/v4l-imx219-subdev0 ! video/x-raw,format=NV12 ! v4l2jpegenc output-io-mode=dmabuf-import extra-controls=c,compression_quality=70 ! queue ! filesink location="/run/op.mjpeg"
+
+ #JPEG Streaming of live v4l2 based RPi Camera (imx219) camera feed :
  Server (imx219 rawcamera->isp->encode->streamout) :
- $gst-launch-1.0 v4l2src device=/dev/video-rpi-cam0 io-mode=5 ! video/x-bayer,width=1920,height=1080,format=bggr ! tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/d
- cc_viss_1920x1080.bin sink_0::dcc-2a-file=/opt/imaging/imx219/dcc_2a_1920x1080.bin sink_0::device=/dev/v4l-rpi-subdev0 ! video/x-raw,format=NV12 ! v4l2jpegenc output-io-mode=dmabuf-import extra-controls=c,compression_quality=70 ! rtpjpegpay ! udpsink port=5000 host=<ip_address>
+ $ gst-launch-1.0 v4l2src io-mode=dmabuf-import num-buffers=100 device=/dev/video-imx219-cam0 ! video/x-bayer,width=1920,height=1080,format=rggb ! tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/linear/dcc_viss_1920x1080.bin sink_0::dcc-2a-file=/opt/imaging/imx219/linear/dcc_2a_1920x1080.bin sink_0::device=/dev/v4l-imx219-subdev0 ! video/x-raw,format=NV12 ! v4l2jpegenc output-io-mode=dmabuf-import extra-controls=c,compression_quality=70 ! queue ! rtpjpegpay ! udpsink port=5000 host=<host_ip_addr>
 
  #Client (streamin->decode->display) Assuming Ubutu with pre-installed gstreamer as host machine :
- $gst-launch-1.0 -v udpsrc port=5000 caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)JPEG, payload=(int)26" ! rtpjitterbuffer latency=50 ! rtpjpegdepay ! jpegparse ! jpegdec ! queue ! fpsdisplaysink text-overlay=false name=fpssink video-sink="autovideosink" sync=true -v
+ $ gst-launch-1.0 -v udpsrc port=5000 caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)JPEG, payload=(int)26" ! rtpjitterbuffer latency=50 ! rtpjpegdepay ! jpegparse ! jpegdec ! queue ! fpsdisplaysink text-overlay=false name=fpssink video-sink="autovideosink" sync=true -v
 
 Building the driver
 ===================
@@ -458,133 +460,163 @@ gstreamer element (which means time taken by particular element to produce outpu
 `gstreamer latency tracers <https://gstreamer.freedesktop.org/documentation/coretracers/latency.html?gi-language=c>`__
 
 Below example depicts a dummy pipeline to measure performance (or throughput) and latency of a video streaming pipeline involving
-imx219 RPi Camera configured to provide 1080p@30 fps, ISP block and JPEG Encoder which is configured to import data from ISP block using
+imx219 RPi Camera configured to provide 1920x1080@30 fps, ISP block and JPEG Encoder which is configured to import data from ISP block using
 dmabuf sharing.
 
 .. code-block:: console
 
- $GST_TRACERS="latency(flags=pipeline+element+reported)" gst-launch-1.0 v4l2src device=/dev/video-rpi-cam0 io-mode=5 ! video/x-bayer,width=1920,height=1080,format=bggr ! tiovxisp sensor-name=SENS
- _IMX219_RPI dcc-isp-file=/opt/imaging/imx219/dcc_viss_1920x1080.bin sink_0::dcc-2a-file=/opt/imaging/imx219/dcc_2a_1920x1080.bin sink_0::device=/dev/v4l-rpi-subdev0 ! video/x-raw,format=NV12 ! v4l2jpegenc output-io-mode=dmabuf-import ! fpsdisplaysink text-overlay=false name=fpssink video-sink="fakesink" sync=true -v
- Setting pipeline to PAUSED ...
- Pipeline is live and does not need PREROLL ...
+ $GST_TRACERS="latency(flags=pipeline+element)" GST_DEBUG=GST_TRACER:7 GST_DEBUG_FILE="/run/latency.txt" gst-launch-1.0 v4l2src io-mode=dmabuf-import num-buffers=100 device=/dev/video-imx219-cam0 ! video/x-bayer,width=1920,height=1080,format=rggb ! tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/linear/dcc_viss_1920x1080.bin sink_0::dcc-2a-file=/opt/imaging/imx219/linear/dcc_2a_1920x1080.bin sink_0::device=/dev/v4l-imx219-subdev0 ! video/x-raw,format=NV12 ! v4l2jpegenc output-io-mode=dmabuf-import extra-controls=c,compression_quality=70 ! fpsdisplaysink text-overlay=false name=fpssink video-sink="fakesink" sync=true -v
+ Redistribute latency...
  /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink/GstFakeSink:fakesink0: sync = true
- Pipeline is PREROLLED ...
- Setting pipeline to PLAYING ...
- New clock: GstSystemClock
- edistribute latency...
- /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink/GstFakeSink:fakesink0: sync = true
- /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 18, dropped: 0, current: 34.84, average: 34.84
- /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 33, dropped: 0, current: 29.54, average: 32.21
- /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 48, dropped: 0, current: 29.77, average: 31.41
- /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 64, dropped: 0, current: 30.84, average: 31.26
- /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 79, dropped: 0, current: 29.43, average: 30.90
- /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 94, dropped: 0, current: 29.73, average: 30.70
- /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 110, dropped: 0, current: 30.00, average: 30.60
- /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 126, dropped: 0, current: 30.00, average: 30.52
- /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 142, dropped: 0, current: 30.01, average: 30.46
- /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 158, dropped: 0, current: 30.02, average: 30.42
- /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 174, dropped: 0, current: 30.00, average: 30.38
- /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 190, dropped: 0, current: 30.02, average: 30.35
- /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 206, dropped: 0, current: 30.01, average: 30.32
- ^Chandling interrupt.
- Interrupt: Stopping pipeline ...
- Execution ended after 0:00:07.138036536
+ /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 17, dropped: 0, current: 33.12, average: 33.12
+ /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 32, dropped: 0, current: 29.96, average: 31.56
+ /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 48, dropped: 0, current: 30.00, average: 31.03
+ /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 64, dropped: 0, current: 30.01, average: 30.76
+ /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 80, dropped: 0, current: 29.99, average: 30.61
+ /GstPipeline:pipeline0/GstFPSDisplaySink:fpssink: last-message = rendered: 96, dropped: 0, current: 30.01, average: 30.51
+ Got EOS from element "pipeline0".
+ Execution ended after 0:00:03.419338739
  Setting pipeline to NULL ...
  Freeing pipeline ...
- 105268.267976 s:  VX_ZONE_INIT:[tivxHostDeInitLocal:110] De-Initializ
+  16749.164890 s:  VX_ZONE_INIT:[tivxHostDeInitLocal:120] De-Initialization Done for HOST !!!
+  16749.169468 s:  VX_ZONE_INIT:[tivxDeInitLocal:206] De-Initialization Done !!!
+ APP: Deinit ... !!!
+ REMOTE_SERVICE: Deinit ... !!!
+ REMOTE_SERVICE: Deinit ... Done !!!
+  16749.169923 s: IPC: Deinit ... !!!
+  16749.170370 s: IPC: DeInit ... Done !!!
+  16749.170401 s: MEM: Deinit ... !!!
+  16749.170479 s: DDR_SHARED_MEM: Alloc's: 25 alloc's of 24308555 bytes
+  16749.170493 s: DDR_SHARED_MEM: Free's : 25 free's  of 24308555 bytes
+  16749.170502 s: DDR_SHARED_MEM: Open's : 0 allocs  of 0 bytes
+  16749.170516 s: MEM: Deinit ... Done !!!
+ APP: Deinit ... Done !!!
 
  #Instantaneous latency of pipeline :
  grep -inr fpssink /run/latency.txt
- 27:0:00:00.324643213  3335      0x71c3860 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x71de100, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x7224100, sin
- k-element=(string)fpssink, sink=(string)sink, time=(guint64)48991362, ts=(guint64)324504863;
- 39:0:00:00.325933900  3335      0x716e580 TRACE             GST_TRACER :0:: element-reported-latency, element-id=(string)0x7224100, element=(string)fpssink, live=(boolean)1, min=(guint64)0, max=(guint64)0
- , ts=(guint64)325911685;
- 40:0:00:00.325964780  3335 0xffffa4019300 TRACE             GST_TRACER :0:: element-reported-latency, element-id=(string)0x7224100, element=(string)fpssink, live=(boolean)1, min=(guint64)0, max=(guint64)0
- , ts=(guint64)325942985;
- 43:0:00:00.334147321  3335      0x71c3860 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x71de100, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x7224100, sin
- k-element=(string)fpssink, sink=(string)sink, time=(guint64)13477218, ts=(guint64)334032441;
- 48:0:00:00.347413308  3335      0x71c3860 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x71de100, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x7224100, sin
- k-element=(string)fpssink, sink=(string)sink, time=(guint64)11798814, ts=(guint64)347290932;
- 53:0:00:00.383427149  3335      0x71c3860 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x71de100, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x7224100, sin
- k-element=(string)fpssink, sink=(string)sink, time=(guint64)14173397, ts=(guint64)383182173;
- 58:0:00:00.416591946  3335      0x71c3860 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x71de100, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x7224100, sin
- k-element=(string)fpssink, sink=(string)sink, time=(guint64)13566943, ts=(guint64)416325579;
- 63:0:00:00.452744548  3335      0x71c3860 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x71de100, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x7224100, sin
- k-element=(string)fpssink, sink=(string)sink, time=(guint64)16198467, ts=(guint64)452404311;
- 68:0:00:00.487517297  3335      0x71c3860 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x71de100, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x7224100, sin
- k-element=(string)fpssink, sink=(string)sink, time=(guint64)16488088, ts=(guint64)487244706;
- 73:0:00:00.526571569  3335      0x71c3860 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x71de100, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x7224100, sin
- k-element=(string)fpssink, sink=(string)sink, time=(guint64)22065121, ts=(guint64)526044526;
- 78:0:00:00.555231273  3335      0x71c3860 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x71de100, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x7224100, sin
- k-element=(string)fpssink, sink=(string)sink, time=(guint64)17143766, ts=(guint64)554536794;
- 83:0:00:00.592873817  3335      0x71c3860 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x71de100, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x7224100, sin
- k-element=(string)fpssink, sink=(string)sink, time=(guint64)21635119, ts=(guint64)592354085;
- 88:0:00:00.622053359  3335      0x71c3860 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x71de100, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x7224100, sin
- k-element=(string)fpssink, sink=(string)sink, time=(guint64)17565403, ts=(guint64)621521101;
- 93:0:00:00.659704993  3335      0x71c3860 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x71de100, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x7224100, sin
- k-element=(string)fpssink, sink=(string)sink, time=(guint64)21616694, ts=(guint64)659009055;
- 98:0:00:00.688435863  3335      0x71c3860 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x71de100, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x7224100, sin
- k-element=(string)fpssink, sink=(string)sink, time=(guint64)17212196, ts=(guint64)687916190;
- 103:0:00:00.726630390  3335      0x71c3860 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x71de100, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x7224100, si
- nk-element=(string)fpssink, sink=(string)sink, time=(guint64)22179206, ts=(guint64)726111817;
- 108:0:00:00.755319574  3335      0x71c3860 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x71de100, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x7224100, si
- nk-element=(string)fpssink, sink=(string)sink, time=(guint64)17565303, ts=(guint64)754797816;
- 113:0:00:00.792849798  3335      0x71c3860 TRACE
+ 16:0:00:00.298788716  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)31337537, ts=(guint64)298700410;
+ 21:0:00:00.313996917  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)13222727, ts=(guint64)313894497;
+ 26:0:00:00.345176174  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)11158342, ts=(guint64)345084293;
+ 31:0:00:00.379370220  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)11979311, ts=(guint64)379234094;
+ 36:0:00:00.411468036  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)10772985, ts=(guint64)411379240;
+ 41:0:00:00.445575826  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)11599510, ts=(guint64)445489111;
+ 46:0:00:00.478097459  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)10788116, ts=(guint64)478006814;
+ 51:0:00:00.512219750  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)11498979, ts=(guint64)512078704;
+ 56:0:00:00.544931074  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)10938736, ts=(guint64)544831618;
+ 61:0:00:00.578820438  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)11521555, ts=(guint64)578719583;
+ 66:0:00:00.611518342  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)10799061, ts=(guint64)611370796;
+ 71:0:00:00.645526317  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)11575424, ts=(guint64)645433236;
+ 76:0:00:00.678096105  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)10763720, ts=(guint64)677948869;
+ 81:0:00:00.712266206  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)11601969, ts=(guint64)712170960;
+ 86:0:00:00.744779354  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)10843931, ts=(guint64)744679488;
+ 91:0:00:00.778807454  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)11553809, ts=(guint64)778713438;
+ 96:0:00:00.811437337  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930, s
+ ink-element=(string)fpssink, sink=(string)sink, time=(guint64)10798071, ts=(guint64)811345492;
+ 101:0:00:00.845455847  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930,
+ sink-element=(string)fpssink, sink=(string)sink, time=(guint64)11543724, ts=(guint64)845361392;
+ 106:0:00:00.878015796  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930,
+ sink-element=(string)fpssink, sink=(string)sink, time=(guint64)10773901, ts=(guint64)877923145;
+ 111:0:00:00.912146406  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930,
+ sink-element=(string)fpssink, sink=(string)sink, time=(guint64)11501199, ts=(guint64)912003120;
+ 116:0:00:00.944711844  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930,
+ sink-element=(string)fpssink, sink=(string)sink, time=(guint64)10814391, ts=(guint64)944610679;
+ 121:0:00:00.978729974  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930,
+ sink-element=(string)fpssink, sink=(string)sink, time=(guint64)11512469, ts=(guint64)978635704;
+ 126:0:00:01.011345368  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930,
+ sink-element=(string)fpssink, sink=(string)sink, time=(guint64)10761190, ts=(guint64)1011250667;
+ 131:0:00:01.045390658  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930,
+ sink-element=(string)fpssink, sink=(string)sink, time=(guint64)11526020, ts=(guint64)1045295478;
+ 136:0:00:01.077958881  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930,
+ sink-element=(string)fpssink, sink=(string)sink, time=(guint64)10763061, ts=(guint64)1077864151;
+ 141:0:00:01.112132287  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930,
+ sink-element=(string)fpssink, sink=(string)sink, time=(guint64)11565580, ts=(guint64)1112036122;
+ 146:0:00:01.144706700  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930,
+ sink-element=(string)fpssink, sink=(string)sink, time=(guint64)10844041, ts=(guint64)1144606150;
+ 151:0:00:01.178663635  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930,
+ sink-element=(string)fpssink, sink=(string)sink, time=(guint64)11490844, ts=(guint64)1178569250;
+ 156:0:00:01.211327294  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930,
+ sink-element=(string)fpssink, sink=(string)sink, time=(guint64)10821611, ts=(guint64)1211235083;
+ 161:0:00:01.245347059  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: latency, src-element-id=(string)0x3e942370, src-element=(string)v4l2src0, src=(string)src, sink-element-id=(string)0x3ec08930,
+ sink-element=(string)fpssink, sink=(string)sink, time=(guint64)11517934, ts=(guint64)1245248708;
 
  #"time=" depicts latency in nano seconds, average for total pipeline latency can be calculated as below
  #cat /run/latency.txt | grep sink | awk -F"guint64)" '{print $2}' | awk -F"," '{total +=$1; count++} END { print total/count }'
- #1.93678e+07
+ #1.11008e+07
 
 
  #Instantaneous latency of v4l2jpegenc element :
  grep -inr v4l2jpegenc /run/latency.txt
-  28:0:00:00.324738409  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)14128701, ts=(guint6
-  4)324504863;
-  37:0:00:00.325884260  3335      0x716e580 TRACE             GST_TRACER :0:: element-reported-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, live=(boolean)1, min=(guint64)0, max=(guin
-  t64)0, ts=(guint64)325861764;
-  38:0:00:00.325916740  3335 0xffffa4019300 TRACE             GST_TRACER :0:: element-reported-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, live=(boolean)1, min=(guint64)0, max=(guin
-  t64)0, ts=(guint64)325889365;
-  44:0:00:00.334228867  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)5000146, ts=(guint64
-  )334032441;
-  49:0:00:00.347538003  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4804714, ts=(guint64
-  )347290932;
-  54:0:00:00.383543410  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)5390277, ts=(guint64
-  )383182173;
-  59:0:00:00.416712951  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)5761004, ts=(guint64
-  )416325579;
-  64:0:00:00.452912183  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)5971575, ts=(guint64
-  )452404311;
-  69:0:00:00.487681793  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)7370972, ts=(guint64
-  )487244706;
-  74:0:00:00.526881890  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)8056735, ts=(guint64
-  )526044526;
-  79:0:00:00.555532864  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)8058910, ts=(guint64
-  )554536794;
-  84:0:00:00.593167984  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)8115236, ts=(guint64
-  )592354085;
-  89:0:00:00.622355105  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)8283526, ts=(guint64
-  )621521101;
-  94:0:00:00.660009310  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)8066001, ts=(guint64
-  )659009055;
-  99:0:00:00.688728319  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)8249936, ts=(guint64
-  )687916190;
-  104:0:00:00.726938761  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)8162631, ts=(guint6
-  4)726111817;
-  109:0:00:00.755620171  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)8141121, ts=(guint6
-  4)754797816;
-  114:0:00:00.793154664  3335      0x71c3860 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x721d6a0, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)8069441, ts=(guint6
-  4)792292405;
+ 17:0:00:00.298863641  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)11044827, ts=(guint
+ 64)298700410;
+ 22:0:00:00.314066193  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)5345005, ts=(guint$
+ 4)313894497;
+ 27:0:00:00.345305685  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4279670, ts=(guint$
+ 4)345084293;
+ 32:0:00:00.379433905  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4527486, ts=(guint$
+ 4)379234094;
+ 37:0:00:00.411572966  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4121249, ts=(guint$
+ 4)411379240;
+ 42:0:00:00.445629667  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4169550, ts=(guint$
+ 4)445489111;
+ 47:0:00:00.478150340  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4112790, ts=(guint$
+ 4)478006814;
+ 52:0:00:00.512276880  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4126639, ts=(guint$
+ 4)512078704;
+ 57:0:00:00.544997699  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4239595, ts=(guint$
+ 4)544831618;
+ 62:0:00:00.578880448  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4165510, ts=(guint$
+ 4)578719583;
+ 67:0:00:00.611577852  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4144864, ts=(guint$
+ 4)611370796;
+ 72:0:00:00.645584357  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4156854, ts=(guint$
+ 4)645433236;
+ 77:0:00:00.678151860  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4107079, ts=(guint$
+ 4)677948869;
+ 82:0:00:00.712324916  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4147884, ts=(guint$
+ 4)712170960;
+ 87:0:00:00.744863324  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4191194, ts=(guint$
+ 4)744679488;
+ 92:0:00:00.778864059  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4153499, ts=(guint$
+ 4)778713438;
+ 97:0:00:00.811494143  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4136115, ts=(guint$
+ 4)811345492;
+ 102:0:00:00.845533548  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4133964, ts=(guin$
+ 64)845361392;
+ 107:0:00:00.878070336  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4122909, ts=(guin$
+ 64)877923145;
+ 112:0:00:00.912202591  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4121644, ts=(guin$
+ 64)912003120;
+ 117:0:00:00.944768840  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4210385, ts=(guin$
+ 64)944610679;
+ 122:0:00:00.978784930  1869 0xffff9c000ef0 TRACE             GST_TRACER :0:: element-latency, element-id=(string)0x3ebfc740, element=(string)v4l2jpegenc0, src=(string)src, time=(guint64)4132154, ts=(guin$
+ 64)978635704;
 
  #"time=" depicts latency in nano seconds, average for v4l2jpegenc can be calculated as below
  $cat /run/latency.txt | grep v4l2jpegenc | awk -F"guint64)" '{print $2}' | awk -F"," '{total +=$1; count++} END { print total/count }'
- 8.0449e+06
+  4.14626e+06
 
 Below table depicts performance and latency numbers achieved :
 
 +----------------------+--------------------+---------------+
 | Pipeline performance | Total Latency      | E5010 latency |
 +----------------------+--------------------+---------------+
-| 1920x1080@30 fps     | ~19.5 ms           |  ~8.044 ms    |
+| 1920x1080@30 fps     | ~11.1 ms           |  ~4.146 ms    |
 +----------------------+--------------------+---------------+
 
 Unsupported driver features
