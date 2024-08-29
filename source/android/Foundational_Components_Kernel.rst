@@ -91,6 +91,48 @@ The usual (``make menuconfig``) is done via ``bazel`` command :
       Otherwise pre-built kernel images present in :file:`device/ti/am62x-kernel`
       will be used to create :file:`boot.img`
 
+
+Enabling new drivers
+====================
+
+Since the kernel is based on the
+`Generic Kernel Image <https://source.android.com/docs/core/architecture/kernel/generic-kernel-image>`_,
+new drivers should always be added as **modules**.
+
+To enable new modules:
+
+#. Run ``menuconfig`` as documented previously, Select ``=m`` for the driver.
+
+#. Edit :file:`${YOUR_PATH}/ti-kernel-aosp/BUILD.bazel` to add your new module.
+   Look for the following section:
+
+   .. code-block:: c
+
+      kernel_build(
+          name = "ti",
+
+          // [...]
+
+          module_outs = get_gki_modules_list("arm64") + [
+                # keep sorted
+                "crypto/af_alg.ko",
+
+
+#. In the ``module_outs`` array, add the path to your new kernel module.
+
+#. Rebuild the kernel as documented in :ref:`android_build_kernel`.
+
+#. If the driver module needs to be loaded early (in the ramdisk), edit
+   :file:`${YOUR_PATH}/ti-aosp-14/device/ti/am62x/BoardConfig-common.mk`
+   and add the path to your module:
+
+   .. code-block:: make
+
+      BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+              device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/your_module.ko
+
+#. Finally, rebuild the Android images.
+
 Rebuild Android images
 ======================
 
