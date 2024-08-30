@@ -193,12 +193,6 @@ included in the sdk filesystem.
 
    $ ip link set mcu_mcan0 type can bitrate 1000000
 
--  CAN-FD mode
-
-.. code-block:: console
-
-   $ ip link set mcu_mcan0 type can bitrate 1000000 fd on
-
 -  CAN-FD mode with bitrate switching
 
 .. code-block:: console
