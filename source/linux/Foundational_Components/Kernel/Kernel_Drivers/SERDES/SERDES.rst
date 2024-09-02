@@ -161,6 +161,7 @@ modified based on the instructions mentioned in the SERDES Muxing section.
     Single Protocol Configurations:
 
     * PCIe
+    * SGMII
     * USB
 
     Multi Protocol Configurations:
