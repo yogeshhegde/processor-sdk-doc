@@ -347,90 +347,28 @@ file.
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
-    .. rubric:: **6.x SDK (4.19 Kernel)**
+    .. rubric:: **10.x SDK (6.6 Kernel)**
 
-    To configure Beta J721E EVM in EP mode, apply the following patch:
+    To enable EP mode of operation, device-tree overlays need to be applied
+    at U-Boot.
 
-    ::
+    +-----------+-------------------------------------------------+
+    | SoC       |    Overlay file to use                          |
+    +===========+=================================================+
+    | J721E     |    :file:`k3-j721e-evm-pcie0-ep.dtbo`           |
+    +-----------+-------------------------------------------------+
+    | J7200     |    :file:`k3-j7200-evm-pcie1-ep.dtbo`           |
+    +-----------+-------------------------------------------------+
+    | J721S2    |    :file:`k3-j721s2-evm-pcie1-ep.dtbo`          |
+    +-----------+-------------------------------------------------+
+    | J784S4    |    :file:`k3-j784s4-evm-pcie0-pcie1-ep.dtbo`    |
+    +-----------+-------------------------------------------------+
 
-        diff --git a/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts b/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts
-        index 57d72aa945b7..3384dd6063c2 100644
-        --- a/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts
-        +++ b/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts
-        @@ -734,7 +734,7 @@
-        };
+    .. note::
 
-        &pcie0 {
-        -       pci-mode = <PCI_MODE_RC>;
-        +       pci-mode = <PCI_MODE_EP>;
-                num-lanes = <1>;
-        };
-
-        @@ -754,6 +754,11 @@
-                phy-names = "pcie_phy";
-        };
-
-        +&pcie0_ep {
-        +       phys = <&serdes0_pcie_link>;
-        +       phy-names = "pcie_phy";
-        +};
-        +
-        &pcie1_rc {
-                reset-gpios = <&exp1 2 GPIO_ACTIVE_HIGH>;
-                phys = <&serdes1_pcie_link>;
-
-    To configure Alpha J721E EVM in EP mode, apply the following patch:
-
-    ::
-
-        diff --git a/arch/arm64/boot/dts/ti/k3-j721e-proc-board-tps65917.dts b/arch/arm64/boot/dts/ti/k3-j721e-proc-board-tps65917.dts
-        index b9fece8d267c..d50f764c6642 100644
-        --- a/arch/arm64/boot/dts/ti/k3-j721e-proc-board-tps65917.dts
-        +++ b/arch/arm64/boot/dts/ti/k3-j721e-proc-board-tps65917.dts
-        @@ -769,7 +769,7 @@
-        };
-
-        &pcie0 {
-        -       pci-mode = <PCI_MODE_RC>;
-        +       pci-mode = <PCI_MODE_EP>;
-                num-lanes = <1>;
-        };
-
-        @@ -789,6 +789,11 @@
-                phy-names = "pcie_phy";
-        };
-
-        +&pcie0_ep {
-        +       phys = <&serdes0_pcie_link>;
-        +       phy-names = "pcie_phy";
-        +};
-        +
-        &pcie1_rc {
-                reset-gpios = <&exp1 2 GPIO_ACTIVE_HIGH>;
-                phys = <&serdes1_pcie_link>;
-
-    .. rubric:: **7.x SDK (5.4 Kernel)**
-
-    To configure J721E EVM in EP mode, apply the following patch:
-
-    ::
-
-        diff --git a/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts b/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts
-        index 6788a3611..b7cd6c7b6 100644
-        --- a/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts
-        +++ b/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts
-        @@ -813,6 +813,7 @@
-                phys = <&serdes0_pcie_link>;
-                phy-names = "pcie_phy";
-                num-lanes = <1>;
-        +       status = "disabled";
-         }; &pcie1_rc {
-        @@ -833,7 +834,6 @@
-                phys = <&serdes0_pcie_link>;
-                phy-names = "pcie_phy";
-                num-lanes = <1>;
-        -       status = "disabled";
-         }; &pcie1_ep {
+        | To apply an overlay at U-Boot save the following command in the :file:`uEnv.txt` file:
+        |   **name_overlays="ti/<overlay-file-name>"**
+        | where <overlay-file-name> is the corresponding overlay file from the table above.
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
