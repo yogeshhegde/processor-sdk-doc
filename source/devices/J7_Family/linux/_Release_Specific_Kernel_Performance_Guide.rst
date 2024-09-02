@@ -588,7 +588,7 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 .. csv-table:: CPSW2g TCP Bidirectional Throughput
     :header: "Command Used","am68_sk-fs: THROUGHPUT (Mbits/sec)","am68_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am69_sk-fs: THROUGHPUT (Mbits/sec)","am69_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","j7200-evm: THROUGHPUT (Mbits/sec)","j7200-evm: CPU Load % (LOCAL_CPU_UTIL)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)","j722s_evm-fs: THROUGHPUT (Mbits/sec)","j722s_evm-fs: CPU Load % (LOCAL_CPU_UTIL)","j784s4-evm: THROUGHPUT (Mbits/sec)","j784s4-evm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","0.00","31.46","182.22","3.19","1000.99","37.09","1819.57","76.98","1855.74","83.92","1854.47","60.63","1784.20","20.92"
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","942.16","13.80","182.22","3.19","1465.91","65.74","1856.02","82.25","1855.74","83.92","1854.47","60.63","1833.57","21.76"
 
 
 
@@ -599,7 +599,7 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 .. csv-table:: CPSW2g TCP Bidirectional Throughput Interrupt Pacing
     :header: "Command Used","j7200-evm: THROUGHPUT (Mbits/sec)","j7200-evm: CPU Load % (LOCAL_CPU_UTIL)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)","j722s_evm-fs: THROUGHPUT (Mbits/sec)","j722s_evm-fs: CPU Load % (LOCAL_CPU_UTIL)","j784s4-evm: THROUGHPUT (Mbits/sec)","j784s4-evm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1835.16","47.28","1864.26","42.83","1854.45","61.18","1707.04","35.80","1831.17","26.31"
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1835.16","47.28","1864.26","42.83","1854.45","61.18","1753.96","31.10","1876.82","8.23"
 
 
 
@@ -608,37 +608,37 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
    :name: CPSW2g-udp-throughput-0-loss
 
 .. csv-table:: CPSW2g UDP Egress Throughput 0 loss
-    :header: "Frame Size(bytes)","j7200-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j7200-evm: THROUGHPUT (Mbits/sec)","j7200-evm: Packets Per Second (kPPS)","j7200-evm: CPU Load % (LOCAL_CPU_UTIL)","j721e-idk-gw: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: Packets Per Second (kPPS)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: Packets Per Second (kPPS)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)","j784s4-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j784s4-evm: THROUGHPUT (Mbits/sec)","j784s4-evm: Packets Per Second (kPPS)","j784s4-evm: CPU Load % (LOCAL_CPU_UTIL)"
+    :header: "Frame Size(bytes)","j7200-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j7200-evm: THROUGHPUT (Mbits/sec)","j7200-evm: Packets Per Second (kPPS)","j7200-evm: CPU Load % (LOCAL_CPU_UTIL)","j721e-idk-gw: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: Packets Per Second (kPPS)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: Packets Per Second (kPPS)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)","j722s_evm-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j722s_evm-fs: THROUGHPUT (Mbits/sec)","j722s_evm-fs: Packets Per Second (kPPS)","j722s_evm-fs: CPU Load % (LOCAL_CPU_UTIL)","j784s4-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j784s4-evm: THROUGHPUT (Mbits/sec)","j784s4-evm: Packets Per Second (kPPS)","j784s4-evm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","18.00","30.57","212.00","89.79","18.00","30.55","212.00","87.51","18.00","29.84","207.00","91.58","18.00","25.67","178.00","24.06"
-    "128","82.00","0.00","0.00","89.71","82.00","143.07","218.00","88.96","82.00","121.51","185.00","85.02","82.00","126.97","194.00","23.15"
-    "256","210.00","367.12","219.00","89.59","210.00","27.05","16.00","8.49","210.00","27.72","17.00","6.26","210.00","301.14","179.00","23.93"
-    "1024","978.00","936.62","120.00","58.19","978.00","936.40","120.00","58.37","978.00","76.67","10.00","5.79"
-    "1518","1472.00","955.24","81.00","40.20","1472.00","545.20","46.00","13.24","1472.00","449.84","38.00","22.49"
+    "64","18.00","30.57","212.00","89.79","18.00","30.55","212.00","87.51","18.00","29.84","207.00","91.58","18.00","16.11","112.00","40.88","18.00","25.67","178.00","24.06"
+    "128","82.00","113.98","173.00","88.93","82.00","143.07","218.00","88.96","82.00","121.51","185.00","85.02","82.00","72.62","111.00","40.39","82.00","126.97","194.00","23.15"
+    "256","210.00","367.12","219.00","89.59","210.00","208.53","124.00","82.93","210.00","309.34","184.00","89.06","210.00","180.79","108.00","40.33","210.00","301.14","179.00","23.93"
+    "1024","978.00","936.62","120.00","58.19","978.00","936.40","120.00","58.37","978.00","935.60","120.00","55.02","978.00","936.77","120.00","14.16","978.00","936.77","120.00","14.16"
+    "1518","1472.00","957.03","81.00","39.10","1472.00","1380.98","117.00","83.68","1472.00","956.90","81.00","41.73","1472","956.11","81.00","9.41","1472","956.11","81.00","9.41"
 
 
 
 
 .. csv-table:: CPSW2g UDP Ingress Throughput 0 loss
-    :header: "Frame Size(bytes)","j7200-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j7200-evm: THROUGHPUT (Mbits/sec)","j7200-evm: Packets Per Second (kPPS)","j7200-evm: CPU Load % (LOCAL_CPU_UTIL)","j721e-idk-gw: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: Packets Per Second (kPPS)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: Packets Per Second (kPPS)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)","j784s4-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j784s4-evm: THROUGHPUT (Mbits/sec)","j784s4-evm: Packets Per Second (kPPS)","j784s4-evm: CPU Load % (LOCAL_CPU_UTIL)"
+    :header: "Frame Size(bytes)","j7200-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j7200-evm: THROUGHPUT (Mbits/sec)","j7200-evm: Packets Per Second (kPPS)","j7200-evm: CPU Load % (LOCAL_CPU_UTIL)","j721e-idk-gw: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: Packets Per Second (kPPS)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: Packets Per Second (kPPS)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)","j722s_evm-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j722s_evm-fs: THROUGHPUT (Mbits/sec)","j722s_evm-fs: Packets Per Second (kPPS)","j722s_evm-fs: CPU Load % (LOCAL_CPU_UTIL)","j784s4-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j784s4-evm: THROUGHPUT (Mbits/sec)","j784s4-evm: Packets Per Second (kPPS)","j784s4-evm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","18.00","6.77","47.00","30.61","18.00","1.70","12.00","5.83","18.00","1.17","8.00","7.70"
-    "128","82.00","7.08","11.00","6.00","82.00","7.87","12.00","5.53","82.00","5.25","8.00","3.72","82.00","3.80","6.00","0.22"
-    "256","210.00","19.32","12.00","5.69","210.00","20.33","12.00","5.38","210.00","13.61","8.00","9.33","210.00","13.94","8.00","0.49"
-    "1024","978.00","142.39","18.00","12.02","978.00","77.46","10.00","3.78","978.00","68.07","9.00","8.46"
-    "1518","1472.00","31.79","3.00","5.40","1472.00","948.90","81.00","57.80","1472.00","521.50","44.00","33.49"
+    "64","18.00","6.77","47.00","30.61","18.00","1.70","12.00","5.83","18.00","1.17","8.00","7.70","18.00","1.02","7.00","1.46","18.00","18.13","126.00","20.66"
+    "128","82.00","15.02","23.00","10.51","82.00","12.79","19.00","8.66","82.00","5.25","8.00","3.72","82.00","7.15","11.00","1.79","82.00","80.88","123.00","20.49"
+    "256","210.00","64.17","38.00","24.71","210.00","371.29","221.00","86.97","210.00","17.3","10.00","7.89","210.00","61.99","37.00","14.7","210.00","202.78","121.00","21.09"
+    "1024","978.00","142.39","18.00","12.02","978.00","77.46","10.00","3.78","978.00","68.07","9.00","8.46","978.00","199.51","25.00","8.41","978.00","929.78","119.00","21.32"
+    "1518","1472.00","343.84","29.00","23.06","1472.00","948.90","81.00","57.80","1472.00","521.50","44.00","33.49","1472.00","957.02","81.00","14.70","1472.00","957.02","81.00","14.70"
 
 
 
 
 .. csv-table:: CPSW2g UDP Ingress Throughput possible loss
-    :header: "Frame Size(bytes)","j7200-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j7200-evm: THROUGHPUT (Mbits/sec)","j7200-evm: Packets Per Second (kPPS)","j7200-evm: CPU Load % (LOCAL_CPU_UTIL)","j7200-evm: Packet Loss %","j721e-idk-gw: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: Packets Per Second (kPPS)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721e-idk-gw: Packet Loss %","j721s2-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: Packets Per Second (kPPS)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: Packet Loss %","j784s4-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j784s4-evm: THROUGHPUT (Mbits/sec)","j784s4-evm: Packets Per Second (kPPS)","j784s4-evm: CPU Load % (LOCAL_CPU_UTIL)","j784s4-evm: Packet Loss %"
+    :header: "Frame Size(bytes)","j7200-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j7200-evm: THROUGHPUT (Mbits/sec)","j7200-evm: Packets Per Second (kPPS)","j7200-evm: CPU Load % (LOCAL_CPU_UTIL)","j7200-evm: Packet Loss %","j721e-idk-gw: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: Packets Per Second (kPPS)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721e-idk-gw: Packet Loss %","j721s2-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: Packets Per Second (kPPS)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: Packet Loss %","j722s_evm-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j722s_evm-fs: THROUGHPUT (Mbits/sec)","j722s_evm-fs: Packets Per Second (kPPS)","j722s_evm-fs: CPU Load % (LOCAL_CPU_UTIL)","j722s_evm-fs: Packet Loss %","j784s4-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","j784s4-evm: THROUGHPUT (Mbits/sec)","j784s4-evm: Packets Per Second (kPPS)","j784s4-evm: CPU Load % (LOCAL_CPU_UTIL)","j784s4-evm: Packet Loss %"
 
-    "64","18.00","20.95","145.00","76.67","1.10","18.00","55.86","388.00","88.45","7.96","18.00","16.84","117.00","73.56","0.83"
-    "128","82.00","227.14","346.00","86.96","16.35","82.00","256.38","391.00","91.49","7.33","82.00","214.43","327.00","86.78","28.93","82.00","226.36","345.00","22.69","27.22"
-    "256","210.00","392.00","233.00","81.19","2.72","210.00","634.37","378.00","90.96","8.39","210.00","528.49","315.00","87.71","19.31","210.00","561.87","334.00","23.05","20.13"
-    "1024","978.00","928.19","119.00","80.59","0.86","978.00","923.06","118.00","78.41","0.54","978.00","846.84","108.00","80.74","8.26"
-    "1518","1472.00","956.75","81.00","67.09","0.01","1472.00","948.90","81.00","57.80","0.00","1472.00","944.70","80.00","64.11","0.05"
+    "64","18.00","21.45","149.00","83.97","2.82","18.00","55.86","388.00","88.45","7.96","18.00","50.09","348.00","87.82","5.23","18.00","33.06","230.00","43.9","73.29","18.00","64.8","450.00","22.86","22.68"
+    "128","82.00","241.53","368.00","91.12","9.22","82.00","256.38","391.00","91.49","7.33","82.00","214.43","327.00","86.78","28.93","82.00","150.26","229.00","44.97","69.59","82.00","256.65","391.00","22.8","20.7"
+    "256","210.00","392.00","233.00","81.19","2.72","210.00","634.37","378.00","90.96","8.39","210.00","528.49","315.00","87.71","19.31","210.00","264.56","157.00","38.56","22.62","210.00","561.87","334.00","23.05","20.13"
+    "1024","978.00","928.71","119.00","79.88","0.78","978.00","924.46","118.00","78.08","0.51","978.00","909.56","116.00","81.27","2.9","978.00","936.10","120.00","39.75","0.07","978.00","804.34","103.00","21.24","0.03"
+    "1518","1472.00","956.75","81.00","67.09","0.01","1472.00","949.76","81.00","61.08","0.01","1472.00","948.4","81.00","65.47","0.1","1472.00","957.02","81.00","14.70","0.00","1472.00","957.02","81.00","14.70","0.00"
 
  
  
