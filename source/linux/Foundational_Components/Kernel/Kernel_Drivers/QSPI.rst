@@ -69,12 +69,12 @@ controllers work only in master mode.
       ID: LCPD-38669) has been listed in the :ref:`Known Issues <known-issues>`
       section with a workaround.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'J7200')
 
    +---------------+------------+-------------------------------------------+
    | SoC Family    | Capability | Driver                                    |
    +===============+============+===========================================+
-   | AM62Px        | OSPI NOR   | :file:`drivers/spi/spi-cadence-quadspi.c` |
+   | AM62Px/J7200  | OSPI NOR   | :file:`drivers/spi/spi-cadence-quadspi.c` |
    +---------------+------------+-------------------------------------------+
 
 .. ifconfig:: CONFIG_part_variant in ('AM437X')
@@ -95,12 +95,33 @@ controllers work only in master mode.
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
+   +-------------------+-------------+-------------------------------------------+
+   | SoC Family        | Capability  | Driver                                    |
+   +===================+=============+===========================================+
+   | AM654/J721e       | 1x QSPI NOR,| :file:`drivers/spi/spi-cadence-quadspi.c` |
+   |                   | 1x OSPI NOR |                                           |
+   +-------------------+-------------+-------------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
    +---------------+-------------+-------------------------------------------+
    | SoC Family    | Capability  | Driver                                    |
    +===============+=============+===========================================+
-   | AM654/J721e   | 1x QSPI NOR,| :file:`drivers/spi/spi-cadence-quadspi.c` |
-   |               | 1x OSPI NOR |                                           |
+   |               | 1x OSPI NOR | :file:`drivers/spi/spi-cadence-quadspi.c` |
+   +     J722S     +-------------+-------------------------------------------+
+   |               | 1x OSPI NAND| :file:`drivers/spi/spi-cadence-quadspi.c` |
    +---------------+-------------+-------------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2', 'J784S4')
+
+   +---------------------+-----------------+-------------------------------------------+
+   | SoC Family          | Capability      | Driver                                    |
+   +=====================+=================+===========================================+
+   |                     | 1x QSPI NOR,    | :file:`drivers/spi/spi-cadence-quadspi.c` |
+   | J721S2/J784S4       | 1x OSPI NOR     |                                           |
+   +                     +-----------------+-------------------------------------------+
+   |                     | 1x OSPI NAND    | :file:`drivers/spi/spi-cadence-quadspi.c` |
+   +---------------------+-----------------+-------------------------------------------+
 
 .. note::
 
@@ -580,53 +601,116 @@ Now you can access filesystem at :file:`/mnt/flash/`.
                               };
                      };
 
-    .. rubric:: Runtime Power Management
-
-    The OSPI Controller supports runtime power management where it can suspend
-    when there is no activity concerning the OSPI peripheral.
-
-    It suspends after a certain period of inactivity based on the value of
-    CQSPI_AUTOSUSPEND_TIMEOUT which is set to 2000 ms in it's driver :file:`spi-cadence-quadspi.c`
-
-    .. code-block:: console
-
-            root@am62xx-evm:~# cat /sys/bus/platform/devices/fc40000.spi/power/*
-            2000
-            auto
-            5808
-            suspended
-            112684
-
-    To increase the auto suspend delay value, one can write into the autosuspend_delay_ms
-    sysfs entry like below,
-
-    .. code-block:: console
-
-        echo <delay> > /sys/bus/platform/devices/fc40000.spi/power/autosuspend_delay_ms
-
-    One can verify that OSPI has actually suspended by also looking at the
-    k3conf output as shown below.
-
-    .. code-block:: console
-
-            root@am62xx-evm:~# k3conf dump device 75
-            |------------------------------------------------------------------------------|
-            | VERSION INFO                                                                 |
-            |------------------------------------------------------------------------------|
-            | K3CONF | (version 0.3-nogit built Thu Jul 25 14:13:02 UTC 2024)              |
-            | SoC    | AM62X SR1.0                                                         |
-            | SYSFW  | ABI: 4.0 (firmware version 0x000a '10.0.8--v10.00.08 (Fiery Fox))') |
-            |------------------------------------------------------------------------------|
-
-            |------------------------------------------------------|
-            | Device ID | Device Name           | Device Status    |
-            |------------------------------------------------------|
-            |    75     | AM62X_DEV_FSS0_OSPI_0 | DEVICE_STATE_OFF |
-            |------------------------------------------------------|
 
 
-    This shows that the OSPI controller is actually physically turned off and
-    thus no longer contributing to active power consumed by the system.
+.. rubric:: Runtime Power Management
 
-    OSPI will resume as soon as a transaction is initiated by a user or the
-    system and doesn't require any external wakeup event to resume.
+The OSPI Controller supports runtime power management where it can suspend
+when there is no activity concerning the OSPI peripheral.
+
+It suspends after a certain period of inactivity based on the value of
+``CQSPI_AUTOSUSPEND_TIMEOUT`` which is set to 2000 ms in it's driver :file:`spi-cadence-quadspi.c`
+
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+   .. code-block:: console
+
+      root@j784s4-evm:~# head /sys/bus/platform/devices/47040000.spi/power/*
+      ==> /sys/bus/platform/devices/47040000.spi/power/autosuspend_delay_ms <==
+      2000
+
+      ==> /sys/bus/platform/devices/47040000.spi/power/control <==
+      auto
+
+      ==> /sys/bus/platform/devices/47040000.spi/power/runtime_active_time <==
+      4781
+
+      ==> /sys/bus/platform/devices/47040000.spi/power/runtime_status <==
+      suspended
+
+      ==> /sys/bus/platform/devices/47040000.spi/power/runtime_suspended_time <==
+      1189722715
+
+   To increase the auto suspend delay value, one can write into the autosuspend_delay_ms
+   sysfs entry like below,
+
+   .. code-block:: console
+
+      echo <delay> > /sys/bus/platform/devices/47040000.spi/power/autosuspend_delay_ms
+
+
+.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62PX_family')
+
+   .. code-block:: console
+
+      root@am62xx-evm:~# head /sys/bus/platform/devices/fc40000.spi/power/*
+      ==> /sys/bus/platform/devices/fc40000.spi/power/autosuspend_delay_ms <==
+      2000
+
+      ==> /sys/bus/platform/devices/fc40000.spi/power/control <==
+      auto
+
+      ==> /sys/bus/platform/devices/fc40000.spi/power/runtime_active_time <==
+      5808
+
+      ==> /sys/bus/platform/devices/fc40000.spi/power/runtime_status <==
+      suspended
+
+      ==> /sys/bus/platform/devices/fc40000.spi/power/runtime_suspended_time <==
+      112684
+
+   To increase the auto suspend delay value, one can write into the autosuspend_delay_ms
+   sysfs entry like below,
+
+   .. code-block:: console
+
+      echo <delay> > /sys/bus/platform/devices/fc40000.spi/power/autosuspend_delay_ms
+
+
+One can verify that OSPI has actually suspended by also looking at the
+k3conf output as shown below.
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+   .. code-block:: console
+
+      root@j784s4-evm:~# k3conf dump device 161
+      |-------------------------------------------------------------------------------|
+      | VERSION INFO                                                                  |
+      |-------------------------------------------------------------------------------|
+      | K3CONF | (version 0.3-nogit built Thu Jul 25 14:13:02 UTC 2024)               |
+      | SoC    | J784S4 SR1.0                                                         |
+      | SYSFW  | ABI: 4.0 (firmware version 0x000a '10.0.8--v10.00.08 (Fiery Fox))')  |
+      |-------------------------------------------------------------------------------|
+
+      |----------------------------------------------------------|
+      | Device ID | Device Name                | Device Status   |
+      |----------------------------------------------------------|
+      |   161     | J784S4_DEV_MCU_FSS0_OSPI_0 | DEVICE_STATE_OFF|
+      |----------------------------------------------------------|
+
+
+.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62PX_family')
+
+   .. code-block:: console
+
+      root@am62xx-evm:~# k3conf dump device 75
+      |------------------------------------------------------------------------------|
+      | VERSION INFO                                                                 |
+      |------------------------------------------------------------------------------|
+      | K3CONF | (version 0.3-nogit built Thu Jul 25 14:13:02 UTC 2024)              |
+      | SoC    | AM62X SR1.0                                                         |
+      | SYSFW  | ABI: 4.0 (firmware version 0x000a '10.0.8--v10.00.08 (Fiery Fox))') |
+      |------------------------------------------------------------------------------|
+
+      |------------------------------------------------------|
+      | Device ID | Device Name           | Device Status    |
+      |------------------------------------------------------|
+      |    75     | AM62X_DEV_FSS0_OSPI_0 | DEVICE_STATE_OFF |
+      |------------------------------------------------------|
+
+This shows that the OSPI controller is physically turned off and
+thus no longer contributing to active power consumed by the system.
+
+When a transaction is initiated from userspace or otherwise, the driver resumes the OSPI controller automatically.
