@@ -372,27 +372,14 @@ file.
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
-    To configure AM64 EVM in EP mode, apply the following patch:
+    To configure AM64 EVM in EP mode, the device-tree overlay named
+    :file:`k3-am642-evm-pcie0-ep.dtbo` needs to be applied at U-Boot.
 
-    ::
+    To automatically apply the overlay at U-Boot append the following line to the :file:`uEnv.txt` file:
 
-        diff --git a/arch/arm64/boot/dts/ti/k3-am642-evm.dts b/arch/arm64/boot/dts/ti/k3-am642-evm.dts
-        index 96f90ebf28aa..86703b1dd7f3 100644
-        --- a/arch/arm64/boot/dts/ti/k3-am642-evm.dts
-        +++ b/arch/arm64/boot/dts/ti/k3-am642-evm.dts
-        @@ -711,13 +711,13 @@ &pcie0_rc {
-                phys = <&serdes0_pcie_link>;
-                phy-names = "pcie-phy";
-                num-lanes = <1>;
-        +       status = "disabled";
-        };
+    .. code-block:: text
 
-        &pcie0_ep {
-                phys = <&serdes0_pcie_link>;
-                phy-names = "pcie-phy";
-                num-lanes = <1>;
-        -       status = "disabled";
-        };
+        name_overlays="ti/k3-am642-evm-pcie0-ep.dtbo"
 
 .. rubric:: *Linux Driver Configuration*
 
