@@ -75,11 +75,11 @@ Types of SERDES
                         │                   │
                         └───────────────────┘
 
-.. ifconfig:: CONFIG_part_variant in ('J7200','J721S2','J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J7200','J721S2','J784S4','J742S2')
 
    The TI |__PART_FAMILY_DEVICE_NAMES__| SoC has a 4 Lane SERDES.
 
-.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4','J742S2')
 
    .. rubric:: *4 Lane Serdes*
 
@@ -131,7 +131,7 @@ modified based on the instructions mentioned in the SERDES Muxing section.
    * USB
    * USXGMII
 
-.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4','J742S2')
 
    A single SERDES can support either one protocol (connects to one Peripheral IP)
    or two protocols (connects to multiple Peripheral IP) at the same time.
@@ -169,7 +169,7 @@ modified based on the instructions mentioned in the SERDES Muxing section.
    * PCIe + QSGMII
    * PCIe + SGMII
 
-.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4','J742S2')
 
    .. rubric:: *Supported 4 Lane Serdes Configurations*
 
@@ -226,6 +226,10 @@ SERDES Instances
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
    J784S4 SoC has four instances of the 4 Lane Serdes.
+
+.. ifconfig:: CONFIG_part_variant in ('J742S2')
+
+   J742S2 SoC has three instances of the 4 Lane Serdes.
 
 SERDES Muxing
 *************
@@ -417,7 +421,7 @@ SERDES instances.
                            │                   │
                            └───────────────────┘
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
    .. rubric:: *SERDES 0*
 
@@ -478,30 +482,32 @@ SERDES instances.
                            │                   │
                            └───────────────────┘
 
-   .. rubric:: *SERDES 2*
+   .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
-   .. code-block:: text
+      .. rubric:: *SERDES 2*
 
-                           ┌───────────────────┐
-                           |                   │
-       CPSW0_Q/SGMII_LANE5 │                   │   <-> RX0/TX0
-         ──────────────────┤                   ├────────────────
-                           │                   │
-                           │                   │
-       CPSW0_Q/SGMII_LANE6 │                   │   <-> RX1/TX1
-         ──────────────────┤                   ├────────────────
-                           │                   │
-                           │    4L SERDES      │
-       CPSW0_Q/SGMII_LANE7/|                   │
-       CPSW0_Q/SGMII_LANE1 │                   │   <-> RX2/TX2
-         ──────────────────┤                   ├────────────────
-                           │                   │
-                           │                   │
-       CPSW0_Q/SGMII_LANE8/│                   │
-       CPSW0_Q/SGMII_LANE2 │                   │   <-> RX3/TX3
-         ──────────────────┤                   ├────────────────
-                           │                   │
-                           └───────────────────┘
+      .. code-block:: text
+
+                              ┌───────────────────┐
+                              |                   │
+          CPSW0_Q/SGMII_LANE5 │                   │   <-> RX0/TX0
+            ──────────────────┤                   ├────────────────
+                              │                   │
+                              │                   │
+          CPSW0_Q/SGMII_LANE6 │                   │   <-> RX1/TX1
+            ──────────────────┤                   ├────────────────
+                              │                   │
+                              │    4L SERDES      │
+          CPSW0_Q/SGMII_LANE7/|                   │
+          CPSW0_Q/SGMII_LANE1 │                   │   <-> RX2/TX2
+            ──────────────────┤                   ├────────────────
+                              │                   │
+                              │                   │
+          CPSW0_Q/SGMII_LANE8/│                   │
+          CPSW0_Q/SGMII_LANE2 │                   │   <-> RX3/TX3
+            ──────────────────┤                   ├────────────────
+                              │                   │
+                              └───────────────────┘
 
    .. rubric:: *SERDES 4*
 
@@ -642,7 +648,11 @@ the device tree serdes_ln_ctrl node has to be defined as follows:
                         <J721S2_SERDES0_LANE2_EDP_LANE2>, <J721S2_SERDES0_LANE3_EDP_LANE3>;
       };
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
+
+   .. ifconfig:: CONFIG_part_variant in ('J742S2')
+
+      J742S2 is subset device of J784S4 and hence includes devicetree from j784s4, after which SERDES2 instance is removed.
 
    The J784S4 board file k3-j784s4-evm.dts contains the following Serdes Muxing by default:
 
@@ -773,7 +783,7 @@ on the data rates required by the Peripheral IPs being used.
    * `2 Lane SERDES2 Clock IDs for J721E <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j721e/clocks.html#clocks-for-serdes-16g2-device>`_
    * `2 Lane SERDES3 Clock IDs for J721E <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j721e/clocks.html#clocks-for-serdes-16g3-device>`_
 
-.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4','J742S2')
 
    .. rubric:: *4L SERDES Clocking Options*
 
@@ -828,6 +838,12 @@ on the data rates required by the Peripheral IPs being used.
    * `4 Lane SERDES1 Clock IDs for J784S4 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j784s4/clocks.html#clocks-for-serdes-10g1-device>`_
    * `4 Lane SERDES2 Clock IDs for J784S4 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j784s4/clocks.html#clocks-for-serdes-10g2-device>`_
    * `4 Lane SERDES4 Clock IDs for J784S4 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j784s4/clocks.html#clocks-for-serdes-10g4-device>`_
+
+.. ifconfig:: CONFIG_part_variant in ('J742S2')
+
+   * `4 Lane SERDES0 Clock IDs for J742S2 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j784s4/clocks.html#clocks-for-serdes-10g0-device>`_
+   * `4 Lane SERDES1 Clock IDs for J742S2 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j784s4/clocks.html#clocks-for-serdes-10g1-device>`_
+   * `4 Lane SERDES4 Clock IDs for J742S2 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j784s4/clocks.html#clocks-for-serdes-10g4-device>`_
 
 Internal Reference Clock
 ========================
@@ -942,7 +958,7 @@ Internal Reference Clock
 
    .. rubric:: *Internal Reference Clock (4 Lane Serdes)*
 
-.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4','J742S2')
 
    In order to use internal reference clock, core_refclk input to the 4L SERDES should be used.
    core_refclk can use one of the four inputs provided to the input-muxed clock.
@@ -1061,7 +1077,7 @@ Internal Reference Clock
    which indicates that the clock with clock ID 7 (DEV_SERDES_10G0_CORE_REF_CLK_PARENT_HSDIV4_16FFT_MAIN_2_HSDIVOUT4_CLK)
    which is the MAIN_PLL2_HSDIV4_CLKOUT clock has to be used as the core_refclk, via the input-muxed clock.
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
    .. code-block:: text
 
@@ -1223,7 +1239,7 @@ External Reference Clock
           .
       };
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
    The 4L SERDES IP supports one external reference clock input cmn_refclk (named as serdes_refclk
    in the device-tree).
@@ -1478,7 +1494,7 @@ for the digital logic of the SERDES PHY and PMA can also be selected.
    For using the external reference clock, the "assigned-clock-parents" property has to be
    set to <&serdes_refclk>.
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
    It is possible to choose between the internal and external reference clocks for PLL0, PLL1 and
    the digital reference clock. By default they are configured to use the internal reference clock

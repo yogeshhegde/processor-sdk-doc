@@ -103,7 +103,7 @@ To enable Linux CPSW Proxy Client functionality, save the following command in u
 
         name_overlays="ti/k3-j7200-evm-ethfw.dtbo"
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
     .. code-block:: text
 

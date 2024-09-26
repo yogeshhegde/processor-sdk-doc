@@ -240,7 +240,7 @@ respective addresses.
     => fatload mmc 1 ${loadaddr} u-boot.img
     => mmc write ${loadaddr} 0x1800 0x2000
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J7200', 'J721S2', 'AM62X', 'J784S4', 'J722S')
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J7200', 'J721S2', 'AM62X', 'J784S4','J742S2', 'J722S')
 
     .. code-block:: console
 
@@ -266,7 +266,7 @@ respective addresses.
     => fatload mmc 1 ${loadaddr} u-boot.img
     => mmc write ${loadaddr} 0x1800 0x2000
 
-.. ifconfig:: CONFIG_part_variant in ('J721S2', 'AM62X', 'J784S4', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('J721S2', 'AM62X', 'J784S4','J742S2', 'J722S')
 
   .. code-block:: console
 

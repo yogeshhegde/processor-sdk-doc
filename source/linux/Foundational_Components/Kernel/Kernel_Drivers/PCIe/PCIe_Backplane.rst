@@ -93,12 +93,12 @@ in u-boot prompt:
 
 .. rubric:: **Dip switch settings**
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
   Both PCIe instances should be configured in EP mode by setting
   PCIE_1L_MODE_SEL (switch 5) and PCIE_2L_MODE_SEL (switch 6) in sw2 to '1'.
 
-.. ifconfig:: CONFIG_part_variant not in ('J784S4')
+.. ifconfig:: CONFIG_part_variant not in ('J784S4','J742S2')
 
   Both PCIe instances should be configured in EP mode by setting
   PCIE_1L_MODE_SEL (switch 5) and PCIE_2L_MODE_SEL (switch 6) in sw3 to '1'.

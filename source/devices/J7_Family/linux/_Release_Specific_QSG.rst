@@ -29,14 +29,14 @@ Detailed steps are described at :ref:`run-setup-scripts`
 
 .. ifconfig:: CONFIG_sdk in ('JACINTO')
 
-   .. ifconfig:: CONFIG_part_variant not in ('J784S4')
+   .. ifconfig:: CONFIG_part_variant not in ('J784S4','J742S2')
 
       The J7 EVM comes with a SoM (System on Chip) based on which J7 variant is being used,
       a common processor board, a PMIC and a few optional daughter cards.
 
-   .. ifconfig:: CONFIG_part_variant in ('J784S4')
+   .. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
-      The J784S4 EVM comes with the main J784S4 EVM board, a PMIC and a few optional daughter cards.
+      The |__PART_FAMILY_NAME__| EVM comes with the main |__PART_FAMILY_NAME__| EVM board, a PMIC and a few optional daughter cards.
 
 Detailed instructions for EVM setup with image illustration can be found at
 :ref:`hardware-evm-setup`.

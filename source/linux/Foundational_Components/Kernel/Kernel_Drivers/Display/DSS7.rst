@@ -25,7 +25,7 @@ The Display Subsystem (DSS) is a hardware block responsible for fetching pixel d
 
 In addition to the SoC's DSS, boards often contain external display bridges (for example, DPI-to-HDMI bridge) and display panels.
 
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4','J742S2')
 
     .. Image:: /images/DSS7_HW.png
 
@@ -107,7 +107,7 @@ SoC Family: |__PART_FAMILY_DEVICE_NAMES__|
     +-------------+---------------+-------------------+-------------+
 
 
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4','J742S2')
 
     +-------------+---------------+-------------------+-------------+
     | DSS version | Outputs       | Pipes             | Video ports |
@@ -146,11 +146,11 @@ Supported Features
     data through an DP/HDMI transmitters on-board. Custom EVMs based on these SoCs can
     provide such connectors and can use the Active Matrix LCDs.
 
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4','J742S2')
 
     - **DisplayPort**
         - SST
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4', 'AM62PX', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4','J742S2', 'AM62PX', 'J722S')
 
     - **MIPI DSI**
         - 4 Lane MIPI DSI output
@@ -174,12 +174,12 @@ Supported Features
 **EVM Outputs**
 ^^^^^^^^^^^^^^^
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J721E', 'J721S2', 'J784S4', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J721E', 'J721S2', 'J784S4','J742S2', 'J722S')
 
     - **HDMI Output**
         - DPI output from SoC converted to HDMI via HDMI encoders on Starter-Kit (SK) EVMs.
 
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4','J742S2')
 
         **Note:**
         Jacinto CPBs and EVMs do not support DPI to HDMI encoders. It is only available on Jacinto SoCs' SK-EVM variants.
@@ -317,11 +317,11 @@ Unsupported Features/Limitations
 
         - **MIPI DSI**
             - The SoC doesn't support the DSI / DPHY-Tx, and doesn't provide the MIPI DSI output.
-.. ifconfig:: CONFIG_part_variant in ('AM62AX', 'J721E', 'J784S4', 'J721S2')
+.. ifconfig:: CONFIG_part_variant in ('AM62AX', 'J721E', 'J784S4','J742S2', 'J721S2')
 
         - **Open LVDS Display Interface (OLDI)**
             - The SoC doesn't support the OLDI TXes, and doesn't provide the OLDI output.
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J784S4','J742S2')
 
         - **DisplayPort (MHDP)**
                 - MST

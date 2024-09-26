@@ -47,8 +47,7 @@ char driver usage from userspace. This library provides an easy means to
 identify and open rpmsg character devices created by the kernel rpmsg-char
 driver.
 
-This library support TI K3 family of devices (i.e AM65x, AM64x, AM62x, AM62Ax,
-J784S4, J721S2, J721E, and J7200 SoCs).
+This library support TI K3 family of devices including |__PART_FAMILY_DEVICE_NAMES__|.
 
 The library provides 4 basic APIs wrapping all the rpmsg char driver calls.
 `Please check documentation in 'include/ti_rpmsg_char.h' for details.
@@ -139,6 +138,43 @@ rpmsg_char_close()
 		| DSP_c71_2        | 66800000.dsp       | Yes     | DSP core in Main Domain           |
 		+------------------+--------------------+---------+-----------------------------------+
 		| DSP_c71_3        | 67800000.dsp       | Yes     | DSP core in Main Domain           |
+		+------------------+--------------------+---------+-----------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('J742S2')
+
+	J742S2 is a subset device of J784S4 and hence reuses the device enumerations
+	from J784S4. The below table lists the device enumerations as defined in the
+	rpmsg_char_library. The validity of the enumerations wrt J742S2 is also
+	specified.
+
+	.. code-block:: text
+
+		+------------------+--------------------+---------+-----------------------------------+
+		| Enumeration ID   | Device Name        | Valid   | Description                       |
+		+==================+====================+=========+===================================+
+		| R5F_MAIN0_0      | 5c00000.r5f        | Yes     | R5F core in Main Domain           |
+		+------------------+--------------------+---------+-----------------------------------+
+		| R5F_MAIN0_1      | 5d00000.r5f        | Yes     | R5F core in Main Domain           |
+		+------------------+--------------------+---------+-----------------------------------+
+		| R5F_MAIN1_0      | 5e00000.r5f        | Yes     | R5F core in Main Domain           |
+		+------------------+--------------------+---------+-----------------------------------+
+		| R5F_MAIN1_1      | 5f00000.r5f        | Yes     | R5F core in Main Domain           |
+		+------------------+--------------------+---------+-----------------------------------+
+		| R5F_MAIN2_0      | 5900000.r5f        | Yes     | R5F core in Main Domain           |
+		+------------------+--------------------+---------+-----------------------------------+
+		| R5F_MAIN2_1      | 5a00000.r5f        | Yes     | R5F core in Main Domain           |
+		+------------------+--------------------+---------+-----------------------------------+
+		| R5F_MCU0_0       | 41000000.r5f       | Yes     | R5F core in MCU Domain            |
+		+------------------+--------------------+---------+-----------------------------------+
+		| R5F_MCU0_1       | 41400000.r5f       | Yes     | R5F core in MCU Domain            |
+		+------------------+--------------------+---------+-----------------------------------+
+		| DSP_c71_0        | 64800000.dsp       | Yes     | DSP core in Main Domain           |
+		+------------------+--------------------+---------+-----------------------------------+
+		| DSP_c71_1        | 65800000.dsp       | Yes     | DSP core in Main Domain           |
+		+------------------+--------------------+---------+-----------------------------------+
+		| DSP_c71_2        | 66800000.dsp       | Yes     | DSP core in Main Domain           |
+		+------------------+--------------------+---------+-----------------------------------+
+		| DSP_c71_3        | 67800000.dsp       | No      | DSP core in Main Domain           |
 		+------------------+--------------------+---------+-----------------------------------+
 
 .. ifconfig:: CONFIG_part_variant in ('J722S')
@@ -361,7 +397,7 @@ SDK wic image filesystem:
 
 		TEST STATUS: PASSED
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
     .. code-block:: console
 
@@ -1086,7 +1122,7 @@ SDK wic image filesystem:
 		[ 4737.023296] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 10 (src: 0xd)
 		[ 4737.031630] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: goodbye!
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
 	.. code-block:: console
 

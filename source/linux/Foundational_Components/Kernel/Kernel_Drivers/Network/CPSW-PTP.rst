@@ -279,7 +279,7 @@ GENF0 to HW4_TS_PUSH added.
                   };
        };
 
-.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4','J742S2')
 
     ::
 
@@ -330,7 +330,7 @@ The Input Sources for the Time Sync Router are documented at:
 
     `Time Sync Router Input Sources for J721S2 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j721s2/interrupt_cfg.html#timesync-intrtr0-interrupt-router-input-sources>`_
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
     `Time Sync Router Input Sources for J784S4 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j784s4/interrupt_cfg.html#timesync-intrtr0-interrupt-router-input-sources>`_
 
@@ -360,7 +360,7 @@ The Output Destinations for the Time Sync Router are documented at:
 
     `Time Sync Router Output Destinations for J721S2 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j721s2/interrupt_cfg.html#timesync-intrtr0-interrupt-router-output-destinations>`_
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
     `Time Sync Router Output Destinations for J784S4 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j784s4/interrupt_cfg.html#timesync-intrtr0-interrupt-router-output-destinations>`_
 
@@ -432,7 +432,7 @@ For example, route CPSWxG CPTS GENF1 output to HW3_TS_PUSH input
               };
        };
 
-.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4','J742S2')
 
     ::
 

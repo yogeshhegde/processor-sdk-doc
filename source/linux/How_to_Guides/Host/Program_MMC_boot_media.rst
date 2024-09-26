@@ -5,7 +5,7 @@ Program MMC boot media
 ********
 Overview
 ********
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
    This documentation provide the steps for building flasher Image with initramfs-based boot support and programming
    the eMMC device via CPSW Ethernet connection to a Linux host PC. This solution will work with a completely blank
@@ -40,7 +40,7 @@ What is Needed
 
    * A 12V and 5V power supply compatible with the AM64-EVM and SK-AM64B respectively.
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
    * The most current `Processor SDK for Linux
    <https://www.ti.com/tool/PROCESSOR-SDK-AM69>`__ installed on the host Linux PC used for development
@@ -90,7 +90,7 @@ Prepare a rootfs
 
 * Navigate to **<Processor-SDK>/filesystem**
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
    * Create a directory called **tisdk-tiny-image-j784s4-evm** under
      **<Processsor-SDK>/filesystem/**
@@ -178,7 +178,7 @@ Prepare Kernel with baked-in initramfs
 
       make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- menuconfig
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
    * Set CONFIG_INITRAMFS_SOURCE = :file:`{Processor-SDK}/filesystem/tisdk-tiny-image-j784s4-evm`
 
@@ -210,7 +210,7 @@ support** and Select it:
 Move down a line to Initramfs source file(s). Select it and fill in the
 location of the files:
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
    .. Image:: /images/am69_Program_flash_image.png
       :height: 300px
@@ -255,7 +255,7 @@ Target Images
 
 * Populate bootloaders into the TFTP home directory
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
    * Copy :file:`tiboot3-j784s4-hs-fs-evm.bin`, :file:`tispl.bin` and
      :file:`u-boot.img` files from
@@ -311,7 +311,7 @@ Now that the flash image has been created we can now flash the SK
       setenv serverip <SERVER_IP>
       dhcp
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
    * For creating eMMC boot partiton refer :ref:`here <partitioning-eMMC-from-uboot>`
 
@@ -367,7 +367,7 @@ Now that the flash image has been created we can now flash the SK
       tftp ${fdtaddr} ${name_fdt}
       booti ${loadaddr} - ${fdtaddr}
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
    * Enter the following command on Linux shell to transfer the wic image
 

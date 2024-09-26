@@ -317,7 +317,7 @@ Build U-Boot
       |                            |    j721s2\_evm\_a72\_defconfig  |   j721s2\_evm\_a72\_defconfig  |   j721s2\_evm\_a72\_defconfig  |                                |
       +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
 
-   .. ifconfig:: CONFIG_part_variant in ('J784S4')
+   .. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
       +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
       |  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |           USB DFU              |
@@ -338,7 +338,7 @@ Build U-Boot
       |                            |    j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig   |   j722s\_evm\_a53\_defconfig       |   j722s\_evm\_a53\_defconfig       |
       +----------------------------+---------------------------------+--------------------------------+--------------------------------+------------------------------------+------------------------------------+
 
-   .. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4')
+   .. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4','J742S2')
 
       .. code-block:: console
 
@@ -546,13 +546,13 @@ Build U-Boot
 
       BINMAN_INDIRS is used to fetch the DM binary from <path to ti-linux-firmware>/ti-dm/ and SYSFW binaries from <path to ti-linux-firmware>/ti-sysfw/. If using the SDK, BINMAN_INDIRS can point to <path to SDK>/board-support/prebuilt-images. Else any folder where DM is located in <path to folder>/ti-dm/ and SYSFW binaries are present in <path to folder>/ti-sysfw/ can be used. Please make sure to use the absolute path.
 
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S')
 
    .. note::
 
       It is also possible to pick up a custom DM binary by adding TI_DM argument pointing to the file. If not provided, it defaults to picking up the DM binary from BINMAN_INDIRS. This is only applicable to devices that utilize split firmware.
 
-.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S')
 
    .. rubric:: Target Images
       :name: target-images
@@ -623,7 +623,7 @@ Build U-Boot
          * tiboot3-j721s2-hs-evm.bin from <output directory>/r5
          * tispl.bin, u-boot.img from <output directory>/a53
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
        * GP
 
@@ -708,7 +708,7 @@ Build U-Boot
 Image Formats
 ^^^^^^^^^^^^^^^
 
-    .. ifconfig:: CONFIG_part_variant not in ('J7200', 'AM64X', 'J721S2', 'J721E', 'AM62X', 'AM62AX', 'J784S4', 'J722S')
+    .. ifconfig:: CONFIG_part_variant not in ('J7200', 'AM64X', 'J721S2', 'J721E', 'AM62X', 'AM62AX', 'J784S4','J742S2', 'J722S')
 
        - tiboot3.bin
 
@@ -853,7 +853,7 @@ Image Formats
             | +-------------------+ |
             +-----------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2', 'J784S4')
+    .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2', 'J784S4','J742S2')
 
         - tiboot3.bin:
 
@@ -1290,7 +1290,7 @@ Boot Flow
             |                        |                       |                       |                       |
             +------------------------------------------------------------------------+-----------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2', 'J784S4')
+    .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2', 'J784S4','J742S2')
 
         .. code-block:: text
 
