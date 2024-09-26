@@ -6,7 +6,7 @@ IPC for J784S4
 ==============
 
 The J784S4 processors have Cortex-R5F and C7x DSP subsystems in addition to
-a dual core Cortex-A72 subsystem. Please refer to the J784S4 Technical Reference Manual for details.
+a octa core Cortex-A72 subsystem. Please refer to the J784S4 Technical Reference Manual for details.
 
 This article is geared toward J784S4 users that are running Linux on the Cortex
 A72 cores. The goal is to help users understand how to establish IPC communication
