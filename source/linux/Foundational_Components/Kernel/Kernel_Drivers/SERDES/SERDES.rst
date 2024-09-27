@@ -824,10 +824,10 @@ on the data rates required by the Peripheral IPs being used.
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
-   * `4 Lane SERDES0 Clock IDs for J784S4 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j721e/clocks.html#clocks-for-serdes-10g0-device>`_
-   * `4 Lane SERDES1 Clock IDs for J784S4 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j721e/clocks.html#clocks-for-serdes-10g1-device>`_
-   * `4 Lane SERDES2 Clock IDs for J784S4 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j721e/clocks.html#clocks-for-serdes-10g2-device>`_
-   * `4 Lane SERDES4 Clock IDs for J784S4 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j721e/clocks.html#clocks-for-serdes-10g4-device>`_
+   * `4 Lane SERDES0 Clock IDs for J784S4 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j784s4/clocks.html#clocks-for-serdes-10g0-device>`_
+   * `4 Lane SERDES1 Clock IDs for J784S4 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j784s4/clocks.html#clocks-for-serdes-10g1-device>`_
+   * `4 Lane SERDES2 Clock IDs for J784S4 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j784s4/clocks.html#clocks-for-serdes-10g2-device>`_
+   * `4 Lane SERDES4 Clock IDs for J784S4 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j784s4/clocks.html#clocks-for-serdes-10g4-device>`_
 
 Internal Reference Clock
 ========================
