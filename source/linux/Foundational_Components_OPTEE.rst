@@ -42,7 +42,7 @@ Where <hash> is the OPTEE commit shown here: :ref:`optee-release-notes`.
 
 .. rubric:: Building OP-TEE OS
 
-.. ifconfig:: CONFIG_part_variant in ('J721S2', 'J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721S2', 'J784S4','J742S2')
 
     .. code-block:: console
 

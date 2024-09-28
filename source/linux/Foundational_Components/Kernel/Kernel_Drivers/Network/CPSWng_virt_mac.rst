@@ -284,7 +284,7 @@ To enable Linux CPSWng Virtual Client functionality at U-Boot, save the followin
 
         name_overlays="ti/k3-j7200-evm-virt-mac-client.dtbo"
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
     .. code-block:: text
 

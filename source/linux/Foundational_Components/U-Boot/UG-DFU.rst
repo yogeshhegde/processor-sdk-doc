@@ -200,7 +200,7 @@ platform that support USB Peripheral boot mode.
     -  Connect EVM's TypeC port (USB0 port) to PC through USB cable
     -  Power on the board
 
-.. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2', 'J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2', 'J784S4','J742S2')
 
     -  Set SYSBOOT switches to USB Peripheral boot mode (Refer to **Initialization** chapter of TRM for boot switch details)
     -  Make sure USB0 port in UFP/DRP mode: SW3[3:4] = 01 or 1x
@@ -278,7 +278,7 @@ platform that support USB Peripheral boot mode.
 
     Send boot images in this order: tiboot3.bin -> tispl.bin -> u-boot.img.
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
     .. code-block:: text
 
@@ -345,7 +345,7 @@ platform that support USB Peripheral boot mode.
 		host$ sudo dfu-util -R -a tispl.bin -D tispl.bin
 		host$ sudo dfu-util -R  -a u-boot.img -D u-boot.img
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
      .. code-block:: text
 

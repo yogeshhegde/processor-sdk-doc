@@ -748,10 +748,10 @@ Enabling camera sensors
     For more details on building or applying overlays permanently, refer to the
     :ref:`How to enable DT overlays in linux <howto_dt_overlays>` guide.
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
-    J784S4 has three instances of CSI2RX capture subsystem and can support upto
-    twelve **IMX390** cameras using FPDLink fusion EVM, J784S4 EVM and AM69A SK also
+    J784S4/J742S2 has three instances of CSI2RX capture subsystem and can support upto
+    twelve **IMX390** cameras using FPDLink fusion EVM, J784S4/J742S2 EVM and AM69A SK also
     supports **OV5640** module connected to MIPI connector. AM69A SK has two
     instances of 22-pin FFC camera connector to which **IMX219** based RPi camera
     modules can be interfaced.
@@ -764,7 +764,7 @@ Enabling camera sensors
 
     .. code-block:: text
 
-        # For single RCM IMX390 connected to RX port 0 on Fusion board EVM on J721S2 CPB:
+        # For single RCM IMX390 connected to RX port 0 on Fusion board EVM on J784S4/J742S2 EVM:
         # FPDLink IMX390 camera overlays are named according to the port connected in the following
         # format : ti/k3-fpdlink-imx390-rcm-<csi_port>-<fusion_rx_port>.dtbo
         => setenv name_overlays ti/k3-j721s2-evm-fusion.dtbo ti/k3-fpdlink-imx390-rcm-0-0.dtbo
@@ -774,7 +774,7 @@ Enabling camera sensors
         => setenv name_overlays ti/k3-j721e-sk-fpdlink-fusion.dtbo ti/k3-fpdlink-imx390-rcm-0-0.dtbo
         => boot
 
-    To enable IMX219 camera connected to the 22-pin FFC connectoron AM69A SK,
+    To enable IMX219 camera connected to the 22-pin FFC connector on AM69A SK,
     enable the sensor overlay at U-boot prompt:
 
     .. code-block:: text

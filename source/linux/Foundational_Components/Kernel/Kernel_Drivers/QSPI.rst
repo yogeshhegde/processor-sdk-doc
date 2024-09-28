@@ -112,7 +112,7 @@ controllers work only in master mode.
    |               | 1x OSPI NAND| :file:`drivers/spi/spi-cadence-quadspi.c` |
    +---------------+-------------+-------------------------------------------+
 
-.. ifconfig:: CONFIG_part_variant in ('J721S2', 'J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721S2', 'J784S4','J742S2')
 
    +---------------------+-----------------+-------------------------------------------+
    | SoC Family          | Capability      | Driver                                    |

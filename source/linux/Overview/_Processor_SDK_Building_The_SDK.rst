@@ -416,7 +416,7 @@ The "Build Output" is given relative to the
          | am68-sk                       | AM68A SK                                                              |
          +-------------------------------+-----------------------------------------------------------------------+
 
-   .. ifconfig:: CONFIG_part_variant in ('J784S4')
+   .. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
       .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 

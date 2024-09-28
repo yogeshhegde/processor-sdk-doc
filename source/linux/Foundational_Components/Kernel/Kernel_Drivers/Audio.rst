@@ -68,7 +68,7 @@ one need to specify which device to use for audio:
     ``-Dplughw:j721ecpb,0`` will use the onboard audio on J721E-EVM
     board.
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
     ``-Dplughw:j784s4cpb,0`` will use the onboard audio on J721E-EVM
     board.
@@ -675,7 +675,7 @@ Board-specific instructions
 
         amixer -c j721ecpb sset 'codec1 Master' 141  # Master Playback volume for p1/2/3/4 jack
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
     .. rubric:: J784S4 Evaluation Board
        :name: j784s4-evm
@@ -885,7 +885,7 @@ Additional Information
     #. `TLV320AIC3106 - Low-Power Stereo Audio CODEC
        <http://www.ti.com/lit/ds/symlink/tlv320aic3106.pdf>`__
 
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J784S4','J742S2')
 
     #. `PCM3168A - 24-Bit, 96kHz/192kHz, 6-In/8-Out Audio CODEC with
        Differential Input/Output

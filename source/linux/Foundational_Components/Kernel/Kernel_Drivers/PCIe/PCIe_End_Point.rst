@@ -212,14 +212,14 @@ The ends of the modified cable should look like below:
 
     .. Image:: /images/j721e-evm-back-to-back.jpg
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
     For End Point mode, PCIE_1L_MODE_SEL (switch 5) and PCIE_2L_MODE_SEL (switch 6)
     in sw2 should be set to '1'.
 
     .. Image:: /images/dip-switch-J7AHP.png
 
-.. ifconfig:: CONFIG_part_variant not in ('J784S4')
+.. ifconfig:: CONFIG_part_variant not in ('J784S4','J742S2')
 
     For End Point mode, PCIE_1L_MODE_SEL (switch 5) and PCIE_2L_MODE_SEL (switch 6)
     in sw3 should be set to '1'.

@@ -10,7 +10,7 @@ An analog-to-digital converter (abbreviated ADC) is a device that uses
 sampling to convert a continuous quantity to a discrete time
 representation in digital form.
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM65X', 'J721E', 'J7200', 'J721S2', 'J784S4')
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM65X', 'J721E', 'J7200', 'J721S2', 'J784S4','J742S2')
 
    The TSC\_ADC\_SS (Touchscreen\_ADC\_subsystem) is an 8 channel general
    purpose ADC, with optional support for interleaving Touch Screen
@@ -31,7 +31,7 @@ representation in digital form.
    conversion cycle can be initiated after the previous data is read.
    Please note that the ADC output is positive binary weighted data.
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM65X', 'J721E', 'J7200', 'J721S2', 'J784S4')
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM65X', 'J721E', 'J7200', 'J721S2', 'J784S4','J742S2')
 
    The ADC is a 12-bit, 8-channel, general purpose ADC with a sample rate
    of 4 MSPS (Megasamples per second or millions of samples per second).

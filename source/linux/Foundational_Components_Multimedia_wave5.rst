@@ -277,7 +277,7 @@ Encoder and Decoder Capabilities
       (16 Enc + 16 Dec) OR (32 Enc) OR (32 Dec).
       (32 Enc + 32 Dec) - Not possible
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
    The Max Capability of the Encoder/Decoder is 2x4K60fps equivalent load.
 
@@ -640,7 +640,7 @@ The CMA size can be increased or decreased depending on the requirement and the 
 
    The macro that specifies the CMA size is CONFIG_CMA_SIZE_MBYTES present in the file :file:`arch/arm64/configs/tisdk_am62axx-evm_defconfig` in the linux directory of sdk. The default value is 576MB.
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
    The macro that specifies the CMA size is CONFIG_CMA_SIZE_MBYTES present in the file :file:`arch/arm64/configs/tisdk_am62axx-evm_defconfig` in the linux directory of sdk. The default value is 1792MB.
 

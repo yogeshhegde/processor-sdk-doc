@@ -631,7 +631,7 @@ documented in U-boot SPI section.
                  |                                 |
                  +---------------------------------+
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2', 'J722S')
 
     |__PART_FAMILY_DEVICE_NAMES__| is similar to J721S2, only difference
     being that OSPI0 is muxed externally between a NOR and a NAND flash

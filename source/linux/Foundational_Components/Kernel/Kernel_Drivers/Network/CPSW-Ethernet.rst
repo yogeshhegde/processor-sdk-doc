@@ -25,7 +25,7 @@ of the CPSW Ethernet Subsystem:
 
    1. CPSW2g
 
-.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J784S4','J742S2')
 
    2. CPSWng
 
@@ -34,7 +34,7 @@ of the CPSW Ethernet Subsystem:
  The CPSW2g instance is controlled by the am65-cpsw-nuss driver in Linux.
  For further details regarding the CPSW2g instance, refer :ref:`cpsw2g`
 
-.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J784S4','J742S2')
 
  The CPSWng instance can be configured to operate in two ways:
    #. CPSWng Virtual Client
@@ -59,7 +59,7 @@ The CPSW Ethernet Subsystem supports TSN features in the following configuration
 
    1. The CPSW2g instance supports MAC mode TSN features.
 
-.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J784S4','J742S2')
 
    2. The CPSWng Native Ethernet configuration of the CPSWng instance supports both MAC mode
       and Switch mode TSN features.
