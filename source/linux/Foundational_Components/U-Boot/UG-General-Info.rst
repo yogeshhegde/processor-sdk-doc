@@ -577,68 +577,68 @@ Build U-Boot
        * GP
 
          * tiboot3-j721e-gp-evm.bin, sysfw-j721e-gp-evm.itb from <output directory>/r5
-         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a53
+         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a72
 
        * HS-FS
 
          * tiboot3-j721e_sr2-hs-fs-evm.bin, sysfw-j721e_sr2-hs-fs-evm.itb from <output directory>/r5
-         * tispl.bin, u-boot.img from <output directory>/a53
+         * tispl.bin, u-boot.img from <output directory>/a72
 
        * HS-SE
 
          * tiboot3-j721e_sr2-hs-evm.bin, sysfw-j721e_sr2-hs-evm.itb from <output directory>/r5
-         * tispl.bin, u-boot.img from <output directory>/a53
+         * tispl.bin, u-boot.img from <output directory>/a72
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
        * GP
 
          * tiboot3-j7200-gp-evm.bin from <output directory>/r5
-         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a53
+         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a72
 
        * HS-FS
 
          * tiboot3-j7200_sr2-hs-fs-evm.bin from <output directory>/r5
-         * tispl.bin, u-boot.img from <output directory>/a53
+         * tispl.bin, u-boot.img from <output directory>/a72
 
        * HS-SE
 
          * tiboot3-j7200_sr2-hs-evm.bin from <output directory>/r5
-         * tispl.bin, u-boot.img from <output directory>/a53
+         * tispl.bin, u-boot.img from <output directory>/a72
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
        * GP
 
          * tiboot3-j721s2-gp-evm.bin from <output directory>/r5
-         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a53
+         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a72
 
        * HS-FS
 
          * tiboot3-j721s2-hs-fs-evm.bin from <output directory>/r5
-         * tispl.bin, u-boot.img from <output directory>/a53
+         * tispl.bin, u-boot.img from <output directory>/a72
 
        * HS-SE
 
          * tiboot3-j721s2-hs-evm.bin from <output directory>/r5
-         * tispl.bin, u-boot.img from <output directory>/a53
+         * tispl.bin, u-boot.img from <output directory>/a72
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
        * GP
 
          * tiboot3-j784s4-gp-evm.bin from <output directory>/r5
-         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a53
+         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a72
 
        * HS-FS
 
          * tiboot3-j784s4-hs-fs-evm.bin from <output directory>/r5
-         * tispl.bin, u-boot.img from <output directory>/a53
+         * tispl.bin, u-boot.img from <output directory>/a72
 
        * HS-SE
 
          * tiboot3-j784s4-hs-evm.bin from <output directory>/r5
-         * tispl.bin, u-boot.img from <output directory>/a53
+         * tispl.bin, u-boot.img from <output directory>/a72
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
