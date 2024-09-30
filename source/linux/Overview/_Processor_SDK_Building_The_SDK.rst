@@ -406,7 +406,7 @@ The "Build Output" is given relative to the
          | |__SDK_BUILD_MACHINE__|       | AM68 SK                                                               |
          +-------------------------------+-----------------------------------------------------------------------+
 
-      .. ifconfig:: CONFIG_sdk in ('PSDKL')
+      .. ifconfig:: CONFIG_sdk in ('JACINTO')
 
          +-------------------------------+-----------------------------------------------------------------------+
          | **MACHINE**                   | **Supported EVMs**                                                    |
@@ -426,7 +426,7 @@ The "Build Output" is given relative to the
          | |__SDK_BUILD_MACHINE__|       | AM69 SK                                                               |
          +-------------------------------+-----------------------------------------------------------------------+
 
-      .. ifconfig:: CONFIG_sdk in ('PSDKL')
+      .. ifconfig:: CONFIG_sdk in ('JACINTO')
 
          +-------------------------------+-----------------------------------------------------------------------+
          | **MACHINE**                   | **Supported EVMs**                                                    |
