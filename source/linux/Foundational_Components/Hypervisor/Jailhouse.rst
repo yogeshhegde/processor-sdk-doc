@@ -251,6 +251,22 @@ on the EVM then power on the board, the following logs can be observed on the te
 
         am62pxx-evm login:
 
+.. note:: 
+   Jailhouse module is not autoloaded during boot-up. To load the jailhouse module
+   after boot, run following commands:
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+        .. code-block:: console
+
+            am62xx-evm@ modprobe jailhouse
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+        .. code-block:: console
+
+            am62pxx-evm@ modprobe jailhouse
+
 ***************************************
 Pre-built components in Jailhouse Image
 ***************************************
@@ -486,20 +502,6 @@ the demo are:
         Arago 2023.10 am62pxx-evm -
  
         am62pxx-evm login: root
-
-- Now load the jailhouse module
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-    .. code-block:: console
-
-        am62xx-evm@ modprobe jailhouse
-
-.. ifconfig:: CONFIG_part_variant in ('AM62PX')
-
-    .. code-block:: console
-
-        am62pxx-evm@ modprobe jailhouse
 
 The Linux demo (i.e Two Guest VMs) can be started using the :file:`linux-demo.sh` script
 in that folder. There is no such script for the bare-metal demos but the commands
