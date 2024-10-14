@@ -155,7 +155,7 @@ PCIe End Point
 
 .. Image:: /images/Pcie_ep_cable.jpg
 
-This cable can be obtained from Adex Electronics (https://www.adexelec.com).
+An equivalent cable can be obtained from DigiKey (https://www.digikey.com/en/products/detail/3m/8kj2-0743-0250/5128345).
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
