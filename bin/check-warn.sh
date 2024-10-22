@@ -52,7 +52,7 @@ summary()
 	diff --changed-group-format="%>" --unchanged-group-format="" \
 		build/_a.log build/_b.log > build/_new-warn.log
 
-	_num=$(wc -l build/_new-warn.log)
+	_num=$(wc -l < build/_new-warn.log)
 
 	echo
 	echo "Found $_num new build WARNING(s)."
