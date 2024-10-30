@@ -18,10 +18,6 @@ jobs:
     container:
       image: ghcr.io/texasinstruments/processor-sdk-doc:latest
       options: --entrypoint /bin/bash
-    permissions:
-      contents: read
-      issues: write
-      pull-requests: write
 
     steps:
       - name: Checkout repository
@@ -35,37 +31,34 @@ jobs:
           git switch master
 
       - name: Run rstcheck
-        id: rstcheck
         run: |
-          bin/delta.sh -a master -b pr \
-            -- rstcheck -r source/
-          if [ "$(wc -l < _new-warn.log)" -gt "0" ]; then
-            {
-              echo "New warnings found with rstcheck:";
-              echo '```text';
-              cat _new-warn.log;
-              echo '```';
-            } >> "$GITHUB_STEP_SUMMARY"
-            {
-              echo 'NEW_WARNINGS<<EOF'
-              echo "$(< "$GITHUB_STEP_SUMMARY")"
-              echo 'EOF'
-            } >> "$GITHUB_OUTPUT"
-            exit 1
-          fi
-          echo "No new warnings found with rstcheck" >> "$GITHUB_STEP_SUMMARY"
+          # Run the test
+          bin/delta.sh -a master -b pr -- rstcheck -r source/
 
-      - name: Update pr with info
-        uses: actions/github-script@v7
-        if: ${{ failure() && steps.rstcheck.outputs.NEW_WARNINGS != '' }}
-        env:
-          NEW_WARNINGS: ${{ steps.rstcheck.outputs.NEW_WARNINGS }}
+          # Prepare summary
+          WARNING_COUNT=$(wc -l < _new-warn.log)
+          if [ "$WARNING_COUNT" -gt "0" ]; then
+            echo "New warnings found with rstcheck:"
+            echo '```text'
+            cat _new-warn.log
+            echo '```'
+          else
+            echo "No new warnings found with rstcheck"
+          fi >> "$GITHUB_STEP_SUMMARY"
+
+          # Prepare the artifacts
+          mkdir -p ./results
+          echo "${{ github.event.number }}" > ./results/id
+          cp "$GITHUB_STEP_SUMMARY" ./results/summary
+          echo "$(wc -l < _new-warn.log)" > ./results/problem-count
+
+          # Exit with error if there are new warnings
+          [ "$WARNING_COUNT" -gt "0" ] && exit 1
+
+      - name: Save results
+        uses: actions/upload-artifact@v4
+        if: always()
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            github.rest.issues.createComment({
-              owner: context.repo.owner,
-              issue_number: context.issue.number,
-              repo: context.repo.repo,
-              body: process.env.NEW_WARNINGS
-            })
+          name: results
+          path: results/
+          retention-days: 1
