@@ -699,7 +699,8 @@ decoder driver support for it. An example of using dmabuf-import in a gstreamer
 pipeline:
 
 .. code-block:: text
-    gst-launch-1.0 filesrc location=<file_location> ! h264parse ! v4l2h264dec capture-io-mode=5 ! kmssink driver-name=tidss
+
+   gst-launch-1.0 filesrc location=<file_location> ! h264parse ! v4l2h264dec capture-io-mode=5 ! kmssink driver-name=tidss
 
 With the TI V4L2 Video Decoder Driver, the best latency performance to display is achieved
 with "dmabuf-import" (GST_V4L2_IO_DMABUF_IMPORT). This feature provides
