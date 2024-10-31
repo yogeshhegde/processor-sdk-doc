@@ -1,3 +1,5 @@
+.. include:: /_replacevars.rst
+
 ******************
 E5010 JPEG Encoder
 ******************
@@ -102,8 +104,8 @@ of video encoding based use-cases utilizing this driver as demonstrated in below
 
 Building the driver
 ===================
-The E5010 JPEG driver is already enabled as a kernel module in processor SDK 9.0 for AM62A in the default defconfig being used for the board.
-If using a separate defconfig, It can be enabled explicitly for compilation by setting corresponding Kconfig as shown below:
+The E5010 JPEG driver is already enabled as a kernel module on |__PART_FAMILY_DEVICE_NAMES__| as part of the default defconfig being used for the board.
+If using a separate defconfig, it can be enabled explicitly for compilation by setting corresponding Kconfig as shown below:
 
 .. code-block:: kconfig
 
@@ -172,22 +174,44 @@ Due to runtime power management feature, when JPEG encoder
 is not being used by any of the applications, it stays in suspended
 state and same can be verified using k3conf utility as shown below :
 
-.. code-block:: console
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-   root@am62axx-evm:~#  k3conf dump device 201
-   |------------------------------------------------------------------------------|
-   | VERSION INFO                                                                 |
-   |------------------------------------------------------------------------------|
-   | K3CONF | (version 0.3-nogit built Thu Jul 25 14:13:02 UTC 2024)              |
-   | SoC    | AM62Ax SR1.0                                                        |
-   | SYSFW  | ABI: 4.0 (firmware version 0x000a '10.0.8--v10.00.08 (Fiery Fox))') |
-   |------------------------------------------------------------------------------|
+   .. code-block:: console
 
-   |---------------------------------------------------|
-   | Device ID | Device Name        | Device Status    |
-   |---------------------------------------------------|
-   |   201     | AM62AX_DEV_JPGENC0 | DEVICE_STATE_OFF |
-   |---------------------------------------------------|
+      root@am62axx-evm:~#  k3conf dump device 201
+      |------------------------------------------------------------------------------|
+      | VERSION INFO                                                                 |
+      |------------------------------------------------------------------------------|
+      | K3CONF | (version 0.3-nogit built Thu Jul 25 14:13:02 UTC 2024)              |
+      | SoC    | AM62Ax SR1.0                                                        |
+      | SYSFW  | ABI: 4.0 (firmware version 0x000a '10.0.8--v10.00.08 (Fiery Fox))') |
+      |------------------------------------------------------------------------------|
+
+      |---------------------------------------------------|
+      | Device ID | Device Name        | Device Status    |
+      |---------------------------------------------------|
+      |   201     | AM62AX_DEV_JPGENC0 | DEVICE_STATE_OFF |
+      |---------------------------------------------------|
+
+.. ifconfig:: CONFIG_part_variant in ('J722S', 'AM67')
+
+   .. code-block:: console
+
+      root@j722s-evm-evm:~#  k3conf dump device 201
+      |------------------------------------------------------------------------------|
+      | VERSION INFO                                                                 |
+      |------------------------------------------------------------------------------|
+      | K3CONF | (version 0.3-nogit built Thu Jul 25 14:13:02 UTC 2024)              |
+      | SoC    | J722S SR1.0                                                        |
+      | SYSFW  | ABI: 4.0 (firmware version 0x000a '10.0.8--v10.00.08 (Fiery Fox))') |
+      |------------------------------------------------------------------------------|
+
+      |---------------------------------------------------|
+      | Device ID | Device Name        | Device Status    |
+      |---------------------------------------------------|
+      |   201     | J722S_DEV_JPGENC0 | DEVICE_STATE_OFF |
+      |---------------------------------------------------|
+
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
@@ -375,7 +399,7 @@ Buffer alignment requirements
 
 Performance and Latency Benchmarking
 ====================================
-The E5010 core is clocked at 250Mhz in AM62A and theoretical performance expectation
+The E5010 core is clocked at 250Mhz on |__PART_FAMILY_DEVICE_NAMES__| and theoretical performance expectation
 with this clocking is as below :
 
 +-------------------+--------------------+
@@ -389,7 +413,7 @@ with this clocking is as below :
 With these numbers theoretically E5010 core can handle 3840x2160@60fps equivalent load
 for 4:2:2 video formats and 3840x2160@75fps equivalent load for 4:2:0 video formats.
 
-This however requires the upstream element (for e.g. camera) to support above rates. On AM62A board fastest locally available upstream element source is `wave5 VPU decoder <../../../Foundational_Components_Multimedia_wave5.html>`__ which provides maximum performance of 3840x2160@59 fps with low bitrate files and we were able to achieve same performance after passing this decoded data to E5010 JPEG Encoder as shown in below example :
+This however requires the upstream element (for e.g. camera) to support above rates. On |__PART_FAMILY_DEVICE_NAMES__| board fastest locally available upstream element source is :ref:`wave5 VPU decoder <foundational-components-multimedia>` which provides maximum performance of 3840x2160@59 fps with low bitrate files and we were able to achieve same performance after passing this decoded data to E5010 JPEG Encoder as shown in below example :
 
 .. code-block:: console
 
