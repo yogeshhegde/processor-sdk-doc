@@ -19,72 +19,54 @@ OR you can use a docker container like the following:
 
 ### Build on Ubuntu
 
-#### Build linux documentatin
+To build the documentation a DEVFAMILY and OS must be specified as either an
+argument to `make` or set as environment variables prior to execution of `make`.
 
-    $ make clean DEVFAMILY=<FAMILY> OS=linux
-    $ make config DEVFAMILY=<FAMILY> OS=linux
-    $ make DEVFAMILY=<FAMILY> OS=linux
+DEVFAMILY represents the Device Family. Possible values correspond to the names
+of directories listed under `configs/`. For example:
 
-#### Build rtos documentation
+ * "AM335X" (representing AM335X family)
+ * "AM437X" (representing AM437X family)
+ * "AM57X" (representing AM57X family)
+ * "AM64X" (representing AM64X family)
+ * "AM62X" (representing AM62X family)
+ * "AM62AX" (representing AM62AX family)
+ * "AM62PX" (representing AM62PX family)
+ * "AM65X" (representing AM65X family)
+ * "DRA821A" (representing DRA821A)
+ * "J721E" (representing Jacinto 7 ES)
+ * "J7200" (representing Jacinto 7 VCL)
+ * "J721S2" (representing Jacinto 7 AEP)
+ * "J784S4" (representing Jacinto 7 AHP)
+ * "J722S" (representing Jacinto 7 AEN)
+ * "GEN" (representing General family not listed above)
+ * "CORESDK" (representing CORESDK)
 
-    $ make clean DEVFAMILY=<FAMILY> OS=rtos
-    $ make config DEVFAMILY=<FAMILY> OS=rtos
-    $ make DEVFAMILY=<FAMILY> OS=rtos
+OS represents the operating system. Possible values correspond to the second
+parameter of files listed under the `configs/<DEVFAMILY>/` directory. For
+example `AM57X_linux_toc.txt` means that `linux` is a valid OS value.
 
-#### Build android (available for J721E and GEN):
+Example build commands:
 
-    $ make clean DEVFAMILY=<FAMILY> OS=android
-    $ make config DEVFAMILY=<FAMILY> OS=android
-    $ make DEVFAMILY=<FAMILY> OS=android
+ - Build linux documentation for AM335X
 
-### Build am64x documentation
+    $ make DEVFAMILY=AM335X OS=linux
 
-    $ make config DEVFAMILY=AM64X
-    $ make DEVFAMILY=AM64X
+ - Build rtos documentation AM57X
 
+    $ make DEVFAMILY=AM57X OS=rtos
 
-**Note**: that DEVFAMILY represents the Device Family.
-      Possible values for <FAMILY> are
+ - Build android documentation for AM62X
 
-* "AM335X" (representing AM335X family)
-* "AM437X" (representing AM437X family)
-* "AM57X" (representing AM57X family)
-* "AM64X" (representing AM64X family)
-* "AM62X" (representing AM62X family)
-* "AM62AX" (representing AM62AX family)
-* "AM62PX" (representing AM62PX family)
-* "AM65X" (representing AM65X family)
-* "DRA821A" (representing DRA821A)
-* "J721E" (representing Jacinto 7 ES)
-* "J7200" (representing Jacinto 7 VCL)
-* "J721S2" (representing Jacinto 7 AEP)
-* "J784S4" (representing Jacinto 7 AHP)
-* "J722S" (representing Jacinto 7 AEN)
-* "GEN" (representing General family not listed above)
-* "CORESDK" (representing CORESDK)
-
-**Note**: Please use script `bin/check-warn.sh` or the `make lint` target
-          to check for new build warnings and fix them before submitting
-          pull-requests.
+    $ make DEVFAMILY=AM62X OS=android
 
 ### HTML Page Output
 
 Open the index page in a web browser
 
-**AM64X**:
-
-    ./build/processor-sdk-AM64X/esd/docs/[version]/index.html
-
-**GEN family** (TODO: to be migrated to the new structure):
-
-    linux:   ./build/processor-sdk-linux/esd/docs/[version]/index.html
-    rtos:    ./build/processor-sdk-rtos/esd/docs/[version]/index.html
-    android: ./build/processor-sdk-android/esd/docs/[version]/index.html
-
-**Others**:
-
-    linux: ./build/processor-sdk-linux-<FAMILY>/esd/docs/[version]/index.html
-    rtos:  ./build/processor-sdk-rtos-<FAMILY>/esd/docs/[version]/index.html
+    linux:   ./build/processor-sdk-linux-<FAMILY>/esd/docs/[version]/index.html
+    rtos:    ./build/processor-sdk-rtos-<FAMILY>/esd/docs/[version]/index.html
+    android: ./build/processor-sdk-android-<FAMILY>/esd/docs/[version]/index.html
 
 ## Tips and Tricks
 
