@@ -15,13 +15,16 @@
 
 import sys
 import os
+import importlib
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
 rootdir = os.environ.get('ROOTDIR')
-sys.path.append(rootdir + 'python-scripts')
+sys.path.insert(0, os.path.abspath(rootdir))
+
+from scripts import interpretvalues, sectinc, replacevars
 
 # -- General configuration ------------------------------------------------
 
@@ -42,7 +45,7 @@ extensions = [
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['../_templates']
+templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -240,3 +243,61 @@ latex_elements = {
 
 # Suppress warnings about excluded documents because every device gets a different toc tree
 suppress_warnings = ['toc.excluded']
+
+# -- Tag file loader ------------------------------------------------------
+
+# Defaults
+exclude_patterns = []
+
+FAMILY = os.environ.get("DEVFAMILY", "")
+OS = os.environ.get("OS", "")
+try:
+    globals().update(importlib.import_module(f"configs.{FAMILY}.{FAMILY}_{OS}_tags").__dict__)
+except ModuleNotFoundError as exc:
+    raise ModuleNotFoundError("Configuration not supported!") from exc
+
+# -- Family setup ---------------------------------------------------------
+
+# List of Inclusion TOC files to use
+family_tocfiles = [f"{FAMILY}/{FAMILY}_{OS}_toc.txt"]
+# Family Configuration file to use
+family_config_inputfile = f"{FAMILY}/{FAMILY}_{OS}_config.txt"
+
+# Hash table for Replacement Variables
+family_replacevars = {}
+# Hash table for Configuration Values
+family_configvals = {}
+
+def setup(app):
+    """
+    Sphinx application entrypoint
+    """
+
+    # Load overrides
+    app.add_css_file("css/theme_overrides.css")
+
+    # Read the replacement variables and the configuration values
+    print("Device Family Build setup started")
+    interpretvalues.read_familyvals(app, family_config_inputfile,
+                                    family_replacevars, family_configvals)
+
+    print("Build setup: Filled Replacement Variables (family_replacevars)"
+            "and Configuration Values (family_configvals) hash tables")
+    print("family_replacevars = ")
+    print(family_replacevars)
+    print("family_configvals = ")
+    print(family_configvals)
+
+    # Determine which sections need to be excluded
+    sectinc.find_all_rst_files(app, exclude_patterns)
+    sectinc.fill_docs_to_keep(app, family_tocfiles, 0)
+    sectinc.set_excluded_docs(app, exclude_patterns)
+    print(FAMILY + " exclude_patterns is:")
+    print('[')
+    for elem in exclude_patterns:
+        print(elem)
+    print(']')
+
+    # Write to the replacevars.rst.inc file for usage by Sphinx
+    replacevars.write_replacevars(app, family_replacevars)
+    print("Device Family Build setup completed")
