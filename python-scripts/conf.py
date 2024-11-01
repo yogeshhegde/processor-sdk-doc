@@ -36,7 +36,8 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.ifconfig',
     'sphinx_rtd_theme',
-    'sphinx_tabs.tabs'
+    'sphinx_tabs.tabs',
+    'sphinx_copybutton'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
