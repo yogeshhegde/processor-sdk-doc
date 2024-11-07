@@ -629,7 +629,7 @@ built during the initial u-boot build.
 
 .. code-block:: console
 
-    mkimage -r -f fitImage.its -k $UBOOT_PATH/board/ti/keys -K $UBOOT_PATH/build/$ARMV8/dts/dt.dtb fitImage
+    mkimage -r -f fitImage.its -k $UBOOT_PATH/arch/arm/mach-k3/keys -K $UBOOT_PATH/build/$ARMV8/dts/dt.dtb fitImage
 
 .. note::
 
