@@ -92,9 +92,10 @@ Software Stack of Accelerated Codec Encoding/Decoding
 As shown in the figures below, the software stack of the accelerated
 encoding and decoding has two parts:
 
-        -  A V4L2 (Video4Linux version 2) software driver running as part of Linux
-        on the A72 MPU subsystem
-        -  The firmware running on the DECODER and ENCODER
+   - A V4L2 (Video4Linux version 2) software driver running as part of Linux on
+     the A72 MPU subsystem
+
+   - The firmware running on the DECODER and ENCODER
 
 The driver communicates with the firmware running on the ENCODER/DECODER
 through its own IPC (inter-processor communication).
@@ -698,7 +699,8 @@ decoder driver support for it. An example of using dmabuf-import in a gstreamer
 pipeline:
 
 .. code-block:: text
-    gst-launch-1.0 filesrc location=<file_location> ! h264parse ! v4l2h264dec capture-io-mode=5 ! kmssink driver-name=tidss
+
+   gst-launch-1.0 filesrc location=<file_location> ! h264parse ! v4l2h264dec capture-io-mode=5 ! kmssink driver-name=tidss
 
 With the TI V4L2 Video Decoder Driver, the best latency performance to display is achieved
 with "dmabuf-import" (GST_V4L2_IO_DMABUF_IMPORT). This feature provides
