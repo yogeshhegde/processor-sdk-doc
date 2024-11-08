@@ -207,8 +207,8 @@ which you can start development.
 
    .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-       For example, at the time of this writing, Ubuntu 16.04 and Ubuntu 18.04
-       are the currently supported LTS versions).
+       For example, at the time of this writing, Ubuntu |__LINUX_UBUNTU_VERSION_SHORT__|
+       is the currently supported LTS version).
 
    Can you use other versions of Ubuntu or even other distributions?
    Theoretically, yes, as long as you can get it to work and there may

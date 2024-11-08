@@ -1,3 +1,5 @@
+.. include:: /_replacevars.rst
+
 .. _release-specific-release-notes:
 
 ************************************
@@ -350,8 +352,7 @@ Composer Studio.
 Host Support
 ============
 
-The Processor SDK is developed, built and verified on Ubuntu 16.04 and 18.04. Details on how to create a virtual machine to load Ubuntu
-are described in :ref:`this page <how-to-build-a-ubuntu-linux-host-under-vmware>`.
+The Processor SDK is developed, built and verified on Ubuntu |__LINUX_UBUNTU_VERSION_SHORT__|.
 
 
 .. note::
