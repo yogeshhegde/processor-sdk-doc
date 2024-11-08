@@ -121,7 +121,6 @@ linux/Examples_and_Demos_Matrix_User_Guide
 linux/Examples_and_Demos_Sub-system_Demos
 linux/How_to_Guides
 linux/How_to_Guides_Host
-linux/How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware
 linux/How_to_Guides/Host/Connect_to_an_EVM_via_Telnet
 linux/How_to_Guides/Host/How_to_Setup_a_Samba_Server
 linux/How_to_Guides/Host/Boot_Sequence
