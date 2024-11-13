@@ -53,7 +53,7 @@ jobs:
           echo "$(wc -l < _new-warn.log)" > ./results/problem-count
 
           # Exit with error if there are new warnings
-          [ "$WARNING_COUNT" -gt "0" ] && exit 1
+          [ "$WARNING_COUNT" -eq "0" ]
 
       - name: Save results
         uses: actions/upload-artifact@v4

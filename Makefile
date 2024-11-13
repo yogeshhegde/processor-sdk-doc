@@ -20,16 +20,13 @@ export ROOTDIR = $(dir $(mkfile_path))
 $(info ROOTDIR is $(ROOTDIR))
 
 $(info DEVFAMILY is $(DEVFAMILY_UP))
-FAMILYSETUPFILE = python-scripts/family_setup.py
 
 ifeq ($(DEVFAMILY_UP), $(filter $(DEVFAMILY_UP), J721E J7200 J721S2 J784S4 AM68 AM69 J722S AM67 J742S2))
   CONFDIR = source/devices/J7_Family/${OS_LOW}
 else
   CONFDIR = source/devices/$(DEVFAMILY_UP)/${OS_LOW}
 endif
-TAGFILE = configs/$(DEVFAMILY_UP)/$(DEVFAMILY_UP)_${OS_LOW}_tags.py
 
-$(info TAGFILE is $(TAGFILE))
 $(info CONFDIR is $(CONFDIR))
 
 VERSION   = $(shell cat ${CONFDIR}/version.txt)
@@ -44,7 +41,7 @@ endif
 # Internal variables.
 PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
-CONFLOC         = -c build/
+CONFLOC         = -c $(ROOTDIR)
 VEROPTS         = -D version=${VERSION} -D release=${VERSION}
 GIT_HASH        = -D html_context.commit="$(shell git rev-parse --short HEAD)"
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) $(CONFLOC) $(VEROPTS) $(GIT_HASH)
@@ -60,10 +57,6 @@ help:
 clean:
 	rm -rf "$(BUILDDIR)"
 	rm -f source/_replacevars.rst
-
-config:
-	mkdir -pv build
-	cat python-scripts/conf.py ${TAGFILE} ${FAMILYSETUPFILE} > build/conf.py
 
 lint:
 	rstcheck -r "$(SOURCEDIR)"
