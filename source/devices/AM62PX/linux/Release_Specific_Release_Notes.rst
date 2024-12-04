@@ -53,6 +53,7 @@ What's new
   - TISCI: A53 hosts default priv_id value updated to 1 from 4 (to match all other SOCs)
   - Power Management: :ref:`I/O Only Plus DDR <pm_io_only_plus_ddr>` mode
   - TI Apps Launcher: New Wi-Fi and Terminal Demo - :ref:`TI Apps Launcher <TI-Apps-Launcher-User-Guide-label>`
+  - Snagfactory Support - :ref:`Snagfactory Tool <Flash-via-Fastboot>`
 
 
 **Component version:**
