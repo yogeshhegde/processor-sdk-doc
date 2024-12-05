@@ -19,8 +19,9 @@ The version of Chromium that is built can be obtained with the following command
 
 .. code-block:: console
 
-    $ chromium --version
-    Chromium 126.0.6478.126 built on Debian trixie/sid, running on Debian trixie/sid
+    root@am62xx-evm:~# chromium -version
+    Chromium 130.0.6723.116 built on Debian GNU/Linux trixie/sid
+
 
 The above version of Chromium has been verified to support GPU acceleration.
 
