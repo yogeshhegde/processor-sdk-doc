@@ -36,7 +36,14 @@ M.2 card is held down by the screw. The end result should be as shown in the ima
 Enable DT Overlay for M.2-CC33x1
 ********************************
 
-After flashing the SD card with the :file:`tisdk-default-image`, mount the SD card onto a host computer, if not done already.
+.. ifconfig:: CONFIG_sdk in ('SITARA')
+
+    After flashing the SD card with the :file:`tisdk-default-image`, mount the SD card onto a host computer, if not done already.
+
+.. ifconfig:: CONFIG_sdk in ('DebianSDK')
+
+    After flashing the SD card with the :file:`tisdk-debian-trixie-image`, mount the SD card onto a host computer, if not done already.
+
 On the boot partition of the SD card, add one of the following variables, corresponding to the starter kit,
 into the :file:`uEnv.txt` file. This will let u-boot enable the m.2-cc33x1 devicetree overlay. The :file:`uEnv.txt` file can be found on the ``boot``
 partition of the SD card. 
