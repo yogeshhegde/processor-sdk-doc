@@ -17,6 +17,7 @@ Processor SDK Linux Software Developer's Guide
    /linux/Overview
    Release_Specific
    /linux/Foundational_Components
+   /linux/index_Edge_AI
    /linux/How_to_Guides
    /system/Demo_User_Guides/index_Demos
    /linux/Documentation_Tarball
