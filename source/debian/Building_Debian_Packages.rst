@@ -14,8 +14,8 @@ This repository is useful to the following audience:
 2. Users who want to create a new package with the latest changes or customizations.
 3. Anyone who wants to study Debian packaging.
 
-Structure:
-==========
+Structure
+=========
 
 The `run.sh` file is the "main" script that should be run. It takes as argument the name of the package to be built.
 

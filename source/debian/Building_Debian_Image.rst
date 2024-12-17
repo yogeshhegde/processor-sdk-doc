@@ -55,7 +55,7 @@ Repository Structure
     │   ├── bsp_sources.toml
     │   └── machines --> Machine configurations for each BSP version
     │       ├── 09.02.00.010.toml
-    │       └── 10.00.05.toml
+    │       └── 10.01.10.04.toml
     ├── create-sdcard.sh
     ├── create-wic.sh
     ├── LICENSE
@@ -165,13 +165,13 @@ Then, select a release tag and checkout to it:
 
    git checkout <tag-name>
 
-For example, to checkout to the `10.00.07-release` tag, use the following command:
+For example, to checkout to the `10.01.10.04-release` tag, use the following command:
 
 .. code-block:: console
 
-   git checkout 10.00.07-release
+   git checkout 10.01.10.04-release
 
-The :file:`builds.toml` and other config files will now support building images corresponding to the `10.00.07` release.
+The :file:`builds.toml` and other config files will now support building images corresponding to the `10.01.10.04` release.
 
 Building the Image
 -------------------
