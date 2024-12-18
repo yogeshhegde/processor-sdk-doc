@@ -472,9 +472,6 @@ PCIe-ETH
 PCIe-NVMe-SSD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-AM64xx-EVM
-"""""""""""""""""""""""""""
-
 .. csv-table:: PCIE SSD EXT4 FIO 10G
     :header: "Buffer size (bytes)","am64xx-hsevm: Write EXT4 Throughput (Mbytes/sec)","am64xx-hsevm: Write EXT4 CPU Load (%)","am64xx-hsevm: Read EXT4 Throughput (Mbytes/sec)","am64xx-hsevm: Read EXT4 CPU Load (%)"
 
@@ -493,11 +490,8 @@ AM64xx-EVM
 OSPI Flash Driver
 -------------------------
 
-AM64XX-EVM
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 RAW
-"""""""""""""""""""""""""""
+^^^
 
 .. csv-table:: OSPI Raw Flash Driver
     :header: "File size (Mbytes)","am64xx-hsevm: Raw Read Throughput (Mbytes/sec)"
