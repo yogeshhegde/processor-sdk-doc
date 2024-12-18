@@ -50,6 +50,7 @@ What's new
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here - :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - TI Apps Launcher: New Wi-Fi and Terminal Demo - :ref:`TI Apps Launcher <TI-Apps-Launcher-User-Guide-label>`
   - Snagfactory Support - :ref:`Snagfactory Tool <Flash-via-Fastboot>`
+  - Support for M2 CC33xx cards on Debian - `How to Enable M.2-CC33x1 in Linux <https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/10_01_10_04_Debian/exports/docs/linux/How_to_Guides/Target/How_To_Enable_M2CC3301_in_linux.html>`__
 
 
 **Component version:**
