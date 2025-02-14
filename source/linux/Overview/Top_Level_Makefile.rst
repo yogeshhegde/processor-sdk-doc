@@ -112,7 +112,7 @@ makefile targets.
 
     .. code-block:: console
 
-        host# sudo apt-get install build-essential autoconf automake bison flex libmpc-dev libmpcdec6 libmpc3 libmpcdec-dev libssl-dev bc u-boot-tools swig python3 python3-pip
+        host# sudo apt-get install build-essential autoconf automake bison flex libgnutls28-dev libmpc-dev libmpcdec6 libmpc3 libmpcdec-dev libssl-dev bc u-boot-tools swig python3 python3-pip
 
     Following pip packages are also needed for jailhouse & binman in u-boot targets
 
