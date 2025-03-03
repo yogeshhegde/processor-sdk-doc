@@ -52,7 +52,10 @@ What's new
   - Kernel: DMA, GPIO, I2C, UART, MMCSD, OSPI NOR, eCAP, eQEP, CPSW, McASP/Audio, DSS, DSI
   - Power Management: Basic Deep Sleep and RTC+DDR mode
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here - :ref:`RT Interrupt Latencies <RT-linux-performance>`
-  - Support for Wifi with M2 CC33xx cards
+  - Support for Wifi with M2 CC33xx cards - :ref:`How to Enable M.2-CC33xx in Linux <enable_m2cc3301>`
+  - Out-of-Box experience based on LVGL (Light and Versatile Graphics Library) - :ref:`TI LVGL Demo - User Guide <TI-LVGL-Demo-User-Guide-label>`
+  - Jailhouse with Kernel 6.12
+  - Support for multiple Linux distributions, such as Yocto, Debian and Buildroot
 
 **Component version:**
 
@@ -62,6 +65,8 @@ What's new
   - ATF 2.12+
   - TIFS Firmware v11.00.05
   - Yocto scarthgap 5.0
+  - Debian 13 (Trixie)
+  - Buildroot 2024.11.1
 
 
 Build Information
