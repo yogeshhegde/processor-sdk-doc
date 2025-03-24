@@ -111,6 +111,14 @@ below set of commands can achieve this:
 
    media-ctl --print-dot | dot -Tpng > graph.png
 
+To check for errors during streaming, locate the subdevice for the Cadence CSI2RX in the media pipeline and run the following command:
+
+.. code-block:: console
+
+   v4l2-ctl --log-status -d /dev/v4l-subdevX
+
+Replace /dev/v4l-subdevX with the correct subdevice node of the Cadence CSI2RX receiver. After running the above command, you will be able to see information regarding any errors during streaming such as short packets or ECC errors in the kernel logs.
+
 Building the driver
 ===================
 
