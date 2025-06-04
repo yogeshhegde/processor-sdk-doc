@@ -62,7 +62,7 @@ The latencies observed with this SDK are summarized below:
    :header: "Latencies","CPU 0","CPU 1"
 
    "Minimum (us)","5","5"
-   "Average (us)","8","7"
-   "Maximum (us)","52","44"
+   "Average (us)","6","8"
+   "Maximum (us)","47","53"
 
 .. image:: img/rt-cpu-method-all-latency-histogram.png
