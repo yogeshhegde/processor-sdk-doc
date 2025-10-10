@@ -75,7 +75,10 @@ jobs:
 
       - name: Build ${{ matrix.device }}
         run: |
-          make DEVFAMILY=${{ matrix.device }} OS=${{ matrix.os }}
+          python3 -m venv ./venv
+          . ./venv/bin/activate
+          pip install -r requirements.txt
+          make DEVFAMILY=${{ matrix.device }} OS=${{ matrix.os }} html-multiversion
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

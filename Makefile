@@ -42,6 +42,7 @@ $(info CONFDIR is $(CONFDIR))
 VERSION   = $(shell cat ${CONFDIR}/version.txt)
 SOURCEDIR = source
 BUILDDIR  = build/processor-sdk-${OS_LOW}-${DEVFAMILY_UP}/esd/docs/${VERSION}
+BUILDDIR_MULTI_VER = build/processor-sdk-${OS_LOW}-${DEVFAMILY_UP}/esd/docs
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
@@ -70,7 +71,14 @@ clean:
 lint:
 	rstcheck -r "$(SOURCEDIR)"
 
-html: 
+html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) "$(SOURCEDIR)" "$(BUILDDIR)"
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)."
+
+# Multi-version build (new)
+html-multiversion:
+	@echo "Building multi-version documentation..."
+	sphinx-multiversion -c "$(ROOTDIR)" "$(SOURCEDIR)" "$(BUILDDIR_MULTI_VER)"
+	@echo
+	@echo "Multi-version build finished. The HTML pages are in $(BUILDDIR_MULTI_VER)"

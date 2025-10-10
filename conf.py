@@ -17,6 +17,7 @@ import sys
 import os
 import importlib
 from datetime import datetime
+import json
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -24,6 +25,15 @@ from datetime import datetime
 #sys.path.insert(0, os.path.abspath('.'))
 rootdir = os.environ.get('ROOTDIR')
 sys.path.insert(0, os.path.abspath(rootdir))
+
+# -- Load Versioning JSON -------------------------------------------------
+if not os.path.exists(os.path.join(rootdir, "versions.json")):
+    data =  {"stable_version": "master", "versions": [{"name": "dev", "tag": "master", "is_released": false}]}
+else:
+    with open("versions.json") as f:
+        json_data = f.read()
+        data = json.loads(json_data)
+versions_dict = data
 
 from scripts import interpretvalues, sectinc, replacevars
 
@@ -42,7 +52,8 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx_rtd_theme',
     'sphinx_tabs.tabs',
-    'sphinx_copybutton'
+    'sphinx_copybutton',
+    'sphinx_multiversion'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -147,7 +158,7 @@ html_last_updated_fmt = '%b %d, %Y'
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-html_sidebars = { '**': ['globaltoc.html', 'relations.html', 'sourcelink.html',
+html_sidebars = { '**': ['versions.html', 'globaltoc.html', 'relations.html', 'sourcelink.html',
                          'searchbox.html'], }
 
 # Additional templates that should be rendered to pages, maps page names to
@@ -204,6 +215,7 @@ html_context = {
     "github_repo": "processor-sdk-doc",
     "github_version": "master",
     "conf_py_path": "/source/",
+    'versions_dict' : versions_dict,
 }
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -257,6 +269,24 @@ latex_elements = {
 
 # Suppress warnings about excluded documents because every device gets a different toc tree
 suppress_warnings = ['toc.excluded']
+
+# sphinx-multiversion configuration
+# This tells it which tags/branches to build
+smv_tag_whitelist = r'^v\d+\.\d+\.\d+.*$'  # Matches v11.1.5.3, v11.1.1.3, etc.
+smv_branch_whitelist = r'^(main|master)$'  # Build from main/master branch (for 'latest')
+smv_remote_whitelist = r'^.*$'              # Allow all remotes
+smv_released_pattern = r'^tags/.*$'         # Tags are released versions
+
+# Optional: Customize which versions appear as "released"
+smv_prefer_remote_refs = False  # Use local tags/branches
+
+# Add custom CSS and JS for version banner
+html_css_files = [
+    'version-banner.css',
+]
+# html_js_files = [
+#     'version-banner.js',
+# ]
 
 # -- Tag file loader ------------------------------------------------------
 

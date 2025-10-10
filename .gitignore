@@ -4,6 +4,8 @@
 
 # build artifacts
 build/
+# virtual env
+venv/
 
 # vale configs and intermediary data
 .github/styles/*

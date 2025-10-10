@@ -1,0 +1,15 @@
+{
+  "stable_version": "v11.01.16.13",
+  "versions": [
+    {
+      "name": "dev",
+      "tag": "master",
+      "is_released": false
+    },
+    {
+      "name": "v11.01.16.13",
+      "tag": "v11.01.16.13",
+      "is_released": true
+    }
+  ]
+}

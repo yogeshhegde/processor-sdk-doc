@@ -38,3 +38,4 @@ sphinxcontrib-serializinghtml==2.0.0
 typer==0.15.2
 typing_extensions==4.12.2
 urllib3==2.3.0
+sphinx-multiversion==0.2.4
