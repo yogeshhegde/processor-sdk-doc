@@ -1,0 +1,29 @@
+{%- if current_version and versions_dict %}
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book">  Versions</span>
+        v: {{ current_version.name }}
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        {%- if versions.branches and versions.tags %}
+        <dl>
+            <dt>Versions</dt>
+            {%- for item in versions.branches %}
+                {%- if item.name == 'master' or item.name == 'main' %}
+                    <dd><a href="{{ item.url }}">dev</a></dd>
+                {%- else %}
+                {%- endif %}
+            {%- endfor %}
+            {%- for item in versions.tags %}
+                {%- if item.name == versions_dict.stable_version %}
+                    <dd><a href="{{ item.url }}">stable</a></dd>
+                {%- else %}
+                {%- endif %}
+                <dd><a href="{{ item.url }}">{{ item.name }}</a></dd>
+            {%- endfor %}
+        </dl>
+        {%- endif %}
+    </div>
+</div>
+{%- endif %}

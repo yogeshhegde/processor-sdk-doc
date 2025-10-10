@@ -1,0 +1,41 @@
+{% extends "!page.html" %}
+
+{% block body %}
+<!-- Version Warning Banner -->
+{% if current_version and latest_version and versions_dict and current_version.name != versions_dict.stable_version %}
+<div class="version-warning-banner" role="alert">
+    <div class="banner-content">
+        <div class="banner-message">
+            <span class="fa fa-exclamation-circle fa-lg banner-icon" aria-hidden="true"></span>
+            <span>
+                {% if current_version.name == 'master' or current_version.name == 'main' %}
+                You are viewing documentation for a development version (<strong>{{ current_version.name }}</strong>).
+                <a href="{{ vpathto(versions_dict.stable_version) }}" class="banner-link">Switch to latest stable version.</a>
+                {% else %}
+                You are viewing documentation for an older version (<strong>{{ current_version.name }}</strong>).
+                <a href="{{ vpathto(versions_dict.stable_version) }}" class="banner-link">Switch to latest stable version.</a>
+                {% endif %}
+            </span>
+        </div>
+        <button class="banner-close" aria-label="Dismiss warning" title="Dismiss" onclick="this.parentElement.parentElement.style.display='none'; sessionStorage.setItem('bannerDismissed_{{ current_version.name }}', 'true');">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+
+<script>
+// Check if banner was dismissed in this session
+(function() {
+    var dismissKey = 'bannerDismissed_{{ current_version.name }}';
+    if (sessionStorage.getItem(dismissKey) === 'true') {
+        var banner = document.querySelector('.version-warning-banner');
+        if (banner) {
+            banner.style.display = 'none';
+        }
+    }
+})();
+</script>
+{% endif %}
+
+{{ super() }}
+{% endblock %}

@@ -1,0 +1,128 @@
+/* Version Warning Banner Styles */
+.version-warning-banner {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    border-left: 5px solid #ff9800;
+    border-bottom: 1px solid #f0c36d;
+    padding: 15px 20px;
+    margin: -24px -24px 24px -24px; /* Extend to page edges */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.banner-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.banner-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex: 1;
+    font-size: 18px;
+    color: #856404;
+    line-height: 1.5;
+}
+
+.banner-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: #ff9800;
+    margin-top: 2px;
+}
+
+.banner-message strong {
+    color: #664d03;
+}
+
+.banner-link {
+    color: #0066cc;
+    text-decoration: underline;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.banner-link:hover {
+    color: #004499;
+    text-decoration: none;
+}
+
+.banner-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+    margin-top: -2px;
+}
+
+.banner-close:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.banner-close:focus {
+    outline: 2px solid #ff9800;
+    outline-offset: 2px;
+}
+
+.banner-close svg {
+    width: 18px;
+    height: 18px;
+    color: #856404;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .version-warning-banner {
+        margin: -12px -12px 12px -12px;
+        padding: 12px 15px;
+    }
+
+    .banner-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .banner-message {
+        font-size: 13px;
+        padding-right: 30px; /* Space for close button */
+    }
+
+    .banner-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+    }
+
+    .banner-link {
+        white-space: normal;
+        display: inline-block;
+    }
+}
+
+/* Adjust for different page widths */
+@media (min-width: 769px) {
+    .version-warning-banner {
+        border-radius: 4px;
+        margin: 0 0 24px 0;
+    }
+}
