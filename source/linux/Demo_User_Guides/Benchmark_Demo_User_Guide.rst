@@ -27,7 +27,7 @@ Hardware Prerequisites
 
 -  Ethernet switch or ethernet router with DHCP service
 
--  SD card (minimum 2GB)
+-  SD card (minimum 32GB)
 
 Get Started
 -----------
@@ -62,24 +62,18 @@ Get Started
 
 .. Image:: /images/OOB_Linux_ifconfig.png
 
-10. Run the command below
+10. On the PC, open a Internet Browser and enter in the
+    following: \ http://IP_ADDRESS_OF_AM64x_EVM:3000, for example, http://192.168.86.198:3000
 
-   .. code-block:: console
-
-      systemctl restart rpmsg_json.service
-
-11. On the PC, open a Internet Browser and enter in the
-    following: \ http://IP_ADDRESS_OF_AM64x_EVM:8081, for example, http://192.168.86.198:8081
-
-12. The following web page will pop up:
+11. The following web page will pop up:
 
 .. Image:: /images/OOB_GUI_root.png
 
-13. Click on the "Benchmark Demo":
+12. Click on the "Benchmark Demo":
 
 .. Image:: /images/OOB_GUI_stats.png
 
-14. With the current release, the R5F app for each R5F core are fixed. User can only
+13. With the current release, the R5F app for each R5F core are fixed. User can only
     change the "Options" for each core, then click "LOAD" to refresh the statistics
 
 +-------------+------------------+----------------------+-----------------------------------------------------------+
@@ -185,14 +179,16 @@ Build Baremetal Demos and Update SD card
 Directory Structure
 -------------------
 
-The source code can be found at `[this link] <https://git.ti.com/cgit/processor-sdk/sitara-apps/>`__.
+The source code can be found at `[this link] <https://github.com/TexasInstruments/webserver-oob-demo>`__.
 
 +------+--------------------------------------------------+----------------------------------------------------------------------------------------+
 |      | **Directory Name**                               | **Description**                                                                        |
 +======+==================================================+========================================================================================+
-| 1    | apps/benchmark\_demo/webserver\_app/app          | GUI code and component files                                                           |
+| 1    | common/app/                                      | GUI code                                                                               |
 +------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-| 2    | apps/benchmark\_demo/webserver\_app/linux\_app   | Linux application code handles the IPC RPMsg\_char and the JSON file update for A53    |
+| 2    | common/app/demos/benchmark/                      | Web page load code                                                                     |
 +------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-| 3    | apps/benchmark\_demo/webserver\_app/webserver    | Web server and node files                                                              |
+| 3    | devices/am64xx/linux\_app/                       | Linux application code handles the IPC RPMsg\_char and the JSON file update for A53    |
++------+--------------------------------------------------+----------------------------------------------------------------------------------------+
+| 4    | demos/benchmark/                                 | Web server and node files                                                              |
 +------+--------------------------------------------------+----------------------------------------------------------------------------------------+
