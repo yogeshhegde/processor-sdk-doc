@@ -1,11 +1,13 @@
 
 .. _Benchmark-Demo-User-Guide-label:
 
+###########################
 Benchmark Demo - User Guide
-===========================
+###########################
 
+********
 Overview
---------
+********
 
 The default application loaded on the AM64x is the Benchmark Demo. It's
 purpose is to showcase the capabilities of the four R5F cores as well as
@@ -17,7 +19,7 @@ it's performance.
 All of the necessary equipment requirement and instructions are provided here.
 
 Hardware Prerequisites
-----------------------
+======================
 
 -  TI AM64x EVM
 
@@ -30,51 +32,51 @@ Hardware Prerequisites
 -  SD card (minimum 32GB)
 
 Get Started
------------
+===========
 
-1.  Follow the instructions in section
-    :ref:`am64x-create-sd-card-with-default-images` to create an SD card with
-    the prebuilt WIC image.
+#. Follow the instructions in section
+   :ref:`am64x-create-sd-card-with-default-images` to create an SD card with
+   the prebuilt WIC image.
 
-2.  Insert the SD card into the AM64x EVM
+#. Insert the SD card into the AM64x EVM
 
-3.  Set the AM64x EVM Boot mode to "Boot from SD card"
+#. Set the AM64x EVM Boot mode to "Boot from SD card"
 
-    - SW2(1:8) on, on, off, off, off, off, on, off
-    - SW3(1:8) off, on, off, off, off, off, off, off
+   - SW2(1:8) on, on, off, off, off, off, on, off
+   - SW3(1:8) off, on, off, off, off, off, off, off
 
-.. Image:: /images/boot_pins_sd_mode_oob.png
+   .. Image:: /images/boot_pins_sd_mode_oob.png
 
-4.  Connect an ethernet cable from your ethernet switch or router to the
-    AM64x EVM
+#. Connect an ethernet cable from your ethernet switch or router to the
+   AM64x EVM
 
-5.  Connect your PC to the same ethernet switch or router
+#. Connect your PC to the same ethernet switch or router
 
-6.  Connect the UART (J26 via USB cable) to the PC's USB port.
+#. Connect the UART (J26 via USB cable) to the PC's USB port.
 
-7. Open the the main UART0 port using the TeraTerm or other UART emulator
-    program. Set the port to 115200bps, 8 bit, no parity, 1 stop bit, no flow control
+#. Open the the main UART0 port using the TeraTerm or other UART emulator
+   program. Set the port to 115200bps, 8 bit, no parity, 1 stop bit, no flow control
 
-8. Power on the AM64x
+#. Power on the AM64x
 
-9. After the Linux boot completes, login as "root", then type in "ifconfig" in
-    Linux prompt to find out the IP address for the AM64x EVM
+#. After the Linux boot completes, login as "root", then type in "ifconfig" in
+   Linux prompt to find out the IP address for the AM64x EVM
 
-.. Image:: /images/OOB_Linux_ifconfig.png
+   .. Image:: /images/OOB_Linux_ifconfig.png
 
-10. On the PC, open a Internet Browser and enter in the
-    following: \ http://IP_ADDRESS_OF_AM64x_EVM:3000, for example, http://192.168.86.198:3000
+#. On the PC, open a Internet Browser and enter in the
+   following: ``http://IP_ADDRESS_OF_AM64x_EVM:3000``, for example, ``http://192.168.81.198:3000``
 
-11. The following web page will pop up:
+#. The following web page will pop up:
 
-.. Image:: /images/OOB_GUI_root.png
+   .. Image:: /images/OOB_GUI_root.png
 
-12. Click on the "Benchmark Demo":
+#. Click on the "Benchmark Demo":
 
-.. Image:: /images/OOB_GUI_stats.png
+   .. Image:: /images/OOB_GUI_stats.png
 
-13. With the current release, the R5F app for each R5F core are fixed. User can only
-    change the "Options" for each core, then click "LOAD" to refresh the statistics
+#. With the current release, the R5F app for each R5F core are fixed. User can only
+   change the "Options" for each core, then click "LOAD" to refresh the statistics
 
 +-------------+------------------+----------------------+-----------------------------------------------------------+
 | **R5 Core** | **App Name**     |   Default Option     | **Description**                                           |
@@ -90,12 +92,12 @@ Get Started
 +-------------+------------------+----------------------+-----------------------------------------------------------+
 
 Software Architecture
----------------------
+=====================
 
 .. Image:: /images/OOB_SW_arch.png
 
 Building Blocks
----------------
+===============
 
 -  **User Interface:** The GUI was built by using `GUI Composer <https://dev.ti.com/gc/v2/>`__. The
    Benchmark Demo is the second page where inputs and outputs can be
@@ -118,10 +120,10 @@ Building Blocks
    -  Web server code is built on Node JS
 
 Demo Internals
---------------
+==============
 
 Programming Paradigm
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 -  The user interface of the demo is built from GUI Composer and runs on
    a PC's browser
@@ -137,7 +139,7 @@ Programming Paradigm
       (Procedural Programming Paradigm)
 
 Node JS
-~~~~~~~
+-------
 
 When the AM64x boots, an initialization script executes the web server
 code by calling the Node JS code. Several node packages are used to edit
@@ -145,7 +147,7 @@ the JSON file, create the demo instance, and serve up the files to the
 client.
 
 HTTP
-~~~~
+----
 
 All data communication is handled via HTTP. Benchmark data from the
 AM64x is requested by the GUI every second, whereas the option selection
@@ -154,7 +156,7 @@ The HTTP requests are handled with jQuery, and the body of each HTTP request
 is a JSON string containing the input/output benchmark data.
 
 JSON
-~~~~
+----
 
 A JSON file has been used to exchange structured information between the
 web server and the A53 Linux application (a user space application
@@ -165,30 +167,33 @@ and then update the JSON file accordingly. The updated JSON file
 will then be displayed on the GUI every second.
 
 Build Baremetal Demos and Update SD card
-----------------------------------------
+========================================
 
-1. Install MCU+ SDK `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/SDK_DOWNLOAD_PAGE.html>`__.
+#. Install MCU+ SDK `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/SDK_DOWNLOAD_PAGE.html>`__.
    Refer MCU+ SDK benchmark demo user guide
    `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/EXAMPLE_BENCHMARKDEMO.html>`__
    on how to build demos.
 
-2. Once the R5F binaries are available, copy them to Linux file system in folder /lib/firmware/mcusdk-benchmark_demo/.
+#. Once the R5F binaries are available, copy them to Linux file system in folder :file:`/lib/firmware/mcusdk-benchmark_demo/`.
    The copy step can only be done using a Linux machine since the Linux filesystem on the
    SD card cannot be seen on a Windows machine. Once copied, make sure the soft links are pointing to the correct binaries.
 
 Directory Structure
--------------------
+===================
 
 The source code can be found at `[this link] <https://github.com/TexasInstruments/webserver-oob-demo>`__.
 
-+------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-|      | **Directory Name**                               | **Description**                                                                        |
-+======+==================================================+========================================================================================+
-| 1    | common/app/                                      | GUI code                                                                               |
-+------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-| 2    | common/app/demos/benchmark/                      | Web page load code                                                                     |
-+------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-| 3    | devices/am64xx/linux\_app/                       | Linux application code handles the IPC RPMsg\_char and the JSON file update for A53    |
-+------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-| 4    | demos/benchmark/                                 | Web server and node files                                                              |
-+------+--------------------------------------------------+----------------------------------------------------------------------------------------+
+.. list-table:: Directory Structure
+   :widths: 25 75
+   :header-rows: 1
+
+   * - **Directory Name**
+     - **Description**
+   * - :file:`common/app/`
+     - GUI code
+   * - :file:`common/app/demos/benchmark/`
+     - Web page load code
+   * - :file:`devices/am64xx/linux_app/`
+     - Linux application code handles the IPC ``RPMsg_char`` and the JSON file update for A53
+   * - :file:`demos/benchmark/`
+     - Web server and node files
