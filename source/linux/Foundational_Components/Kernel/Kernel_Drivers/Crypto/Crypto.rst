@@ -31,9 +31,9 @@ The following is a list of supported hardware accelerated algorithms:
         - MD5, SHA224, SHA256, SHA384, SHA512
         - HMAC(MD5), HMAC(SHA224), HMAC(SHA256), HMAC(SHA384), HMAC(SHA512)
 
-.. ifconfig:: CONFIG_crypto not in ('DTHEv2')
+.. ifconfig:: CONFIG_crypto in ('omap')
 
-   .. list-table:: SA2UL/SA3UL Hardware Cryptography Support
+   .. list-table:: OMAP Hardware Cryptography Support
       :header-rows: 1
 
       * - Device Family
@@ -59,6 +59,17 @@ The following is a list of supported hardware accelerated algorithms:
         -
         -
         -
+
+.. ifconfig:: CONFIG_crypto in ('sa2ul')
+
+   .. list-table:: SA2UL/SA3UL Hardware Cryptography Support
+      :header-rows: 1
+
+      * - Device Family
+        - Encryption
+        - Encryption with Authentication
+        - Hash Algorithms
+        - MAC Algorithms
 
       * - AM65x / J721e / J7200
         - AES (CBC, ECB), 3DES (CBC, ECB)
